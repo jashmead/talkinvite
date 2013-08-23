@@ -15,7 +15,7 @@ development:
 # Do not set this db to the same as development or production.
 
 test:
-  user: talkinvitencken
+  user: talkinvite
   adapter: postgresql
   database: talkinvite_test
   password: Dr@g0n13
