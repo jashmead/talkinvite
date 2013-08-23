@@ -1,4 +1,6 @@
 Talkinvite::Application.routes.draw do
+  resources :people
+
   get "static_pages/about"
   get "static_pages/contact"
   get "static_pages/credits"

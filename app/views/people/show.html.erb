@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person.email %>
+</p>
+
+<p>
+  <strong>About me:</strong>
+  <%= @person.about_me %>
+</p>
+
+<p>
+  <strong>Twitter handle:</strong>
+  <%= @person.twitter_handle %>
+</p>
+
+<p>
+  <strong>Settings:</strong>
+  <%= @person.settings %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
