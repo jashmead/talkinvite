@@ -1,13 +1,32 @@
+# Gemfile for project Mencken Tarot 'mt'
+
 source 'https://rubygems.org'
+
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use Postgres as the database for Active Record
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+
+# switch to bootstrap, rspec, factory_girl, selenium, capybara
+# bootstrap css
+gem 'bootstrap-sass', '>=2.1'
+
+## load capybara before rspec
+group :development, :test do
+  gem 'selenium-webdriver'
+  gem 'capybara', '>= 2.0.0'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -33,7 +52,8 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# bcrypt-ruby 3.1.0 does not work with Mac, so force backwards
+gem 'bcrypt-ruby', '3.0.1'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -43,3 +63,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
