@@ -1,0 +1,26 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version: 2.0.0
+
+* System dependencies
+
+* Configuration
+
+* Database creation:  postgresql
+
+* Database initialization
+
+* How to run the test suite:  rake spec spec
+
+* Services (job queues, cache servers, search engines, etc.):  not yet
+
+* Deployment instructions:  
+
+* Use README's like this to sketch out plans
+
+
