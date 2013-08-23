@@ -1,3 +1,9 @@
+## TBD:
+##  added in login, logout, settings for people
+
+# The priority is based upon order of creation: first created -> highest priority.
+# See how all your routes lay out with "rake routes".
+
 Talkinvite::Application.routes.draw do
   resources :people
 
@@ -8,8 +14,6 @@ Talkinvite::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/menu"
   get "static_pages/splash"
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

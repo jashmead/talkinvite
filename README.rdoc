@@ -3,7 +3,6 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
 
 * Ruby version: 2.0.0
 
@@ -21,6 +20,9 @@ Things you may want to cover:
 
 * Deployment instructions:  
 
-* Use README's like this to sketch out plans
-
-
+* Use README's like this to sketch out plans:
+  1 get thru all the tutorial functionality
+  2 add in the use of page frames
+  3 setup colors & so on in the css
+  4 use js?
+  5 adapt to phonegap?

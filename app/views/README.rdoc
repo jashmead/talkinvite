@@ -1,0 +1,6 @@
+TBD:
+
+1 switch to page layout approach to frames
+  -- make sure we can pass objects to them!
+
+2 add in header, footer
