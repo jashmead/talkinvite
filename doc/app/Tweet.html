@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class ApplicationController - Rails Application Documentation</title>
+<title>class Tweet - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/controllers/application_controller.rb
+    <li>app/models/tweet.rb
   </ul>
 </nav>
 
@@ -59,7 +59,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">ActionController::Base
+  <p class="link">ActiveRecord::Base
   
 </nav>
 
@@ -134,10 +134,50 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class ApplicationController</h1>
+  <h1 class="class">class Tweet</h1>
 
   <div id="description" class="description">
     
+<p><a href="Tweet.html">Tweet</a> – like a post, but more general</p>
+
+<p>There are lots of tweets we might track that don&#39;t point to a specific
+post</p>
+
+<p>Basic structure is a stripped down version of the twitter tweet structure, 
+as documented in <a
+href="https://dev.twitter.com/docs/platform-objects/tweets">dev.twitter.com/docs/platform-objects/tweets</a></p>
+
+<p>Note there are twitter.api requirements on what may be stored about tweets.</p>
+
+<p>May use streaming tweets as part of the talk buildup.</p>
+
+<p>Certainly using tweets to announce the talk! Use hashtag &amp; @user
+talkinvite</p>
+
+<p>There is a ruby gem for twitter; use it!  This stuff is just a placeholder…</p>
+
+<h2 id="label-Fields">Fields</h2>
+<ol><li>
+<p>user_id – integer, of user who generated it, if one of ours</p>
+</li><li>
+<p>screen_name – @user_name, can be outside talkinvite</p>
+</li><li>
+<p>content – actual tweet</p>
+</li><li>
+<p>location_id – location if known</p>
+</li></ol>
+
+<h2 id="label-Related">Related</h2>
+<ol><li>
+<p>tags – are the hashtags associated with this</p>
+</li><li>
+<p>files – images &amp; so on</p>
+</li></ol>
+
+<h2 id="label-Glorious+future+to+come">Glorious future to come</h2>
+
+<p>Depends on how the system evolves</p>
+
   </div><!-- description -->
 
   
