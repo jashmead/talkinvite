@@ -23,4 +23,5 @@ class Location < ActiveRecord::Base
   has_many :talks
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
+  has_many :maps
 end
