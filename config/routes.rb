@@ -5,6 +5,8 @@
 # See how all your routes lay out with "rake routes".
 
 Talkinvite::Application.routes.draw do
+  resources :locations
+
   resources :people
 
   get "static_pages/about"
