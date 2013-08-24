@@ -34,10 +34,12 @@ Tables in alphabetical order:
 1.  people -- the source of all difficulties
 1.  posts -- messages attached to a talk, also includes join, leave, as well as default comment
 1.  tags  -- will include ratings, polymorphic up to locations, people, posts, talks, tweets
-1.  talk_talk -- grouping of talks, basically organization versus talk
+1.  *talk_talk -- grouping of talks, basically organization versus talk -- not needed for MVP
 1.  talks -- the raison de etre of the system
-1.  user_talk -- basically membership
-1.  user_user -- grouping of users, basically relationships
+1.  *user_talk -- basically membership -- can use posts to get started
+1.  *user_user -- grouping of users, basically relationships -- not needed for MVP
+
+'*' = Not needed for MVP
 
 --
 Not able to get links to work currently
