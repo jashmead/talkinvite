@@ -101,6 +101,42 @@ ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
 
 
 --
+-- Name: maps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE maps (
+    id integer NOT NULL,
+    user_id integer,
+    name character varying(255),
+    description text,
+    location_id integer,
+    settings text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    source character varying(255)
+);
+
+
+--
+-- Name: maps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE maps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: maps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
+
+
+--
 -- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -299,6 +335,13 @@ ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::regclass);
 
 
@@ -344,6 +387,14 @@ ALTER TABLE ONLY attachments
 
 ALTER TABLE ONLY locations
     ADD CONSTRAINT locations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: maps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY maps
+    ADD CONSTRAINT maps_pkey PRIMARY KEY (id);
 
 
 --
@@ -420,3 +471,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130824182826');
 INSERT INTO schema_migrations (version) VALUES ('20130824182913');
 
 INSERT INTO schema_migrations (version) VALUES ('20130824192206');
+
+INSERT INTO schema_migrations (version) VALUES ('20130824193221');
+
+INSERT INTO schema_migrations (version) VALUES ('20130824193702');

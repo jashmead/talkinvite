@@ -142,6 +142,7 @@ describe AttachmentsController do
     end
   end
 
+  # verify that attached file is destroyed!
   describe "DELETE destroy" do
     it "destroys the requested attachment" do
       attachment = Attachment.create! valid_attributes

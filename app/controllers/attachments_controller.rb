@@ -53,6 +53,7 @@ class AttachmentsController < ApplicationController
 
   # DELETE /attachments/1
   # DELETE /attachments/1.json
+  # be careful to destroy the attached file at the same time!
   def destroy
     @attachment.destroy
     respond_to do |format|
