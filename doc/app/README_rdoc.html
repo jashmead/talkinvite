@@ -164,12 +164,15 @@ Street Map, some PostgreSQL specific stuff, and a bit of glue.</p>
 are <em>bad ideas</em>, i.e. using &#39;type&#39; can cause mysterious
 failures. (This is why it is person_type, not type.)</p>
 
+<p>And we can&#39;t use &#39;File&#39; as a table name, same reason.  Hence
+attachments.</p>
+
 <p>Tables in alphabetical order:</p>
 <ol><li>
-<p>calendar – virtual model, includes range, scale, current date</p>
+<p>attachments – to better work with postgres, polymorphic up to locations,
+people, posts, talks, tweets</p>
 </li><li>
-<p>files – to better work with postgres, polymorphic up to locations, people,
-posts, talks, tweets</p>
+<p>calendar – virtual model, includes range, scale, current date</p>
 </li><li>
 <p>locations – better as places?</p>
 </li><li>

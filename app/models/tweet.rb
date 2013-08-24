@@ -29,5 +29,6 @@
 
 class Tweet < ActiveRecord::Base
   belongs_to :location
-  has_many :tagable
+  has_many :tags, as: :tagable
+  has_many :attachments, as: :attachable
 end

@@ -13,4 +13,5 @@
 class Post < ActiveRecord::Base
   belongs_to :person
   belongs_to :talk
+  has_many :attachments, as: :attachable
 end

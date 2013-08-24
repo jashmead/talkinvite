@@ -19,4 +19,5 @@
 class Person < ActiveRecord::Base
   has_many :posts
   has_many :tags, as: :tagable
+  has_many :attachments, as: :attachable
 end
