@@ -15,7 +15,7 @@
 # == Possible Fields
 # 1. comment/description -- text
 # 
-## get trigger support in for the tags (& in a bit for the files)
+## get trigger support in for the tags
 class Tag < ActiveRecord::Base
   belongs_to :tagable, polymorphic: true
 end

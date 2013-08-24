@@ -1,0 +1,39 @@
+<h1>Listing attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>File type</th>
+      <th>Pathname</th>
+      <th>Attachable type</th>
+      <th>Attachable</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attachments.each do |attachment| %>
+      <tr>
+        <td><%= attachment.user_id %></td>
+        <td><%= attachment.name %></td>
+        <td><%= attachment.description %></td>
+        <td><%= attachment.file_type %></td>
+        <td><%= attachment.pathname %></td>
+        <td><%= attachment.attachable_type %></td>
+        <td><%= attachment.attachable_id %></td>
+        <td><%= link_to 'Show', attachment %></td>
+        <td><%= link_to 'Edit', edit_attachment_path(attachment) %></td>
+        <td><%= link_to 'Destroy', attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attachment', new_attachment_path %>

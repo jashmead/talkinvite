@@ -23,9 +23,11 @@ Note due to Ruby's omnipresent use of convention, some obvious names are <em>bad
 i.e. using 'type' can cause mysterious failures.
 (This is why it is person_type, not type.)
 
+And we can't use 'File' as a table name, same reason.  Hence attachments.
+
 Tables in alphabetical order:
+1.  attachments -- to better work with postgres, polymorphic up to locations, people, posts, talks, tweets
 1.  calendar -- virtual model, includes range, scale, current date
-1.  files -- to better work with postgres, polymorphic up to locations, people, posts, talks, tweets
 1.  locations -- better as places?
 1.  maps -- virtual model, includes bounding box, focus, probably some other stuff
 1.  messages -- user to user messages, usually associated with a specific talk
