@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :attachment do
-    user_id 1
+    person_id 1
     name "MyString"
     description "MyText"
     file_type "MyString"

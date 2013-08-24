@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "tweets/show" do
   before(:each) do
     @tweet = assign(:tweet, stub_model(Tweet,
-      :user_id => 1,
+      :person_id => 1,
       :screen_name => "Screen Name",
       :content => "Content",
       :location_id => 2

@@ -69,6 +69,6 @@ class CalendarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calendar_params
-      params.require(:calendar).permit(:user_id, :name, :description, :time_point, :source, :settings)
+      params.require(:calendar).permit(:person_id, :name, :description, :time_point, :source, :settings)
     end
 end

@@ -23,7 +23,7 @@ describe TweetsController do
   # This should return the minimal set of attributes required to create a valid
   # Tweet. As you add validations to Tweet, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "user_id" => "1" } }
+  let(:valid_attributes) { { "person_id" => "1" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe TweetsController do
       it "assigns a newly created but unsaved tweet as @tweet" do
         # Trigger the behavior that occurs when invalid params are submitted
         Tweet.any_instance.stub(:save).and_return(false)
-        post :create, {:tweet => { "user_id" => "invalid value" }}, valid_session
+        post :create, {:tweet => { "person_id" => "invalid value" }}, valid_session
         assigns(:tweet).should be_a_new(Tweet)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Tweet.any_instance.stub(:save).and_return(false)
-        post :create, {:tweet => { "user_id" => "invalid value" }}, valid_session
+        post :create, {:tweet => { "person_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe TweetsController do
         # specifies that the Tweet created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Tweet.any_instance.should_receive(:update).with({ "user_id" => "1" })
-        put :update, {:id => tweet.to_param, :tweet => { "user_id" => "1" }}, valid_session
+        Tweet.any_instance.should_receive(:update).with({ "person_id" => "1" })
+        put :update, {:id => tweet.to_param, :tweet => { "person_id" => "1" }}, valid_session
       end
 
       it "assigns the requested tweet as @tweet" do
@@ -128,7 +128,7 @@ describe TweetsController do
         tweet = Tweet.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Tweet.any_instance.stub(:save).and_return(false)
-        put :update, {:id => tweet.to_param, :tweet => { "user_id" => "invalid value" }}, valid_session
+        put :update, {:id => tweet.to_param, :tweet => { "person_id" => "invalid value" }}, valid_session
         assigns(:tweet).should eq(tweet)
       end
 
@@ -136,7 +136,7 @@ describe TweetsController do
         tweet = Tweet.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Tweet.any_instance.stub(:save).and_return(false)
-        put :update, {:id => tweet.to_param, :tweet => { "user_id" => "invalid value" }}, valid_session
+        put :update, {:id => tweet.to_param, :tweet => { "person_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

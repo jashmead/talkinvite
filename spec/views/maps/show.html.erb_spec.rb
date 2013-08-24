@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "maps/show" do
   before(:each) do
     @map = assign(:map, stub_model(Map,
-      :user_id => 1,
+      :person_id => 1,
       :name => "Name",
       :description => "MyText",
       :location_id => 2,

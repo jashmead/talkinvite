@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824201412) do
+ActiveRecord::Schema.define(version: 20130824212540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attachments", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.string   "name"
     t.text     "description"
     t.string   "file_type"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20130824201412) do
   end
 
   create_table "calendars", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.string   "name"
     t.text     "description"
     t.datetime "time_point"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20130824201412) do
   end
 
   create_table "maps", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.string   "name"
     t.text     "description"
     t.integer  "location_id"
@@ -58,6 +58,16 @@ ActiveRecord::Schema.define(version: 20130824201412) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "source"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "from_person_id"
+    t.integer  "to_person_id"
+    t.integer  "talk_id"
+    t.string   "message_type"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", force: true do |t|
@@ -72,7 +82,7 @@ ActiveRecord::Schema.define(version: 20130824201412) do
   end
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.integer  "talk_id"
     t.string   "post_type"
     t.text     "comment"
@@ -98,7 +108,7 @@ ActiveRecord::Schema.define(version: 20130824201412) do
   end
 
   create_table "tweets", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "person_id"
     t.string   "screen_name"
     t.string   "content"
     t.integer  "location_id"

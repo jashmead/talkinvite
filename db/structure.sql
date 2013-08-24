@@ -34,7 +34,7 @@ SET default_with_oids = false;
 
 CREATE TABLE attachments (
     id integer NOT NULL,
-    user_id integer,
+    person_id integer,
     name character varying(255),
     description text,
     file_type character varying(255),
@@ -71,7 +71,7 @@ ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
 
 CREATE TABLE calendars (
     id integer NOT NULL,
-    user_id integer,
+    person_id integer,
     name character varying(255),
     description text,
     time_point timestamp without time zone,
@@ -142,7 +142,7 @@ ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
 
 CREATE TABLE maps (
     id integer NOT NULL,
-    user_id integer,
+    person_id integer,
     name character varying(255),
     description text,
     location_id integer,
@@ -170,6 +170,41 @@ CREATE SEQUENCE maps_id_seq
 --
 
 ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
+
+
+--
+-- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE messages (
+    id integer NOT NULL,
+    from_person_id integer,
+    to_person_id integer,
+    talk_id integer,
+    message_type character varying(255),
+    content text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
 
 
 --
@@ -214,7 +249,7 @@ ALTER SEQUENCE people_id_seq OWNED BY people.id;
 
 CREATE TABLE posts (
     id integer NOT NULL,
-    user_id integer,
+    person_id integer,
     talk_id integer,
     post_type character varying(255),
     comment text,
@@ -324,7 +359,7 @@ ALTER SEQUENCE talks_id_seq OWNED BY talks.id;
 
 CREATE TABLE tweets (
     id integer NOT NULL,
-    user_id integer,
+    person_id integer,
     screen_name character varying(255),
     content character varying(255),
     location_id integer,
@@ -379,6 +414,13 @@ ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq
 --
 
 ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
 
 
 --
@@ -446,6 +488,14 @@ ALTER TABLE ONLY locations
 
 ALTER TABLE ONLY maps
     ADD CONSTRAINT maps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
 
 
 --
@@ -528,3 +578,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130824193221');
 INSERT INTO schema_migrations (version) VALUES ('20130824193702');
 
 INSERT INTO schema_migrations (version) VALUES ('20130824201412');
+
+INSERT INTO schema_migrations (version) VALUES ('20130824203337');
+
+INSERT INTO schema_migrations (version) VALUES ('20130824212540');

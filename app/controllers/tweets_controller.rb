@@ -69,6 +69,6 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:user_id, :screen_name, :content, :location_id)
+      params.require(:tweet).permit(:person_id, :screen_name, :content, :location_id)
     end
 end

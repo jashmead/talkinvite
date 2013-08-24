@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :map do
-    user_id 1
+    person_id 1
     name "MyString"
     description "MyText"
     location_id 1

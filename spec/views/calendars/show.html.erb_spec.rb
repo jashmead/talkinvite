@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "calendars/show" do
   before(:each) do
     @calendar = assign(:calendar, stub_model(Calendar,
-      :user_id => 1,
+      :person_id => 1,
       :name => "Name",
       :description => "MyText",
       :source => "Source",

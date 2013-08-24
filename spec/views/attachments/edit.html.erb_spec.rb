@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "attachments/edit" do
   before(:each) do
     @attachment = assign(:attachment, stub_model(Attachment,
-      :user_id => 1,
+      :person_id => 1,
       :name => "MyString",
       :description => "MyText",
       :file_type => "MyString",
@@ -18,7 +18,7 @@ describe "attachments/edit" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", attachment_path(@attachment), "post" do
-      assert_select "input#attachment_user_id[name=?]", "attachment[user_id]"
+      assert_select "input#attachment_person_id[name=?]", "attachment[person_id]"
       assert_select "input#attachment_name[name=?]", "attachment[name]"
       assert_select "textarea#attachment_description[name=?]", "attachment[description]"
       assert_select "input#attachment_file_type[name=?]", "attachment[file_type]"

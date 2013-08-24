@@ -14,7 +14,7 @@
 # There is a ruby gem for twitter; use it!  This stuff is just a placeholder...
 # 
 # == Fields
-# 1. user_id -- integer, of user who generated it, if one of ours
+# 1. person_id -- integer, of user who generated it, if one of ours
 # 1. screen_name -- @user_name, can be outside talkinvite
 # 1. content -- actual tweet
 # 1. location_id -- location if known

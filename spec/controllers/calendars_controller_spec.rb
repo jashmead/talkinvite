@@ -23,7 +23,7 @@ describe CalendarsController do
   # This should return the minimal set of attributes required to create a valid
   # Calendar. As you add validations to Calendar, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "user_id" => "1" } }
+  let(:valid_attributes) { { "person_id" => "1" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe CalendarsController do
       it "assigns a newly created but unsaved calendar as @calendar" do
         # Trigger the behavior that occurs when invalid params are submitted
         Calendar.any_instance.stub(:save).and_return(false)
-        post :create, {:calendar => { "user_id" => "invalid value" }}, valid_session
+        post :create, {:calendar => { "person_id" => "invalid value" }}, valid_session
         assigns(:calendar).should be_a_new(Calendar)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Calendar.any_instance.stub(:save).and_return(false)
-        post :create, {:calendar => { "user_id" => "invalid value" }}, valid_session
+        post :create, {:calendar => { "person_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe CalendarsController do
         # specifies that the Calendar created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Calendar.any_instance.should_receive(:update).with({ "user_id" => "1" })
-        put :update, {:id => calendar.to_param, :calendar => { "user_id" => "1" }}, valid_session
+        Calendar.any_instance.should_receive(:update).with({ "person_id" => "1" })
+        put :update, {:id => calendar.to_param, :calendar => { "person_id" => "1" }}, valid_session
       end
 
       it "assigns the requested calendar as @calendar" do
@@ -128,7 +128,7 @@ describe CalendarsController do
         calendar = Calendar.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Calendar.any_instance.stub(:save).and_return(false)
-        put :update, {:id => calendar.to_param, :calendar => { "user_id" => "invalid value" }}, valid_session
+        put :update, {:id => calendar.to_param, :calendar => { "person_id" => "invalid value" }}, valid_session
         assigns(:calendar).should eq(calendar)
       end
 
@@ -136,7 +136,7 @@ describe CalendarsController do
         calendar = Calendar.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Calendar.any_instance.stub(:save).and_return(false)
-        put :update, {:id => calendar.to_param, :calendar => { "user_id" => "invalid value" }}, valid_session
+        put :update, {:id => calendar.to_param, :calendar => { "person_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

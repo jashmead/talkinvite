@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "attachments/show" do
   before(:each) do
     @attachment = assign(:attachment, stub_model(Attachment,
-      :user_id => 1,
+      :person_id => 1,
       :name => "Name",
       :description => "MyText",
       :file_type => "File Type",

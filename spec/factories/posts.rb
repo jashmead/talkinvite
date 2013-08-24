@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :post do
-    user_id 1
+    person_id 1
     talk_id 1
     post_type "MyString"
     comment "MyText"

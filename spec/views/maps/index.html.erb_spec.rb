@@ -4,7 +4,7 @@ describe "maps/index" do
   before(:each) do
     assign(:maps, [
       stub_model(Map,
-        :user_id => 1,
+        :person_id => 1,
         :name => "Name",
         :description => "MyText",
         :location_id => 2,
@@ -12,7 +12,7 @@ describe "maps/index" do
         :settings => "MyText"
       ),
       stub_model(Map,
-        :user_id => 1,
+        :person_id => 1,
         :name => "Name",
         :description => "MyText",
         :location_id => 2,

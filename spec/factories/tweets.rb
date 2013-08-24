@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :tweet do
-    user_id 1
+    person_id 1
     screen_name "MyString"
     content "MyString"
     location_id 1

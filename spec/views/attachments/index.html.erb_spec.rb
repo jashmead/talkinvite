@@ -4,7 +4,7 @@ describe "attachments/index" do
   before(:each) do
     assign(:attachments, [
       stub_model(Attachment,
-        :user_id => 1,
+        :person_id => 1,
         :name => "Name",
         :description => "MyText",
         :file_type => "File Type",
@@ -13,7 +13,7 @@ describe "attachments/index" do
         :attachable_id => 2
       ),
       stub_model(Attachment,
-        :user_id => 1,
+        :person_id => 1,
         :name => "Name",
         :description => "MyText",
         :file_type => "File Type",

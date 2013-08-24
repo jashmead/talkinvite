@@ -4,14 +4,14 @@ describe "calendars/index" do
   before(:each) do
     assign(:calendars, [
       stub_model(Calendar,
-        :user_id => 1,
+        :person_id => 1,
         :name => "Name",
         :description => "MyText",
         :source => "Source",
         :settings => "MyText"
       ),
       stub_model(Calendar,
-        :user_id => 1,
+        :person_id => 1,
         :name => "Name",
         :description => "MyText",
         :source => "Source",

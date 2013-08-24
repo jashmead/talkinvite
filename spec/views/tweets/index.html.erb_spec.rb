@@ -4,13 +4,13 @@ describe "tweets/index" do
   before(:each) do
     assign(:tweets, [
       stub_model(Tweet,
-        :user_id => 1,
+        :person_id => 1,
         :screen_name => "Screen Name",
         :content => "Content",
         :location_id => 2
       ),
       stub_model(Tweet,
-        :user_id => 1,
+        :person_id => 1,
         :screen_name => "Screen Name",
         :content => "Content",
         :location_id => 2
