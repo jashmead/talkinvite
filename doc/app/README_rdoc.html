@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>README - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Location.html">Location</a>
+  
+    <li><a href="./LocationsController.html">LocationsController</a>
+  
+    <li><a href="./LocationsHelper.html">LocationsHelper</a>
+  
+    <li><a href="./PeopleController.html">PeopleController</a>
+  
+    <li><a href="./PeopleHelper.html">PeopleHelper</a>
+  
+    <li><a href="./Person.html">Person</a>
+  
+    <li><a href="./Post.html">Post</a>
+  
+    <li><a href="./PostsController.html">PostsController</a>
+  
+    <li><a href="./PostsHelper.html">PostsHelper</a>
+  
+    <li><a href="./StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="./Tag.html">Tag</a>
+  
+    <li><a href="./TagsController.html">TagsController</a>
+  
+    <li><a href="./TagsHelper.html">TagsHelper</a>
+  
+    <li><a href="./Talk.html">Talk</a>
+  
+    <li><a href="./TalksController.html">TalksController</a>
+  
+    <li><a href="./TalksHelper.html">TalksHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-TalkInvite">TalkInvite</h1>
+
+<h2 id="label-Overview+%26+Getting+Started">Overview &amp; Getting Started</h2>
+<ul><li>
+<p>Ruby version: 2.0.0</p>
+</li><li>
+<p>System dependencies</p>
+</li><li>
+<p>Configuration</p>
+</li><li>
+<p>Database</p>
+</li><li>
+<p>Database initialization</p>
+</li><li>
+<p>How to run the test suite:  rake spec spec</p>
+</li><li>
+<p>Services (job queues, cache servers, search engines, etc.):  not yet</p>
+</li><li>
+<p>Deployment instructions:</p>
+</li></ul>
+
+<h2 id="label-Schema">Schema</h2>
+
+<h3 id="label-Strategy">Strategy</h3>
+
+<p>The system is a mashup of the Ruby on Rails tutorial by Michael Hardl  (<a
+href="http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0">ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0</a>),
+Twitter (which was originally written in Ruby on Rails), Google maps,  Open
+Street Map, some PostgreSQL specific stuff, and a bit of glue.</p>
+
+<h3 id="label-Tables">Tables</h3>
+
+<p>All tables include the Ruby on Rails fields:</p>
+<ol><li>
+<p>id</p>
+</li><li>
+<p>created_at – datetime</p>
+</li><li>
+<p>updated_at  – datetime</p>
+</li></ol>
+
+<p>Shorter fields are generally strings, longer text.</p>
+
+<p>Note due to Ruby&#39;s omnipresent use of convention, some obvious names
+are <em>bad ideas</em>, i.e. using &#39;type&#39; can cause mysterious
+failures. (This is why it is person_type, not type.)</p>
+
+<p>Tables in alphabetical order:</p>
+<ol><li>
+<p>calendar – virtual model, includes range, scale, current date</p>
+</li><li>
+<p>files – to better work with postgres, polymorphic up to locations, people,
+posts, talks, tweets</p>
+</li><li>
+<p>locations – better as places?</p>
+</li><li>
+<p>maps – virtual model, includes bounding box, focus, probably some other
+stuff</p>
+</li><li>
+<p>messages – user to user messages, usually associated with a specific talk</p>
+</li><li>
+<p>people – the source of all difficulties</p>
+</li><li>
+<p>posts – messages attached to a talk, also includes join, leave, as well as
+default comment</p>
+</li><li>
+<p>tags  – will include ratings, polymorphic up to locations, people, posts,
+talks, tweets</p>
+</li><li>
+<p>talk_talk – grouping of talks, basically organization versus talk</p>
+</li><li>
+<p>talks – the raison de etre of the system</p>
+</li><li>
+<p>user_talk – basically membership</p>
+</li><li>
+<p>user_user – grouping of users, basically relationships</p>
+</li></ol>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

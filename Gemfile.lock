@@ -158,6 +158,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.0.0)
+  rdoc
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc

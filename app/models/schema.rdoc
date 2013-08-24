@@ -1,0 +1,42 @@
+== Schema
+
+=== Strategy
+
+The system is a mashup of the Ruby on Rails tutorial by Michael Hardl 
+(http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0), 
+Twitter (which was originally written in Ruby on Rails),
+Google maps, 
+Open Street Map,
+some PostgreSQL specific stuff,
+and a bit of glue.
+
+=== Tables
+
+All tables include the Ruby on Rails fields:
+1.  id
+2.  created_at -- datetime
+3.  updated_at  -- datetime
+
+Shorter fields are generally strings, longer text.
+
+Note due to Ruby's omnipresent use of convention, some obvious names are <em>bad ideas</em>,
+i.e. using 'type' can cause mysterious failures.
+(This is why it is person_type, not type.)
+
+Tables in alphabetical order:
+1.  calendar -- virtual model, includes range, scale, current date
+1.  files -- to better work with postgres, polymorphic up to locations, people, posts, talks, tweets
+1.  locations -- better as places?
+1.  maps -- virtual model, includes bounding box, focus, probably some other stuff
+1.  messages -- user to user messages, usually associated with a specific talk
+1.  people -- the source of all difficulties
+1.  posts -- messages attached to a talk, also includes join, leave, as well as default comment
+1.  tags  -- will include ratings, polymorphic up to locations, people, posts, talks, tweets
+1.  talk_talk -- grouping of talks, basically organization versus talk
+1.  talks -- the raison de etre of the system
+1.  user_talk -- basically membership
+1.  user_user -- grouping of users, basically relationships
+
+--
+Not able to get links to work currently
+++

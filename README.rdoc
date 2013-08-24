@@ -1,8 +1,6 @@
-== README
+= TalkInvite
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
+== Overview & Getting Started
 
 * Ruby version: 2.0.0
 
@@ -10,7 +8,7 @@ application up and running.
 
 * Configuration
 
-* Database creation:  postgresql
+* Database 
 
 * Database initialization
 
@@ -20,9 +18,6 @@ application up and running.
 
 * Deployment instructions:  
 
-* Use README's like this to sketch out plans:
-  1 get thru all the tutorial functionality
-  2 add in the use of page frames
-  3 setup colors & so on in the css
-  4 use js?
-  5 adapt to phonegap?
+:include:app/models/schema.rdoc
+
+:include:app/views/page_frames.rdoc
