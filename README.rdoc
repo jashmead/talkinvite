@@ -49,3 +49,5 @@ Not yet
 :include:app/models/README.rdoc
 
 :include:app/views/README.rdoc
+
+:include:app/views/static_pages/README.rdoc

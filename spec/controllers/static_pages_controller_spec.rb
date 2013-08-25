@@ -30,16 +30,16 @@ describe StaticPagesController do
     end
   end
 
-  describe "GET 'home'" do
+  describe "GET 'menu'" do
     it "returns http success" do
-      get 'home'
+      get 'menu'
       response.should be_success
     end
   end
 
-  describe "GET 'menu'" do
+  describe "GET 'privacy'" do
     it "returns http success" do
-      get 'menu'
+      get 'privacy'
       response.should be_success
     end
   end

@@ -27,8 +27,8 @@ Talkinvite::Application.routes.draw do
   get "static_pages/contact"
   get "static_pages/credits"
   get "static_pages/help"
-  get "static_pages/home"
   get "static_pages/menu"
+  get "static_pages/privacy"
   get "static_pages/splash"
 
   # You can have the root of your site routed with "root"

@@ -11,10 +11,10 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-  def home
+  def menu
   end
 
-  def menu
+  def privacy
   end
 
   def splash

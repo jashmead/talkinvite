@@ -22,3 +22,4 @@ Other (dynamic) elements
 1. wrapped elements -- used for tags
 
 Linkages go by the foreign keys associated with the tables
+
