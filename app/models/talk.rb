@@ -14,6 +14,8 @@
 # == Subtleties
 # 1. There is no 'person_id' field:  this is handled by the posts table, which has a type of 'creator', since there can be two+ creators
 class Talk < ActiveRecord::Base
+  validates :summary, presence: true, length: { minimum: 2 }
+
   belongs_to :location
   has_many :posts
   has_many :tags, as: :tagable
