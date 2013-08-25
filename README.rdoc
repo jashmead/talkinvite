@@ -6,6 +6,10 @@ Demo skill set, get an app up.
 
 == Today's Objective
 
+--
+include files seem not to be re-read unless the line invoking them is changed
+++
+
 :include:TODAY.rdoc
 
 == Tomorrow's Objectives
@@ -49,5 +53,7 @@ Not yet
 :include:app/models/README.rdoc
 
 :include:app/views/README.rdoc
+
+:include:app/views/layouts/README.rdoc
 
 :include:app/views/static_pages/README.rdoc
