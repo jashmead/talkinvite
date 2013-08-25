@@ -1,22 +1,50 @@
 = TalkInvite
 
+== Objective
+
+Demo skill set, get an app up.
+
+== Today's Objective
+
+:include:TODAY.rdoc
+
+== Tomorrow's Objectives
+
+:include:TOMORROW.rdoc
+
 == Overview & Getting Started
 
 * Ruby version: 2.0.0
 
-* System dependencies
+* Rails version: 4.0.0
+
+* System dependencies:
+
+Ruby, Rails, Postgres
 
 * Configuration
 
 * Database 
+  Postgres
 
 * Database initialization
 
-* How to run the test suite:  rake spec spec
+Create role talkinvite & databases talkinvite_development, talkinvite_test
 
-* Services (job queues, cache servers, search engines, etc.):  not yet
+* To run the test suite
+
+<tt>rake spec spec</tt>
+
+* Services (job queues, cache servers, search engines, etc.)
+
+Not yet
 
 * Deployment instructions:  
+  1. gic
+  2. xt-all
+  3. yt
+  4. gm branch
+  5. zt
 
 :include:app/models/README.rdoc
 
