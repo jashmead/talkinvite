@@ -1,10 +1,12 @@
 === Plans for Static Pages 
 
-1. DRY using tutorial -- started
-1. Add spec/requests tests for static pages
+1. DRY using tutorial -- done
+1. Add spec/requests tests for static pages -- done
 1. Get rid of home -- done
 1. Add in privacy.  Along security lines. Include references to duckduckgo. -- done
 1. Fix up credits to include credits to software people, RF, Ferne, & so on -- done
 1. Have about explain purpose -- done
 1. Instantiate all at a scratch level -- done
-1. Consider use of HAML over ERB -- looks good, just nicer
+1. Consider use of HAML over ERB -- looks good, just nicer -- go for it
+
+All done!
