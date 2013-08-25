@@ -173,41 +173,6 @@ ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
 
 
 --
--- Name: messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE messages (
-    id integer NOT NULL,
-    from_person_id integer,
-    to_person_id integer,
-    talk_id integer,
-    message_type character varying(255),
-    content text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE messages_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
-
-
---
 -- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -420,13 +385,6 @@ ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::regclass);
 
 
@@ -488,14 +446,6 @@ ALTER TABLE ONLY locations
 
 ALTER TABLE ONLY maps
     ADD CONSTRAINT maps_pkey PRIMARY KEY (id);
-
-
---
--- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY messages
-    ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
 
 
 --
@@ -570,30 +520,6 @@ ALTER TABLE ONLY maps
 
 
 --
--- Name: message2from_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY messages
-    ADD CONSTRAINT message2from_person_fk FOREIGN KEY (from_person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: message2talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY messages
-    ADD CONSTRAINT message2talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: message2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY messages
-    ADD CONSTRAINT message2to_person_fk FOREIGN KEY (to_person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
 -- Name: post2talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -656,3 +582,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130824201412');
 INSERT INTO schema_migrations (version) VALUES ('20130824203337');
 
 INSERT INTO schema_migrations (version) VALUES ('20130824212540');
+
+INSERT INTO schema_migrations (version) VALUES ('20130825145151');

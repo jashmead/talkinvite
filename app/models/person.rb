@@ -20,9 +20,4 @@ class Person < ActiveRecord::Base
   has_many :posts
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
-  has_and_belongs_to_many :messaging,
-    :join_table => 'messages',
-    :foreign_key => 'from_person_id',
-    :association_foreign_key => 'to_person_id',
-    :class_name => 'Person'
 end

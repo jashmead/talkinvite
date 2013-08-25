@@ -16,7 +16,6 @@
 class Talk < ActiveRecord::Base
   belongs_to :location
   has_many :posts
-  has_many :messages
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
 end
