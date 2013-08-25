@@ -1,11 +1,10 @@
-Sat, 24 Aug 2013 17:50:38 -0400
-README.rdoc	Sat, 24 Aug 2013 14:53:04 -0400
+Sun, 25 Aug 2013 11:33:28 -0400
+README.rdoc	Sun, 25 Aug 2013 11:32:47 -0400
 app/controllers/application_controller.rb	Fri, 23 Aug 2013 17:44:27 -0400
 app/controllers/attachments_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
 app/controllers/calendars_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
 app/controllers/locations_controller.rb	Fri, 23 Aug 2013 20:06:42 -0400
 app/controllers/maps_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
-app/controllers/messages_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
 app/controllers/people_controller.rb	Fri, 23 Aug 2013 19:02:28 -0400
 app/controllers/posts_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
 app/controllers/static_pages_controller.rb	Fri, 23 Aug 2013 18:40:59 -0400
@@ -17,7 +16,6 @@ app/helpers/attachments_helper.rb	Sat, 24 Aug 2013 15:29:16 -0400
 app/helpers/calendars_helper.rb	Sat, 24 Aug 2013 16:14:12 -0400
 app/helpers/locations_helper.rb	Fri, 23 Aug 2013 20:06:42 -0400
 app/helpers/maps_helper.rb	Sat, 24 Aug 2013 15:46:29 -0400
-app/helpers/messages_helper.rb	Sat, 24 Aug 2013 17:32:03 -0400
 app/helpers/people_helper.rb	Fri, 23 Aug 2013 19:02:28 -0400
 app/helpers/posts_helper.rb	Fri, 23 Aug 2013 21:19:56 -0400
 app/helpers/static_pages_helper.rb	Fri, 23 Aug 2013 18:40:59 -0400
@@ -28,9 +26,8 @@ app/models/attachment.rb	Sat, 24 Aug 2013 17:27:30 -0400
 app/models/calendar.rb	Sat, 24 Aug 2013 17:27:30 -0400
 app/models/location.rb	Sat, 24 Aug 2013 17:27:30 -0400
 app/models/map.rb	Sat, 24 Aug 2013 17:27:30 -0400
-app/models/message.rb	Sat, 24 Aug 2013 17:32:03 -0400
-app/models/person.rb	Sat, 24 Aug 2013 17:32:03 -0400
+app/models/person.rb	Sun, 25 Aug 2013 10:59:47 -0400
 app/models/post.rb	Sat, 24 Aug 2013 17:37:01 -0400
 app/models/tag.rb	Sat, 24 Aug 2013 17:27:30 -0400
-app/models/talk.rb	Sat, 24 Aug 2013 17:35:51 -0400
+app/models/talk.rb	Sun, 25 Aug 2013 11:00:07 -0400
 app/models/tweet.rb	Sat, 24 Aug 2013 17:32:03 -0400

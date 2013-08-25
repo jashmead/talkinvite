@@ -18,6 +18,6 @@
 
 * Deployment instructions:  
 
-:include:app/models/schema.rdoc
+:include:app/models/README.rdoc
 
-:include:app/views/page_frames.rdoc
+:include:app/views/README.rdoc

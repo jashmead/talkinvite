@@ -1,6 +1,24 @@
-TBD:
+== Page Frames
 
-1 switch to page layout approach to frames
-  -- make sure we can pass objects to them!
+Do structuring of views using master page idea from Keynote & related
 
-2 add in header, footer
+Have page frames for:
+1. simple
+1. form
+1. rows
+1. parent + child rows
+1. map
+1. calendar
+1. menu -- used by menu page
+1. splash -- used by splash page
+1. side-by-side -- image or other element plus commentary
+
+Other (static) elements
+1. header
+1. footer
+1. logo
+
+Other (dynamic) elements
+1. wrapped elements -- used for tags
+
+Linkages go by the foreign keys associated with the tables
