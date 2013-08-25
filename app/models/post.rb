@@ -7,7 +7,9 @@
 # == Fields
 # 1. person_id -- integer, mandatory
 # 1. talk_id -- integer, mandatory
-# 1. post_type -- string, one of 'join', 'leave', 'comment'
+# 1. post_type -- string, one of 'join', 'leave', 'comment', also 'create', 'destroy'
+# * create -- makes you either the creator or a co-creator
+# * destroy -- makes eliminates a creator, when last creator is destory, talk is de-activated?
 # 1. comment -- text, text of post
 # 
 class Post < ActiveRecord::Base
