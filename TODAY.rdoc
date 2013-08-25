@@ -1,0 +1,8 @@
+* bring static pages up to code
+* add privacy page
+* add header & footer
+* add in the login/logout/settings pages to the people
+* instantiate all tests
+* start on css colors, using the engineer's scheme
+* get all features in the tutorial instantiated
+* get all pages up from a functional point of view

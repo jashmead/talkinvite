@@ -1,0 +1,7 @@
+* functional system, especially:
+  1. tweets
+  1. maps
+* static pages instantiated
+* automated testing
+* user testing
+* extension to home page
