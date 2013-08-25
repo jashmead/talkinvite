@@ -1,15 +1,21 @@
 require 'spec_helper'
 
 describe Person do
-  before { @person = Person.new( name: "Example person", email: "examplar@talkinvite.com" ) }
+  before { @person = Person.new( name: "Example person", email: "examplar@talkinvite.com",
+    password: 'foobar', password_confirmation: 'foobar' ) }
 
   subject { @person }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
+
+  it { should respond_to(:password_digest) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+  it { should respond_to(:authenticate) }
+
   it { should respond_to(:screen_name) }
   it { should respond_to(:about_me) }
-  it { should respond_to(:screen_name) }
   it { should respond_to(:settings) }
 
   it { should be_valid }
@@ -56,6 +62,50 @@ describe Person do
     end
 
     it { should_not be_valid }
+  end
+
+  describe "email address with mixed case" do
+    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
+
+    it "should be saved as all lower-case" do
+      @person.email = mixed_case_email
+      @person.save
+      expect(@person.reload.email).to eq mixed_case_email.downcase
+    end
+  end
+
+  describe "when password is not present" do
+    before do
+      @person = Person.new(name: "Example person", email: "person@example.com",
+        password: " ", password_confirmation: " ")
+    end
+    it { should_not be_valid }
+  end
+
+  describe "when password doesn't match confirmation" do
+    before { @person.password_confirmation = "mismatch" }
+    it { should_not be_valid }
+  end
+
+  describe "return value of authenticate method" do
+    before { @person.save }
+    let(:found_person) { Person.find_by(email: @person.email) }
+
+    describe "with valid password" do
+      it { should eq found_person.authenticate(@person.password) }
+    end
+
+    describe "with invalid password" do
+      let(:person_for_invalid_password) { found_person.authenticate("invalid") }
+
+      it { should_not eq person_for_invalid_password }
+      specify { expect(person_for_invalid_password).to be_false }
+    end
+  end
+
+  describe "with a password that's too short" do
+    before { @person.password = @person.password_confirmation = "a" * 5 }
+    it { should be_invalid }
   end
 
 end

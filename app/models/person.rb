@@ -25,9 +25,14 @@ class Person < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: true
 
+  has_secure_password
+  validates :password, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
+
   has_many :posts
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
 
   before_save { self.email = email.downcase }
+
 end
