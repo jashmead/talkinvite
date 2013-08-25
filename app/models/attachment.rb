@@ -1,6 +1,6 @@
 # Attachments -- Polymorphic, point up to basically everything:
 # * Talks
-# * Users
+# * People
 # * Locations
 # * Posts
 # * Files
@@ -21,5 +21,9 @@
 
 ## get trigger support in for the attachments
 class Attachment < ActiveRecord::Base
+  validates_format_of :attachable_type, :with => /\A(people|talks|posts|locations|files|tweets)\z/
+
+  before_save { self.attachable_type.downcase! }
+
   belongs_to :attachable, polymorphic: true
 end

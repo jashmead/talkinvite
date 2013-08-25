@@ -259,7 +259,7 @@ CREATE TABLE schema_migrations (
 CREATE TABLE tags (
     id integer NOT NULL,
     tagable_type character varying(255),
-    tabable_id integer,
+    tagable_id integer,
     tag_type character varying(255),
     tag character varying(255),
     created_at timestamp without time zone,
@@ -600,3 +600,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130825213527');
 INSERT INTO schema_migrations (version) VALUES ('20130825221120');
 
 INSERT INTO schema_migrations (version) VALUES ('20130825223009');
+
+INSERT INTO schema_migrations (version) VALUES ('20130825231529');

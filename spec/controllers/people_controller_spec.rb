@@ -28,7 +28,8 @@ describe PeopleController do
       "name" => "MyName", 
       "email" => "myemail@talkinvite.com",
       "password" => "foobar", 
-      "password_confirmation" => "foobar"
+      "password_confirmation" => "foobar",
+      "person_type" => "subscriber"
     }
   }
 

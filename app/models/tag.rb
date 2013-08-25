@@ -1,6 +1,6 @@
 # Tags -- Polymorphic, point up to basically everything:
 # * Talks
-# * Users
+# * People
 # * Locations
 # * Posts
 # * Files
@@ -17,5 +17,9 @@
 # 
 ## get trigger support in for the tags
 class Tag < ActiveRecord::Base
+  validates_format_of :tagable_type, :with => /\A(people|talks|posts|locations|files|tweets)\z/
+
+  before_save { self.tagable_type.downcase! }
+
   belongs_to :tagable, polymorphic: true
 end

@@ -17,6 +17,8 @@
 # 1.  other fields as in twitter api
 # 
 class Person < ActiveRecord::Base
+  before_save { self.email = email.downcase; self.person_type = person_type.downcase }
+
   validates :name, presence: true, length: { maximum: 80 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -29,10 +31,10 @@ class Person < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  # validates_format_of :person_type, :with => /\A(anonymous|subscriber|registered|admin|talkinvite)\z/
+
   has_many :posts
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
-
-  before_save { self.email = email.downcase }
 
 end

@@ -13,6 +13,9 @@
 # 1. comment -- text, text of post
 # 
 class Post < ActiveRecord::Base
+
+  validates_format_of :post_type, :with => /\A(create|destroy|join|leave|comment)\z/
+  
   belongs_to :person
   belongs_to :talk
   has_many :attachments, as: :attachable
