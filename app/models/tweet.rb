@@ -15,9 +15,9 @@
 # 
 # == Fields
 # 1. person_id -- integer, of user who generated it, if one of ours
-# 1. screen_name -- @user_name, can be outside talkinvite
-# 1. content -- actual tweet
-# 1. location_id -- location if known
+# 1. screen_name -- @user_name, can be outside talkinvite, mandatory
+# 1. content -- actual tweet, mandatory
+# 1. location_id -- location if known, optional
 # 
 # == Related
 # 1. tags -- are the hashtags associated with this

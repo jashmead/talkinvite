@@ -9,11 +9,11 @@
 # Simpler for getting started.
 # 
 # Fields:
-# 1.  name -- string
-# 1.  description -- text
-# 1.  longitude -- float
-# 1.  latitude -- float
-# 1.  address -- text, full text. Adequate for getting started.
+# 1.  name -- string, optional!
+# 1.  description -- text, still more optional!
+# 1.  longitude -- float, mandatory in cut one
+# 1.  latitude -- float, mandatory in cut one
+# 1.  address -- text, full text. Adequate for getting started, optional but nice
 # 
 # Possible additional fields:
 # 1.  broken out address -- street, city, & so on.  Perhaps better as JSON

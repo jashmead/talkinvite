@@ -1,7 +1,6 @@
 === Plans for Layouts
 
-Bring in the header & footer bars
-
-Bring us up to speed on the more sophisticated page layout options
-
-Generalize the more sophisticated page layout options to be the page frames approach
+1. Bring in the header & footer bars
+4. Fold in Bootstrap, SASS, and so on
+2. Bring us up to speed on the more sophisticated page layout options
+3. Generalize the more sophisticated page layout options to be the page frames approach

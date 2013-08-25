@@ -178,10 +178,10 @@ ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
 
 CREATE TABLE people (
     id integer NOT NULL,
-    name character varying(255),
-    email character varying(255),
+    name character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
     about_me text,
-    twitter_handle character varying(255),
+    screen_name character varying(255),
     settings character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -489,6 +489,13 @@ ALTER TABLE ONLY tweets
 
 
 --
+-- Name: index_people_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_people_on_email ON people USING btree (email);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -584,3 +591,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130824203337');
 INSERT INTO schema_migrations (version) VALUES ('20130824212540');
 
 INSERT INTO schema_migrations (version) VALUES ('20130825145151');
+
+INSERT INTO schema_migrations (version) VALUES ('20130825211813');
+
+INSERT INTO schema_migrations (version) VALUES ('20130825213527');
+
+INSERT INTO schema_migrations (version) VALUES ('20130825221120');

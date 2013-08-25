@@ -7,10 +7,10 @@
 # * Tweets -- used to track HashTags
 # 
 # == Fields
-# 1. tagable_type
-# 1. tagable_id
-# 1. tag_type -- default is '', normal tag, could be used for ratings
-# 1. tag -- string, may be a de facto integer if this is a rating
+# 1. tagable_type, mandatory, one of the relevant table names
+# 1. tagable_id, mandatory, one of the relevant table ids
+# 1. tag_type -- default is '', normal tag, could be used for ratings, mandatory, one of allowed types
+# 1. tag -- string, may be a de facto integer if this is a rating, mandatory
 # 
 # == Possible Fields
 # 1. comment/description -- text

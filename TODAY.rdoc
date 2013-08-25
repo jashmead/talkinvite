@@ -1,5 +1,5 @@
-* bring static pages up to code
-* add privacy page
+* bring static pages up to code -- done
+* add privacy page -- done
 * add header & footer
 * add in the login/logout/settings pages to the people
 * instantiate all tests

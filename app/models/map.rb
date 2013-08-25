@@ -3,11 +3,11 @@
 # Associated with anything with a location
 # 
 # Fields:
-# 1.  name -- string
-# 1.  description -- text
-# 1.  location_id -- integer, pointer to location
-# 1.  source -- string, i.e. talks + a query
-# 1.  settings -- internal controls, as zoom level, bounding box, & so on
+# 1.  name -- string, optional!
+# 1.  description -- text, still more optional!
+# 1.  location_id -- integer, pointer to location, mandatory
+# 1.  source -- string, i.e. talks + a query, mandatory
+# 1.  settings -- internal controls, as zoom level, bounding box, & so on, optional
 # 
 # 
 class Map < ActiveRecord::Base

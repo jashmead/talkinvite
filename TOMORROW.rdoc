@@ -4,4 +4,11 @@
 * static pages instantiated
 * automated testing
 * user testing
-* extension to home page
+* extension to home page, basically your talks, interests, & so on
+* email to users for 
+  1. password fixes
+  1. communication with other posters 
+* fix database types up
+  1. set not null
+  1. set defaults
+* use Postgres-specific features, as indicated
