@@ -1,7 +1,5 @@
-* bring static pages up to code -- done
-* add privacy page -- done
-* add basic validations -- presence, not null, type checks -- done
-* add user validations -- done
+* work thru chapters 7, 8, 9, 10, 11, doing all related in parallel 
+  (build horizontally, not vertically)
 * add header & footer
 * add in the login/logout/settings pages to the people
 * instantiate all tests

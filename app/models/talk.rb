@@ -6,6 +6,9 @@
 # 1. summary -- string, mandatory
 # 2. description -- text, optional
 # 3. location_id -- location, currently optional
+#
+# == Possible Fields
+# 1. person_id, integer -- id of person creating the talk (in a database sense)
 # 
 # == Relationships
 # 1. Points up to location

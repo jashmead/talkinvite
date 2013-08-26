@@ -3,7 +3,7 @@
 # * People
 # * Locations
 # * Posts
-# * Files
+# * Attachments
 # * Tweets -- used to track HashTags
 # 
 # == Fields
@@ -14,6 +14,7 @@
 # 
 # == Possible Fields
 # 1. comment/description -- text
+# 1. person_id, integer -- id of person creating the tag
 # 
 ## get trigger support in for the tags
 class Tag < ActiveRecord::Base

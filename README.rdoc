@@ -4,6 +4,13 @@
 
 Demo skill set, get an app up.
 
+== Policy
+
+* Starting with tutorial & branching out
+* Build up horizontally rather than vertically
+* Build up database/models; routes/controllers; views/css; js -- to extent possible
+* Avoid premature instantiation, don't put stuff in till about to use (& test) -- put it in comments instead
+
 == Today's Objective
 
 --
@@ -15,6 +22,10 @@ include files seem not to be re-read unless the line invoking them is changed
 == Tomorrow's Objectives
 
 :include:TOMORROW.rdoc
+
+== Yesterday's Objectives
+
+:include:20130825.rdoc
 
 == Overview & Getting Started
 
@@ -49,6 +60,8 @@ Not yet
   3. yt
   4. gm branch
   5. zt
+
+:include:db/README.rdoc
 
 :include:app/models/README.rdoc
 

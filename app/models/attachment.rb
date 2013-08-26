@@ -3,10 +3,9 @@
 # * People
 # * Locations
 # * Posts
-# * Files
 # * Tweets -- for images & so forth associated with them
 #
-# Would have called 'Files', but 'File' is a reserved word to Ruby
+# Would have called table 'Files', but 'File' is a reserved word to Ruby
 # 
 # == Fields
 # 1. name -- string, mandatory
@@ -18,6 +17,7 @@
 # 
 # == Possible Fields
 # 1. file_size
+# 1. person_id, integer -- id of person creating the talk (in a database sense)
 
 ## get trigger support in for the attachments
 class Attachment < ActiveRecord::Base

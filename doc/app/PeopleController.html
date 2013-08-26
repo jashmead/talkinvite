@@ -225,7 +225,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 36</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">person_params</span>)
 
@@ -265,7 +265,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 66</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@person</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -299,7 +299,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 31</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- edit-source -->
@@ -358,7 +358,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -390,6 +390,8 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
           <div class="method-source-code" id="show-source">
             <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-comment">## logger.info(&quot;person.id #{@person.id}&quot;)</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- show-source -->
           
@@ -417,7 +419,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 52</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@person</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">person_params</span>)

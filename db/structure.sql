@@ -74,7 +74,7 @@ CREATE TABLE calendars (
     person_id integer NOT NULL,
     name character varying(255),
     description text,
-    time_point timestamp without time zone DEFAULT '2013-08-26 00:21:09.568062'::timestamp without time zone NOT NULL,
+    time_point timestamp without time zone DEFAULT '2013-08-26 00:21:09'::timestamp without time zone NOT NULL,
     source character varying(255) NOT NULL,
     settings text,
     created_at timestamp without time zone,
@@ -147,9 +147,9 @@ CREATE TABLE maps (
     description text,
     location_id integer DEFAULT 1 NOT NULL,
     settings text,
+    source character varying(255) NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    source character varying(255) NOT NULL
+    updated_at timestamp without time zone
 );
 
 
@@ -183,10 +183,10 @@ CREATE TABLE people (
     about_me text,
     screen_name character varying(255),
     settings character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
     person_type character varying(255),
-    password_digest character varying(255)
+    password_digest character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -326,12 +326,12 @@ ALTER SEQUENCE talks_id_seq OWNED BY talks.id;
 CREATE TABLE tweets (
     id integer NOT NULL,
     person_id integer,
+    post_id integer,
     screen_name character varying(255),
     content character varying(255) NOT NULL,
     location_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    post_id integer
+    updated_at timestamp without time zone
 );
 
 
@@ -490,6 +490,13 @@ ALTER TABLE ONLY tweets
 
 
 --
+-- Name: index_attachments_on_pathname; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_attachments_on_pathname ON attachments USING btree (pathname);
+
+
+--
 -- Name: index_people_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -501,22 +508,6 @@ CREATE UNIQUE INDEX index_people_on_email ON people USING btree (email);
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: attachment2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY attachments
-    ADD CONSTRAINT attachment2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE SET NULL;
-
-
---
--- Name: calendar2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY calendars
-    ADD CONSTRAINT calendar2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -604,3 +595,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130825223009');
 INSERT INTO schema_migrations (version) VALUES ('20130825231529');
 
 INSERT INTO schema_migrations (version) VALUES ('20130826000933');
+
+INSERT INTO schema_migrations (version) VALUES ('20130826183518');

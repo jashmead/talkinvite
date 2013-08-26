@@ -135,15 +135,23 @@
 
 <p>Demo skill set, get an app up.</p>
 
+<h2 id="label-Policy">Policy</h2>
+<ul><li>
+<p>Starting with tutorial &amp; branching out</p>
+</li><li>
+<p>Build up horizontally rather than vertically</p>
+</li><li>
+<p>Build up database/models; routes/controllers; views/css; js – to extent
+possible</p>
+</li><li>
+<p>Avoid premature instantiation, don&#39;t put stuff in till about to use
+(&amp; test) – put it in comments instead</p>
+</li></ul>
+
 <h2 id="label-Today%27s+Objective">Today&#39;s Objective</h2>
 <ul><li>
-<p>bring static pages up to code – done</p>
-</li><li>
-<p>add privacy page – done</p>
-</li><li>
-<p>add basic validations – presence, not null, type checks – done</p>
-</li><li>
-<p>add user validations – done</p>
+<p>work thru chapters 7, 8, 9, 10, 11, doing all related in parallel  (build
+horizontally, not vertically)</p>
 </li><li>
 <p>add header &amp; footer</p>
 </li><li>
@@ -167,13 +175,14 @@
 <p>maps</p>
 </li></ol>
 </li><li>
-<p>static pages instantiated</p>
+<p>instantiate static pages</p>
 </li><li>
-<p>automated testing</p>
+<p>automated testing – master rspec</p>
 </li><li>
 <p>user testing</p>
 </li><li>
-<p>extension to home page, basically your talks, interests, &amp; so on</p>
+<p>extension to home page, basically their talks, interests, &amp; so on – is
+that splash (2) or new (refurbished) home?</p>
 </li><li>
 <p>email to users for</p>
 <ol><li>
@@ -184,12 +193,31 @@
 </li><li>
 <p>fix database types up</p>
 <ol><li>
-<p>set not null</p>
+<p>set not null – largely done</p>
 </li><li>
 <p>set defaults</p>
 </li></ol>
 </li><li>
 <p>use Postgres-specific features, as indicated</p>
+</li><li>
+<p>how to log an error? at least, turn on the logger</p>
+</li><li>
+<p>master git</p>
+</li><li>
+<p>phonegap – and responsive design</p>
+</li></ul>
+
+<h2 id="label-Yesterday%27s+Objectives">Yesterday&#39;s Objectives</h2>
+
+<h3 id="label-8%2F25%2F2013">8/25/2013</h3>
+<ul><li>
+<p>bring static pages up to code – done</p>
+</li><li>
+<p>add privacy page – done</p>
+</li><li>
+<p>add basic validations – presence, not null, type checks – done</p>
+</li><li>
+<p>add user validations – done</p>
 </li></ul>
 
 <h2 id="label-Overview+%26+Getting+Started">Overview &amp; Getting Started</h2>
@@ -236,6 +264,15 @@ talkinvite_test</p>
 <p>zt</p>
 </li></ol>
 </li></ul>
+
+<h2 id="label-Database+Issues">Database Issues</h2>
+<ol><li>
+<p>Can&#39;t reset database due to dependencies</p>
+</li><li>
+<p>workaround?:  drop, create, rebuild (using db:schema:load)</p>
+</li><li>
+<p>workaround?:  truncate people, then reseed it</p>
+</li></ol>
 
 <h2 id="label-Schema">Schema</h2>
 
@@ -364,6 +401,11 @@ scaffolding disliked. Removed.  See notes for assocation stuff.</p>
 </li></ol>
 
 <p>Linkages go by the foreign keys associated with the tables</p>
+
+<h2 id="label-To+Do">To Do</h2>
+<ol><li>
+<p>heading function to allow reuse of page_title or else an explicit heading</p>
+</li></ol>
 
 <h3 id="label-Plans+for+Layouts">Plans for Layouts</h3>
 <ol><li>

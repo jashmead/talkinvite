@@ -16,6 +16,18 @@
 # 1.  home_location_id
 # 1.  other fields as in twitter api
 # 
+# == Relationships
+# 1. attachments -- child
+# 1. calendars -- child
+# 1. maps -- child
+# 1. posts -- child
+# 1. talks -- child
+#
+# == Possible Relationships
+# 1. locations -- child, of creator
+# 1. tags -- child, of creator
+# 1. tweets -- child, of creator
+
 class Person < ActiveRecord::Base
   before_save { self.email = email.downcase; self.person_type = person_type.downcase }
 
@@ -33,7 +45,7 @@ class Person < ActiveRecord::Base
 
   # validates_format_of :person_type, :with => /\A(anonymous|subscriber|registered|admin|talkinvite)\z/
   validates_inclusion_of :person_type, 
-    :in => [ 'anonymous', 'subscriber', 'registered', 'admin', 'talkinvite' ],
+    :in => [ 'anon', 'sub', 'reg', 'admin', 'site' ],
     :message => "Invalid table name"
 
   has_many :posts

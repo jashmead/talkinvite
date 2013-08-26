@@ -20,6 +20,8 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    @person = Person.find(params[:id])
+    ## logger.info("person.id #{@person.id}")
   end
 
   # GET /people/new
