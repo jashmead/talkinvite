@@ -5,7 +5,7 @@
 # 1.  email -- mandatory, validated 
 # 1.  description -- text, optional
 # 1.  about_me -- text, user supplied, for display to others
-# 1.  twitter_handler -- twitter screen name, mandatory, but defaults to 'talkinvite'
+# 1.  screen_name -- twitter screen name, mandatory, but defaults to 'talkinvite'
 # 1.  settings -- text, internal, used for user preferences, optional
 # 1.  person_type -- string.  One of 'anonymous', 'registered', 'subscriber', 'admin', 'talkinvite'.  
 # <em>Not 'type'</em>, which will cause rails to spin on its head three times widdershins & then croak

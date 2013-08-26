@@ -23,6 +23,8 @@ Talkinvite::Application.routes.draw do
 
   resources :people
 
+  match '/signup', to: 'people#new', via: 'get'
+
   get "static_pages/about"
   get "static_pages/contact"
   get "static_pages/credits"

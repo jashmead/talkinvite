@@ -7,14 +7,14 @@ describe "people/index" do
         :name => "Name",
         :email => "Email",
         :about_me => "MyText",
-        :twitter_handle => "Twitter Handle",
+        :screen_name => "Screen Name",
         :settings => "Settings"
       ),
       stub_model(Person,
         :name => "Name",
         :email => "Email",
         :about_me => "MyText",
-        :twitter_handle => "Twitter Handle",
+        :screen_name => "Screen Name",
         :settings => "Settings"
       )
     ])
@@ -26,7 +26,7 @@ describe "people/index" do
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "Email".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "Twitter Handle".to_s, :count => 2
+    assert_select "tr>td", :text => "Screen Name".to_s, :count => 2
     assert_select "tr>td", :text => "Settings".to_s, :count => 2
   end
 end

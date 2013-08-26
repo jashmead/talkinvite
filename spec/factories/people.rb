@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :person do
-    name "MyString"
-    email "MyString"
-    about_me "MyText"
-    twitter_handle "MyString"
-    settings "MyString"
+    name "My Name"
+    email "myemail@talkinvite.com"
+    about_me "About Me"
+    screen_name "MyScreenName"
+    settings "MySettings"
   end
 end

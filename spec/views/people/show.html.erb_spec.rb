@@ -6,7 +6,7 @@ describe "people/show" do
       :name => "Name",
       :email => "Email",
       :about_me => "MyText",
-      :twitter_handle => "Twitter Handle",
+      :screen_name => "Screen Name",
       :settings => "Settings"
     ))
   end
@@ -17,7 +17,7 @@ describe "people/show" do
     rendered.should match(/Name/)
     rendered.should match(/Email/)
     rendered.should match(/MyText/)
-    rendered.should match(/Twitter Handle/)
+    rendered.should match(/Screen Name/)
     rendered.should match(/Settings/)
   end
 end

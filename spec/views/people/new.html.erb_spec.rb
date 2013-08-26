@@ -6,7 +6,7 @@ describe "people/new" do
       :name => "MyString",
       :email => "MyString",
       :about_me => "MyText",
-      :twitter_handle => "MyString",
+      :screen_name => "MyString",
       :settings => "MyString"
     ).as_new_record)
   end
@@ -19,7 +19,7 @@ describe "people/new" do
       assert_select "input#person_name[name=?]", "person[name]"
       assert_select "input#person_email[name=?]", "person[email]"
       assert_select "textarea#person_about_me[name=?]", "person[about_me]"
-      assert_select "input#person_twitter_handle[name=?]", "person[twitter_handle]"
+      assert_select "input#person_screen_name[name=?]", "person[screen_name]"
       assert_select "input#person_settings[name=?]", "person[settings]"
     end
   end
