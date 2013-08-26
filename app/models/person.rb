@@ -32,6 +32,9 @@ class Person < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   # validates_format_of :person_type, :with => /\A(anonymous|subscriber|registered|admin|talkinvite)\z/
+  validates_inclusion_of :person_type, 
+    :in => [ 'anonymous', 'subscriber', 'registered', 'admin', 'talkinvite' ],
+    :message => "Invalid table name"
 
   has_many :posts
   has_many :tags, as: :tagable

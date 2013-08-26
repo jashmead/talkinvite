@@ -17,7 +17,16 @@
 # 
 ## get trigger support in for the tags
 class Tag < ActiveRecord::Base
-  validates_format_of :tagable_type, :with => /\A(people|talks|posts|locations|files|tweets)\z/
+
+  validates :tag, presence: true
+  validates :tag_type, presence: true
+  validates :tagable_type, presence: true
+  validates :tagable_id, presence: true
+
+  # validates_format_of :tagable_type, :with => /\A(people|talks|posts|locations|files|tweets)\z/
+  validates_inclusion_of :tagable_type, 
+    :in => [ 'people', 'talks', 'posts', 'locations', 'files', 'tweets' ],
+    :message => "Invalid table name"
 
   before_save { self.tagable_type.downcase! }
 

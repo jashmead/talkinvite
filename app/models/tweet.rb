@@ -28,6 +28,8 @@
 # Depends on how the system evolves
 
 class Tweet < ActiveRecord::Base
+  validates :content, presence: true
+
   belongs_to :location
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable

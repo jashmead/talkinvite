@@ -34,13 +34,13 @@ SET default_with_oids = false;
 
 CREATE TABLE attachments (
     id integer NOT NULL,
-    person_id integer,
-    name character varying(255),
+    person_id integer NOT NULL,
+    name character varying(255) NOT NULL,
     description text,
     file_type character varying(255),
-    pathname character varying(255),
-    attachable_type character varying(255),
-    attachable_id integer,
+    pathname character varying(255) NOT NULL,
+    attachable_type character varying(255) NOT NULL,
+    attachable_id character varying(255) NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -71,11 +71,11 @@ ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
 
 CREATE TABLE calendars (
     id integer NOT NULL,
-    person_id integer,
+    person_id integer NOT NULL,
     name character varying(255),
     description text,
-    time_point timestamp without time zone,
-    source character varying(255),
+    time_point timestamp without time zone DEFAULT '2013-08-26 00:21:09.568062'::timestamp without time zone NOT NULL,
+    source character varying(255) NOT NULL,
     settings text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -142,14 +142,14 @@ ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
 
 CREATE TABLE maps (
     id integer NOT NULL,
-    person_id integer,
+    person_id integer NOT NULL,
     name character varying(255),
     description text,
-    location_id integer,
+    location_id integer DEFAULT 1 NOT NULL,
     settings text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    source character varying(255)
+    source character varying(255) NOT NULL
 );
 
 
@@ -215,9 +215,9 @@ ALTER SEQUENCE people_id_seq OWNED BY people.id;
 
 CREATE TABLE posts (
     id integer NOT NULL,
-    person_id integer,
-    talk_id integer,
-    post_type character varying(255),
+    person_id integer NOT NULL,
+    talk_id integer NOT NULL,
+    post_type character varying(255) NOT NULL,
     comment text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -258,10 +258,10 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE tags (
     id integer NOT NULL,
-    tagable_type character varying(255),
-    tagable_id integer,
-    tag_type character varying(255),
-    tag character varying(255),
+    tagable_type character varying(255) NOT NULL,
+    tagable_id character varying(255) NOT NULL,
+    tag_type character varying(255) DEFAULT ''::character varying NOT NULL,
+    tag character varying(255) NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -292,7 +292,7 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 
 CREATE TABLE talks (
     id integer NOT NULL,
-    summary character varying(255),
+    summary character varying(255) NOT NULL,
     description text,
     location_id integer,
     created_at timestamp without time zone,
@@ -327,7 +327,7 @@ CREATE TABLE tweets (
     id integer NOT NULL,
     person_id integer,
     screen_name character varying(255),
-    content character varying(255),
+    content character varying(255) NOT NULL,
     location_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -602,3 +602,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130825221120');
 INSERT INTO schema_migrations (version) VALUES ('20130825223009');
 
 INSERT INTO schema_migrations (version) VALUES ('20130825231529');
+
+INSERT INTO schema_migrations (version) VALUES ('20130826000933');

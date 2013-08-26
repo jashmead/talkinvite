@@ -11,5 +11,9 @@
 # 
 # 
 class Map < ActiveRecord::Base
+  validates :person_id, presence: true
+  validates :location_id, presence: true
+  validates :source, presence: true
+
   belongs_to :location
 end

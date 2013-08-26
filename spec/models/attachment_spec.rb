@@ -2,8 +2,14 @@ require 'spec_helper'
 
 describe Attachment do
 
-  before { @attachment = Attachment.new( person_id: "1", name: "attachment1", file_type: "", 
-    attachable_type: "talks", attachable_id: "1") }
+  before { @attachment = Attachment.new( 
+    person_id: "1", 
+    name: "attachment1", 
+    file_type: "", 
+    pathname: "attachment1",
+    attachable_type: "talks", 
+    attachable_id: "1")
+  }
 
   subject { @attachment }
 

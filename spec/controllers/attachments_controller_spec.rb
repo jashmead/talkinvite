@@ -23,7 +23,7 @@ describe AttachmentsController do
   # This should return the minimal set of attributes required to create a valid
   # Attachment. As you add validations to Attachment, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "person_id" => "1", 
+  let(:valid_attributes) { { "person_id" => "1", "name" => "attachment1", "pathname" => "attachment1.txt",
     "attachable_type" => "talks", "attachable_id" => "1" } }
 
   # This should return the minimal set of values that should be in the session

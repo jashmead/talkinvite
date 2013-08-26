@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Tag do
 
-  before { @tag = Tag.new( tag: "Example", tag_type: "", tagable_type: "talks", tagable_id: "1" ) }
+  # tag_type should default to '', fix at some point
+  before { @tag = Tag.new( tag: "Example", tag_type: 'tag', tagable_type: "talks", tagable_id: "1" ) }
 
   subject { @tag }
 

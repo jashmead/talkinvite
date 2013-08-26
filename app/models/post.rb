@@ -13,8 +13,14 @@
 # 1. comment -- text, text of post
 # 
 class Post < ActiveRecord::Base
+  validates :person_id, presence: true
+  validates :talk_id, presence: true
+  validates :post_type, presence: true
 
-  validates_format_of :post_type, :with => /\A(create|destroy|join|leave|comment)\z/
+  # validates_format_of :post_type, :with => /\A(create|destroy|join|leave|comment)\z/
+  validates_inclusion_of :post_type, 
+    :in => [ 'create', 'destroy', 'join', 'leave', 'comment' ],
+    :message => "Invalid table name"
   
   belongs_to :person
   belongs_to :talk

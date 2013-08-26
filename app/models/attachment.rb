@@ -21,7 +21,16 @@
 
 ## get trigger support in for the attachments
 class Attachment < ActiveRecord::Base
-  validates_format_of :attachable_type, :with => /\A(people|talks|posts|locations|files|tweets)\z/
+  validates :person_id, presence: true
+  validates :name, presence: true
+  validates :pathname, presence: true
+  validates :attachable_type, presence: true
+  validates :attachable_id, presence: true
+
+  # validates_format_of :attachable_type, :with => /\A(people|talks|posts|locations|files|tweets)\z/
+  validates_inclusion_of :attachable_type, 
+    :in => [ 'people', 'talks', 'posts', 'locations', 'files', 'tweets' ],
+    :message => "Invalid table name"
 
   before_save { self.attachable_type.downcase! }
 

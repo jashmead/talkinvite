@@ -42,6 +42,16 @@ Tables not needed for MVP but under consideration
 1.  user_talk -- basically membership -- can use posts to get started.
 1.  user_user -- grouping of users, basically relationships.
 
+Validations done:
+1.  presence of
+1.  inclusion_of
+1.  user validations from the tutorial
+1.  some talk validations
+
+Validations yet to do:
+1.  add in 'check' on postgres side for _type columns
+1.  add in not-null for fk fields -- done
+
 --
 Not able to get links to work currently
 ++
