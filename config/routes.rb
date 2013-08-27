@@ -86,5 +86,7 @@ Talkinvite::Application.routes.draw do
   #   end
 
   root to: "static_pages#splash"
+
+  match '/signup', to: 'people#new', via: 'get'
   
 end

@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826183518) do
+ActiveRecord::Schema.define(version: 20130827215657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "attachments", force: true do |t|
-    t.integer  "person_id",       null: false
-    t.string   "name",            null: false
+    t.integer  "person_id",                         null: false
+    t.string   "name",                              null: false
     t.text     "description"
     t.string   "file_type"
-    t.string   "pathname",        null: false
-    t.string   "attachable_type", null: false
-    t.string   "attachable_id",   null: false
+    t.string   "pathname",                          null: false
+    t.string   "attachable_type", default: "talks", null: false
+    t.string   "attachable_id",                     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,12 +63,12 @@ ActiveRecord::Schema.define(version: 20130826183518) do
   end
 
   create_table "people", force: true do |t|
-    t.string   "name",            null: false
-    t.string   "email",           null: false
+    t.string   "name",                            null: false
+    t.string   "email",                           null: false
     t.text     "about_me"
     t.string   "screen_name"
     t.string   "settings"
-    t.string   "person_type"
+    t.string   "person_type",     default: "sub", null: false
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -77,19 +77,19 @@ ActiveRecord::Schema.define(version: 20130826183518) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "person_id",  null: false
-    t.integer  "talk_id",    null: false
-    t.string   "post_type",  null: false
+    t.integer  "person_id",                      null: false
+    t.integer  "talk_id",                        null: false
+    t.string   "post_type",  default: "comment", null: false
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tags", force: true do |t|
-    t.string   "tagable_type",              null: false
-    t.string   "tagable_id",                null: false
-    t.string   "tag_type",     default: "", null: false
-    t.string   "tag",                       null: false
+    t.string   "tagable_type", default: "talks", null: false
+    t.string   "tagable_id",                     null: false
+    t.string   "tag_type",     default: "",      null: false
+    t.string   "tag",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
