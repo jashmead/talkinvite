@@ -4,3 +4,4 @@
 4. Fold in Bootstrap, SASS, and so on
 2. Bring us up to speed on the more sophisticated page layout options
 3. Generalize the more sophisticated page layout options to be the page frames approach
+4. Hold off on Haml till tutorial is done
