@@ -38,6 +38,8 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
 
+    logger.info "people_controller.rb: creating person #{@person.attributes.inspect}"  # DDT
+
     respond_to do |format|
       if @person.save
         format.html { redirect_to @person, notice: 'Person was successfully created.' }
@@ -47,6 +49,7 @@ class PeopleController < ApplicationController
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /people/1
@@ -80,7 +83,8 @@ class PeopleController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # Here we allow only password & password_confirmation, but not the true field, password_digest!
     def person_params
-      params.require(:person).permit(:name, :email, :about_me, :screen_name, :settings)
+      params.require(:person).permit(:name, :email, :about_me, :screen_name, :settings, :source, :password, :password_confirmation, :person_type)
     end
 end

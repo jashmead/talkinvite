@@ -52,6 +52,9 @@ Validations yet to do:
 1.  add in 'check' on postgres side for _type columns
 1.  add in not-null for fk fields -- done
 
+Procedures:
+1.  when changing types, make sure all the test code knows about the new types
+
 --
 Not able to get links to work currently
 ++

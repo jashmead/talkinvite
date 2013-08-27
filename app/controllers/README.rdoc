@@ -1,0 +1,10 @@
+== Controllers
+
+=== Procedures
+
+1. When fields in a table are changed, the list of required/allowed parameters (params.require)
+in the controller has to be adjusted according.  Example:  the params.require in people_controller.rb:
+      params.require(:person).permit(:name, :email, :about_me, :screen_name, :settings, :source, :password, :password_confirmation, :person_type)
+
+=== Testing
+1. Add tests in re post_id to tweets_controller

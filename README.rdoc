@@ -70,3 +70,5 @@ Not yet
 :include:app/views/layouts/README.rdoc
 
 :include:app/views/static_pages/README.rdoc
+
+:include:app/controllers/README.rdoc
