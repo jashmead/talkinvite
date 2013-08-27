@@ -10,3 +10,9 @@
 1. Consider use of HAML over ERB -- looks good, just nicer -- go for it
 
 All done!
+
+=== "Issues"
+
+1.  work out how to use the Rails Paths
+1.  work out how to setup shortcuts for longer paths
+1.  get control of styling to get larger, friendly buttons
