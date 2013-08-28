@@ -39,7 +39,7 @@ CREATE TABLE attachments (
     description text,
     file_type character varying(255),
     pathname character varying(255) NOT NULL,
-    attachable_type character varying(255) NOT NULL,
+    attachable_type character varying(255) DEFAULT 'talks'::character varying NOT NULL,
     attachable_id character varying(255) NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -183,7 +183,7 @@ CREATE TABLE people (
     about_me text,
     screen_name character varying(255),
     settings character varying(255),
-    person_type character varying(255),
+    person_type character varying(255) DEFAULT 'reg'::character varying NOT NULL,
     password_digest character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -217,7 +217,7 @@ CREATE TABLE posts (
     id integer NOT NULL,
     person_id integer NOT NULL,
     talk_id integer NOT NULL,
-    post_type character varying(255) NOT NULL,
+    post_type character varying(255) DEFAULT 'comment'::character varying NOT NULL,
     comment text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -258,7 +258,7 @@ CREATE TABLE schema_migrations (
 
 CREATE TABLE tags (
     id integer NOT NULL,
-    tagable_type character varying(255) NOT NULL,
+    tagable_type character varying(255) DEFAULT 'talks'::character varying NOT NULL,
     tagable_id character varying(255) NOT NULL,
     tag_type character varying(255) DEFAULT ''::character varying NOT NULL,
     tag character varying(255) NOT NULL,
@@ -597,3 +597,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130825231529');
 INSERT INTO schema_migrations (version) VALUES ('20130826000933');
 
 INSERT INTO schema_migrations (version) VALUES ('20130826183518');
+
+INSERT INTO schema_migrations (version) VALUES ('20130827215657');
+
+INSERT INTO schema_migrations (version) VALUES ('20130827230026');

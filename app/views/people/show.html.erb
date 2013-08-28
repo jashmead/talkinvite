@@ -1,36 +1,40 @@
 <% provide(:title, @person.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @person %>
+        <%= @person.name %>
+      </h1>
+      <!-- what is notice? -->
 
-<!-- what is notice??? -->
+      <!--
+      <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+      <p>
+        <strong>Email:</strong>
+        <%= @person.email %>
+      </p>
 
-<h1><%= @person.name %></h1>
+      <p>
+        <strong>About me:</strong>
+        <%= @person.about_me %>
+      </p>
 
-<p>
-  <%= gravatar_for @person %>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
+      <p>
+        <strong>Screen Name:</strong>
+        <%= @person.screen_name %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @person.email %>
-</p>
+      <p>
+        <strong>Settings:</strong>
+        <%= @person.settings %>
+      </p>
+      -->
 
-<p>
-  <strong>About me:</strong>
-  <%= @person.about_me %>
-</p>
-
-<p>
-  <strong>Screen Name:</strong>
-  <%= @person.screen_name %>
-</p>
-
-<p>
-  <strong>Settings:</strong>
-  <%= @person.settings %>
-</p>
+    </section>
+  </aside>
+</div>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

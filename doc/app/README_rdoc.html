@@ -368,6 +368,14 @@ scaffolding disliked. Removed.  See notes for assocation stuff.</p>
 <p>add in not-null for fk fields – done</p>
 </li></ol>
 
+<p>Procedures:</p>
+<ol><li>
+<p>when changing types, make sure all the test code knows about the new types</p>
+</li><li>
+<p>when adding/changing/deleting fields:  check all the spec code:  requests,
+models, controllers, views, &amp; factories</p>
+</li></ol>
+
 <h2 id="label-Page+Frames">Page Frames</h2>
 
 <p>Do structuring of views using master page idea from Keynote &amp; related</p>
@@ -411,6 +419,14 @@ scaffolding disliked. Removed.  See notes for assocation stuff.</p>
 
 <p>Linkages go by the foreign keys associated with the tables</p>
 
+<h2 id="label-Procedures">Procedures</h2>
+<ol><li>
+<p>fields in the new &amp; other forms must match those in the corresponding
+specs</p>
+</li></ol>
+
+<p>– obvious but easily overlooked point</p>
+
 <h2 id="label-To+Do">To Do</h2>
 <ol><li>
 <p>heading function to allow reuse of page_title or else an explicit heading</p>
@@ -426,6 +442,10 @@ scaffolding disliked. Removed.  See notes for assocation stuff.</p>
 </li><li>
 <p>Generalize the more sophisticated page layout options to be the page frames
 approach</p>
+</li><li>
+<p>Hold off on Haml till tutorial is done</p>
+</li><li>
+<p>How does link_to work?  seems to take a title, which seems wrong…</p>
 </li></ol>
 
 <h3 id="label-Plans+for+Static+Pages+">Plans for Static Pages </h3>
@@ -450,6 +470,34 @@ on – done</p>
 </li></ol>
 
 <p>All done!</p>
+
+<h3 id="label-%22Issues%22">“Issues”</h3>
+<ol><li>
+<p>work out how to use the Rails Paths</p>
+</li><li>
+<p>work out how to setup shortcuts for longer paths</p>
+</li><li>
+<p>get control of styling to get larger, friendly buttons</p>
+</li></ol>
+
+<h2 id="label-Controllers">Controllers</h2>
+
+<h3 id="label-Procedures">Procedures</h3>
+<ol><li>
+<p>When fields in a table are changed, the list of required/allowed parameters
+(params.require)</p>
+</li></ol>
+
+<p>in the controller has to be adjusted according.  Example:  the
+params.require in people_controller.rb:</p>
+
+<pre class="ruby"><span class="ruby-identifier">params</span>.<span class="ruby-identifier">require</span>(:<span class="ruby-identifier">person</span>).<span class="ruby-identifier">permit</span>(:<span class="ruby-identifier">name</span>, :<span class="ruby-identifier">email</span>, :<span class="ruby-identifier">about_me</span>, :<span class="ruby-identifier">screen_name</span>, :<span class="ruby-identifier">settings</span>, :<span class="ruby-identifier">source</span>, :<span class="ruby-identifier">password</span>, :<span class="ruby-identifier">password_confirmation</span>, :<span class="ruby-identifier">person_type</span>)
+</pre>
+
+<h3 id="label-Testing">Testing</h3>
+<ol><li>
+<p>Add tests in re post_id to tweets_controller</p>
+</li></ol>
 
 </div>
 

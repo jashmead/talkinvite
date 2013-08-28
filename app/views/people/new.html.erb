@@ -1,5 +1,37 @@
-<h1>New person</h1>
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@person) do |f| %>
+      <%= render 'shared/error_messages' %>
 
-<%= link_to 'Back', people_path %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :screen_name %>
+      <%= f.text_field :screen_name %>
+
+      <%= f.label :about_me %>
+      <%= f.text_area :about_me %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.label :person_type, "Type" %>
+      <%= f.text_field :person_type %>
+
+      <!-- settings will be a hidden field in a bit -->
+      <%= f.label :settings, "Settings" %>
+      <%= f.text_field :settings %>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

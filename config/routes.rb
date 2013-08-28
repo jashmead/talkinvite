@@ -87,6 +87,15 @@ Talkinvite::Application.routes.draw do
 
   root to: "static_pages#splash"
 
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/credits', to: 'static_pages#credits', via: 'get'
+  match '/help', to: 'static_pages#help', via: 'get'
+  match '/menu', to: 'static_pages#menu', via: 'get'
+  match '/privacy', to: 'static_pages#privacy', via: 'get'
+  match '/splash', to: 'static_pages#splash', via: 'get'
+
+  match [ '/settings', '/profile' ], to: 'people#edit', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
   
 end

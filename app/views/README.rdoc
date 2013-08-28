@@ -24,6 +24,10 @@ Other (dynamic) elements
 
 Linkages go by the foreign keys associated with the tables
 
+== Procedures
+1.  fields in the new & other forms must match those in the corresponding specs
+-- obvious but easily overlooked point
+
 == To Do
 1. heading function to allow reuse of page_title or else an explicit heading
 

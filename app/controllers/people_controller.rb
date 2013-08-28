@@ -1,12 +1,9 @@
-## will be adding actions:  login, logout, settings (edit)
-##  will be adding validation on name, email
-##  will be adding gravatar
+##  will be adding actions:  login, logout, settings (edit)
 ##  will be adding profile_picture
 ##  will be adding home_location (in settings, a JSON field)
 ##  will be adding current_location (in session on server, at this point)
 ##  will be adding checks on destroy
-##  will be adding type:  anonymous, registered, subscriber, admin, master (talkinvite)
-##  will be adding 'seed' to setup talkinvite
+##  'format' bits are needed; how do they work?
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
@@ -40,14 +37,22 @@ class PeopleController < ApplicationController
 
     logger.info "people_controller.rb: creating person #{@person.attributes.inspect}"  # DDT
 
+=begin
     respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @person }
+        # format.html { redirect_to @person, notice: 'Person was successfully created.' }
+        # format.json { render action: 'show', status: :created, location: @person }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
+        # format.html { render action: 'new' }
+        # format.json { render json: @person.errors, status: :unprocessable_entity }
       end
+    end
+=end
+    if @person.save 
+      flash[:success] = "Welcome to Talk Invite!"
+      redirect_to @person
+    else
+      render 'new'
     end
 
   end
@@ -85,6 +90,7 @@ class PeopleController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     # Here we allow only password & password_confirmation, but not the true field, password_digest!
     def person_params
-      params.require(:person).permit(:name, :email, :about_me, :screen_name, :settings, :source, :password, :password_confirmation, :person_type)
+      params.require(:person).permit(:name, :email, :about_me, :screen_name, :settings, :source, 
+        :password, :password_confirmation, :person_type)
     end
 end

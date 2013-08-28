@@ -1,13 +1,15 @@
+# 'about_me' not working, perhaps something to do with it being a text_area?
 require 'spec_helper'
 
 describe "people/new" do
   before(:each) do
     assign(:person, stub_model(Person,
-      :name => "MyString",
-      :email => "MyString",
-      :about_me => "MyText",
-      :screen_name => "MyString",
-      :settings => "MyString"
+      :name => "MyName",
+      :email => "me@talkinvite.com",
+      :about_me => "Its all about me!",
+      :screen_name => "MyScreenName",
+      :settings => "MySettings",
+      :person_type => "reg"
     ).as_new_record)
   end
 
@@ -21,6 +23,7 @@ describe "people/new" do
       assert_select "textarea#person_about_me[name=?]", "person[about_me]"
       assert_select "input#person_screen_name[name=?]", "person[screen_name]"
       assert_select "input#person_settings[name=?]", "person[settings]"
+      assert_select "input#person_person_type[name=?]", "person[person_type]"
     end
   end
 end
