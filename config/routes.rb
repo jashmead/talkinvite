@@ -27,6 +27,9 @@ Talkinvite::Application.routes.draw do
   # create uses 'post', destroy uses 'delete', new uses 'get'
   resources :sessions, only: [:new, :create, :destroy]  
 
+  match [ '/settings', '/profile' ], to: 'people#edit', via: 'get'
+  match '/signup', to: 'people#new', via: 'get'
+  
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
@@ -37,6 +40,14 @@ Talkinvite::Application.routes.draw do
   get "static_pages/menu"
   get "static_pages/privacy"
   get "static_pages/splash"
+
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/credits', to: 'static_pages#credits', via: 'get'
+  match '/help', to: 'static_pages#help', via: 'get'
+  match '/menu', to: 'static_pages#menu', via: 'get'
+  match '/privacy', to: 'static_pages#privacy', via: 'get'
+  match '/splash', to: 'static_pages#splash', via: 'get'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
@@ -92,15 +103,4 @@ Talkinvite::Application.routes.draw do
 
   root to: "static_pages#splash"
 
-  match '/about', to: 'static_pages#about', via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/credits', to: 'static_pages#credits', via: 'get'
-  match '/help', to: 'static_pages#help', via: 'get'
-  match '/menu', to: 'static_pages#menu', via: 'get'
-  match '/privacy', to: 'static_pages#privacy', via: 'get'
-  match '/splash', to: 'static_pages#splash', via: 'get'
-
-  match [ '/settings', '/profile' ], to: 'people#edit', via: 'get'
-  match '/signup', to: 'people#new', via: 'get'
-  
 end
