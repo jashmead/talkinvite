@@ -27,7 +27,6 @@ Talkinvite::Application.routes.draw do
   # create uses 'post', destroy uses 'delete', new uses 'get'
   resources :sessions, only: [:new, :create, :destroy]  
 
-  match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
