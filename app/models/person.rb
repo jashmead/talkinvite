@@ -7,7 +7,7 @@
 # 1.  about_me -- text, user supplied, for display to others
 # 1.  screen_name -- twitter screen name, mandatory, but defaults to 'talkinvite'
 # 1.  settings -- text, internal, used for user preferences, optional
-# 1.  person_type -- string.  One of 'anonymous', 'registered', 'subscriber', 'admin', 'talkinvite'.  
+# 1.  person_type -- string.  One of 'anon', 'reg', 'sub', 'admin', 'talkinvite'.  
 # <em>Not 'type'</em>, which will cause rails to spin on its head three times widdershins & then croak
 # 
 # == Possible additional fields
@@ -43,7 +43,7 @@ class Person < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  # validates_format_of :person_type, :with => /\A(anonymous|subscriber|registered|admin|talkinvite)\z/
+  # validates_format_of :person_type, :with => /\A(anon|sub|reg|admin|site)\z/
   validates_inclusion_of :person_type, 
     :in => [ 'anon', 'sub', 'reg', 'admin', 'site' ],
     :message => "Invalid table name"

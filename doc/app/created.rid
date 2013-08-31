@@ -1,12 +1,13 @@
-Tue, 27 Aug 2013 20:02:34 -0400
-README.rdoc	Tue, 27 Aug 2013 12:42:13 -0400
+Sat, 31 Aug 2013 16:44:55 -0400
+README.rdoc	Sat, 31 Aug 2013 16:44:42 -0400
 app/controllers/application_controller.rb	Fri, 23 Aug 2013 17:44:27 -0400
 app/controllers/attachments_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
 app/controllers/calendars_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
 app/controllers/locations_controller.rb	Fri, 23 Aug 2013 20:06:42 -0400
 app/controllers/maps_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
-app/controllers/people_controller.rb	Tue, 27 Aug 2013 20:00:40 -0400
+app/controllers/people_controller.rb	Tue, 27 Aug 2013 20:54:47 -0400
 app/controllers/posts_controller.rb	Sat, 24 Aug 2013 17:32:03 -0400
+app/controllers/sessions_controller.rb	Thu, 29 Aug 2013 20:40:51 -0400
 app/controllers/static_pages_controller.rb	Sun, 25 Aug 2013 14:51:03 -0400
 app/controllers/tags_controller.rb	Fri, 23 Aug 2013 21:23:41 -0400
 app/controllers/talks_controller.rb	Fri, 23 Aug 2013 20:24:44 -0400
@@ -16,8 +17,9 @@ app/helpers/attachments_helper.rb	Sat, 24 Aug 2013 15:29:16 -0400
 app/helpers/calendars_helper.rb	Sat, 24 Aug 2013 16:14:12 -0400
 app/helpers/locations_helper.rb	Fri, 23 Aug 2013 20:06:42 -0400
 app/helpers/maps_helper.rb	Sat, 24 Aug 2013 15:46:29 -0400
-app/helpers/people_helper.rb	Tue, 27 Aug 2013 17:54:02 -0400
+app/helpers/people_helper.rb	Tue, 27 Aug 2013 20:54:47 -0400
 app/helpers/posts_helper.rb	Fri, 23 Aug 2013 21:19:56 -0400
+app/helpers/sessions_helper.rb	Thu, 29 Aug 2013 20:37:59 -0400
 app/helpers/static_pages_helper.rb	Fri, 23 Aug 2013 18:40:59 -0400
 app/helpers/tags_helper.rb	Fri, 23 Aug 2013 21:23:41 -0400
 app/helpers/talks_helper.rb	Fri, 23 Aug 2013 20:24:44 -0400

@@ -145,6 +145,10 @@
   
     <li><a href="./PostsHelper.html">PostsHelper</a>
   
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
     <li><a href="./StaticPagesController.html">StaticPagesController</a>
   
     <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a>
@@ -178,16 +182,11 @@
 
   <div id="description" class="description">
     
-<p>will be adding actions:  login, logout, settings (edit)</p>
-
-<pre>will be adding validation on name, email
-will be adding gravatar
-will be adding profile_picture
-will be adding home_location (in settings, a JSON field)
-will be adding current_location (in session on server, at this point)
-will be adding checks on destroy
-will be adding type:  anonymous, registered, subscriber, admin, master (talkinvite)
-will be adding &#39;seed&#39; to setup talkinvite</pre>
+<p>will be adding actions:  login, logout, settings (edit) will be adding
+profile_picture will be adding home_location (in settings, a JSON field)
+will be adding current_location (in session on server, at this point) will
+be adding checks on destroy &#39;format&#39; bits are needed; how do they
+work?</p>
 
   </div><!-- description -->
 
@@ -225,24 +224,29 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
-  <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">person_params</span>)
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 35</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+    <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">person_params</span>)
 
-  <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;people_controller.rb: creating person #{@person.attributes.inspect}&quot;</span>  <span class="ruby-comment"># DDT</span>
+    <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;people_controller.rb: creating person #{@person.attributes.inspect}&quot;</span>  <span class="ruby-comment"># DDT</span>
 
-  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@person</span>.<span class="ruby-identifier">save</span>
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@person</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Person was successfully created.&#39;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">action</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;show&#39;</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:created</span>, <span class="ruby-identifier">location</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@person</span> }
+<span class="ruby-comment">    respond_to do |format|
+      if @person.save
+        # format.html { redirect_to @person, notice: &#39;Person was successfully created.&#39; }
+        # format.json { render action: &#39;show&#39;, status: :created, location: @person }
+      else
+        # format.html { render action: &#39;new&#39; }
+        # format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
+    end
+</span>    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@person</span>.<span class="ruby-identifier">save</span> 
+      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Welcome to Talk Invite!&quot;</span>
+      <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@person</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-comment"># format.html { render action: &#39;new&#39; }</span>
-      <span class="ruby-comment"># format.json { render json: @person.errors, status: :unprocessable_entity }</span>
       <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;new&#39;</span>
     <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
 
-<span class="ruby-keyword">end</span></pre>
+  <span class="ruby-keyword">end</span></pre>
           </div><!-- create-source -->
           
         </div>
@@ -269,7 +273,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 72</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@person</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -303,7 +307,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 33</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- edit-source -->
@@ -332,7 +336,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@people</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
@@ -362,7 +366,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -392,7 +396,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 22</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-comment">## logger.info(&quot;person.id #{@person.id}&quot;)</span>
@@ -423,7 +427,7 @@ will be adding &#39;seed&#39; to setup talkinvite</pre>
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 58</span>
+            <pre><span class="ruby-comment"># File app/controllers/people_controller.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@person</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">person_params</span>)

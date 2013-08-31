@@ -8,3 +8,15 @@ in the controller has to be adjusted according.  Example:  the params.require in
 
 === Testing
 1. Add tests in re post_id to tweets_controller
+
+=== Namespaces
+
+At some point, create namespaces for each type of user:
+
+1. admin
+1. anon -- newcomer id, singleton
+1. reg
+1. site -- talkinvite id, basically, singleton
+1. sub
+
+See Agile Web Development with Rails 3.2 p267 for how to break out routes/controllers into namespaces

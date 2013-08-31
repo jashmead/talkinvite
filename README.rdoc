@@ -72,3 +72,5 @@ Not yet
 :include:app/views/static_pages/README.rdoc
 
 :include:app/controllers/README.rdoc
+
+:include:public/TODO.rdoc
