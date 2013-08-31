@@ -24,7 +24,7 @@ Talkinvite::Application.routes.draw do
   resources :people
 
   # no edit, update, no index or show
-  # create uses 'post', destroy uses 'delete', new uses 'get'
+  # create (login) uses 'post', destroy (logout) uses 'delete', new (show login form) uses 'get'
   resources :sessions, only: [:new, :create, :destroy]  
 
   match [ '/settings', '/profile' ], to: 'people#edit', via: 'get'
