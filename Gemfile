@@ -67,3 +67,9 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'haml'
 
 gem 'rdoc'
+
+##  group :development do
+##    # RedCloth is supposed to enable rake doc:guides 
+##    # not working, not worth the trouble to sort out
+##    gem 'RedCloth', :require => 'redcloth'
+##  end
