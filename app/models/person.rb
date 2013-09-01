@@ -30,6 +30,9 @@
 
 class Person < ActiveRecord::Base
   before_save { self.email = email.downcase; self.person_type = person_type.downcase }
+  # why :create_remember_token rather than { self.create_remember_token }?
+  # before_save { self.create_remember_token }
+  before_save :create_remember_token
 
   validates :name, presence: true, length: { maximum: 80 }
 
@@ -51,5 +54,13 @@ class Person < ActiveRecord::Base
   has_many :posts
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
+
+  private
+
+    def create_remember_token
+      # create token
+      # have to use 'self', otherwise we would get a *local* variable called remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 
 end

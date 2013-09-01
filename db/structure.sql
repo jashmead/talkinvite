@@ -186,7 +186,8 @@ CREATE TABLE people (
     person_type character varying(255) DEFAULT 'reg'::character varying NOT NULL,
     password_digest character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    remember_token character varying(255)
 );
 
 
@@ -504,6 +505,13 @@ CREATE UNIQUE INDEX index_people_on_email ON people USING btree (email);
 
 
 --
+-- Name: index_people_on_remember_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_people_on_remember_token ON people USING btree (remember_token);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -601,3 +609,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130826183518');
 INSERT INTO schema_migrations (version) VALUES ('20130827215657');
 
 INSERT INTO schema_migrations (version) VALUES ('20130827230026');
+
+INSERT INTO schema_migrations (version) VALUES ('20130901000749');
