@@ -9,6 +9,7 @@
 # 1.  settings -- text, internal, used for user preferences, optional
 # 1.  person_type -- string.  One of 'anon', 'reg', 'sub', 'admin', 'talkinvite'.  
 # <em>Not 'type'</em>, which will cause rails to spin on its head three times widdershins & then croak
+# 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
 # 
 # == Possible additional fields
 # 1.  twitter_id -- this is stable, unlike the twitter screen name which can change
