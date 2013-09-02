@@ -2,12 +2,12 @@
 
 FactoryGirl.define do
   factory :person do
-    name "John Ashmead"
-    email "john.ashmead@timeandquantummechanics.com"
-    about_me "Developer of TalkInvite"
-    screen_name "mapsndata"
+    name "JRU"
+    email "jru@example.com"
+    about_me "about jru"
+    screen_name "jru"
     settings ""
-    person_type "admin"
+    person_type "reg"
     password "foobar"
     password_confirmation "foobar"
   end

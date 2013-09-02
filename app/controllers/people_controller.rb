@@ -1,9 +1,9 @@
-##  will be adding actions:  login, logout, settings (edit)
+##  will be adding actions:  signin, signout, settings
 ##  will be adding profile_picture
 ##  will be adding home_location (in settings, a JSON field)
 ##  will be adding current_location (in session on server, at this point)
 ##  will be adding checks on destroy
-##  'format' bits are needed; how do they work?
+##  'format' bits are needed; how do they work? -- commented out for now...
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
@@ -48,6 +48,7 @@ class PeopleController < ApplicationController
       end
     end
 =end
+
     if @person.save 
       flash[:success] = "Welcome to Talk Invite!"
       redirect_to @person
@@ -60,6 +61,7 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
+=begin
     respond_to do |format|
       if @person.update(person_params)
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
@@ -68,6 +70,13 @@ class PeopleController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @person.errors, status: :unprocessable_entity }
       end
+    end
+=end
+    if @person.save 
+      flash[:success] = "Changes saved!"
+      redirect_to @person
+    else
+      render 'edit'
     end
   end
 

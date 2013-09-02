@@ -9,11 +9,17 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
+    <!-- would like to factor out page frame ideas, i.e. side-by-side, how best? -->
     <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
+      <%= debug(assigns) if Rails.env.development? %>
+      <!--
+      <%= debug(response) if Rails.env.development? %>
+      <%= debug(request) if Rails.env.development? %>
+      -->
     </div>
   </body>
 </html>

@@ -101,6 +101,10 @@ footer {
   }
 }
 
+/*
+  fix a problem with box sizing in css generally:
+    http://css-tricks.com/box-sizing/
+*/
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
