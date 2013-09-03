@@ -23,11 +23,9 @@ group :development, :test do
   gem 'capybara', '>= 2.0.0'
 end
 
+# keep factory girl in development for testing at the console
 group :development, :test do
   gem 'rspec-rails'
-end
-
-group :test do
   gem 'factory_girl_rails'
 end
 
