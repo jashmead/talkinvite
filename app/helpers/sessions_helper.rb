@@ -31,9 +31,9 @@ module SessionsHelper
   def current_person
     logger.debug("current_person: current_person: #{@current_person.inspect}") # DDT
     # the following syntax fails with a PostgreSQL error!
-    #@current_person ||= Person.find_by( :remember_token, cookies[:remember_token] )
+    @current_person ||= Person.find_by( :remember_token, cookies[:remember_token] )
     # have to spell out the find_by_remember_token
-    @current_person ||= Person.find_by_remember_token( cookies[:remember_token] )
+    # @current_person ||= Person.find_by_remember_token( cookies[:remember_token] )
   end
 
 end
