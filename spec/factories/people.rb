@@ -4,11 +4,12 @@ FactoryGirl.define do
   factory :person do
     name "JRU"
     email "jru@example.com"
+    password "foobar"
+    password_confirmation "foobar"
+    # about_me, screen_name, settings, & person_type are talkinvite addons
     about_me "about jru"
     screen_name "jru"
     settings ""
     person_type "reg"
-    password "foobar"
-    password_confirmation "foobar"
   end
 end

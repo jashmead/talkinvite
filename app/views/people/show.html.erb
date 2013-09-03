@@ -2,13 +2,12 @@
 <div class="row">
   <aside class="span4">
     <section>
+      <!-- h1 is not leaving the name very big:  because we are in an 'aside', which is only 1.4em for font -->
       <h1>
         <%= gravatar_for @person %>
         <%= @person.name %>
       </h1>
-      <!-- what is notice? -->
-
-      <!--
+      <!-- what is notice? setup notice function in ruby-on-rails to fill in -->
       <p id="notice"><%= notice %></p>
 
       <p>
@@ -27,10 +26,14 @@
       </p>
 
       <p>
+        <strong>Type:</strong>
+        <%= @person.person_type %>
+      </p>
+
+      <p class="hidden" >
         <strong>Settings:</strong>
         <%= @person.settings %>
       </p>
-      -->
 
     </section>
   </aside>
