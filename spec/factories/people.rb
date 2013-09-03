@@ -6,7 +6,7 @@ FactoryGirl.define do
     name "JRU"
     email { "#{name}@talkinvite.com" }
     password "foobar"
-    password_confirmation "foobar"
+    password_confirmation { "#{password}" }
 
     # FactoryGirl recommends that the base instance have least possible # of fields
     # about_me, screen_name, settings, & person_type are talkinvite addons
