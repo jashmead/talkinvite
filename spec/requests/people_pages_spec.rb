@@ -33,15 +33,15 @@ describe "People" do
         fill_in "Email",        with: "person@talkinvite.com"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        fill_in "Person_type",  with: "reg"
+        fill_in "Person Type",  with: "reg"
       end
 
-## DDT:  commented out failing tests till we are ready to fix
-=begin
       it "should create a person" do
         expect { click_button submit }.to change(Person, :count).by(1)
       end
 
+## DDT:  commented out failing tests till we are ready to fix
+=begin
       describe "after saving the person" do
         before { click_button submit }
         let(:person) { Person.find_by(email: 'person@talkinvite.com') }
