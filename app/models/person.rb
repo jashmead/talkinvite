@@ -56,6 +56,14 @@ class Person < ActiveRecord::Base
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
 
+  public
+
+    # there is a problem with find_by(:remember_token, remember_token)
+
+    def find_by_remember_token( remember_token0 ) 
+      Person.where(remember_token: remember_token0) 
+    end
+
   private
 
     def create_remember_token
