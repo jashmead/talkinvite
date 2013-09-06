@@ -31,9 +31,7 @@
 
 class Person < ActiveRecord::Base
   before_save { self.email = email.downcase; self.person_type = person_type.downcase }
-  # why :create_remember_token rather than { self.create_remember_token }?
-  # before_save { self.create_remember_token }
-  before_save :create_remember_token
+  before_create :create_remember_token
 
   validates :name, presence: true, length: { maximum: 80 }
 
@@ -56,20 +54,26 @@ class Person < ActiveRecord::Base
   has_many :tags, as: :tagable
   has_many :attachments, as: :attachable
 
-  public
+  # there is a problem with find_by(:remember_token, remember_token); not clear why...
+  def find_by_remember_token( remember_token0 ) 
+    Person.where(remember_token: remember_token0) 
+  end
 
-    # there is a problem with find_by(:remember_token, remember_token)
+  # class method, hence the 'Person.'
+  def Person.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
 
-    def find_by_remember_token( remember_token0 ) 
-      Person.where(remember_token: remember_token0) 
-    end
+  def Person.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)  # 'to_s' is to make sure we can handle nil tokens
+  end
 
   private
 
     def create_remember_token
       # create token
       # have to use 'self', otherwise we would get a *local* variable called remember_token
-      self.remember_token = SecureRandom.urlsafe_base64
+      self.remember_token = Person.encrypt(Person.new_remember_token)
     end
 
 end
