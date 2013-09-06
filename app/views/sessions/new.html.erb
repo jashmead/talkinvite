@@ -5,6 +5,7 @@
   <!-- bootstrap stuff:  span6, offset3 -->
   <div class="span6 offset3">
     <!-- url is passed to form, as the 'action' -->
+    <!-- why no '@session'? -->
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <!-- unable to get :placeholder to work with these or to null them out, 

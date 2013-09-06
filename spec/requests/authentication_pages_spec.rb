@@ -21,13 +21,12 @@ describe "Authentication" do
       before { click_button "Sign in" }
 
       it { should have_title('Sign in') }
-      # DDT:  commented out failing test till we are ready to fix
-      # it { should have_selector('div.alert.alert-error', text: 'Invalid') }
+      it { should have_selector('div.alert.alert-error', text: 'Invalid') }
 
       describe "after visiting another page" do
-        before { click_link "Home" }
-        # DDT:  commented out failing test till we are ready to fix
-        # it { should_not have_selector('div.alert.alert-error') }
+        # note this was failing until we correctly instantiated the target page (by changing it to 'Help')
+        before { click_link "Help" }
+        it { should_not have_selector('div.alert.alert-error') }
       end
 
     end

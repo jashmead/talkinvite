@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # could make friendlier by allowing name or email (use presence of '@' to disambiguate)
     person = Person.find_by(email: params[:session][:email].downcase)
     logger.debug("SessionsController.create: #{person.inspect}") #DDT
     if person && person.authenticate(params[:session][:password])
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
       sign_in person
       redirect_to person
     else
-      flash.now[:error] = 'Invalid email/password combination'
+      flash.now[:error] = 'Invalid email/password combination. Please try again.'
       render 'new'
     end
   end
