@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :person do
     # JRU = J. Random User
-    name "JRU"
+    name "jru"
     email { "#{name}@talkinvite.com" }
     password "foobar"
     password_confirmation { "#{password}" }

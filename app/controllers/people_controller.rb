@@ -18,7 +18,6 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
-    ## logger.info("person.id #{@person.id}")
   end
 
   # GET /people/new
@@ -35,7 +34,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
 
-    logger.info "people_controller.rb: creating person #{@person.attributes.inspect}"  # DDT
+    logger.debug "PeopleController.create: person #{@person.attributes.inspect}"  # DDT
 
 =begin
     respond_to do |format|

@@ -2,7 +2,7 @@
 module SessionsHelper
 
   def sign_in(person)
-    logger.debug("Sign in: person: #{person.inspect}") #DDT
+    logger.debug("SessionsHelper.sign_in: person: #{person.inspect}") #DDT
 
     remember_token = Person.new_remember_token
 
@@ -12,7 +12,9 @@ module SessionsHelper
     cookies.permanent[:remember_token] = remember_token  
 
     #   save encrypted form to the database record:
-    person.update_attribute[:remember_token, Person.encrypt(remember_token)]
+    person.update_attribute(:remember_token, Person.encrypt(remember_token))
+
+    logger.debug("SessionsHelper.sign_in: self.current_person = #{self.current_person.inspect}") # DDT
 
     # add a current person attribute to the current object (a controller)
     # this is really an invocation of the 'current_person=' attribute writer
@@ -21,7 +23,9 @@ module SessionsHelper
 
   ## how is current person being set & passed along?
   def signed_in?
-    logger.debug("signed_in? current_person: #{current_person.inspect}") #DDT
+    logger.debug("SessionsHelper.signed in?: current_person: #{current_person.inspect}") #DDT
+    logger.debug("SessionsHelper.signed in?: @current_person: #{@current_person.inspect}") #DDT
+    # why 'current_person' & not '@current_person'? # is current_person a method?
     ! current_person.nil?
   end
 
@@ -29,6 +33,7 @@ module SessionsHelper
   def current_person=(person)
     # stores variable for later use
     # any reason for @current_person versus self.current_person?
+    logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
     @current_person = person
   end
 
@@ -38,9 +43,9 @@ module SessionsHelper
   ##  end
   # instead use:
   def current_person
-    logger.debug("current_person: current_person: #{@current_person.inspect}") # DDT
+    logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
 
-    remember_token = Person.encrypt(cookies[:remember_token])
+    encrypted_remember_token = Person.encrypt(cookies[:remember_token])
 
     # the following syntax fails with a PostgreSQL error
     # @current_person ||= Person.find_by( :remember_token, remember_token )
@@ -49,7 +54,10 @@ module SessionsHelper
     ## : SELECT  "people".* FROM "people"  WHERE ('remember_token') LIMIT 1
 
     # have to spell out the find_by_remember_token
-    @current_person ||= Person.find_by_remember_token( cookies[:remember_token] )
+    @current_person ||= Person.find_by_remember_token( encrypted_remember_token )
+
+    logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") #DDT
+    @current_person #DDT -- needed to make sure return value is correct
   end
 
 end

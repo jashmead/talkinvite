@@ -1,28 +1,42 @@
 ## TBD:
 ##  added in login, logout, settings for people
 
+# routes.rb functions as a de facto map of the system
+
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
 
 Talkinvite::Application.routes.draw do
+
+  ## kill calendars & maps in a bit, once 8 & 9 are done
   resources :calendars
 
   resources :maps
 
+  # model attachments on ABAI, use their triggers! 
+  #   and either their code or one of the gems that does this, 
+  #   i.e. paperclip, see polymorphic section in guides
   resources :attachments
 
+  # tweets specialized
   resources :tweets
 
+  # tags specialized
+  #   see tags, calendars, maps, contacts in OSX Maverick
   resources :tags
 
   resources :posts
 
+  # talk pages
+  #   build up using microposts as a model
   resources :talks
+  # /my_talks -- using user2talk
 
   resources :locations
 
   resources :people
 
+  ## Account pages:
   # no edit, update, no index or show
   # create (login) uses 'post', destroy (logout) uses 'delete', new (show login form) uses 'get'
   resources :sessions, only: [:new, :create, :destroy]  
@@ -33,6 +47,7 @@ Talkinvite::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  ## Static pages:
   get "static_pages/about"
   get "static_pages/contact"
   get "static_pages/credits"

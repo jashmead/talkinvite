@@ -31,24 +31,33 @@ describe "Authentication" do
 
     end
 
+
     describe "with valid information" do
 
-      # this person is a holdling (external) variable on the outside, 
-      #   NOT related to the @person or @session or whatever field in controller
-      #   (do not be fooled by similarity of names!)
       let(:person) { FactoryGirl.create(:person) }
       before do
-        fill_in "Email",    with: person.email.upcase # using upcase verifies that we downcase correctly
+        fill_in "Email",    with: person.email.upcase
         fill_in "Password", with: person.password
-        click_button "Sign in"                        # capybara? click_button method?
+        click_button "Sign in"
       end
 
-      # shift to a home page for the person page with title the person's name and with links Profile & Sign out
-      it { should have_title(person.name) } # capybara? have_title method?
-      it { should have_link('Profile',     href: person_path(person)) } # capybara have_link method
+      it { should have_title(person.name) }
+      it { should have_link('Profile',     href: person_path(person)) }
       it { should have_link('Sign out',    href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }         # as we are already signed in
+      it { should_not have_link('Sign in', href: signin_path) }
+    end
 
+
+    describe "debug" do
+
+      let(:person) { FactoryGirl.create(:person) }
+      before do
+        fill_in "Email",    with: person.email.upcase
+        fill_in "Password", with: person.password
+        click_button "Sign in"
+      end
+
+      it { should have_link('Profile',     href: person_path(person)) }
     end
 
   end
