@@ -57,7 +57,10 @@ describe "People pages" do
 
   describe "edit" do
     let(:person) { FactoryGirl.create(:person) }
-    before { visit edit_person_path(person) }
+    before do
+      sign_in person
+      visit edit_person_path(person)
+    end
 
     describe "page" do
       it { should have_content("Update your profile") }

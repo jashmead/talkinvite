@@ -7,6 +7,7 @@
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_person, only: [:edit, :update]
 
   # GET /people
   # GET /people.json
@@ -108,5 +109,9 @@ class PeopleController < ApplicationController
     def person_params
       params.require(:person).permit(:name, :email, :about_me, :screen_name, :settings, :source, 
         :password, :password_confirmation, :person_type)
+    end
+
+    def signed_in_person
+      redirect_to signin_url, notice:  'Please sign in.' unless signed_in?
     end
 end

@@ -49,7 +49,8 @@ describe "Authentication" do
 
     end
 
-
+=begin
+    # debug was used to drill in on some test failures
     describe "debug" do
 
       let(:person) { FactoryGirl.create(:person) }
@@ -60,6 +61,32 @@ describe "Authentication" do
       end
 
       it { should have_link('Profile',     href: person_path(person)) }
+    end
+=end
+
+  end
+
+  describe "authorization" do
+
+    describe "for non-signed-in people" do
+      let(:person) { FactoryGirl.create(:person) }
+
+      describe "in the People controller" do
+
+        describe "visiting the edit page" do
+          before { visit edit_person_path(person) }
+          it { should have_title('Sign in') }
+        end
+
+        describe "submitting to the update action" do
+          # use patch to test the underlying (no template) 'update' action
+          before { patch person_path(person) }
+          # patch gives (somehow:  more r-o-r magic) direct access to the 'response' object, which we check:
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+      end
+
     end
 
   end
