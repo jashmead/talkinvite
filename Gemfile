@@ -18,6 +18,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '>=2.1'
 
 ## load capybara before rspec
+## how does capybara drive the web? via Rack::Test & Selenium
 group :development, :test do
   gem 'selenium-webdriver'
   gem 'capybara', '>= 2.0.0'
@@ -69,7 +70,8 @@ gem 'bootstrap-will_paginate'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'haml'
+## we tried haml out, but it has a problem with nested layouts
+# gem 'haml'
 
 gem 'rdoc'
 

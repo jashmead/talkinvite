@@ -164,6 +164,19 @@ describe "People pages" do
       specify { expect(person.reload.email).to eq new_email }
     end
 
+    describe "forbidden attributes" do
+      let(:params) do
+        { person: { admin: true, password: person.password,
+                  password_confirmation: person.password } }
+      end
+      before do
+        sign_in person, no_capybara: true
+        ## direct call from web is under test
+        patch person_path(person), params
+      end
+      specify { expect(person.reload).not_to be_admin }
+    end
+
   end
 
 end

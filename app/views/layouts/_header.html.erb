@@ -24,7 +24,10 @@
               </ul>
             </li>
           <% else %>
+            <!-- putting a '/' between sign in & new account broke spacing -->
+            <!-- how to turn off a page if you are already on it? -->
             <li><%= link_to "Sign in", signin_path %></li>
+            <li><%= link_to "New Account", signup_path %></li>
           <% end %>
         </ul>
       </nav>
