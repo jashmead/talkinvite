@@ -115,7 +115,11 @@ class PeopleController < ApplicationController
     end
 
     def signed_in_person
-      redirect_to signin_url, notice:  'Please sign in.' unless signed_in?
+      unless signed_in?
+        ## store location defined in sessions_helper.rb
+        store_location
+        redirect_to signin_url, notice:  'Please sign in.' 
+      end
     end
 
     def correct_user

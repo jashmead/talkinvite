@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       # Sign the user in and redirect to the user's show page.
       sign_in person
       # why redirect to 'person' when we have no valid person?
-      redirect_to person
+      redirect_back_or person
     else
       # email not a method or attribute of person?
       # logger.debug("SessionsController.create: email not found: #{person.email.inspect}") #DDT
