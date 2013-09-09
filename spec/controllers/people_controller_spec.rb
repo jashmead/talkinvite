@@ -164,6 +164,8 @@ describe PeopleController do
     end
   end
 
+## no longer need the canned destroy tests...
+=begin
   describe "DELETE destroy" do
     it "destroys the requested person" do
       person = Person.create! valid_attributes
@@ -178,5 +180,6 @@ describe PeopleController do
       response.should redirect_to(people_url)
     end
   end
+=end
 
 end

@@ -128,6 +128,19 @@ describe "Authentication" do
       end
     end
 
+
+    describe "as non-admin person" do
+      let(:person) { FactoryGirl.create(:person) }
+      let(:non_admin) { FactoryGirl.create(:person) }
+
+      before { sign_in non_admin, no_capybara: true }
+
+      describe "submitting a DELETE request to the Person#destroy action" do
+        before { delete person_path(person) }
+        specify { expect(response).to redirect_to(root_url) }
+      end
+    end
+
   end
 
 end

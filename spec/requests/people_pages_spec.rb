@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "People pages" do
+
   subject { page }
 
   ## later restrict this to those with a positive relationship to current person
@@ -35,6 +36,35 @@ describe "People pages" do
         Person.paginate(page: 1).each do |person|
           expect(page).to have_selector('li', text: person.name)
         end
+      end
+    end
+
+    describe "delete links" do
+
+      ## generic people should not see 'delete' links 
+      it { should_not have_link('delete') }
+
+      describe "as an admin person" do
+
+        ## but now build an admin using FactoryGirl's admin method
+        ## how does 'admin' know to go to person?  ah, FactoryGirl sees only one 'admin' method present
+        let(:admin) { FactoryGirl.create(:admin) }
+        before do
+          sign_in admin
+          visit people_path
+        end
+
+        it { should have_link('delete', href: person_path(Person.first)) }
+        it "should be able to delete another person" do
+          ## note the passing of a block to expect! which then can use its 'to' method
+          expect do
+            click_link('delete', match: :first)
+          end.to change(Person, :count).by(-1)
+        end
+
+        ## no 'delete' link to admin him/herself
+        it { should_not have_link('delete', href: person_path(admin)) }
+
       end
     end
 

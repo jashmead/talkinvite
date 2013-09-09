@@ -7,8 +7,9 @@
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_person, only: [:edit, :update, :index]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :signed_in_person, only: [:edit, :update, :index, :destroy]
+  before_action :correct_person, only: [:edit, :update]
+  before_action :admin_person, only: [:destroy]
 
   # GET /people
   # GET /people.json
@@ -29,7 +30,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
-    ## correct_user finds the appropriate person
+    ## correct_person finds the appropriate person
     ## @person = Person.find(params[:id])
   end
 
@@ -79,7 +80,7 @@ class PeopleController < ApplicationController
     end
 =end
 
-    ## correct_user finds the appropriate person
+    ## correct_person finds the appropriate person
     ## @person = Person.find(params[:id])
     if @person.update_attributes(person_params)
       flash[:success] = "Profile updated"
@@ -94,7 +95,8 @@ class PeopleController < ApplicationController
   # DELETE /people/1.json
   # commenting out the respond_to bit causes tests to fail with a missing template error.  Hunh?
   def destroy
-    @person.destroy
+    ## note use of method chaining to combine find & destroy into one line
+    Person.find(params[:id]).destroy
     respond_to do |format|
       format.html { redirect_to people_url }
       format.json { head :no_content }
@@ -114,12 +116,11 @@ class PeopleController < ApplicationController
       params.require(:person).permit(
         :name, 
         :email, 
-        :about_me, 
-        :screen_name, 
-        :settings, 
         :password, 
-        :password_confirmation, 
-        :person_type
+        :password_confirmation,
+        :screen_name, 
+        :about_me, 
+        :settings
     )
     end
 
@@ -131,9 +132,15 @@ class PeopleController < ApplicationController
       end
     end
 
-    def correct_user
+    def correct_person
       @person = Person.find(params[:id])
       ## what is ontological status of 'current_person'?
       redirect_to(root_url) unless current_person?(@person)
     end
+
+    def admin_person
+      redirect_to(root_url) unless current_person.admin?
+    end
+
+    ## expect we will have a def subscriber here at some point
 end
