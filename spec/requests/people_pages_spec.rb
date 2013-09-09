@@ -1,8 +1,9 @@
 require 'spec_helper'
 
-describe "People" do
+describe "People pagees" do
   subject { page }
 
+  # profile tests 'show' form
   describe "profile page" do
     let(:person) { FactoryGirl.create(:person) }
 
@@ -54,7 +55,6 @@ describe "People" do
 
   end
 
-  ## relationship of "edit" test suite to "profile" test suite?
   describe "edit" do
     let(:person) { FactoryGirl.create(:person) }
     before { visit edit_person_path(person) }

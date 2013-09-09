@@ -62,9 +62,11 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
+
 =begin
     respond_to do |format|
       if @person.update(person_params)
+        # notice use of notice!
         format.html { redirect_to @person, notice: 'Person was successfully updated.' }
         format.json { head :no_content }
       else
@@ -73,7 +75,9 @@ class PeopleController < ApplicationController
       end
     end
 =end
-    if @person.save 
+
+    @person = Person.find(params[:id])
+    if @person.update_attributes(person_params)
       flash[:success] = "Changes saved!"
       redirect_to @person
     else
@@ -83,6 +87,7 @@ class PeopleController < ApplicationController
 
   # DELETE /people/1
   # DELETE /people/1.json
+  # commenting out the respond_to bit causes tests to fail with a missing template error.  Hunh?
   def destroy
     @person.destroy
     respond_to do |format|
