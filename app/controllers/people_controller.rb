@@ -109,9 +109,18 @@ class PeopleController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     # Here we allow only password & password_confirmation, but not the true field, password_digest!
+    # We also do *not* allow admin or sub flags to be set from here
     def person_params
-      params.require(:person).permit(:name, :email, :about_me, :screen_name, :settings, :source, 
-        :password, :password_confirmation, :person_type)
+      params.require(:person).permit(
+        :name, 
+        :email, 
+        :about_me, 
+        :screen_name, 
+        :settings, 
+        :password, 
+        :password_confirmation, 
+        :person_type
+    )
     end
 
     def signed_in_person

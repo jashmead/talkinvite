@@ -8,24 +8,22 @@ FactoryGirl.define do
 
     sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "person_#{n}@talkinvite.com"}
-    sequence(:screen_name) { |n| "@talker_#{n}" }
 
     password "foobar"
     password_confirmation "foobar"
 
     # FactoryGirl recommends that the base instance have least possible # of fields
-    # about_me, screen_name, settings, & person_type are talkinvite addons
-    # about_me "about jru"
-    # screen_name "jru"
-    # settings ""
-    # person_type "reg"
+    # about_me, screen_name, settings are not mandatory, so are left out
 
-    # don't need anon or site people:  those two are singletons & already wired in
-    factory :sub do
-      person_type 'sub'
-    end
+    # sequence(:screen_name) { |n| "talker_#{n}" }
+    # sequence(:settings) { |n| "settings for #{n}" }
+
     factory :admin do
-      person_type 'admin'
+      admin true
+    end
+
+    factory :sub do
+      sub true
     end
 
   end

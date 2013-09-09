@@ -31,9 +31,8 @@ describe "People pages" do
       # it { should have_selector('div', class: 'pagination') }
       it { should have_selector('div.pagination') }
   
-      if "should list each person"
+      it "should list each person" do
         Person.paginate(page: 1).each do |person|
-          ## next line is giving us: 'warning: string literal in condition'.  Why?
           expect(page).to have_selector('li', text: person.name)
         end
       end

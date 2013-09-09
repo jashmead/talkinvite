@@ -19,7 +19,28 @@ describe Person do
   it { should respond_to(:about_me) }
   it { should respond_to(:settings) }
 
+  it { should respond_to(:authenticate) }
+  it { should respond_to(:admin) }
+  it { should respond_to(:sub) }
+
   it { should be_valid }
+
+  it { should_not be_admin }
+  it { should_not be_sub }
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+  end
+
+  describe "with sub attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:sub)
+    end
+  end
 
   describe "when name is not present" do
     before { @person.name = " " }

@@ -7,9 +7,10 @@
 # 1.  about_me -- text, user supplied, for display to others
 # 1.  screen_name -- twitter screen name, mandatory, but defaults to 'talkinvite'
 # 1.  settings -- text, internal, used for user preferences, optional
-# 1.  person_type -- string.  One of 'anon', 'reg', 'sub', 'admin', 'talkinvite'.  
-# <em>Not 'type'</em>, which will cause rails to spin on its head three times widdershins & then croak
+# 1.  admin -- boolean, administrator, includes talkinvite
+# 1.  sub -- boolean, subscriber, does not include anonymous
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
+# 1.  person_type -- string used for admin, sub in earlier version
 # 
 # == Possible additional fields
 # 1.  twitter_id -- this is stable, unlike the twitter screen name which can change

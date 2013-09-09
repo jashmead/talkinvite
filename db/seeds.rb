@@ -11,8 +11,8 @@
 # force first five to have id's 1 thru 5
 # should fix the passwords to be real
 
-anonymous1 = Person.create!( id:1, name: 'anonymous', email: 'anonymous@talkinvite.com', person_type: 'anon', password: 'foobar', password_confirmation: 'foobar' )
-talkinvite1 = Person.create!( id:2, name: 'talkinvite', email: 'talkinvite@talkinvite.com', person_type: 'site' , password: 'foobar', password_confirmation: 'foobar')
-jashmead1 = Person.create!( id: 3, name: 'jashmead', email: 'jashmead@talkinvite.com', person_type: 'admin', password: 'foobar', password_confirmation: 'foobar')
-jrandomuser1 = Person.create!( id: 4, name: 'jrandomuser', email: 'jrandomuser@talkinvite.com', person_type: 'reg' , password: 'foobar', password_confirmation: 'foobar')
-jrandomsubscriber1 = Person.create!( id: 5, name: 'jrandomsubscriber', email: 'jrandomsubscriber@talkinvite.com', person_type: 'sub' , password: 'foobar', password_confirmation: 'foobar')
+anonymous1 = Person.create!( id:1, name: 'anonymous', email: 'anonymous@talkinvite.com', password: 'foobar', password_confirmation: 'foobar' )
+talkinvite1 = Person.create!( id:2, name: 'talkinvite', email: 'talkinvite@talkinvite.com', password: 'foobar', password_confirmation: 'foobar', admin: true)
+jashmead1 = Person.create!( id: 3, name: 'jashmead', email: 'jashmead@talkinvite.com', password: 'foobar', password_confirmation: 'foobar', admin: true, sub: true)
+jrandomuser1 = Person.create!( id: 4, name: 'jrandomuser', email: 'jrandomuser@talkinvite.com', password: 'foobar', password_confirmation: 'foobar')
+jrandomsubscriber1 = Person.create!( id: 5, name: 'jrandomsubscriber', email: 'jrandomsubscriber@talkinvite.com', password: 'foobar', password_confirmation: 'foobar', sub: true)
