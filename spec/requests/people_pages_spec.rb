@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "People pagees" do
+describe "People pages" do
   subject { page }
 
   # profile tests 'show' form
@@ -70,6 +70,29 @@ describe "People pagees" do
 
       it { should have_content('error') }
     end
+
+    describe "with valid information" do
+
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+      before do
+        fill_in "Name",             with: new_name
+        fill_in "Email",            with: new_email
+        fill_in "Password",         with: person.password
+        fill_in "Confirm Password", with: person.password
+        click_button "Save changes"
+      end
+
+      it { should have_title(new_name) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Sign out', href: signout_path) }
+
+      # direct tests of database saves:
+      # specify versus 'it'?
+      specify { expect(person.reload.name).to  eq new_name }
+      specify { expect(person.reload.email).to eq new_email }
+    end
+
   end
 
 end

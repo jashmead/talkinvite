@@ -79,6 +79,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
     if @person.update_attributes(person_params)
       flash[:success] = "Changes saved!"
+      sign_in @person     # why needed?
       redirect_to @person
     else
       render 'edit'
