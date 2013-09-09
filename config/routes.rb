@@ -34,7 +34,8 @@ Talkinvite::Application.routes.draw do
 
   resources :locations
 
-  ## add in some thing like users/name as well?, should work, is a convenience
+  ## add in users/name with instructions to locate id & then route to it
+  ## do subscribe via a link from the header (as indicated); do unsubscribe from settings page
   resources :people
 
   ## Account pages:
