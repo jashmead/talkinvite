@@ -40,19 +40,14 @@ describe "People" do
         expect { click_button submit }.to change(Person, :count).by(1)
       end
 
-## DDT:  commented out failing tests till we are ready to fix
-=begin
       describe "after saving the person" do
         before { click_button submit }
         let(:person) { Person.find_by(email: 'person@talkinvite.com') }
 
-        # we are not seeing the "Sign out" linke
         it { should have_link('Sign out') }
-        # we are not seeing the title person.name
         it { should have_title(person.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
-=end
 
     end
 

@@ -49,6 +49,7 @@ class PeopleController < ApplicationController
 =end
 
     if @person.save 
+      sign_in @person
       flash[:success] = "Welcome to Talk Invite!"
       redirect_to @person
     else
