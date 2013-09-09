@@ -56,6 +56,8 @@ end
 # bcrypt-ruby 3.1.0 does not work with Mac, so force backwards
 gem 'bcrypt-ruby', '3.0.1'
 
+gem 'faker'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
