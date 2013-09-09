@@ -3,6 +3,27 @@ require 'spec_helper'
 describe "People pages" do
   subject { page }
 
+  ## later restrict this to those with a positive relationship to current person
+  describe "index" do
+    before do
+      sign_in FactoryGirl.create(:person)
+      FactoryGirl.create(:person, name: "Bob", email: "bob@example.com")
+      FactoryGirl.create(:person, name: "Ben", email: "ben@example.com")
+      visit people_path
+    end
+
+    # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
+    it { should have_title('All people') }
+    it { should have_content('All people') }
+
+    it "should list each person" do
+      Person.all.each do |person|
+        ## if we are using table rather than list to format people, so li->td
+        expect(page).to have_selector('li', text: person.name)
+      end
+    end
+  end
+
   # profile tests 'show' form
   describe "profile page" do
     let(:person) { FactoryGirl.create(:person) }

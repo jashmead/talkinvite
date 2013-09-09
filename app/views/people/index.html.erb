@@ -1,13 +1,22 @@
-<h1>Listing people</h1>
+<% provide(:title, 'All people') %>
+<h1>All people</h1>
 
+<ul class="people">
+  <% @people.each do |person| %>
+    <li>
+      <%= gravatar_for person, size: 52 %>
+      <%= link_to person.name, person %>
+    </li>
+  <% end %>
+</ul>
+
+<!--
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>About me</th>
       <th>Screen Name</th>
-      <th>Settings</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,9 +28,7 @@
       <tr>
         <td><%= person.name %></td>
         <td><%= person.email %></td>
-        <td><%= person.about_me %></td>
         <td><%= person.screen_name %></td>
-        <td><%= person.settings %></td>
         <td><%= link_to 'Show', person %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,6 +36,7 @@
     <% end %>
   </tbody>
 </table>
+-->
 
 <br>
 

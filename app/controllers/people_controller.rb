@@ -7,13 +7,13 @@
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_person, only: [:edit, :update]
+  before_action :signed_in_person, only: [:edit, :update, :index]
   before_action :correct_user, only: [:edit, :update]
 
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @people = Person.all.order('updated_at desc')
   end
 
   # GET /people/1

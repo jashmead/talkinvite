@@ -31,14 +31,15 @@ describe "Authentication" do
 
     end
 
-
     describe "with valid information" do
 
       let(:person) { FactoryGirl.create(:person) }
       before { sign_in person }
 
       it { should have_title(person.name) }
+      it { should have_link('People',     href: people_path) }
       it { should have_link('Profile',     href: person_path(person)) }
+      it { should have_link('Settings',     href: edit_person_path(person)) }
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 
@@ -99,6 +100,11 @@ describe "Authentication" do
           before { patch person_path(person) }
           # patch gives (somehow:  more r-o-r magic) direct access to the 'response' object, which we check:
           specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "visiting the people index" do
+          before { visit people_path }
+          it { should have_title('Sign in') }
         end
 
       end
