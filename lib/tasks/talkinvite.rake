@@ -23,6 +23,7 @@ namespace :doc do
 end
 
 namespace :db do
+
   desc "Prints the migrated versions"
 
   task :schema_migrations => :environment do
@@ -30,5 +31,17 @@ namespace :db do
       'select version from schema_migrations order by version desc'
     )
   end
-end
 
+
+  desc "Clear out the people table in development"
+
+  ## task :clear_people do
+    ## system("echo delete from people | psql -U talkinvite -d talkinvite_development")
+  ## end
+
+  ## the "=> :environment" wraps us in a warm, fuzzy ActiveRecord environment
+  task :clear_people => :environment do
+    Person.delete_all
+  end
+
+end

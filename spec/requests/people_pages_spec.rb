@@ -36,8 +36,8 @@ describe "People pages" do
           expect(page).to have_selector('li', text: person.name)
         end
       end
-
     end
+
   end
 
   # profile tests 'show' form
