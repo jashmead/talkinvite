@@ -5,45 +5,9 @@
 
 <ul class="people">
   <%= render @people %>
-  <!--
-  <% @people.each do |person| %>
-    <li>
-      <%= gravatar_for person, size: 52 %>
-      <%= link_to person.name, person %>
-    </li>
-  <% end %>
-  -->
 </ul>
 
 <%= will_paginate %>
-
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Screen Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.name %></td>
-        <td><%= person.email %></td>
-        <td><%= person.screen_name %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
 
 <br>
 
