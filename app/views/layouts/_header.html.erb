@@ -14,9 +14,9 @@
                 Account <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <!-- do we need both Profile & Settings? -->
+                <!-- Profile goes to show, Settings to edit -->
                 <li><%= link_to "Profile", current_person %></li>
-                <li><%= link_to "Settings", '#' %></li>
+                <li><%= link_to "Settings", edit_person_path(current_person) %></li>
                 <li class="divider"></li>
                 <li>
                   <%= link_to "Sign out", signout_path, method: "delete" %>

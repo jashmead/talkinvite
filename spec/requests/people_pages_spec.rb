@@ -54,4 +54,22 @@ describe "People" do
 
   end
 
+  ## relationship of "edit" test suite to "profile" test suite?
+  describe "edit" do
+    let(:person) { FactoryGirl.create(:person) }
+    before { visit edit_person_path(person) }
+
+    describe "page" do
+      it { should have_content("Update your profile") }
+      it { should have_title("Edit profile") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+
+      it { should have_content('error') }
+    end
+  end
+
 end

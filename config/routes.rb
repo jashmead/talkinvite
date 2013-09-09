@@ -34,6 +34,7 @@ Talkinvite::Application.routes.draw do
 
   resources :locations
 
+  ## add in some thing like users/name as well?, should work, is a convenience
   resources :people
 
   ## Account pages:

@@ -63,7 +63,7 @@ module SessionsHelper
   def sign_out
     logger.debug("SessionsHelper.sign_out: current_person: #{self.current_person.inspect}") # DDT
     
-    ## self.current_person = Person.find_by :name, 'anonymous'
+    ## self.current_person = Person.find_by :name, 'anonymous'    ## why does this fail when it hits PostgreSQL?
     self.current_person = Person.where("name = ?", 'anonymous').first
 
     cookies.delete(:remember_token)
