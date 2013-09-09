@@ -11,7 +11,7 @@ module SessionsHelper
     #   put unencrypted form of remember_token in the person's cookie:
     cookies.permanent[:remember_token] = remember_token  
 
-    #   save encrypted form to the database record:
+    #   save ENCRYPTED form to the database record:
     person.update_attribute(:remember_token, Person.encrypt(remember_token))
 
     logger.debug("SessionsHelper.sign_in: self.current_person = #{self.current_person.inspect}") # DDT
@@ -56,8 +56,17 @@ module SessionsHelper
     # have to spell out the find_by_remember_token
     @current_person ||= Person.find_by_remember_token( encrypted_remember_token )
 
-    logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") #DDT
-    @current_person #DDT -- needed to make sure return value is correct
+    ## logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") #DDT
+    ## @current_person #DDT -- needed to make sure return value is correct
+  end
+
+  def sign_out
+    logger.debug("SessionsHelper.sign_out: current_person: #{self.current_person.inspect}") # DDT
+    
+    ## self.current_person = Person.find_by :name, 'anonymous'
+    self.current_person = Person.where("name = ?", 'anonymous').first
+
+    cookies.delete(:remember_token)
   end
 
 end
