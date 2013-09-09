@@ -3,7 +3,7 @@ def sign_in(person, options={})
     # Sign in when not using Capybara.
     remember_token = Person.new_remember_token
     cookies[:remember_token] = remember_token
-    person.update_attribute(:remember_token, person.encrypt(remember_token))
+    person.update_attribute(:remember_token, Person.encrypt(remember_token))
   else
     visit signin_path
     fill_in "Email",    with: person.email

@@ -8,6 +8,7 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_person, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   # GET /people
   # GET /people.json
@@ -28,7 +29,8 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
-    @person = Person.find(params[:id])
+    ## correct_user finds the appropriate person
+    ## @person = Person.find(params[:id])
   end
 
   # POST /people
@@ -77,9 +79,10 @@ class PeopleController < ApplicationController
     end
 =end
 
-    @person = Person.find(params[:id])
+    ## correct_user finds the appropriate person
+    ## @person = Person.find(params[:id])
     if @person.update_attributes(person_params)
-      flash[:success] = "Changes saved!"
+      flash[:success] = "Profile updated"
       sign_in @person     # why needed?
       redirect_to @person
     else
@@ -113,5 +116,11 @@ class PeopleController < ApplicationController
 
     def signed_in_person
       redirect_to signin_url, notice:  'Please sign in.' unless signed_in?
+    end
+
+    def correct_user
+      @person = Person.find(params[:id])
+      ## what is ontological status of 'current_person'?
+      redirect_to(root_url) unless current_person?(@person)
     end
 end
