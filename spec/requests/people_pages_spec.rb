@@ -22,6 +22,23 @@ describe "People pages" do
         expect(page).to have_selector('li', text: person.name)
       end
     end
+
+    describe "pagination" do
+      before(:all) { 30.times { FactoryGirl.create(:person) } }
+      ## the 'delete_all' is a bit troubling...
+      after(:all) { Person.delete_all }
+
+      # it { should have_selector('div', class: 'pagination') }
+      it { should have_selector('div.pagination') }
+  
+      if "should list each person"
+        Person.paginate(page: 1).each do |person|
+          ## next line is giving us: 'warning: string literal in condition'.  Why?
+          expect(page).to have_selector('li', text: person.name)
+        end
+      end
+
+    end
   end
 
   # profile tests 'show' form
@@ -63,6 +80,7 @@ describe "People pages" do
       end
 
       describe "after saving the person" do
+
         before { click_button submit }
         let(:person) { Person.find_by(email: 'person@talkinvite.com') }
 

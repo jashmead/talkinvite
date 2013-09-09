@@ -18,11 +18,11 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
-      <%= debug(assigns) if Rails.env.development? %>
-      <!--
-      <%= debug(response) if Rails.env.development? %>
-      <%= debug(request) if Rails.env.development? %>
-      -->
+      <!-- the debug(assigns) is showing up with 'code' tag, where debug(params) is using 'pre'.  Why? -->
+      <!-- <%= debug(assigns) if Rails.env.development? %> -->
+      <!-- on 'index' method for people, assigns seems to get the array of people -->
+      <%= logger.debug("application.html: @people: #{@people}") %>
+      <%= logger.debug("application.html: assigns: #{assigns}") %>
     </div>
   </body>
 </html>
