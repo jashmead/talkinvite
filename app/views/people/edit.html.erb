@@ -5,33 +5,11 @@
   <div class="span6 offset3">
     <%= form_for(@person) do |f| %>
       <%= render 'shared/error_messages' %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :screen_name %>
-      <%= f.text_field :screen_name %>
-
-      <%= f.label :about_me %>
-      <%= f.text_area :about_me %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
-
-      <!-- settings will be a hidden field in a bit -->
-      <%= f.label :settings, "Settings" %>
-      <%= f.hidden_field :settings %>
-
+      <%= render 'fields', f: f %>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
 
     <%= gravatar_for @person %>
-    <a href="http://gravatar.com/emails">change</a>
+    <a href="http://gravatar.com/emails" target="_blank" >change</a>
   </div>
 </div>
