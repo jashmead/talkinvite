@@ -9,10 +9,6 @@
 Talkinvite::Application.routes.draw do
 
   ## kill calendars & maps in a bit, once 8 & 9 are done
-  resources :calendars
-
-  resources :maps
-
   # model attachments on ABAI, use their triggers! 
   #   and either their code or one of the gems that does this, 
   #   i.e. paperclip, see polymorphic section in guides

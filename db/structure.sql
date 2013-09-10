@@ -66,42 +66,6 @@ ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
 
 
 --
--- Name: calendars; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE calendars (
-    id integer NOT NULL,
-    person_id integer NOT NULL,
-    name character varying(255),
-    description text,
-    time_point timestamp without time zone DEFAULT '2013-08-26 00:21:09'::timestamp without time zone NOT NULL,
-    source character varying(255) NOT NULL,
-    settings text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: calendars_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE calendars_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: calendars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE calendars_id_seq OWNED BY calendars.id;
-
-
---
 -- Name: locations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -134,42 +98,6 @@ CREATE SEQUENCE locations_id_seq
 --
 
 ALTER SEQUENCE locations_id_seq OWNED BY locations.id;
-
-
---
--- Name: maps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE maps (
-    id integer NOT NULL,
-    person_id integer NOT NULL,
-    name character varying(255),
-    description text,
-    location_id integer DEFAULT 1 NOT NULL,
-    settings text,
-    source character varying(255) NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: maps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE maps_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: maps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
 
 
 --
@@ -367,21 +295,7 @@ ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY calendars ALTER COLUMN id SET DEFAULT nextval('calendars_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY locations ALTER COLUMN id SET DEFAULT nextval('locations_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclass);
 
 
 --
@@ -428,27 +342,11 @@ ALTER TABLE ONLY attachments
 
 
 --
--- Name: calendars_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY calendars
-    ADD CONSTRAINT calendars_pkey PRIMARY KEY (id);
-
-
---
 -- Name: locations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY locations
     ADD CONSTRAINT locations_pkey PRIMARY KEY (id);
-
-
---
--- Name: maps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY maps
-    ADD CONSTRAINT maps_pkey PRIMARY KEY (id);
 
 
 --
@@ -517,14 +415,6 @@ CREATE INDEX index_people_on_remember_token ON people USING btree (remember_toke
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: map2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY maps
-    ADD CONSTRAINT map2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -616,3 +506,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130901000749');
 INSERT INTO schema_migrations (version) VALUES ('20130909202157');
 
 INSERT INTO schema_migrations (version) VALUES ('20130910001125');
+
+INSERT INTO schema_migrations (version) VALUES ('20130910010159');

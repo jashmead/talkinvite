@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130910001125) do
+ActiveRecord::Schema.define(version: 20130910010159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,34 +30,12 @@ ActiveRecord::Schema.define(version: 20130910001125) do
 
   add_index "attachments", ["pathname"], name: "index_attachments_on_pathname", unique: true, using: :btree
 
-  create_table "calendars", force: true do |t|
-    t.integer  "person_id",                                   null: false
-    t.string   "name"
-    t.text     "description"
-    t.datetime "time_point",  default: '2013-08-26 00:21:09', null: false
-    t.string   "source",                                      null: false
-    t.text     "settings"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "locations", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "maps", force: true do |t|
-    t.integer  "person_id",               null: false
-    t.string   "name"
-    t.text     "description"
-    t.integer  "location_id", default: 1, null: false
-    t.text     "settings"
-    t.string   "source",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
