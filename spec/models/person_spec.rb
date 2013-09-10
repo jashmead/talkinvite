@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Person do
   before { @person = Person.new( name: "Example person", email: "examplar@talkinvite.com",
-    password: 'foobar', password_confirmation: 'foobar', person_type: 'sub' ) }
+    password: 'foobar', password_confirmation: 'foobar' ) }
 
   subject { @person }
 

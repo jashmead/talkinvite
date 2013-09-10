@@ -21,7 +21,6 @@ Shorter fields are generally strings, longer text.
 
 Note due to Ruby's omnipresent use of convention, some obvious names are <em>bad ideas</em>,
 i.e. using 'type' can cause mysterious failures.
-(This is why it is person_type, not type.)
 
 And we can't use 'File' as a table name, same reason.  Hence attachments.
 

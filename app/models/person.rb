@@ -10,7 +10,6 @@
 # 1.  admin -- boolean, administrator, includes talkinvite
 # 1.  sub -- boolean, subscriber, does not include anonymous
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
-# 1.  person_type -- string used for admin, sub in earlier version
 # 
 # == Possible additional fields
 # 1.  twitter_id -- this is stable, unlike the twitter screen name which can change
@@ -31,7 +30,7 @@
 # 1. tweets -- child, of creator
 
 class Person < ActiveRecord::Base
-  before_save { self.email = email.downcase; self.person_type = person_type.downcase }
+  before_save { self.email = email.downcase }
   before_create :create_remember_token
 
   validates :name, presence: true, length: { maximum: 80 }
@@ -45,11 +44,6 @@ class Person < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-
-  # validates_format_of :person_type, :with => /\A(anon|sub|reg|admin|site)\z/
-  validates_inclusion_of :person_type, 
-    :in => [ 'anon', 'sub', 'reg', 'admin', 'site' ],
-    :message => "Invalid table name"
 
   has_many :posts
   has_many :tags, as: :tagable

@@ -183,11 +183,12 @@ CREATE TABLE people (
     about_me text,
     screen_name character varying(255),
     settings character varying(255),
-    person_type character varying(255) DEFAULT 'reg'::character varying NOT NULL,
     password_digest character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    remember_token character varying(255)
+    remember_token character varying(255),
+    admin boolean DEFAULT false,
+    sub boolean DEFAULT false
 );
 
 
@@ -611,3 +612,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130827215657');
 INSERT INTO schema_migrations (version) VALUES ('20130827230026');
 
 INSERT INTO schema_migrations (version) VALUES ('20130901000749');
+
+INSERT INTO schema_migrations (version) VALUES ('20130909202157');
+
+INSERT INTO schema_migrations (version) VALUES ('20130910001125');

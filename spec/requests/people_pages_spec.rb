@@ -101,7 +101,6 @@ describe "People pages" do
         fill_in "Email",        with: "person@talkinvite.com"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        fill_in "Person Type",  with: "reg"
       end
 
       it "should create a person" do

@@ -1,5 +1,5 @@
 ## TBD:
-##  added in login, logout, settings for people
+##  get splash, about, contact up
 
 # routes.rb functions as a de facto map of the system
 

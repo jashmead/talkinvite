@@ -8,8 +8,7 @@ describe "people/new" do
       :email => "me@talkinvite.com",
       :about_me => "Its all about me!",
       :screen_name => "MyScreenName",
-      :settings => "MySettings",
-      :person_type => "reg"
+      :settings => "MySettings"
     ).as_new_record)
   end
 
@@ -23,7 +22,6 @@ describe "people/new" do
       assert_select "textarea#person_about_me[name=?]", "person[about_me]"
       assert_select "input#person_screen_name[name=?]", "person[screen_name]"
       assert_select "input#person_settings[name=?]", "person[settings]"
-      assert_select "input#person_person_type[name=?]", "person[person_type]"
     end
   end
 end
