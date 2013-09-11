@@ -168,6 +168,14 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: talk2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talks
+    ADD CONSTRAINT talk2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE SET NULL;
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -240,3 +248,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130911171511');
 INSERT INTO schema_migrations (version) VALUES ('20130911194218');
 
 INSERT INTO schema_migrations (version) VALUES ('20130911194853');
+
+INSERT INTO schema_migrations (version) VALUES ('20130911201231');
