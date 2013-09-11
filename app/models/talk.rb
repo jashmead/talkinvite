@@ -14,9 +14,12 @@
 # 
 # == History
 # 1. From Microposts in the tutorial
+# 1. Adds description column
+# 1. Adds location_id column
 
 class Talk < ActiveRecord::Base
   validates :summary, presence: true, length: { minimum: 6 }
+  validates :person_id, presence: true
 
   belongs_to :location
   has_many :posts
