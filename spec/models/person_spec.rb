@@ -33,15 +33,15 @@ describe Person do
 
   describe "with admin attribute set to 'true'" do
     before do
-      @user.save!
-      @user.toggle!(:admin)
+      @person.save!
+      @person.toggle!(:admin)
     end
   end
 
   describe "with sub attribute set to 'true'" do
     before do
-      @user.save!
-      @user.toggle!(:sub)
+      @person.save!
+      @person.toggle!(:sub)
     end
   end
 
@@ -152,7 +152,16 @@ describe Person do
     it "should have the right talks in the right order" do
       expect(@person.talks.to_a).to eq [newer_talk, older_talk]
     end
-  end
 
+    it "should destroy associated talks" do
+      talks = @person.talks.to_a
+      @person.destroy
+      expect(talks).not_to be_empty
+      talks.each do |talk|
+        expect(Talk.where(id: talk.id)).to be_empty
+      end
+    end
+
+  end
 
 end

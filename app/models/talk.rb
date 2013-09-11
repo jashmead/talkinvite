@@ -3,19 +3,7 @@
 # == Fields
 # 1. summary -- string, mandatory
 # 2. description -- text, optional
-# 3. location_id -- location, currently optional
 #
-# == Possible Fields
-# 1. person_id, integer -- id of person creating the talk (in a database sense)
-# 
-# == Relationships
-# 1. Points up to location
-# 1. Is tagable & fileable
-# 
-# == History
-# 1. From Microposts in the tutorial
-# 1. Adds description column
-# 1. Adds location_id column
 
 =begin
   To go back & forth between people & talks:
@@ -33,9 +21,9 @@
 class Talk < ActiveRecord::Base
   belongs_to :person
 
+  ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('created_at desc') }
 
   validates :summary, presence: true, length: { minimum: 6 }
   validates :person_id, presence: true
-
 end

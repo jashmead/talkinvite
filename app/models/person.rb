@@ -11,23 +11,11 @@
 # 1.  sub -- boolean, subscriber, does not include anonymous
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
 # 
-# == Possible additional fields
-# 1.  current_location_id
-# 1.  home_location_id
-# 1.  other fields as in twitter api
-# 
 # == Relationships
-# 1. attachments -- child
-# 1. posts -- child
 # 1. talks -- child
-#
-# == Possible Relationships
-# 1. locations -- child, of creator
-# 1. tags -- child, of creator
-# 1. notifications -- tweets, sms, emails, facebook pushes
 
 class Person < ActiveRecord::Base
-  has_many :talks
+  has_many :talks, dependent: :destroy
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
