@@ -24,6 +24,6 @@ class Talk < ActiveRecord::Base
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('created_at desc') }
 
-  validates :summary, presence: true, length: { minimum: 6 }
+  validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
   validates :person_id, presence: true
 end

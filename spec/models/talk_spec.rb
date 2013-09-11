@@ -22,6 +22,12 @@ describe Talk do
     it { should be_invalid }
   end
 
+  describe "with a summary that's too long" do
+    ## the string has to come before the '256', so that we coerce towards string
+    before { @talk.summary = "a" * 256  }
+    it { should be_invalid }
+  end
+
   describe "when person_id is not present" do
     before { @talk.person_id = nil }
     it { should_not be_valid }
