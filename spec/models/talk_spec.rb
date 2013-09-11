@@ -4,15 +4,16 @@ describe Talk do
 
   # better to build up fresh person than to rely on the standard people (anonymous, talkinvite, ...)
   let(:person) { FactoryGirl.create(:person) }
-
-  before { @talk = Talk.new( summary: "Example talk", description: "Let's talk!", person_id: person.id ) }
+  before { @talk = person.talks.build(summary: "Lorem ipsum", description: "Let's talk!") }
 
   subject { @talk }
 
   it { should respond_to(:summary) }
   it { should respond_to(:description) }
-  it { should respond_to(:location_id) }
   it { should respond_to(:person_id) }
+  it { should respond_to(:person) }
+
+  its(:person) { should eq person }
 
   it { should be_valid }
 

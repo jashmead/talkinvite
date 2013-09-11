@@ -12,23 +12,13 @@ Talkinvite::Application.routes.draw do
   # model attachments on ABAI, use their triggers! 
   #   and either their code or one of the gems that does this, 
   #   i.e. paperclip, see polymorphic section in guides
-  resources :attachments
-
   # tweets specialized
-  resources :tweets
-
   # tags specialized
   #   see tags, calendars, maps, contacts in OSX Maverick
-  resources :tags
-
-  resources :posts
-
   # talk pages
   #   build up using microposts as a model
   resources :talks
   # /my_talks -- using user2talk
-
-  resources :locations
 
   ## add in users/name with instructions to locate id & then route to it
   ## do subscribe via a link from the header (as indicated); do unsubscribe from settings page

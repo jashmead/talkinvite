@@ -12,24 +12,23 @@
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
 # 
 # == Possible additional fields
-# 1.  twitter_id -- this is stable, unlike the twitter screen name which can change
 # 1.  current_location_id
 # 1.  home_location_id
 # 1.  other fields as in twitter api
 # 
 # == Relationships
 # 1. attachments -- child
-# 1. calendars -- child
-# 1. maps -- child
 # 1. posts -- child
 # 1. talks -- child
 #
 # == Possible Relationships
 # 1. locations -- child, of creator
 # 1. tags -- child, of creator
-# 1. tweets -- child, of creator
+# 1. notifications -- tweets, sms, emails, facebook pushes
 
 class Person < ActiveRecord::Base
+  has_many :talks
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
@@ -44,10 +43,6 @@ class Person < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-
-  has_many :posts
-  has_many :tags, as: :tagable
-  has_many :attachments, as: :attachable
 
   # there is a problem with find_by(:remember_token, remember_token); not clear why...
   def find_by_remember_token( encrypted_remember_token ) 

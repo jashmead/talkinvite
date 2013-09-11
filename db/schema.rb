@@ -11,34 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911171511) do
+ActiveRecord::Schema.define(version: 20130911194853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "attachments", force: true do |t|
-    t.integer  "person_id",                         null: false
-    t.string   "name",                              null: false
-    t.text     "description"
-    t.string   "file_type"
-    t.string   "pathname",                          null: false
-    t.string   "attachable_type", default: "talks", null: false
-    t.string   "attachable_id",                     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "attachments", ["pathname"], name: "index_attachments_on_pathname", unique: true, using: :btree
-
-  create_table "locations", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.float    "longitude"
-    t.float    "latitude"
-    t.string   "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "people", force: true do |t|
     t.string   "name",                            null: false
@@ -57,43 +33,14 @@ ActiveRecord::Schema.define(version: 20130911171511) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
   add_index "people", ["remember_token"], name: "index_people_on_remember_token", using: :btree
 
-  create_table "posts", force: true do |t|
-    t.integer  "person_id",                      null: false
-    t.integer  "talk_id",                        null: false
-    t.string   "post_type",  default: "comment", null: false
-    t.text     "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tags", force: true do |t|
-    t.string   "tagable_type", default: "talks", null: false
-    t.string   "tagable_id",                     null: false
-    t.string   "tag_type",     default: "",      null: false
-    t.string   "tag",                            null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "talks", force: true do |t|
     t.string   "summary",     null: false
     t.text     "description"
-    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "person_id"
   end
 
   add_index "talks", ["person_id", "created_at"], name: "index_talks_on_person_id_and_created_at", using: :btree
-
-  create_table "tweets", force: true do |t|
-    t.integer  "person_id"
-    t.integer  "post_id"
-    t.string   "screen_name"
-    t.string   "content",     null: false
-    t.integer  "location_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

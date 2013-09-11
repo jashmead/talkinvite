@@ -4,8 +4,7 @@ describe "talks/edit" do
   before(:each) do
     @talk = assign(:talk, stub_model(Talk,
       :summary => "MyString",
-      :description => "MyText",
-      :location_id => 1
+      :description => "MyText"
     ))
   end
 
@@ -16,7 +15,6 @@ describe "talks/edit" do
     assert_select "form[action=?][method=?]", talk_path(@talk), "post" do
       assert_select "input#talk_summary[name=?]", "talk[summary]"
       assert_select "textarea#talk_description[name=?]", "talk[description]"
-      assert_select "input#talk_location_id[name=?]", "talk[location_id]"
     end
   end
 end

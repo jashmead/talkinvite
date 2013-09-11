@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe Person do
-  before { @person = Person.new( name: "Example person", email: "examplar@talkinvite.com",
-    password: 'foobar', password_confirmation: 'foobar' ) }
+  before do
+    @person = Person.new( name: "Example person", email: "examplar@talkinvite.com",
+      password: 'foobar', password_confirmation: 'foobar' )
+  end
 
   subject { @person }
 
@@ -22,6 +24,7 @@ describe Person do
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
   it { should respond_to(:sub) }
+  it { should respond_to(:talks) }
 
   it { should be_valid }
 
