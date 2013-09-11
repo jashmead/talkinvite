@@ -138,4 +138,21 @@ describe Person do
     its(:remember_token) { should_not be_blank }
   end
 
+  describe "talk associations" do
+
+    before { @person.save }
+
+    let!(:older_talk) do
+      FactoryGirl.create(:talk, person: @person, created_at: 1.day.ago)
+    end
+    let!(:newer_talk) do
+      FactoryGirl.create(:talk, person: @person, created_at: 1.hour.ago)
+    end
+
+    it "should have the right talks in the right order" do
+      expect(@person.talks.to_a).to eq [newer_talk, older_talk]
+    end
+  end
+
+
 end

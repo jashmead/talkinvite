@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :talk do
-    summary "MyString"
-    description "MyText"
-    location_id 1
+    summary "MySummary"
+    description "MyDescription"
+    person
   end
 end

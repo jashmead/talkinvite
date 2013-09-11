@@ -15,8 +15,9 @@ FactoryGirl.define do
     # FactoryGirl recommends that the base instance have least possible # of fields
     # about_me, screen_name, settings are not mandatory, so are left out
 
-    # sequence(:screen_name) { |n| "talker_#{n}" }
-    # sequence(:settings) { |n| "settings for #{n}" }
+    # sequence(:about_me) { |n| "about person ##{n}" }
+    # sequence(:screen_name) { |n| "person_#{n}" }
+    # sequence(:settings) { |n| "settings for person ##{n}" }
 
     factory :admin do
       admin true

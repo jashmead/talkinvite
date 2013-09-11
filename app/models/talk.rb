@@ -33,10 +33,9 @@
 class Talk < ActiveRecord::Base
   belongs_to :person
 
+  default_scope -> { order('created_at desc') }
+
   validates :summary, presence: true, length: { minimum: 6 }
   validates :person_id, presence: true
 
-  has_many :posts
-  has_many :tags, as: :tagable
-  has_many :attachments, as: :attachable
 end

@@ -29,7 +29,7 @@ class TalksController < ApplicationController
     respond_to do |format|
       if @talk.save
         format.html { redirect_to @talk, notice: 'Talk was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @talk }
+        format.json { render action: 'show', status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @talk.errors, status: :unprocessable_entity }
