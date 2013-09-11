@@ -1,8 +1,1 @@
-* work thru chapters 7, 8, 9, 10, 11, doing all related in parallel 
-  (build horizontally, not vertically)
-* add header & footer
-* add in the login/logout/settings pages to the people
-* instantiate all tests
-* start on css colors, using the engineer's scheme
-* get all features in the tutorial instantiated
-* get all pages up from a functional point of view
+* work thru chapters 10, 11

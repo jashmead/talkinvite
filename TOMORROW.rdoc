@@ -1,20 +1,6 @@
-* functional system, especially:
-  1. tweets
+* functional system, including:
+  1. tweets & other notifications
   1. maps
-* instantiate static pages
-* automated testing
-  -- master rspec
-* user testing
-* extension to home page, basically their talks, interests, & so on
-  -- is that splash (2) or new (refurbished) home?
-* email to users for 
-  1. password fixes
-  1. communication with other posters 
-* fix database types up
-  1. set not null -- largely done
-  1. set defaults
-* use Postgres-specific features, as indicated
-* how to log an error? at least, turn on the logger
-* master git
-* phonegap
-  -- and responsive design
+  1. calendars
+  1. emails for password fixes
+  1. mobile form, i.e. phonegap

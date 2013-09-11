@@ -23,32 +23,29 @@ include files seem not to be re-read unless the line invoking them is changed
 
 :include:TOMORROW.rdoc
 
-== Yesterday's Objectives
-
-:include:20130825.rdoc
-
 == Overview & Getting Started
 
 * Ruby version: 2.0.0
 
 * Rails version: 4.0.0
 
-* System dependencies:
-
-Ruby, Rails, Postgres
+* System dependencies: Ruby, Rails, Postgres
 
 * Configuration
 
-* Database 
-  Postgres
+* Database:  Postgres
 
 * Database initialization
 
-Create role talkinvite & databases talkinvite_development, talkinvite_test
+Create role talkinvite; databases talkinvite_development & talkinvite_test
+
+Use structure.sql to rebuild, since schema.rb does not know about the foreign keys.
+
+To reset, use: rake db:clear_people
 
 * To run the test suite
 
-<tt>rake spec spec</tt>
+<tt>rspec spec</tt>
 
 * Services (job queues, cache servers, search engines, etc.)
 
@@ -60,6 +57,11 @@ Not yet
   3. yt
   4. gm branch
   5. zt
+
+Quality control, check against:
+1. Metz -- Object Oriented
+1. Pytel & Saleh -- Rails Anti-Patterns
+1. codeclimate checks
 
 :include:db/README.rdoc
 

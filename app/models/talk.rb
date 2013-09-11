@@ -1,7 +1,5 @@
 # Talks -- Key table, this is what we invite people to!
 # 
-# Currently, curiously short
-# 
 # == Fields
 # 1. summary -- string, mandatory
 # 2. description -- text, optional
@@ -14,10 +12,11 @@
 # 1. Points up to location
 # 1. Is tagable & fileable
 # 
-# == Subtleties
-# 1. There is no 'person_id' field:  this is handled by the posts table, which has a type of 'creator', since there can be two+ creators
+# == History
+# 1. From Microposts in the tutorial
+
 class Talk < ActiveRecord::Base
-  validates :summary, presence: true, length: { minimum: 2 }
+  validates :summary, presence: true, length: { minimum: 6 }
 
   belongs_to :location
   has_many :posts
