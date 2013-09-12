@@ -26,5 +26,10 @@ namespace :db do
         sub: sub
       )
     end
+    people = Person.all(limit: 6)
+    50.times do
+      summary = Faker::Lorem.sentence(5)
+      people.each { |person| person.talks.create!(summary: summary) }
+    end
   end
 end

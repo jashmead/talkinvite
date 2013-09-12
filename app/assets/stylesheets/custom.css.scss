@@ -200,3 +200,30 @@ input {
     }
   }
 }
+
+/* talks */
+
+.talks {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.summary {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+// how does aside play with the span4 bit from bootstrap?
+// and how does this work with the previous aside?  this is just for textarea perhaps?
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+

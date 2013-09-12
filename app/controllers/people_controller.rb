@@ -4,6 +4,7 @@
 ##  will be adding current_location (in session on server, at this point)
 ##  will be adding checks on destroy
 ##  'format' bits are needed; how do they work? -- commented out for now...
+##  params[:page] defaults to nil, presumably a way to override the default page
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
@@ -21,6 +22,9 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
+    @talks = @person.talks.paginate(page: params[:page])
+    logger.debug("PeopleController#show: params[:page]: #{params[:page].inspect}")#DDT
+    logger.debug("PeopleController#show: @talks: #{@talks.inspect}") #DDT
   end
 
   # GET /people/new

@@ -33,14 +33,11 @@ namespace :db do
   end
 
 
-  desc "Clear out the people table in development"
-
-  ## task :clear_people do
-    ## system("echo delete from people | psql -U talkinvite -d talkinvite_development")
-  ## end
+  desc "Clear out the tables in development; default reset task is confused by foreign keys"
 
   ## the "=> :environment" wraps us in a warm, fuzzy ActiveRecord environment
-  task :clear_people => :environment do
+  task :reset => :environment do
+    Talk.delete_all
     Person.delete_all
   end
 

@@ -72,12 +72,22 @@ describe "People pages" do
 
   # profile tests 'show' form
   describe "profile page" do
+
     let(:person) { FactoryGirl.create(:person) }
+    let!(:t1) { FactoryGirl.create(:talk, person: person, summary: "FooBar") }
+    let!(:t2) { FactoryGirl.create(:talk, person: person, summary: "BarFoo") }
 
     before { visit person_path(person) }
 
     it { should have_content(person.name) }
     it { should have_title(person.name) }
+
+    describe "talks" do
+      it { should have_content(t1.summary) }
+      it { should have_content(t2.summary) }
+      it { should have_content(person.talks.count) }
+    end
+
   end
 
   describe "signup page" do
