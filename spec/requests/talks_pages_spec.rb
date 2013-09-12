@@ -1,11 +1,32 @@
 require 'spec_helper'
 
-describe "Talks" do
-  describe "GET /talks" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get talks_path
-      response.status.should be(200)
+describe "Talk pages" do
+  subject { page }
+
+  let(:person) { FactoryGirl.create(:person) }
+  before { sign_in person } # why does this work? given that FactoryGirl is creating a new person?
+
+  describe "talk creation" do
+    before { visit root_path }
+
+    describe "with invalid information" do
+      it "should not create a talk" do
+        expect { click_button "Start Talk" }.not_to change(Talk, :count)
+      end
+
+      describe "should show error messages" do
+        before { click_button "Start Talk" }
+        it { should have_content('error') }
+      end
     end
+
+    describe "with valid information" do
+      before { fill_in 'talk_summary', with: 'Loren ipsum' }
+      it "should create a talk" do
+        expect { click_button "Start Talk" }.to change(Talk, :count).by(1)
+      end
+    end
+
   end
+
 end
