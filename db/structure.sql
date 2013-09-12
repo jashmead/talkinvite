@@ -36,9 +36,6 @@ CREATE TABLE people (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
-    about_me text,
-    screen_name character varying(255),
-    settings character varying(255),
     password_digest character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -250,3 +247,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130911194218');
 INSERT INTO schema_migrations (version) VALUES ('20130911194853');
 
 INSERT INTO schema_migrations (version) VALUES ('20130911201231');
+
+INSERT INTO schema_migrations (version) VALUES ('20130912180352');

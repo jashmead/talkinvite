@@ -5,17 +5,11 @@ describe "people/index" do
     assign(:people, [
       stub_model(Person,
         :name => "Name",
-        :email => "Email",
-        :about_me => "MyText",
-        :screen_name => "Screen Name",
-        :settings => "Settings"
+        :email => "Email"
       ),
       stub_model(Person,
         :name => "Name",
-        :email => "Email",
-        :about_me => "MyText",
-        :screen_name => "Screen Name",
-        :settings => "Settings"
+        :email => "Email"
       )
     ])
   end
@@ -29,9 +23,6 @@ describe "people/index" do
     ## assert_select "li", :text => "Email".to_s
     ##	assert_select "tr>td", :text => "Name".to_s, :count => 2
     ##	assert_select "tr>td", :text => "Email".to_s, :count => 2
-    ##	assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    ##	assert_select "tr>td", :text => "Screen Name".to_s, :count => 2
-    ##	assert_select "tr>td", :text => "Settings".to_s, :count => 2
   end
 =end
 

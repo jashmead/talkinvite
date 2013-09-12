@@ -17,10 +17,6 @@ describe Person do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
 
-  it { should respond_to(:screen_name) }
-  it { should respond_to(:about_me) }
-  it { should respond_to(:settings) }
-
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
   it { should respond_to(:sub) }

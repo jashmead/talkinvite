@@ -4,9 +4,6 @@
 # 1.  name -- string, doesn't have to be unique (so long as email is!), but is mandatory
 # 1.  email -- mandatory, validated 
 # 1.  description -- text, optional
-# 1.  about_me -- text, user supplied, for display to others
-# 1.  screen_name -- twitter screen name, mandatory, but defaults to 'talkinvite'
-# 1.  settings -- text, internal, used for user preferences, optional
 # 1.  admin -- boolean, administrator, includes talkinvite
 # 1.  sub -- boolean, subscriber, does not include anonymous
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her

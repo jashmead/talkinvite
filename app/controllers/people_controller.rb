@@ -117,10 +117,7 @@ class PeopleController < ApplicationController
         :name, 
         :email, 
         :password, 
-        :password_confirmation,
-        :screen_name, 
-        :about_me, 
-        :settings
+        :password_confirmation
     )
     end
 

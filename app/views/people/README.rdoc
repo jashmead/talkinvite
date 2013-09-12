@@ -1,3 +1,5 @@
 To Do
 
-1 Make settings a hidden field
+1.  Settings?
+1.  About_me?
+1.  Screen_name?
