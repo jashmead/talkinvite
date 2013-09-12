@@ -25,6 +25,7 @@ class PeopleController < ApplicationController
     @talks = @person.talks.paginate(page: params[:page])
     logger.debug("PeopleController#show: params[:page]: #{params[:page].inspect}")#DDT
     logger.debug("PeopleController#show: @talks: #{@talks.inspect}") #DDT
+    logger.debug("PeopleController: Faker: methods: #{Faker.methods.inspect}") #DDT
   end
 
   # GET /people/new
@@ -123,14 +124,6 @@ class PeopleController < ApplicationController
         :password, 
         :password_confirmation
     )
-    end
-
-    def signed_in_person
-      unless signed_in?
-        ## store location defined in sessions_helper.rb
-        store_location
-        redirect_to signin_url, notice:  'Please sign in.' 
-      end
     end
 
     def correct_person

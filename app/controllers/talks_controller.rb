@@ -1,5 +1,6 @@
 class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /talks
   # GET /talks.json

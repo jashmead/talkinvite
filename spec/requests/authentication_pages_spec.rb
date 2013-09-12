@@ -70,13 +70,37 @@ describe "Authentication" do
   describe "authorization" do
 
     describe "for non-signed-in people" do
+
       let(:person) { FactoryGirl.create(:person) }
 
       it { should_not have_link('Sign out') }
       it { should_not have_link('Profile') }
       it { should_not have_link('Settings') }
 
+      describe "in the Talk controller" do
+
+        ## should we add in controlls against doing a new or an edit? -- probably
+        ## expect something similar to this for posts as well
+        describe "submitting to the create action" do
+          before { post talks_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        # adding in check on edits
+        describe "submitting to the update action" do
+          before { patch talk_path(FactoryGirl.create(:talk)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete talk_path(FactoryGirl.create(:talk)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+      end
+
       describe "when attempting to visit a protected page" do
+
         before do
           visit edit_person_path(person)
           fill_in "Email",    with: person.email
@@ -107,7 +131,6 @@ describe "Authentication" do
             end
           end
 =end
-
         end
 
       end

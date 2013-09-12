@@ -17,6 +17,8 @@ Talkinvite::Application.routes.draw do
   #   see tags, calendars, maps, contacts in OSX Maverick
   # talk pages
   #   build up using microposts as a model
+  #   in tutorial we have: resources :talks, only: [:create, :destroy], may wind up doing that for posts, we'll see
+
   resources :talks
   # /my_talks -- using user2talk
 
