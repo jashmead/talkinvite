@@ -1,5 +1,6 @@
 module PeopleHelper
 
+  ## arguments are a 'person' object (ActiveRecord) and an options hash
   def gravatar_for(person, options = { size: 50 })
     gravatar_id = Digest::MD5::hexdigest(person.email.downcase)
     size = options[:size]

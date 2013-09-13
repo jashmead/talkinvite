@@ -21,6 +21,7 @@ describe Person do
   it { should respond_to(:admin) }
   it { should respond_to(:sub) }
   it { should respond_to(:talks) }
+  it { should respond_to(:feed) } # ok, what is feed
 
   it { should be_valid }
 
@@ -156,6 +157,17 @@ describe Person do
       talks.each do |talk|
         expect(Talk.where(id: talk.id)).to be_empty
       end
+    end
+
+    describe "status" do
+      let(:unfollowed_talk) do
+        FactoryGirl.create(:talk, person: FactoryGirl.create(:person))
+      end
+
+      # apparently :feed as a symbol can also be invoked as a function!  weird, like watching plastic man at work
+      its(:feed) { should include(newer_talk) }
+      its(:feed) { should include(older_talk) }
+      its(:feed) { should_not include(unfollowed_talk) }
     end
 
   end

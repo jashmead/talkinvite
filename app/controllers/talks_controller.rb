@@ -30,6 +30,7 @@ class TalksController < ApplicationController
       flash[:success] = "Talk Started"
       redirect_to root_url  # root is set to the splash page, which also functions as the home page for a signed in person
     else
+      @feed_talks = []
       render 'static_pages/splash'
     end
   end

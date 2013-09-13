@@ -1,0 +1,10 @@
+<% if @feed_talks.any? %>
+  <ol class="talks">
+    <!-- need explicit 'partial' for render when using 'collection' -->
+    <%= render partial: 'shared/feed_talk', collection: @feed_talks %>
+  </ol>
+  <!-- will_paginate gives the 1st, page#, last buttons for the @feed_talks -->
+  <!-- how does will_paginate know the current position? -->
+  <%= will_paginate @feed_talks %>
+<% end %>
+

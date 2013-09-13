@@ -1,0 +1,12 @@
+<li id="<%= feed_talk.id %>">
+  <!-- arguments to gravatar_for are 1) person & 2) options hash -->
+  <!-- arguments to link_to are? -->
+  <%= link_to gravatar_for(feed_talk.person), feed_talk.person %>
+  <span class="person">
+    <%= link_to feed_talk.person.name, feed_talk.person %>
+  </span>
+  <span class="summary"><%= feed_talk.summary %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(feed_talk.created_at) %> ago.
+  </span>
+</li>

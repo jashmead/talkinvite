@@ -11,14 +11,15 @@
       </section>
     </aside>
   </div>
+  <div class="span4">
+    <h3>Talk Feed</h3>
+    <%= render 'shared/feed' %>
+  </div>
 <% else %>
   <div class="center hero-unit">
-
     <h2>
       Welcome to TalkInvite!
     </h2>
-
     <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-
   </div>
 <% end %>

@@ -9,18 +9,18 @@
 # CAVEAT:  you can't name a field 'type', it confuses RoR (possibly because 'type' is used for polymorphism)
 #
 # NOTES:
-#   -- force first five to have id's 1 thru 5; especially nice to have anonymous be id 1
+#   -- don't force id's on these records; not in keeping with the spirit of rails or postgres
 #   -- using 'seeded' data is confusing some of the tests from the tutorial, which want to start with a blank slate
 #     -- with that said, operational correctness mandates the seeds!
 #   -- should fix the passwords to be real
 
-anonymous1 = Person.create!( id:1, name: 'anonymous', email: 'anonymous@talkinvite.com', 
+anonymous1 = Person.create!( name: 'anonymous', email: 'anonymous@talkinvite.com', 
   password: 'foobar', password_confirmation: 'foobar' )
-talkinvite1 = Person.create!( id:2, name: 'talkinvite', email: 'talkinvite@talkinvite.com', 
+talkinvite1 = Person.create!( name: 'talkinvite', email: 'talkinvite@talkinvite.com', 
   password: 'foobar', password_confirmation: 'foobar', admin: true)
-jashmead1 = Person.create!( id: 3, name: 'jashmead', email: 'jashmead@talkinvite.com', 
+jashmead1 = Person.create!( name: 'jashmead', email: 'jashmead@talkinvite.com', 
   password: 'foobar', password_confirmation: 'foobar', admin: true, sub: true)
-jrandomuser1 = Person.create!( id: 4, name: 'jrandomuser', email: 'jrandomuser@talkinvite.com', 
+jrandomuser1 = Person.create!( name: 'jrandomuser', email: 'jrandomuser@talkinvite.com', 
   password: 'foobar', password_confirmation: 'foobar')
-jrandomsubscriber1 = Person.create!( id: 5, name: 'jrandomsubscriber', email: 'jrandomsubscriber@talkinvite.com', 
+jrandomsubscriber1 = Person.create!( name: 'jrandomsubscriber', email: 'jrandomsubscriber@talkinvite.com', 
   password: 'foobar', password_confirmation: 'foobar', sub: true)

@@ -47,6 +47,11 @@ class Person < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)  # 'to_s' is to make sure we can handle nil tokens
   end
 
+  def feed
+    # could use 'talks' to get all of the associated talks!
+    Talk.where("person_id = ?", id)
+  end
+
   private
 
     def create_remember_token

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "Static Pages" do
 
+  # subject 'page' is reset by capybara's 'visit' function
   subject { page }
 
   shared_examples_for 'all static pages' do
@@ -63,6 +64,7 @@ describe "Static Pages" do
     it_should_behave_like('all static pages')
   end
 
+  # nested describes produce nested test messages
   describe "Splash page" do
     before { visit static_pages_splash_path }
 
@@ -70,6 +72,26 @@ describe "Static Pages" do
     let(:heading) { page_title }
 
     it_should_behave_like('all static pages')
+
+    describe "for signed-in people" do
+
+      let(:person) { FactoryGirl.create(:person) }
+      before do
+        FactoryGirl.create(:talk, person: person, summary: "Lorem ipsum")
+        FactoryGirl.create(:talk, person: person, summary: "Dolor sit amet")
+        sign_in person
+        visit root_path # splash page
+      end
+
+      it "should render the person's feed" do
+        person.feed.each do |talk|
+          ## ##{talk.id} -> # and the talk.id -> <li id="talk.id" > ... </li>
+          ## pretty detailed test!
+          expect(page).to have_selector("li##{talk.id}", text: talk.summary)
+        end
+      end
+    end
+
   end
 
 end
