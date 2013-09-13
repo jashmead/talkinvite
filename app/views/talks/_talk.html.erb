@@ -3,4 +3,11 @@
   <span class="timestamp">
     Started <%= time_ago_in_words(talk.created_at) %> ago.
   </span>
+  <% 
+    logger.debug("ZZ: _talk.html.erb: current_person: #{current_person.inspect}")
+    logger.debug("ZZ: _talk.html.erb: talk.person: #{talk.person.inspect}")
+  %>
+  <% if current_person?(talk.person) %>
+    <%= link_to "Delete", talk, method: :delete, data: { confirm: "You sure?" }, title: talk.summary %>
+  <% end %>
 </li>

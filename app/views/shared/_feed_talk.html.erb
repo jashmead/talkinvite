@@ -9,4 +9,12 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_talk.created_at) %> ago.
   </span>
+  <%
+    logger.debug("ZZ: _feed_talk.html.erb: current_person: #{current_person.inspect}")
+    logger.debug("ZZ: _feed_talk.html.erb: feed_talk.person: #{feed_talk.person.inspect}")
+  %>
+  <% if current_person?(feed_talk.person) %>
+    <%= link_to "Delete", feed_talk, method: :delete, data: 
+      { confirm: "Are you sure you want to delete '#{feed_talk.summary}'" }, title: feed_talk.summary %>
+  <% end %>
 </li>
