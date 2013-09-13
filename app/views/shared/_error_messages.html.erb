@@ -1,5 +1,3 @@
-<% begin %>
-<% logger.debug("ZZ: shared/_error_messages: object = #{object}") %>
 <% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
@@ -12,8 +10,3 @@
     </ul>
   </div>
 <% end %>
-<% 
-rescue 
-  logger.debug("ZZ: shared/_error_messages: exception thrown: " + $!.to_s)
-end
-%>
