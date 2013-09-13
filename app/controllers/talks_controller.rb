@@ -25,21 +25,18 @@ class TalksController < ApplicationController
   # POST /talks
   # POST /talks.json
   def create
-    @talk = Talk.new(talk_params)
-
-    respond_to do |format|
-      if @talk.save
-        format.html { redirect_to @talk, notice: 'Talk was successfully created.' }
-        format.json { render action: 'show', status: :created }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
-      end
+    @talk = current_person.talks.build(talk_params)
+    if @talk.save
+      flash[:success] = "Talk Started"
+      redirect_to root_url  # root is set to the splash page, which also functions as the home page for a signed in person
+    else
+      render 'static_pages/splash'
     end
   end
 
   # PATCH/PUT /talks/1
   # PATCH/PUT /talks/1.json
+  ## what is correct handling of update of current talk? -- use logger.debug to find
   def update
     respond_to do |format|
       if @talk.update(talk_params)

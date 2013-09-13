@@ -79,7 +79,7 @@ describe "Authentication" do
 
       describe "in the Talk controller" do
 
-        ## should we add in controlls against doing a new or an edit? -- probably
+        ## should make sure we can't do a 'new' or 'edit' either, both would annoy
         ## expect something similar to this for posts as well
         describe "submitting to the create action" do
           before { post talks_path }

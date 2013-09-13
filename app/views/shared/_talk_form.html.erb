@@ -1,0 +1,12 @@
+<% logger.debug("ZZ: shared/_talk_form") %>
+<%= form_for(@talk) do |f| %>
+  <!-- note the levels of indirect in re 'f' -->
+  <%= render :partial => 'shared/error_messages', :locals => { :object => f.object } %>
+  <div class="field">
+    <%= f.text_field :summary, placeholder: "About..." %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description, placeholder: "Details..." %>
+  </div>
+  <%= f.submit "Start Talk", class: "btn btn-large btn-primary" %>
+<% end %>

@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
     ## logger.debug("SessionsController.create: self: #{self.inspect}") #DDT
 
     person = Person.find_by(email: params[:session][:email].downcase)
-    logger.debug("SessionsController.create: person: #{person.inspect}") #DDT
+  ##  logger.debug("SessionsController.create: person: #{person.inspect}") #DDT
 
     if person && person.authenticate(params[:session][:password])
-      logger.debug("SessionsController.create: email found: #{person.email.inspect}") #DDT
+    ##  logger.debug("SessionsController.create: email found: #{person.email.inspect}") #DDT
 
       # Sign the user in and redirect to the user's show page.
       sign_in person

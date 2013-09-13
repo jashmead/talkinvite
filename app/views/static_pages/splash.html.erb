@@ -1,6 +1,24 @@
 <% provide(:title, 'Got Talk?') %>
 <h1><%= yield :title %></h1>
-<p>Nearby</p>
-<p>Trending</p>
-<p>My talks</p>
-<p>Start</p>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/person_info' %>
+      </section>
+      <section>
+        <%= render 'shared/talk_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+  <div class="center hero-unit">
+
+    <h2>
+      Welcome to TalkInvite!
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+
+  </div>
+<% end %>

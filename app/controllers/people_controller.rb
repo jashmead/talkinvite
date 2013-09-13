@@ -23,9 +23,9 @@ class PeopleController < ApplicationController
   def show
     @person = Person.find(params[:id])
     @talks = @person.talks.paginate(page: params[:page])
-    logger.debug("PeopleController#show: params[:page]: #{params[:page].inspect}")#DDT
-    logger.debug("PeopleController#show: @talks: #{@talks.inspect}") #DDT
-    logger.debug("PeopleController: Faker: methods: #{Faker.methods.inspect}") #DDT
+  ##  logger.debug("PeopleController#show: params[:page]: #{params[:page].inspect}")#DDT
+  ##  logger.debug("PeopleController#show: @talks: #{@talks.inspect}") #DDT
+  ##  logger.debug("PeopleController: Faker: methods: #{Faker.methods.inspect}") #DDT
   end
 
   # GET /people/new
@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
 
-    logger.debug "PeopleController.create: person #{@person.attributes.inspect}"  # DDT
+  ##  logger.debug "PeopleController.create: person #{@person.attributes.inspect}"  # DDT
 
 =begin
     respond_to do |format|

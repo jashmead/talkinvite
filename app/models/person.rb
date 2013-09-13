@@ -31,10 +31,10 @@ class Person < ActiveRecord::Base
 
   # there is a problem with find_by(:remember_token, remember_token); not clear why...
   def find_by_remember_token( encrypted_remember_token ) 
-    logger.debug("Person.find_by_remember_token: encrypted_remember_token: %{encrypted_remember_token}") #DDT
+  ##  logger.debug("Person.find_by_remember_token: encrypted_remember_token: %{encrypted_remember_token}") #DDT
 
     person = Person.where(remember_token: encrypted_remember_token)
-    logger.debug("Person.find_by_remember_token:  person: #{person}") #DDT
+  ##  logger.debug("Person.find_by_remember_token:  person: #{person}") #DDT
     person #to make sure person is returned
   end
 
@@ -53,7 +53,7 @@ class Person < ActiveRecord::Base
       # create token
       # have to use 'self', otherwise we would get a *local* variable called remember_token
       self.remember_token = Person.encrypt(Person.new_remember_token)
-      logger.debug("Person.create_remember_token: self.remember_token: #{self.remember_token}")#DDT
+    ##  logger.debug("Person.create_remember_token: self.remember_token: #{self.remember_token}")#DDT
       self.remember_token #DDT
     end
 

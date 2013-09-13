@@ -18,5 +18,6 @@ class StaticPagesController < ApplicationController
   end
 
   def splash
+    @talk = current_person.talks.build if signed_in?
   end
 end

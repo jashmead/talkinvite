@@ -7,7 +7,7 @@ module SessionsHelper
   ##    end
   ##  instead use:
   def current_person
-    logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
+  ##  logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
 
     encrypted_remember_token = Person.encrypt(cookies[:remember_token])
 
@@ -28,7 +28,7 @@ module SessionsHelper
   def current_person=(person)
     # stores variable for later use
     # any reason for @current_person versus self.current_person?
-    logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
+  ##  logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
     @current_person = person
   end
 
@@ -37,7 +37,7 @@ module SessionsHelper
   end
 
   def sign_in(person)
-    logger.debug("SessionsHelper.sign_in: person: #{person.inspect}") #DDT
+  ##  logger.debug("SessionsHelper.sign_in: person: #{person.inspect}") #DDT
 
     remember_token = Person.new_remember_token
 
@@ -49,7 +49,7 @@ module SessionsHelper
     #   save ENCRYPTED form to the database record:
     person.update_attribute(:remember_token, Person.encrypt(remember_token))
 
-    logger.debug("SessionsHelper.sign_in: self.current_person = #{self.current_person.inspect}") # DDT
+  ##  logger.debug("SessionsHelper.sign_in: self.current_person = #{self.current_person.inspect}") # DDT
 
     # add a current person attribute to the current object (a controller)
     # this is really an invocation of the 'current_person=' attribute writer
@@ -75,7 +75,7 @@ module SessionsHelper
   end
 
   def sign_out
-    logger.debug("SessionsHelper.sign_out: current_person: #{self.current_person.inspect}") # DDT
+  ##  logger.debug("SessionsHelper.sign_out: current_person: #{self.current_person.inspect}") # DDT
     
     ## self.current_person = Person.find_by :name, 'anonymous'    ## why does this fail when it hits PostgreSQL?
     self.current_person = Person.where("name = ?", 'anonymous').first
