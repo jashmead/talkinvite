@@ -5,8 +5,10 @@ Do structuring of views using master page idea from Keynote & related
 Philosophy
 1.  simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
 1.  liquid design, smaller elements, i.e. span4 or mobile-width, and nearby controls
-1.  levels of binding (definition of nearby):  header & footer weak, views 2nd weak, controls strong, new searches 2nd strong; 
+1.  levels of binding (definition of nearby):  header & footer weak, context (less weak:  weak #1), views 2nd weak, controls strong, new searches 2nd strong; 
 then wrap to left & right or else down below, depending on strength (semi-automatic:  there is a rule but is implemented by designer)  
+1.  top to bottom, left to right paralleled by larger to smaller
+    -- so, header at top, then context bit
 
 Have page frames for:
 1. simple

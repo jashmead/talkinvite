@@ -68,31 +68,6 @@
 
   Dev Strategy:
     add a table, view type, other functionality at a step
-    testing:
-      how to verify?
-      -- testing philosophy:
-        -- over, under, on, & it explodes, then usually done
-        -- if adding a feature
-          -- check for feature present
-          -- then, check for feature not present when it shouldn't be
-          -- then, feature correct
-          -- then, feature leads to other features correctly
-        -- if fixing a bug, check as if for negative feature
-          -- find bug
-          -- verify fix
-      -- for tables, start from existing
-      -- for views, make sure:
-        they are turned on, 
-        elements are present, 
-        links are present, 
-        when links followed they go where they should
-      -- for requests (really stories)
-        develop as a narrative:
-          -- i.e. story1:  new to system, looking for talk
-          -- i.e. arc1:  part of a story (to keep code clean)
-      -- helpers
-        -- for maps, calendars, circles, other partials
-        -- test free form, to validate in the abstract
 =end
 
 Talkinvite::Application.routes.draw do

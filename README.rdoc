@@ -63,6 +63,8 @@ Quality control, check against:
 1. Pytel & Saleh -- Rails Anti-Patterns
 1. codeclimate checks
 
+:include:spec/README.rdoc
+
 :include:db/README.rdoc
 
 :include:app/models/README.rdoc
