@@ -2,6 +2,12 @@
 
 Do structuring of views using master page idea from Keynote & related
 
+Philosophy
+1.  simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
+1.  liquid design, smaller elements, i.e. span4 or mobile-width, and nearby controls
+1.  levels of binding (definition of nearby):  header & footer weak, views 2nd weak, controls strong, new searches 2nd strong; 
+then wrap to left & right or else down below, depending on strength (semi-automatic:  there is a rule but is implemented by designer)  
+
 Have page frames for:
 1. simple
 1. form
@@ -12,6 +18,7 @@ Have page frames for:
 1. menu -- used by menu page
 1. splash -- used by splash page
 1. side-by-side -- image or other element plus commentary
+1. circles
 
 Other (static) elements
 1. header

@@ -5,8 +5,9 @@
 The system is a mashup of the Ruby on Rails tutorial by Michael Hardl 
 (http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0), 
 Twitter (which was originally written in Ruby on Rails),
-Google maps, 
-Open Street Map,
+Leaflet (Google maps, Open Street Map),
+jQuery Calendar stuff,
+SVG for advanced layouts,
 some PostgreSQL specific stuff,
 and a bit of glue.
 
@@ -26,20 +27,57 @@ And we can't use 'File' as a table name, same reason.  Hence attachments.
 
 Tables in alphabetical order:
 1.  attachments -- to better work with postgres, polymorphic up to locations, people, posts, talks, tweets
-1.  calendar -- virtual model, includes range, scale, current date
+1.  calendar -- like sessions, a materialized view, includes range, scale, current date (cx)
+1.  connections -- talk to talk, from/to (t2t?)
 1.  locations -- better as places?
-1.  maps -- virtual model, includes bounding box, focus, probably some other stuff
+1.  maps -- like sessions, a materialized view, includes bounding box, focus, probably some other stuff
+1.  messages -- user to user messages, in re whatever they like.
+1.  notifications -- like posts, but they announce the talk
 1.  people -- the source of all difficulties
 1.  posts -- posts attached to a talk, also includes join, leave, as well as default comment
-1.  tags  -- will include ratings, polymorphic up to locations, people, posts, talks, tweets
+1.  relationships -- person to person, from/to
+1.  schema_migrations* -- rails table
+1.  sessions* -- used by tutuorial, internal
+1.  tags  -- will include ratings, polymorphic up to all core tables locations, people, posts, talks, tweets (tx)
 1.  talks -- the raison de etre of the system
+1.  tweets -- subclass of notifications, first of possibly many
+
+Core tables:
+  1. talks
+  1. people
+  1. locations
+  
+Less core tables:
+  1. posts, mostly done in partials
+  1. tags, mostly done in partials
+  1. messages, mostly done in partials
+
+Materialized views:
+  1. maps
+  1. calendars
+  1. sessions
+
+Support tables:
+  1. attachments (can't use name files)
+  1. tags (also figures at top level as topics of talks)
+
+Groups or relationships:
+  peer2peer style -- a is following b
+    -- how tutorial does it
+    -- more informal, better suited to problem here
+    -- can add "virtual" flag to make it act as a group, if that becomes useful
+      -- ok, go peer2peer
+  group style -- both a and b are members of same group
+    -- more static
+
+Relationships
+  1. user_user -- relationships, get from tutorial
+  1. talk_talk -- connections
+  1. location_location -- even needed?, call associations if we do need it
 
 Tables not needed for MVP but under consideration
-1.  messages -- user to user messages, in re a specific talk.  Put in but scaffolding disliked. Removed.  See notes for assocation stuff.
 1.  polls -- ask people what features they would like & so on.
-1.  talk_talk -- grouping of talks, basically organization versus talk.
-1.  user_talk -- basically membership -- can use posts to get started.
-1.  user_user -- grouping of users, basically relationships.
+1.  ratings -- see as tag?
 
 Validations done:
 1.  presence of

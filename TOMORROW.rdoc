@@ -4,3 +4,8 @@
   1. calendars
   1. emails for password fixes
   1. mobile form, i.e. phonegap
+
+* standards
+  1. See Beautiful Ruby, Eloquent Ruby, Ruby on Rails 4, The Ruby Way, the Rails Way, ...
+  1. Check for clarity of code
+  1. Fix README to conform to standards in Beautiful Ruby

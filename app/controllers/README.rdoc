@@ -18,13 +18,16 @@ in the controller has to be adjusted according.  Example:  the params.require in
   )
 
 === Testing
-1. Add tests in re post_id to tweets_controller
+  see notes in routes.rb
 
 === Namespaces
 
-At some point, create namespaces for each type of user:
+1.  admins
+1.  subscribers?
 
-1. admin
-1. sub
+See Agile Web Development with Rails
 
-See Agile Web Development with Rails 3.2 p267 for how to break out routes/controllers into namespaces
+=== New controller functions
+1. map
+1. calendar
+1. circle

@@ -6,6 +6,95 @@
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
 
+=begin
+
+  Tables:
+    attachments -- to better work with postgres, polymorphic up to locations, people, posts, talks, tweets
+    calendar -- like sessions, a materialized view, includes range, scale, current date (cx)
+    connections -- talk to talk, from/to (t2t?)
+    locations -- better as places?
+    maps -- like sessions, a materialized view, includes bounding box, focus, probably some other stuff
+    messages -- user to user messages, in re whatever they like.
+    people -- the source of all difficulties
+    posts -- posts attached to a talk, also includes join, leave, as well as default comment
+    relationships -- person to person, from/to
+    schema_migrations -- rails table
+    sessions -- used by tutuorial
+    tags  -- will include ratings, polymorphic up to all core tables locations, people, posts, talks, tweets (tx)
+    talks -- the raison de etre of the system
+
+  Core
+    people
+    talks
+    locations
+
+  Near Core
+    posts
+    messages
+    notifications
+    tweets
+
+  Paths in addition to the usual 7
+    map
+    calendar
+    circles (subclass of SVG)
+
+  Linkages
+    relationships
+    connections
+    -- location to location, not yet, if ever
+
+  Materialized views:
+    maps
+    calendars
+    sessions
+    circles?
+      -- start, next, & so on
+
+  Static
+
+  Accounts
+    signup
+    signin
+    signout
+    close account
+
+  Talk searches
+    nearby
+    by topic/hashtag
+    recent
+    mine
+    search
+
+  Dev Strategy:
+    add a table, view type, other functionality at a step
+    testing:
+      how to verify?
+      -- testing philosophy:
+        -- over, under, on, & it explodes, then usually done
+        -- if adding a feature
+          -- check for feature present
+          -- then, check for feature not present when it shouldn't be
+          -- then, feature correct
+          -- then, feature leads to other features correctly
+        -- if fixing a bug, check as if for negative feature
+          -- find bug
+          -- verify fix
+      -- for tables, start from existing
+      -- for views, make sure:
+        they are turned on, 
+        elements are present, 
+        links are present, 
+        when links followed they go where they should
+      -- for requests (really stories)
+        develop as a narrative:
+          -- i.e. story1:  new to system, looking for talk
+          -- i.e. arc1:  part of a story (to keep code clean)
+      -- helpers
+        -- for maps, calendars, circles, other partials
+        -- test free form, to validate in the abstract
+=end
+
 Talkinvite::Application.routes.draw do
 
   ## kill calendars & maps in a bit, once 8 & 9 are done
