@@ -23,6 +23,7 @@ describe Person do
   it { should respond_to(:talks) }
   it { should respond_to(:feed) } # ok, what is feed
   it { should respond_to(:relationships) } 
+  # it { should respond_to(:to_people) }
 
   it { should be_valid }
 
