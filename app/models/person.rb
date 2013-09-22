@@ -23,6 +23,12 @@ class Person < ActiveRecord::Base
   ## note that using 'has_many :followeds, through :relationships' would have worked automagically
   has_many :followed_people, through: :relationships, source: :followed, dependent: :destroy
 
+  has_many :reverse_relationships, foreign_key: "followed_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy
+  ## 'source' is optional, since followers will automagically give follower_id as the key
+  has_many :followers, through: :reverse_relationships, source: :follower
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 

@@ -23,8 +23,15 @@ describe Person do
   it { should respond_to(:sub) }
   it { should respond_to(:talks) }
   it { should respond_to(:feed) } # ok, what is feed
+
+  ## why two levels?  we need relationships and we need followed_people
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_people) }
+
+  ## we need reverse_relationships & also a step beyond that (followers)
+  it { should respond_to(:reverse_relationships) }
+  it { should respond_to(:followers) }
+
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
   it { should respond_to(:unfollow!) }
@@ -193,6 +200,11 @@ describe Person do
 
       it { should_not be_following(other_person) }
       its(:followed_people) { should_not include(other_person) }
+    end
+
+    describe "followed person" do
+      subject { other_person }
+      its(:followers) { should include(@person) }
     end
 
   end
