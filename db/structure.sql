@@ -40,8 +40,8 @@ CREATE TABLE people (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     remember_token character varying(255),
-    admin boolean DEFAULT false,
-    sub boolean DEFAULT false
+    admin boolean DEFAULT false NOT NULL,
+    sub boolean DEFAULT false NOT NULL
 );
 
 
@@ -65,6 +65,38 @@ ALTER SEQUENCE people_id_seq OWNED BY people.id;
 
 
 --
+-- Name: relationships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE relationships (
+    id integer NOT NULL,
+    follower_id integer,
+    followed_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: relationships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE relationships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: relationships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE relationships_id_seq OWNED BY relationships.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -83,7 +115,7 @@ CREATE TABLE talks (
     description text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    person_id integer
+    person_id integer NOT NULL
 );
 
 
@@ -117,6 +149,13 @@ ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationships_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
 
 
@@ -126,6 +165,14 @@ ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regcl
 
 ALTER TABLE ONLY people
     ADD CONSTRAINT people_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: relationships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY relationships
+    ADD CONSTRAINT relationships_pkey PRIMARY KEY (id);
 
 
 --
@@ -151,6 +198,27 @@ CREATE INDEX index_people_on_remember_token ON people USING btree (remember_toke
 
 
 --
+-- Name: index_relationships_on_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_relationships_on_followed_id ON relationships USING btree (followed_id);
+
+
+--
+-- Name: index_relationships_on_follower_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_relationships_on_follower_id ON relationships USING btree (follower_id);
+
+
+--
+-- Name: index_relationships_on_follower_id_and_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON relationships USING btree (follower_id, followed_id);
+
+
+--
 -- Name: index_talks_on_person_id_and_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -162,6 +230,14 @@ CREATE INDEX index_talks_on_person_id_and_created_at ON talks USING btree (perso
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: talk2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talks
+    ADD CONSTRAINT talk2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -225,3 +301,15 @@ INSERT INTO schema_migrations (version) VALUES ('20130911194853');
 INSERT INTO schema_migrations (version) VALUES ('20130911201231');
 
 INSERT INTO schema_migrations (version) VALUES ('20130912180352');
+
+INSERT INTO schema_migrations (version) VALUES ('20130922165558');
+
+INSERT INTO schema_migrations (version) VALUES ('20130922170750');
+
+INSERT INTO schema_migrations (version) VALUES ('20130922171946');
+
+INSERT INTO schema_migrations (version) VALUES ('20130922172401');
+
+INSERT INTO schema_migrations (version) VALUES ('20130922192727');
+
+INSERT INTO schema_migrations (version) VALUES ('20130922203248');

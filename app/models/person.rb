@@ -19,7 +19,9 @@ class Person < ActiveRecord::Base
   ## this line *creates* the attribute/method of Person called 'relationships'
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
-  ## and this *creates* the attribute/method of Person called 
+  ## and this *creates* the attribute/method of Person called 'followed_people'
+  ## note that using 'has_many :followeds, through :relationships' would have worked automagically
+  has_many :followed_people, through: :relationships, source: :followed, dependent: :destroy
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
@@ -57,6 +59,23 @@ class Person < ActiveRecord::Base
   def feed
     # could use 'talks' to get all of the associated talks!
     Talk.where("person_id = ?", id)
+  end
+
+  def following?(other_person)
+    ## note there is an implicit 'self.' in front of the relationships
+    relationships.find_by(followed_id: other_person.id)
+  end
+
+  def follow!(other_person)
+    ## note there is an implicit 'self.' in front of the relationships
+    logger.debug("ZZ: follow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
+    relationships.create!(followed_id: other_person.id)
+  end
+
+  def unfollow!(other_person)
+    ## note there is an implicit 'self.' in front of the relationships
+    logger.debug("ZZ: unfollow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
+    relationships.find_by(followed_id: other_person.id).destroy!
   end
 
   private

@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Person do
+
   before do
     @person = Person.new( name: "Example person", email: "examplar@talkinvite.com",
-      password: 'foobar', password_confirmation: 'foobar' )
+      password: 'foobar', password_confirmation: 'foobar')
   end
 
   subject { @person }
@@ -23,6 +24,10 @@ describe Person do
   it { should respond_to(:talks) }
   it { should respond_to(:feed) } # ok, what is feed
   it { should respond_to(:relationships) }
+  it { should respond_to(:followed_people) }
+  it { should respond_to(:following?) }
+  it { should respond_to(:follow!) }
+  it { should respond_to(:unfollow!) }
 
   it { should be_valid }
 
@@ -169,6 +174,25 @@ describe Person do
       its(:feed) { should include(newer_talk) }
       its(:feed) { should include(older_talk) }
       its(:feed) { should_not include(unfollowed_talk) }
+    end
+
+  end
+
+  describe "following" do
+    let(:other_person) { FactoryGirl.create(:person) }
+    before do
+      @person.save
+      @person.follow!(other_person)
+    end
+
+    it { should be_following(other_person) }
+    its(:followed_people) { should include(other_person) }
+
+    describe "and unfollowing" do
+      before { @person.unfollow!(other_person) }
+
+      it { should_not be_following(other_person) }
+      its(:followed_people) { should_not include(other_person) }
     end
 
   end
