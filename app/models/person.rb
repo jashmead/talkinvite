@@ -9,7 +9,9 @@
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
 # 
 # == Relationships
-# 1. talks -- child
+# people<-talks
+# TBD:
+# 1. add active_flag boolean to people, use to deactivate when the user has killed, in case there is other data we need to keep associated with this
 
 class Person < ActiveRecord::Base
   has_many :talks, dependent: :destroy

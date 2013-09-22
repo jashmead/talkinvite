@@ -93,6 +93,9 @@ Procedures:
 1.  when changing types, make sure all the test code knows about the new types
 1.  when adding/changing/deleting fields:  check all the spec code:  requests, models, controllers, views, & factories
 
+TBD:
+1.  Mark various fields not-null, when appropriate; set not-null in the future
+
 --
 Not able to get links to work currently
 ++
