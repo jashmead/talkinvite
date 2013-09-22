@@ -16,4 +16,15 @@ describe Relationship do
   end
 
   it { should be_valid }
+
+  describe "when to id is not present" do
+    before { relationship.to_id = nil }
+    it { should_not be_valid }
+  end
+
+  describe "when from id is not present" do
+    before { relationship.from_id = nil }
+    it { should_not be_valid }
+  end
+
 end
