@@ -7,4 +7,7 @@ class Relationship < ActiveRecord::Base
   ## this line creates the attribute/method called 'followed'
   belongs_to :followed, class_name: "Person"
 
+  validates :follower_id, presence: true
+  validates :followed_id, presence: true
+
 end
