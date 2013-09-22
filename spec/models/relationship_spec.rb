@@ -8,5 +8,12 @@ describe Relationship do
 
   subject { relationship }
 
+  describe "from_person methods" do
+    it { should respond_to(:from_person) }
+    it { should respond_to(:to_person) }
+    its(:from_person) { should eq from_person }
+    its(:to_person) { should eq to_person }
+  end
+
   it { should be_valid }
 end
