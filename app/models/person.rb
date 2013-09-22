@@ -15,6 +15,8 @@
 
 class Person < ActiveRecord::Base
   has_many :talks, dependent: :destroy
+  ## we are starting with the relationships that point 'to' the current person record
+  has_many :relationships, foreign_key: "from_id", dependent: :destroy
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
