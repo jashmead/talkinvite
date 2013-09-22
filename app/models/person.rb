@@ -12,7 +12,14 @@
 # 1. talks -- child
 
 class Person < ActiveRecord::Base
+
+  ## this line *creates* the attribute/method of Person called 'talks'
   has_many :talks, dependent: :destroy
+
+  ## this line *creates* the attribute/method of Person called 'relationships'
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+
+  ## and this *creates* the attribute/method of Person called 
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
