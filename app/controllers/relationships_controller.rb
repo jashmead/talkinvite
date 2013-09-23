@@ -6,7 +6,12 @@ class RelationshipsController < ApplicationController
     ## therefore done from the followers point of view!
     @person = Person.find(params[:relationship][:followed_id])
     current_person.follow!(@person)
-    redirect_to @person   # and transfer control to the target person's page, reasonable enuf
+    ## this respond_to has NOTHING to do with the respond_to used by rspec
+    respond_to do |format|
+      ## only ONE of these lines will be executed!
+      format.html { redirect_to @person }   # and transfer control to the target person's page, reasonable enuf
+      format.js
+    end
   end
 
   def destroy
@@ -14,7 +19,10 @@ class RelationshipsController < ApplicationController
     @person = Relationship.find(params[:id]).followed
     ## and now unfollow that person, again from the current person's perspective!
     current_person.unfollow!(@person)
-    redirect_to @person   # but go to their page, even tho we just unfollowed them?
+    respond_to do |format|
+      format.html { redirect_to @person }   # and transfer control to the target person's page, even tho we just unfollowed them?
+      format.js
+    end
   end
 
 end
