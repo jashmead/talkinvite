@@ -33,8 +33,11 @@ class Talk < ActiveRecord::Base
     ## pluralization is changing followed_people to followed_person_ids
     ## when invoked in 'where' content, association ids array joins itself with commas
     ## apparently the following 'where' applies to how the followed_person_ids are found
-    followed_person_ids = person.followed_person_ids
-      where( "person_id in (?) or person_id = ?", followed_person_ids, person)
+    ## followed_person_ids = person.followed_person_ids
+    followed_person_ids = "select followed_id from relationships where follower_id = :person_id"
+    ## default context for where is 'talks'
+    where( "person_id in (#{followed_person_ids}) or person_id = :person_id",
+      person_id: person)
   end
 
 end
