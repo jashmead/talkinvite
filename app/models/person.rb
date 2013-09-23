@@ -64,7 +64,8 @@ class Person < ActiveRecord::Base
 
   def feed
     # could use 'talks' to get all of the associated talks!
-    Talk.where("person_id = ?", id)
+    # Talk.where("person_id = ?", id)
+    Talk.from_people_followed_by(self)  # which includes 'self', we always follow ourselves!
   end
 
   def following?(other_person)

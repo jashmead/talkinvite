@@ -26,4 +26,15 @@ class Talk < ActiveRecord::Base
 
   validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
   validates :person_id, presence: true
+
+  ## why is the 'self.' needed?
+  def self.from_people_followed_by(person)
+    ## followed_people association will automagically return an array of ids from followed_people
+    ## pluralization is changing followed_people to followed_person_ids
+    ## when invoked in 'where' content, association ids array joins itself with commas
+    ## apparently the following 'where' applies to how the followed_person_ids are found
+    followed_person_ids = person.followed_person_ids
+      where( "person_id in (?) or person_id = ?", followed_person_ids, person)
+  end
+
 end

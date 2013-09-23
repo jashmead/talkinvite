@@ -149,9 +149,7 @@ describe Person do
   end
 
   describe "talk associations" do
-
     before { @person.save }
-
     let!(:older_talk) do
       FactoryGirl.create(:talk, person: @person, created_at: 1.day.ago)
     end
@@ -176,11 +174,22 @@ describe Person do
       let(:unfollowed_talk) do
         FactoryGirl.create(:talk, person: FactoryGirl.create(:person))
       end
+      let(:followed_person) { FactoryGirl.create(:person) }
+      
+      before do
+        @person.follow!(followed_person)
+        3.times { followed_person.talks.create!(summary: "Lorem ipsum") }
+      end
 
       # apparently :feed as a symbol can also be invoked as a function!  weird, like watching plastic man at work
       its(:feed) { should include(newer_talk) }
       its(:feed) { should include(older_talk) }
       its(:feed) { should_not include(unfollowed_talk) }
+      its(:feed) do
+        followed_person.talks.each do |talk|
+          should include(talk)
+        end
+      end
     end
 
   end
