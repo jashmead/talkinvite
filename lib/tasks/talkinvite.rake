@@ -36,7 +36,10 @@ namespace :db do
   desc "Clear out the tables in development; default reset task is confused by foreign keys"
 
   ## the "=> :environment" wraps us in a warm, fuzzy ActiveRecord environment
+  ## may need to rebuild the foreign keys here; see how it plays out...
+  ## should fix the corresponding sequences as well, is there an ActiveRecord command for this?
   task :reset => :environment do
+    Relationship.delete_all
     Talk.delete_all
     Person.delete_all
   end

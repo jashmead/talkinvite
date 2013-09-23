@@ -83,12 +83,21 @@ Talkinvite::Application.routes.draw do
   #   build up using microposts as a model
   #   microposts only use create/destroy, but we see talks as first class objects in own right
   resources :talks
+  resources :relationships, only: [:create, :destroy]
 
   # /my_talks -- using user2talk
 
   ## add in users/name with instructions to locate id & then route to it
   ## do subscribe via a link from the header (as indicated); do unsubscribe from settings page
-  resources :people
+  resources :people do
+    ## member will give paths of the form:  /people/1/following, /people/1/followers
+    ## actions are following, followers
+    ## paths are following_people_path(id), followers_people_path(id)
+    member do
+      get :following, :followers
+    end
+    ## collection in place of member would give paths of the form:  /people/following, /people/followers, which in context are meaningless
+  end
 
   ## Account pages:
   # no edit, update, no index or show

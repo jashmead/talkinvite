@@ -1,6 +1,13 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
+    make_people
+    make_talks
+    make_relationships
+  end
+end
+
+def make_people
     Person.create!(
       name: "Example Person",
       email: "example@talkinvite.com",
@@ -26,10 +33,21 @@ namespace :db do
         sub: sub
       )
     end
-    people = Person.all(limit: 6)
-    50.times do
-      summary = Faker::Lorem.sentence(5)
-      people.each { |person| person.talks.create!(summary: summary) }
-    end
+end
+
+def make_talks
+  people = Person.all(limit: 6)
+  50.times do
+    summary = Faker::Lorem.sentence(5)
+    people.each { |person| person.talks.create!(summary: summary) }
   end
+end
+
+def make_relationships
+  people = Person.all
+  person = people.first
+  followed_people = people[2..50]
+  followers = people[3..40]
+  followed_people.each { |followed| person.follow!(followed) }
+  followers.each { |follower| follower.follow!(person) }
 end

@@ -92,6 +92,34 @@ describe "Static Pages" do
       end
     end
 
+    describe "for signed-in people" do
+      let(:person) { FactoryGirl.create(:person) }
+      before do
+        FactoryGirl.create(:talk, person: person, summary: "Lorem Ipsum")   # summary must be at least 6 characters
+        FactoryGirl.create(:talk, person: person, summary: "Dolor sit amet")
+        sign_in person
+        visit root_path
+      end
+
+      it "should render the person's feed" do
+        person.feed.each do |item|
+          expect(page).to have_selector("li##{item.id}", text: item.summary)
+        end
+      end
+
+      describe "follower/following counts" do
+        let(:other_person) { FactoryGirl.create(:person) }
+        before do
+          other_person.follow!(person)
+          visit root_path
+        end
+
+        it { should have_link("0 following", href: following_person_path(person)) }
+        it { should have_link("1 followers", href: followers_person_path(person)) }
+      end
+  
+    end
+
   end
 
 end
