@@ -74,13 +74,13 @@ class Person < ActiveRecord::Base
 
   def follow!(other_person)
     ## note there is an implicit 'self.' in front of the relationships
-    logger.debug("ZZ: follow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
+    ## logger.debug("ZZ: follow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
     relationships.create!(followed_id: other_person.id)
   end
 
   def unfollow!(other_person)
     ## note there is an implicit 'self.' in front of the relationships
-    logger.debug("ZZ: unfollow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
+    ## logger.debug("ZZ: unfollow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
     relationships.find_by(followed_id: other_person.id).destroy!
   end
 
@@ -90,7 +90,7 @@ class Person < ActiveRecord::Base
       # create token
       # have to use 'self', otherwise we would get a *local* variable called remember_token
       self.remember_token = Person.encrypt(Person.new_remember_token)
-    ##  logger.debug("Person.create_remember_token: self.remember_token: #{self.remember_token}")#DDT
+      ##  logger.debug("Person.create_remember_token: self.remember_token: #{self.remember_token}")#DDT
       self.remember_token #DDT
     end
 

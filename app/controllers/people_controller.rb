@@ -2,13 +2,13 @@
 ##  will be adding profile_picture
 ##  will be adding home_location (in settings, a JSON field)
 ##  will be adding current_location (in session on server, at this point)
-##  will be adding checks on destroy
+##  will be adding checks on destroy:  you have to be signed in, an admin, & not deleting yourself
 ##  'format' bits are needed; how do they work? -- commented out for now...
 ##  params[:page] defaults to nil, presumably a way to override the default page
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_person, only: [:edit, :update, :index, :destroy]
+  before_action :signed_in_person, only: [:edit, :update, :index, :destroy, :following, :followers]
   before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
@@ -106,6 +106,20 @@ class PeopleController < ApplicationController
       format.html { redirect_to people_url }
       format.json { head :no_content }
     end
+  end
+
+  def following
+    @title = "Following"
+    @person = Person.find(params[:id])
+    @people = @person.followed_people.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @person = Person.find(params[:id])
+    @people = @person.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   private
