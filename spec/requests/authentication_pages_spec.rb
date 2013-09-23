@@ -164,9 +164,22 @@ describe "Authentication" do
           it { should have_title('Sign in') }
         end
 
+      end # non-signed in, people controller
+
+      ## should we have parallel tests to make sure we are either an admin or own one of the two ends of the relationship?
+      describe "in the Relationships controller" do
+        describe "submitting to the create action" do
+          before { post relationships_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete relationship_path(1) }    # doesn't matter about the '1', just has to be something
+          specify { expect(response).to redirect_to(signin_path) }
+        end
       end
 
-    end
+    end # non-signed in tests
 
     describe "as wrong person" do
       let(:person) { FactoryGirl.create(:person) }

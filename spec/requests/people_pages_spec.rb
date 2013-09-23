@@ -88,7 +88,60 @@ describe "People pages" do
       it { should have_content(person.talks.count) }
     end
 
-  end
+    describe "follow/unfollow buttons" do
+
+      let(:other_person) { FactoryGirl.create(:person) }
+      before { sign_in person }
+
+      describe "following a person" do
+        ## set up pair'd person
+        before { visit person_path(other_person) }
+
+        it "should increment the followed person count" do
+          expect do
+            click_button "Follow"
+          end.to change(person.followed_people, :count).by(1)
+        end
+
+        it "should increment the other person's followers count" do
+          expect do
+            click_button "Follow"
+          end.to change(other_person.followers, :count).by(1)
+        end
+
+        describe "toggling the button" do
+          before { click_button "Follow" }
+          it { should have_xpath("//input[@value='Unfollow']") }
+        end
+      end
+
+      describe "unfollowing a person" do
+        before do
+          person.follow!(other_person)
+          visit person_path(other_person)
+        end
+
+        it "should decrement the followed person count" do
+          expect do
+            click_button "Unfollow"
+          end.to change(person.followed_people, :count).by(-1)
+        end
+
+        it "should decrement the other person's followers count" do
+          expect do
+            click_button "Unfollow"
+          end.to change(other_person.followers, :count).by(-1)
+        end
+
+        describe "toggling the button" do
+          before { click_button "Unfollow" }
+          it { should have_xpath("//input[@value='Follow']") }
+        end
+      end
+
+    end # end of follow/unfollow
+
+  end # end of profile page
 
   describe "signup page" do
 
