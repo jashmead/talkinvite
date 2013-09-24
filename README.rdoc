@@ -1,20 +1,19 @@
 = TalkInvite
 
-#--
+--
 Dev notes:
   Nested includes don't currently work, at least not reliably, in rdoc, so include sub files by hand
   This documentation is really the work-plan
-#++
-
-== Today's Objective
-
-* finish tutorial -- done
-* review plan -- done
-* work thru those parts of plans for which we can find clean examples
+++
 
 == Objective
 
 Demo skill set, get an app up.
+
+--
+Most important bit, after the objective, is the stories
+++
+:include:STORIES.rdoc
 
 == Development Path
 
@@ -24,6 +23,8 @@ Demo skill set, get an app up.
 * Avoid premature instantiation, don't put stuff in till about to use (& test) -- put it in comments instead
 * Use bootstrap & liquid design, top to bottom, left to right
 * Use images to mark, keep actual site design really dull, keep focus on content
+* Make maximum use of existing examples
+* Make best use of having an overall plan, keep loose but focused & energetic
 
 == Stages
 

@@ -2,20 +2,14 @@
 
 === Procedures
 
-# why does the params.require show up with yellow on black coloring?
-1. When fields in a table are changed, the list of required/allowed parameters (params.require)
-in the controller has to be adjusted according.  Example:  the params.require in people_controller.rb:
-params.require(:person).permit( 
-:name, :email, :about_me, :screen_name, :settings, :password, 
-:password_confirmation, :admin, :sub)
+When fields in a table are changed, the list of required/allowed parameters (params.require) in the controller has to be adjusted according.  
 
-=== Testing
-see notes in routes.rb and in spec/README.rdoc
+Example:  the params.require in people_controller.rb: params.require(:person).permit( :name, :email, :about_me, :screen_name, :settings, :password, :password_confirmation, :admin, :sub) 
 
 === Namespaces
 
 1.  admins
-1.  subscribers?
+1.  subs
 
 === New controller functions
 1. map

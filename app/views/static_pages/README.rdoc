@@ -1,10 +1,10 @@
 === Static Pages 
 
 1. about -- explains point, includes contact, static
-1. advanced* -- upsell/downsell sigh, route to from privacy, about, contact, home, ...
 1. contact -- contact
 1. credits -- will be promoted to a model, see notes in the file
 1. help -- partly goes to faq, partly to help email, partly to articles, which will be needed, side-by-side or top-to-bottom on articles/faq
 1. menu -- all possible pages, basically a nicely formatted version of "rake routes", for admins only, reached how from their control (home) pages
 1. privacy -- modest privacy for most, but real privacy & private talks for paid subscribers, so an upsell point
 1. splash -- will be basically talk/search on steroids, see its description
+1. upgrades* -- upsell/downsell sigh, route to from privacy, about, contact, home, ...

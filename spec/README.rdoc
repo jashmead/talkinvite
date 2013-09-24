@@ -1,47 +1,6 @@
 == Testing Philosphy
 
 === Artillerist's approach
-* over, under, on (bare minimum works), & it explodes (all parts present), and then, good fragmentation pattern (links out), then performance, usability, and other higher level concerns
-* if adding a feature:
-  1. check for feature present
-  1. then, check for feature not present when it shouldn't be
-  1. then, feature correct
-  1. then, feature leads to other features correctly
-  1. then, performance, can test with FactoryGirl
-  1. then, coarse useability, so key stuff fits in page (e.g. fewer rows for mobile)
-* if fixing a bug, check as if for negative feature
-  1. find bug
-  1. verify fix
-
-== Test code
-
-=== Requests
-Basically stories.
-
-Include 'arcs' instantiated as helpers, like Propp's grammar of stories
-
-=== Models
-Nouns, or actors in the stories
-* Start from existing
-
-=== Controllers
-Verbs, or steps in the stories
-
-=== Views
-Adjectives & Adverbs in the stories
-
-Make sure they are:
-* turned on
-* elements present
-* links present
-* when links followed, they go where they should
-
-=== Helpers
-Parts of speech in the stories
-* for maps, calendars, circles, other partials
-* test free form, to validate in the abstract
-
-=== Stories
 
 want to talk about X
 1. key phrases

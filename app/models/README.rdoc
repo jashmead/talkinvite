@@ -56,6 +56,8 @@ Materialized views:
 1. maps
 1. calendars
 1. sessions
+1. circles
+1. svgs?
 
 Support tables:
 1. attachments (can't use name files)

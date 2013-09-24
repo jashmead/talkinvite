@@ -15,7 +15,8 @@ list of page frames to partialize:
 1. calendar* -- square element, done as a partial
 1. menu* -- used by menu pages, boring, usually better to morph to images
 1. splash* -- used by splash page
-1. control*
+1. center* -- for one item
+1. command* -- for a class, i.e. talk command is about talks in general, talk center is about one specific talk
 1. circles*
 1. svg** -- pretty much free form
 1. text_box* -- hi-focus frame

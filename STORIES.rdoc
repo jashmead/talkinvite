@@ -1,0 +1,230 @@
+== Stories
+
+organized by life cycle 
+  -- life cycle is implicit "story of a talk"
+  -- include a few squirrelly bits at the end
+
+=== Got Talk?
+
+-- start point is 'splash'
+  -- splash has a phrase box (search/add)
+  -- plus a whole bunch of squares with hover links
+
+==== Let's Talk about X
+
+1. key phrases -- type key phrase, search web
+1. recent event -- type key phrase, search web
+1. category, i.e. sports, fashion -- canned set of tags
+1. subject I've already talked about -- tags associated with my talks or with me
+1. like a previous talk -- my talks
+1. part of an ongoing conversation -- talks by talk2talk
+1. associated with an organization (i.e. meetup), school -- talks by talk2talk
+1. associated witeh a specific location -- location to talks
+1. associated with a specific set of friends (or just one or two) -- people to talks
+1. trending on twitter, facebook, or other socials -- web search, also personal web search
+1. cool url for image, document, video on web -- cut & paste
+1. personal event -- type key phrase
+1. trending -- tags on twitter, in google, so twitter search, web search
+
+-- response, search for talk, add if not present
+
+==== Search for Talks
+
+-- by all the categories above, many canned searches
+-- mark a set interesting, or add talk, or give up
+  -- pick a talk functionality!
+
+==== Add Talk
+-- if not signed in, sign in
+-- if no account, create & sign in
+-- start the talk
+  -- summary
+  -- anything else about it, proposed time, location
+  -- starts as talks/center
+  -- has lots of links
+  -- includes talk search
+
+==== Check out topics
+  -- topics/command
+  -- sub set of tags
+
+==== Send out invites
+  -- select set of postees
+    -- people search
+      -- by patterns
+      -- by rules
+  -- post or notify
+    -- post
+    -- notify
+      -- modalities: messaging (internal), email, twitter, facebook & other social media
+
+==== Schedule talk
+  -- calendars/command
+  -- set defines
+  -- calendar controls shared by other time specific tables in set mode,
+    or as individual?
+
+==== Check out venues
+  physical/virtual
+  -- locations/command
+  -- map
+  -- map controls shared by other location specific tables in set mode,
+    or as individual
+
+=== Talk On!
+
+-- start point is talks/center
+
+==== Let's Pivot
+talk has been proposed, but hasn't happened yet
+1. announce the talk -- notifications
+1. change location (can be virtual) -- locations
+1. change time -- calendars
+1. talk about the talk: negotiate if a problem or change desired
+1. post comments, clarifications, & so on
+
+==== Talk is happening
+  -- post status updates
+
+==== Send/Receive Comments
+  can be change of status, time, location, subject, membership
+
+==== Send/Receive Messages
+  -- one on one
+  -- side-by-side message screens, two lists, staggered
+
+==== My fellow talkers
+  -- invite someone to join
+  -- to screen, with message
+
+==== Time to move on
+  -- new physical or virtual venue
+
+=== Apres Talk
+
+-- start point is talks/center
+
+==== timeline*
+  -- timeline of a talk
+
+==== talk has happened
+  -- post comments
+  -- rate
+  -- save stream of information about the talk
+
+==== You can never talk just once
+  -- fugue into an ongoing conversation
+  -- connect one talk to another
+
+=== Not just talk!*
+
+-- start point is meta_talk*
+
+stats*
+
+rankings*
+
+post a talk*
+  to web -- permalinks
+  to facebook, twitter, & other social -- notifications
+
+wiki**
+
+=== Let's Talk about Me!
+
+-- start point is settings
+
+signup
+
+signin
+
+signout
+
+close account*
+
+settings -- edit form
+
+profile -- public face, not settings,
+  shown to those who look for this user
+  shows link to settings if there is a match of user to user
+
+reset password*
+  -- shown to those signing in (from signin screen)
+  -- option on settings
+
+-- new account/signin if not signed in
+
+-- signout/settings if signed in
+
+-- settings leads to profile, close account
+
+
+=== Behind the Talk
+
+-- start point? meta_site
+
+about
+
+contact
+
+help
+
+faq
+
+privacy
+
+upgrades*
+
+credits*
+
+=== Admin
+
+start point is meta_admin, a menu style page
+
+-- basically direct, low level access to tables
+-- good for development of intermediary pages as well
+-- all start points are of tables via index
+
+people
+
+talks
+
+tags
+
+locations
+
+posts
+
+credits
+
+attachments
+
+world_building* -- new kinds of maps, as world of warcraft, game of thrones
+
+-- don't really need maps, calendars, sessions, schema_migrations, circles, svgs, & other support tables
+
+-- admins are always subscribers!
+-- talkinvite is the default, anonymous identity
+-- others are help, contact
+
+=== Tools
+
+attachments
+
+searches
+  web searches
+  site searches
+  personal searches
+  twitter & other social media searches
+  canned searches
+    'my' talks, people, locations, and so on
+    by 1st, 2nd, 3rd, ...
+
+privacy tools
+  -- for subscribers only
+
+=== Ads
+
+-- a way to monetize
+
+-- turn off for subscribers
