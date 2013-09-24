@@ -11,6 +11,13 @@ class StaticPagesController < ApplicationController
   def help
   end
 
+  def home
+    if signed_in?
+      @talk = current_person.talks.build if signed_in?
+      @feed_talks = current_person.feed.paginate(page: params[:page])
+    end
+  end
+
   def menu
   end
 
@@ -18,11 +25,6 @@ class StaticPagesController < ApplicationController
   end
 
   def splash
-
-    if signed_in?
-      @talk = current_person.talks.build if signed_in?
-      @feed_talks = current_person.feed.paginate(page: params[:page])
-    end
 
   end
 end

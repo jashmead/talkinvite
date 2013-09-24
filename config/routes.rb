@@ -118,6 +118,7 @@ Talkinvite::Application.routes.draw do
   get "static_pages/menu"
   get "static_pages/privacy"
   get "static_pages/splash"
+  get "static_pages/home"
 
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
@@ -126,6 +127,7 @@ Talkinvite::Application.routes.draw do
   match '/menu', to: 'static_pages#menu', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/splash', to: 'static_pages#splash', via: 'get'
+  match '/home', to: 'static_pages#home', via: 'get'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
@@ -179,6 +181,6 @@ Talkinvite::Application.routes.draw do
   #     resources :products
   #   end
 
-  root to: "static_pages#splash"
+  root to: "static_pages#home"
 
 end

@@ -65,10 +65,10 @@ describe "Static Pages" do
   end
 
   # nested describes produce nested test messages
-  describe "Splash page" do
-    before { visit static_pages_splash_path }
+  describe "Home page" do
+    before { visit static_pages_home_path }
 
-    let(:page_title) { 'Got Talk?' }
+    let(:page_title) { 'Home' }
     let(:heading) { page_title }
 
     it_should_behave_like('all static pages')
@@ -80,7 +80,7 @@ describe "Static Pages" do
         FactoryGirl.create(:talk, person: person, summary: "Lorem ipsum")
         FactoryGirl.create(:talk, person: person, summary: "Dolor sit amet")
         sign_in person
-        visit root_path # splash page
+        visit root_path # home page
       end
 
       it "should render the person's feed" do
@@ -120,6 +120,15 @@ describe "Static Pages" do
   
     end
 
+  end
+
+  describe "Splash page" do
+    before { visit static_pages_splash_path }
+
+    let(:page_title) { 'Got Talk?' }
+    let(:heading) { page_title }
+
+    it_should_behave_like('all static pages')
   end
 
 end

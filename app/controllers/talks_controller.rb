@@ -29,10 +29,10 @@ class TalksController < ApplicationController
     @talk = current_person.talks.build(talk_params)
     if @talk.save
       flash[:success] = "Talk Started"
-      redirect_to root_url  # root is set to the splash page, which also functions as the home page for a signed in person
+      redirect_to home_url  # root is set to the splash page, which also functions as the home page for a signed in person
     else
       @feed_talks = []
-      render 'static_pages/splash'
+      render 'static_pages/home'
     end
   end
 

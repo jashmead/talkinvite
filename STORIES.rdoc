@@ -138,6 +138,9 @@ signup
 
 signin
 
+home -- where you go after signin, shows combo of settings & profile
+  -- leads to your talks & related
+
 signout
 
 close account*
@@ -157,7 +160,6 @@ reset password*
 -- signout/settings if signed in
 
 -- settings leads to profile, close account
-
 
 === Behind the Talk
 
