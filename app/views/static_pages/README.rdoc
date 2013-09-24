@@ -1,18 +1,10 @@
-=== Plans for Static Pages 
+=== Static Pages 
 
-1. DRY using tutorial -- done
-1. Add spec/requests tests for static pages -- done
-1. Get rid of home -- done
-1. Add in privacy.  Along security lines. Include references to duckduckgo. -- done
-1. Fix up credits to include credits to software people, RF, Ferne, & so on -- done
-1. Have about explain purpose -- done
-1. Instantiate all at a scratch level -- done
-1. Consider use of HAML over ERB -- looks good, just nicer -- go for it
-
-All done!
-
-=== "Issues"
-
-1.  work out how to use the Rails Paths
-1.  work out how to setup shortcuts for longer paths
-1.  get control of styling to get larger, friendly buttons
+1. about -- explains point, includes contact, static
+1. advanced* -- upsell/downsell sigh, route to from privacy, about, contact, home, ...
+1. contact -- contact
+1. credits -- will be promoted to a model, see notes in the file
+1. help -- partly goes to faq, partly to help email, partly to articles, which will be needed, side-by-side or top-to-bottom on articles/faq
+1. menu -- all possible pages, basically a nicely formatted version of "rake routes", for admins only, reached how from their control (home) pages
+1. privacy -- modest privacy for most, but real privacy & private talks for paid subscribers, so an upsell point
+1. splash -- will be basically talk/search on steroids, see its description

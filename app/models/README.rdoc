@@ -42,38 +42,36 @@ Tables in alphabetical order:
 1.  talks -- the raison de etre of the system
 1.  tweets -- subclass of notifications, first of possibly many
 
-Core tables:
-  1. talks
-  1. people
-  1. locations
+Core tables (in order of importance):
+1. talks
+1. people
+1. locations
   
 Less core tables:
-  1. posts, mostly done in partials
-  1. tags, mostly done in partials
-  1. messages, mostly done in partials
+1. posts, mostly done in partials
+1. tags, mostly done in partials
+1. messages, mostly done in partials
 
 Materialized views:
-  1. maps
-  1. calendars
-  1. sessions
+1. maps
+1. calendars
+1. sessions
 
 Support tables:
-  1. attachments (can't use name files)
-  1. tags (also figures at top level as topics of talks)
+1. attachments (can't use name files)
+1. tags (also figures at top level as topics of talks)
 
 Groups or relationships:
-  peer2peer style -- a is following b
-    -- how tutorial does it
-    -- more informal, better suited to problem here
-    -- can add "virtual" flag to make it act as a group, if that becomes useful
-      -- ok, go peer2peer
-  group style -- both a and b are members of same group
-    -- more static
+1.  peer2peer style -- a is following b
+* how tutorial does it
+* more informal, better suited to problem here
+* can add "virtual" flag to make it act as a group, if that becomes useful, ok, go peer2peer
+1.  group style -- both a and b are members of same group, more static
 
 Relationships
-  1. user_user -- relationships, get from tutorial
-  1. talk_talk -- connections
-  1. location_location -- even needed?, call associations if we do need it
+1. user_user -- relationships, get from tutorial
+1. talk_talk -- connections
+1. location_location -- even needed?, call associations if we do need it
 
 Tables not needed for MVP but under consideration
 1.  polls -- ask people what features they would like & so on.
@@ -87,12 +85,10 @@ Validations done:
 
 Validations yet to do:
 1.  add in 'check' on postgres side for _type columns
-1.  add in not-null for fk fields -- done
+1.  add in not-null for fk fields 
+1.  add in not-null generally for fields
+1.  add in defaults, limits as indicated
 
 Procedures:
 1.  when changing types, make sure all the test code knows about the new types
 1.  when adding/changing/deleting fields:  check all the spec code:  requests, models, controllers, views, & factories
-
---
-Not able to get links to work currently
-++

@@ -1,73 +1,90 @@
 = TalkInvite
 
+#--
+Dev notes:
+  Nested includes don't currently work, at least not reliably, in rdoc, so include sub files by hand
+  This documentation is really the work-plan
+#++
+
+== Today's Objective
+
+* finish tutorial -- done
+* review plan -- done
+* work thru those parts of plans for which we can find clean examples
+
 == Objective
 
 Demo skill set, get an app up.
 
-== Policy
+== Development Path
 
 * Starting with tutorial & branching out
 * Build up horizontally rather than vertically
 * Build up database/models; routes/controllers; views/css; js -- to extent possible
 * Avoid premature instantiation, don't put stuff in till about to use (& test) -- put it in comments instead
+* Use bootstrap & liquid design, top to bottom, left to right
+* Use images to mark, keep actual site design really dull, keep focus on content
 
-== Today's Objective
+== Stages
 
---
-include files seem not to be re-read unless the line invoking them is changed
-++
+1. people -- started
+1. talks -- started
+1. relationships -- started as follower/followed
+1. posts
+1. notifications
+1. tweets
+1. tags -- useful for talk selection
+1. locations
+1. maps
+1. calendars
+1. circles
+1. attachments -- en passant I suspect, part of the images first strategy
+1. messages
+1. emails 
+1. mobile -- phonegap
+1. external testing, i.e. watir
 
-:include:TODAY.rdoc
+== Libraries
 
-== Tomorrow's Objectives
+1. Leaflet
+1. Bootstrap
+1. JQuery calendar tool of some kind
 
-:include:TOMORROW.rdoc
+== Quality checks
 
-== Overview & Getting Started
-
-* Ruby version: 2.0.0
-
-* Rails version: 4.0.0
-
-* System dependencies: Ruby, Rails, Postgres
-
-* Configuration
-
-* Database:  Postgres
-
-* Database initialization
-
-Create role talkinvite; databases talkinvite_development & talkinvite_test
-
-Use structure.sql to rebuild, since schema.rb does not know about the foreign keys.
-
-To reset, use: rake db:clear_people
-
-* To run the test suite
-
-<tt>rspec spec</tt>
-
-* Services (job queues, cache servers, search engines, etc.)
-
-Not yet
-
-* Deployment instructions:  
-  1. gic
-  2. xt-all
-  3. yt
-  4. gm branch
-  5. zt
-
-Quality control, check against:
-1. Metz -- Object Oriented
-1. Pytel & Saleh -- Rails Anti-Patterns
+1. Check for clarity of code
+1. Check for coverage by tests
+1. Check against best practices
 1. codeclimate checks
+1. Fix README to conform to standards in Beautiful Ruby
+1. Check against references
+1. Use database checks
 
-:include:spec/README.rdoc
+== Bibliography
+
+* Agile Web Development with Rails 3.2
+* Beautiful Ruby
+* Eloquent Ruby
+* Practical Object Oriented Ruby
+* Pro ActiveRecord
+* Programming Ruby 
+* Rails 4 in Action
+* Rails Anti-Patterns
+* Rails Recipes
+* Rspec Book
+* Ruby Best Practices
+* Ruby Guides -- http://guides.rubyonrails.org
+* Ruby Koans
+* Rails Tutorial -- http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0
+* Ruby on Rails 4
+* The Rails 3 Way
+* The Ruby Way
+
+:include:app/models/README.rdoc
 
 :include:db/README.rdoc
 
-:include:app/models/README.rdoc
+:include:app/controllers/README.rdoc
 
 :include:app/views/README.rdoc
 
@@ -75,6 +92,26 @@ Quality control, check against:
 
 :include:app/views/static_pages/README.rdoc
 
-:include:app/controllers/README.rdoc
+:include:public/README.rdoc
 
-:include:public/TODO.rdoc
+:include:spec/README.rdoc
+
+== Requisites & Deployment Instructions
+
+* Ruby version: 2.0.0
+* Rails version: 4.0.0
+* System dependencies: Ruby, Rails, Postgres, divers libraries
+* Configuration
+* Database:  Postgres
+* Database initialization:
+  1. Create role talkinvite; databases talkinvite_development & talkinvite_test
+  1. Use structure.sql to rebuild, since schema.rb does not know about the foreign keys.
+  1. To reset, use: rake db:reset
+* To run the test suite <tt>rspec spec</tt>
+* Services* (job queues, cache servers, search engines, etc.)
+* Deployment instructions:  
+  1. gic
+  2. xt-all
+  3. yt
+  4. gm branch
+  5. zt

@@ -5,29 +5,21 @@
 # why does the params.require show up with yellow on black coloring?
 1. When fields in a table are changed, the list of required/allowed parameters (params.require)
 in the controller has to be adjusted according.  Example:  the params.require in people_controller.rb:
-  params.require(:person).permit(
-    :name, 
-    :email, 
-    :about_me, 
-    :screen_name, 
-    :settings, 
-    :password, 
-    :password_confirmation, 
-    :admin,
-    :sub
-  )
+params.require(:person).permit( 
+:name, :email, :about_me, :screen_name, :settings, :password, 
+:password_confirmation, :admin, :sub)
 
 === Testing
-  see notes in routes.rb
+see notes in routes.rb and in spec/README.rdoc
 
 === Namespaces
 
 1.  admins
 1.  subscribers?
 
-See Agile Web Development with Rails
-
 === New controller functions
 1. map
 1. calendar
 1. circle
+1. control -- varies by model
+1. side-by-side & other multi-frame constructs, since they need input from controller for each frame

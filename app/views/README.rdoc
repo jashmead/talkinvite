@@ -1,42 +1,51 @@
-== Page Frames
+== Views
 
-Do structuring of views using master page idea from Keynote & related
-
-Philosophy
+=== Philosophy
 1.  simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
 1.  liquid design, smaller elements, i.e. span4 or mobile-width, and nearby controls
 1.  levels of binding (definition of nearby):  header & footer weak, context (less weak:  weak #1), views 2nd weak, controls strong, new searches 2nd strong; 
 then wrap to left & right or else down below, depending on strength (semi-automatic:  there is a rule but is implemented by designer)  
-1.  top to bottom, left to right paralleled by larger to smaller
-    -- so, header at top, then context bit
+1.  top to bottom, left to right paralleled by larger to smaller; so, header at top, then context bit
 
-Have page frames for:
-1. simple
-1. form
-1. rows
-1. parent + child rows
-1. map
-1. calendar
-1. menu -- used by menu page
-1. splash -- used by splash page
-1. side-by-side -- image or other element plus commentary
-1. circles
+=== Page frames
+Spin off master page idea from Keynote, with a bit of liquidity added in by Bootstrap
 
-Other (static) elements
+For details, see below (kept in layouts/README.rdoc)
+=== Static elements
 1. header
 1. footer
 1. logo
-1. bootstrap
+1. account menu
 
-Other (dynamic) elements
+=== Dynamic elements
 1. wrapped elements -- used for tags
 
-Linkages go by the foreign keys associated with the tables
+=== Standard links
+1. List items go to the show/edit forms
+1. Index pages have search/add at the top
+1. Search pages go to add page (form in add mode)
 
-== Procedures
+=== Adding a field
 1.  fields in the new & other forms must match those in the corresponding specs
 -- obvious but easily overlooked point
 
-== To Do
-1. heading function to allow reuse of page_title or else an explicit heading
+== DRY
+1. share title between title & heading using a function
 
+=== Models
+
+Models + Page Frames give most of the actual pages, if not all of them, extension of the use of 'resources' idea
+
+=== Testing
+1. title/heading
+1. main content
+1. appears when it should
+  1. comes up routed to
+  1. checks authorization -- signed in, specific user, must be admin
+1. does not appear when it shouldn't
+  1. necessary logical preconditions (i.e. parent exists) are met
+  1. checks authorization -- signed in, specific user, must be admin
+1. has appropriate control-set
+1. has correct links out
+1. said links out actually go where they are supposed to 
+1. submit buttons result in changes in database, as indicated
