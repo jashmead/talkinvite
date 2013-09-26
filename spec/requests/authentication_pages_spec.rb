@@ -115,19 +115,20 @@ describe "Authentication" do
           end
 
 ## have to fix store location at the same time
+## get this working?
 =begin
           describe "when signing in again" do
 
             before do
-              delete signout_path
+              delete signout_path   ## why?
               visit signin_path
-              fill_in "Email",    with: user.email
-              fill_in "Password", with: user.password
+              fill_in "Email",    with: person.email
+              fill_in "Password", with: person.password
               click_button "Sign in"
             end
 
             it "should render the default (profile) page" do
-              expect(page).to have_title(user.name)
+              expect(page).to have_title(person.name)
             end
           end
 =end
@@ -166,7 +167,8 @@ describe "Authentication" do
 
       end # non-signed in, people controller
 
-      ## should we have parallel tests to make sure we are either an admin or own one of the two ends of the relationship?
+      ## should we have parallel tests to make sure we are either 
+      ##   an admin or own one of the two ends of the relationship?
       describe "in the Relationships controller" do
         describe "submitting to the create action" do
           before { post relationships_path }

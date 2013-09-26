@@ -227,18 +227,28 @@ describe "People pages" do
     end
 
     describe "forbidden attributes" do
+
       let(:params) do
-        { person: { admin: true, password: person.password,
+        { person: { admin: true, sub: true, password: person.password,
                   password_confirmation: person.password } }
       end
+
+      ## make sure they can't make themselves admins
       before do
         sign_in person, no_capybara: true
         ## direct call from web is under test
         patch person_path(person), params
       end
       specify { expect(person.reload).not_to be_admin }
-    end
 
+      ## make sure they can't make themselves subs
+      before do
+        sign_in person, no_capybara: true
+        ## direct call from web is under test
+        patch person_path(person), params
+      end
+      specify { expect(person.reload).not_to be_sub }
+    end
   end
 
   describe "following/followers" do
