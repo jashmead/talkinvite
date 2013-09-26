@@ -15,6 +15,7 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
+    ## test of this in app/controllers/people_controller_spec is failing, no idea why
     @people = Person.paginate(page: params[:page])
   end
 
@@ -72,6 +73,7 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1.json
   def update
 
+  logger.debug("QQ: PeopleController.update: @person: #{@person.inspect}")
 =begin
     respond_to do |format|
       if @person.update(person_params)
@@ -88,10 +90,12 @@ class PeopleController < ApplicationController
     ## correct_person finds the appropriate person
     ## @person = Person.find(params[:id])
     if @person.update_attributes(person_params)
+      logger.debug("QQ: PeopleController.update: success");
       flash[:success] = "Profile updated"
       sign_in @person     # why needed?
       redirect_to @person
     else
+      logger.debug("QQ: PeopleController.update: failure");
       render 'edit'
     end
   end
