@@ -117,6 +117,10 @@ Talkinvite::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  get "people/home"
+
+  match '/home', to: 'people#home', via: 'get'
+
   ## Static pages:
   get "static_pages/about"
   get "static_pages/contact"
@@ -125,7 +129,6 @@ Talkinvite::Application.routes.draw do
   get "static_pages/menu"
   get "static_pages/privacy"
   get "static_pages/splash"
-  get "static_pages/home"
 
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
@@ -135,7 +138,6 @@ Talkinvite::Application.routes.draw do
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/splash', to: 'static_pages#splash', via: 'get'
   match '/gottalk', to: 'static_pages#splash', via: 'get'
-  match '/home', to: 'static_pages#home', via: 'get'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
@@ -191,6 +193,28 @@ Talkinvite::Application.routes.draw do
 
   ## have root go to splash if not signed in, home if signed in? or just leave home up on splash page?
   ## shift to 'splash' when splash is ready
-  root to: "static_pages#home"
+=begin
+  If deleting talks from the home page, we seem to get routed via the splash page controller
+  -- to avoid this have to set the root page to be people#home, rather than preferred static_pages/splash
+    -- or, in future, talks/splash!
+  -- looks like implicit tieing of talk delete function to root_path
+    -- where is this happening, if it is?
+  error message on form:
+          
+  <%= form_for(@talk) do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+    <div class="field">
+      <%= f.text_field :summary, placeholder: "About..." %>
+
+Trace of template inclusion: app/views/static_pages/splash.html.erb
+
+  error is first argument to form_for can't be null
+    -- this is @talk
+    -- set in people controller, not in splash controller
+      -- ok, but why are we in the splash controller?
+      -- how did calling home get us to splash?
+=end
+  ## root to: "static_pages#splash"
+  root to: "people#home"
 
 end

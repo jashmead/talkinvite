@@ -64,63 +64,6 @@ describe "Static Pages" do
     it_should_behave_like('all static pages')
   end
 
-  # nested describes produce nested test messages
-  describe "Home page" do
-    before { visit static_pages_home_path }
-
-    let(:page_title) { 'Home' }
-    let(:heading) { page_title }
-
-    it_should_behave_like('all static pages')
-
-    describe "for signed-in people" do
-
-      let(:person) { FactoryGirl.create(:person) }
-      before do
-        FactoryGirl.create(:talk, person: person, summary: "Lorem ipsum")
-        FactoryGirl.create(:talk, person: person, summary: "Dolor sit amet")
-        sign_in person
-        visit root_path # home page
-      end
-
-      it "should render the person's feed" do
-        person.feed.each do |talk|
-          ## ##{talk.id} -> # and the talk.id -> <li id="talk.id" > ... </li>
-          ## pretty detailed test!
-          expect(page).to have_selector("li##{talk.id}", text: talk.summary)
-        end
-      end
-    end
-
-    describe "for signed-in people" do
-      let(:person) { FactoryGirl.create(:person) }
-      before do
-        FactoryGirl.create(:talk, person: person, summary: "Lorem Ipsum")   # summary must be at least 6 characters
-        FactoryGirl.create(:talk, person: person, summary: "Dolor sit amet")
-        sign_in person
-        visit root_path
-      end
-
-      it "should render the person's feed" do
-        person.feed.each do |item|
-          expect(page).to have_selector("li##{item.id}", text: item.summary)
-        end
-      end
-
-      describe "follower/following counts" do
-        let(:other_person) { FactoryGirl.create(:person) }
-        before do
-          other_person.follow!(person)
-          visit root_path
-        end
-
-        it { should have_link("0 following", href: following_person_path(person)) }
-        it { should have_link("1 followers", href: followers_person_path(person)) }
-      end
-  
-    end
-
-  end
 
   describe "Splash page" do
     before { visit static_pages_splash_path }

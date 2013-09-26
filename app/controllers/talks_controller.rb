@@ -32,7 +32,7 @@ class TalksController < ApplicationController
       redirect_to home_url  # root is set to the splash page, which also functions as the home page for a signed in person
     else
       @feed_talks = []
-      render 'static_pages/home'
+      render 'people/home'
     end
   end
 

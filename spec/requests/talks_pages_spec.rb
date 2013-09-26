@@ -7,7 +7,7 @@ describe "Talk pages" do
   before { sign_in person } # why does this work? given that FactoryGirl is creating a new person?
 
   describe "talk creation" do
-    before { visit root_path }
+    before { visit home_path }
 
     describe "with invalid information" do
       it "should not create a talk" do
@@ -29,11 +29,12 @@ describe "Talk pages" do
 
   end
 
+  ## bizarrity:  when root_path set to static_pages#splash, this fails, when it is set to home_path it works
   describe "talk destruction" do
     before { FactoryGirl.create(:talk, person: person) }
 
     describe "as correct person" do
-      before { visit root_path }
+      before { visit home_path }
 
       it "should delete a talk" do
         # how do we know there is a talk ready to be deleted?

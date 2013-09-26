@@ -129,6 +129,13 @@ class PeopleController < ApplicationController
     render 'show_follow'
   end
 
+  def home
+    if signed_in?
+      @talk = current_person.talks.build if signed_in?
+      @feed_talks = current_person.feed.paginate(page: params[:page])
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
