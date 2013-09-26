@@ -189,6 +189,8 @@ Talkinvite::Application.routes.draw do
   #     resources :products
   #   end
 
+  ## have root go to splash if not signed in, home if signed in? or just leave home up on splash page?
+  ## shift to 'splash' when splash is ready
   root to: "static_pages#home"
 
 end
