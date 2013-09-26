@@ -15,6 +15,7 @@
     locations -- better as places?
     maps -- like sessions, a materialized view, includes bounding box, focus, probably some other stuff
     messages -- user to user messages, in re whatever they like.
+    notifications? abstraction layer for tweets & other broadcasts
     people -- the source of all difficulties
     posts -- posts attached to a talk, also includes join, leave, as well as default comment
     relationships -- person to person, from/to
@@ -41,7 +42,7 @@
 
   Linkages
     relationships
-    connections
+    connections (talk2talk?)
     -- location to location, not yet, if ever
 
   Materialized views:
@@ -58,13 +59,19 @@
     signin
     signout
     close account
+    settings
+    profile -- public face
+    home -- start point for signed in users
 
   Talk searches
+    search (of talkinvite)
+    topic
     nearby
-    by topic/hashtag
-    recent
-    mine
-    search
+    trending (twitter)
+    mytalks
+    circles
+    categories:  sports, weather, movies, fashion, politics, news, ...
+      -- google searches
 
   Dev Strategy:
     add a table, view type, other functionality at a step
@@ -127,6 +134,7 @@ Talkinvite::Application.routes.draw do
   match '/menu', to: 'static_pages#menu', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/splash', to: 'static_pages#splash', via: 'get'
+  match '/gottalk', to: 'static_pages#splash', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
 
   # You can have the root of your site routed with "root"
