@@ -108,17 +108,24 @@ class PeopleController < ApplicationController
     end
   end
 
+  ## codeclimate complained about duplication in following & followers, so sweated it out to follow_common
   def following
-    @title = "Following"
     @person = Person.find(params[:id])
-    @people = @person.followed_people.paginate(page: params[:page])
-    render 'show_follow'
+    follow_common('Following', @person, @person.followed_people.paginate(page: params[:page]))
   end
 
   def followers
-    @title = "Followers"
     @person = Person.find(params[:id])
-    @people = @person.followers.paginate(page: params[:page])
+    follow_common('Followers', @person, @person.followers.paginate(page: params[:page]))
+  end
+
+  def follow_common( title, person, people )
+    logger.debug("QQ: title: #{title}, person: #{person}, people: #{people.inspect}") #DDT
+
+    @title = title
+    @person = person
+    @people = people.paginate(page: params[:page])
+
     render 'show_follow'
   end
 
