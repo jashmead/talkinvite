@@ -37,7 +37,7 @@ module SessionsHelper
   end
 
   def sign_in(person)
-  ##  logger.debug("SessionsHelper.sign_in: person: #{person.inspect}") #DDT
+    ## logger.debug("ZZ: SessionsHelper.sign_in: person: #{person.inspect}") #DDT
 
     remember_token = Person.new_remember_token
 
@@ -49,7 +49,7 @@ module SessionsHelper
     #   save ENCRYPTED form to the database record:
     person.update_attribute(:remember_token, Person.encrypt(remember_token))
 
-  ##  logger.debug("SessionsHelper.sign_in: self.current_person = #{self.current_person.inspect}") # DDT
+    ## logger.debug("ZZ: SessionsHelper.sign_in: self.current_person = #{self.current_person.inspect}") # DDT
 
     # add a current person attribute to the current object (a controller)
     # this is really an invocation of the 'current_person=' attribute writer
@@ -59,10 +59,19 @@ module SessionsHelper
   ## how is current person being set & passed along?
   ## see if we are signed in currently
   def signed_in?
-    ## logger.debug("SessionsHelper.signed in?: current_person: #{current_person.inspect}") #DDT
-    ## logger.debug("SessionsHelper.signed in?: @current_person: #{@current_person.inspect}") #DDT
+    ## logger.debug("ZZ: SessionsHelper.signed_in?: current_person: #{current_person.inspect}") #DDT
+    ## logger.debug("ZZ: SessionsHelper.signed_in?: @current_person: #{@current_person.inspect}") #DDT
+    ## logger.debug("ZZ: SessionsHelper.signed_in?: self: #{self.inspect}") #DDT
+=begin
+    if defined?(person) 
+      logger.debug("ZZ: SessionsHelper.signed_in?: person: #{person.inspect}") #DDT
+    else
+      logger.debug("ZZ: SessionsHelper.signed_in?: person not defined") #DDT
+    end
+=end
     ## why 'current_person' & not '@current_person'? # is current_person a method? yes.  Is that the only problem?
-    ! current_person.nil?
+    !current_person.nil?
+    ## true  #DDT
   end
 
   ## force person to be signed in, whether they are not currently

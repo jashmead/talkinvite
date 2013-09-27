@@ -18,6 +18,12 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
+# the tests here are currently mostly defaults; five don't work
+#   problem seems to be that currently many of the options, i.e. edit, update, index, destroy,
+#     require you to be signed in first
+#   the failures use index, update, & destroy, all of which require a sign_in
+#   use of "sign_in person" should work, but doesn't seem to
+
 describe PeopleController do
 
   # This should return the minimal set of attributes required to create a valid
@@ -37,14 +43,16 @@ describe PeopleController do
   # PeopleController. Be sure to keep this updated too.
 
   ## session will usually have 'remember_token' & 'return_to', neither mandatory however
+  ## also in charge of 'current_person' which is currently not working
   let(:valid_session) { {} }
 
-  ## don't understand this test, which is failing.  Comment out till we do.
 =begin
+  ## this test is failing because the 'sign_in' function isn't 'sticky' enuf
   describe "GET index" do
     it "assigns all people as @people" do
       person = Person.create! valid_attributes
-      get :index, {}, valid_session
+      sign_in person  # seems to be working, but then takes no effect
+      get :index
       assigns(:people).should eq([person])
     end
   end

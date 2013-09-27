@@ -16,7 +16,11 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     ## test of this in app/controllers/people_controller_spec is failing, no idea why
+    # @people = Person.all
+    logger.debug("ZZ: PeopleController.index: current_person: #{current_person}") #DDT
     @people = Person.paginate(page: params[:page])
+    logger.debug("ZZ: PeopleController.index: @people: #{@people.inspect}")#DDT
+    @people
   end
 
   # GET /people/1
