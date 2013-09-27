@@ -1,11 +1,15 @@
 == Views
 
 === Philosophy
-1.  simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
-1.  liquid design, smaller elements, i.e. span4 or mobile-width, and nearby controls
-1.  levels of binding (definition of nearby):  header & footer weak, context (less weak:  weak #1), views 2nd weak, controls strong, new searches 2nd strong; 
-then wrap to left & right or else down below, depending on strength (semi-automatic:  there is a rule but is implemented by designer)  
-1.  top to bottom, left to right paralleled by larger to smaller; so, header at top, then context bit
+simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
+
+liquid design, smaller elements, i.e. span4 or mobile-width, and nearby controls
+
+levels of binding (definition of nearby):  
+1.  header & footer weak, 
+1.  context (less weak:  weak #1), 
+1.  views 2nd weak, controls strong, 
+1.  new searches 2nd strong; 
 
 === Page frames
 Spin off master page idea from Keynote, with a bit of liquidity added in by Bootstrap
@@ -18,7 +22,7 @@ For details, see below (kept in layouts/README.rdoc)
 1. account menu
 
 === Dynamic elements
-1. wrapped elements -- used for tags
+wrapped elements -- used for tags
 
 === Standard links
 1. List items go to the show/edit forms
@@ -26,25 +30,23 @@ For details, see below (kept in layouts/README.rdoc)
 1. Search pages go to add page (form in add mode)
 
 === Adding a field
-1.  fields in the new & other forms must match those in the corresponding specs
--- obvious but easily overlooked point
+fields in the new & other forms must match those in the corresponding specs; obvious but easily overlooked point
 
-== DRY
-1. share title between title & heading using a function
+=== To do
+share title between title & heading using a function
 
 === Models
 
 Models + Page Frames give most of the actual pages, if not all of them, extension of the use of 'resources' idea
 
 === Testing
+--
+nested lists don't seem to work correctly in rdoc, so keep at one level for now
+++
 1. title/heading
 1. main content
-1. appears when it should
-  1. comes up routed to
-  1. checks authorization -- signed in, specific user, must be admin
-1. does not appear when it shouldn't
-  1. necessary logical preconditions (i.e. parent exists) are met
-  1. checks authorization -- signed in, specific user, must be admin
+1. page comes up routed to
+1. page checks authorization -- signed in, specific user, must be admin
 1. has appropriate control-set
 1. has correct links out
 1. said links out actually go where they are supposed to 

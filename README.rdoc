@@ -27,32 +27,29 @@ Most important bit, after the objective, is the stories
 * Make best use of having an overall plan, keep loose but focused & energetic
 
 == Stages
-
 1. people -- started
 1. talks -- started
 1. relationships -- started as follower/followed
-1. posts
-1. notifications
-1. tweets
+1. posts -- current hot spot
+1. notifications -- generic layer, test with posts? rss?
+1. tweets -- per rails/ruby libraries
 1. tags -- useful for talk selection
-1. locations
-1. maps
-1. calendars
-1. circles
+1. locations -- virtual & physical
+1. maps -- via leaflet
+1. calendars -- via jQuery
+1. circles -- via d3
 1. attachments -- en passant I suspect, part of the images first strategy
-1. messages
-1. emails 
-1. mobile -- phonegap
+1. messages -- via node.js?
+1. emails -- via examples in rails books
+1. mobile -- phonegap, per their examples
 1. external testing, i.e. watir
 
 == Libraries
-
 1. Leaflet
 1. Bootstrap
 1. JQuery calendar tool of some kind
 
 == Quality checks
-
 1. Check for clarity of code
 1. Check for coverage by tests
 1. Check against best practices
@@ -60,6 +57,11 @@ Most important bit, after the objective, is the stories
 1. Fix README to conform to standards in Beautiful Ruby
 1. Check against references
 1. Use database checks
+
+== Buzzword compliance
+1. DRY -- do not repeat yourself
+1. TDD  -- test driven development
+1. YAGNI -- you ain't gonna need it
 
 == Bibliography
 
@@ -95,8 +97,6 @@ Most important bit, after the objective, is the stories
 
 :include:public/README.rdoc
 
-:include:spec/README.rdoc
-
 == Requisites & Deployment Instructions
 
 * Ruby version: 2.0.0
@@ -111,8 +111,8 @@ Most important bit, after the objective, is the stories
 * To run the test suite <tt>rspec spec</tt>
 * Services* (job queues, cache servers, search engines, etc.)
 * Deployment instructions:  
-  1. gic
-  2. xt-all
-  3. yt
-  4. gm branch
-  5. zt
+  1. gic -- git commit
+  2. xt-all -- run migrations, rebuild bundles, then test
+  3. yt -- test actual web pages
+  4. gm branch -- merge branch back to master
+  5. zt -- upload to heroku
