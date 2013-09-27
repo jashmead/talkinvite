@@ -74,7 +74,6 @@ describe PeopleController do
   end
 
   describe "POST create" do
-# failing next three tests; no idea why
     describe "with valid params" do
       it "creates a new Person" do
         expect {

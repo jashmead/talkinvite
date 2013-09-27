@@ -1,54 +1,13 @@
 == Testing Philosphy
 
+* TDD -- test driven design
+* DRY -- don't repeat yourself, but not to point of chafing :)
+* YAGNI -- you ain't gonna need it
+
 === Artillerist's approach
 
-want to talk about X
-1. key phrases
-1. recent event
-1. category, i.e. sports, fashion
-1. subject I've already talked about 
-1. like a previous talk
-1. part of an ongoing conversation
-1. associated with an organization (i.e. meetup), school
-1. associated witeh a specific location
-1. associated with a specific set of friends (or just one or two)
-1. trending on twitter, facebook, or other socials
--- response, search for talk, add if not present
+1. on -- before writing code
+1. over/under -- make sure negatives not hit
+1. impact -- make sure not just hit but correct
+1. fragmentation -- make sure links correct (how to test?)
 
-search for talk
--- by all the categories above
--- mark a set interesting, or add talk, or give up
-
-add talk
--- if not signed in, sign in
--- if no account, create & sign in
--- start the talk
-  -- summary
-  -- anything else about it, proposed time, location
-
-talk has been picked, if new, we need to:
-1. announce the talk
-1. pick a location (can be virtual)
-1. pick time
-
-talk has been proposed, but hasn't happened yet
-  -- negotiate if a problem or change desired
-  -- post comments, clarifications, & so on
-
-talk is happening
-  -- post status updates
-
-talk has happened
-  -- post comments
-  -- rate
-  -- save stream of information about the talk
-
-add comment (post)
-  can be change of status, time, location, subject, membership
-
-look at list of members of talk
-  -- invite someone to join
-  -- disinvite someone already present (if you are the organizer)
-  -- message someone directly
-  -- post to bb (virtual talk)
-  -- switch to facetime, airtime, skype or whatnot

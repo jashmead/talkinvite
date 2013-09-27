@@ -11,14 +11,106 @@ describe TalksController do
   # Talk. As you add validations to Talk, be sure to
   # adjust the attributes here as well.
 
+  # other code uses local variable 'person' rather than symbol ':person' -- what, if any, is the difference?
+
   let(:person) { FactoryGirl.create(:person) }
   let(:valid_attributes) { { "summary" => "MySummary", "person_id" => person.id  } }
+
+  let(:valid_session) { {} }  # what is the point of this?
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # TalksController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  # let(:valid_session) { {} }
 
   ## inspiring talk controller tests go here
+
+  ## index setup from http://rubydoc.info/gems/rspec-rails/frames
+  describe "GET #index" do
+    it "responds successfully with an HTTP 200 status code" do
+      get :index
+      expect(response).to be_success
+      expect(response.status).to eq(200)
+    end
+
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template("index")
+    end
+
+    it "loads all of the talks into @talks" do
+      # talk1, talk2 = Talk.create!( { summary: "Summary 1", person: person } ), Talk.create!( { summary: "Summary 2", person: person } )
+      talk1, talk2 = FactoryGirl.create( :talk, { person: person } ), FactoryGirl.create( :talk, { person: person } )
+      get :index
+
+      expect(assigns(:talks)).to match_array([talk1, talk2])
+    end
+  end
+
+  describe "GET show" do
+    it "assigns the requested talk as @talk" do
+      talk = Talk.create! valid_attributes
+      get :show, {:id => talk.to_param}
+      assigns(:talk).should eq(talk)
+    end
+  end
+
+=begin
+  ## this code works for the very troubled people_controllers_spec.rb, why not for talks?
+  ## could the RI be part of the problem?
+  describe "GET new" do
+    it "assigns a new talk as @talk" do
+      get :new
+      assigns(:talk).should be_a_new(Talk)
+    end
+  end
+=end
+
+  describe "GET edit" do
+    it "assigns the requested talk as @talk" do
+      talk = Talk.create! valid_attributes
+      get :edit, {:id => talk.to_param}
+      assigns(:talk).should eq(talk)
+    end
+  end
+
+=begin
+  describe "POST create" do
+    describe "with valid params" do
+      it "creates a new Talk" do
+        expect {
+          post :create, {:talk => valid_attributes}, valid_session
+        }.to change(Talk, :count).by(1)
+      end
+
+      it "assigns a newly created talk as @talk" do
+        post :create, {:talk => valid_attributes}, valid_session
+        assigns(:talk).should be_a(Talk)
+        assigns(:talk).should be_persisted
+      end
+
+      it "redirects to the created talk" do
+        post :create, {:talk => valid_attributes}, valid_session
+        response.should redirect_to(Talk.last)
+      end
+    end
+
+    describe "with invalid params" do
+      it "assigns a newly created but unsaved talk as @talk" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Talk.any_instance.stub(:save).and_return(false)
+        post :create, {:talk => { "summary" => "invalid value" }}, valid_session
+        assigns(:talk).should be_a_new(Talk)
+      end
+
+      it "re-renders the 'new' template" do
+        # Trigger the behavior that occurs when invalid params are submitted
+        Talk.any_instance.stub(:save).and_return(false)
+        post :create, {:talk => { "name" => "invalid value" }}, valid_session
+        response.should render_template("new")
+      end
+    end
+  end
+=end
 
 end

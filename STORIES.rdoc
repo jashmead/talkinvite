@@ -1,14 +1,17 @@
 == Stories
 
 organized by life cycle 
-  -- life cycle is implicit "story of a talk"
-  -- include a few squirrelly bits at the end
+1. life cycle is implicit "story of a talk"
+1. include a few squirrelly bits at the end, 
+bits which don't really fit into the lifecycle framework
 
 === Got Talk?
 
--- start point is 'splash'
-  -- splash has a phrase box (search/add)
-  -- plus a whole bunch of squares with hover links
+start point is 'talks/start'
+1. talks/start has a phrase box (search/add)
+1. plus a whole bunch of squares with hover links
+
+-- start point was 'splash', keep that as reference till ready to trash
 
 ==== Let's Talk about X
 
@@ -26,54 +29,56 @@ organized by life cycle
 1. personal event -- type key phrase
 1. trending -- tags on twitter, in google, so twitter search, web search
 
--- response, search for talk, add if not present
+response, search for talk, pick talk(s), add if not present
 
 ==== Search for Talks
+1. by all the categories above, many canned searches
+1. mark a set interesting, or add talk, or give up
+1. pick a talk functionality!*
 
--- by all the categories above, many canned searches
--- mark a set interesting, or add talk, or give up
-  -- pick a talk functionality!
+=== Pick Talk
+perhaps even several
+1. if not signed in, sign in
+1. if no account, create & sign in
 
 ==== Add Talk
--- if not signed in, sign in
--- if no account, create & sign in
--- start the talk
-  -- summary
-  -- anything else about it, proposed time, location
-  -- starts as talks/center
-  -- has lots of links
-  -- includes talk search
+1. if not signed in, sign in
+1. if no account, create & sign in
+1. start the talk
+  1. summary
+  1. anything else about it, proposed time, location
+  1. starts as talks/control
+  1. has lots of links
+  1. includes talk search
 
 ==== Check out topics
-  -- topics/command
-  -- sub set of tags
+1. topics/command
+1. sub set of tags
 
 ==== Send out invites
-  -- select set of postees
-    -- people search
-      -- by patterns
-      -- by rules
-  -- post or notify
-    -- post
-    -- notify
-      -- modalities: messaging (internal), email, twitter, facebook & other social media
+first, select set of postees, search for people by patterns or rules
+
+second, notify using:
+*  post
+*  messaging (internal)
+*  email
+*  twitter
+*  facebook
+*  other social media
 
 ==== Schedule talk
-  -- calendars/command
-  -- set defines
-  -- calendar controls shared by other time specific tables in set mode,
-    or as individual?
+1. calendars/command
+1. set defines
+1. calendar controls shared by other time specific tables in set mode, or as individual?
 
 ==== Check out venues
-  physical/virtual
-  -- locations/command
-  -- map
-  -- map controls shared by other location specific tables in set mode,
-    or as individual
+physical/virtual
+1. locations/command
+1. map
+1. map controls shared by other location specific tables in set mode, or as individual
 
 === Talk On!
-
--- start point is talks/center
+start point is talks/control
 
 ==== Let's Pivot
 talk has been proposed, but hasn't happened yet
@@ -84,86 +89,83 @@ talk has been proposed, but hasn't happened yet
 1. post comments, clarifications, & so on
 
 ==== Talk is happening
-  -- post status updates
+post status updates
 
 ==== Send/Receive Comments
-  can be change of status, time, location, subject, membership
+can be change of status, time, location, subject, membership
 
 ==== Send/Receive Messages
-  -- one on one
-  -- side-by-side message screens, two lists, staggered
+1. one on one
+1. side-by-side message screens, two lists, staggered
 
 ==== My fellow talkers
-  -- invite someone to join
-  -- to screen, with message
+1. invite someone to join, see above for initial invites
+1. to screen, with message
 
 ==== Time to move on
-  -- new physical or virtual venue
+new physical or virtual venue
 
 === Apres Talk
-
--- start point is talks/center
+start point is talks/control
 
 ==== timeline*
-  -- timeline of a talk
+timeline of a talk
 
 ==== talk has happened
-  -- post comments
-  -- rate
-  -- save stream of information about the talk
+1.  post comments
+1.  rate
+1.  save stream of information about the talk
 
 ==== You can never talk just once
-  -- fugue into an ongoing conversation
-  -- connect one talk to another
+1.  fugue into an ongoing conversation
+1.  connect one talk to another
 
 === Not just talk!*
 
--- start point is meta_talk*
+start point is talks/meta
 
-stats*
+talks/stats*
 
-rankings*
+talks/rankings*
 
-post a talk*
-  to web -- permalinks
-  to facebook, twitter, & other social -- notifications
+talks/sharing
+1. to web -- permalinks
+1. to facebook, twitter, & other social -- notifications
 
-wiki**
+static_pages/wiki
 
 === Let's Talk about Me!
 
--- start point is settings
+-- except for signin & signup, only shown if you are signed in; 
+signin & signup only shown if you are not signed in
 
-signup
+control -- where you go after signin, shows combo of settings & profile
+-- leads to your talks & related
+-- was static_pages/home, keep that as reference till ready to trash
 
-signin
+settings
 
-home -- where you go after signin, shows combo of settings & profile
-  -- leads to your talks & related
+profile -- public face, not settings,
+* shown to those who look for this user
+* shows link to settings if there is a match of user to user
+
+signup -- shown if not signed in
+
+signin -- shown if not signed in
 
 signout
 
-close account*
-
-settings -- edit form
-
-profile -- public face, not settings,
-  shown to those who look for this user
-  shows link to settings if there is a match of user to user
-
 reset password*
-  -- shown to those signing in (from signin screen)
-  -- option on settings
+1. shown to those signing in (from signin screen)
+1. option on settings
 
--- new account/signin if not signed in
+upgrades* -- applies to a specific account
 
--- signout/settings if signed in
-
--- settings leads to profile, close account
+close account* -- uses destroy method, may reduce to merely make inactive
 
 === Behind the Talk
 
--- start point? meta_site
+-- these are mostly under 'static_pages', tho that represents a slight conflation of categories
 
 about
 
@@ -175,17 +177,14 @@ faq
 
 privacy
 
-upgrades*
-
-credits*
+credits* -- will spin off to a model of its own
 
 === Admin
 
 start point is meta_admin, a menu style page
-
--- basically direct, low level access to tables
--- good for development of intermediary pages as well
--- all start points are of tables via index
+1. basically direct, low level access to tables
+1. good for development of intermediary pages as well
+1. all start points are of tables via index
 
 people
 
@@ -203,30 +202,34 @@ attachments
 
 world_building* -- new kinds of maps, as world of warcraft, game of thrones
 
--- don't really need maps, calendars, sessions, schema_migrations, circles, svgs, & other support tables
+don't really need maps, calendars, sessions, schema_migrations, circles, svgs, & other support tables
 
--- admins are always subscribers!
--- talkinvite is the default, anonymous identity
--- others are help, contact
+1. admins are always subscribers!
+1. talkinvite is the default, anonymous identity
+1. others are help, contact
+
+=== Ads
+* a way to monetize
+* turn off for subscribers
 
 === Tools
 
 attachments
 
 searches
-  web searches
-  site searches
-  personal searches
-  twitter & other social media searches
-  canned searches
-    'my' talks, people, locations, and so on
-    by 1st, 2nd, 3rd, ...
+1. web searches
+1. site searches
+1. personal searches
+1. twitter & other social media searches
+1. canned searches
+  1. 'my' talks, people, locations, and so on
+  1. by 1st, 2nd, 3rd, ...
 
-privacy tools
-  -- for subscribers only
+privacy tools -- permissions, notifications, ...
+-- for subscribers only
+-- included in upgrades
 
-=== Ads
-
--- a way to monetize
-
--- turn off for subscribers
+add to ApplicationController:
+* search 
+* control -- with reference to a specific record
+* command -- may have a specific record, but need not
