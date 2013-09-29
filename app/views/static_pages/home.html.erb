@@ -5,6 +5,12 @@
     more a 'private show' or a personal user control page
   title should be person.name, not 'Got Talk?'
   really should go with the views/people
+    -- tried moving it
+      -- fixed routes.rb and controllers (for static_pages & people), moved view itself,
+        -- didn't work, some tests didn't pass, not clear why
+          (which tests were those?)
+    -- starting with people/control & talks/control
+      -- cleaner approach in any case
 -->
 <% provide(:title, 'Home') %>
 <h1><%= yield :title %></h1>

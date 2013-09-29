@@ -46,17 +46,25 @@ describe PeopleController do
   ## also in charge of 'current_person' which is currently not working
   let(:valid_session) { {} }
 
-=begin
   ## this test is failing because the 'sign_in' function isn't 'sticky' enuf
+  ## no longer requiring a signin for index, not appropriate in our case
+=begin
   describe "GET index" do
     it "assigns all people as @people" do
       person = Person.create! valid_attributes
-      sign_in person  # seems to be working, but then takes no effect
+      # sign_in person  # seems to be working, but then takes no effect
       get :index
       assigns(:people).should eq([person])
     end
   end
 =end
+
+  ## search spec
+  describe "GET search" do
+    it "searches for all people with email talkinvite" do
+      ## how to setup 'q' for index?
+    end
+  end
 
   describe "GET show" do
     it "assigns the requested person as @person" do

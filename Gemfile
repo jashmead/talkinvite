@@ -80,3 +80,6 @@ gem 'rdoc'
 ##    # not working, not worth the trouble to sort out
 ##    gem 'RedCloth', :require => 'redcloth'
 ##  end
+
+## ransack not playing nicely with the tutorial
+## gem 'ransack'

@@ -233,3 +233,23 @@ add to ApplicationController:
 * search 
 * control -- with reference to a specific record
 * command -- may have a specific record, but need not
+
+== Possibilities
+
+* per person maps
+* my stats
+* expanding circles
+* star trek communicator type css effects
+* links to google hang outs & the like
+* maps & data type functionality
+
+== Open Issues
+
+* sign_in not working in people_controllers_spec.rb, see notes there
+
+-- deal with by getting better understanding of control flow (esp authentication)
+then look at again
+
+* unable to move home from views/static_pages to views/people, not clear why
+
+-- bypass by starting people/control

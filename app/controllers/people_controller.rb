@@ -8,19 +8,27 @@
 
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_person, only: [:edit, :update, :index, :destroy, :following, :followers]
+  ## removed index (& therefore search) from list of routes that require you to be signed in; 
+  ##    no this cause additional failures
+  ##    need deeper understanding before we can continue
+  ##    put :index back in for now
+  before_action :signed_in_person, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
   # GET /people
   # GET /people.json
   def index
-    ## test of this in app/controllers/people_controller_spec is failing, no idea why
     # @people = Person.all
-    logger.debug("ZZ: PeopleController.index: current_person: #{current_person}") #DDT
+    ## logger.debug("ZZ: PeopleController.index: current_person: #{current_person}") #DDT
+    ## logger.debug("ZZ: PeopleController.index: @people: #{@people.inspect}")#DDT
+    ## @people = Person.paginate(page: params[:page])
+    ## will paginate play nicely with ransack?
+    ## backing out 'ransack', too much weirdness
+    ## @q = Person.search(params[:q])
+    ## @people = @q.result(distinct: true).paginate(page: params[:page])
+    ## logger.debug("ZZ: PeopleController.index: @people: #{@people.inspect}")#DDT
     @people = Person.paginate(page: params[:page])
-    logger.debug("ZZ: PeopleController.index: @people: #{@people.inspect}")#DDT
-    @people
   end
 
   # GET /people/1
