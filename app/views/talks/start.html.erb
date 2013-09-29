@@ -42,9 +42,12 @@ en passant:
 
 that is pretty much it!
 -->
-<h1>Editing talk</h1>
+<% provide(:title, "Start page for TalkInvite") %>
+<% provide(:heading, "Got Talk?") %>
 
-<%= render 'form' %>
+<h1><%= yield(:heading) %></h1>
+
+Stuff to come.
 
 <%= link_to 'Show', @talk %> |
 <%= link_to 'Back', talks_path %>

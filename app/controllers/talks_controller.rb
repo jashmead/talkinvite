@@ -59,6 +59,12 @@ class TalksController < ApplicationController
     redirect_to root_url
   end
 
+  # route to start page
+  def start
+    ## logger.debug("ZZ: start called")
+    logger.debug("ZZ: TalksController.start: params: #{params.inspect}")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_talk

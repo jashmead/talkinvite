@@ -89,30 +89,11 @@ Talkinvite::Application.routes.draw do
   # talk pages
   #   build up using microposts as a model
   #   microposts only use create/destroy, but we see talks as first class objects in own right
-  resources :talks
-  resources :relationships, only: [:create, :destroy]
-
-  # /my_talks -- using user2talk
-
   ## add in users/name with instructions to locate id & then route to it
   ## do subscribe via a link from the header (as indicated); do unsubscribe from settings page
   ## to add '/people/search', do we need to do anything?
-  resources :people do
-    ## member will give paths of the form:  /people/1/following, /people/1/followers
-    ## actions are following, followers
-    ## paths are following_people_path(id), followers_people_path(id)
-    ##  i.e. people/1/following
-    member do
-      get :following, :followers
-    end
-    ## collection in place of member would give paths of the form:  
-    ##  /people/following, /people/followers, which in context are meaningless
-  end
 
-  ## Account pages:
-  # no edit, update, no index or show
-  # create (login) uses 'post', destroy (logout) uses 'delete', new (show login form) uses 'get'
-  resources :sessions, only: [:new, :create, :destroy]  
+  ## put most specific routes at the top:
 
   match [ '/settings', '/profile' ], to: 'people#edit', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
@@ -139,6 +120,35 @@ Talkinvite::Application.routes.draw do
   match '/splash', to: 'static_pages#splash', via: 'get'
   match '/gottalk', to: 'static_pages#splash', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
+
+  ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
+
+  resources :people do
+    ## member will give paths of the form:  /people/1/following, /people/1/followers
+    ## actions are following, followers
+    ## paths are following_people_path(id), followers_people_path(id)
+    ##  i.e. people/1/following
+    member do
+      get :following, :followers
+    end
+    ## collection in place of member would give paths of the form:  
+    ##  /people/following, /people/followers, which in context are meaningless
+  end
+
+  resources :talks do
+    collection do
+      get :start
+    end
+  end
+
+  resources :relationships, only: [:create, :destroy]
+
+  # /my_talks -- using user2talk
+
+  ## Account pages:
+  # no edit, update, no index or show
+  # create (login) uses 'post', destroy (logout) uses 'delete', new (show login form) uses 'get'
+  resources :sessions, only: [:new, :create, :destroy]  
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
