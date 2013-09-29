@@ -17,7 +17,9 @@ describe "talks/start" do
   describe "renders the start talk form" do
     before { visit "/talks/start" }  ## replace with a 'path', once we have worked that out
 
+    ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }
+
     it { should have_selector('h1', text: heading) }
 
   end

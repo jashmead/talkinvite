@@ -135,11 +135,13 @@ Talkinvite::Application.routes.draw do
     ##  /people/following, /people/followers, which in context are meaningless
   end
 
+  match '/start', to: 'talks#start', via: 'get'
+
   resources :talks do
     collection do
       get :start
     end
-  end
+    end
 
   resources :relationships, only: [:create, :destroy]
 
