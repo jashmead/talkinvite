@@ -28,7 +28,8 @@ class PeopleController < ApplicationController
     ## @q = Person.search(params[:q])
     ## @people = @q.result(distinct: true).paginate(page: params[:page])
     ## logger.debug("ZZ: PeopleController.index: @people: #{@people.inspect}")#DDT
-    @people = Person.paginate(page: params[:page])
+    logger.debug("ZZ: PeopleController.index: params: '#{params.inspect}'")
+    @people = Person.search(params[:search]).paginate(page: params[:page])
   end
 
   # GET /people/1
@@ -145,6 +146,15 @@ class PeopleController < ApplicationController
     render 'show_follow'
   end
 
+  def search
+  end
+
+  ## switch 'found' to a specialized form in a bit
+  def found
+    logger.debug("ZZ: PeopleController.found: params: #{params.inspect}")
+    return index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
@@ -171,6 +181,10 @@ class PeopleController < ApplicationController
 
     def admin_person
       redirect_to(root_url) unless current_person.admin?
+    end
+
+    def subscriber
+      redirect_to(root_url) unless current_person.sub? || current_person.admin?
     end
 
     ## expect we will have a def subscriber here at some point

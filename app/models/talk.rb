@@ -40,4 +40,10 @@ class Talk < ActiveRecord::Base
       person_id: person)
   end
 
+  def self.search(search_term)
+    return scoped unless search_term.present?
+    search_like = "%#{search_term}#"
+    where(['summary like ? or description like ?'], search_like, search_like)
+  end
+
 end

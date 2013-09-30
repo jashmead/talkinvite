@@ -131,8 +131,9 @@ Talkinvite::Application.routes.draw do
     member do
       get :following, :followers
     end
-    ## collection in place of member would give paths of the form:  
-    ##  /people/following, /people/followers, which in context are meaningless
+    collection do
+      get :search, :found
+    end
   end
 
   match '/start', to: 'talks#start', via: 'get'

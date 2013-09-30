@@ -32,6 +32,9 @@ class Person < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
+  ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
+  default_scope -> { order('created_at desc') }
+
   validates :name, presence: true, length: { maximum: 80 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -83,6 +86,13 @@ class Person < ActiveRecord::Base
     ## note there is an implicit 'self.' in front of the relationships
     ## logger.debug("ZZ: unfollow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
     relationships.find_by(followed_id: other_person.id).destroy!
+  end
+
+  def self.search(search_term)
+    return scoped unless search_term.present?
+    ## can force downcase for searches of email...
+    search_like = "%#{search_term}#"
+    where(['name like ? or email like ?'], search_like, search_like)
   end
 
   private

@@ -3,25 +3,18 @@
   -- switch to a straight search + index switch approach
     -- use hidden field tag to drive the switch
 -->
-<% provide(:heading, 'Got Talk?') %>
-<% provide(:title, 'Start page for TalkInvite') %>
-<!-- taken from 'ransack' documentation -->
-<h1><%= :heading %></h1>
+<% provide(:heading, 'Search for people') %>
+<% provide(:title, 'Search for people') %>
+<h1><%= yield :heading %></h1>
 
 <div class="row">
   <div class="span6 offset3">
 
-    <%= search_form_for(@q) do |f| %>
-      <%= render 'shared/error_messages', :object => f.object %>
-      <%= f.label :name_cont %>
-      <%= f.text_field :name_cont %>
-      <%= f.label :email_start %>
-      <%= f.text_field :email_start %>
-      <%= f.submit "Search", class: "btn btn-large btn-primary" %>
+    <%= form_tag("/people/found", method: "get") do %>
+      <%= label_tag(:q, "Search for:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Search") %>
     <% end %>
-
-    <%= gravatar_for @person %>
-    <a href="http://gravatar.com/emails" target="_blank" >change</a>
 
   </div>
 </div>
