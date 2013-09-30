@@ -280,12 +280,4 @@ describe "People pages" do
     end
   end
 
-  describe "people/search" do
-
-    it { should have_title('Search for people') }
-
-    # add people, then fill in search, click 'Search', then verify we have the correct count
-
-  end
-
 end

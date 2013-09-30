@@ -147,12 +147,36 @@ class PeopleController < ApplicationController
   end
 
   def search
+    logger.debug("ZZ: PeopleController.search")
   end
 
   ## switch 'found' to a specialized form in a bit
   def found
     logger.debug("ZZ: PeopleController.found: params: #{params.inspect}")
-    return index
+    q = params['q']
+    q.strip!
+    ## what is trim in ruby?
+    if ! q || q == ''
+      ## how to set the errors?
+      return search
+    end
+      
+    q_like = "%#{q}%"
+    ## where just returns an array of Person?
+
+    @people = Person.where( "name like ? or email like ?", q_like, q_like )
+    if ! @people
+      return search
+    end
+
+    if @people.size == 0
+      ## how to set the errors?
+      return search
+    end
+      
+    ## add in a 'paginate'?
+    logger.debug("ZZ: PeopleController.found: @people: #{@people.inspect}")
+    ## render found ## apparently 'render found' creates an infinite stack; why?
   end
 
   private

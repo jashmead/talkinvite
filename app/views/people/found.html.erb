@@ -1,0 +1,16 @@
+<% provide(:title, 'Found people') %>
+<h1><%= yield :title %></h1>
+
+<!-- will 'render @people' work? -->
+<ul class="people">
+  <% @people.each do |person| %>
+  <li>
+    <%= gravatar_for person, size: 52 %>
+    <%= link_to person.name, person %>
+  </li>
+  <% end %>
+</ul>
+
+<br>
+
+<%= link_to 'New Person', new_person_path %>
