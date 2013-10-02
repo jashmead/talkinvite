@@ -1,5 +1,5 @@
 ## TBD:
-##  get splash, about, contact up
+##  get start, about, contact up
 
 # routes.rb functions as a de facto map of the system
 
@@ -109,7 +109,6 @@ Talkinvite::Application.routes.draw do
   get "static_pages/help"
   get "static_pages/menu"
   get "static_pages/privacy"
-  get "static_pages/splash"
   get "static_pages/home"
 
   match '/about', to: 'static_pages#about', via: 'get'
@@ -118,8 +117,7 @@ Talkinvite::Application.routes.draw do
   match '/help', to: 'static_pages#help', via: 'get'
   match '/menu', to: 'static_pages#menu', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
-  match '/splash', to: 'static_pages#splash', via: 'get'
-  match '/gottalk', to: 'static_pages#splash', via: 'get'
+  match '/gottalk', to: 'talks#start', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
 
   ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
@@ -211,6 +209,7 @@ Talkinvite::Application.routes.draw do
 
   ## have root go to splash if not signed in, home if signed in? or just leave home up on splash page?
   ## shift to 'start' when start is ready
-  root to: "static_pages#home"
+  # root to: "static_pages#home"
+  root to: "talks#start"
 
 end

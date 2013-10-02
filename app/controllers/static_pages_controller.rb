@@ -24,7 +24,4 @@ class StaticPagesController < ApplicationController
   def privacy
   end
 
-  def splash
-
-  end
 end

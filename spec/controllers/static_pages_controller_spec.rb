@@ -51,11 +51,4 @@ describe StaticPagesController do
     end
   end
 
-  describe "GET 'splash'" do
-    it "returns http success" do
-      get 'splash'
-      response.should be_success
-    end
-  end
-
 end

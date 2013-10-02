@@ -37,7 +37,7 @@ module SessionsHelper
   end
 
   def sign_in(person)
-    ## logger.debug("ZZ: SessionsHelper.sign_in: person: #{person.inspect}") #DDT
+    logger.debug("ZZ: SessionsHelper.sign_in: person: #{person.inspect}") #DDT
 
     remember_token = Person.new_remember_token
 

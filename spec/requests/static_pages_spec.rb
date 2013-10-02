@@ -80,7 +80,7 @@ describe "Static Pages" do
         FactoryGirl.create(:talk, person: person, summary: "Lorem ipsum")
         FactoryGirl.create(:talk, person: person, summary: "Dolor sit amet")
         sign_in person
-        visit root_path # home page
+        visit home_path # home page
       end
 
       it "should render the person's feed" do
@@ -98,7 +98,7 @@ describe "Static Pages" do
         FactoryGirl.create(:talk, person: person, summary: "Lorem Ipsum")   # summary must be at least 6 characters
         FactoryGirl.create(:talk, person: person, summary: "Dolor sit amet")
         sign_in person
-        visit root_path
+        visit home_path
       end
 
       it "should render the person's feed" do
@@ -111,7 +111,7 @@ describe "Static Pages" do
         let(:other_person) { FactoryGirl.create(:person) }
         before do
           other_person.follow!(person)
-          visit root_path
+          visit home_path
         end
 
         it { should have_link("0 following", href: following_person_path(person)) }
@@ -120,15 +120,6 @@ describe "Static Pages" do
   
     end
 
-  end
-
-  describe "Splash page" do
-    before { visit static_pages_splash_path }
-
-    let(:page_title) { 'Got Talk?' }
-    let(:heading) { page_title }
-
-    it_should_behave_like('all static pages')
   end
 
 end
