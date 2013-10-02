@@ -133,11 +133,14 @@ Talkinvite::Application.routes.draw do
       get :following, :followers
     end
     collection do
-      get :search, :found
+      get :search, :found, :recent, :nearby, :my_talks
     end
   end
 
   match '/start', to: 'talks#start', via: 'get'
+  match '/recent', to: 'talks#recent', via: 'get'
+  match '/nearby', to: 'talks#nearby', via: 'get'
+  match '/my_talks', to: 'talks#my_talks', via: 'get'
 
   resources :talks do
     collection do

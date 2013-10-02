@@ -8,7 +8,7 @@ describe "search" do
   ## DRY model searches here, once we branch out to talks & the rest
   ## can set a few variables here to help out the DRY process
 
-  describe "search/people" do
+  describe "people" do
 
     ## let has to go here & not in a 'before' group? apparently so
     let(:person) { FactoryGirl.create(:person) }
@@ -81,10 +81,12 @@ describe "search" do
   end
 
   ## there are probably some DRY opportunities here, especially once we add 'start' to the mix
-  describe "search/talks" do
+  describe "talks" do
 
     ## let has to go here & not in a 'before' group? apparently so
     let(:talk) { FactoryGirl.create(:talk) } 
+
+    # how to loop thru multiple possible visit paths, i.e. search_talks_path and start_talks_path
 
     describe "simple search form" do
 

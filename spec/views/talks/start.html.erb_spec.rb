@@ -19,14 +19,24 @@ describe "talks/start" do
 
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }
-
     it { should have_selector('h1', text: heading) }
 
-    ## is 'talk_search' correct?
-    ## is value => '' correct?
-    ## it { should have_field "talk_search", :type => :search, :value => '' }
-
     it { should have_button 'Search' }
+
+    [ 'Nearby', 'Recent' ].each do |tag| 
+      it { should have_link tag }
+    end
+
+=begin
+    ## how to get sign_in to work?
+    describe "if logged in, show 'My Talks'" do
+      
+      before { visit "/talks/start" }
+      
+      it { should have_link 'My Talks' }
+      
+    end
+=end
 
   end
 end

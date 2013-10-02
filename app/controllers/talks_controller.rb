@@ -1,6 +1,6 @@
 class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy]
+  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
   before_action :correct_person, only: :destroy
 
   # GET /talks
@@ -60,12 +60,12 @@ class TalksController < ApplicationController
   end
 
   def search
-    logger.debug("CC: TalksController.search")
+    ## logger.debug("CC: TalksController.search")
   end
 
   # 'start' is a simple search + a whole bunch of canned options, mostly searches
   def start
-    logger.debug("CC: TalksController.start")
+    ## logger.debug("CC: TalksController.start")
   end
 
   def found
@@ -88,6 +88,18 @@ class TalksController < ApplicationController
       flash.now[:success] = "Found " + @talks.size.to_s + " matching talks."
     end
     @talks = @talks.paginate(page: params[:page])
+  end
+
+  def recent
+    found
+  end
+
+  def nearby
+    found
+  end
+
+  def my_talks
+    current_person.talks.paginate(page: params[:page])
   end
 
   private

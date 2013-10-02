@@ -1,60 +1,36 @@
-<!--
-do the start page
-
-app/views/talks/start
-
-no config/routes.rb -- using index
-
-app/controllers/talks#index
-
-app/models/talk#search
-
-flow:
-  start's partial routes back to itself on error, but to index on sucess
-  each index has a show
-
-spec/views/talks_controller_spec.rb
-  -- verify start title
-  -- verify partial present
-  -- single good:
-    put in record
-    put in tag/name
-    click
-    get one record back, the tagged on
-    same trill tag/description
-  -- single, no find
-    -- put in record
-    -- put in different tag
-    -- verify search failed
-  -- single, no tag
-    -- verify same page
-    -- verify error message
-  -- single, multiple tags
-    -- one recrod with one
-    -- one record with another
-    -- one record with both
-    -- one recrfd with neither
-    -- verify three
-
-en passant:
-  fix up titling for the various pages
-  setup for searches to come
-
-that is pretty much it!
--->
-<% provide(:title, "Start page for TalkInvite") %>
-<% provide(:heading, "Got Talk?") %>
-
-<h1><%= yield(:heading) %></h1>
+<!-- cloned from talks/search -->
+<% provide(:heading, 'Got Talk?') %>
+<% provide(:title, 'Start page for TalkInvite') %>
+<h1><%= yield :heading %></h1>
 
 <div class="row">
   <div class="span6 offset3">
 
     <%= form_tag("/talks/found", method: "get") do %>
-      <%= label_tag(:q, "Search for:") %>
-      <%= text_field_tag(:q) %>
+      <%= label_tag(:search_q, "Search for:") %>
+      <%= search_field(:search, :q) %>
+      <!-- get submit_tag to pull right -->
       <%= submit_tag("Search") %>
     <% end %>
 
+  </div>
+  <div class=span3 offset0">
+<%
+  static_links = {
+    'Recent' => recent_path,
+    'Nearby' => nearby_path
+  }
+  if current_person 
+    static_links.merge!( {
+      'My Talks' => my_talks_path
+    })
+  end
+  static_links.merge!( {
+    'Add Talk' => new_talk_path
+  })
+%>
+<% static_links.each do |name, path| %>
+<li><%= link_to name, path %></li>
+<% end %>
   </div>
 </div>
