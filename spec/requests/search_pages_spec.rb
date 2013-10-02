@@ -14,7 +14,7 @@ describe "search" do
 
         before do
           visit search_people_path
-          fill_in "q",    with: person.email
+          fill_in "search_q",    with: person.email
           click_button "Search"
         end
 

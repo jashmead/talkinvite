@@ -17,6 +17,8 @@
 *.bak
 *.out
 *.lst
+?
+[^a-zA-Z]?
 
 # Ignore api documentation
 /doc/api

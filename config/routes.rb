@@ -140,9 +140,9 @@ Talkinvite::Application.routes.draw do
 
   resources :talks do
     collection do
-      get :start
+      get :start, :search, :found
     end
-    end
+  end
 
   resources :relationships, only: [:create, :destroy]
 

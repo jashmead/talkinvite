@@ -7,6 +7,7 @@
 # 1.  admin -- boolean, administrator, includes talkinvite
 # 1.  sub -- boolean, subscriber, does not include anonymous
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
+# 1.  password, password_confirmation, password_digest
 # 
 # == Relationships
 # 1. talks -- child
@@ -23,17 +24,20 @@ class Person < ActiveRecord::Base
   ## note that using 'has_many :followeds, through :relationships' would have worked automagically
   has_many :followed_people, through: :relationships, source: :followed, dependent: :destroy
 
-  has_many :reverse_relationships, foreign_key: "followed_id",
-                                   class_name:  "Relationship",
-                                   dependent:   :destroy
+  has_many :reverse_relationships, 
+    foreign_key: "followed_id",
+    class_name:  "Relationship",
+    dependent:   :destroy
+
   ## 'source' is optional, since followers will automagically give follower_id as the key
   has_many :followers, through: :reverse_relationships, source: :follower
 
   before_save { self.email = email.downcase }
+
   before_create :create_remember_token
 
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
-  default_scope -> { order('created_at desc') }
+  default_scope -> { order('people.created_at desc') }
 
   validates :name, presence: true, length: { maximum: 80 }
 
@@ -49,10 +53,10 @@ class Person < ActiveRecord::Base
 
   # there is a problem with find_by(:remember_token, remember_token); not clear why...
   def find_by_remember_token( encrypted_remember_token ) 
-  ##  logger.debug("Person.find_by_remember_token: encrypted_remember_token: %{encrypted_remember_token}") #DDT
-
+    ##  logger.debug("Person.find_by_remember_token: encrypted_remember_token: %{encrypted_remember_token}") #DDT
     person = Person.where(remember_token: encrypted_remember_token)
-  ##  logger.debug("Person.find_by_remember_token:  person: #{person}") #DDT
+
+    ##  logger.debug("Person.find_by_remember_token:  person: #{person}") #DDT
     person #to make sure person is returned
   end
 
@@ -88,11 +92,11 @@ class Person < ActiveRecord::Base
     relationships.find_by(followed_id: other_person.id).destroy!
   end
 
-  def self.search(search_term)
-    return scoped unless search_term.present?
-    ## can force downcase for searches of email...
-    search_like = "%#{search_term}#"
-    where(['name like ? or email like ?'], search_like, search_like)
+  def self.search(q)
+    return Person.all unless q.present?
+    ## could force downcase for searches of email...
+    q_like = "%#{q}%"
+    where("name like ? or email like ?", q_like, q_like)
   end
 
   private

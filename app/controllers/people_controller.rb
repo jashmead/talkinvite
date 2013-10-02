@@ -20,15 +20,15 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     # @people = Person.all
-    ## logger.debug("ZZ: PeopleController.index: current_person: #{current_person}") #DDT
-    ## logger.debug("ZZ: PeopleController.index: @people: #{@people.inspect}")#DDT
+    ## logger.debug("CC: PeopleController.index: current_person: #{current_person}") #DDT
+    ## logger.debug("CC: PeopleController.index: @people: #{@people.inspect}")#DDT
     ## @people = Person.paginate(page: params[:page])
     ## will paginate play nicely with ransack?
     ## backing out 'ransack', too much weirdness
     ## @q = Person.search(params[:q])
     ## @people = @q.result(distinct: true).paginate(page: params[:page])
-    ## logger.debug("ZZ: PeopleController.index: @people: #{@people.inspect}")#DDT
-    logger.debug("ZZ: PeopleController.index: params: '#{params.inspect}'")
+    ## logger.debug("CC: PeopleController.index: @people: #{@people.inspect}")#DDT
+    logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
     @people = Person.search(params[:search]).paginate(page: params[:page])
   end
 
@@ -147,36 +147,33 @@ class PeopleController < ApplicationController
   end
 
   def search
-    logger.debug("ZZ: PeopleController.search")
+    logger.debug("CC: PeopleController.search")
   end
 
   ## switch 'found' to a specialized form in a bit
   def found
-    logger.debug("ZZ: PeopleController.found: params: #{params.inspect}")
-    q = params['q']
-    q.strip!
-    ## what is trim in ruby?
+    logger.debug("CC: PeopleController.found: params: #{params.inspect}")
+
+    q = params['search']['q']
+    q.strip! if q
     if ! q || q == ''
-      ## how to set the errors?
-      return search
+      flash.now[:error] = "Please specify something to search for"
+      render :search and return
     end
       
-    q_like = "%#{q}%"
-    ## where just returns an array of Person?
-
-    @people = Person.where( "name like ? or email like ?", q_like, q_like )
-    if ! @people
-      return search
+    @people = Person.search(q)
+    if ! @people || @people.size == 0
+      logger.debug("CC: PeopleController.found: no people found? #{@people.inspect}")
+      flash.now[:error] = "No people found for '#{q}'.  Please try again."
+      # redirect_to :back # this will kill the flash message, so is no good
+      render :search and return
     end
 
-    if @people.size == 0
-      ## how to set the errors?
-      return search
-    end
-      
     ## add in a 'paginate'?
-    logger.debug("ZZ: PeopleController.found: @people: #{@people.inspect}")
-    ## render found ## apparently 'render found' creates an infinite stack; why?
+    ## render found ## apparently 'render found' creates an infinite stack; why? try: render 'found' instead?
+    # logger.debug("CC: PeopleController.found: @people: #{@people.inspect}")
+    # @people
+    @people = @people.paginate(page: params[:page])
   end
 
   private

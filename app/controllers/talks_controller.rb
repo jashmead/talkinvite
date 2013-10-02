@@ -65,6 +65,25 @@ class TalksController < ApplicationController
     logger.debug("ZZ: TalksController.start: params: #{params.inspect}")
   end
 
+  ## can DRY 'found' using pluralize & related
+  def found
+    q = params['search']['q']
+    q.strip! if q
+    if ! q || q == ''
+      ## how to set the errors?
+      flash.now[:error] = 'Please specify something to look for'
+      return 'search'
+    end
+      
+    @talks = Talk.search(q)
+    if ! @talks || @talks.size == 0
+      flash.now[:error] = "No talks found for '#{q}'.  Please try again."
+      return 'search'
+    end
+
+    @talks = @talks.paginate(page: params[:page])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_talk

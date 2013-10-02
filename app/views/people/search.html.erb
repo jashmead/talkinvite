@@ -11,8 +11,8 @@
   <div class="span6 offset3">
 
     <%= form_tag("/people/found", method: "get") do %>
-      <%= label_tag(:q, "Search for:") %>
-      <%= text_field_tag(:q) %>
+      <%= label_tag(:search_q, "Search for:") %>
+      <%= search_field(:search, :q) %>
       <%= submit_tag("Search") %>
     <% end %>
 

@@ -22,7 +22,7 @@ class Talk < ActiveRecord::Base
   belongs_to :person
 
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
-  default_scope -> { order('created_at desc') }
+  default_scope -> { order('talks.created_at desc') }
 
   validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
   validates :person_id, presence: true
@@ -36,14 +36,14 @@ class Talk < ActiveRecord::Base
     ## followed_person_ids = person.followed_person_ids
     followed_person_ids = "select followed_id from relationships where follower_id = :person_id"
     ## default context for where is 'talks'
-    where( "person_id in (#{followed_person_ids}) or person_id = :person_id",
-      person_id: person)
+    where( "person_id in (#{followed_person_ids}) or person_id = :person_id", person_id: person)
   end
 
-  def self.search(search_term)
-    return scoped unless search_term.present?
-    search_like = "%#{search_term}#"
-    where(['summary like ? or description like ?'], search_like, search_like)
+  def self.search(q)
+    ## is 'scoped' a key word in ruby-on-rails?  looks like...
+    return Talk.all unless q.present?
+    q_like = "%#{q}%"
+    where(["summary like ? or description like ?"], q_like, q_like)
   end
 
 end
