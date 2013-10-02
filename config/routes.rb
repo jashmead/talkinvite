@@ -95,7 +95,8 @@ Talkinvite::Application.routes.draw do
 
   ## put most specific routes at the top:
 
-  match [ '/settings', '/profile' ], to: 'people#edit', via: 'get'
+  match '/settings', to: 'people#edit', via: 'get'
+  match '/profile', to: 'people#show', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
   
   match '/signin',  to: 'sessions#new',         via: 'get'

@@ -27,10 +27,10 @@ Most important bit, after the objective, is the stories
 * Make best use of having an overall plan, keep loose but focused & energetic
 
 == Stages
-1. people -- started
-1. talks -- started
-1. relationships -- started as follower/followed
-1. posts -- current hot spot
+1. people -- started, search now up, should recheck usual CRUD & the account pages (signin, settings, & so on)
+1. talks -- started, current hot spot is 'start'
+1. relationships -- started as follower/followed, monitor as work progresses
+1. posts -- next hot spot, once 'start' is working
 1. notifications -- generic layer, test with posts? rss?
 1. tweets -- per rails/ruby libraries
 1. tags -- useful for talk selection
