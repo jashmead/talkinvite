@@ -15,3 +15,16 @@ describe "people/show" do
     rendered.should match(/Email/)
   end
 end
+
+## looking for person #0 is triggering an error before we can trap it
+##  resolve this, then turn this test back on
+=begin
+describe "people/noshow" do
+  before do
+    visit '/people/0'
+  end
+
+  it "on noshow, switch to 'search' page" do
+  end
+end
+=end

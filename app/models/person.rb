@@ -97,6 +97,7 @@ class Person < ActiveRecord::Base
     return Person.all unless q.present?
     ## could force downcase for searches of email...
     q_like = "%#{q}%"
+    # where("name like :q or email like :q", { q: q }) ## tried this, it failed (looks as if it should have work
     where("name like ? or email like ?", q_like, q_like)
   end
 

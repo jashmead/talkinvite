@@ -35,7 +35,13 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
-    @person = Person.find(params[:id])
+    # don't need to look for person here, because done in 'before_action' callback by set_person
+    # @person = Person.find(params[:id])
+    if ! @person 
+      logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
+      flash.now[:alert] = "There isn't any person# " + :id.to_s
+      render 'search' and return
+    end
     @talks = @person.talks.paginate(page: params[:page])
   ##  logger.debug("PeopleController#show: params[:page]: #{params[:page].inspect}")#DDT
   ##  logger.debug("PeopleController#show: @talks: #{@talks.inspect}") #DDT
@@ -181,6 +187,7 @@ class PeopleController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
+      ## ActiveRecord will raise an exception if the record is not found
       @person = Person.find(params[:id])
     end
 
