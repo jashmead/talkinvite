@@ -82,6 +82,11 @@ class TalksController < ApplicationController
       render :search and return
     end
 
+    if @talks.size == 1
+      flash.now[:success] = "Found one matching talk."
+    else 
+      flash.now[:success] = "Found " + @talks.size.to_s + " matching talks."
+    end
     @talks = @talks.paginate(page: params[:page])
   end
 

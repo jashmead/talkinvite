@@ -15,19 +15,14 @@ describe "talks/search" do
   let(:heading) { 'Search for talks' } # can't use :heading here?
 
   describe "renders the search talk form" do
-    before { visit "/people/talks" }  ## replace with a 'path', once we have worked that out
+    before { visit "/talks/search" }  ## replace with a 'path', once we have worked that out
 
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }
 
     it { should have_selector('h1', text: heading) }
 
-    ## is 'person_search' correct?
-    ## is value => '' correct?
-    ## it { should have_field "person_search", :type => :search, :value => '' }
-
     it { should have_button 'Search' }
-
   end
 
 end

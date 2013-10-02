@@ -92,6 +92,7 @@ class Person < ActiveRecord::Base
     relationships.find_by(followed_id: other_person.id).destroy!
   end
 
+  # default & simplest search
   def self.search(q)
     ## apparently "scoped" has been deprecated; why?
     return Person.all unless q.present?

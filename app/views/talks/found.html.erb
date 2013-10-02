@@ -1,0 +1,16 @@
+<!-- cloned from people/found.html.erb -->
+<!-- without the 'as:', the talk variablae does not show up inside 'talk_found' -->
+
+<% provide(:title, 'Talks') %>
+
+<h1><%= yield :title %></h1>
+
+<%= will_paginate %>
+<ul class="talks">
+  <%= render partial: 'talk_found', collection: @talks, as: :talk %>
+</ul>
+<%= will_paginate %>
+
+<br>
+
+<%= link_to 'Start Talk', new_talk_path %>

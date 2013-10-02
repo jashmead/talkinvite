@@ -176,10 +176,11 @@ class PeopleController < ApplicationController
     end
 
     ## render found ## apparently 'render found' creates an infinite stack; why? try: render 'found' instead?
+    ## 'pluralize' not available in controller-space
     if @people.size == 1
-      flash.now[:success] = "Found one matching person"
+      flash.now[:success] = "Found one matching person."
     else 
-      flash.now[:success] = "Found " + @people.size.to_s + " matching people"
+      flash.now[:success] = "Found " + @people.size.to_s + " matching people."
     end
     @people = @people.paginate(page: params[:page])
   end

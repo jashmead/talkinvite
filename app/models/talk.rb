@@ -39,11 +39,11 @@ class Talk < ActiveRecord::Base
     where( "person_id in (#{followed_person_ids}) or person_id = :person_id", person_id: person)
   end
 
-  # search appears specific to the model being searched
+  # in general, search is model specific
   def self.search(q)
     return Talk.all unless q.present?
     q_like = "%#{q}%"
-    where(["summary like ? or description like ?"], q_like, q_like)
+    where("summary like ? or description like ?", q_like, q_like)
   end
 
 end
