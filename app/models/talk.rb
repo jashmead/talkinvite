@@ -39,8 +39,8 @@ class Talk < ActiveRecord::Base
     where( "person_id in (#{followed_person_ids}) or person_id = :person_id", person_id: person)
   end
 
+  # search appears specific to the model being searched
   def self.search(q)
-    ## is 'scoped' a key word in ruby-on-rails?  looks like...
     return Talk.all unless q.present?
     q_like = "%#{q}%"
     where(["summary like ? or description like ?"], q_like, q_like)

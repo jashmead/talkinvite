@@ -93,6 +93,7 @@ class Person < ActiveRecord::Base
   end
 
   def self.search(q)
+    ## apparently "scoped" has been deprecated; why?
     return Person.all unless q.present?
     ## could force downcase for searches of email...
     q_like = "%#{q}%"

@@ -147,32 +147,34 @@ class PeopleController < ApplicationController
   end
 
   def search
-    logger.debug("CC: PeopleController.search")
+    ## logger.debug("CC: PeopleController.search")
   end
 
-  ## switch 'found' to a specialized form in a bit
+  ## may be able to DRY found using pluralize and related tools
+  ## can we put shared code in ./concerns?
   def found
     logger.debug("CC: PeopleController.found: params: #{params.inspect}")
 
     q = params['search']['q']
     q.strip! if q
     if ! q || q == ''
-      flash.now[:error] = "Please specify something to search for"
+      flash.now[:error] = "Please specify something to search for."
       render :search and return
     end
       
     @people = Person.search(q)
     if ! @people || @people.size == 0
-      logger.debug("CC: PeopleController.found: no people found? #{@people.inspect}")
-      flash.now[:error] = "No people found for '#{q}'.  Please try again."
+      flash.now[:error] = "No matching people found for search '#{q}'.  Please try again."
       # redirect_to :back # this will kill the flash message, so is no good
       render :search and return
     end
 
-    ## add in a 'paginate'?
     ## render found ## apparently 'render found' creates an infinite stack; why? try: render 'found' instead?
-    # logger.debug("CC: PeopleController.found: @people: #{@people.inspect}")
-    # @people
+    if @people.size == 1
+      flash.now[:success] = "Found one matching person"
+    else 
+      flash.now[:success] = "Found " + @people.size.to_s + " matching people"
+    end
     @people = @people.paginate(page: params[:page])
   end
 

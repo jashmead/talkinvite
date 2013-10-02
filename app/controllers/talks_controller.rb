@@ -59,26 +59,27 @@ class TalksController < ApplicationController
     redirect_to root_url
   end
 
-  # route to start page
-  def start
-    ## logger.debug("ZZ: start called")
-    logger.debug("ZZ: TalksController.start: params: #{params.inspect}")
+  def search
+    logger.debug("CC: TalksController.search")
   end
 
-  ## can DRY 'found' using pluralize & related
+  # 'start' is a simple search + a whole bunch of canned options, mostly searches
+  def start
+    logger.debug("CC: TalksController.start")
+  end
+
   def found
     q = params['search']['q']
     q.strip! if q
     if ! q || q == ''
-      ## how to set the errors?
       flash.now[:error] = 'Please specify something to look for'
-      return 'search'
+      render :search and return
     end
       
     @talks = Talk.search(q)
     if ! @talks || @talks.size == 0
-      flash.now[:error] = "No talks found for '#{q}'.  Please try again."
-      return 'search'
+      flash.now[:alert] = "No talks found for '#{q}'.  Please try again."
+      render :search and return
     end
 
     @talks = @talks.paginate(page: params[:page])
