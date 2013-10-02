@@ -22,7 +22,9 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  # alternative to transactions is database_cleaner
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -40,5 +42,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  # already including Capybara::DSL -- good!
   config.include Capybara::DSL
 end

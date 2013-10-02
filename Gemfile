@@ -22,6 +22,7 @@ gem 'bootstrap-sass', '>=2.1'
 group :development, :test do
   gem 'selenium-webdriver'
   gem 'capybara', '>= 2.0.0'
+  gem 'launchy'
 end
 
 # keep factory girl in development for testing at the console

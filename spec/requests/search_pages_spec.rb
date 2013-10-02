@@ -25,6 +25,7 @@ describe "search" do
         before do
           ## fill_in has to be in 'before' section?
           fill_in "search_q",    with: "ZZTop"
+          # save_and_open_page # courtesy of launchy; opens current page; sans formatting, however
           click_button "Search"
         end
 
