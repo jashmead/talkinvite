@@ -41,12 +41,13 @@ class TalksController < ApplicationController
   ## what is correct handling of update of current talk? -- use logger.debug to find
   def update
     ## the format stuff is likely to fail
+    ## format stuff seems to work here but not in 'people'
     respond_to do |format|
       if @talk.update(talk_params)
         format.html { redirect_to @talk, notice: 'Talk was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: :edit }
         format.json { render json: @talk.errors, status: :unprocessable_entity }
       end
     end

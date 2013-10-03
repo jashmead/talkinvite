@@ -40,7 +40,7 @@ class PeopleController < ApplicationController
     if ! @person 
       logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
       flash.now[:alert] = "There isn't any person# " + :id.to_s
-      render 'search' and return
+      render :search and return
     end
     @talks = @person.talks.paginate(page: params[:page])
   ##  logger.debug("PeopleController#show: params[:page]: #{params[:page].inspect}")#DDT
@@ -83,7 +83,7 @@ class PeopleController < ApplicationController
       flash[:success] = "Welcome to Talk Invite!"
       redirect_to @person
     else
-      render 'new'
+      render :new
     end
 
   end
@@ -115,7 +115,7 @@ class PeopleController < ApplicationController
       redirect_to @person
     else
       ## logger.debug("QQ: PeopleController.update: failure");
-      render 'edit'
+      render :edit
     end
   end
 
@@ -149,7 +149,7 @@ class PeopleController < ApplicationController
     @person = person
     @people = people.paginate(page: params[:page])
 
-    render 'show_follow'
+    render :show_follow
   end
 
   def search
