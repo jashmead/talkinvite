@@ -1,3 +1,39 @@
 // Place all the styles related to the Talks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";  // needed to include '$grayLighter' & anything else bootstappy I expect
+
+/* talks */
+
+.talks {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+
+  // we may want a 'nested' gravatar style here, if using gravatars inside talk lists
+
+}
+
+.summary {
+  display: block;
+}
+
+.timestamp {
+  color: $grayLight;
+}
+
+/* 
+  how does aside play with the span4 bit from bootstrap?
+  -- textarea is to help out the talks
+*/
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}

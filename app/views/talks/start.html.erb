@@ -14,7 +14,6 @@
     <% end %>
 
   </div>
-  <div class=span3 offset0">
 <%
   static_links = {
     'Recent' => recent_path,
@@ -29,8 +28,10 @@
     'Start Talk' => new_talk_path
   })
 %>
-<% static_links.each do |name, path| %>
-<li><%= link_to name, path %></li>
-<% end %>
+  <div class="span6 offset3">
+  <% static_links.each do |name, path| %>
+    <%= link_to name, path %>
+    <br/>
+  <% end %>
   </div>
 </div>

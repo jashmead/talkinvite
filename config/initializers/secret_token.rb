@@ -9,4 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
+
+## per codeclimate security series issue #1, baking these tokens into the code creates risk
+##  to mitigate, they suggest use of 'foreman' gem plus .env (with .env included in .gitignore)
+##  problem:  heroku is using git, not .env, so may not work on heroku
+##  response:  mitigate when ready to test against heroku
 Talkinvite::Application.config.secret_key_base = '73e99ec03a3bc7ece0097ef55f4ccafefb6d533c719fd54a971e580cd447e8846e4029fa86d6585e8dfa8394eac98fc6b727bfb0459fbfcf443f8b6f0ba931e3'
