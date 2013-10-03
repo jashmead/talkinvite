@@ -69,24 +69,11 @@ class TalksController < ApplicationController
   end
 
   def found
-    q = params['search']['q']
-    q.strip! if q
-    if ! q || q == ''
-      flash.now[:error] = 'Please specify something to look for'
-      render :search and return
-    end
-      
-    @talks = Talk.search(q)
-    if ! @talks || @talks.size == 0
-      flash.now[:alert] = "No talks found for '#{q}'.  Please try again."
+    @talks = search_q(Talk)
+    if ! @talks
       render :search and return
     end
 
-    if @talks.size == 1
-      flash.now[:success] = "Found one matching talk."
-    else 
-      flash.now[:success] = "Found " + @talks.size.to_s + " matching talks."
-    end
     @talks = @talks.paginate(page: params[:page])
   end
 
