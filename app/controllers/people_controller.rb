@@ -160,11 +160,6 @@ class PeopleController < ApplicationController
   ## can we put shared code in ./concerns?
   def found
     @people = search_q(Person)
-    if ! @people
-      render :search and return
-    end
-
-    @people = @people.paginate(page: params[:page])
   end
 
   private

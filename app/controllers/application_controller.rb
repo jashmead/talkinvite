@@ -18,14 +18,14 @@ class ApplicationController < ActionController::Base
     q.strip! if q
     if ! q || q == ''
       flash.now[:error] = 'Please specify something to look for.'
-      return nil
+      render :search and return
     end
       
     @rows = klass.search(q)
     if ! @rows || @rows.size == 0
       plural = klass.to_s.downcase.pluralize
       flash.now[:alert] = "No matching #{plural} found for '#{q}'.  Please try again."
-      return nil
+      render :search and return
     end
 
     if @rows.size == 1
@@ -36,8 +36,7 @@ class ApplicationController < ActionController::Base
       flash.now[:success] = "Found #{@rows.size.to_s} matching #{plural}."
     end
 
-    @rows
-
+    @rows.paginate(page: params[:page])
   end
 
 end

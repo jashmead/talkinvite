@@ -71,11 +71,6 @@ class TalksController < ApplicationController
 
   def found
     @talks = search_q(Talk)
-    if ! @talks
-      render :search and return
-    end
-
-    @talks = @talks.paginate(page: params[:page])
   end
 
   def recent
