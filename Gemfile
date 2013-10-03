@@ -22,7 +22,7 @@ gem 'bootstrap-sass', '>=2.1'
 group :development, :test do
   gem 'selenium-webdriver'
   gem 'capybara', '>= 2.0.0'
-  gem 'launchy'
+  gem 'launchy' # lets us insert a 'save_and_show_page' line inside specs to see what the page looks like
 end
 
 # keep factory girl in development for testing at the console

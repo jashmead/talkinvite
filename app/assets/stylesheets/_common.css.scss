@@ -1,0 +1,14 @@
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+*/
+$peopleColor: white;
+$talksColor: white;
+$talkColor; white;

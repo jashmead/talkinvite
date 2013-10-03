@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @talk.summary %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @talk.description %>
-</p>
+<div class="talk">
+  <p id="notice"><%= notice %></p>
+  
+  <p>
+    <strong>Summary:</strong>
+    <%= @talk.summary %>
+  </p>
+  
+  <p>
+    <strong>Description:</strong>
+    <%= @talk.description %>
+  </p>
+</div>
 
 <%= link_to 'Edit', edit_talk_path(@talk) %> |
 <%= link_to 'Back', talks_path %>

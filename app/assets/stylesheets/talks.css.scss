@@ -3,10 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "bootstrap";  // needed to include '$grayLighter' & anything else bootstappy I expect
+@import "common";
 
 /* talks */
 
+.talk {
+  background-color: $talkColor;
+}
+
 .talks {
+  background-color: $talksColor;
+
   list-style: none;
   margin: 10px 0 0 0;
 
@@ -16,7 +23,6 @@
   }
 
   // we may want a 'nested' gravatar style here, if using gravatars inside talk lists
-
 }
 
 .summary {
