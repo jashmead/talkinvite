@@ -25,5 +25,8 @@ Talkinvite::Application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
+  # setting this to true splits the application.js & application.css files into their parts
+  #   server restart required
+  #   may slow things down, however
   config.assets.debug = false
 end
