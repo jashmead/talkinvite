@@ -18,6 +18,7 @@ class Person < ActiveRecord::Base
   has_many :talks, dependent: :destroy
 
   ## this line *creates* the attribute/method of Person called 'relationships'
+  ## 'followers' method created implicitly by the following:
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
   ## and this *creates* the attribute/method of Person called 'followed_people'

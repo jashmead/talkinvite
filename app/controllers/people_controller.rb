@@ -19,33 +19,20 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    # @people = Person.all
-    ## logger.debug("CC: PeopleController.index: current_person: #{current_person}") #DDT
-    ## logger.debug("CC: PeopleController.index: @people: #{@people.inspect}")#DDT
-    ## @people = Person.paginate(page: params[:page])
-    ## will paginate play nicely with ransack?
-    ## backing out 'ransack', too much weirdness
-    ## @q = Person.search(params[:q])
-    ## @people = @q.result(distinct: true).paginate(page: params[:page])
-    ## logger.debug("CC: PeopleController.index: @people: #{@people.inspect}")#DDT
-    logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
+    # logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
     @people = Person.search(params[:search]).paginate(page: params[:page])
   end
 
   # GET /people/1
   # GET /people/1.json
   def show
-    # don't need to look for person here, because done in 'before_action' callback by set_person
-    # @person = Person.find(params[:id])
+    # don't need to look for person here; done in 'before_action' callback by set_person
     if ! @person 
       logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end
     @talks = @person.talks.paginate(page: params[:page])
-  ##  logger.debug("PeopleController#show: params[:page]: #{params[:page].inspect}")#DDT
-  ##  logger.debug("PeopleController#show: @talks: #{@talks.inspect}") #DDT
-  ##  logger.debug("PeopleController: Faker: methods: #{Faker.methods.inspect}") #DDT
   end
 
   # GET /people/new
@@ -55,8 +42,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
-    ## correct_person finds the appropriate person
-    ## @person = Person.find(params[:id])
+    # don't need to look for person here; done in 'before_action' callback by set_person
   end
 
   # POST /people
@@ -64,7 +50,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
 
-  ##  logger.debug "PeopleController.create: person #{@person.attributes.inspect}"  # DDT
+    ##  logger.debug "PeopleController.create: person #{@person.attributes.inspect}"  # DDT
 
 =begin
     respond_to do |format|
@@ -133,27 +119,23 @@ class PeopleController < ApplicationController
 
   ## codeclimate complained about duplication in following & followers, so sweated it out to follow_common
   def following
-    @person = Person.find(params[:id])
-    follow_common('Following', @person, @person.followed_people.paginate(page: params[:page]))
+    follow_common('Following', 'followed_people')
   end
 
   def followers
-    @person = Person.find(params[:id])
-    follow_common('Followers', @person, @person.followers.paginate(page: params[:page]))
+    follow_common( 'Followers', 'followers' )
   end
 
-  def follow_common( title, person, people )
-    logger.debug("QQ: title: #{title}, person: #{person}, people: #{people.inspect}") #DDT
-
+  def follow_common( title, follow_method ) 
+  
     @title = title
-    @person = person
-    @people = people.paginate(page: params[:page])
+    @person = Person.find(params[:id])
+    @people = @person.send(follow_method).paginate(page: params[:page])
 
     render :show_follow
   end
 
   def search
-    ## logger.debug("CC: PeopleController.search")
   end
 
   ## may be able to DRY found using pluralize and related tools

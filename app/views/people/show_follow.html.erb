@@ -9,7 +9,7 @@
     </section>
     <section>
       <%= render 'shared/stats' %>
-      <% if @people.any? %>
+      <% if @people && @people.any? %>
         <div class="person_avatars">
           <% @people.each do |person| %>
             <%= link_to gravatar_for(person, size: 30), person %>
@@ -20,7 +20,7 @@
   </aside>
   <div class="span8">
     <h3><%= @title %></h3>
-    <% if @people.any? %>
+    <% if @people && @people.any? %>
       <ul class="people">
         <%= render @people %>
       </ul>
