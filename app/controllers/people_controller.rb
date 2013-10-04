@@ -123,11 +123,10 @@ class PeopleController < ApplicationController
   end
 
   def followers
-    follow_common( 'Followers', 'followers' )
+    follow_common('Followers', 'followers')
   end
 
-  def follow_common( title, follow_method ) 
-  
+  def follow_common(title, follow_method) 
     @title = title
     @person = Person.find(params[:id])
     @people = @person.send(follow_method).paginate(page: params[:page])
@@ -138,8 +137,6 @@ class PeopleController < ApplicationController
   def search
   end
 
-  ## may be able to DRY found using pluralize and related tools
-  ## can we put shared code in ./concerns?
   def found
     @people = search_q(Person)
   end
