@@ -1,0 +1,22 @@
+=== Talks forms
+
+1. start
+1. control* -- used by admins
+1. nexus* -- used by non-admins
+1. edit -- precursor to nexus & control
+1. advanced search*
+1. list (included as element in many), see found, index
+1. trending*
+1. nearby*
+1. my_talks*
+1. found
+
+==== Partials
+
+talks header
+talks footer
+
+if we are not the person who created the talk, or if a (different) person is shown at all,
+add in follow/unfollow; add in gravatar, if available
+
+destroy has to reduce to deactivate, once others have started to use

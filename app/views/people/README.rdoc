@@ -1,5 +1,38 @@
-To Do
+=== People forms
 
-1.  Settings?
-1.  About_me?
-1.  Screen_name?
+1. sign_up -- up
+1. profile -- shown to world, includes following/followers, messages (to current_user), comments, announcements
+1. settings -- editing, only by actual user
+1. control/nexus -- replaces home, once it is up
+1. advanced search*
+1. found -- done
+1. following -- element in others, start as a screen in own right
+1. followers -- element in others, start as a screen in own right
+1. upgrades** -- trade money for privacy & no ads
+1. history**
+
+=== Partials
+
+1. account header
+1. account footer
+1. account following
+1. account followers
+1. account talks -- used for own & following
+1. account messages
+1. account notifications (including tweets)
+
+=== Buttons
+
+for each of the other pages
+
+=== Session forms
+
+1. sign_in
+1. sign_out
+
+=== Dev notes
+
+if we are not the person who created the talk, or if a (different) person is shown at all,
+add in follow/unfollow; add in gravatar, if available
+
+destroy has to reduce to deactivate, once others have started to use

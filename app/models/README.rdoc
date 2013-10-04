@@ -1,17 +1,46 @@
 == Schema
 
-=== Strategy
+=== List of Tables
 
-The system is a mashup of the Ruby on Rails tutorial by Michael Hardl 
-(http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0), 
-Twitter (which was originally written in Ruby on Rails),
-Leaflet (Google maps, Open Street Map),
-jQuery Calendar stuff,
-SVG for advanced layouts,
-some PostgreSQL specific stuff,
-and a bit of glue.
+Note we can't use 'file' as a table name, conflicts with Ruby
 
-=== Tables
+In order of creation:
+
+1. Schema_Migrations
+1. People
+1. Sessions
+1. Talks -- links up to people, and to venues when that is up
+1. Relationships -- links to people, from & to both
+
+Planned, in expected order of creation:
+
+1. Members -- links to talk & to people, includs 'admin' status
+1. Comments -- links to talk & to people
+1. Notifications -- includes Tweets, links to talk & to people (sender), includes modalities
+1. Venues -- links to creator
+1. Tags -- links to talks, may ultimately extend to venues & people
+
+Supporting, built as indicated:
+
+1. Maps -- links to creator, has datasets, center, scale, maybe type on it
+1. Calendars -- links to creator, has datasets, center, scale
+1. Attachments -- including images, points up to talks, messages, notifications, people, & pretty much everything, polymorphic links
+1. Credits -- links to creator
+1. Faqs/help text -- no links
+
+Advanced
+
+1. Messages -- person to person, various modalities, sender, receiver, talk
+1. Talk2Talk -- connections, creator, from_talk, to_talk
+1. Circles?
+1. SVGs?
+1. Groups?
+1. Recurring talks? -- like meetups?
+1. Ratings?
+
+=== Data types
+
+Note we can't use 'type' as a field name, conflicts with Ruby
 
 All tables include the Ruby on Rails fields:
 1.  id
@@ -19,78 +48,19 @@ All tables include the Ruby on Rails fields:
 3.  updated_at  -- datetime
 
 Shorter fields are generally strings, longer text.
+1.  summary/about
+1.  contents/details/descriptions
 
-Note due to Ruby's omnipresent use of convention, some obvious names are <em>bad ideas</em>,
-i.e. using 'type' can cause mysterious failures.
+Locations -- for maps, ultimately, include alternate kinds of maps
+1.  latitude & longitude is fine
 
-And we can't use 'File' as a table name, same reason.  Hence attachments.
+Datetimes & Intervals -- for calendars
+1.  datetime or else start & duration or else start & end
 
-Tables in alphabetical order:
-1.  attachments -- to better work with postgres, polymorphic up to locations, people, posts, talks, tweets
-1.  calendar -- like sessions, a materialized view, includes range, scale, current date (cx)
-1.  connections -- talk to talk, from/to (t2t?)
-1.  locations -- better as places?
-1.  maps -- like sessions, a materialized view, includes bounding box, focus, probably some other stuff
-1.  messages -- user to user messages, in re whatever they like.
-1.  notifications -- like posts, but they announce the talk
-1.  people -- the source of all difficulties
-1.  posts -- posts attached to a talk, also includes join, leave, as well as default comment
-1.  relationships -- person to person, from/to
-1.  schema_migrations* -- rails table
-1.  sessions* -- used by tutuorial, internal
-1.  tags  -- will include ratings, polymorphic up to all core tables locations, people, posts, talks, tweets (tx)
-1.  talks -- the raison de etre of the system
-1.  tweets -- subclass of notifications, first of possibly many
+URLs
+1.  security concerns, part of about field
 
-Core tables (in order of importance):
-1. talks
-1. people
-1. locations
-  
-Less core tables:
-1. posts, mostly done in partials
-1. tags, mostly done in partials
-1. messages, mostly done in partials
+=== Dev notes
 
-Materialized views:
-1. maps
-1. calendars
-1. sessions
-1. circles
-1. svgs?
-
-Support tables:
-1. attachments (can't use name files)
-1. tags (also figures at top level as topics of talks)
-
-Groups or relationships:
-1.  peer2peer style -- a is following b
-* how tutorial does it
-* more informal, better suited to problem here
-* can add "virtual" flag to make it act as a group, if that becomes useful, ok, go peer2peer
-1.  group style -- both a and b are members of same group, more static
-
-Relationships
-1. user_user -- relationships, get from tutorial
-1. talk_talk -- connections
-1. location_location -- even needed?, call associations if we do need it
-
-Tables not needed for MVP but under consideration
-1.  polls -- ask people what features they would like & so on.
-1.  ratings -- see as tag?
-
-Validations done:
-1.  presence of
-1.  inclusion_of
-1.  user validations from the tutorial
-1.  some talk validations
-
-Validations yet to do:
-1.  add in 'check' on postgres side for _type columns
-1.  add in not-null for fk fields 
-1.  add in not-null generally for fields
-1.  add in defaults, limits as indicated
-
-Procedures:
 1.  when changing types, make sure all the test code knows about the new types
 1.  when adding/changing/deleting fields:  check all the spec code:  requests, models, controllers, views, & factories

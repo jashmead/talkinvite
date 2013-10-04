@@ -56,10 +56,9 @@ perhaps even several
 1. sub set of tags
 
 ==== Send out invites
-first, select set of postees, search for people by patterns or rules
+first, select set of related, search for people by patterns or rules
 
 second, notify using:
-*  post
 *  messaging (internal)
 *  email
 *  twitter
@@ -91,6 +90,9 @@ talk has been proposed, but hasn't happened yet
 ==== Talk is happening
 post status updates
 
+==== Join/leave
+change membership status
+
 ==== Send/Receive Comments
 can be change of status, time, location, subject, membership
 
@@ -112,7 +114,7 @@ start point is talks/control
 timeline of a talk
 
 ==== talk has happened
-1.  post comments
+1.  comments
 1.  rate
 1.  save stream of information about the talk
 
@@ -132,7 +134,7 @@ talks/sharing
 1. to web -- permalinks
 1. to facebook, twitter, & other social -- notifications
 
-static_pages/wiki
+static_pages/wiki**
 
 === Let's Talk about Me!
 
@@ -153,7 +155,7 @@ signup -- shown if not signed in
 
 signin -- shown if not signed in
 
-signout
+signout -- a button
 
 reset password*
 1. shown to those signing in (from signin screen)
@@ -171,9 +173,7 @@ about
 
 contact
 
-help
-
-faq
+faqs/help* -- table at some point
 
 privacy
 
@@ -186,34 +186,31 @@ start point is meta_admin, a menu style page
 1. good for development of intermediary pages as well
 1. all start points are of tables via index
 
-people
+==== Tables
 
-talks
-
-tags
-
-locations
-
-posts
-
-credits
-
-attachments
+1. people
+1. talks
+1. tags
+1. members
+1. credits
+1. attachments
+1. venues
 
 world_building* -- new kinds of maps, as world of warcraft, game of thrones
 
 don't really need maps, calendars, sessions, schema_migrations, circles, svgs, & other support tables
 
+==== Dev notes
+
 1. admins are always subscribers!
 1. talkinvite is the default, anonymous identity
-1. others are help, contact
+1. other identities are help, contact
 
 === Ads
 * a way to monetize
 * turn off for subscribers
 
 === Tools
-
 attachments
 
 searches
@@ -243,7 +240,7 @@ add to ApplicationController:
 * links to google hang outs & the like
 * maps & data type functionality
 
-== Open Issues
+== Dev notes
 
 * sign_in not working in people_controllers_spec.rb, see notes there
 

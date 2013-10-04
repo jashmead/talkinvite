@@ -39,6 +39,27 @@ share title between title & heading using a function
 
 Models + Page Frames give most of the actual pages, if not all of them, extension of the use of 'resources' idea
 
+==== Members
+
+==== Comments
+
+==== Notifications
+
+==== Messages
+
+Form has:
+1. to (with cc)
+1. modality
+1. content
+1. details
+
+==== Attachments
+
+==== Tags
+
+==== 
+
+
 === Testing
 --
 nested lists don't seem to work correctly in rdoc, so keep at one level for now

@@ -40,6 +40,7 @@ class Talk < ActiveRecord::Base
   end
 
   # in general, search is model specific
+  # need 'self' because this is a class method
   def self.search(q)
     return Talk.all unless q.present?
     q_like = "%#{q}%"
