@@ -7,11 +7,9 @@ bits which don't really fit into the lifecycle framework
 
 === Got Talk?
 
-start point is 'talks/start'
-1. talks/start has a phrase box (search/add)
-1. plus a whole bunch of squares with hover links
-
--- start point was 'splash', keep that as reference till ready to trash
+1. start point is 'talks/start', forks to gottalk (not signed in), my_talks (signed)
+1. talks/gottalk has a phrase box (search/add), plus a whole bunch of squares with hover links
+1. talks/my_talks has your recent talks & lots of controls
 
 ==== Let's Talk about X
 
@@ -47,7 +45,7 @@ perhaps even several
 1. start the talk
   1. summary
   1. anything else about it, proposed time, location
-  1. starts as talks/control
+  1. starts as talks/edit
   1. has lots of links
   1. includes talk search
 
@@ -55,7 +53,7 @@ perhaps even several
 1. topics/command
 1. sub set of tags
 
-==== Send out invites
+==== Send out notifications
 first, select set of related, search for people by patterns or rules
 
 second, notify using:
@@ -77,7 +75,7 @@ physical/virtual
 1. map controls shared by other location specific tables in set mode, or as individual
 
 === Talk On!
-start point is talks/control
+start point is talks/edit
 
 ==== Let's Pivot
 talk has been proposed, but hasn't happened yet
@@ -101,14 +99,14 @@ can be change of status, time, location, subject, membership
 1. side-by-side message screens, two lists, staggered
 
 ==== My fellow talkers
-1. invite someone to join, see above for initial invites
+1. invite someone to join, see above for initial notifications
 1. to screen, with message
 
 ==== Time to move on
 new physical or virtual venue
 
 === Apres Talk
-start point is talks/control
+start point is talks/edit
 
 ==== timeline*
 timeline of a talk
@@ -141,7 +139,7 @@ static_pages/wiki**
 -- except for signin & signup, only shown if you are signed in; 
 signin & signup only shown if you are not signed in
 
-control -- where you go after signin, shows combo of settings & profile
+edit -- where you go after signin, shows combo of settings & profile
 -- leads to your talks & related
 -- was static_pages/home, keep that as reference till ready to trash
 
@@ -240,13 +238,3 @@ add to ApplicationController:
 * links to google hang outs & the like
 * maps & data type functionality
 
-== Dev notes
-
-* sign_in not working in people_controllers_spec.rb, see notes there
-
--- deal with by getting better understanding of control flow (esp authentication)
-then look at again
-
-* unable to move home from views/static_pages to views/people, not clear why
-
--- bypass by starting people/control

@@ -23,13 +23,17 @@ describe 'data types' do
     end
   end
 
-  describe 'interval' do
-    describe 'verify end time after start' do
+  describe 'event date' do
+    describe 'start time' do
     end
 
-    describe 'interval makes sense' do
-    end
+    describe 'interval' do
+      describe 'verify end time after start' do
+      end
 
+      describe 'interval makes sense' do
+      end
+    end
   end
 
 end

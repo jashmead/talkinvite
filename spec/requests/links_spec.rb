@@ -6,12 +6,16 @@ require 'spec_helper'
 # link tests are related to routing tests
 #   routing tests are tests "on the inside"
 #   link tests are tests "on the outside"
+# similar pages grouped together
 
 describe 'links' do
+
+  # no links on static pages
 
   describe 'people' do
     
     describe 'to talks' do
+
       describe 'as creator' do
       end
 
@@ -72,6 +76,9 @@ describe 'links' do
   # tags are polymorphic
   describe 'tags' do
 
+    describe 'for people' do
+    end
+
     describe 'for talks' do
     end
 
@@ -95,29 +102,37 @@ describe 'links' do
   end
 
   describe 'maps' do
+
     describe 'from venues' do
     end
 
     describe 'from talks' do
+
       describe 'direct' do
       end
+
       describe 'via venue' do
       end
+
     end
 
     # find nearby locations for a given one
     describe 'nearby' do
     end
+
   end
 
   describe 'calendars' do
+
     describe 'from talks' do
+
       # find recent talks
       describe 'recent' do
       end
 
       describe 'my talks' do
       end
+
     end
 
     describe 'from comments' do
@@ -132,10 +147,11 @@ describe 'links' do
   end
 
   describe 'attachments' do
-    describe 'for talks' do
-    end
 
     describe 'for people' do
+    end
+
+    describe 'for talks' do
     end
 
     describe 'for comments' do
@@ -146,6 +162,19 @@ describe 'links' do
 
     describe 'for messages' do
     end
+
+  end
+
+  describe 'credits' do
+
+  end
+
+  describe 'faqs' do 
+
+  end
+
+  describe 'ads' do
+
   end
 
 end

@@ -1,0 +1,110 @@
+== Development
+
+=== Overall Strategy
+* Starting with tutorial & branching out
+* Build up horizontally rather than vertically
+* Build up database/models; routes/controllers; views/css; js -- to extent possible
+* Avoid premature instantiation, don't put stuff in till about to use (& test) -- put it in comments instead
+* Use bootstrap & liquid design, top to bottom, left to right -- but start with mobile
+* Use images to mark, keep actual site design really dull, keep focus on content
+* Make maximum use of existing examples
+* Make best use of having an overall plan, keep loose but focused & energetic
+
+=== Stages
+1. people -- started, search now up, should recheck usual CRUD & the account pages (signin, settings, & so on), have to fix home screen, which is awful, fix the pages not yet done, stub them out when we know
+1. talks -- started, current hot spot is 'start'
+1. relationships -- started as follower/followed, monitor as work progresses
+1. members -- next hot spot, once 'start' is working
+1. comments -- grease the skids on the system
+1. notifications -- generic layer
+1. tweets -- per rails/ruby libraries
+1. tags -- useful for talk selection
+1. locations -- virtual & physical
+1. maps -- via leaflet, good bit!
+1. calendars -- via jQuery
+1. circles -- via d3
+1. attachments -- en passant I suspect, part of the images first strategy
+1. messages -- via node.js?
+1. emails -- via examples in rails books
+1. mobile -- phonegap, per their examples
+1. external testing, i.e. watir
+
+=== Libraries
+1. Leaflet
+1. Bootstrap
+1. JQuery calendar tool of some kind
+
+=== Quality checks
+1. Check for clarity of code
+1. Check for coverage by tests
+1. Check against best practices
+1. codeclimate checks
+1. Fix README to conform to standards in Beautiful Ruby
+1. Check against references
+1. Use database checks
+
+=== Buzzword compliance
+1. DRY -- do not repeat yourself
+1. TDD  -- test driven development
+1. YAGNI -- you ain't gonna need it
+1. SOC -- separation of concerns
+
+=== Bibliography
+
+* Agile Web Development with Rails 3.2
+* Beautiful Ruby
+* Eloquent Ruby
+* Practical Object Oriented Ruby
+* Pro ActiveRecord
+* Programming Ruby 
+* Rails 4 in Action
+* Rails Anti-Patterns
+* Rails Recipes
+* Rspec Book
+* Ruby Best Practices
+* Ruby Guides -- http://guides.rubyonrails.org
+* Ruby Koans
+* Rails Tutorial -- http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0
+* Ruby on Rails 4
+* The Rails 3 Way
+* The Ruby Way
+
+=== History
+
+The system is a mashup of the Ruby on Rails tutorial by Michael Hardl 
+(http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0), 
+Twitter (which was originally written in Ruby on Rails),
+Leaflet (Google maps, Open Street Map),
+jQuery Calendar stuff,
+SVG for advanced layouts,
+some PostgreSQL specific stuff,
+and a bit of glue.
+
+=== Requisites & Deployment Instructions
+
+* Ruby version: 2.0.0
+* Rails version: 4.0.0
+* System dependencies: Ruby, Rails, Postgres, divers libraries
+* Configuration
+* Database:  Postgres
+* Database initialization:
+  1. Create role talkinvite; databases talkinvite_development & talkinvite_test
+  1. Use structure.sql to rebuild, since schema.rb does not know about the foreign keys.
+  1. To reset, use: rake db:reset
+* To run the test suite <tt>rspec spec</tt>
+* Services* (job queues, cache servers, search engines, etc.)
+* Deployment instructions:  
+  1. gic -- git commit
+  2. xt-all -- run migrations, rebuild bundles, then test
+  3. yt -- test actual web pages
+  4. gm branch -- merge branch back to master
+  5. zt -- upload to heroku
+
+=== Dev Notes
+
+* sign_in not working in people_controllers_spec.rb, see notes there
+* deal with by getting better understanding of control flow (esp authentication)
+then look at again
+* unable to move home from views/static_pages to views/people, not clear why
+* start with default bootstrap buttons, but make sure every page has its table class (i.e. people, talks) and its personal id
+
