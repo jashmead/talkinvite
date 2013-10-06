@@ -39,7 +39,6 @@ Talkinvite::Application.routes.draw do
   match '/help', to: 'static_pages#help', via: 'get'
   match '/menu', to: 'static_pages#menu', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
-  match '/gottalk', to: 'talks#start', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
 
   ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
@@ -53,7 +52,7 @@ Talkinvite::Application.routes.draw do
       get :following, :followers
     end
     collection do
-      get :search, :found, :recent, :nearby, :my_talks
+      get :search, :found, :recent, :nearby
     end
   end
 
@@ -66,7 +65,7 @@ Talkinvite::Application.routes.draw do
   resources :talks do
     ## collection will have lots of 'pick a talk' type pages
     collection do
-      get :start, :search, :found
+      get :start, :search, :found, :gottalk, :my_talks
     end
   end
 

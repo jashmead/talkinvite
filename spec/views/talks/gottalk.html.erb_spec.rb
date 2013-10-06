@@ -7,15 +7,15 @@
 
 require 'spec_helper'
 
-describe "talks/search" do
+describe "talks/gottalk" do
 
-  subject { page }        ## what, exactly, does this do? sets 'it', I think
+  subject { page }       
 
-  let(:page_title) { 'Search for talks' }
-  let(:heading) { 'Search for talks' } # can't use :heading here?
+  let(:page_title) { 'Search for talks or add one' }
+  let(:heading) { 'Got Talk?' } # can't use :heading here?
 
-  describe "renders the search talk form" do
-    before { visit "/talks/search" }  ## replace with a 'path', once we have worked that out
+  describe "renders the gottalk talk form" do
+    before { visit "/talks/gottalk" }  ## replace with a 'path', once we have worked that out
 
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }

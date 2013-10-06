@@ -1,12 +1,61 @@
-require 'spec_helper'
+# this file is part of the documentation for the stories! and therefore the links
 
-# this is actually the documentation for the stories! and therefore the links
+# per assertions in https://github.com/rspec/rspec-rails/blob/master/Capybara.md, have moved this file to spec/features
+#   does this make any difference?  visit & page were already working & are for most other request files
 
 # 'it' has to be a leaf node?
 
 # if we convert a leaf describe to an 'it', it is suddenly a (passing) test
 
+# it appears that 'save_and_open_page' has to be inside an 'it'
+#   -- because launchy is being called via capybara, not directly?
+#   -- putting in a 'require launchy' doesn't help
+
+require 'spec_helper'
+
 describe 'stories' do
+
+  subject { page }
+
+  describe "start" do
+
+    let(:person) { FactoryGirl.create(:person) }
+
+    describe "for signed-in people" do
+
+      before do
+        sign_in person
+        visit start_path # home page
+      end
+
+      # save_and_open_page
+
+      it { 
+        # save_and_open_page
+
+        should have_selector('h1', text: "My Talks")
+      }
+
+    end
+
+    describe "for anonymous" do
+
+      before do
+        visit start_path # home page
+      end
+
+      it { 
+        save_and_open_page
+
+        # for some reason, have_title, have_selector('title', text: ....) don't work
+        # should have_title("Got Talk?")
+
+        should have_selector('h1', text: "Got Talk?")
+      }
+
+    end
+
+  end
 
   # going by life cycle
   describe "gotta talk" do

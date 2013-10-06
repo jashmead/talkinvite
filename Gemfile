@@ -23,7 +23,10 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'capybara', '>= 2.0.0'
   # launchy makes available a 'save_and_open_page' command to see the page
-  #   note you have to have visited the page before you can do this!
+  #   -- you have to have visited the page before you can do this!
+  #   -- since launchy is being called via capybara, 
+  #     -- you have to be 'inside' capybara in some sense, 
+  #     i.e. using 'it' rather than 'describe'
   gem 'launchy' # lets us insert a 'save_and_open_page' line inside specs to see what the page looks like
 end
 

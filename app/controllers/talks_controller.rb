@@ -64,9 +64,23 @@ class TalksController < ApplicationController
     ## logger.debug("CC: TalksController.search")
   end
 
-  # 'start' is a simple search + a whole bunch of canned options, mostly searches
+  # start is the default starting point for the entire website
   def start
-    ## logger.debug("CC: TalksController.start")
+    logger.debug("CC: TalksController.start")
+    if signed_in?
+      render 'my_talks' and return
+    else 
+      render 'gottalk' and return
+    end
+  end
+
+  def gottalk
+    logger.debug("CC: TalksController.gottalk")
+  end
+
+  def my_talks
+    logger.debug("CC: TalksController.my_talks")
+    current_person.talks.paginate(page: params[:page])
   end
 
   def found
@@ -79,10 +93,6 @@ class TalksController < ApplicationController
 
   def nearby
     found
-  end
-
-  def my_talks
-    current_person.talks.paginate(page: params[:page])
   end
 
   private

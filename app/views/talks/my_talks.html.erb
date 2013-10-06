@@ -1,0 +1,16 @@
+<!-- cloned from people -->
+<% provide(:heading, 'My Talks') %>
+<% provide(:title, 'My Talks') %>
+<h1><%= yield :heading %></h1>
+
+<div class="row">
+  <div class="span6 offset3">
+
+    <%= form_tag("/talks/found", method: "get") do %>
+      <%= label_tag(:search_q, "Search for:") %>
+      <%= search_field(:search, :q) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+
+  </div>
+</div>

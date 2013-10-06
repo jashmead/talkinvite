@@ -56,22 +56,14 @@ module SessionsHelper
     self.current_person = person
   end
 
-  ## how is current person being set & passed along?
+  ## current_person is a method, @current_person is an attribute -- admittedly a fuzzy distinction in Ruby
   ## see if we are signed in currently
   def signed_in?
-    ## logger.debug("ZZ: SessionsHelper.signed_in?: current_person: #{current_person.inspect}") #DDT
-    ## logger.debug("ZZ: SessionsHelper.signed_in?: @current_person: #{@current_person.inspect}") #DDT
-    ## logger.debug("ZZ: SessionsHelper.signed_in?: self: #{self.inspect}") #DDT
-=begin
-    if defined?(person) 
-      logger.debug("ZZ: SessionsHelper.signed_in?: person: #{person.inspect}") #DDT
-    else
-      logger.debug("ZZ: SessionsHelper.signed_in?: person not defined") #DDT
-    end
-=end
-    ## why 'current_person' & not '@current_person'? # is current_person a method? yes.  Is that the only problem?
+    logger.debug("HH: SessionsHelper.signed_in?: current_person: #{current_person.inspect}") #DDT
+    logger.debug("HH: SessionsHelper.signed_in?: @current_person: #{@current_person.inspect}") #DDT
+    # logger.debug("HH: SessionsHelper.result: #{!current_person.nil.inspect}") #DDT
+
     !current_person.nil?
-    ## true  #DDT
   end
 
   ## force person to be signed in, whether they are not currently
