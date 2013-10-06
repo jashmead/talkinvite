@@ -46,33 +46,14 @@ describe "Static Pages" do
     it_should_behave_like('all static pages')
   end
 
-  describe "Menu page" do
-    before { visit static_pages_menu_path }
-
-    let(:page_title) { 'All Options for TalkInvite' }
-    let(:heading) { page_title }
-
-    it_should_behave_like('all static pages')
-  end
-
-  describe "Privacy page" do
-    before { visit static_pages_privacy_path }
-
-    let(:page_title) { 'Privacy' }
-    let(:heading) { page_title }
-
-    it_should_behave_like('all static pages')
-  end
-
   describe "Home page" do
+    before { visit static_pages_home_path }
+
     let(:page_title) { 'Home' }
     let(:heading) { page_title }
 
-    save_and_open_page
-
     it_should_behave_like('all static pages')
 
-=begin
     describe "for signed-in people" do
 
       let(:person) { FactoryGirl.create(:person) }
@@ -119,8 +100,25 @@ describe "Static Pages" do
       end
   
     end
-=end
 
+  end
+
+  describe "Menu page" do
+    before { visit static_pages_menu_path }
+
+    let(:page_title) { 'All Options for TalkInvite' }
+    let(:heading) { page_title }
+
+    it_should_behave_like('all static pages')
+  end
+
+  describe "Privacy page" do
+    before { visit static_pages_privacy_path }
+
+    let(:page_title) { 'Privacy' }
+    let(:heading) { page_title }
+
+    it_should_behave_like('all static pages')
   end
 
 end
