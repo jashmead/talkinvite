@@ -1,5 +1,4 @@
 class Relationship < ActiveRecord::Base
-<<<<<<< HEAD
   ## how are we sorting out which id goes with which belongs_to?
 
   ## this line creates the attribute/method called 'follower'
@@ -15,13 +14,5 @@ class Relationship < ActiveRecord::Base
   ## add in not-nulls to this
   validates :follower_id, presence: true
   validates :followed_id, presence: true
-=======
-
-  belongs_to :from_person, class_name: "Person", foreign_key: 'from_id'
-  belongs_to :to_person, class_name: "Person", foreign_key: 'to_id'
-
-  validates :to_id, presence: true
-  validates :from_id, presence: true
->>>>>>> relationships
 
 end

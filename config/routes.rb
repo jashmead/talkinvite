@@ -1,8 +1,5 @@
 # routes.rb functions as a de facto map of the system
 
-# The priority is based upon order of creation: first created -> highest priority.
-# See how all your routes lay out with "rake routes".
-
 Talkinvite::Application.routes.draw do
 
   ## put most specific routes at the top:
@@ -128,16 +125,5 @@ Talkinvite::Application.routes.draw do
   #   end
 
   root to: "talks#start"
-
-Trace of template inclusion: app/views/static_pages/splash.html.erb
-
-  error is first argument to form_for can't be null
-    -- this is @talk
-    -- set in people controller, not in splash controller
-      -- ok, but why are we in the splash controller?
-      -- how did calling home get us to splash?
-=end
-  ## root to: "static_pages#splash"
-  root to: "people#home"
 
 end

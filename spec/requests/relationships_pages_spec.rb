@@ -38,5 +38,7 @@ describe 'relationships' do
       it { should have_selector('h3', text: 'Followers') }
       it { should have_link(person.name, href: person_path(person)) }
     end
+
   end
+
 end

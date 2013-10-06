@@ -64,12 +64,15 @@ describe "Static Pages" do
     it_should_behave_like('all static pages')
   end
 
-
+  describe "Home page" do
     let(:page_title) { 'Home' }
     let(:heading) { page_title }
 
+    save_and_open_page
+
     it_should_behave_like('all static pages')
 
+=begin
     describe "for signed-in people" do
 
       let(:person) { FactoryGirl.create(:person) }
@@ -116,6 +119,7 @@ describe "Static Pages" do
       end
   
     end
+=end
 
   end
 
