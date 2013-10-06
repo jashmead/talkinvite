@@ -32,9 +32,13 @@ Talkinvite::Application.routes.draw do
   get "static_pages/help"
   get "static_pages/menu"
   get "static_pages/privacy"
+<<<<<<< HEAD
 
   ## get rid of home, once followers are on a people page
   get "static_pages/home"
+=======
+  get "static_pages/splash"
+>>>>>>> home
 
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
@@ -42,8 +46,13 @@ Talkinvite::Application.routes.draw do
   match '/help', to: 'static_pages#help', via: 'get'
   match '/menu', to: 'static_pages#menu', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
+<<<<<<< HEAD
   match '/gottalk', to: 'talks#start', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
+=======
+  match '/splash', to: 'static_pages#splash', via: 'get'
+  match '/gottalk', to: 'static_pages#splash', via: 'get'
+>>>>>>> home
 
   ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
 
@@ -127,7 +136,23 @@ Talkinvite::Application.routes.draw do
   #     resources :products
   #   end
 
+<<<<<<< HEAD
   root to: "talks#start"
+=======
+  ## have root go to splash if not signed in, home if signed in? or just leave home up on splash page?
+  ## shift to 'splash' when splash is ready
+=begin
+  If deleting talks from the home page, we seem to get routed via the splash page controller
+  -- to avoid this have to set the root page to be people#home, rather than preferred static_pages/splash
+    -- or, in future, talks/splash!
+  -- looks like implicit tieing of talk delete function to root_path
+    -- where is this happening, if it is?
+  error message on form:
+          
+  <%= form_for(@talk) do |f| %>
+    <%= render 'shared/error_messages', :object => f.object %>
+    <div class="field">
+      <%= f.text_field :summary, placeholder: "About..." %>
 
 Trace of template inclusion: app/views/static_pages/splash.html.erb
 
@@ -139,5 +164,6 @@ Trace of template inclusion: app/views/static_pages/splash.html.erb
 =end
   ## root to: "static_pages#splash"
   root to: "people#home"
+>>>>>>> home
 
 end

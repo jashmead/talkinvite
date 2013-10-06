@@ -33,6 +33,7 @@ describe "Talk pages" do
 
   end
 
+  ## bizarrity:  when root_path set to static_pages#splash, this fails, when it is set to home_path it works
   describe "talk destruction" do
     before { FactoryGirl.create(:talk, person: person) }
 

@@ -32,7 +32,7 @@ class TalksController < ApplicationController
       redirect_to home_url
     else
       @feed_talks = []
-      render 'static_pages/home'
+      render 'people/home'
     end
   end
 
