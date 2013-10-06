@@ -10,12 +10,18 @@
 # 1.  password, password_confirmation, password_digest
 # 
 # == Relationships
-# 1. talks -- child
+# people<-talks
+# TBD:
+# 1. add active_flag boolean to people, use to deactivate when the user has killed, in case there is other data we need to keep associated with this
 
 class Person < ActiveRecord::Base
 
   ## this line *creates* the attribute/method of Person called 'talks'
   has_many :talks, dependent: :destroy
+  ## we are starting with the relationships that point 'to' the current person record
+
+  has_many :relationships, foreign_key: "from_id", dependent: :destroy
+  # has_many :to_people, through: relationships, source: :to_person
 
   ## this line *creates* the attribute/method of Person called 'relationships'
   ## 'followers' method created implicitly by the following:

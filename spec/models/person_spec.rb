@@ -23,6 +23,8 @@ describe Person do
   it { should respond_to(:sub) }
   it { should respond_to(:talks) }
   it { should respond_to(:feed) } # ok, what is feed
+  it { should respond_to(:relationships) } 
+  # it { should respond_to(:to_people) }
 
   ## why two levels?  we need relationships and we need followed_people
   it { should respond_to(:relationships) }
