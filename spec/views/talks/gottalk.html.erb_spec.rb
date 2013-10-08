@@ -43,15 +43,13 @@ describe "talks/gottalk" do
   # verify the start talk button actually takes us where we want to go
   describe "we can create a talk from here" do
 
+    # 'let' *must* be before the before {}
     let!(:person) { FactoryGirl.create(:person) }
 
     # replaced sign_in method in utilities.rb because that was not working
     before { 
-      visit signin_path
-      fill_in "Email",    with: person.email
-      fill_in "Password", with: person.password
-      click_button "Sign in"
-
+      # 'sign_in' *must* be inside the before {}
+      sign_in person
       visit '/talks/gottalk'
     }
 

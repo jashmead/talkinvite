@@ -158,7 +158,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (= 3.0.1)
-  bootstrap-sass (>= 2.1)
+  bootstrap-sass
   bootstrap-will_paginate
   capybara (>= 2.0.0)
   coffee-rails (~> 4.0.0)

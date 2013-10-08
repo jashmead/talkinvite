@@ -1,3 +1,7 @@
 <!-- could evolve this into a generalized talks footer -->
-<% logger.debug("VV: _start_talk_button") %>
+<!-- 
+  button is too far to the left & looks weird, blue around gray, fix later
+-->
+<div class="offset3">
 <%= button_to( 'Start Talk', { action: 'new' }, { method: 'get', form_class: 'btn btn-primary btn-mini' }) %>
+</div>

@@ -15,7 +15,10 @@ gem 'sass-rails', '~> 4.0.0'
 
 # switch to bootstrap, rspec, factory_girl, selenium, capybara
 # bootstrap css
-gem 'bootstrap-sass', '>=2.1'
+gem 'bootstrap-sass'
+# gem 'bootstrap-sass-rails'    # no apparent benefit, inspite of greater specificity
+# gem 'bootstrap-will_paginate' # fix up will_paginate stuff to match bootstrap, produced no apparent improvement
+# gem 'will_paginate-bootstrap' # this gem didn't make any difference either...
 
 ## load capybara before rspec
 ## how does capybara drive the web? via Rack::Test & Selenium
