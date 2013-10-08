@@ -224,9 +224,9 @@ describe Person do
 
   describe "make sure anonymous exists" do
     
-    let(:anonymous1) { Person.anonymous }
+    let(:anonymous) { Person.anonymous }
     # next line is erroring out
-    # expect(anonymous1.name).to eq('anonymous')
+    # expect(anonymous.name).to eq('anonymous')
 
   end
 

@@ -111,9 +111,15 @@ class Person < ActiveRecord::Base
 
   # tried 'anonymous' in the app/helpers, got whined at...
   def self.anonymous 
-    @person = self.where("name = 'anonymous'")
-    logger.debug("MM: anonymous: %{person}")
-    @person
+    anonymous = self.find_by_name('anonymous')
+    if ! anonymous || anonymous.size == 0
+      # logger.debug("MM: Person.anonymous: creating anonymous record")
+      Person.create!( name: 'anonymous', email: 'anonymous@talkinvite.com', 
+        password: 'scrofulous-nonsense', password_confirmation: 'scrofulous-nonsense')
+      anonymous = self.find_by_name('anonymous')
+    end
+    # logger.debug("MM: Person.anonymous: #{anonymous}")
+    anonymous
   end
 
   private

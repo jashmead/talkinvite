@@ -79,6 +79,9 @@ class Talk < ActiveRecord::Base
     if ! person
       person = Person.anonymous
     end
+    # see what is going on:
+    anonymous = Person.anonymous
+    logger.debug("AA: anonymous = #{anonymous.inspect}")
     ## logger.debug("MM: Talk.talks_by_person: #{person.inspect}")
     self.where("person_id = ?", person)
   end
