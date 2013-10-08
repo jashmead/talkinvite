@@ -100,6 +100,8 @@ and a bit of glue.
   4. gm branch -- merge branch back to master
   5. zt -- upload to heroku
 
+Note that a fair amount of setup is done in ~/.talkinvite, setting CBPATH, PATH, PostgreSQL stuff, and so on.
+
 === Dev Notes
 
 * sign_in not working in people_controllers_spec.rb, see notes there

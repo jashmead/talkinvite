@@ -32,6 +32,7 @@ describe 'stories' do
       it { 
         # save_and_open_page  ## DDT
 
+        should have_title('My Talks')
         should have_selector('h1', text: "My Talks")
       }
 

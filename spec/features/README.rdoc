@@ -1,6 +1,10 @@
 === Feature Tests
 
 The features directory is supposed to work better with capybara tests 
--- seems to make no difference however.
+- seems to make no difference however.
 
 Stories_pages_spec.rb is a kind of road map of the applications, as it is expected to be used.
+
+Links & relationships are a pair, in that most links go along relationship lines.
+* Relationships is low level, related to foreign keys.
+* Links works at the UX level, how does user move between pages.

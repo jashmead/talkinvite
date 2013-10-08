@@ -1,3 +1,6 @@
+## oauth is a || test suite to authentication
+#   use for twitter, facebook, osm, google authorizations
+
 require 'spec_helper'
 
 describe 'oauth' do
@@ -10,6 +13,12 @@ describe 'oauth' do
   end
 
   describe 'facebook' do
+  end
+
+  describe 'open_street_map' do
+  end
+
+  describe 'google' do
   end
 
 end
