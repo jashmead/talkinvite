@@ -1,4 +1,6 @@
-<h1>Listing talks</h1>
+<% provide(:title, 'List of talks') %>
+<% provide(:heading, 'List of talks') %>
+<h1><%= yield :heading %></h1>
 
 <table>
   <thead>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Talk', new_talk_path %>
+<%= render 'start_talk_button' %>

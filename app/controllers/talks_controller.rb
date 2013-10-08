@@ -16,6 +16,7 @@ class TalksController < ApplicationController
 
   # GET /talks/new
   def new
+    logger.debug("CC: TalkController.new")
     @talk = Talk.new
   end
 

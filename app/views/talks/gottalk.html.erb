@@ -1,6 +1,7 @@
 <!-- cloned from people -->
-<% provide(:heading, 'Got Talk?') %>
+
 <% provide(:title, 'Search for talks or add one') %>
+<% provide(:heading, 'Got Talk?') %>
 <h1><%= yield :heading %></h1>
 
 <div class="row">
@@ -13,4 +14,10 @@
     <% end %>
 
   </div>
+
+  <div id="hot_talks">
+    Hot Talks
+  </div>
+
 </div>
+<%= render partial: 'start_talk_button' %>

@@ -15,7 +15,8 @@ describe "talks/gottalk" do
   let(:heading) { 'Got Talk?' } # can't use :heading here?
 
   describe "renders the gottalk talk form" do
-    before { visit "/talks/gottalk" }  ## replace with a 'path', once we have worked that out
+    
+    before { visit '/talks/gottalk' }
 
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }
@@ -23,6 +24,42 @@ describe "talks/gottalk" do
     it { should have_selector('h1', text: heading) }
 
     it { should have_button 'Search' }
+
+    it { should have_selector('div#hot_talks') }
+
+    it {
+      ## save_and_open_page
+
+      should have_button 'Start Talk'
+    }
+  end
+
+  describe "shows 'hottest' talks" do
+
+    pending(" add eleven talks, verify ten shown, and in updated order ")
+
+  end
+
+  # verify the start talk button actually takes us where we want to go
+  describe "we can create a talk from here" do
+
+    let!(:person) { FactoryGirl.create(:person) }
+
+    # replaced sign_in method in utilities.rb because that was not working
+    before { 
+      visit signin_path
+      fill_in "Email",    with: person.email
+      fill_in "Password", with: person.password
+      click_button "Sign in"
+
+      visit '/talks/gottalk'
+    }
+
+    it { 
+      click_button 'Start Talk'
+      should have_title 'New Talk'
+    }
+
   end
 
 end

@@ -47,4 +47,14 @@ class Talk < ActiveRecord::Base
     where("summary like ? or description like ?", q_like, q_like)
   end
 
+  def self.recent
+    # with default scope, the most recently changed
+    return Talk.order('talks.updated_at desc')
+  end
+
+  # for now, just return the most recent
+  def self.hot
+    return self.recent
+  end
+
 end

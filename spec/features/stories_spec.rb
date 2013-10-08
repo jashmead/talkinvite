@@ -49,7 +49,6 @@ describe 'stories' do
         # save_and_open_page  ## DDT
 
         should have_title('Search for talks or add one')
-
         should have_selector('h1', text: "Got Talk?")
       }
 

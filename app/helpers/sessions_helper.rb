@@ -37,8 +37,6 @@ module SessionsHelper
   end
 
   def sign_in(person)
-    logger.debug("ZZ: SessionsHelper.sign_in: person: #{person.inspect}") #DDT
-
     remember_token = Person.new_remember_token
 
     # normal format of cookies is cookies[:key] = { value: value, expires: expire_date }
@@ -48,8 +46,6 @@ module SessionsHelper
 
     #   save ENCRYPTED form to the database record:
     person.update_attribute(:remember_token, Person.encrypt(remember_token))
-
-    ## logger.debug("ZZ: SessionsHelper.sign_in: self.current_person = #{self.current_person.inspect}") # DDT
 
     # add a current person attribute to the current object (a controller)
     # this is really an invocation of the 'current_person=' attribute writer
