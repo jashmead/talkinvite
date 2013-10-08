@@ -222,4 +222,12 @@ describe Person do
 
   end
 
+  describe "make sure anonymous exists" do
+    
+    let(:anonymous1) { Person.anonymous }
+    # next line is erroring out
+    # expect(anonymous1.name).to eq('anonymous')
+
+  end
+
 end

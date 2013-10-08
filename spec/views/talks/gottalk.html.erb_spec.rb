@@ -25,8 +25,6 @@ describe "talks/gottalk" do
 
     it { should have_button 'Search' }
 
-    it { should have_selector('div#hot_talks') }
-
     it {
       ## save_and_open_page
 
@@ -35,9 +33,9 @@ describe "talks/gottalk" do
   end
 
   describe "shows 'hottest' talks" do
+    before { visit '/talks/gottalk' }
 
-    pending(" add eleven talks, verify ten shown, and in updated order ")
-
+    it { should have_selector('div#hot_talks') }
   end
 
   # verify the start talk button actually takes us where we want to go

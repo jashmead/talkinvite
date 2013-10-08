@@ -69,19 +69,31 @@ class TalksController < ApplicationController
   def start
     logger.debug("CC: TalksController.start")
     if signed_in?
+      @talks = Talk.talks_by_person( current_person )
       render 'my_talks' and return
     else 
+      @talks = Talk.hot_talks
       render 'gottalk' and return
     end
   end
 
   def gottalk
     logger.debug("CC: TalksController.gottalk")
+    @talks = Talk.hot_talks
   end
+
+  ## specialized search-y tasks:
 
   def my_talks
     logger.debug("CC: TalksController.my_talks")
-    current_person.talks.paginate(page: params[:page])
+    ## can probably consolidate once we have debugged
+    if signed_in?
+      person = current_person
+      @talks = Talk.talks_by_person(person)
+    else
+      @talks = Talk.hot_talks
+    end
+    @talks.paginate(page: params[:page])
   end
 
   def found
@@ -89,11 +101,15 @@ class TalksController < ApplicationController
   end
 
   def recent
-    found
+    @talks = Talk.recent.paginate(page: params[:page])
+  end
+
+  def hot_talks
+    @talks = Talk.recent.paginate(page: params[:page])
   end
 
   def nearby
-    found
+    @talks = Talk.nearby.paginate(page: params[:page])
   end
 
   private

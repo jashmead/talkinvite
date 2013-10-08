@@ -4,6 +4,7 @@
 # 1. summary -- string, mandatory
 # 2. description -- text, optional
 #
+# do all the searches here, not in controller
 
 =begin
   To go back & forth between people & talks:
@@ -41,6 +42,16 @@ class Talk < ActiveRecord::Base
 
   # in general, search is model specific
   # need 'self' because this is a class method
+  # talks#search & friends most important single part of the system...
+=begin
+  searches:
+    search
+    nearby
+    recent
+    my_talks
+    hot_talks
+=end
+
   def self.search(q)
     return Talk.all unless q.present?
     q_like = "%#{q}%"
@@ -49,12 +60,27 @@ class Talk < ActiveRecord::Base
 
   def self.recent
     # with default scope, the most recently changed
-    return Talk.order('talks.updated_at desc')
+    Talk.order('talks.updated_at desc')
   end
 
-  # for now, just return the most recent
-  def self.hot
-    return self.recent
+  # for now, for hot_talks, just return the most recent
+  #   if person argument supplied, then feature that person more prominently, somehow
+  def self.hot_talks
+    self.recent.limit('limit 10')
+  end
+
+  def self.nearby (location) 
+    # OK, how do we *really* do 'nearby'?
+    self.recent
+  end
+
+  def self.talks_by_person( person ) 
+    # RoR probably knows to use 'id' when called with 'person', experiment later
+    if ! person
+      person = Person.anonymous
+    end
+    ## logger.debug("MM: Talk.talks_by_person: #{person.inspect}")
+    self.where("person_id = ?", person)
   end
 
 end

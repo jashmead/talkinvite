@@ -109,6 +109,13 @@ class Person < ActiveRecord::Base
     where("name like ? or email like ?", q_like, q_like)
   end
 
+  # tried 'anonymous' in the app/helpers, got whined at...
+  def self.anonymous 
+    @person = self.where("name = 'anonymous'")
+    logger.debug("MM: anonymous: %{person}")
+    @person
+  end
+
   private
 
     def create_remember_token
