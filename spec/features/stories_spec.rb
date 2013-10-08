@@ -9,6 +9,7 @@
 
 # it appears that 'save_and_open_page' has to be inside an 'it'
 #   -- because launchy is being called via capybara, not directly?
+#     -- launchy definitely uses capybara, see the capybara embedded in the tmp url!
 #   -- putting in a 'require launchy' doesn't help
 
 require 'spec_helper'
@@ -28,16 +29,15 @@ describe 'stories' do
         visit start_path # home page
       end
 
-      # save_and_open_page
-
       it { 
-        # save_and_open_page
+        # save_and_open_page  ## DDT
 
         should have_selector('h1', text: "My Talks")
       }
 
     end
 
+    # currently the tests are for page level tests, overlap with those in spec/views/talks/gottalk_page_spec.rb
     describe "for anonymous" do
 
       before do
@@ -45,10 +45,9 @@ describe 'stories' do
       end
 
       it { 
-        save_and_open_page
+        # save_and_open_page  ## DDT
 
-        # for some reason, have_title, have_selector('title', text: ....) don't work
-        # should have_title("Got Talk?")
+        should have_title('Search for talks or add one')
 
         should have_selector('h1', text: "Got Talk?")
       }

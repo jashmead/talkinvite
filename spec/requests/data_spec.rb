@@ -1,3 +1,7 @@
+## specialized tests against data types
+#   not sure how to actually implement
+#     call up the helper functions & exercise them?
+
 require 'spec_helper'
 
 describe 'data types' do

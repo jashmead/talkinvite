@@ -1,0 +1,6 @@
+=== Feature Tests
+
+The features directory is supposed to work better with capybara tests 
+-- seems to make no difference however.
+
+Stories_pages_spec.rb is a kind of road map of the applications, as it is expected to be used.
