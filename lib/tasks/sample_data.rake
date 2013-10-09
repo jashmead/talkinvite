@@ -7,6 +7,13 @@ namespace :db do
   end
 end
 
+namespace :db do
+  desc "Make only the relationships"
+  task populate_relationships: :environment do
+    make_relationships
+  end
+end
+
 def make_people
     Person.create!(
       name: "Example Person",
