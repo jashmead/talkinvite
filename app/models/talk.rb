@@ -67,7 +67,9 @@ class Talk < ActiveRecord::Base
   # for now, for hot_talks, just return the most recent
   #   if person argument supplied, then feature that person more prominently, somehow
   def self.hot_talks
-    self.recent.limit(10)
+    talks1 = self.recent.limit(10)
+    logger.debug("MM: self.hot_talks: #{talks1.inspect}")
+    talks1
   end
 
   def self.nearby (location) 

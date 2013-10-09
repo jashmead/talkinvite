@@ -2,6 +2,7 @@
 
 <% provide(:title, 'Search for talks or add one') %>
 <% provide(:heading, 'Got Talk?') %>
+<% logger.debug("VV: gottalk: @talks: #{@talks.inspect}") %>
 <h1><%= yield :heading %></h1>
 
 <div class="row">
@@ -16,7 +17,7 @@
   </div>
 
   <div id="hot_talks">
-  <% if @talks && @talks.size > 0 %>
+  <% if @talks && @talks.length > 0 %>
       <h2>Hot Talks</h2>
       <%= render partial: 'talk_table' %>
   <% end %>

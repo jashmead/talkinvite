@@ -78,8 +78,13 @@ class TalksController < ApplicationController
   end
 
   def gottalk
-    logger.debug("CC: TalksController.gottalk")
     @talks = Talk.hot_talks
+    if ! @talks
+      logger.debug("CC: TalksController.gottalk: no talks found")
+    else
+      logger.debug("CC: TalksController.gottalk: #{@talks.size} talks found")
+    end 
+    @talks
   end
 
   ## specialized search-y tasks:

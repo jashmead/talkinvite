@@ -156,14 +156,18 @@ describe "search" do
 
     describe "gottalk" do 
 
-      before do
-        FactoryGirl.create(:talk)
-        FactoryGirl.create(:talk)
+      # this assignment not working, can't use 'let' inside 'before', but outside doesn't create the talk or something...
+      # let(:talk1) { FactoryGirl.create(:talk) }
+      # let(:talk2) { FactoryGirl.create(:talk) }
 
+      before do
+        FactoryGirl.create(:talk, summary: 'summary')
+        FactoryGirl.create(:talk, description: 'description')
         visit gottalk_talks_path
       end
 
       it "should render the found page" do
+
         ## save_and_open_page
 
         expect(page).to have_title("Search for talks or add one")
@@ -171,8 +175,12 @@ describe "search" do
         expect(page).to have_button('Start Talk')
         expect(page).to have_selector('div#hot_talks')
 
-        ## apparently @talks is coming back nil, an object which is sizeless
-        expect(@talks.size).to eq 2
+        within('div#hot_talks') do
+          expect(page).to have_selector('table tr') # at least one element
+          expect(page).to have_content('summary')
+          expect(page).to have_content('description')
+        end
+
       end
 
     end # "gottalk"
