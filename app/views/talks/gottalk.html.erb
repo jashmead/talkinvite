@@ -16,7 +16,10 @@
   </div>
 
   <div id="hot_talks">
-    Hot Talks
+  <% if @talks && @talks.size > 0 %>
+      <h2>Hot Talks</h2>
+      <%= render partial: 'talk_table' %>
+  <% end %>
   </div>
 
 </div>

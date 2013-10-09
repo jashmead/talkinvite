@@ -52,6 +52,7 @@ class Talk < ActiveRecord::Base
     hot_talks
 =end
 
+  ## what is returned if no rows found?  'paginate' needs to know
   def self.search(q)
     return Talk.all unless q.present?
     q_like = "%#{q}%"
@@ -60,13 +61,13 @@ class Talk < ActiveRecord::Base
 
   def self.recent
     # with default scope, the most recently changed
-    Talk.order('talks.updated_at desc')
+    talks = Talk.order('talks.updated_at desc').limit(10)
   end
 
   # for now, for hot_talks, just return the most recent
   #   if person argument supplied, then feature that person more prominently, somehow
   def self.hot_talks
-    self.recent.limit('limit 10')
+    self.recent.limit(10)
   end
 
   def self.nearby (location) 
@@ -79,11 +80,7 @@ class Talk < ActiveRecord::Base
     if ! person
       person = Person.anonymous
     end
-    # see what is going on:
-    anonymous = Person.anonymous
-    logger.debug("AA: anonymous = #{anonymous.inspect}")
-    ## logger.debug("MM: Talk.talks_by_person: #{person.inspect}")
-    self.where("person_id = ?", person)
+    self.find_by_person_id(person.id)
   end
 
 end

@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Summary</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @talks.each do |talk| %>
+      <tr>
+        <td><%= talk.summary %></td>
+        <td><%= talk.description %></td>
+        <td><%= link_to 'Show', talk %></td>
+        <td><%= link_to 'Edit', edit_talk_path(talk) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

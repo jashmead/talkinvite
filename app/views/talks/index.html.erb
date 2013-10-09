@@ -2,29 +2,11 @@
 <% provide(:heading, 'List of talks') %>
 <h1><%= yield :heading %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Summary</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @talks.each do |talk| %>
-      <tr>
-        <td><%= talk.summary %></td>
-        <td><%= talk.description %></td>
-        <td><%= link_to 'Show', talk %></td>
-        <td><%= link_to 'Edit', edit_talk_path(talk) %></td>
-        <td><%= link_to 'Destroy', talk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @talks && @talks.size > 0 %>
+<%= render partial: 'talk_table' %>
+<% else %>
+No talks found.  Would you like to start one?
+<% end %>
 
 <br>
 

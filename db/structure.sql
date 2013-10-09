@@ -70,14 +70,8 @@ ALTER SEQUENCE people_id_seq OWNED BY people.id;
 
 CREATE TABLE relationships (
     id integer NOT NULL,
-<<<<<<< HEAD
     follower_id integer,
     followed_id integer,
-=======
-    from_id integer NOT NULL,
-    to_id integer NOT NULL,
-    rel_type character varying(32) DEFAULT 'FOLLOW'::character varying NOT NULL,
->>>>>>> relationships
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -204,7 +198,6 @@ CREATE INDEX index_people_on_remember_token ON people USING btree (remember_toke
 
 
 --
-<<<<<<< HEAD
 -- Name: index_relationships_on_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -223,19 +216,6 @@ CREATE INDEX index_relationships_on_follower_id ON relationships USING btree (fo
 --
 
 CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON relationships USING btree (follower_id, followed_id);
-=======
--- Name: index_relationships_on_from_id_and_to_id_and_rel_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_relationships_on_from_id_and_to_id_and_rel_type ON relationships USING btree (from_id, to_id, rel_type);
-
-
---
--- Name: index_relationships_on_to_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_relationships_on_to_id ON relationships USING btree (to_id);
->>>>>>> relationships
 
 
 --
@@ -250,22 +230,6 @@ CREATE INDEX index_talks_on_person_id_and_created_at ON talks USING btree (perso
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: relationship2from_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY relationships
-    ADD CONSTRAINT relationship2from_person_fk FOREIGN KEY (from_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: relationship2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY relationships
-    ADD CONSTRAINT relationship2to_person_fk FOREIGN KEY (to_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -338,9 +302,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130911201231');
 
 INSERT INTO schema_migrations (version) VALUES ('20130912180352');
 
-<<<<<<< HEAD
-INSERT INTO schema_migrations (version) VALUES ('20130922203248');
-=======
 INSERT INTO schema_migrations (version) VALUES ('20130922165558');
 
 INSERT INTO schema_migrations (version) VALUES ('20130922170750');
@@ -348,4 +309,13 @@ INSERT INTO schema_migrations (version) VALUES ('20130922170750');
 INSERT INTO schema_migrations (version) VALUES ('20130922171946');
 
 INSERT INTO schema_migrations (version) VALUES ('20130922172401');
->>>>>>> relationships
+
+INSERT INTO schema_migrations (version) VALUES ('20130922192727');
+
+INSERT INTO schema_migrations (version) VALUES ('20130922203248');
+
+INSERT INTO schema_migrations (version) VALUES ('20131009152706');
+
+INSERT INTO schema_migrations (version) VALUES ('20131009152726');
+
+INSERT INTO schema_migrations (version) VALUES ('20131009153201');

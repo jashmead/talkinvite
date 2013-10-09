@@ -93,7 +93,7 @@ class TalksController < ApplicationController
     else
       @talks = Talk.hot_talks
     end
-    @talks.paginate(page: params[:page])
+    @talks
   end
 
   def found
@@ -101,15 +101,17 @@ class TalksController < ApplicationController
   end
 
   def recent
-    @talks = Talk.recent.paginate(page: params[:page])
+    @talks = Talk.recent(page: params[:page])
+    logger.debug("CC: TalksController.recent: @talks: #{@talks.inspect}")
+    @talks
   end
 
   def hot_talks
-    @talks = Talk.recent.paginate(page: params[:page])
+    @talks = Talk.recent(page: params[:page])
   end
 
   def nearby
-    @talks = Talk.nearby.paginate(page: params[:page])
+    @talks = Talk.nearby(page: params[:page])
   end
 
   private

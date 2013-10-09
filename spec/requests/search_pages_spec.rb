@@ -152,8 +152,31 @@ describe "search" do
 
       end
 
-    end
+    end # simple search form
 
-  end
+    describe "gottalk" do 
 
-end
+      before do
+        FactoryGirl.create(:talk)
+        FactoryGirl.create(:talk)
+
+        visit gottalk_talks_path
+      end
+
+      it "should render the found page" do
+        ## save_and_open_page
+
+        expect(page).to have_title("Search for talks or add one")
+        expect(page).to have_selector('h1', 'Got Talk?')
+        expect(page).to have_button('Start Talk')
+        expect(page).to have_selector('div#hot_talks')
+
+        ## apparently @talks is coming back nil, an object which is sizeless
+        expect(@talks.size).to eq 2
+      end
+
+    end # "gottalk"
+
+  end # talks
+
+end # searches

@@ -118,7 +118,7 @@ class Person < ActiveRecord::Base
         password: 'scrofulous-nonsense', password_confirmation: 'scrofulous-nonsense')
       anonymous = self.find_by_name('anonymous')
     end
-    # logger.debug("MM: Person.anonymous: #{anonymous}")
+    logger.debug("MM: Person.anonymous: #{anonymous}")
     anonymous
   end
 

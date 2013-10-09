@@ -2,6 +2,7 @@
 #  see http://apidock.com/rails/ActiveRecord/ConnectionAdapters/SchemaStatements/add_column#168-See-TableDefinition-column-for-options
 class CreateRelationships < ActiveRecord::Migration
   def change
+    execute("drop table if exists relationships")   # unwedge rake db:migrate
     create_table :relationships do |t|
       t.integer :from_id, :null => false
       t.integer :to_id, :null => false

@@ -55,10 +55,6 @@ module SessionsHelper
   ## current_person is a method, @current_person is an attribute -- admittedly a fuzzy distinction in Ruby
   ## see if we are signed in currently
   def signed_in?
-    logger.debug("HH: SessionsHelper.signed_in?: current_person: #{current_person.inspect}") #DDT
-    logger.debug("HH: SessionsHelper.signed_in?: @current_person: #{@current_person.inspect}") #DDT
-    # logger.debug("HH: SessionsHelper.result: #{!current_person.nil.inspect}") #DDT
-
     !current_person.nil?
   end
 
