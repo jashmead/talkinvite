@@ -1,4 +1,4 @@
-class CreateRelationships3 < ActiveRecord::Migration
+class CreateRelationships2 < ActiveRecord::Migration
   def change
     ## replace follower_id with from_person_id
     ## replace followed_id with to_person_id
