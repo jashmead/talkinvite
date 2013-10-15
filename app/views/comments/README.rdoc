@@ -1,0 +1,10 @@
+=== Comments Views
+
+Starting with the usual set, but really need:
+
+1. add
+1. edit
+1. show (with individual talk, person)
+1. index -- for a list of the members in a talk, or memberships a person has
+
+delete is done when talk or person is deleted, and only then

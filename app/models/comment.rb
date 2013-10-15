@@ -14,4 +14,6 @@ class Comment < ActiveRecord::Base
 
   validates_uniqueness_of :person_id, :talk_id
 
+  ## searches:  given person & talk, get all comments in reverse updated_at order
+
 end

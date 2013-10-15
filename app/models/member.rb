@@ -19,6 +19,8 @@ class Member < ActiveRecord::Base
 
   validates_uniqueness_of :person_id, :talk_id
 
+  ## searches:  given person & talk, get all comments in reverse updated_at order
+
   ## make the status changing guys class methods because the member record may not exist
   def self.rsvp_status_create_or_change(person_id, talk_id, new_rsvp_status)
   end
