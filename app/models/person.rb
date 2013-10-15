@@ -39,6 +39,8 @@ class Person < ActiveRecord::Base
   ## 'source' is optional, since followers will automagically give follower_id as the key
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  has_many :members, dependent: :destroy
+
   before_save { self.email = email.downcase }
 
   before_create :create_remember_token

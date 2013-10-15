@@ -102,7 +102,37 @@ and a bit of glue.
 
 Note that a fair amount of setup is done in ~/.talkinvite, setting CBPATH, PATH, PostgreSQL stuff, and so on.
 
+=== Tools
+attachments
+
+searches
+1. web searches
+1. site searches
+1. personal searches
+1. twitter & other social media searches
+1. canned searches
+  1. 'my' talks, people, locations, and so on
+  1. by 1st, 2nd, 3rd, ...
+
+privacy tools -- permissions, notifications, ...
+-- for subscribers only
+-- included in upgrades
+
+add to ApplicationController:
+* search 
+* control -- with reference to a specific record
+* command -- may have a specific record, but need not
+
 === Dev Notes
+
+1. admins are always subscribers!
+1. talkinvite is the default, anonymous identity
+1. other identities are help, contact
+1. when changing data types, make sure all the test code knows about the new types
+1. when adding/changing/deleting fields:  check all the spec code:  requests, models, controllers, views, & factories
+1. stories spec corresponds to stories rdoc, perhaps other rdocs should have other specs (TDD)
+
+=== Troubleshooting
 
 * sign_in not working in people_controllers_spec.rb, see notes there
 * deal with by getting better understanding of control flow (esp authentication)

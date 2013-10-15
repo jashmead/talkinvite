@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Talk:</strong>
+  <%= @member.talk_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @member.person_id %>
+</p>
+
+<p>
+  <strong>Rsvp status:</strong>
+  <%= @member.rsvp_status %>
+</p>
+
+<p>
+  <strong>Member type:</strong>
+  <%= @member.member_type %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

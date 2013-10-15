@@ -163,73 +163,7 @@ upgrades* -- applies to a specific account
 
 close account* -- uses destroy method, may reduce to merely make inactive
 
-=== Behind the Talk
-
--- these are mostly under 'static_pages', tho that represents a slight conflation of categories
-
-about
-
-contact
-
-faqs/help* -- table at some point
-
-privacy
-
-credits* -- will spin off to a model of its own
-
-=== Admin
-
-start point is meta_admin, a menu style page
-1. basically direct, low level access to tables
-1. good for development of intermediary pages as well
-1. all start points are of tables via index
-
-==== Tables
-
-1. people
-1. talks
-1. tags
-1. members
-1. credits
-1. attachments
-1. venues
-
-world_building* -- new kinds of maps, as world of warcraft, game of thrones
-
-don't really need maps, calendars, sessions, schema_migrations, circles, svgs, & other support tables
-
-==== Dev notes
-
-1. admins are always subscribers!
-1. talkinvite is the default, anonymous identity
-1. other identities are help, contact
-
-=== Ads
-* a way to monetize
-* turn off for subscribers
-
-=== Tools
-attachments
-
-searches
-1. web searches
-1. site searches
-1. personal searches
-1. twitter & other social media searches
-1. canned searches
-  1. 'my' talks, people, locations, and so on
-  1. by 1st, 2nd, 3rd, ...
-
-privacy tools -- permissions, notifications, ...
--- for subscribers only
--- included in upgrades
-
-add to ApplicationController:
-* search 
-* control -- with reference to a specific record
-* command -- may have a specific record, but need not
-
-== Possibilities
+=== Possibilities
 
 * per person maps
 * my stats
@@ -237,4 +171,3 @@ add to ApplicationController:
 * star trek communicator type css effects
 * links to google hang outs & the like
 * maps & data type functionality
-

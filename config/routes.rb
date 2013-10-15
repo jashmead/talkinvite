@@ -2,6 +2,8 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :members
+
   ## put most specific routes at the top:
 
   # have start point to a static page route, 

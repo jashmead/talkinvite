@@ -1,0 +1,36 @@
+=== Admin
+
+start point is meta_admin, a menu style page
+1. basically direct, low level access to tables
+1. good for development of intermediary pages as well
+1. all start points are of tables via index
+
+==== Behind the Talk
+
+-- these are mostly under 'static_pages', tho that represents a slight conflation of categories
+
+about
+
+contact
+
+faqs/help* -- table at some point
+
+privacy
+
+credits* -- will spin off to a model of its own
+
+==== Admin Forms
+
+basically would like admin access to various tables; 
+standard resource list (with admin privileges) should be fine.
+
+1. people
+1. talks
+1. tags
+1. members
+1. credits
+1. attachments
+1. venues
+
+don't really need admin access to maps, calendars, sessions, schema_migrations, circles, svgs, & other support tables 
+

@@ -27,7 +27,7 @@
 talks header
 talks footer
 
-==== Dev notes
+==== Plans
 
 if we are not the person who created the talk, or if a (different) person is shown at all,
 add in follow/unfollow; add in gravatar, if available

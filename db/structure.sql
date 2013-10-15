@@ -29,6 +29,40 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE members (
+    id integer NOT NULL,
+    talk_id integer,
+    person_id integer,
+    rsvp_status character varying(255) DEFAULT 'accepted'::character varying NOT NULL,
+    member_type character varying(255) DEFAULT ''::character varying NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE members_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE members_id_seq OWNED BY members.id;
+
+
+--
 -- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -142,6 +176,13 @@ ALTER SEQUENCE talks_id_seq OWNED BY talks.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY members ALTER COLUMN id SET DEFAULT nextval('members_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::regclass);
 
 
@@ -157,6 +198,14 @@ ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationship
 --
 
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
+
+
+--
+-- Name: members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY members
+    ADD CONSTRAINT members_pkey PRIMARY KEY (id);
 
 
 --
@@ -181,6 +230,13 @@ ALTER TABLE ONLY relationships
 
 ALTER TABLE ONLY talks
     ADD CONSTRAINT talks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_members_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_members_on_person_id_and_talk_id ON members USING btree (person_id, talk_id);
 
 
 --
@@ -230,6 +286,38 @@ CREATE INDEX index_talks_on_person_id_and_created_at ON talks USING btree (perso
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: member2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY members
+    ADD CONSTRAINT member2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: member2to_talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY members
+    ADD CONSTRAINT member2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: relationship2from_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY relationships
+    ADD CONSTRAINT relationship2from_person_fk FOREIGN KEY (followed_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: relationship2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY relationships
+    ADD CONSTRAINT relationship2to_person_fk FOREIGN KEY (follower_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -319,3 +407,9 @@ INSERT INTO schema_migrations (version) VALUES ('20131009152706');
 INSERT INTO schema_migrations (version) VALUES ('20131009152726');
 
 INSERT INTO schema_migrations (version) VALUES ('20131009153201');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015145638');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015160810');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015161708');
