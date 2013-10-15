@@ -207,6 +207,40 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: socials; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE socials (
+    id integer NOT NULL,
+    person_id integer NOT NULL,
+    talk_id integer NOT NULL,
+    social_type character varying(255) DEFAULT 'invite'::character varying NOT NULL,
+    social_text text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: socials_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE socials_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: socials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE socials_id_seq OWNED BY socials.id;
+
+
+--
 -- Name: talks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -315,6 +349,13 @@ ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationship
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY socials ALTER COLUMN id SET DEFAULT nextval('socials_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
 
 
@@ -363,6 +404,14 @@ ALTER TABLE ONLY people
 
 ALTER TABLE ONLY relationships
     ADD CONSTRAINT relationships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: socials_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY socials
+    ADD CONSTRAINT socials_pkey PRIMARY KEY (id);
 
 
 --
@@ -435,6 +484,13 @@ CREATE INDEX index_relationships_on_follower_id ON relationships USING btree (fo
 --
 
 CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON relationships USING btree (follower_id, followed_id);
+
+
+--
+-- Name: index_socials_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_socials_on_person_id_and_talk_id ON socials USING btree (person_id, talk_id);
 
 
 --
@@ -520,6 +576,22 @@ ALTER TABLE ONLY relationships
 
 ALTER TABLE ONLY relationships
     ADD CONSTRAINT relationship2to_person_fk FOREIGN KEY (follower_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: social2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY socials
+    ADD CONSTRAINT social2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: social2to_talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY socials
+    ADD CONSTRAINT social2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -641,3 +713,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131015190509');
 INSERT INTO schema_migrations (version) VALUES ('20131015200208');
 
 INSERT INTO schema_migrations (version) VALUES ('20131015202711');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015221428');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015223919');

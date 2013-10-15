@@ -2,6 +2,8 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :socials
+
   resources :venues
 
   resources :notifications

@@ -1,0 +1,10 @@
+=== Social
+
+Starting with the usual set, but really need:
+
+1. invite -- for talkinvite
+1. tweet -- for twitter
+1. faceit -- for facebook
+1. show (with individual talk, person)
+1. index -- for a list of the members in a talk, or memberships a person has
+1. cancel -- aka destroy

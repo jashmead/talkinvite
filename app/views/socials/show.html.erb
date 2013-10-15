@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @social.person_id %>
+</p>
+
+<p>
+  <strong>Talk:</strong>
+  <%= @social.talk_id %>
+</p>
+
+<p>
+  <strong>Social type:</strong>
+  <%= @social.social_type %>
+</p>
+
+<p>
+  <strong>Social text:</strong>
+  <%= @social.social_text %>
+</p>
+
+<%= link_to 'Edit', edit_social_path(@social) %> |
+<%= link_to 'Back', socials_path %>
