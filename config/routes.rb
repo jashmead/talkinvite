@@ -2,6 +2,8 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :comments
+
   resources :members
 
   ## put most specific routes at the top:

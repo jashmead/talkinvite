@@ -40,6 +40,7 @@ class Person < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
 
   has_many :members, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   before_save { self.email = email.downcase }
 

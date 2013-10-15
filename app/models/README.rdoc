@@ -7,17 +7,17 @@ Note we can't use 'file' as a table name, conflicts with Ruby
 In order of creation:
 
 1. Schema_Migrations
-1. People
+1. People -- will be adding locations to this
 1. Sessions
-1. Talks -- links up to people, and to venues when that is up
+1. Talks -- links up to people, will be adding venues to this
 1. Relationships -- links to people, from & to both
 1. Members -- links to talk & to people, includes 'admin' status (with reference to talk), payload is rsvp_status, member_type
 
 Planned, in expected order of creation:
 
 1. Comments -- links to talk & to people, payload is text
-1. Notifications -- includes Tweets, links to talk & to people (sender), includes modalities (array?), start with core, expand
-1. Venues -- links to creator, has location type (as two fields), venue_type, name, description
+1. Notifications -- includes Tweets, links to talk & to people (sender), includes modalities (array?), start with core, expand; starts by sending a notice to each email
+1. Venues -- links to creator, has location type (as two fields), venue_type, name, description, will need to add talk to point up to this, once ready
 1. Tags -- links to talks, may ultimately extend to venues & people, start polymorphic?
 
 Supporting, built as indicated:

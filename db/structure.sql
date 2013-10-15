@@ -29,6 +29,39 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE comments (
+    id integer NOT NULL,
+    person_id integer,
+    talk_id integer,
+    comment_text text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+
+
+--
 -- Name: members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -176,6 +209,13 @@ ALTER SEQUENCE talks_id_seq OWNED BY talks.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY members ALTER COLUMN id SET DEFAULT nextval('members_id_seq'::regclass);
 
 
@@ -198,6 +238,14 @@ ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationship
 --
 
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
+
+
+--
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -230,6 +278,13 @@ ALTER TABLE ONLY relationships
 
 ALTER TABLE ONLY talks
     ADD CONSTRAINT talks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_comments_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_comments_on_person_id_and_talk_id ON comments USING btree (person_id, talk_id);
 
 
 --
@@ -286,6 +341,22 @@ CREATE INDEX index_talks_on_person_id_and_created_at ON talks USING btree (perso
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: comment2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comment2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: comment2to_talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comment2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -415,3 +486,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131015160810');
 INSERT INTO schema_migrations (version) VALUES ('20131015161708');
 
 INSERT INTO schema_migrations (version) VALUES ('20131015164703');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015173419');
