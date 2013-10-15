@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Notification:</strong>
+  <%= @migration.notification %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @migration.person_id %>
+</p>
+
+<p>
+  <strong>Talk:</strong>
+  <%= @migration.talk_id %>
+</p>
+
+<p>
+  <strong>Notification type:</strong>
+  <%= @migration.notification_type %>
+</p>
+
+<p>
+  <strong>Notification text:</strong>
+  <%= @migration.notification_text %>
+</p>
+
+<%= link_to 'Edit', edit_migration_path(@migration) %> |
+<%= link_to 'Back', migrations_path %>

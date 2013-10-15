@@ -41,6 +41,7 @@ class Person < ActiveRecord::Base
 
   has_many :members, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   before_save { self.email = email.downcase }
 

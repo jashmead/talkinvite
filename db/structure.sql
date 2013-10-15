@@ -96,6 +96,40 @@ ALTER SEQUENCE members_id_seq OWNED BY members.id;
 
 
 --
+-- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE notifications (
+    id integer NOT NULL,
+    person_id integer,
+    talk_id integer,
+    note_type character varying(255) DEFAULT 'announce'::character varying,
+    note_text text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
+
+
+--
 -- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -223,6 +257,13 @@ ALTER TABLE ONLY members ALTER COLUMN id SET DEFAULT nextval('members_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::regclass);
 
 
@@ -254,6 +295,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY members
     ADD CONSTRAINT members_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -292,6 +341,13 @@ CREATE UNIQUE INDEX index_comments_on_person_id_and_talk_id ON comments USING bt
 --
 
 CREATE UNIQUE INDEX index_members_on_person_id_and_talk_id ON members USING btree (person_id, talk_id);
+
+
+--
+-- Name: index_notifications_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_notifications_on_person_id_and_talk_id ON notifications USING btree (person_id, talk_id);
 
 
 --
@@ -373,6 +429,22 @@ ALTER TABLE ONLY members
 
 ALTER TABLE ONLY members
     ADD CONSTRAINT member2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: notification2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notification2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: notification2to_talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notification2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -488,3 +560,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131015161708');
 INSERT INTO schema_migrations (version) VALUES ('20131015164703');
 
 INSERT INTO schema_migrations (version) VALUES ('20131015173419');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015190509');
