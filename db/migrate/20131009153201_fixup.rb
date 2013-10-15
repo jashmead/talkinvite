@@ -2,6 +2,7 @@ class Fixup < ActiveRecord::Migration
   # fixup confused state that automated migrations have gotten us into
   def up
     execute("drop table tables")
+    execute("drop table if exists relationships")
     create_table :relationships do |t|
       t.integer :follower_id
       t.integer :followed_id
