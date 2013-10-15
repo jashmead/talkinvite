@@ -216,7 +216,8 @@ CREATE TABLE talks (
     description text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    person_id integer NOT NULL
+    person_id integer NOT NULL,
+    venue_id integer
 );
 
 
@@ -237,6 +238,42 @@ CREATE SEQUENCE talks_id_seq
 --
 
 ALTER SEQUENCE talks_id_seq OWNED BY talks.id;
+
+
+--
+-- Name: venues; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE venues (
+    id integer NOT NULL,
+    venue_type character varying(255) DEFAULT 'venue'::character varying,
+    person_id integer,
+    name character varying(255),
+    description text,
+    longitude numeric,
+    latitude numeric,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: venues_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE venues_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: venues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
 
 
 --
@@ -279,6 +316,13 @@ ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationship
 --
 
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
 
 
 --
@@ -327,6 +371,14 @@ ALTER TABLE ONLY relationships
 
 ALTER TABLE ONLY talks
     ADD CONSTRAINT talks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: venues_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY venues
+    ADD CONSTRAINT venues_pkey PRIMARY KEY (id);
 
 
 --
@@ -390,6 +442,13 @@ CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON relati
 --
 
 CREATE INDEX index_talks_on_person_id_and_created_at ON talks USING btree (person_id, created_at);
+
+
+--
+-- Name: index_talks_on_venue_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_talks_on_venue_id ON talks USING btree (venue_id);
 
 
 --
@@ -469,6 +528,22 @@ ALTER TABLE ONLY relationships
 
 ALTER TABLE ONLY talks
     ADD CONSTRAINT talk2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: talks2venues_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talks
+    ADD CONSTRAINT talks2venues_fk FOREIGN KEY (venue_id) REFERENCES venues(id) ON UPDATE SET NULL ON DELETE SET NULL;
+
+
+--
+-- Name: venue2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY venues
+    ADD CONSTRAINT venue2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -562,3 +637,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131015164703');
 INSERT INTO schema_migrations (version) VALUES ('20131015173419');
 
 INSERT INTO schema_migrations (version) VALUES ('20131015190509');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015200208');
+
+INSERT INTO schema_migrations (version) VALUES ('20131015202711');

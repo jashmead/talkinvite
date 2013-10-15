@@ -1,0 +1,6 @@
+=== Venues
+
+Starting with the usual set, but need as well:
+
+1. search by location
+1. map

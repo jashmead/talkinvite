@@ -1,3 +1,6 @@
+## methods to create:
+##  send emails to all on the current list, broadcast
+
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
 
@@ -59,6 +62,10 @@ class NotificationsController < ApplicationController
       format.html { redirect_to notifications_url }
       format.json { head :no_content }
     end
+  end
+
+  # send emails to all on the current list of members
+  def broadcast
   end
 
   private

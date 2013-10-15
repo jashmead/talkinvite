@@ -9,10 +9,18 @@
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
 # 1.  password, password_confirmation, password_digest
 # 
-# == Relationships
-# people<-talks
-# TBD:
-# 1. add active_flag boolean to people, use to deactivate when the user has killed, in case there is other data we need to keep associated with this
+# == Children
+# 1. Relationships
+# 1. Members
+# 1. Comments
+# 1. Notifications
+# 1. Socials
+# 1. Messages
+# 1. Venues -- as proxy for locations
+
+# == Fields planned
+# 1. active_flag -- use to deactivate when the user has killed, in case there is other data we need to keep associated with this
+# 1. group_flag -- we are really a group, and relationships are memberships in that group
 
 class Person < ActiveRecord::Base
 
@@ -42,6 +50,7 @@ class Person < ActiveRecord::Base
   has_many :members, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :venues, dependent: :destroy
 
   before_save { self.email = email.downcase }
 

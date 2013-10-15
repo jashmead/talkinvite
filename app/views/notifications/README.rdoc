@@ -1,0 +1,9 @@
+=== Notifications
+
+Starting with the usual set, but really need:
+
+1. announce
+1. change
+1. show (with individual talk, person)
+1. index -- for a list of the members in a talk, or memberships a person has
+1. cancel -- aka destroy

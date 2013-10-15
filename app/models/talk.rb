@@ -2,8 +2,19 @@
 # 
 # == Fields
 # 1. summary -- string, mandatory
-# 2. description -- text, optional
-#
+# 1. description -- text, optional
+
+# == Children
+# 1. Members
+# 1. Comments
+# 1. Notifications
+# 1. Socials
+# 1. Messages
+# 1. Venues -- as proxy for locations
+
+# Planned fields
+# 1. venue_id
+
 # do all the searches here, not in controller
 
 =begin
@@ -21,6 +32,7 @@
 
 class Talk < ActiveRecord::Base
   belongs_to :person
+  belongs_to :venue
   has_many :members, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
