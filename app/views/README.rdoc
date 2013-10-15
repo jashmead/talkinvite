@@ -19,18 +19,6 @@ For details, see below (kept in layouts/README.rdoc)
 === Adding a field
 fields in the new & other forms must match those in the corresponding specs; obvious but easily overlooked point
 
-=== Models
-
-Models + Page Frames give most of the actual pages, if not all of them, extension of the use of 'resources' idea
-
-==== Members
-
-==== Comments
-
-==== Notifications
-
-==== Messages
-
 Form has:
 1. to (with cc)
 1. modality

@@ -1,4 +1,6 @@
-# add join/leave operations here
+##  add accept/decline/maybe operations here, calling on the model functions with the same names
+##  add admin/unadmin operations here, calling on the model functions with the same names
+##  expect these will be using ajax in final design
 
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]

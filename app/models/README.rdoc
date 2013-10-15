@@ -11,10 +11,10 @@ In order of creation:
 1. Sessions
 1. Talks -- links up to people, and to venues when that is up
 1. Relationships -- links to people, from & to both
+1. Members -- links to talk & to people, includes 'admin' status (with reference to talk), payload is rsvp_status, member_type
 
 Planned, in expected order of creation:
 
-1. Members -- links to talk & to people, includes 'admin' status (with reference to talk), payload is rsvp_status, member_type
 1. Comments -- links to talk & to people, payload is text
 1. Notifications -- includes Tweets, links to talk & to people (sender), includes modalities (array?), start with core, expand
 1. Venues -- links to creator, has location type (as two fields), venue_type, name, description
@@ -29,6 +29,7 @@ Supporting, built as indicated:
 1. Faqs/help text -- no links, question, answer, tags point to this as well!
 1. Messages -- person to person, various modalities, sender, receiver, talk
 1. Talk2Talk -- connections, creator, from_talk, to_talk
+1. Ads -- polymorphic into talks, tags, locations, users?, pretty much everything!
 
 Advanced
 
@@ -37,7 +38,6 @@ Advanced
 1. Groups? -- goes to relationships + a field in people (to indicate really a group)
 1. Recurring talks? -- like meetups? -- goes to talk2talk plus a field in talks to indicate ongoing
 1. Ratings? -- add in to tags
-1. Ads -- have no idea what to put here!  wait till we get here
 
 === Data types
 

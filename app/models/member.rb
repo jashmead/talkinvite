@@ -1,3 +1,4 @@
+## methods needed:
 class Member < ActiveRecord::Base
 
   belongs_to :person
@@ -14,5 +15,34 @@ class Member < ActiveRecord::Base
   validates_inclusion_of :member_type, :in => [ 'member', 'admin' ]  # may have others, ultimately
 
   validates_uniqueness_of :person_id, :talk_id
+
+  ## make the status changing guys class methods because the member record may not exist
+  def self.rsvp_status_create_or_change(person_id, talk_id, new_rsvp_status)
+  end
+
+  def self.member_type_create_or_change(person_id, talk_id, new_member_type)
+  end
+
+  def self.accept(person_id, talk_id)
+    self.rsvp_status_create_or_change(person_id, talk_id, 'accepted')
+  end
+
+  def self.decline(person_id, talk_id)
+    self.rsvp_status_create_or_change(person_id, talk_id, 'declined')
+  end
+
+  def self.maybe(person_id, talk_id)
+    self.rsvp_status_create_or_change(person_id, talk_id, 'maybe')
+  end
+
+  def self.admin(person_id, talk_id)
+    # verify the person doing this is creator of talk or else an admin
+    self.member_type_create_or_change(person_id, talk_id, 'admin')
+  end
+
+  def self.unadmin(person_id, talk_id)
+    # verify the person doing this is self & further is not the last admin!
+    self.member_type_create_or_change(person_id, talk_id, 'member')
+  end
 
 end
