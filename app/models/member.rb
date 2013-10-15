@@ -4,6 +4,9 @@ class Member < ActiveRecord::Base
   belongs_to :person
   belongs_to :talk
 
+  ## default_scope is not working in the newer/older test
+  default_scope -> { order('members.created_at desc') }
+
   validates :person_id, presence: true
 
   validates :talk_id, presence: true

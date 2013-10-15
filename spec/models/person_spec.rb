@@ -26,6 +26,9 @@ describe Person do
   it { should respond_to(:relationships) } 
   # it { should respond_to(:to_people) }
 
+  it { should respond_to(:members) }
+  it { should respond_to(:comments) }
+
   ## why two levels?  we need relationships and we need followed_people
   it { should respond_to(:relationships) }
   it { should respond_to(:followed_people) }
