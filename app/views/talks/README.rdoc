@@ -5,9 +5,10 @@
 1. gottalk -- page name is (currently) 'start'
 1. edit -- control page for a page, used by all participants
   * you can flag the talk open or protected or private
-1. advanced_search*
+1. advanced_search* -- optional, but fun & good element in design
 1. index -- list, start point of found
 1. found
+1. my_talks
 
 ==== Search pages
 

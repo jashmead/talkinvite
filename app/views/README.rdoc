@@ -5,35 +5,19 @@ simple color scheme, only frame, let the people, talks, locations, tags, files, 
 
 liquid design, smaller elements, i.e. span4 or mobile-width, and nearby controls
 
-levels of binding (definition of nearby):  
-1.  header & footer weak, 
-1.  context (less weak:  weak #1), 
-1.  views 2nd weak, controls strong, 
-1.  new searches 2nd strong; 
-
 === Page frames
 Spin off master page idea from Keynote, with a bit of liquidity added in by Bootstrap
 
 For details, see below (kept in layouts/README.rdoc)
 === Static elements
-1. header
-1. footer
-1. logo
-1. account menu
-
-=== Dynamic elements
-wrapped elements -- used for tags
-
-=== Standard links
-1. List items go to the show/edit forms
-1. Index pages have search/add at the top
-1. Search pages go to add page (form in add mode)
+1. logo -- not really needed in mobile, replace with start except on start page, where it is blank?
+1. title -- talk summary, person name, whatever
+1. account menu -- settings/new account on top right
+1. header -- specific to model
+1. footer -- specific to model
 
 === Adding a field
 fields in the new & other forms must match those in the corresponding specs; obvious but easily overlooked point
-
-=== To do
-share title between title & heading using a function
 
 === Models
 
@@ -53,22 +37,18 @@ Form has:
 1. content
 1. details
 
-==== Attachments
-
 ==== Tags
 
-==== 
+==== Attachments
 
+no form of own
 
 === Testing
 --
 nested lists don't seem to work correctly in rdoc, so keep at one level for now
 ++
-1. title/heading
-1. main content
-1. page comes up routed to
-1. page checks authorization -- signed in, specific user, must be admin
-1. has appropriate control-set
-1. has correct links out
-1. said links out actually go where they are supposed to 
-1. submit buttons result in changes in database, as indicated
+
+* specified elements present
+* specified links go to correct pages
+* expandable items expand (& shrink)
+* views shift as they should
