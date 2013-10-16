@@ -1,0 +1,29 @@
+<h1>Listing credits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Worthy one</th>
+      <th>Service supplied</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @credits.each do |credit| %>
+      <tr>
+        <td><%= credit.worthy_one %></td>
+        <td><%= credit.service_supplied %></td>
+        <td><%= link_to 'Show', credit %></td>
+        <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
+        <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Credit', new_credit_path %>

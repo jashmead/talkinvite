@@ -135,6 +135,70 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: credits; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE credits (
+    id integer NOT NULL,
+    worthy_one text,
+    service_supplied text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: credits_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE credits_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: credits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE credits_id_seq OWNED BY credits.id;
+
+
+--
+-- Name: faqs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE faqs (
+    id integer NOT NULL,
+    question text,
+    answer text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: faqs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE faqs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: faqs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE faqs_id_seq OWNED BY faqs.id;
+
+
+--
 -- Name: members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -475,6 +539,20 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY credits ALTER COLUMN id SET DEFAULT nextval('credits_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY faqs ALTER COLUMN id SET DEFAULT nextval('faqs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY members ALTER COLUMN id SET DEFAULT nextval('members_id_seq'::regclass);
 
 
@@ -556,6 +634,22 @@ ALTER TABLE ONLY attachments
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: credits_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY credits
+    ADD CONSTRAINT credits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: faqs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY faqs
+    ADD CONSTRAINT faqs_pkey PRIMARY KEY (id);
 
 
 --
@@ -649,6 +743,20 @@ CREATE UNIQUE INDEX index_attachments_on_file_path ON attachments USING btree (f
 --
 
 CREATE UNIQUE INDEX index_comments_on_person_id_and_talk_id ON comments USING btree (person_id, talk_id);
+
+
+--
+-- Name: index_credits_on_worthy_one; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_credits_on_worthy_one ON credits USING btree (worthy_one);
+
+
+--
+-- Name: index_faqs_on_question; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_faqs_on_question ON faqs USING btree (question);
 
 
 --
@@ -942,3 +1050,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131016143201');
 INSERT INTO schema_migrations (version) VALUES ('20131016144200');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016154314');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016164651');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016165839');
