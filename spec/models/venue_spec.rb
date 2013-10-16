@@ -16,7 +16,10 @@ describe Venue do
   it { should respond_to(:latitude) }
   it { should respond_to(:description) }
 
-  # it { should respond_to(:talks) }
+  it { should respond_to(:talks) }
+
+  # it { should respond_to(:tagable) }
+  it { should respond_to(:tags) }
 
   its(:person) { should eq person }
 

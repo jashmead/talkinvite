@@ -48,16 +48,18 @@ class Person < ActiveRecord::Base
 
   # messages were setup in || with relationships
   # follower -> sender, followed -> receiver
-  has_many :messages, foreign_key: "sender_id", dependent: :destroy
-  has_many :receivers, through: :messages, source: :receivers, dependent: :destroy
-  has_many :reverse_messages, foreign_key: "receiver_id", class_name: "Message", dependent: :destroy
-  has_many :senders, through: :reverse_messages, source: :sender
+  has_many :sent_messages, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
+  has_many :receivers, through: :sent_messages, source: :receivers, dependent: :destroy
+  has_many :received_messages, foreign_key: "receiver_id", class_name: "Message", dependent: :destroy
+  has_many :senders, through: :received_messages, source: :sender
 
   has_many :members, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :venues, dependent: :destroy
   has_many :socials, dependent: :destroy
+
+  has_many :tags, :as => :tagable
 
   before_save { self.email = email.downcase }
 

@@ -39,6 +39,14 @@ describe Person do
   it { should respond_to(:reverse_relationships) }
   it { should respond_to(:followers) }
 
+  it { should respond_to(:sent_messages) } 
+  it { should respond_to(:receivers) }
+  it { should respond_to(:received_messages) }
+  it { should respond_to(:senders) }
+
+  # it { should respond_to(:tagable) }  # why doens't this work?
+  it { should respond_to(:tags) }
+
   it { should respond_to(:following?) }
   it { should respond_to(:follow!) }
   it { should respond_to(:unfollow!) }
