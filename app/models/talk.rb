@@ -71,6 +71,7 @@ class Talk < ActiveRecord::Base
 =end
 
   ## what is returned if no rows found?  'paginate' needs to know
+  ## lots more searches coming up, pull out to a separate module
   def self.search(q)
     return Talk.all unless q.present?
     q_like = "%#{q}%"
@@ -90,6 +91,9 @@ class Talk < ActiveRecord::Base
     talks1
   end
 
+  ## check nearby in known talkinviters (who make their location known),
+  ##  nearby according to twitter,
+  ##  and so on
   def self.nearby (location) 
     # OK, how do we *really* do 'nearby'?
     self.recent
@@ -103,4 +107,18 @@ class Talk < ActiveRecord::Base
     self.find_by_person_id(person.id)
   end
 
+  # troll web for quotes using the key_phrase
+  def self.quote ( key_phrase )
+
+  end
+
+  # look for stuff in various categories
+  def self.category( tag, key_phrase )
+
+  end
+
+  # look for hash_tags & other stuff on twitter
+  def self.twitter( key_phrase ) 
+
+  end
 end

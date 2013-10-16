@@ -71,7 +71,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
