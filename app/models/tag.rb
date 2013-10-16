@@ -3,7 +3,7 @@
 # Fields are a bare minimum:  
 # 1. tag_type
 # 1. tagable_type -- name of the parent table
-# 1. tabable_id -- id of parent record
+# 1. tagable_id -- id of parent record
 #
 # There is a unique key on these three
 #

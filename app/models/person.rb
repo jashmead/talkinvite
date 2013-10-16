@@ -60,6 +60,7 @@ class Person < ActiveRecord::Base
   has_many :socials, dependent: :destroy
 
   has_many :tags, :as => :tagable
+  has_many :attachments, :as => :attachable
 
   before_save { self.email = email.downcase }
 

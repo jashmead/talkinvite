@@ -38,6 +38,7 @@ class Talk < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   has_many :socials, dependent: :destroy
   has_many :tags, :as => :tagable
+  has_many :attachments, :as => :attachable
 
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('talks.created_at desc') }

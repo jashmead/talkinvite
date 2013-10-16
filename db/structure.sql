@@ -275,6 +275,39 @@ ALTER SEQUENCE socials_id_seq OWNED BY socials.id;
 
 
 --
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tags (
+    id integer NOT NULL,
+    tag_type character varying(255),
+    tagable_type character varying(255),
+    tagable_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tags_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
+
+
+--
 -- Name: talks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -397,6 +430,13 @@ ALTER TABLE ONLY socials ALTER COLUMN id SET DEFAULT nextval('socials_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
 
 
@@ -464,6 +504,14 @@ ALTER TABLE ONLY socials
 
 
 --
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tags
+    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: talks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -519,6 +567,20 @@ CREATE INDEX index_people_on_remember_token ON people USING btree (remember_toke
 --
 
 CREATE UNIQUE INDEX index_socials_on_person_id_and_talk_id ON socials USING btree (person_id, talk_id);
+
+
+--
+-- Name: index_tags_on_tag_type_and_tagable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_tags_on_tag_type_and_tagable_type ON tags USING btree (tag_type, tagable_type);
+
+
+--
+-- Name: index_tags_on_tagable_id_and_tagable_type_and_tag_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_tags_on_tagable_id_and_tagable_type_and_tag_type ON tags USING btree (tagable_id, tagable_type, tag_type);
 
 
 --
@@ -755,3 +817,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131016011047');
 INSERT INTO schema_migrations (version) VALUES ('20131016012217');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016030347');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016133020');

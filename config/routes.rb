@@ -2,6 +2,8 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :attachments
+
   resources :tags
 
   resources :messages
