@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :message do
-    message_type "email"
     sender
     receiver
-    message_text "MyText"
+    message_type "email"
+    sequence(:message_text) { |n| "this is message # #{n}"}
   end
 end

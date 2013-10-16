@@ -26,15 +26,15 @@ describe MessagesController do
 
   let(:person) { FactoryGirl.create(:person) }
   let(:other_person) { FactoryGirl.create(:person) }
-  let(:valid_attributes) { { "message_type" => "email", "sender_id" => person.id, 
-    "receiver_id" => other_person.id, "message_text" => "hello there sailor!" } }
+  let(:valid_attributes) { { "sender_id" => person.id, "receiver_id" => other_person.id, 
+    "message_type" => "email", "message_text" => "contents of message" } }
+
+  before { sign_in person, no_capybara: true }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # MessagesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
-  #  before { sign_in person }  # sign_in doesn't seem to work, so have turned off check on sign_in
 
   describe "GET index" do
     it "assigns all messages as @messages" do
@@ -56,6 +56,14 @@ describe MessagesController do
     it "assigns a new message as @message" do
       get :new, {}, valid_session
       assigns(:message).should be_a_new(Message)
+    end
+  end
+
+  describe "GET edit" do
+    it "assigns the requested message as @message" do
+      message = Message.create! valid_attributes
+      get :edit, {:id => message.to_param}, valid_session
+      assigns(:message).should eq(message)
     end
   end
 
@@ -83,15 +91,59 @@ describe MessagesController do
       it "assigns a newly created but unsaved message as @message" do
         # Trigger the behavior that occurs when invalid params are submitted
         Message.any_instance.stub(:save).and_return(false)
-        post :create, {:message => { "message_type" => "invalid value" }}, valid_session
+        post :create, {:message => { "sender_id" => "invalid value" }}, valid_session
         assigns(:message).should be_a_new(Message)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Message.any_instance.stub(:save).and_return(false)
-        post :create, {:message => { "message_type" => "invalid value" }}, valid_session
+        post :create, {:message => { "sender_id" => "invalid value" }}, valid_session
         response.should render_template("new")
+      end
+    end
+  end
+
+  describe "PUT update" do
+    describe "with valid params" do
+      it "updates the requested message" do
+        message = Message.create! valid_attributes
+        # Assuming there are no other messages in the database, this
+        # specifies that the Message created on the previous line
+        # receives the :update_attributes message with whatever params are
+        # submitted in the request.
+        Message.any_instance.should_receive(:update).with({ "sender_id" => "1" })
+        put :update, {:id => message.to_param, :message => { "sender_id" => "1" }}, valid_session
+      end
+
+      it "assigns the requested message as @message" do
+        message = Message.create! valid_attributes
+        put :update, {:id => message.to_param, :message => valid_attributes}, valid_session
+        assigns(:message).should eq(message)
+      end
+
+      it "redirects to the message" do
+        message = Message.create! valid_attributes
+        put :update, {:id => message.to_param, :message => valid_attributes}, valid_session
+        response.should redirect_to(message)
+      end
+    end
+
+    describe "with invalid params" do
+      it "assigns the message as @message" do
+        message = Message.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        Message.any_instance.stub(:save).and_return(false)
+        put :update, {:id => message.to_param, :message => { "sender_id" => "invalid value" }}, valid_session
+        assigns(:message).should eq(message)
+      end
+
+      it "re-renders the 'edit' template" do
+        message = Message.create! valid_attributes
+        # Trigger the behavior that occurs when invalid params are submitted
+        Message.any_instance.stub(:save).and_return(false)
+        put :update, {:id => message.to_param, :message => { "sender_id" => "invalid value" }}, valid_session
+        response.should render_template("edit")
       end
     end
   end

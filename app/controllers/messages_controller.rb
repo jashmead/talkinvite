@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :destroy]
-  # before_action :signed_in_person, only: [:new, :create, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /messages
   # GET /messages.json
@@ -16,8 +16,6 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    logger.debug("CC: @message: #{@message.inspect}")
-    @message
   end
 
   # GET /messages/1/edit
@@ -44,7 +42,7 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1.json
   def update
     respond_to do |format|
-      if @comment.update(message_params)
+      if @message.update(message_params)
         format.html { redirect_to @message, notice: 'Message was successfully updated.' }
         format.json { head :no_content }
       else
@@ -72,6 +70,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:message_type, :sender_id, :receiver_id, :message_text)
+      params.require(:message).permit(:sender_id, :receiver_id, :message_type, :message_text)
     end
 end
