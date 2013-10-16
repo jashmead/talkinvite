@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016165839) do
+ActiveRecord::Schema.define(version: 20131016172016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 20131016165839) do
   end
 
   add_index "faqs", ["question"], name: "index_faqs_on_question", unique: true, using: :btree
+
+  create_table "maps", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.text     "geometry",    default: "{}"
+    t.text     "settings",    default: "{}"
+    t.text     "history",     default: "{}"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "members", force: true do |t|
     t.integer  "talk_id"

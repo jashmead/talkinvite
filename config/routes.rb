@@ -2,6 +2,8 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :maps
+
   resources :credits
 
   resources :faqs
