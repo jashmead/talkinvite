@@ -466,27 +466,6 @@ CREATE INDEX index_people_on_remember_token ON people USING btree (remember_toke
 
 
 --
--- Name: index_relationships_on_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_relationships_on_followed_id ON relationships USING btree (followed_id);
-
-
---
--- Name: index_relationships_on_follower_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_relationships_on_follower_id ON relationships USING btree (follower_id);
-
-
---
--- Name: index_relationships_on_follower_id_and_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON relationships USING btree (follower_id, followed_id);
-
-
---
 -- Name: index_socials_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -560,22 +539,6 @@ ALTER TABLE ONLY notifications
 
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notification2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: relationship2from_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY relationships
-    ADD CONSTRAINT relationship2from_person_fk FOREIGN KEY (followed_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: relationship2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY relationships
-    ADD CONSTRAINT relationship2to_person_fk FOREIGN KEY (follower_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -691,6 +654,8 @@ INSERT INTO schema_migrations (version) VALUES ('20130922172401');
 INSERT INTO schema_migrations (version) VALUES ('20130922192727');
 
 INSERT INTO schema_migrations (version) VALUES ('20130922203248');
+
+INSERT INTO schema_migrations (version) VALUES ('20131009152701');
 
 INSERT INTO schema_migrations (version) VALUES ('20131009152706');
 

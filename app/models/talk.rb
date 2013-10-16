@@ -9,7 +9,6 @@
 # 1. Comments
 # 1. Notifications
 # 1. Socials
-# 1. Messages
 # 1. Venues -- as proxy for locations
 
 # Planned fields

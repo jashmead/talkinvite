@@ -28,8 +28,7 @@ class Person < ActiveRecord::Base
   has_many :talks, dependent: :destroy
   ## we are starting with the relationships that point 'to' the current person record
 
-  has_many :relationships, foreign_key: "from_id", dependent: :destroy
-  # has_many :to_people, through: relationships, source: :to_person
+  # relationships
 
   ## this line *creates* the attribute/method of Person called 'relationships'
   ## 'followers' method created implicitly by the following:
@@ -46,6 +45,13 @@ class Person < ActiveRecord::Base
 
   ## 'source' is optional, since followers will automagically give follower_id as the key
   has_many :followers, through: :reverse_relationships, source: :follower
+
+  # messages were setup in || with relationships
+  # follower -> sender, followed -> receiver
+  has_many :messages, foreign_key: "sender_id", dependent: :destroy
+  has_many :receivers, through: :messages, source: :receivers, dependent: :destroy
+  has_many :reverse_messages, foreign_key: "receiver_id", class_name: "Message", dependent: :destroy
+  has_many :senders, through: :reverse_messages, source: :sender
 
   has_many :members, dependent: :destroy
   has_many :comments, dependent: :destroy
