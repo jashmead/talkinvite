@@ -101,9 +101,9 @@ ALTER SEQUENCE members_id_seq OWNED BY members.id;
 
 CREATE TABLE messages (
     id integer NOT NULL,
-    message_type character varying(255) DEFAULT 'email'::character varying,
     sender_id integer,
     receiver_id integer,
+    message_type character varying(255) DEFAULT 'email'::character varying,
     message_text text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -753,3 +753,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131015235744');
 INSERT INTO schema_migrations (version) VALUES ('20131016011047');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016012217');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016030347');
