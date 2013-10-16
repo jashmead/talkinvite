@@ -9,8 +9,12 @@
 # == Children
 # 1. Talks
 
-# Planned fields
+# Planned or at least contemplated fields:
 # 1. map_type
+# 1. full street address
+# 1. country?
+# 1. phone(s)
+# 1. url(s)
 
 class Venue < ActiveRecord::Base
   belongs_to :person

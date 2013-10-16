@@ -13,6 +13,7 @@
 # attaching currently applies to talks, venues, & people
 # -- may extend in future
 #
+# we are assuming that each attachment is focused on a specific target record, making polymorphism appropriate
 
 class Attachment < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
@@ -25,7 +26,7 @@ class Attachment < ActiveRecord::Base
 
   # may be adding attachments & perhaps others to this list
   # if attachable_type is a 'url', then the file_path is the 'url' in question
-  validates_inclusion_of :attachable_type, :in => [ 'talks', 'venues', 'people', 'urls' ]
+  validates_inclusion_of :attachable_type, :in => [ 'talks', 'venues', 'people', 'urls', 'faqs', 'credits', 'maps', 'calendars' ]
 
   validates :attachable_id, presence: true
 

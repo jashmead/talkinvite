@@ -18,23 +18,21 @@ In order of creation:
 1. Venues -- links to creator, has location type (as two fields), venue_type, name, description, will need to add talk to point up to this, once ready, acts as proxy for a generic 'location' object, to reduce amount of stuff
 1. Socials -- track what we need to of tweets, faces, & the like.  Similar to notifications, except 'broadcast' is different. Note there are legal requirements associated with some of these.
 1. Messages -- person to person, various modalities, sender, receiver, talk
+
 1. Tags -- links to talks, venues & people; polymorphic tho not perverse.
-
-Planned, in expected order of creation:
-
 1. Attachments -- including images, points up to talks, messages, notifications, people, & pretty much everything, polymorphic links, include urls here?, seems logical
 1. Ads -- polymorphic into talks, tags, locations, users?, pretty much everything!
 
-1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field)
-1. Calendars -- links to creator, has datasets, center, scale, has link to talk
+Planned, in expected order of creation:
 
+1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field). virtual table, like sessions.
+1. Calendars -- links to creator, has datasets, center, scale, has link to talk
 1. Credits -- links to creator, name, details, url, tags point to this as well!
 1. Faqs -- doubles as help text, no links, question, answer, tags point to this as well!
 
-1. Talk2Talk -- connections, creator, from_talk, to_talk, an advanced feature, may not need, can use for clone previous, repeating, & so on. May help with searches (big in our design). 
+Currently tabled tables
 
-Advanced & other tables
-
+1. Talk2Talk -- connections, creator, from_talk, to_talk, an advanced feature, may not need, can use for clone previous, repeating, & so on. May help with searches (big in our design).  At this point, we don't know how we want to use:  clone-father, repeating, and so on.  Could implement with a self-join, side-table, settings field, lots of ways.  Wait on need. YAGNI.
 1. Circles? -- goes to relationships
 1. SVGs? -- not yet, not sure needed
 1. Groups? -- goes to relationships + a field in people (to indicate really a group)
