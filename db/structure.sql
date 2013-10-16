@@ -29,6 +29,43 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: ads; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE ads (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    internal_flag boolean DEFAULT true,
+    content text,
+    source text,
+    strategy text,
+    stats text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: ads_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE ads_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: ads_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE ads_id_seq OWNED BY ads.id;
+
+
+--
 -- Name: attachments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -417,6 +454,13 @@ ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY ads ALTER COLUMN id SET DEFAULT nextval('ads_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id_seq'::regclass);
 
 
@@ -488,6 +532,14 @@ ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regcl
 --
 
 ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
+
+
+--
+-- Name: ads_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY ads
+    ADD CONSTRAINT ads_pkey PRIMARY KEY (id);
 
 
 --
@@ -888,3 +940,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131016133020');
 INSERT INTO schema_migrations (version) VALUES ('20131016143201');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016144200');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016154314');
