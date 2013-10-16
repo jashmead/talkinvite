@@ -29,6 +29,42 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: attachments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE attachments (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    attachment_type character varying(255) DEFAULT 'image'::character varying,
+    attachable_type character varying(255),
+    attachable_id integer,
+    file_path character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -381,6 +417,13 @@ ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -445,6 +488,14 @@ ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regcl
 --
 
 ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
+
+
+--
+-- Name: attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY attachments
+    ADD CONSTRAINT attachments_pkey PRIMARY KEY (id);
 
 
 --
@@ -525,6 +576,20 @@ ALTER TABLE ONLY talks
 
 ALTER TABLE ONLY venues
     ADD CONSTRAINT venues_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_attachments_on_attachable_id_and_attachable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_attachments_on_attachable_id_and_attachable_type ON attachments USING btree (attachable_id, attachable_type);
+
+
+--
+-- Name: index_attachments_on_file_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_attachments_on_file_path ON attachments USING btree (file_path);
 
 
 --
@@ -819,3 +884,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131016012217');
 INSERT INTO schema_migrations (version) VALUES ('20131016030347');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016133020');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016143201');
+
+INSERT INTO schema_migrations (version) VALUES ('20131016144200');
