@@ -24,9 +24,6 @@ In order of creation:
 1. Ads -- polymorphic into talks, tags, locations, users?, pretty much everything!
 1. Faqs -- doubles as help text, no links, question, answer, tags point to this as well!
 1. Credits -- links to creator, name, details, url, tags point to this as well!
-
-Planned, in expected order of creation:
-
 1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field). virtual table, like sessions.
 1. Calendars -- links to creator, has datasets, center, scale, has link to talk
 
