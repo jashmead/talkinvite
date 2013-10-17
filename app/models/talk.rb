@@ -30,6 +30,9 @@
 =end
 
 class Talk < ActiveRecord::Base
+
+  ## include Searchy
+
   belongs_to :person
   belongs_to :venue
 
@@ -74,8 +77,7 @@ class Talk < ActiveRecord::Base
   ## lots more searches coming up, pull out to a separate module
   def self.search(q)
     return Talk.all unless q.present?
-    q_like = "%#{q}%"
-    where("summary like ? or description like ?", q_like, q_like)
+    where("summary like ? or description like ?", "%#{q}%", "%#{q}%")
   end
 
   def self.recent

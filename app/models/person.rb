@@ -24,6 +24,8 @@
 
 class Person < ActiveRecord::Base
 
+  ## include Searchy
+
   ## this line *creates* the attribute/method of Person called 'talks'
   has_many :talks, dependent: :destroy
   ## we are starting with the relationships that point 'to' the current person record
@@ -124,12 +126,8 @@ class Person < ActiveRecord::Base
 
   # default & simplest search
   def self.search(q)
-    ## apparently "scoped" has been deprecated; why?
     return Person.all unless q.present?
-    ## could force downcase for searches of email...
-    q_like = "%#{q}%"
-    # where("name like :q or email like :q", { q: q }) ## tried this, it failed (looks as if it should have work
-    where("name like ? or email like ?", q_like, q_like)
+    where("name like ? or email like ?", "%#{q}%", "%#{q}%")
   end
 
   # tried 'anonymous' in the app/helpers, got whined at...
