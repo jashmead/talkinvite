@@ -16,23 +16,10 @@ describe StaticPagesController do
     end
   end
 
-  describe "GET 'credits'" do
-    it "returns http success" do
-      get 'credits'
-      response.should be_success
-    end
-  end
 
   describe "GET 'help'" do
     it "returns http success" do
       get 'help'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'menu'" do
-    it "returns http success" do
-      get 'menu'
       response.should be_success
     end
   end
