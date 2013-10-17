@@ -125,6 +125,7 @@ class Person < ActiveRecord::Base
   end
 
   # default & simplest search
+  # consolidating the wrapping of 'q' here & in talks kicked off an advisory from codeclimate
   def self.search(q)
     return Person.all unless q.present?
     where("name like ? or email like ?", "%#{q}%", "%#{q}%")

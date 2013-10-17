@@ -58,7 +58,6 @@ class ApplicationController < ActionController::Base
   end
 
   # suppress codeclimate duplication warning
-  # note this code is not currently being exercised
   def fail_q(model, format, next_action)
       format.html { render action: next_action }
       format.json { render json: model.errors, status: :unprocessable_entity }

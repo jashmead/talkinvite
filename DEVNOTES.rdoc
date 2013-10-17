@@ -131,6 +131,7 @@ add to ApplicationController:
 1. when changing data types, make sure all the test code knows about the new types
 1. when adding/changing/deleting fields:  check all the spec code:  requests, models, controllers, views, & factories
 1. stories spec corresponds to stories rdoc, perhaps other rdocs should have other specs (TDD)
+1. codeclimate is a bit fussy on duplication -- see notes in specific files, with that said, a 4.0 grade does give the warm fuzzies.
 
 === Troubleshooting
 
