@@ -25,40 +25,19 @@ class SocialsController < ApplicationController
   # POST /socials.json
   def create
     @social = Social.new(social_params)
-
-    respond_to do |format|
-      if @social.save
-        format.html { redirect_to @social, notice: 'Social was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @social }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @social.errors, status: :unprocessable_entity }
-      end
-    end
+    create_q(@social)
   end
 
   # PATCH/PUT /socials/1
   # PATCH/PUT /socials/1.json
   def update
-    respond_to do |format|
-      if @social.update(social_params)
-        format.html { redirect_to @social, notice: 'Social was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @social.errors, status: :unprocessable_entity }
-      end
-    end
+    update_q(@social, social_params)
   end
 
   # DELETE /socials/1
   # DELETE /socials/1.json
   def destroy
-    @social.destroy
-    respond_to do |format|
-      format.html { redirect_to socials_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@social, socials_url)
   end
 
   def invite

@@ -25,40 +25,19 @@ class CreditsController < ApplicationController
   # POST /credits.json
   def create
     @credit = Credit.new(credit_params)
-
-    respond_to do |format|
-      if @credit.save
-        format.html { redirect_to @credit, notice: 'Credit was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @credit }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @credit.errors, status: :unprocessable_entity }
-      end
-    end
+    create_q(@credit)
   end
 
   # PATCH/PUT /credits/1
   # PATCH/PUT /credits/1.json
   def update
-    respond_to do |format|
-      if @credit.update(credit_params)
-        format.html { redirect_to @credit, notice: 'Credit was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @credit.errors, status: :unprocessable_entity }
-      end
-    end
+    update_q(@credit, credit_params)
   end
 
   # DELETE /credits/1
   # DELETE /credits/1.json
   def destroy
-    @credit.destroy
-    respond_to do |format|
-      format.html { redirect_to credits_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@credit, Credit)
   end
 
   private

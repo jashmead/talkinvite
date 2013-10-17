@@ -25,40 +25,19 @@ class MapsController < ApplicationController
   # POST /maps.json
   def create
     @map = Map.new(map_params)
-
-    respond_to do |format|
-      if @map.save
-        format.html { redirect_to @map, notice: 'Map was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @map }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @map.errors, status: :unprocessable_entity }
-      end
-    end
+    create_q(@map)
   end
 
   # PATCH/PUT /maps/1
   # PATCH/PUT /maps/1.json
   def update
-    respond_to do |format|
-      if @map.update(map_params)
-        format.html { redirect_to @map, notice: 'Map was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @map.errors, status: :unprocessable_entity }
-      end
-    end
+    update_q(@map, map_params)
   end
 
   # DELETE /maps/1
   # DELETE /maps/1.json
   def destroy
-    @map.destroy
-    respond_to do |format|
-      format.html { redirect_to maps_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@map, maps_url)
   end
 
   private

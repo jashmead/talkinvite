@@ -16,8 +16,9 @@ class TalksController < ApplicationController
 
   # GET /talks/new
   def new
-    logger.debug("CC: TalkController.new")
     @talk = Talk.new
+    logger.debug("CC: TalkController.new: #{@talk.inspect} klass: #{@talk.class}")
+    @talk
   end
 
   # GET /talks/1/edit
@@ -41,17 +42,7 @@ class TalksController < ApplicationController
   # PATCH/PUT /talks/1.json
   ## what is correct handling of update of current talk? -- use logger.debug to find
   def update
-    ## the format stuff is likely to fail
-    ## format stuff seems to work here but not in 'people'
-    respond_to do |format|
-      if @talk.update(talk_params)
-        format.html { redirect_to @talk, notice: 'Talk was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: :edit }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
-      end
-    end
+    update_q(@talk, talk_params, Talk)
   end
 
   # DELETE /talks/1

@@ -25,40 +25,19 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(ad_params)
-
-    respond_to do |format|
-      if @ad.save
-        format.html { redirect_to @ad, notice: 'Ad was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @ad }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @ad.errors, status: :unprocessable_entity }
-      end
-    end
+    create_q(@ad)
   end
 
   # PATCH/PUT /ads/1
   # PATCH/PUT /ads/1.json
   def update
-    respond_to do |format|
-      if @ad.update(ad_params)
-        format.html { redirect_to @ad, notice: 'Ad was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @ad.errors, status: :unprocessable_entity }
-      end
-    end
+    update_q(@ad, ad_params)
   end
 
   # DELETE /ads/1
   # DELETE /ads/1.json
   def destroy
-    @ad.destroy
-    respond_to do |format|
-      format.html { redirect_to ads_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@ad, ads_url)
   end
 
   private

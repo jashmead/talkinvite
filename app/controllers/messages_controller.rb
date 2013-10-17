@@ -26,40 +26,19 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @message }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
+    create_q(@message)
   end
 
   # PATCH/PUT /messages/1
   # PATCH/PUT /messages/1.json
   def update
-    respond_to do |format|
-      if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
+    update_q(@message, message_params)
   end
 
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
-    @message.destroy
-    respond_to do |format|
-      format.html { redirect_to messages_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@message, messages_url)
   end
 
   private

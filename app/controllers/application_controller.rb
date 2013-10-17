@@ -55,4 +55,40 @@ class ApplicationController < ActionController::Base
     @rows.paginate(page: params[:page])
   end
 
+  # we may be able to read the klass off the model, a bit more DRY
+  def create_q(model)
+    respond_to do |format|
+      if model.save
+        format.html { redirect_to model, 
+          notice: model.class.to_s.downcase + ' was successfully created.' }
+        format.json { render action: 'show', status: :created, location: model }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: model.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # we may be able to read the klass off the model, a bit more DRY
+  def update_q(model, params)
+    respond_to do |format|
+      if model.update(params)
+        format.html { redirect_to model, 
+          notice: model.class.to_s.downcase + ' was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: model.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy_q(model, url) 
+    model.destroy
+    respond_to do |format|
+      format.html { redirect_to url }
+      format.json { head :no_content }
+    end
+  end
+
 end

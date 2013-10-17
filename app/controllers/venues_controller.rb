@@ -25,40 +25,19 @@ class VenuesController < ApplicationController
   # POST /venues.json
   def create
     @venue = Venue.new(venue_params)
-
-    respond_to do |format|
-      if @venue.save
-        format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @venue }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @venue.errors, status: :unprocessable_entity }
-      end
-    end
+    create_q(@venue)
   end
 
   # PATCH/PUT /venues/1
   # PATCH/PUT /venues/1.json
   def update
-    respond_to do |format|
-      if @venue.update(venue_params)
-        format.html { redirect_to @venue, notice: 'Venue was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @venue.errors, status: :unprocessable_entity }
-      end
-    end
+    update_q(@venue, venue_params)
   end
 
   # DELETE /venues/1
   # DELETE /venues/1.json
   def destroy
-    @venue.destroy
-    respond_to do |format|
-      format.html { redirect_to venues_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@venue, venues_url)
   end
 
   private

@@ -50,20 +50,6 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
 
-    ##  logger.debug "PeopleController.create: person #{@person.attributes.inspect}"  # DDT
-
-=begin
-    respond_to do |format|
-      if @person.save
-        # format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        # format.json { render action: 'show', status: :created, location: @person }
-      else
-        # format.html { render action: 'new' }
-        # format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
-    end
-=end
-
     if @person.save 
       sign_in @person
       flash[:success] = "Welcome to Talk Invite!"
@@ -77,21 +63,6 @@ class PeopleController < ApplicationController
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
   def update
-
-  ## logger.debug("QQ: PeopleController.update: @person: #{@person.inspect}")
-=begin
-    respond_to do |format|
-      if @person.update(person_params)
-        # notice use of notice!
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
-    end
-=end
-
     ## correct_person finds the appropriate person
     ## @person = Person.find(params[:id])
     if @person.update_attributes(person_params)
