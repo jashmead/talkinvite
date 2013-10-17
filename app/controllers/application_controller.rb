@@ -1,4 +1,6 @@
-## if we need to fix all the controller, i.e. to add a search or a found method, can do so here
+## 1. shared controller code goes here
+## 1. for no doubt excellent reason, all functions here end in '_q'
+## 1. json code is not currently being exercised
 class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
@@ -55,6 +57,13 @@ class ApplicationController < ActionController::Base
     @rows.paginate(page: params[:page])
   end
 
+  # suppress codeclimate duplication warning
+  # note this code is not currently being exercised
+  def fail_q(model, format, next_action)
+      format.html { render action: next_action }
+      format.json { render json: model.errors, status: :unprocessable_entity }
+  end
+
   # we may be able to read the klass off the model, a bit more DRY
   def create_q(model)
     respond_to do |format|
@@ -63,8 +72,7 @@ class ApplicationController < ActionController::Base
           notice: model.class.to_s.downcase + ' was successfully created.' }
         format.json { render action: 'show', status: :created, location: model }
       else
-        format.html { render action: 'new' }
-        format.json { render json: model.errors, status: :unprocessable_entity }
+        fail_q(model, format, 'new')
       end
     end
   end
@@ -77,8 +85,7 @@ class ApplicationController < ActionController::Base
           notice: model.class.to_s.downcase + ' was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: model.errors, status: :unprocessable_entity }
+        fail_q(model, format, 'edit')
       end
     end
   end
