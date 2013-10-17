@@ -1,4 +1,10 @@
 # routes.rb functions as a de facto map of the system
+#
+# main entry points are:
+# 1. talks
+# 1. people
+# 1. venues
+# 1. notifications
 
 Talkinvite::Application.routes.draw do
 
@@ -37,8 +43,6 @@ Talkinvite::Application.routes.draw do
   #     'talks/my_talks' if you are
   #     'talks/gottalk' if you are not
 
-  match '/start', to: 'talks#start', via: 'get'
-
   match '/settings', to: 'people#edit', via: 'get'
   match '/profile', to: 'people#show', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
@@ -56,7 +60,6 @@ Talkinvite::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
-  match '/home', to: 'static_pages#home', via: 'get'
 
   ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
 
@@ -76,12 +79,15 @@ Talkinvite::Application.routes.draw do
   match '/recent', to: 'talks#recent', via: 'get'
   match '/nearby', to: 'talks#nearby', via: 'get'
   match '/my_talks', to: 'talks#my_talks', via: 'get'
+  match '/search', to: 'talks#search', via: 'get'
+  match '/start', to: 'talks#start', via: 'get'
 
   resources :sessions, only: [:new, :create, :destroy]  
 
   resources :talks do
     ## collection will have lots of 'pick a talk' type pages
     collection do
+      ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
       get :start, :search, :found, :gottalk, :my_talks
     end
   end

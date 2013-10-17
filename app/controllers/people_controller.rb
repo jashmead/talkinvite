@@ -1,6 +1,5 @@
 ##  will be adding actions:  signin, signout, settings
 ##  will be adding profile_picture
-##  will be adding home_location (in settings, a JSON field)
 ##  will be adding current_location (in session on server, at this point)
 ##  will be adding checks on destroy:  you have to be signed in, an admin, & not deleting yourself
 ##  'format' bits are needed; how do they work? -- commented out for now...
@@ -110,13 +109,6 @@ class PeopleController < ApplicationController
 
   def found
     @people = search_q(Person)
-  end
-
-  def home
-    if signed_in?
-      @talk = current_person.talks.build if signed_in?
-      @feed_talks = current_person.feed.paginate(page: params[:page])
-    end
   end
 
   private

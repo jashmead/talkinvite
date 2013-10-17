@@ -1,4 +1,7 @@
-<!-- cloned from people -->
+<!-- 
+  cloned from people 
+  don't use name 'search' for a button; it confuses RoR or someone
+-->
 <% provide(:heading, 'Search for talks') %>
 <% provide(:title, 'Search for talks') %>
 <h1><%= yield :heading %></h1>
@@ -9,7 +12,9 @@
     <%= form_tag("/talks/found", method: "get") do %>
       <%= label_tag(:search_q, "Search for:") %>
       <%= search_field(:search, :q) %>
-      <%= submit_tag("Search") %>
+      <br/>
+      <%= submit_tag("Search", { 'name' => 'button', 'class' => 'btn btn-primary' } ) %>
+      <%= submit_tag("Start Talk", { 'name' => 'button', 'class' => 'btn btn-info' } ) %>
     <% end %>
 
   </div>

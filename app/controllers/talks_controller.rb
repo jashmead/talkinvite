@@ -17,8 +17,6 @@ class TalksController < ApplicationController
   # GET /talks/new
   def new
     @talk = Talk.new
-    logger.debug("CC: TalkController.new: #{@talk.inspect} klass: #{@talk.class}")
-    @talk
   end
 
   # GET /talks/1/edit
@@ -31,10 +29,11 @@ class TalksController < ApplicationController
     @talk = current_person.talks.build(talk_params)
     if @talk.save
       flash[:success] = "Talk Started"
-      redirect_to home_url
+      redirect_to edit_talk_url(@talk)
     else
       @feed_talks = []
-      render 'people/home'
+      # really want to return to the form that called us
+      render 'talks/search'
     end
   end
 
@@ -57,6 +56,7 @@ class TalksController < ApplicationController
   end
 
   # start is the default starting point for the entire website
+  # right now, it is a virtual page, switching to my_talks or gottalk, depending
   def start
     logger.debug("CC: TalksController.start")
     if signed_in?
@@ -68,12 +68,20 @@ class TalksController < ApplicationController
     end
   end
 
+  # gottalk is a snazzed up version of talks/search
   def gottalk
     @talks = Talk.hot_talks
     if ! @talks
-      logger.debug("CC: TalksController.gottalk: no talks found")
+      ## logger.debug("CC: TalksController.gottalk: no talks found")
+      flash.now[:info] = "No talks found"
     else
-      logger.debug("CC: TalksController.gottalk: #{@talks.size} talks found")
+      ## logger.debug("CC: TalksController.gottalk: #{@talks.size} talks found")
+      # can we get pluralize to work here?
+      if @talks.size == 1
+        flash.now[:info] = "One talk found"
+      else
+        flash.now[:info] = "#{@talks.size} talks found"
+      end 
     end 
     @talks
   end
@@ -92,8 +100,15 @@ class TalksController < ApplicationController
     @talks
   end
 
+  ## found is a pair with the various searches, will need to make sure search_q covers all or else put in some kind of a switch here
   def found
-    @talks = search_q(Talk)
+    if params['button'] == 'Start Talk'
+      @talk = Talk.new( { 'summary' => check_q } )
+      render 'new' and return
+    else
+      logger.debug("CC: TalksController.found: params: #{params.inspect}")
+      @talks = search_q(Talk)
+    end
   end
 
   def recent

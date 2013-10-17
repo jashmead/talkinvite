@@ -1,3 +1,10 @@
+#
+# search should in general be only of messages from or two the current account
+#   should look for stuff associated with the from & to people
+#
+# messages include emails & dm's, see message type for more
+#
+
 class Message < ActiveRecord::Base
 
   ## belongs_to :person

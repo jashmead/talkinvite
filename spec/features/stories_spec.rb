@@ -26,7 +26,7 @@ describe 'stories' do
 
       before do
         sign_in person
-        visit start_path # home page
+        visit start_path 
       end
 
       it { 
@@ -42,7 +42,7 @@ describe 'stories' do
     describe "for anonymous" do
 
       before do
-        visit start_path # home page
+        visit start_path
       end
 
       it { 

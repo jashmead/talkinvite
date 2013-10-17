@@ -10,11 +10,12 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   # pull out the query string & make sure it is not empty
+  # if running a search/start screen, start will need to run check_q as well
   def check_q
     q = params['search']['q']
     q.strip! if q
     if ! q || q == ''
-      flash.now[:error] = 'Please specify something to look for.'
+      # flash.now[:error] = 'Please specify something to look for.'
       return nil
     end
     return q
@@ -41,6 +42,7 @@ class ApplicationController < ActionController::Base
     # explicit renders here keep the default render in the caller from executing
     q = check_q
     if ! q
+      flash.now[:alert] = "Please specify something to search for."
       render :search and return
     end
 

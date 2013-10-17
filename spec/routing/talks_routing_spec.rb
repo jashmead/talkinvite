@@ -34,6 +34,7 @@ describe TalksController do
     ## add in the search routes
     it "routes to #search" do
       get("/talks/search").should route_to("talks#search")
+      get("/search").should route_to("talks#search")
     end
 
   end

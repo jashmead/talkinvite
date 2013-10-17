@@ -17,4 +17,15 @@ class Notification < ActiveRecord::Base
 
   ## searches:  given person & talk, get all comments in reverse updated_at order
 
+  # default & simplest search
+  # add in searches of associated talks & people
+  def self.search(q)
+    if q.present?
+      q_like = "%#{q}%"
+      where("note_text like ?", q_like)
+    else
+      Faq.all
+    end
+  end
+
 end

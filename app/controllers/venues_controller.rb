@@ -40,6 +40,13 @@ class VenuesController < ApplicationController
     destroy_q(@venue, venues_url)
   end
 
+  def found
+    @venues = search_q(Venue)
+  end
+
+  def search
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_venue

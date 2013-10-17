@@ -15,6 +15,9 @@
 # 1. country?
 # 1. phone(s)
 # 1. url(s)
+#
+# Searches by name, description, venue_type, & location possible
+#   start with name & description & venue_type
 
 class Venue < ActiveRecord::Base
   belongs_to :person
@@ -27,5 +30,14 @@ class Venue < ActiveRecord::Base
   validates :name, presence: true
   validates_inclusion_of :venue_type, :in => [ 'venue', 'person', 'talk', 'attachment', 'tag', 'social', 'message' ] # singleton name of table using venue
 
-  # there will be name, description, & location searches here
+  # default & simplest search
+  def self.search(q)
+    if q.present?
+      q_like = "%#{q}%"
+      where("name like ? or description like ?", q_like, q_like)
+    else
+      Venue.all
+    end
+  end
+
 end

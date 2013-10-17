@@ -1,3 +1,9 @@
+#
+# Social consolidates twitter, facebook, the long list of others
+#
+# social search should in general be conditioned on the current account,
+# except when just probing for a subject, someone nearby, & so on
+
 class Social < ActiveRecord::Base
 
   belongs_to :person
