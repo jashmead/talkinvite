@@ -10,8 +10,11 @@ describe "Talk pages" do
   let(:person) { FactoryGirl.create(:person) }
   before { sign_in person } # why does this work? given that FactoryGirl is creating a new person?
 
+=begin
+  ##  recheck talk creation when we have a new talk path working, 
+  ##    these tests are geared to tutorial's microposts & home page
   describe "talk creation" do
-    before { visit home_path }
+    before { visit start_path }
 
     describe "with invalid information" do
       it "should not create a talk" do
@@ -32,13 +35,16 @@ describe "Talk pages" do
     end
 
   end
+=end
 
+=begin
   ## bizarrity:  when root_path set to static_pages#splash, this fails, when it is set to home_path it works
+  ## recheck delete when we have a edit_talk_path working
   describe "talk destruction" do
     before { FactoryGirl.create(:talk, person: person) }
 
     describe "as correct person" do
-      before { visit home_path }
+      before { visit start_path }
 
       it "should delete a talk" do
         # how do we know there is a talk ready to be deleted?
@@ -47,6 +53,7 @@ describe "Talk pages" do
       end
     end
   end
+=end
 
   describe "talk edits" do
 

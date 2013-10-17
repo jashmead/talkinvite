@@ -31,5 +31,10 @@ describe TalksController do
       delete("/talks/1").should route_to("talks#destroy", :id => "1")
     end
 
+    ## add in the search routes
+    it "routes to #search" do
+      get("/talks/search").should route_to("talks#search")
+    end
+
   end
 end

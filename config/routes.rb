@@ -46,26 +46,15 @@ Talkinvite::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  get "people/home"
-
-  match '/home', to: 'people#home', via: 'get'
-
   ## Static pages:
   get "static_pages/about"
   get "static_pages/contact"
-  get "static_pages/credits"
   get "static_pages/help"
-  get "static_pages/menu"
   get "static_pages/privacy"
-
-  ## get rid of home, once followers are on a people page
-  get "static_pages/home"
 
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/credits', to: 'static_pages#credits', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
-  match '/menu', to: 'static_pages#menu', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
   match '/home', to: 'static_pages#home', via: 'get'
 

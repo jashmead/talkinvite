@@ -75,10 +75,12 @@ class Talk < ActiveRecord::Base
 
   ## what is returned if no rows found?  'paginate' needs to know
   ## lots more searches coming up, pull out to a separate module?
-  # consolidating the wrapping of 'q' here & in people kicked off an advisory from codeclimate
   def self.search(q)
-    return Talk.all unless q.present?
-    where("summary like ? or description like ?", "%#{q}%", "%#{q}%")
+    if q.present?
+      where("summary like ? or description like ?", "%#{q}%", "%#{q}%")
+    else
+      Talk.recent
+    end
   end
 
   def self.recent

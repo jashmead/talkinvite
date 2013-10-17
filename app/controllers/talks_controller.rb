@@ -53,7 +53,7 @@ class TalksController < ApplicationController
   end
 
   def search
-    ## logger.debug("CC: TalksController.search")
+    logger.debug("CC: TalksController.search")
   end
 
   # start is the default starting point for the entire website

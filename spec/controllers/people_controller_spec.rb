@@ -196,11 +196,4 @@ describe PeopleController do
   end
 =end
 
-  describe "GET 'home'" do
-    it "returns http success" do
-      get 'home'
-      response.should be_success
-    end
-  end
-
 end
