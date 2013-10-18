@@ -61,24 +61,27 @@ Talkinvite::Application.routes.draw do
   match '/help', to: 'static_pages#help', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
 
-  ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
-
   resources :people do
     ## member will give paths of the form:  /people/1/following, /people/1/followers
     ## actions are following, followers
     ## paths are following_people_path(id), followers_people_path(id)
     ##  i.e. people/1/following
     member do
-      get :following, :followers
+      get :following, :followers, :oauth
     end
     collection do
       get :search, :found, :recent, :nearby
     end
   end
 
-  match '/recent', to: 'talks#recent', via: 'get'
-  match '/nearby', to: 'talks#nearby', via: 'get'
+  match '/category', to: 'talks#category', via: 'get'
+  match '/hot_talks', to: 'talks#hot_talks', via: 'get'
+  match '/my_friends', to: 'talks#my_friends', via: 'get'
+  match '/my_tags', to: 'talks#my_tags', via: 'get'
   match '/my_talks', to: 'talks#my_talks', via: 'get'
+  match '/nearby', to: 'talks#nearby', via: 'get'
+  match '/recent', to: 'talks#recent', via: 'get'
+  match '/roulette', to: 'talks#roulette', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
@@ -88,9 +91,14 @@ Talkinvite::Application.routes.draw do
     ## collection will have lots of 'pick a talk' type pages
     collection do
       ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
-      get :start, :search, :found, :gottalk, :my_talks
+      get :category, :found, :gottalk, :hot_talks, :my_friends, :my_tags, :my_talks, :nearby, :recent,
+        :roulette, :search, :start
+
     end
   end
+
+  ## this map.connect thing might be useful, but apparently 'map' is just not found
+  ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
 
   resources :relationships, only: [:create, :destroy]
 

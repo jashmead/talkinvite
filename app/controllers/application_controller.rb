@@ -38,6 +38,16 @@ class ApplicationController < ActionController::Base
   end
 
   def search
+    # placeholder; individual controllers should redefine this when their searches are built
+    teapot_q
+  end
+
+  def nearby
+    teapot_q
+  end
+
+  def recent
+    teapot_q
   end
 
   # Search klass for string 'q'.
@@ -123,5 +133,17 @@ class ApplicationController < ActionController::Base
       format.json { head :no_content }
     end
   end
+
+  protected
+    ## only controllers can call a teapot
+    def teapot_q
+
+      # 518 is the HTTP teapot error, as in "I'm steamed because I'm a teapot"
+
+      # 'layout: false': if we don't turn off the layout, the page looks really weird
+      #   which may help with understanding how the layouts work...
+
+      render 'static_pages/518', layout: false
+    end
 
 end

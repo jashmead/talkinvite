@@ -55,10 +55,6 @@ class TalksController < ApplicationController
     redirect_to root_url
   end
 
-  def search
-    logger.debug("CC: TalksController.search")
-  end
-
   # start is the default starting point for the entire website
   # right now, it is a virtual page, switching to my_talks or gottalk, depending
   def start
@@ -69,6 +65,17 @@ class TalksController < ApplicationController
     else 
       @talks = Talk.hot_talks
       render 'gottalk' and return
+    end
+  end
+
+  ## found & gottalk are two responses to completed searches
+  def found
+    if params['button'] == 'Start Talk'
+      @talk = Talk.new( { 'summary' => check_q } )
+      render 'new' and return
+    else
+      logger.debug("CC: TalksController.found: params: #{params.inspect}")
+      @talks = search_q(Talk)
     end
   end
 
@@ -90,7 +97,27 @@ class TalksController < ApplicationController
     @talks
   end
 
-  ## specialized search-y tasks:
+  # divers searches for talks -- in a way, the heart of the system
+  #   can also add twitter, facebook, favorite urls or topics, ...
+
+  def category  ## categories might be sports, movies, politics, ...
+    teapot_q
+  end
+
+  # hot is really popular, will need a way to track that
+  def hot_talks
+    @talks = Talk.recent(page: params[:page])
+  end
+
+  # go to talks with your friends are part of
+  def my_friends
+    teapot_q
+  end
+
+  ## my_tags works by checking tags you've put on yourself & looking for talks with them
+  def my_tags 
+    teapot_q
+  end
 
   def my_talks
     logger.debug("CC: TalksController.my_talks")
@@ -104,15 +131,8 @@ class TalksController < ApplicationController
     @talks
   end
 
-  ## found is a pair with the various searches, will need to make sure search_q covers all or else put in some kind of a switch here
-  def found
-    if params['button'] == 'Start Talk'
-      @talk = Talk.new( { 'summary' => check_q } )
-      render 'new' and return
-    else
-      logger.debug("CC: TalksController.found: params: #{params.inspect}")
-      @talks = search_q(Talk)
-    end
+  def nearby
+    @talks = Talk.nearby(page: params[:page])
   end
 
   def recent
@@ -121,12 +141,12 @@ class TalksController < ApplicationController
     @talks
   end
 
-  def hot_talks
-    @talks = Talk.recent(page: params[:page])
+  def roulette # like chatroulette :)
+    teapot_q
   end
 
-  def nearby
-    @talks = Talk.nearby(page: params[:page])
+  def search
+    logger.debug("CC: TalksController.search")
   end
 
   private

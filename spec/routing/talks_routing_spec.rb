@@ -33,8 +33,27 @@ describe TalksController do
 
     ## add in the search routes
     it "routes to #search" do
+
+      get("/talks/category").should route_to("talks#category")
+      get("/talks/hot_talks").should route_to("talks#hot_talks")
+      get("/talks/my_tags").should route_to("talks#my_tags")
+      get("/talks/my_friends").should route_to("talks#my_friends")
+      get("/talks/my_talks").should route_to("talks#my_talks")
+      get("/talks/nearby").should route_to("talks#nearby")
+      get("/talks/recent").should route_to("talks#recent")
+      get("/talks/roulette").should route_to("talks#roulette")
       get("/talks/search").should route_to("talks#search")
+
+      get("/category").should route_to("talks#category")
+      get("/hot_talks").should route_to("talks#hot_talks")
+      get("/my_friends").should route_to("talks#my_friends")
+      get("/my_tags").should route_to("talks#my_tags")
+      get("/my_talks").should route_to("talks#my_talks")
+      get("/nearby").should route_to("talks#nearby")
+      get("/recent").should route_to("talks#recent")
+      get("/roulette").should route_to("talks#roulette")
       get("/search").should route_to("talks#search")
+
     end
 
   end
