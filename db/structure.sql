@@ -175,8 +175,8 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 CREATE TABLE credits (
     id integer NOT NULL,
-    worthy_one text,
-    service_supplied text,
+    name text,
+    description text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -846,10 +846,10 @@ CREATE UNIQUE INDEX index_comments_on_person_id_and_talk_id ON comments USING bt
 
 
 --
--- Name: index_credits_on_worthy_one; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_credits_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_credits_on_worthy_one ON credits USING btree (worthy_one);
+CREATE UNIQUE INDEX index_credits_on_name ON credits USING btree (name);
 
 
 --
@@ -1158,3 +1158,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131016165839');
 INSERT INTO schema_migrations (version) VALUES ('20131016172016');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016172957');
+
+INSERT INTO schema_migrations (version) VALUES ('20131018133657');
