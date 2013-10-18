@@ -31,5 +31,18 @@ describe PeopleController do
       delete("/people/1").should route_to("people#destroy", :id => "1")
     end
 
+    describe "search routes" do
+      it "routes to #search" do
+        get("/people/found").should route_to("people#found")
+        get("/people/my_friends").should route_to("people#my_friends")
+        get("/people/my_tags").should route_to("people#my_tags")
+        get("/people/my_talks").should route_to("people#my_talks")
+        get("/people/nearby").should route_to("people#nearby")
+        get("/people/recent").should route_to("people#recent")
+        get("/people/search").should route_to("people#search")
+      end
+    end
+
   end
+
 end

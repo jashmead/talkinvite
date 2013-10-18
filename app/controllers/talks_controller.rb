@@ -105,6 +105,7 @@ class TalksController < ApplicationController
   end
 
   # hot is really popular, will need a way to track that
+  # could rename as 'hot' or as 'trending'
   def hot_talks
     @talks = Talk.recent(page: params[:page])
   end

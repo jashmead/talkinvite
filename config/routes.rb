@@ -26,7 +26,11 @@ Talkinvite::Application.routes.draw do
 
   resources :socials
 
-  resources :venues
+  resources :venues do
+    collection do
+      get :found, :my_friends, :my_tags, :my_talks,  :nearby, :recent, :search
+    end
+  end
 
   resources :notifications
 
@@ -70,7 +74,7 @@ Talkinvite::Application.routes.draw do
       get :following, :followers, :oauth
     end
     collection do
-      get :search, :found, :recent, :nearby
+      get :search, :found, :my_friends, :my_tags, :my_talks, :recent, :nearby
     end
   end
 
@@ -93,7 +97,6 @@ Talkinvite::Application.routes.draw do
       ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
       get :category, :found, :gottalk, :hot_talks, :my_friends, :my_tags, :my_talks, :nearby, :recent,
         :roulette, :search, :start
-
     end
   end
 

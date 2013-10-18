@@ -1,6 +1,8 @@
 ## 1. shared controller code goes here
 ## 1. for no doubt excellent reason, all functions here end in '_q'
 ## 1. json code is not currently being exercised
+## 1. in some sense, ApplicationController is the center of the application
+
 class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
@@ -37,8 +39,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def search
-    # placeholder; individual controllers should redefine this when their searches are built
+  def found
+    teapot_q
+  end
+
+  # basic searches for talks, people, venues
+  def my_friends
+    teapot_q
+  end
+
+  def my_tags
+    teapot_q
+  end
+
+  def my_talks
     teapot_q
   end
 
@@ -47,6 +61,11 @@ class ApplicationController < ActionController::Base
   end
 
   def recent
+    teapot_q
+  end
+
+  def search
+    # placeholder; individual controllers should redefine this when their searches are built
     teapot_q
   end
 

@@ -35,6 +35,7 @@ describe TalksController do
     it "routes to #search" do
 
       get("/talks/category").should route_to("talks#category")
+      get("/talks/found").should route_to("talks#found")            # found is internal path
       get("/talks/hot_talks").should route_to("talks#hot_talks")
       get("/talks/my_tags").should route_to("talks#my_tags")
       get("/talks/my_friends").should route_to("talks#my_friends")
