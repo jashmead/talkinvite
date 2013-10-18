@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "bootstrap";  // needed to include '$grayLighter' & anything else bootstappy I expect
 @import "common";
 
 /* talks */
@@ -43,7 +42,6 @@
 }
 
 /* 
-  how does aside play with the span4 bit from bootstrap?
   -- textarea is to help out the talks
 */
 aside {

@@ -61,18 +61,6 @@ class Talk < ActiveRecord::Base
     where( "person_id in (#{followed_person_ids}) or person_id = :person_id", person_id: person)
   end
 
-  # in general, search is model specific
-  # need 'self' because this is a class method
-  # talks#search & friends most important single part of the system...
-=begin
-  searches:
-    search
-    nearby
-    recent
-    my_talks
-    hot_talks
-=end
-
   def self.recent
     # with default scope, the most recently changed
     talks = Talk.order('talks.updated_at desc').limit(10)

@@ -99,6 +99,8 @@ class TalksController < ApplicationController
 
   # divers searches for talks -- in a way, the heart of the system
   #   can also add twitter, facebook, favorite urls or topics, ...
+  #   actual search should be done with the Talk model,
+  #     -- some stubs already present
 
   def category  ## categories might be sports, movies, politics, ...
     teapot_q
