@@ -1,6 +1,10 @@
 class RelationshipsController < ApplicationController
   before_action :signed_in_person
 
+  def search_fields 
+    []
+  end
+
   def create
     ## find the person corresponding to the person we want to follow (followed_id)
     ## therefore done from the followers point of view!

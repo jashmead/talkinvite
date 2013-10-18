@@ -5,6 +5,10 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
+  def search_fields
+    []
+  end
+
   # GET /members
   # GET /members.json
   def index

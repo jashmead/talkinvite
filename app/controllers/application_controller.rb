@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
+  # default search fields
+  def search_fields 
+    [ 'name', 'description' ]
+  end
+
   # pull out the query string & make sure it is not empty
   # if running a search/start screen, start will need to run check_q as well
   def check_q
@@ -32,6 +37,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def search
+  end
+
   # Search klass for string 'q'.
   # Set flash messages appropriately.
   # Return to search screen on error or no rows found
@@ -46,7 +54,24 @@ class ApplicationController < ActionController::Base
       render :search and return
     end
 
-    @rows = klass.search(q)
+    # build up the query string & the array of parameters
+    query_array = []
+    param_array = []
+    search_fields_array = search_fields
+
+    if search_fields_array.size == 0
+      query_array = [ '1 = 1' ] # all rows
+    else
+      search_fields_array.each do |f|
+        query_array.push( f + ' like ? ' )
+        param_array.push( "%#{q}%" )
+      end
+    end
+
+    logger.debug("ApplicationController.search_q: query_array: #{query_array.inspect}, param_array: #{param_array.inspect}")
+
+    @rows = klass.where(query_array.join(' or '), *param_array)
+
     # don't really need the check on '@rows' being nil, but feels safer somehow
     if ! @rows || @rows.size == 0
       plural = klass.to_s.downcase.pluralize

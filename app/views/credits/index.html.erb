@@ -14,8 +14,8 @@
   <tbody>
     <% @credits.each do |credit| %>
       <tr>
-        <td><%= credit.worthy_one %></td>
-        <td><%= credit.service_supplied %></td>
+        <td><%= credit.name %></td>
+        <td><%= credit.description %></td>
         <td><%= link_to 'Show', credit %></td>
         <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
         <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,4 +1,9 @@
 class StaticPagesController < ApplicationController
+
+  def search_fields
+    []
+  end
+
   def about
   end
 

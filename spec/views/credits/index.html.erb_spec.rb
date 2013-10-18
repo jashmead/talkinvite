@@ -4,12 +4,12 @@ describe "credits/index" do
   before(:each) do
     assign(:credits, [
       stub_model(Credit,
-        :worthy_one => "MyWorthiness",
-        :service_supplied => "TheServiceSupplied"
+        :name => "MyWorthiness",
+        :description => "TheServiceSupplied"
       ),
       stub_model(Credit,
-        :worthy_one => "MyWorthiness",
-        :service_supplied => "TheServiceSupplied"
+        :name => "MyWorthiness",
+        :description => "TheServiceSupplied"
       )
     ])
   end

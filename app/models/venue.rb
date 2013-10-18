@@ -30,14 +30,4 @@ class Venue < ActiveRecord::Base
   validates :name, presence: true
   validates_inclusion_of :venue_type, :in => [ 'venue', 'person', 'talk', 'attachment', 'tag', 'social', 'message' ] # singleton name of table using venue
 
-  # default & simplest search
-  def self.search(q)
-    if q.present?
-      q_like = "%#{q}%"
-      where("name like ? or description like ?", q_like, q_like)
-    else
-      Venue.all
-    end
-  end
-
 end

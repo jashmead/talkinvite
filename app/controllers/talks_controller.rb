@@ -23,6 +23,10 @@ class TalksController < ApplicationController
   def edit
   end
 
+  def search_fields
+    [ 'summary', 'description' ]
+  end
+
   # POST /talks
   # POST /talks.json
   def create

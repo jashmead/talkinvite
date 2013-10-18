@@ -73,16 +73,6 @@ class Talk < ActiveRecord::Base
     hot_talks
 =end
 
-  ## what is returned if no rows found?  'paginate' needs to know
-  ## lots more searches coming up, pull out to a separate module?
-  def self.search(q)
-    if q.present?
-      where("summary like ? or description like ?", "%#{q}%", "%#{q}%")
-    else
-      Talk.recent
-    end
-  end
-
   def self.recent
     # with default scope, the most recently changed
     talks = Talk.order('talks.updated_at desc').limit(10)

@@ -2,6 +2,10 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy]
 
+  def search_fields
+    [ 'message_text' ]
+  end
+
   # GET /messages
   # GET /messages.json
   def index

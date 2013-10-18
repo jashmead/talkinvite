@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :credit do
-    worthy_one "MyWorthiness"
-    service_supplied "MyServiceability"
+    name "MyWorthiness"
+    description "MyServiceability"
   end
 end

@@ -47,6 +47,7 @@ describe "search" do
         describe "after click of search" do
 
           it "should render the found page" do
+            ## save_and_open_page
             expect(page).to have_content('Found one matching person')
             expect(page).to have_title("People")
             expect(page).to_not have_title("Search for people")

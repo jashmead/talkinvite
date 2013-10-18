@@ -15,11 +15,15 @@ class PeopleController < ApplicationController
   before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
+  def search_fields
+    [ 'name', 'email' ]
+  end
+
   # GET /people
   # GET /people.json
   def index
     # logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
-    @people = Person.search(params[:search]).paginate(page: params[:page])
+    @people = Person.all(params[:search]).paginate(page: params[:page])
   end
 
   # GET /people/1

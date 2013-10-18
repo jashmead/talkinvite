@@ -2,6 +2,10 @@
 
 class SessionsController < ApplicationController
 
+  def search_fields
+    []
+  end
+
   def new
     ## 'self' is pretty big
     ## logger.debug("SessionsController.new: self: #{self.inspect}") #DDT

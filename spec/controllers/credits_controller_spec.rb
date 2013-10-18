@@ -23,7 +23,7 @@ describe CreditsController do
   # This should return the minimal set of attributes required to create a valid
   # Credit. As you add validations to Credit, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "worthy_one" => "Mass Quantities of Minions", "service_supplied" => "Minionaise" } }
+  let(:valid_attributes) { { "name" => "Mass Quantities of Minions", "description" => "Minionaise" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe CreditsController do
       it "assigns a newly created but unsaved credit as @credit" do
         # Trigger the behavior that occurs when invalid params are submitted
         Credit.any_instance.stub(:save).and_return(false)
-        post :create, {:credit => { "worthy_one" => "invalid value" }}, valid_session
+        post :create, {:credit => { "name" => "invalid value" }}, valid_session
         assigns(:credit).should be_a_new(Credit)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Credit.any_instance.stub(:save).and_return(false)
-        post :create, {:credit => { "worthy_one" => "invalid value" }}, valid_session
+        post :create, {:credit => { "name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe CreditsController do
         # specifies that the Credit created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Credit.any_instance.should_receive(:update).with({ "worthy_one" => "MyText" })
-        put :update, {:id => credit.to_param, :credit => { "worthy_one" => "MyText" }}, valid_session
+        Credit.any_instance.should_receive(:update).with({ "name" => "MyText" })
+        put :update, {:id => credit.to_param, :credit => { "name" => "MyText" }}, valid_session
       end
 
       it "assigns the requested credit as @credit" do
@@ -128,7 +128,7 @@ describe CreditsController do
         credit = Credit.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Credit.any_instance.stub(:save).and_return(false)
-        put :update, {:id => credit.to_param, :credit => { "worthy_one" => "invalid value" }}, valid_session
+        put :update, {:id => credit.to_param, :credit => { "name" => "invalid value" }}, valid_session
         assigns(:credit).should eq(credit)
       end
 
@@ -136,7 +136,7 @@ describe CreditsController do
         credit = Credit.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Credit.any_instance.stub(:save).and_return(false)
-        put :update, {:id => credit.to_param, :credit => { "worthy_one" => "invalid value" }}, valid_session
+        put :update, {:id => credit.to_param, :credit => { "name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

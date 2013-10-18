@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "credits/show" do
   before(:each) do
     @credit = assign(:credit, stub_model(Credit,
-      :worthy_one => "MyText",
-      :service_supplied => "MyText"
+      :name => "MyText",
+      :description => "MyText"
     ))
   end
 

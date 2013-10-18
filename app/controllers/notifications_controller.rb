@@ -4,6 +4,10 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
 
+  def search_fields
+    [ 'notifications_text' ]
+  end
+
   # GET /notifications
   # GET /notifications.json
   def index

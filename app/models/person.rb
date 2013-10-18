@@ -124,15 +124,6 @@ class Person < ActiveRecord::Base
     relationships.find_by(followed_id: other_person.id).destroy!
   end
 
-  # default & simplest search
-  def self.search(q)
-    if q.present?
-      where("name like ? or email like ?", "%#{q}%", "%#{q}%")
-    else
-      Person.all
-    end
-  end
-
   # tried 'anonymous' in the app/helpers, got whined at...
   def self.anonymous 
     anonymous = self.find_by_name('anonymous')

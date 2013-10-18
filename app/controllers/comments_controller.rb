@@ -2,6 +2,10 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
+  def search_fields
+    [ 'comment_text' ]
+  end
+
   # GET /comments
   # GET /comments.json
   def index

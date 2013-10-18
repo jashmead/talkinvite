@@ -3,6 +3,10 @@
 class MigrationsController < ApplicationController
   before_action :set_migration, only: [:show, :edit, :update, :destroy]
 
+  def search_fields
+    []
+  end
+
   # GET /migrations
   # GET /migrations.json
   def index

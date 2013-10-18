@@ -3,6 +3,10 @@
 class FaqsController < ApplicationController
   before_action :set_faq, only: [:show, :edit, :update, :destroy]
 
+  def search_fields
+    [ 'question', 'answer' ]
+  end
+
   # GET /faqs
   # GET /faqs.json
   def index

@@ -48,6 +48,6 @@ class CreditsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def credit_params
-      params.require(:credit).permit(:worthy_one, :service_supplied)
+      params.require(:credit).permit(:name, :description)
     end
 end

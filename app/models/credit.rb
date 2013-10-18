@@ -8,20 +8,10 @@
 
 class Credit < ActiveRecord::Base
 
-  validates :worthy_one, presence: true
-  validates_uniqueness_of :worthy_one
-  validates :service_supplied, presence: true
+  validates :name, presence: true
+  validates_uniqueness_of :name
+  validates :description, presence: true
 
-  default_scope -> { order('credits.worthy_one asc') }
-
-  # default & simplest search
-  def self.search(q)
-    if q.present?
-      q_like = "%#{q}%"
-      where("worthy_one like ? or service_supplied like ?", q_like, q_like)
-    else
-      Credit.all
-    end
-  end
+  default_scope -> { order('credits.name asc') }
 
 end

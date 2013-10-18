@@ -14,14 +14,4 @@ class Faq < ActiveRecord::Base
 
   default_scope -> { order('faqs.question asc') }
 
-  # default & simplest search
-  def self.search(q)
-    if q.present?
-      q_like = "%#{q}%"
-      where("question like ? or answer like ?", q_like, q_like)
-    else
-      Faq.all
-    end
-  end
-
 end
