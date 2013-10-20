@@ -79,7 +79,7 @@ Talkinvite::Application.routes.draw do
   end
 
   match '/category', to: 'talks#category', via: 'get'
-  match '/hot_talks', to: 'talks#hot_talks', via: 'get'
+  match '/gottalk', to: 'talks#gottalk', via: 'get'
   match '/my_friends', to: 'talks#my_friends', via: 'get'
   match '/my_tags', to: 'talks#my_tags', via: 'get'
   match '/my_talks', to: 'talks#my_talks', via: 'get'
@@ -95,7 +95,7 @@ Talkinvite::Application.routes.draw do
     ## collection will have lots of 'pick a talk' type pages
     collection do
       ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
-      get :category, :found, :gottalk, :hot_talks, :my_friends, :my_tags, :my_talks, :nearby, :recent,
+      get :category, :found, :gottalk, :my_friends, :my_tags, :my_talks, :nearby, :recent,
         :roulette, :search, :start
     end
   end

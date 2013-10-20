@@ -63,7 +63,7 @@ class TalksController < ApplicationController
       @talks = Talk.talks_by_person( current_person )
       render 'my_talks' and return
     else 
-      @talks = Talk.hot_talks
+      @talks = Talk.gottalk
       render 'gottalk' and return
     end
   end
@@ -81,7 +81,7 @@ class TalksController < ApplicationController
 
   # gottalk is a snazzed up version of talks/search
   def gottalk
-    @talks = Talk.hot_talks
+    @talks = Talk.gottalk
     if ! @talks
       ## logger.debug("CC: TalksController.gottalk: no talks found")
       flash.now[:info] = "No talks found"
@@ -106,12 +106,6 @@ class TalksController < ApplicationController
     teapot_q
   end
 
-  # hot is really popular, will need a way to track that
-  # could rename as 'hot' or as 'trending'
-  def hot_talks
-    @talks = Talk.recent(page: params[:page])
-  end
-
   # go to talks with your friends are part of
   def my_friends
     teapot_q
@@ -129,7 +123,7 @@ class TalksController < ApplicationController
       person = current_person
       @talks = Talk.talks_by_person(person)
     else
-      @talks = Talk.hot_talks
+      @talks = Talk.gottalk
     end
     @talks
   end

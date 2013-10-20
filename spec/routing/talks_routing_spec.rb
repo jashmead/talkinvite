@@ -1,3 +1,6 @@
+# the three start routes not currently checked:
+#   /, /start, /talks/start
+
 require "spec_helper"
 
 describe TalksController do
@@ -36,7 +39,7 @@ describe TalksController do
 
       get("/talks/category").should route_to("talks#category")
       get("/talks/found").should route_to("talks#found")            # found is internal path
-      get("/talks/hot_talks").should route_to("talks#hot_talks")
+      get("/talks/gottalk").should route_to("talks#gottalk")
       get("/talks/my_tags").should route_to("talks#my_tags")
       get("/talks/my_friends").should route_to("talks#my_friends")
       get("/talks/my_talks").should route_to("talks#my_talks")
@@ -46,7 +49,7 @@ describe TalksController do
       get("/talks/search").should route_to("talks#search")
 
       get("/category").should route_to("talks#category")
-      get("/hot_talks").should route_to("talks#hot_talks")
+      get("/gottalk").should route_to("talks#gottalk")
       get("/my_friends").should route_to("talks#my_friends")
       get("/my_tags").should route_to("talks#my_tags")
       get("/my_talks").should route_to("talks#my_talks")

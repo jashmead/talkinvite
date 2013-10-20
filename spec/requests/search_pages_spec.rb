@@ -174,9 +174,9 @@ describe "search" do
         expect(page).to have_title("Search for talks or add one")
         expect(page).to have_selector('h1', 'Got Talk?')
         expect(page).to have_button('Start Talk')
-        expect(page).to have_selector('div#hot_talks')
+        expect(page).to have_selector('div#gottalk')
 
-        within('div#hot_talks') do
+        within('div#gottalk') do
           expect(page).to have_selector('table tr') # at least one element
           expect(page).to have_content('summary')
           expect(page).to have_content('description')

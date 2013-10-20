@@ -50,6 +50,7 @@ describe PeopleController do
 
     it "routes to account management tool" do
       get("/profile").should route_to("people#show")
+      get("/settings").should route_to("people#edit")
       get("/signup").should route_to("people#new")
     end
 

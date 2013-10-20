@@ -35,7 +35,7 @@ describe "talks/gottalk" do
   describe "shows 'hottest' talks" do
     before { visit '/talks/gottalk' }
 
-    it { should have_selector('div#hot_talks') }
+    it { should have_selector('div#gottalk') }
   end
 
   # verify the start talk button actually takes us where we want to go

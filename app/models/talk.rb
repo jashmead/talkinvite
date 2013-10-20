@@ -66,11 +66,11 @@ class Talk < ActiveRecord::Base
     talks = Talk.order('talks.updated_at desc').limit(10)
   end
 
-  # for now, for hot_talks, just return the most recent
+  # for now, for gottalk, just return the most recent
   #   if person argument supplied, then feature that person more prominently, somehow
-  def self.hot_talks
+  def self.gottalk
     talks1 = self.recent.limit(10)
-    logger.debug("MM: self.hot_talks: #{talks1.inspect}")
+    logger.debug("MM: self.gottalk: #{talks1.inspect}")
     talks1
   end
 
