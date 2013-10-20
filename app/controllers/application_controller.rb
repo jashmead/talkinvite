@@ -29,8 +29,11 @@ class ApplicationController < ActionController::Base
   end
       
   # report success
-  def report_q(klass, rows) 
-    if rows.size == 1
+  def report_q(klass, rows, q) 
+    if rows.size == 0
+      plural = klass.to_s.downcase.pluralize
+      flash.now[:alert] = "No matching #{plural} found for '#{q}'.  Please try again."
+    elsif rows.size == 1
       singular = klass.to_s.downcase
       flash.now[:success] = "Found one matching #{singular}."
     else 
@@ -74,6 +77,8 @@ class ApplicationController < ActionController::Base
   # Return to search screen on error or no rows found
   # Return the (paginated) rows found on success.
   # Called by 'found'.
+  # codeclimate currently assigns complexity 39
+  # eliminated intermediate steps, see what happens
   def search_q(klass)
 
     # explicit renders here keep the default render in the caller from executing
@@ -84,31 +89,24 @@ class ApplicationController < ActionController::Base
     end
 
     # build up the query string & the array of parameters
-    query_array = []
-    param_array = []
-    search_fields_array = search_fields
 
-    if search_fields_array.size == 0
-      query_array = [ '1 = 1' ] # all rows
+    if search_fields().size == 0
+      @rows = klass.all
     else
-      search_fields_array.each do |f|
+      query_array = []
+      param_array = []
+      search_fields().each do |f|
         query_array.push( f + ' like ? ' )
         param_array.push( "%#{q}%" )
       end
+      @rows = klass.where(query_array.join(' or '), *param_array)
     end
 
-    logger.debug("ApplicationController.search_q: query_array: #{query_array.inspect}, param_array: #{param_array.inspect}")
+    report_q(klass, @rows, q) 
 
-    @rows = klass.where(query_array.join(' or '), *param_array)
-
-    # don't really need the check on '@rows' being nil, but feels safer somehow
-    if ! @rows || @rows.size == 0
-      plural = klass.to_s.downcase.pluralize
-      flash.now[:alert] = "No matching #{plural} found for '#{q}'.  Please try again."
+    if @rows.size == 0
       render :search and return
     end
-
-    report_q(klass, @rows) 
 
     @rows.paginate(page: params[:page])
   end

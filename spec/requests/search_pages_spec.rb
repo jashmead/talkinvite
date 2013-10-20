@@ -107,7 +107,7 @@ describe "search" do
 
         it "should return to the search page with a message" do
           ## would like a more accurate response, specifically that it was an error message we looked at
-          expect(page).to have_content("No matching talks found for")
+          expect(page).to have_content("No matching talks found for 'ZZTop'")
           expect(page).to have_title("Search for talks")
         end
 
