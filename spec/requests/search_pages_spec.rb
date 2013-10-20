@@ -31,7 +31,7 @@ describe "search" do
         it "should return to the search page with a message" do
           ## would like a more accurate response, specifically that it was an error message we looked at
           # save_and_open_page # courtesy of launchy; opens current page; sans formatting, however
-          expect(page).to have_content("No matching people found")
+          expect(page).to have_content("No matching people found for 'ZZTop'")
           expect(page).to have_title("Search for people")
         end
 
