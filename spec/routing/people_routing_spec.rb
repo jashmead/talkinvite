@@ -41,6 +41,16 @@ describe PeopleController do
         get("/people/recent").should route_to("people#recent")
         get("/people/search").should route_to("people#search")
       end
+      it "routes to personalized #search" do
+        get("/people/1/following").should route_to("people#following", :id => "1")
+        get("/people/1/followers").should route_to("people#followers", :id => "1")
+        get("/people/1/oauth").should route_to("people#oauth", :id => "1")
+      end
+    end
+
+    it "routes to account management tool" do
+      get("/profile").should route_to("people#show")
+      get("/signup").should route_to("people#new")
     end
 
   end
