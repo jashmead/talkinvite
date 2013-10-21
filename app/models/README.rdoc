@@ -34,7 +34,8 @@ Currently tabled tables
 1. SVGs? -- not yet, not sure needed
 1. Groups? -- goes to relationships + a field in people (to indicate really a group)
 1. Recurring talks? -- like meetups? -- goes to talk2talk plus a field in talks to indicate ongoing
-1. Ratings? -- add in to tags
+1. Ratings? -- fold in to tags
+1. Sessions -- internal db support for sessions model?
 
 === Data types
 

@@ -11,22 +11,9 @@
 * Make best use of having an overall plan, keep loose but focused & energetic
 
 === Stages
-1. people -- started, search now up, should recheck usual CRUD & the account pages (signin, settings, & so on), have to fix home screen, which is awful, fix the pages not yet done, stub them out when we know
-1. talks -- started, current hot spot is 'start'
-1. relationships -- started as follower/followed, monitor as work progresses
-1. members -- next hot spot, once 'start' is working
-1. comments -- grease the skids on the system
-1. notifications -- generic layer
-1. tweets -- per rails/ruby libraries
-1. tags -- useful for talk selection
-1. locations -- virtual & physical
-1. maps -- via leaflet, good bit!
-1. calendars -- via jQuery
-1. circles -- via d3
-1. attachments -- en passant I suspect, part of the images first strategy
-1. messages -- via node.js?
-1. emails -- via examples in rails books
-1. mobile -- phonegap, per their examples
+1. tables -- have 16, with models & controls & basic set of views
+1. routes -- have 185, all have tests
+1. views & partials
 1. external testing, i.e. watir
 
 === Libraries
@@ -35,10 +22,9 @@
 1. JQuery calendar tool of some kind
 
 === Quality checks
-1. Check for clarity of code
-1. Check for coverage by tests
+1. Check for clarity of code, using codeclimate for this
+1. Check for coverage by tests, area by area
 1. Check against best practices
-1. codeclimate checks
 1. Fix README to conform to standards in Beautiful Ruby
 1. Check against references
 1. Use database checks

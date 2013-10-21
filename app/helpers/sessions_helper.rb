@@ -86,4 +86,13 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
+  ## placeholders for admin & sub booleans
+  def admin?
+    current_person && current_person.admin
+  end
+
+  def sub?
+    current_person && current_person.sub
+  end
+
 end
