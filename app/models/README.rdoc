@@ -29,7 +29,7 @@ In order of creation:
 
 Currently tabled tables
 
-1. Talk2Talk -- connections, creator, from_talk, to_talk, an advanced feature, may not need, can use for clone previous, repeating, & so on. May help with searches (big in our design).  At this point, we don't know how we want to use:  clone-father, repeating, and so on.  Could implement with a self-join, side-table, settings field, lots of ways.  Wait on need. YAGNI.
+1. Connections -- talk2talk, connections, creator, from_talk, to_talk, an advanced feature, may not need, can use for clone previous, repeating, & so on. May help with searches (big in our design).  At this point, we don't know how we want to use:  clone-father, repeating, and so on.  Could implement with a self-join, side-table, settings field, lots of ways.  Fairly complex, even more complex than relationships. Wait on need. YAGNI.
 1. Circles? -- goes to relationships
 1. SVGs? -- not yet, not sure needed
 1. Groups? -- goes to relationships + a field in people (to indicate really a group)
@@ -64,3 +64,19 @@ Datetimes & Intervals -- for calendars
 URLs
 1.  security concern if supplied by user, part of about field
 1.  core of any Web Search tool
+
+=== Setup
+
+1. rails generate scaffold table field1:type1 field2:type2 ...
+1. fix db/migrate file, may need foreign keys for instance
+1. rake db:migrate & rake db:migrate RAILS_ENV=test
+1. app/models -- fix the file & also edit the overall README
+1. app/views/table/README -- possibly
+1. app/controllers/table
+1. app/helpers/stylesheets/table -- just setup new stub, see any eralier for example
+1. app/routes -- possibly, if extra routes needed
+1. spec/features/table_stories -- put in a few pendings, we aren't really sure how useful stories is
+1. spec/controllers/table -- fix valid_attributes!
+1. spec/models/table -- review
+1. spec/factories/table -- fix, note that ids should not be hardcoded to '1', but can live with it for nonce
+1. spec/views/table -- new README, possibly, if so add to base README.rdoc
