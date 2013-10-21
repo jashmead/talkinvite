@@ -37,6 +37,11 @@ Currently tabled tables
 1. Ratings? -- fold in to tags
 1. Sessions -- internal db support for sessions model?
 
+1. Requests -- previously used, a bit much however
+1. Errors -- previously used, a bit much however
+1. Pages -- a bit too meta
+1. Qxs -- great name, but errors on side of inscrutable
+
 === Data types
 
 Note we can't use 'type' as a field name, conflicts with Ruby
@@ -58,3 +63,4 @@ Datetimes & Intervals -- for calendars
 
 URLs
 1.  security concern if supplied by user, part of about field
+1.  core of any Web Search tool

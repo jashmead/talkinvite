@@ -1,3 +1,9 @@
+#
+# Comments
+#
+# May have polymorphism in its future
+# Therefor will need a commentable_type & commentable_id field, latter replacing talk_id
+#
 class Comment < ActiveRecord::Base
 
   belongs_to :person

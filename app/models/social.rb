@@ -3,6 +3,15 @@
 #
 # social search should in general be conditioned on the current account,
 # except when just probing for a subject, someone nearby, & so on
+#
+# Social types we might be interested in
+# 1. talkinvite itself
+# 1. twitter
+# 1. facebook
+# 1. reddit
+# 1. youtube
+# 1. google circles
+# 1. ...
 
 class Social < ActiveRecord::Base
 

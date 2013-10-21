@@ -31,9 +31,13 @@
 
 === Buzzword compliance
 1. DRY -- do not repeat yourself
-1. TDD  -- test driven development
+1. BDD/TDD  -- behavior driven development/test driven development
 1. YAGNI -- you ain't gonna need it
 1. SOC -- separation of concerns
+
+=== Cleanup
+
+1. remove talkvite3, talk_vite, talkvite, & role talkvite -- after running checks
 
 === Bibliography
 

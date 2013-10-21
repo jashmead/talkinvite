@@ -11,13 +11,16 @@
 
 # Planned or at least contemplated fields:
 # 1. map_type
-# 1. full street address
+# 1. full_address
+# 1. broken out parts of full_address
 # 1. country?
 # 1. phone(s)
 # 1. url(s)
+# 1. email(s)
 #
 # Searches by name, description, venue_type, & location possible
 #   start with name & description & venue_type
+# Start with PostgreSQL native location stuff, easier to get started with
 
 class Venue < ActiveRecord::Base
   belongs_to :person

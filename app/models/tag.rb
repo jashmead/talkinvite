@@ -1,7 +1,7 @@
 # Tags
 #
 # Fields are a bare minimum:  
-# 1. tag_type
+# 1. tag_type -- the actual 'tag', not the type of tag (now that is confusing!), but then the tag itself might come out as tag_tag
 # 1. tagable_type -- name of the parent table
 # 1. tagable_id -- id of parent record
 #

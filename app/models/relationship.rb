@@ -1,3 +1,7 @@
+# Relationships
+#
+# starts as following/followed, but generalize to friends & the like
+
 class Relationship < ActiveRecord::Base
   ## how are we sorting out which id goes with which belongs_to?
 

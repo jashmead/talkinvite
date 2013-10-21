@@ -3,10 +3,13 @@
 === Philosophy
 simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
 
-liquid design, smaller elements, i.e. span4 or mobile-width, and nearby controls
+responsive design, smaller elements, i.e. span4 or mobile-width, and nearby controls
 
-=== Page frames
-Spin off master page idea from Keynote, with a bit of liquidity added in by Bootstrap
+=== Start/Home page
+
+currently using start, which forks into gottalk & my_talks
+
+-- might prefer a menu style page
 
 For details, see below (kept in layouts/README.rdoc)
 === Static elements
@@ -25,11 +28,63 @@ Form has:
 1. content
 1. details
 
-==== Tags
+=== Tables
 
-==== Attachments
+==== Root tables
 
-no form of own
+1. People
+1. Talks
+1. Venues
+1. Credits -- simplest
+1. Faqs
+1. Ads -- admin only
+
+==== Link tables
+
+1. Tags -- one per target, no person_id, may have polymorphism in its future
+1. Comments -- zero to many for each person/talk pair, may have polymorphism in its future
+
+1. Members -- one for each person/talk pair
+1. Notifications -- zero to many for each person/talk pair
+1. Socials -- person/talk/like notifications but pointed at outside world
+
+1. Relationships -- person to person, max one record per type of relationship
+1. Messages -- many for each person to person
+
+1. Attachments -- definitely polymorphic
+
+1. Talk2Talk -- name not definite yet, person?/talk/talk
+
+==== Virtual
+
+1. Maps -- will need data, settings, controls
+1. Calendars -- will need data, settings, controls
+
+==== System
+
+1. Schema_migrations
+
+=== Policies
+
+1. id for each layout
+1. test for each layout
+1. max reuse
+1. class for main type for each layout
+1. develop from root top down, using partials
+1. leaf is next, may do as dialogs, with different header
+1. accordian effects later
+1. link to new page later
+1. responsive design, but focused on mobile first -- how?
+
+=== Styles
+
+1. Colors
+  * blue for talks, green for persons, cyan for messages & so on, include faqs in cyan?
+  * rich brown for places, nearly black
+  * yellow for marketing (& credits?), red only for messages
+1. Icons
+  * circle for people, square? for talks, uppointing triangle for locations
+  * lightning for messages?
 
 === Testing
 --

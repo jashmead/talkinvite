@@ -4,6 +4,8 @@
 #
 # messages include emails & dm's, see message type for more
 #
+# fields to come:
+# 1. received_at -- used to monitor delivery
 
 class Message < ActiveRecord::Base
 
