@@ -1,0 +1,36 @@
+=== Credit Views
+
+Build up in layers.
+
+==== Update and destroy
+
+Eliminate show & edit buttons; eliminate description field; instead do a link_to edit (for admins) or to show (for non-admins)
+
+Will need test of two credits on index; use stubs for this?
+
+Will need admin helper for specs to test routing
+
+Will need verification that non-admin sees show
+
+Will need verification that admin sees edit
+
+Need to attach delete to edit (how?  have done already once)
+
+==== Tags
+
+Will need to add tags to the form
+
+for admin, the tags have 1) a X after each tag to delete it & 2) an add at the end
+
+to add tags, don't do until we do a save
+
+==== Attachments
+
+Will need to add urls & other attachments to the form
+
+do attachments after tags working
+
+title for attachments (will get into the file upload, so get a separate screen for this)
+
+to add attachments, don't do until we do a save, therefore have to tag the attachments as to be reversed.  How?
+

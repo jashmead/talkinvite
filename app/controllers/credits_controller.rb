@@ -19,6 +19,7 @@ class CreditsController < ApplicationController
 
   # GET /credits/1/edit
   def edit
+    # get the tags & the attachments, using the association
   end
 
   # POST /credits

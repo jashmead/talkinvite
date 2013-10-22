@@ -22,7 +22,7 @@ class Tag < ActiveRecord::Base
   validates :tagable_type, presence: true
 
   # may be adding attachments & perhaps others to this list
-  validates_inclusion_of :tagable_type, :in => [ 'talks', 'venues', 'people', 'faqs', 'credits', 'maps', 'calendars' ]
+  validates_inclusion_of :tagable_type, :in => [ 'talks', 'venues', 'people', 'faqs', 'credits', 'maps', 'calendars', 'credits' ]
 
   # there will probably be reverse searches here, we have already created the corresponding index
 end

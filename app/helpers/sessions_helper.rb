@@ -86,7 +86,7 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
 
-  ## placeholders for admin & sub booleans
+  ## placeholders for admin & sub booleans; seem to work fine
   def admin?
     current_person && current_person.admin
   end

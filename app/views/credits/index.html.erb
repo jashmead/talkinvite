@@ -1,6 +1,9 @@
 <!-- entry point for testing root/partials system -->
 <!-- name only, with link on name leading to edit (for admin), to show (for non-admin) -->
 <h1>Listing credits</h1>
+<% logger.debug("Credits.index: current_person: #{current_person.inspect}") %>
+<% logger.debug("Credits.index: admin?: #{admin?.inspect}") %>
+<% logger.debug("Credits.index: sub?: #{sub?.inspect}") %>
 
 <table>
   <thead>
