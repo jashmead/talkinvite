@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'layouts/head' %>
+  <body>
+    <%= render 'layouts/top' %>
+    <div class="container">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+      <%= render 'layouts/bottom' %>
+    </div>
+  </body>
+</html>

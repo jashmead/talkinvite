@@ -5,6 +5,5 @@ The features directory is supposed to work better with capybara tests
 
 Stories_pages_spec.rb is a kind of road map of the applications, as it is expected to be used.
 
-Links & relationships are a pair, in that most links go along relationship lines.
-* Relationships is low level, related to foreign keys.
-* Links works at the UX level, how does user move between pages.
+The per model files here are for testing at a semantic level; in terms of higher level interactions.
+We aren't sure how well this works in practice; we'll see.

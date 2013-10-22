@@ -1,5 +1,9 @@
 = TalkInvite
 
+--
+Nested includes don't work in rdoc, apparently, so everything is included from this file. Sigh
+++
+
 == Objective
 
 Master & demo skill set, get an app up.
@@ -47,5 +51,11 @@ Master & demo skill set, get an app up.
 :include:ADMIN.rdoc
 
 :include:MONETIZATION.rdoc
+
+== Specifications
+
+:include:spec/features/README.rdoc
+
+:include:spec/requests/README.rdoc
 
 :include:DEVNOTES.rdoc

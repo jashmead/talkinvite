@@ -13,5 +13,4 @@ class Credit < ActiveRecord::Base
   validates :description, presence: true
 
   default_scope -> { order('credits.name asc') }
-
 end

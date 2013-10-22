@@ -1,0 +1,6 @@
+=== Requests
+
+Request specs are one per model.   Specify tests of each models stories.
+
+Data specs are basically field level tests of data types; meant to help DRY tests on specific fields.
+

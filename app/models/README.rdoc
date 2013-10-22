@@ -42,6 +42,8 @@ Currently tabled tables
 1. Pages -- a bit too meta
 1. Qxs -- great name, but errors on side of inscrutable
 
+Connections is most promising but might find it easier to add a source_id field to talks, then index it, with talk_type would have all the functionality we have in mind currently, i.e. clone & also repeating
+
 === Data types
 
 Note we can't use 'type' as a field name, conflicts with Ruby
