@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
     [ 'name', 'description' ]
   end
 
+  # footer_fields will be changed by most controllers
+  # will include both the path & in any cases an icon
+  # start with an array, however
+  def footer_fields
+    [ 'start', 'about', 'contact', 'privacy', 'help' ]
+  end
+
   # pull out the query string & make sure it is not empty
   # if running a search/start screen, start will need to run check_q as well
   def check_q

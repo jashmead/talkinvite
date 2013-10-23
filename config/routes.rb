@@ -1,10 +1,9 @@
 # routes.rb functions as a de facto map of the system
 #
 # main entry points are:
-# 1. talks
-# 1. people
-# 1. venues
-# 1. notifications
+# 1. talks  -- especially searches
+# 1. people -- especially signin/signup
+# 1. venues -- less important than talks or people
 
 Talkinvite::Application.routes.draw do
 
@@ -50,6 +49,7 @@ Talkinvite::Application.routes.draw do
   match '/settings', to: 'people#edit', via: 'get'
   match '/profile', to: 'people#show', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
+  match '/upgrade', to: 'people#upgrade', via: 'get'
   
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
@@ -74,7 +74,7 @@ Talkinvite::Application.routes.draw do
       get :following, :followers, :oauth
     end
     collection do
-      get :search, :found, :my_friends, :my_tags, :my_talks, :recent, :nearby
+      get :search, :found, :my_friends, :my_tags, :my_talks, :recent, :nearby, :upgrade
     end
   end
 

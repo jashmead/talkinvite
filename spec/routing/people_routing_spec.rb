@@ -40,6 +40,7 @@ describe PeopleController do
         get("/people/nearby").should route_to("people#nearby")
         get("/people/recent").should route_to("people#recent")
         get("/people/search").should route_to("people#search")
+        get("/people/upgrade").should route_to("people#upgrade")
       end
       it "routes to personalized #search" do
         get("/people/1/following").should route_to("people#following", :id => "1")
@@ -52,6 +53,7 @@ describe PeopleController do
       get("/profile").should route_to("people#show")
       get("/settings").should route_to("people#edit")
       get("/signup").should route_to("people#new")
+      get("/upgrade").should route_to("people#upgrade")
     end
 
   end

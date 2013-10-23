@@ -1,7 +1,12 @@
-<% provide(:title, 'Help for TalkInvite') %>
+<!-- switch to a help system based on the list of faqs, with particular emphasis on 'how to' faqs -->
+<% provide(:title, 'Help') %>
 <h1><%= yield :title %></h1>
-<ul>
-<li>topics</li>
-<li>about</li>
-<li>contact</li>
-</ul>
+<% if @helps && @helps.size > 0 %>
+  <ul>
+    <% @helps.each do |help| %>
+      <li><%= link_to help.question, faq_path(help.id) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>We seem to be peculiarly help-less today!</p>
+<% end %>
