@@ -1,18 +1,21 @@
 <!-- entry point for testing root/partials system -->
 <% content_for(:title, 'Thanks!') %>
-
+<% logger.debug("credits/index: @credits = #{@credits.inspect}") %>
+<% if @credits && @credits.size > 0 %>
 <ol>
     <% @credits.each do |credit| %>
       <% if admin? %>
         <li>
           <%= link_to credit.name, edit_credit_path(credit) %>
-          <%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %>
         </li>
       <% else %>
           <%= link_to credit.name, show_credit_path(credit) %>
       <% end %>
     <% end %>
 </ol>
+<% else %>
+<p>We're thanking no one today!</p>
+<% end %>
 
 <br>
 

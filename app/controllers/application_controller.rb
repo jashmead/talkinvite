@@ -118,8 +118,10 @@ class ApplicationController < ActionController::Base
   def create_q(model)
     respond_to do |format|
       if model.save
-        format.html { redirect_to model, 
-          notice: model.class.to_s.downcase + ' was successfully created.' }
+        format.html { 
+          redirect_to model, 
+          notice: model.class.to_s.downcase + ' was successfully created.'
+        }
         format.json { render action: 'show', status: :created, location: model }
       else
         fail_q(model, format, 'new')

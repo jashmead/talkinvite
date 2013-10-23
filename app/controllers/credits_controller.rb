@@ -4,17 +4,9 @@ class CreditsController < ApplicationController
   # GET /credits
   # GET /credits.json
   def index
-#=begin
-    logger.debug("CreditsController.index: self.class: #{self.class.inspect}")
-    # http://stackoverflow.com/questions/13613223/where-to-put-ruby-helper-methods-for-rails-controllers
-    @current_layout = view_context.current_layout
-    if @current_layout
-      logger.debug("CreditsController.index: @current_layout: #{@current_layout}")
-    else
-      logger.debug("CreditsController.index: no @current_layout")
-    end
-#=end
     @credits = Credit.all
+    logger.debug("CreditsController.index: @credits: #{@credits.inspect}")
+    @credits
   end
 
   # GET /credits/1
@@ -36,13 +28,38 @@ class CreditsController < ApplicationController
   # POST /credits.json
   def create
     @credit = Credit.new(credit_params)
-    create_q(@credit)
+    # what follows hacked over from create_q; fold back in once we have a handle on flow
+    respond_to do |format|
+      if @credit.save
+        # once # of credits fills more than one page, be careful to position on the credit we just saved
+        @credits = Credit.all
+        format.html { 
+          render 'index', 
+          notice: 'credit was successfully created.'
+        }
+        format.json { render action: 'show', status: :created, location: @credit }
+      else
+        fail_q(@credit, format, 'new')
+      end
+    end
   end
 
   # PATCH/PUT /credits/1
   # PATCH/PUT /credits/1.json
   def update
-    update_q(@credit, credit_params)
+    # what follows hacked over from update_q; fold back in once we have a handle on flow
+    respond_to do |format|
+      if @credit.update(credit_params)
+        @credits = Credit.all
+        format.html { 
+          render 'index',
+          notice: 'credit was successfully updated.'
+        }
+        format.json { head :no_content }
+      else
+        fail_q(@credit, format, 'edit')
+      end
+    end
   end
 
   # DELETE /credits/1

@@ -1,6 +1,9 @@
-<h1>Editing credits</h1>
+<% content_for(:title, 'Thank ' + @credit.name) %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @credit %> |
+<% if admin? %>
+<%= link_to 'Unthank', @credit, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
 <%= link_to 'Back', credits_path %>

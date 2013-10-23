@@ -3,7 +3,7 @@
 <%= form_for(@credit) do |f| %>
   <% if @credit.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@credit.errors.count, "error") %> prohibited this credit from being saved:</h2>
+      <h2><%= pluralize(@credit.errors.count, "error") %> kept this credit from being saved:</h2>
 
       <ul>
       <% @credit.errors.full_messages.each do |msg| %>
