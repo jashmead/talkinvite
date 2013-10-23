@@ -28,15 +28,6 @@ describe "Static Pages" do
     it_should_behave_like('all static pages')
   end
 
-  describe "Help page" do
-    before { visit static_pages_help_path }
-
-    let(:page_title) { 'Help' }
-    let(:heading) { page_title }
-
-    it_should_behave_like('all static pages')
-  end
-
   describe "Privacy page" do
     before { visit static_pages_privacy_path }
 

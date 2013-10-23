@@ -31,5 +31,14 @@ describe FaqsController do
       delete("/faqs/1").should route_to("faqs#destroy", :id => "1")
     end
 
+    # tests for help are correct
+    it "routes to #helps" do
+      get("/help").should route_to("faqs#helps")
+    end
+
+    it "routes to #help" do
+      get("/help/1").should route_to("faqs#help", :id => "1")
+    end
+
   end
 end

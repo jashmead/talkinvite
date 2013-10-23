@@ -7,5 +7,8 @@ describe "Faqs" do
       get faqs_path
       response.status.should be(200)
     end
+    it "tests help pages" do
+      pending "test help pages"
+    end
   end
 end

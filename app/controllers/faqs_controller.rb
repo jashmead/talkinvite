@@ -1,7 +1,7 @@
 ## only admins can add faqs?
 ## they double as help text; we'll see how that evolves
 class FaqsController < ApplicationController
-  before_action :set_faq, only: [:show, :edit, :update, :destroy]
+  before_action :set_faq, only: [:show, :edit, :update, :destroy, :help]
 
   def search_fields
     [ 'question', 'answer' ]
@@ -45,6 +45,16 @@ class FaqsController < ApplicationController
   def destroy
     @faq.destroy
     destroy_q(@faq, faqs_url)
+  end
+
+  def helps
+    # could use a 'help_flag' to be a bit less ad-hoc
+    @helps = Faq.where("question like ?", 'How %')
+  end
+
+  def help 
+    # don't check to make sure that this is a help & not a faq
+    @help = Faq.find(params[:id])
   end
 
   private

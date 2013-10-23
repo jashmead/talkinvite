@@ -10,11 +10,6 @@ class StaticPagesController < ApplicationController
   def contact
   end
 
-  def help
-    @helps = Faq.where("question like '%How%'")
-    logger.debug("CC: StaticPagesController.help: @helps: #{@helps.inspect}") 
-  end
-
   def privacy
   end
 

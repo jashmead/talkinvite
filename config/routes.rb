@@ -13,7 +13,14 @@ Talkinvite::Application.routes.draw do
 
   resources :credits
 
-  resources :faqs
+  resources :faqs do
+    member do
+      get :help
+    end
+    collection do
+      get :helps
+    end
+  end
 
   resources :ads
 
@@ -54,15 +61,19 @@ Talkinvite::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  # really want to route help with no id to helps, help with id to specific help,
+  #   so /help -> /faqs/helps, /help/1 -> /faqs/1
+  #   try this:
+  match '/help/:id', to: 'faqs#help', via: 'get'
+  match '/help', to: 'faqs#helps', via: 'get'
+
   ## Static pages:
   get "static_pages/about"
   get "static_pages/contact"
-  get "static_pages/help"
   get "static_pages/privacy"
 
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/help', to: 'static_pages#help', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
 
   resources :people do
