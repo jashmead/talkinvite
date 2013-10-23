@@ -4,6 +4,16 @@ class CreditsController < ApplicationController
   # GET /credits
   # GET /credits.json
   def index
+#=begin
+    logger.debug("CreditsController.index: self.class: #{self.class.inspect}")
+    # http://stackoverflow.com/questions/13613223/where-to-put-ruby-helper-methods-for-rails-controllers
+    @current_layout = view_context.current_layout
+    if @current_layout
+      logger.debug("CreditsController.index: @current_layout: #{@current_layout}")
+    else
+      logger.debug("CreditsController.index: no @current_layout")
+    end
+#=end
     @credits = Credit.all
   end
 

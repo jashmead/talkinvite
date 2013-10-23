@@ -3,10 +3,10 @@
   <%= render 'layouts/head' %>
   <body>
     <%= render 'layouts/top' %>
-    <div class="container">
+    <%= render 'layouts/container_start' %>
       <%= render 'layouts/flash' %>
       <%= yield %>
       <%= render 'layouts/bottom' %>
-    </div>
+    <%= render 'layouts/container_end' %>
   </body>
 </html>

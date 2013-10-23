@@ -2,6 +2,7 @@
 ## 1. for no doubt excellent reason, all functions here end in '_q'
 ## 1. json code is not currently being exercised
 ## 1. in some sense, ApplicationController is the center of the application
+## 1. to get at the functions in app/helpers, use view_context, i.e. view_context.current_layout
 
 class ApplicationController < ActionController::Base
 

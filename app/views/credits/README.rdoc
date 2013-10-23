@@ -6,15 +6,15 @@ Build up in layers.
 
 Eliminate show & edit buttons; eliminate description field; instead do a link_to edit (for admins) or to show (for non-admins)
 
-Will need test of two credits on index; use stubs for this?
+Will need test of two credits on index; use stubs for this? as current
 
-Will need admin helper for specs to test routing
+Will need admin helper for specs to test routing -- admin?
 
-Will need verification that non-admin sees show
+Will need verification that non-admin sees show -- need signin for admin, created with factory girl; check spec helpers; can make sure we tag every layout with an appropriate id, that should work
 
-Will need verification that admin sees edit
+Will need verification that admin sees edit, have it change the credit record, then check that the changes took
 
-Need to attach delete to edit (how?  have done already once)
+Need to attach delete to edit (how?  have done already once):  copy over the button from the current index
 
 ==== Tags
 
