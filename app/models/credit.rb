@@ -14,5 +14,6 @@ class Credit < ActiveRecord::Base
   validates_uniqueness_of :name
   validates :description, presence: true
 
-  default_scope -> { order('credits.name asc') }
+  # could also use name, however 'updated' works better when changing the credits
+  default_scope -> { order('credits.updated_at desc') }
 end

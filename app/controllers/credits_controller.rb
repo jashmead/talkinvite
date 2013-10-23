@@ -35,7 +35,7 @@ class CreditsController < ApplicationController
         @credits = Credit.all
         format.html { 
           render 'index', 
-          notice: 'credit was successfully created.'
+          notice: @credit.name + ' thanked!'
         }
         format.json { render action: 'show', status: :created, location: @credit }
       else
@@ -53,7 +53,7 @@ class CreditsController < ApplicationController
         @credits = Credit.all
         format.html { 
           render 'index',
-          notice: 'credit was successfully updated.'
+          notice: @credit.name + ' rethanked!'
         }
         format.json { head :no_content }
       else

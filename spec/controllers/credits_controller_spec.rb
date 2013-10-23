@@ -75,10 +75,13 @@ describe CreditsController do
         assigns(:credit).should be_persisted
       end
 
+=begin
+## we now render the 'index' instead
       it "redirects to the created credit" do
         post :create, {:credit => valid_attributes}, valid_session
         response.should redirect_to(Credit.last)
       end
+=end
     end
 
     describe "with invalid params" do
@@ -116,11 +119,14 @@ describe CreditsController do
         assigns(:credit).should eq(credit)
       end
 
+=begin
+## we now render 'index' instead
       it "redirects to the credit" do
         credit = Credit.create! valid_attributes
         put :update, {:id => credit.to_param, :credit => valid_attributes}, valid_session
         response.should redirect_to(credit)
       end
+=end
     end
 
     describe "with invalid params" do

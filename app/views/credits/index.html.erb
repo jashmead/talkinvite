@@ -2,17 +2,17 @@
 <% content_for(:title, 'Thanks!') %>
 <% logger.debug("credits/index: @credits = #{@credits.inspect}") %>
 <% if @credits && @credits.size > 0 %>
-<ol>
+<ul>
     <% @credits.each do |credit| %>
       <% if admin? %>
         <li>
           <%= link_to credit.name, edit_credit_path(credit) %>
         </li>
       <% else %>
-          <%= link_to credit.name, show_credit_path(credit) %>
+          <%= link_to credit.name, credit %>
       <% end %>
     <% end %>
-</ol>
+</ul>
 <% else %>
 <p>We're thanking no one today!</p>
 <% end %>
