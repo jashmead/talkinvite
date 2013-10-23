@@ -2,30 +2,19 @@
 <!-- name only, with link on name leading to edit (for admin), to show (for non-admin) -->
 <h1>Listing credits</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<ol>
     <% @credits.each do |credit| %>
-      <tr>
-        <td><%= credit.name %></td>
-        <td><%= credit.description %></td>
-        <td><%= link_to 'Show', credit %></td>
-        <td><%= link_to 'Edit', edit_credit_path(credit) %></td>
-        <td><%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <li>
+        <%= credit.name %>
+        <%= link_to 'Show', credit %>
+        <%= link_to 'Edit', edit_credit_path(credit) %>
+        <%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
     <% end %>
-  </tbody>
-</table>
+</ol>
 
 <br>
 
+<% if admin? %>
 <%= link_to 'New Credit', new_credit_path %>
+<% end %>
