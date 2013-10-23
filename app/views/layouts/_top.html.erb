@@ -1,37 +1,9 @@
 <!-- new header element for talkinvite:  get into logo/title/settings format -->
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <%= link_to "Talk Invite", root_path, id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Start",    start_path %></li>
-          <li><%= link_to "Help", help_path %></li>
-          <% if signed_in? %>
-            <!-- why link_to to People? -->
-            <li><%= link_to "People", people_path %></li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- Profile goes to show, Settings to edit -->
-                <li><%= link_to "Profile", current_person %></li>
-                <li><%= link_to "Settings", edit_person_path(current_person) %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign out", signout_path, method: "delete" %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <!-- putting a '/' between sign in & new account broke spacing -->
-            <!-- how to turn off a page if you are already on it? -->
-            <li><%= link_to "Sign in", signin_path %></li>
-            <li><%= link_to "New Account", signup_path %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
+<!-- want to set width to mobile? or at least fluid:  currently seems to be fixed & also wider  -->
+<header >
+  <div class="container">
+    <%= render 'layouts/header_logo' %>
+    <%= render 'layouts/header_title' %>
+    <%= render 'layouts/header_nav' %>
   </div>
 </header>

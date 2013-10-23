@@ -1,15 +1,16 @@
 <!-- entry point for testing root/partials system -->
-<!-- name only, with link on name leading to edit (for admin), to show (for non-admin) -->
-<h1>Listing credits</h1>
+<% content_for(:title, 'Thanks!') %>
 
 <ol>
     <% @credits.each do |credit| %>
-      <li>
-        <%= credit.name %>
-        <%= link_to 'Show', credit %>
-        <%= link_to 'Edit', edit_credit_path(credit) %>
-        <%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </li>
+      <% if admin? %>
+        <li>
+          <%= link_to credit.name, edit_credit_path(credit) %>
+          <%= link_to 'Destroy', credit, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+      <% else %>
+          <%= link_to credit.name, show_credit_path(credit) %>
+      <% end %>
     <% end %>
 </ol>
 

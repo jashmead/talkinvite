@@ -1,0 +1,14 @@
+<!-- haven't got the style thing working yet 
+  -- try as a 'hero-unit' 
+  -- would rather to get this to work relatively early as it affects individual page design
+  -- hero unit is meant for larger chunks of text, doesn't look good 
+    <div class="hero-unit"><%=yield :title%></div>
+  -- header is way big, & leaves us with washed out white for some reason
+    <h1 style="color=white;" ><%= yield :title %></h1>
+  -- could just try simple div:
+    <div class="header_title"><%=yield :title%></div>
+  -- it is the wrapper for this which is the problem:  the navbar-inverse for instance
+    -- this is bootstrap at work
+    <div class="header_title"><%=yield :title%></div>
+-->
+<h1 ><%= yield :title %></h1>
