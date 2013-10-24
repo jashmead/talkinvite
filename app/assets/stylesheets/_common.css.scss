@@ -14,13 +14,46 @@
 
 */
 
-@import "bootstrap";  // needed to include '$grayLighter' & anything else bootstappy I expect
-
-.header_title {
-  font-size: xx-large;
-  text-align: center;
-  margin: 2;
-  padding: 2;
-  height: 32;
-  vertical-align: bottom;
-}
+// @import "bootstrap";  // needed to include '$grayLighter' & anything else bootstappy I expect
+// bootstrap defines, from: http://bootstrap.lesscss.ru/less.html
+$black: #000;
+$black:  #000;
+$grayDarker: #222;
+$grayDark: #333;
+$gray: #555;
+$grayLight:  #999;
+$grayLighter:  #eee;
+$white:  #fff;
+$blue: #049cdb;
+$green:  #46a546;
+$red:  #9d261d;
+$yellow: #ffc40d;
+$orange: #f89406;
+$pink: #c3325f;
+$purple: #7a43b6;
+$warningText:  #c09853;
+$warningBackground:  #f3edd2;
+$errorText:  #b94a48;
+$errorBackground:  #f2dede;
+$successText:  #468847;
+$successBackground:  #dff0d8;
+$infoText: #3a87ad;
+$infoBackground: #d9edf7;
+$linkColor:  #08c;
+$gridColumns:  12;
+$gridColumnWidth:  60px;
+$gridGutterWidth:  20px;
+$fluidGridColumnWidth: 6.382978723%;
+$fluidGridGutterWidth: 2.127659574%;
+$baseFontSize: 13px;
+$baseFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$baseLineHeight: 18px;
+$primaryButtonBackground:  $linkColor;
+$placeholderText:  $grayLight;
+$navbarHeight: 40px;
+$navbarBackground: $grayDarker;
+$navbarBackgroundHighlight:  $grayDark;
+$navbarText: $grayLight;
+$navbarLinkColor:  $grayLight;
+$navbarLinkColorHover: $white;
+$linkColorHover: darken($linkColor, 15%);
