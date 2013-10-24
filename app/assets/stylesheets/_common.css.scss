@@ -16,6 +16,7 @@
 
 // @import "bootstrap";  // needed to include '$grayLighter' & anything else bootstappy I expect
 // bootstrap defines, from: http://bootstrap.lesscss.ru/less.html
+
 $black: #000;
 $black:  #000;
 $grayDarker: #222;
@@ -57,3 +58,5 @@ $navbarText: $grayLight;
 $navbarLinkColor:  $grayLight;
 $navbarLinkColorHover: $white;
 $linkColorHover: darken($linkColor, 15%);
+
+$grayMediumLight: #eaeaea;
