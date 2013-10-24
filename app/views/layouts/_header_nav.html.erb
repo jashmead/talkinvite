@@ -1,32 +1,31 @@
 <!-- 
   -- eliminate the start, help, & people
   -- add an icon to the accounts, i.e. a gears icon from bootstrap
+  -- looks as if all the formatting comes from bootstrap, its classes starting 'dropdown'
 -->
-<nav>
-  <div class="nav pull-right">
-    <div id="fat-menu" class="dropdown">
-      <% if signed_in? %>
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Account <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <!-- Profile goes to show, Settings to edit -->
-          <li><%= link_to "Profile", current_person %></li>
-          <li><%= link_to "Settings", edit_person_path(current_person) %></li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to "Sign out", signout_path, method: "delete" %>
-          </li>
-        </ul>
-      <% else %>
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          Account <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "Sign in", signin_path %></li>
-          <li><%= link_to "New Account", signup_path %></li>
-        </ul>
-      <% end %>
-    </div>
+<div class="pull-right">
+  <div id="account-menu" class="dropdown" role="menu" aria-labelledby="dropdownMenu">
+    <% if signed_in? %>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Account <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <!-- Profile goes to show, Settings to edit -->
+        <li><%= link_to "Profile", current_person %></li>
+        <li><%= link_to "Settings", edit_person_path(current_person) %></li>
+        <li class="divider"></li>
+        <li>
+          <%= link_to "Sign out", signout_path, method: "delete" %>
+        </li>
+      </ul>
+    <% else %>
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Account <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Sign in", signin_path %></li>
+        <li><%= link_to "New Account", signup_path %></li>
+      </ul>
+    <% end %>
   </div>
-</nav>
+</div>

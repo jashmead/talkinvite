@@ -10,5 +10,8 @@
   -- it is the wrapper for this which is the problem:  the navbar-inverse for instance
     -- this is bootstrap at work
     <div class="header_title"><%=yield :title%></div>
+  -- most of the ugliness comes from the h1
+    -- spans the whole top
+    -- a bit larger than necessary
 -->
 <h1 ><%= yield :title %></h1>
