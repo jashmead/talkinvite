@@ -1,0 +1,518 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ * 
+
+
+ */
+
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* ads */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* attachments */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* comments */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* credits */
+/* mixins, variables, etc. */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* universal */
+html {
+  overflow-y: scroll; }
+
+body {
+  padding-top: 60px; }
+
+section {
+  overflow: auto; }
+
+textarea {
+  resize: vertical; }
+
+.center {
+  text-align: center; }
+  .center h1 {
+    margin-bottom: 10px; }
+
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1; }
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center; }
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999999; }
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em; }
+
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: black;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1; }
+  #logo:hover {
+    color: white;
+    text-decoration: none; }
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999999; }
+  footer a {
+    color: #555555; }
+    footer a:hover {
+      color: #222222; }
+  footer small {
+    float: left; }
+  footer ul {
+    float: right;
+    list-style: none; }
+    footer ul li {
+      float: left;
+      margin-left: 10px; }
+
+/*
+  fix a problem with box sizing in css generally:
+    http://css-tricks.com/box-sizing/
+*/
+/* miscellaneous */
+.notice {
+  clear: both; }
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* sidebar */
+aside section {
+  padding: 10px 0;
+  border-top: 1px solid #eaeaea; }
+  aside section:first-child {
+    border: 0;
+    padding-top: 0; }
+  aside section span {
+    display: block;
+    margin-bottom: 3px;
+    line-height: 1; }
+  aside section h1 {
+    font-size: 1.4em;
+    text-align: left;
+    letter-spacing: -1px;
+    margin-bottom: 3px;
+    margin-top: 0px; }
+
+.gravatar {
+  float: left;
+  margin-right: 10px; }
+
+/* forms */
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+input {
+  height: auto !important; }
+
+#error_explanation {
+  color: #f00; }
+  #error_explanation ul {
+    list-style: none;
+    margin: 0 0 18px 0; }
+
+.hidden {
+  display: none; }
+
+.stats {
+  overflow: auto; }
+  .stats a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid #eeeeee;
+    color: gray; }
+    .stats a:first-child {
+      padding-left: 0;
+      border: 0; }
+    .stats a:hover {
+      text-decoration: none;
+      color: #049cdb; }
+  .stats strong {
+    display: block; }
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px; }
+  .user_avatars .gravatar {
+    margin: 1px 1px; }
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* faqs */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* maps */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* members */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* messages */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* notifications */
+/* People index */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+.people {
+  list-style: none;
+  margin: 0; }
+  .people li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid #eeeeee; }
+    .people li:last-child {
+      border-bottom: 1px solid #eeeeee; }
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000; }
+  a:visited {
+    color: #666; }
+  a:hover {
+    color: #fff;
+    background-color: #000; }
+
+div.field, div.actions {
+  margin-bottom: 10px; }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+  #error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  #error_explanation ul li {
+    font-size: 12px;
+    list-style: square; }
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* socials */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* tags */
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* talks */
+.talks {
+  list-style: none;
+  margin: 10px 0 0 0;
+  /*
+  // experimenting with different borders, backgrounds to demarcate talks (& other stuff)
+  div {
+    border: {
+      color: lightblue;
+      width: 1px;
+      style: dotted;
+    }
+  }
+  */ }
+  .talks li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8; }
+
+.summary {
+  display: block; }
+
+.timestamp {
+  color: #999999; }
+
+/* 
+  -- textarea is to help out the talks
+*/
+aside textarea {
+  height: 100px;
+  margin-bottom: 5px; }
+/*
+  common variables for use by talkinvite scss files
+  @import common.css.scss; to use
+  leading '_' to make clear it is a 'partial' in sass terms
+
+  have tried marking talks with background-color light blue, 
+    but it is a) not very light & b) distracting
+    -- maybe a much lighter blue?
+    -- borders?
+    -- keep experimenting
+
+  headings are too far to the right for current sizing
+    -- either shift to the left, or set the page width smaller
+
+*/
+/* venues */
