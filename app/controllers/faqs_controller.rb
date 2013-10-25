@@ -52,8 +52,12 @@ class FaqsController < ApplicationController
     @helps = Faq.where("faq_type = ?", 'help')
   end
 
+  # where returns array! find returns record
   def help 
-    @help = Faq.where("id = ? and faq_type = ?", params[:id], 'help')
+    # logger.debug("CC: FaqsController.help: params: #{params.inspect}")
+    @helps = Faq.where("id = ? and faq_type = ?", params[:id], 'help')
+    # logger.debug("CC: FaqsController.help: @help: #{@help.inspect}")
+    @help = @helps[0]
   end
 
   private
