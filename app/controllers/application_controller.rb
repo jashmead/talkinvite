@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # this is how we get signed_in? and its friends:
   include SessionsHelper
 
   # default search fields
@@ -20,8 +21,9 @@ class ApplicationController < ActionController::Base
   # footer_fields will be changed by most controllers
   # will include both the path & in any cases an icon
   # start with an array, however
-  def footer_fields
-    [ 'start', 'about', 'contact', 'privacy', 'help' ]
+  def footer_fields 
+    # routes for nav buttons typically don't have parameters in them...
+    [ '/start', '/about', '/contact', '/privacy', '/help' ]
   end
 
   # pull out the query string & make sure it is not empty

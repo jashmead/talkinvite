@@ -14,6 +14,7 @@
     -- link from about
   font-awesome
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+  duckduckgo
 =end
 
 class Credit < ActiveRecord::Base

@@ -1,20 +1,27 @@
 <!-- do not use 'footer' element here, it confused jQuery Mobile -->
-<!-- this is 'about' navbar; there will be others -->
+<% if ! controller.footer_fields.empty? %>
 <div data-role="footer" data-position="fixed" data-id="footer">
   <div data-role="navbar">
     <ul>
-      <li>
-        <a class="ui-btn-active" data-role="button" href="/about">About</a>
-      </li>
-      <li>
-        <a data-role="button" href="/contact">Contact</a>
-      </li>
-      <li>
-        <a data-role="button" href="/privacy">Privacy</a>
-      </li>
-      <li>
-        <a data-role="button" href="/help">Help</a>
-      </li>
+    <% active_button = nil; controller.footer_fields.each do |url| %>
+	    <%
+	      # we are assuming that the url has the form: /controller/action, 
+	      #   if it gets more complex than this, 
+	      #   perhaps we can use some elegant Ruby unRouting method with which we may work nav button magic
+	      action = url.split('/').pop
+	      if action === controller.action_name
+	        klasses = "class=\"ui-disabled\"" # no point go to a page from itself
+	      elsif ! active_button
+	        active_button = action
+	        klasses = "class=\"ui-btn-active\""   # mark first non-self button as active
+	      else
+	        klasses = ''
+	      end
+	      label = action.to_s.titleize
+	    %>
+	    <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{url}\">#{label}</a>" %>
+    <% end %>
     </ul>
   </div>
 </div>
+<% end %>
