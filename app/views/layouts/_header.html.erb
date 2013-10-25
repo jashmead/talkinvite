@@ -4,8 +4,8 @@
     <h1><%=yield :title%></h1>
     <a data-icon="gear" href="<%=settings_path%>">Settings</a>
   <% else %>
-    <a href="<%=signin_path%>"><i class="fa fa-sign-in">&nbsp;&nbsp;</i>Log In</a>
+    <a href="<%=signin_path%>"><i class="fa fa-sign-in fa-lg">&nbsp;&nbsp;</i>Log In</a>
     <h1><%=yield :title%></h1>
-    <a href="<%=signup_path%>"><i class="fa fa-rocket fa-spin"></i>&nbsp;&nbsp;&nbsp;Sign Up</a>
+    <a href="<%=signup_path%>"><i class="fa fa-sign-in fa-rotate-270 fa-lg"></i>&nbsp;Sign Up</a>
   <% end %>
 </div>
