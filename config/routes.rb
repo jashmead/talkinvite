@@ -30,9 +30,16 @@ Talkinvite::Application.routes.draw do
 
   resources :messages
 
-  resources :socials
+  resources :socials do
+    member do
+      get :map, :calendar
+    end
+  end
 
-  resources :venues do
+  resources :venues do 
+    member do
+      get :map, :calendar
+    end
     collection do
       get :found, :my_friends, :my_tags, :my_talks,  :nearby, :recent, :search
     end
@@ -44,7 +51,11 @@ Talkinvite::Application.routes.draw do
 
   resources :comments
 
-  resources :members
+  resources :members do
+    member do
+      get :map, :calendar
+    end
+  end
 
   ## put most specific routes at the top:
 
@@ -82,7 +93,7 @@ Talkinvite::Application.routes.draw do
     ## paths are following_people_path(id), followers_people_path(id)
     ##  i.e. people/1/following
     member do
-      get :following, :followers, :oauth
+      get :following, :followers, :oauth, :map, :calendar
     end
     collection do
       get :search, :found, :my_friends, :my_tags, :my_talks, :recent, :nearby, :upgrade
@@ -104,6 +115,9 @@ Talkinvite::Application.routes.draw do
 
   resources :talks do
     ## collection will have lots of 'pick a talk' type pages
+    member do
+      get :map, :calendar
+    end
     collection do
       ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
       get :category, :found, :gottalk, :my_friends, :my_tags, :my_talks, :nearby, :recent,

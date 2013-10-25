@@ -19,6 +19,8 @@
 *.lst
 ?
 [^a-zA-Z]?
+*.awk
+*.sorted
 
 # Ignore api documentation
 /doc/api

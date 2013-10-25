@@ -31,5 +31,10 @@ describe MembersController do
       delete("/members/1").should route_to("members#destroy", :id => "1")
     end
 
+    it "routes to #map & #calendar" do
+      get("/members/1/map").should route_to("members#map", :id => "1")
+      get("/members/1/calendar").should route_to("members#calendar", :id => "1")
+    end
+
   end
 end

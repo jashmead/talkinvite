@@ -43,6 +43,11 @@ describe VenuesController do
       end
     end
 
+    it "routes to #map & #calendar" do
+      get("/venues/1/map").should route_to("venues#map", :id => "1")
+      get("/venues/1/calendar").should route_to("venues#calendar", :id => "1")
+    end
+
   end
   
 end

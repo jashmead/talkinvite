@@ -60,5 +60,11 @@ describe TalksController do
 
     end
 
+    it "routes to #map & #calendar" do
+      get("/talks/1/map").should route_to("talks#map", :id => "1")
+      get("/talks/1/calendar").should route_to("talks#calendar", :id => "1")
+    end
+
   end
+
 end

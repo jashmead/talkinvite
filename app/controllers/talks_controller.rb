@@ -146,6 +146,16 @@ class TalksController < ApplicationController
     logger.debug("CC: TalksController.search")
   end
 
+  def map
+    @talk = Talk.find(params[:id])
+    map_q(@talk, params)
+  end
+
+  def calendar
+    @talk = Talk.find(params[:id])
+    calendar_q(@talk, params)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_talk

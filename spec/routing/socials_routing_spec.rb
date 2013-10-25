@@ -31,5 +31,10 @@ describe SocialsController do
       delete("/socials/1").should route_to("socials#destroy", :id => "1")
     end
 
+    it "routes to #map & #calendar" do
+      get("/socials/1/map").should route_to("socials#map", :id => "1")
+      get("/socials/1/calendar").should route_to("socials#calendar", :id => "1")
+    end
+
   end
 end

@@ -47,6 +47,16 @@ class VenuesController < ApplicationController
   def search
   end
 
+  def map
+    @venue = Venue.find(params[:id])
+    map_q(@venue, params)
+  end
+
+  def calendar
+    @venue = Venue.find(params[:id])
+    calendar_q(@venue, params)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_venue

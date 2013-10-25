@@ -56,6 +56,11 @@ describe PeopleController do
       get("/upgrade").should route_to("people#upgrade")
     end
 
+    it "routes to #map & #calendar" do
+      get("/people/1/map").should route_to("people#map", :id => "1")
+      get("/people/1/calendar").should route_to("people#calendar", :id => "1")
+    end
+
   end
 
 end
