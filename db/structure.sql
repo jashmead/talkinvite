@@ -210,7 +210,8 @@ CREATE TABLE faqs (
     question text,
     answer text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    faq_type character varying(255) DEFAULT 'faq'::character varying
 );
 
 
@@ -1160,3 +1161,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131016172016');
 INSERT INTO schema_migrations (version) VALUES ('20131016172957');
 
 INSERT INTO schema_migrations (version) VALUES ('20131018133657');
+
+INSERT INTO schema_migrations (version) VALUES ('20131025151810');
