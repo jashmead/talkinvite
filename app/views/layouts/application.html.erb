@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title><%= yield(:title) %></title>
-    <%= stylesheet_link_tag "application", media: "all",
-                                           "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
+    <meta name="viewport" content="user-scalable=no,width=device-width" />
   </head>
   <body>
-    <!-- would like to factor out page frame ideas, i.e. side-by-side, how best? -->
     <%= render 'layouts/header' %>
-    <div class="container">
+    <div data-role="content" class="<%=controller.controller_name%>" id="<%=controller.controller_name%>-<%=controller.action_name%>">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <%= yield %>
-      <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-      <!-- the debug(assigns) is showing up with 'code' tag, where debug(params) is using 'pre'.  Why? -->
-      <!-- <%= debug(assigns) if Rails.env.development? %> -->
-    </div>
+    </div>`
+    <%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
