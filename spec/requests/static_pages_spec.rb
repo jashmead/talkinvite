@@ -13,7 +13,7 @@ describe "Static Pages" do
   describe "About page" do
     before { visit static_pages_about_path }
 
-    let(:page_title) { 'About TalkInvite' }
+    let(:page_title) { 'About' }
     let(:heading) { page_title }
 
     it_should_behave_like('all static pages')
