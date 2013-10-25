@@ -7,7 +7,8 @@ describe "faqs/help" do
   before(:each) do
     assign(:help, stub_model(Faq,
         :question => "How do I do X?",  # 'how' present
-        :answer => "First do Y"
+        :answer => "First do Y",
+        :faq_type => 'help'
       )
     )
   end

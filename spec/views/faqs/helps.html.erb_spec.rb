@@ -6,11 +6,13 @@ describe "faqs/helps" do
     assign(:helps, [
       stub_model(Faq,
         :question => "how do I do X?",  # 'how' present
-        :answer => "X may be simply & easily complished by first doing Y"
+        :answer => "X may be simply & easily complished by first doing Y",
+        :faq_type => 'help'
       ),
       stub_model(Faq,
-        :question => "But by what means shall I then do Y?",    # 'how'-free
-        :answer => "Why the procedure for doing Y is none other than to first do X!"
+        :question => "But by what means shall I then do Y?",    
+        :answer => "Why the procedure for doing Y is none other than to first do X!",
+        :faq_type => 'faq'
       )
     ])
   end
@@ -21,8 +23,8 @@ describe "faqs/helps" do
     # save_and_open_page ## save_and_open_page does not work here:  shows a pure blank page! perhaps generally a problem with view specs
     # Run the generator again with the --webrat flag if you want to use webrat matchers
 # do not know why the next test is failing:  direct inspection of the screen shows ok
-    rendered.should match(/do I do X/)                 # first record has 'How ' pattern
-    rendered.should_not match(/how then do I do Y/)    # second record does not have the 'How ' pattern
+    rendered.should match(/do I do X/)                 
+    rendered.should_not match(/how then do I do Y/)   
   end
 
   it "goes to the associated help on click" do

@@ -49,12 +49,11 @@ class FaqsController < ApplicationController
 
   def helps
     # could use a 'help_flag' to be a bit less ad-hoc
-    @helps = Faq.where("question like ?", 'How %')
+    @helps = Faq.where("faq_type = ?", 'help')
   end
 
   def help 
-    # don't check to make sure that this is a help & not a faq
-    @help = Faq.find(params[:id])
+    @help = Faq.where("id = ? and faq_type = ?", params[:id], 'help')
   end
 
   private
