@@ -10,13 +10,14 @@
     <meta name="viewport" content="user-scalable=no,width=device-width" />
   </head>
   <body>
-    <%= render 'layouts/header' %>
+    <%=render 'layouts/header'%>
     <div data-role="content" class="<%=controller.controller_name%>" id="<%=controller.controller_name%>-<%=controller.action_name%>">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
       <%=yield%>
     </div>
+    <!-- page showing scrollbar on right, tho plenty of space, why? -->
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
   </body>
