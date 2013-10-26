@@ -6,14 +6,14 @@ describe "members/index" do
       stub_model(Member,
         :talk_id => 1,
         :person_id => 2,
-        :rsvp_status => "Rsvp Status",
-        :member_type => "Member Type"
+        :rsvp_status => "accepted",
+        :member_type => "member"
       ),
       stub_model(Member,
         :talk_id => 1,
         :person_id => 2,
-        :rsvp_status => "Rsvp Status",
-        :member_type => "Member Type"
+        :rsvp_status => "declined",
+        :member_type => "admin"
       )
     ])
   end
@@ -21,9 +21,8 @@ describe "members/index" do
   it "renders a list of members" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
-    assert_select "tr>td", :text => "Rsvp Status".to_s, :count => 2
-    assert_select "tr>td", :text => "Member Type".to_s, :count => 2
+    assert_select "a", :content => /accepted/
+    assert_select "a", :content => /declined/
+    assert_select "a", :content => /New Member/
   end
 end

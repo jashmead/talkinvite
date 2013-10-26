@@ -4,7 +4,7 @@ describe "ads/index" do
   before(:each) do
     assign(:ads, [
       stub_model(Ad,
-        :name => "MyName",
+        :name => "MyName1",
         :description => "MyDescription",
         :internal_flag => true,
         :content => "MyContent",
@@ -13,7 +13,7 @@ describe "ads/index" do
         :stats => "MyStats"
       ),
       stub_model(Ad,
-        :name => "MyName",
+        :name => "MyName2",
         :description => "MyDescription",
         :internal_flag => true,
         :content => "MyContent",
@@ -27,12 +27,8 @@ describe "ads/index" do
   it "renders a list of ads" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "MyName".to_s, :count => 2
-    assert_select "tr>td", :text => "MyDescription".to_s, :count => 2
-    assert_select "tr>td", :text => true.to_s, :count => 2
-    assert_select "tr>td", :text => "MyContent".to_s, :count => 2
-    assert_select "tr>td", :text => "MySource".to_s, :count => 2
-    assert_select "tr>td", :text => "MyStrategy".to_s, :count => 2
-    assert_select "tr>td", :text => "MyStats".to_s, :count => 2
+    assert_select "a", :content => 'MyName1'
+    assert_select "a", :content => 'MyName2'
+    assert_select "a", :content => 'New Ad'
   end
 end

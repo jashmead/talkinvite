@@ -1,28 +1,16 @@
+<% content_for(:title, 'Tags') %>
+<% if @tags && @tags.size > 0 %>
+	<ul data-role="listview">
+	    <% @tags.each do |tag| %>
+        <li>
+        <%= link_to tag.tag_type, edit_tag_path(tag) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>We do not feel like playing tag today!</p>
+<% end %>
+<hr>
+<%= new_button 'New Tag', new_tag_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tag type</th>
-      <th>Tagable</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.tag_type %></td>
-        <td><%= tag.tagable %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tag', new_tag_path %>

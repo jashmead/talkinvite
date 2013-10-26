@@ -25,6 +25,7 @@ describe "credits/index" do
     # "li a", "li > a", "li + a", "li~a" fail; "li,a" works, but this merely means look at both li & a
     assert_select "a", :content => /Lad A/    # it's content for 'a', not 'text'
     assert_select "a", :content => /Lass B/
+    assert_select "a", :content => 'New Thank You'
   end
 
   # what is test for admin? in spec arena?

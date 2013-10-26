@@ -1,28 +1,19 @@
-
-<table>
-  <thead>
-    <tr>
-      <th>Question</th>
-      <th>Answer</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @faqs.each do |faq| %>
-      <tr>
-        <td><%= faq.question %></td>
-        <td><%= faq.answer %></td>
-        <td><%= link_to 'Show', faq %></td>
-        <td><%= link_to 'Edit', edit_faq_path(faq) %></td>
-        <td><%= link_to 'Destroy', faq, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- entry point for testing root/partials system -->
+<% content_for(:title, 'Frequently Asked Questions') %>
+<% if @faqs && @faqs.size > 0 %>
+	<ul "data-role"="listview">
+	    <% @faqs.each do |faq| %>
+        <li>
+        <%= link_to faq.question, edit_faq_path(faq) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>All of our questions have answers!</p>
+<% end %>
 
 <br>
 
-<%= link_to 'New Faq', new_faq_path %>
+<% if admin? %>
+<%= new_button 'New Question', new_faq_path %>
+<% end %>

@@ -6,12 +6,12 @@ describe "comments/index" do
       stub_model(Comment,
         :person_id => 1,
         :talk_id => 2,
-        :comment_text => "MyText"
+        :comment_text => "MyComment1"
       ),
       stub_model(Comment,
         :person_id => 1,
         :talk_id => 2,
-        :comment_text => "MyText"
+        :comment_text => "MyComment2"
       )
     ])
   end
@@ -19,8 +19,8 @@ describe "comments/index" do
   it "renders a list of comments" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    assert_select "a", :content => 'MyComment1'
+    assert_select "a", :content => 'MyComment2'
+    assert_select "a", :content => 'New Comment'
   end
 end

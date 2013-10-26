@@ -1,6 +1,7 @@
 # appears code here is accessible from inside a form, but not from inside a controller
 # to get at code from inside a controller use the view_context, i.e. to call current_layout use view_context.current_layout
 module ApplicationHelper
+
   ## see http://stackoverflow.com/questions/3326579/rails3-get-current-layout-name-inside-view
   def current_layout
     # call interior function controller._layout
@@ -16,4 +17,13 @@ module ApplicationHelper
       File.basename(layout.identifier).split('.').first 
     end
   end
+
+  def new_button (tag, new_path) 
+    link_to tag, new_path, 'data-role' => 'button', 'data-inline' => true
+  end
+
+  def back_button (back_path) 
+    link_to 'Back', back_path, 'data-role' => 'button', 'data-inline' => true
+  end
+
 end

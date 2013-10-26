@@ -4,14 +4,14 @@ describe "calendars/index" do
   before(:each) do
     assign(:calendars, [
       stub_model(Calendar,
-        :name => "Name",
+        :name => "Name1",
         :description => "MyText",
         :chronometry => "MyChronometry",
         :settings => "MySettings",
         :history => "MyHistory"
       ),
       stub_model(Calendar,
-        :name => "Name",
+        :name => "Name2",
         :description => "MyText",
         :chronometry => "MyChronometry",
         :settings => "MySettings",
@@ -23,10 +23,8 @@ describe "calendars/index" do
   it "renders a list of calendars" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "MyChronometry".to_s, :count => 2
-    assert_select "tr>td", :text => "MySettings".to_s, :count => 2
-    assert_select "tr>td", :text => "MyHistory".to_s, :count => 2
+    assert_select "a", :content => 'MyName1'
+    assert_select "a", :content => 'MyName2'
+    assert_select "a", :content => 'New Attachment'
   end
 end

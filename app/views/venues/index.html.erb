@@ -1,36 +1,16 @@
+<% content_for(:title, 'Venues') %>
+<% if @venues && @venues.size > 0 %>
+	<ul data-role="listview">
+	    <% @venues.each do |venue| %>
+        <li>
+        <%= link_to venue.name, edit_venue_path(venue) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>We are going nowhere today!</p>
+<% end %>
+<hr>
+<%= new_button 'New Venue', new_venue_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Person</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Longitude</th>
-      <th>Latitude</th>
-      <th>Venue type</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @venues.each do |venue| %>
-      <tr>
-        <td><%= venue.person_id %></td>
-        <td><%= venue.name %></td>
-        <td><%= venue.description %></td>
-        <td><%= venue.longitude %></td>
-        <td><%= venue.latitude %></td>
-        <td><%= venue.venue_type %></td>
-        <td><%= link_to 'Show', venue %></td>
-        <td><%= link_to 'Edit', edit_venue_path(venue) %></td>
-        <td><%= link_to 'Destroy', venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Venue', new_venue_path %>

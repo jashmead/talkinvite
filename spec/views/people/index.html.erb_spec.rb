@@ -14,7 +14,7 @@ describe "people/index" do
     ])
   end
 
-## this is expecting an '@test' variable, of which we know nothing...
+## TBD: this is expecting an '@test' variable, of which we know nothing... -- fix
 =begin
   it "renders a list of people" do
     render

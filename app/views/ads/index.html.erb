@@ -1,37 +1,20 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Internal flag</th>
-      <th>Content</th>
-      <th>Source</th>
-      <th>Strategy</th>
-      <th>Stats</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @ads.each do |ad| %>
-      <tr>
-        <td><%= ad.name %></td>
-        <td><%= ad.description %></td>
-        <td><%= ad.internal_flag %></td>
-        <td><%= ad.content %></td>
-        <td><%= ad.source %></td>
-        <td><%= ad.strategy %></td>
-        <td><%= ad.stats %></td>
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Ad', new_ad_path %>
+<% content_for(:title, 'Ads & Marketing Spots!') %>
+<% if @ads && @ads.size > 0 %>
+	<ul "data-role"="listview">
+	    <% @ads.each do |ad| %>
+        <li>
+	      <% if admin? %>
+	          <%= link_to ad.name, edit_ad_path(ad) %>
+	      <% else %>
+	          <%= link_to ad.name, ad %>
+	      <% end %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>We're selling nothing today!</p>
+<% end %>
+<% if admin? %>
+<hr>
+<%= new_button 'New Ad', new_ad_path %>
+<% end %>

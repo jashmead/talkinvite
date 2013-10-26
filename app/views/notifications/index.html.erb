@@ -1,32 +1,14 @@
-
-<table>
-  <thead>
-    <tr>
-      <th>Person</th>
-      <th>Talk</th>
-      <th>Note type</th>
-      <th>Note text</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @notifications.each do |notification| %>
-      <tr>
-        <td><%= notification.person_id %></td>
-        <td><%= notification.talk_id %></td>
-        <td><%= notification.note_type %></td>
-        <td><%= notification.note_text %></td>
-        <td><%= link_to 'Show', notification %></td>
-        <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
-        <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Notification', new_notification_path %>
+<% content_for(:title, 'Notifications') %>
+<% if @notifications && @notifications.size > 0 %>
+	<ul data-role="listview">
+	    <% @notifications.each do |notification| %>
+        <li>
+        <%= link_to notification.note_text, edit_notification_path(notification) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>We are notifying nobody of anything today!</p>
+<% end %>
+<hr>
+<%= new_button 'New Notification', new_notification_path %>

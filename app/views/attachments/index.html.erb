@@ -1,35 +1,14 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Attachment type</th>
-      <th>Attachable type</th>
-      <th>Attachable</th>
-      <th>File path</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @attachments.each do |attachment| %>
-      <tr>
-        <td><%= attachment.name %></td>
-        <td><%= attachment.description %></td>
-        <td><%= attachment.attachment_type %></td>
-        <td><%= attachment.attachable_type %></td>
-        <td><%= attachment.attachable_id %></td>
-        <td><%= attachment.file_path %></td>
-        <td><%= link_to 'Show', attachment %></td>
-        <td><%= link_to 'Edit', edit_attachment_path(attachment) %></td>
-        <td><%= link_to 'Destroy', attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Attachment', new_attachment_path %>
+<% content_for(:title, 'Images, PDFs, URLs, & other Attachments') %>
+<% if @attachments && @attachments.size > 0 %>
+	<ul "data-role"="listview">
+	    <% @attachments.each do |attachment| %>
+        <li>
+          <%= link_to attachment.name, edit_attachment_path(attachment) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>We've got nothing attached!</p>
+<% end %>
+<hr>
+<%= new_button 'New attachment', new_attachment_path %>

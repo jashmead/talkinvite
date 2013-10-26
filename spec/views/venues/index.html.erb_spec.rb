@@ -5,7 +5,7 @@ describe "venues/index" do
     assign(:venues, [
       stub_model(Venue,
         :person_id => 1,
-        :name => "Name",
+        :name => "Name1",
         :description => "MyText",
         :longitude => "9.99",
         :latitude => "8.88",
@@ -13,7 +13,7 @@ describe "venues/index" do
       ),
       stub_model(Venue,
         :person_id => 1,
-        :name => "Name",
+        :name => "Name2",
         :description => "MyText",
         :longitude => "9.99",
         :latitude => "8.88",
@@ -25,11 +25,8 @@ describe "venues/index" do
   it "renders a list of venues" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "9.99".to_s, :count => 2
-    assert_select "tr>td", :text => "8.88".to_s, :count => 2
-    assert_select "tr>td", :text => "Venue Type".to_s, :count => 2
+    assert_select "a", :content => /Name1/    # it's content for 'a', not 'text'
+    assert_select "a", :content => /Name2/
+    assert_select "a", :content => /New Venue/
   end
 end

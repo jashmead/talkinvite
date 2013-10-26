@@ -2,7 +2,7 @@
 <% content_for(:title, 'Thanks!') %>
 <% logger.debug("credits/index: @credits = #{@credits.inspect}") %>
 <% if @credits && @credits.size > 0 %>
-	<ul data-role="listview">
+	<ul "data-role"="listview">
 	    <% @credits.each do |credit| %>
         <li>
 	      <% if admin? %>
@@ -20,5 +20,5 @@
 <br>
 
 <% if admin? %>
-<%= link_to 'New Credit', new_credit_path %>
+<%= new_button 'New Thank You', new_credit_path %>
 <% end %>
