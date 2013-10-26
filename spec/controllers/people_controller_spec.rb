@@ -46,6 +46,7 @@ describe PeopleController do
   ## also in charge of 'current_person' which is currently not working
   let(:valid_session) { {} }
 
+# TBD:  get sign_in function to work with specs
   ## this test is failing because the 'sign_in' function isn't 'sticky' enuf
   ## no longer requiring a signin for index, not appropriate in our case
 =begin
@@ -128,7 +129,7 @@ describe PeopleController do
 
   describe "PUT update" do
     describe "with valid params" do
-# DDT:  commenting out failing test till we are ready to fix
+# TBD:  fix PUT update test for people
 =begin
       it "updates the requested person" do
         person = Person.create! valid_attributes
@@ -147,7 +148,7 @@ describe PeopleController do
         assigns(:person).should eq(person)
       end
 
-# DDT:  commenting out failing test till we are ready to fix
+# TBD: fix PUT update redirect test
 =begin
       it "redirects to the person" do
         person = Person.create! valid_attributes
@@ -166,6 +167,7 @@ describe PeopleController do
         assigns(:person).should eq(person)
       end
 
+# TBD: fix PUT update render 'edit' template on error test
 =begin
       it "re-renders the 'edit' template" do
         person = Person.create! valid_attributes
@@ -178,7 +180,7 @@ describe PeopleController do
     end
   end
 
-## no longer need the canned destroy tests...
+# TBD: setup 'destroy' spec for people
 =begin
   describe "DELETE destroy" do
     it "destroys the requested person" do

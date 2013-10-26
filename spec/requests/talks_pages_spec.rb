@@ -10,6 +10,7 @@ describe "Talk pages" do
   let(:person) { FactoryGirl.create(:person) }
   before { sign_in person } # why does this work? given that FactoryGirl is creating a new person?
 
+# TBD: fix talk creation spec
 =begin
   ##  recheck talk creation when we have a new talk path working, 
   ##    these tests are geared to tutorial's microposts & home page
@@ -37,6 +38,7 @@ describe "Talk pages" do
   end
 =end
 
+# TBD get talk destroy spec working
 =begin
   ## bizarrity:  when root_path set to static_pages#splash, this fails, when it is set to home_path it works
   ## recheck delete when we have a edit_talk_path working

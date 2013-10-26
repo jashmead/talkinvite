@@ -1,4 +1,13 @@
 ## methods needed:
+#
+# Fields
+# 1. person_id
+# 1. talk_id
+# 1. rsvp_status -- accepted, declined, maybe
+# 1. member_type -- member, admin
+#
+# TBD:  add a member.member_text field?
+
 class Member < ActiveRecord::Base
 
   belongs_to :person

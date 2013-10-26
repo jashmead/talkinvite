@@ -55,6 +55,7 @@ describe TalksController do
     end
   end
 
+# TBD: fix new spec for talks
 =begin
   ## this code works for the very troubled people_controllers_spec.rb, why not for talks?
   ## could the RI be part of the problem?
@@ -74,6 +75,7 @@ describe TalksController do
     end
   end
 
+# TBD: fix post create spec for talks
 =begin
   describe "POST create" do
     describe "with valid params" do

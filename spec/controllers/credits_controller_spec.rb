@@ -76,6 +76,7 @@ describe CreditsController do
       end
 
 =begin
+# TBD:  fix test on POST create for credits
 ## we now render the 'index' instead
       it "redirects to the created credit" do
         post :create, {:credit => valid_attributes}, valid_session
@@ -120,6 +121,7 @@ describe CreditsController do
       end
 
 =begin
+# TBD:  fix test on PUT update for credits
 ## we now render 'index' instead
       it "redirects to the credit" do
         credit = Credit.create! valid_attributes

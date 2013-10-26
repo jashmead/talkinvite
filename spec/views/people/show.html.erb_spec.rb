@@ -16,8 +16,7 @@ describe "people/show" do
   end
 end
 
-## looking for person #0 is triggering an error before we can trap it
-##  resolve this, then turn this test back on
+## TBD: looking for person #0 is triggering an error before we can trap it
 =begin
 describe "people/noshow" do
   before do

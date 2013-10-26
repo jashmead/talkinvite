@@ -31,8 +31,8 @@ describe "Authentication" do
 
     end
 
-=begin
 ## TBD: have to fix up authentication when we get to that point
+=begin
     describe "with valid information" do
 
       let(:person) { FactoryGirl.create(:person) }
@@ -50,21 +50,6 @@ describe "Authentication" do
         it { should have_link 'Sign in' }
       end
 
-    end
-=end
-
-=begin
-    # debug was used to drill in on some test failures
-    describe "debug" do
-
-      let(:person) { FactoryGirl.create(:person) }
-      before do
-        fill_in "Email",    with: person.email.upcase
-        fill_in "Password", with: person.password
-        click_button "Sign in"
-      end
-
-      it { should have_link('Profile',     href: person_path(person)) }
     end
 =end
 
@@ -117,8 +102,7 @@ describe "Authentication" do
             expect(page).to have_title('Edit profile')
           end
 
-## have to fix store location at the same time
-## get this working?
+## TBD: have to fix store location at the same time
 =begin
           describe "when signing in again" do
 

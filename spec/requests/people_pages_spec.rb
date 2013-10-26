@@ -62,6 +62,8 @@ describe "People pages" do
         ##  -- comment out till we can resolve:
         ## it { should have_link('delete', href: person_path(Person.first)) }
 
+
+# TBD: fix link delete for admin
 =begin
         ## this is failing for no obvious reason
         it "should be able to delete another person" do

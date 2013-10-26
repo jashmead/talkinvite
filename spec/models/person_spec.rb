@@ -178,6 +178,7 @@ describe Person do
       expect(@person.talks.to_a).to eq [newer_talk, older_talk]
     end
 
+# TBD: fix destroy associated talks test for people
 =begin
     # associated talks not getting destroyed as a result of messages being added?
     it "should destroy associated talks" do
@@ -238,6 +239,7 @@ describe Person do
 
   end
 
+# TBD:  get anonymous spec to work
 =begin
   ## why isn't Person.anonymous getting called?
   describe "make sure anonymous exists" do
