@@ -14,7 +14,8 @@ describe "tags/new" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", tags_path, "post" do
       assert_select "input#tag_tag_type[name=?]", "tag[tag_type]"
-      assert_select "input#tag_tagable[name=?]", "tag[tagable]"
+      assert_select "input#tag_tagable_type[name=?]", "tag[tagable_type]"
+      assert_select "input#tag_tagable_id[name=?]", "tag[tagable_id]"
     end
   end
 end

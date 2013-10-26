@@ -1,7 +1,7 @@
 <%= form_for(@map) do |f| %>
   <% if @map.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@map.errors.count, "error") %> prohibited this map from being saved:</h2>
+      <h2><%= pluralize(@map.errors.count, "error") %> kept this map from being saved:</h2>
 
       <ul>
       <% @map.errors.full_messages.each do |msg| %>
@@ -12,24 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: :name%>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, placeholder: :description %>
   </div>
   <div class="field">
-    <%= f.label :geometry %><br>
-    <%= f.text_area :geometry %>
+    <%= f.text_area :geometry, placeholder: :geometry %>
   </div>
   <div class="field">
-    <%= f.label :settings %><br>
-    <%= f.text_area :settings %>
+    <%= f.text_area :settings, placeholder: :settings %>
   </div>
   <div class="field">
-    <%= f.label :history %><br>
-    <%= f.text_area :history %>
+    <%= f.text_area :history, placeholder: :history, readonly: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

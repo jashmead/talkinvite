@@ -1,7 +1,7 @@
 <%= form_for(@ad) do |f| %>
   <% if @ad.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+      <h2><%= pluralize(@ad.errors.count, "error") %> kept this ad from being saved:</h2>
 
       <ul>
       <% @ad.errors.full_messages.each do |msg| %>
@@ -12,32 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, placeholder: :description %>
   </div>
   <div class="field">
-    <%= f.label :internal_flag %><br>
+    <%= f.label :marketing_spot %><br>
     <%= f.check_box :internal_flag %>
   </div>
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, placedolder: :content %>
   </div>
   <div class="field">
-    <%= f.label :source %><br>
-    <%= f.text_area :source %>
+    <%= f.text_area :source, placeholder: :source %>
   </div>
   <div class="field">
-    <%= f.label :strategy %><br>
-    <%= f.text_area :strategy %>
+    <%= f.text_area :strategy, placeholder: :strategy %>
   </div>
   <div class="field">
-    <%= f.label :stats %><br>
-    <%= f.text_area :stats %>
+    <!-- TBD: verify we are testing readonly character of the stats -->
+    <%= f.text_area :stats, placeholder: :stats, readonly: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

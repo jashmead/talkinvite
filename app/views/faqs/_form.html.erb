@@ -1,7 +1,7 @@
 <%= form_for(@faq) do |f| %>
   <% if @faq.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@faq.errors.count, "error") %> prohibited this faq from being saved:</h2>
+      <h2><%= pluralize(@faq.errors.count, "error") %> kept this faq from being saved:</h2>
 
       <ul>
       <% @faq.errors.full_messages.each do |msg| %>
@@ -11,13 +11,12 @@
     </div>
   <% end %>
 
+  <!-- TBD:  add in popup for faq_types -->
   <div class="field">
-    <%= f.label :question %><br>
-    <%= f.text_area :question %>
+    <%= f.text_area :question, placeholder: :question %>
   </div>
   <div class="field">
-    <%= f.label :answer %><br>
-    <%= f.text_area :answer %>
+    <%= f.text_area :answer, placeholder: :answer %>
   </div>
   <div class="actions">
     <%= f.submit %>

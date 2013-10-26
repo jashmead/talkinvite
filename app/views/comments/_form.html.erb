@@ -1,7 +1,7 @@
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <h2><%= pluralize(@comment.errors.count, "error") %> kept this comment from being saved:</h2>
 
       <ul>
       <% @comment.errors.full_messages.each do |msg| %>
@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
+  <!-- TBD:  replace person with name, talk with name -->
   <div class="field">
-    <%= f.label :person_id %><br>
-    <%= f.number_field :person_id %>
+    <%= f.number_field :person_id, placeholder: :person_id %>
   </div>
   <div class="field">
-    <%= f.label :talk_id %><br>
-    <%= f.number_field :talk_id %>
+    <%= f.number_field :talk_id, placeholder: :talk_id %>
   </div>
   <div class="field">
-    <%= f.label :comment_text %><br>
-    <%= f.text_area :comment_text %>
+    <%= f.text_area :comment_text, placeholder: :comment_text %>
   </div>
   <div class="actions">
     <%= f.submit %>

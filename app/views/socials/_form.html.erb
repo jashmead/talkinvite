@@ -1,7 +1,7 @@
 <%= form_for(@social) do |f| %>
   <% if @social.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@social.errors.count, "error") %> prohibited this social from being saved:</h2>
+      <h2><%= pluralize(@social.errors.count, "error") %> kept this social from being saved:</h2>
 
       <ul>
       <% @social.errors.full_messages.each do |msg| %>
@@ -11,21 +11,18 @@
     </div>
   <% end %>
 
+  <!-- TBD:  fix up foreign keys & types -->
   <div class="field">
-    <%= f.label :person_id %><br>
-    <%= f.number_field :person_id %>
+    <%= f.number_field :person_id, placeholder: :person_id %>
   </div>
   <div class="field">
-    <%= f.label :talk_id %><br>
-    <%= f.number_field :talk_id %>
+    <%= f.number_field :talk_id, placeholder: :talk_id %>
   </div>
   <div class="field">
-    <%= f.label :social_type %><br>
-    <%= f.text_field :social_type %>
+    <%= f.text_field :social_type, placeholder: :social_type %>
   </div>
   <div class="field">
-    <%= f.label :social_text %><br>
-    <%= f.text_area :social_text %>
+    <%= f.text_area :social_text, placeholder: :social_text %>
   </div>
   <div class="actions">
     <%= f.submit %>
