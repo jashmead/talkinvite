@@ -1,12 +1,5 @@
 <!-- cloned from people -->
-
-<% provide(:title, 'Search for talks or add one') %>
-<% provide(:heading, 'Got Talk?') %>
-<% logger.debug("VV: gottalk: @talks: #{@talks.inspect}") %>
-<h1><%= yield :heading %></h1>
-
-<div class="row">
-  <div class="span6 offset3">
+<% provide(:title, 'Got Talk?') %>
 
     <%= form_tag("/talks/found", method: "get") do %>
       <%= label_tag(:search_q, "Search for:") %>
@@ -18,10 +11,7 @@
 
   <div id="gottalk">
   <% if @talks && @talks.length > 0 %>
-      <h2>Hot Talks</h2>
+      <h2>Trending Talks</h2>
       <%= render partial: 'talk_table' %>
   <% end %>
-  </div>
-
-</div>
 <%= render partial: 'start_talk_button' %>

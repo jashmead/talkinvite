@@ -3,7 +3,6 @@
   <aside class="span4">
     <section>
       <%= gravatar_for @person %>
-      <h1><%= @person.name %></h1>
       <span><%= link_to "view my profile", @person %></span>
       <span><b>My Talks:</b> <%= @person.talks.count %></span>
     </section>

@@ -171,7 +171,7 @@ describe "search" do
 
         ## save_and_open_page
 
-        expect(page).to have_title("Search for talks or add one")
+        expect(page).to have_title("Got Talk?")
         expect(page).to have_selector('h1', 'Got Talk?')
         expect(page).to have_button('Start Talk')
         expect(page).to have_selector('div#gottalk')

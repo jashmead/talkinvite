@@ -11,8 +11,7 @@ describe "talks/gottalk" do
 
   subject { page }       
 
-  let(:page_title) { 'Search for talks or add one' }
-  let(:heading) { 'Got Talk?' } # can't use :heading here?
+  let(:page_title) { 'Got Talk?' }
 
   describe "renders the gottalk talk form" do
     
@@ -21,7 +20,7 @@ describe "talks/gottalk" do
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }
 
-    it { should have_selector('h1', text: heading) }
+    it { should have_selector('h1', text: page_title) }
 
     it { should have_button 'Search' }
 

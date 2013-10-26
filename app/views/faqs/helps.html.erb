@@ -1,6 +1,5 @@
 <!-- switch to a help system based on the list of faqs, with particular emphasis on 'how to' faqs -->
 <% provide(:title, 'Help') %>
-<h1><%= yield :title %></h1>
 <% if @helps && @helps.size > 0 %>
   <ul>
     <% @helps.each do |help| %>

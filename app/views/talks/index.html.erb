@@ -1,6 +1,5 @@
 <% provide(:title, 'List of talks') %>
 <% provide(:heading, 'List of talks') %>
-<h1><%= yield :heading %></h1>
 
 <% if @talks && @talks.size > 0 %>
 <%= render partial: 'talk_table' %>
