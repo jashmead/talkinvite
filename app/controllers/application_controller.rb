@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
   # start with an array, however
   def footer_fields 
     # routes for nav buttons typically don't have parameters in them...
+    # note that root_path (used in logo) and start are the same thing
+    #   -- is this good?
     [ '/start', '/about', '/contact', '/privacy', '/help' ]
   end
 
@@ -165,14 +167,21 @@ class ApplicationController < ActionController::Base
   def calendar_q(model, params)
   end
 
+##	  def teapot
+##	    teapot_q
+##	  end
+
   protected
     ## only controllers can call a teapot
+    ## teapot_q is our:  we haven't built that quite yet page
     def teapot_q
 
       # 518 is the HTTP teapot error, as in "I'm steamed because I'm a teapot"
 
       # 'layout: false': if we don't turn off the layout, the page looks really weird
       #   which may help with understanding how the layouts work...
+    
+      # TBD: with the shift to jQueryMobile, we can revisit the layout question
 
       render 'static_pages/518', layout: false
     end

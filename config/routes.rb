@@ -4,6 +4,15 @@
 # 1. talks  -- especially searches
 # 1. people -- especially signin/signup
 # 1. venues -- less important than talks or people
+# 
+# could also build a 'sitemap', basically the pages that don't require you to specify a record,
+#   -- possibly with signed in & not signed in versions
+#   -- there is a great icon for this in the font-awesome set
+# compare sitemap, home, start
+#   -- start exists, home & sitemap don't (as yet)
+#   -- could also build page all_searches, just for talks
+#
+# TBD:  static_pages/sitemap, talks/all_searches
 
 Talkinvite::Application.routes.draw do
 
@@ -86,6 +95,8 @@ Talkinvite::Application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
+
+  # match '/teapot', to: 'static_pages#teapot', via: 'get'
 
   resources :people do
     ## member will give paths of the form:  /people/1/following, /people/1/followers

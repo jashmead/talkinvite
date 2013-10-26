@@ -19,6 +19,11 @@ class PeopleController < ApplicationController
     [ 'name', 'email' ]
   end
 
+  # TBD: switch on admin flag to an admin menu?
+  def footer_fields 
+    [ '/talks/search', '/talks/my_talks', '/talks/nearby', '/talks/recent', '/help' ]
+  end
+
   # GET /people
   # GET /people.json
   def index

@@ -1,6 +1,10 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
+  def footer_fields 
+    [ '/talks/my_talks', '/venues/search', '/venues/nearby', '/venues/recent', '/help' ]
+  end
+
   # GET /venues
   # GET /venues.json
   def index

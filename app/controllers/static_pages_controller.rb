@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
 
+  #TBD:  sitemap
+
   def search_fields
     []
   end

@@ -3,6 +3,10 @@ class TalksController < ApplicationController
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
   before_action :correct_person, only: :destroy
 
+  def footer_fields 
+    [ '/talks/start', '/talks/my_talks', '/talks/nearby', '/talks/recent', '/help' ]
+  end
+
   # GET /talks
   # GET /talks.json
   def index
@@ -155,6 +159,8 @@ class TalksController < ApplicationController
     @talk = Talk.find(params[:id])
     calendar_q(@talk, params)
   end
+
+  # TBD:  all_searches
 
   private
     # Use callbacks to share common setup or constraints between actions.
