@@ -62,7 +62,7 @@ Form has:
 
 ==== System
 
-1. Schema_migrations
+1. Schema_migrations -- no controllers or views for these
 
 === Policies
 

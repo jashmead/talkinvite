@@ -6,7 +6,7 @@ Note we can't use 'file' as a table name, conflicts with Ruby
 
 In order of creation:
 
-1. Schema_Migrations
+1. Schema_Migrations -- no views or controllers for these
 1. People -- will be adding locations to this
 1. Sessions
 1. Talks -- links up to people, will be adding venues to this

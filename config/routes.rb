@@ -56,8 +56,6 @@ Talkinvite::Application.routes.draw do
 
   resources :notifications
 
-  resources :migrations
-
   resources :comments
 
   resources :members do
