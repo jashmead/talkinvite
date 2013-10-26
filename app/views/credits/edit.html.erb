@@ -3,7 +3,7 @@
 <%= render 'form' %>
 
 <% if admin? %>
-<%= button 'Delete', @credit, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= button_delete @credit %>
 <% end %>
 
 <%= button_back credits_path %>

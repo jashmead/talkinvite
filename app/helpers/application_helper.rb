@@ -26,4 +26,10 @@ module ApplicationHelper
     button_inline('Back', back_path)
   end
 
+  # TBD:  add a warning color to the delete button, here or better via css
+  def button_delete (model) 
+    link_to 'Delete', model, method: :delete, data: { confirm: 'Are you sure?' }, 
+      'data-inline' => true, 'data-role' => 'button' 
+  end
+
 end
