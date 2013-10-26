@@ -18,12 +18,12 @@ module ApplicationHelper
     end
   end
 
-  def new_button (tag, new_path) 
+  def button_inline (tag, new_path) 
     link_to tag, new_path, 'data-role' => 'button', 'data-inline' => true
   end
 
-  def back_button (back_path) 
-    link_to 'Back', back_path, 'data-role' => 'button', 'data-inline' => true
+  def button_back (back_path) 
+    button_inline('Back', back_path)
   end
 
 end
