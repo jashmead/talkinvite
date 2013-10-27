@@ -1,15 +1,14 @@
 <div data-role="header">
   <% if signed_in? %>
-    <a href="<%=root_path%>"><i class="fa fa-comments-o fa-lg"></i>&nbsp;&nbsp;Home</a>
+    <%= root_link %>
     <h1><%=yield :title%></h1>
-    <% logger.debug("_header.html.erb:  settings_path: #{settings_path}") %>
-    <a href="<%=signout_path%>"><i class="fa fa-cogs fa-lg"></i>&nbsp;&nbsp;Sign Out</a>
+    <%= sign_out_link %>
   <% else %>
     <% if @data_role == 'page' %>
       <!-- TBD add data-rel="dialog" when ready; set signup page as permanently dialog when ready -->
-      <a href="<%=signin_path%>"><i class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;Log In</a>
+      <%= signin_link %>
       <h1><%=yield :title%></h1>
-      <a href="<%=signup_path%>"><i class="fa fa-sign-in fa-rotate-270 fa-lg"></i>&nbsp;&nbsp;Sign Up</a>
+      <%= signup_link %>
     <% else %>
       <!-- TBD: flip swatches for dialogs? -->
       <h1><%=yield :title%></h1>

@@ -55,6 +55,7 @@ module SessionsHelper
   ## current_person is a method, @current_person is an attribute -- admittedly a fuzzy distinction in Ruby
   ## see if we are signed in currently
   def signed_in?
+    logger.debug("SessionsHelper.signed_in?: current_person: #{current_person.inspect}")
     !current_person.nil?
   end
 
@@ -93,6 +94,33 @@ module SessionsHelper
 
   def sub?
     current_person && current_person.sub
+  end
+
+  # useful links in alphabetical order:
+
+  def root_link
+    link_to( "<i class=\"fa fa-comments-o fa-lg\"></i>&nbsp;&nbsp;Home".html_safe, root_path )
+  end
+
+  def settings_link
+    # TBD:  test to see if we are signed in first
+    link_to( "<i class=\"fa fa-cogs fa-lg\"></i>&nbsp;&nbsp;Settings".html_safe, settings_path)
+  end
+
+  def sign_out_link
+    # TBD:  test to see if we are signed in first
+    # icon is the vertical flip of the sign-in icon
+    link_to( "Sign Out&nbsp;&nbsp;<i class=\"fa fa-sign-in fa-flip-vertical fa-lg\"></i>".html_safe, signout_path, method: :delete)
+  end
+
+  def signin_link
+    # TBD:  test to see if we are signed in first
+    link_to( "<i class=\"fa fa-sign-in fa-lg\"></i>&nbsp;&nbsp;Sign In".html_safe, signin_path)
+  end
+
+  def signup_link
+    # TBD:  test to see if we are signed in first
+    link_to( "<i class=\"fa fa-sign-in fa-rotate-270 fa-lg\"></i>&nbsp;&nbsp;Sign Up".html_safe, signup_path)
   end
 
 end
