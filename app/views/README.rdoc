@@ -95,3 +95,27 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 * specified links go to correct pages
 * expandable items expand (& shrink)
 * views shift as they should
+
+=== TBD
+
+1. popups or similar for all validates inclusion
+1. email form for contact
+1. use of 'required' for all required fields
+1. use of 'readonly' for all readonly fields
+
+=== TBD
+
+1. popups or similar for all validates inclusion, see p23 of Mastering
+1. email form for contact
+1. use of 'required' for all required fields
+1. use of 'readonly' for all readonly fields
+1. placeholder instead of labels -- nearly done on this, see f.label usage
+1. work out system of transitions
+1. get dialogs to work
+1. verify sendmail working on heroku, once we have it working on iMac
+1. replace flash messages with something more jquerymobile friendly
+1. roll theme that is more appropriate, add in 'f', 'g', 'h' swatches at some point
+1. fix all buttons (data-inline = true)
+1. check for icons for each page:  arrows, delete, plus, gear, refresh, grid, star, alert, info, home, search and they can be left, right, and so on, as well as notext
+1. group buttons on edit forms & related:  using data-role = controlgroup, data-type=horizontal
+1. back-button on dialogs, Mastering p58 (data-rel=back) and data-add-back-btn="true"
