@@ -10,15 +10,13 @@
 
       <!-- unable to get :placeholder to work with these or to null them out, 
         may be a problem in the browser (Firefox) -->
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, placeholder: 'your.email@your_email_provider', size: 60 %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, placeholder: :password, size: 20 %>
 
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Sign In", 'data-inline' => true %>
     <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    <hr>
+    <%= button_inline "New to TalkInvite? Sign up now!", signup_path %>
   </div>
 </div>

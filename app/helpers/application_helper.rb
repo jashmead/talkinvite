@@ -18,10 +18,6 @@ module ApplicationHelper
     end
   end
 
-  def button_inline (tag, new_path) 
-    link_to tag, new_path, 'data-role' => 'button', 'data-inline' => true
-  end
-
   def button_back (back_path) 
     button_inline('Back', back_path)
   end
@@ -30,6 +26,10 @@ module ApplicationHelper
   def button_delete (model) 
     link_to 'Delete', model, method: :delete, data: { confirm: 'Are you sure?' }, 
       'data-inline' => true, 'data-role' => 'button' 
+  end
+
+  def button_inline (tag, new_path) 
+    link_to tag, new_path, 'data-role' => 'button', 'data-inline' => true
   end
 
 end
