@@ -111,7 +111,7 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 1. use of 'readonly' for all readonly fields
 1. placeholder instead of labels -- nearly done on this, see f.label usage
 1. work out system of transitions
-1. get dialogs to work
+1. get dialogs to work:  dialogs are about, contact, privacy, signup (people#new), & signin (session#new)
 1. verify sendmail working on heroku, once we have it working on iMac
 1. replace flash messages with something more jquerymobile friendly
 1. roll theme that is more appropriate, add in 'f', 'g', 'h' swatches at some point

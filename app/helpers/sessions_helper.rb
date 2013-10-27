@@ -115,12 +115,12 @@ module SessionsHelper
 
   def signin_link
     # TBD:  test to see if we are signed in first
-    link_to( "<i class=\"fa fa-sign-in fa-lg\"></i>&nbsp;&nbsp;Sign In".html_safe, signin_path)
+    link_to( "<i class=\"fa fa-sign-in fa-lg\"></i>&nbsp;&nbsp;Sign In".html_safe, signin_path, 'data-rel' => 'dialog')
   end
 
   def signup_link
     # TBD:  test to see if we are signed in first
-    link_to( "<i class=\"fa fa-sign-in fa-rotate-270 fa-lg\"></i>&nbsp;&nbsp;Sign Up".html_safe, signup_path)
+    link_to( "<i class=\"fa fa-sign-in fa-rotate-270 fa-lg\"></i>&nbsp;&nbsp;Sign Up".html_safe, signup_path, 'data-rel' => 'dialog')
   end
 
 end
