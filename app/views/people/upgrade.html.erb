@@ -1,15 +1,11 @@
 <!-- have this be upgrade & downgrade both, change title depending on where user is current a subcriber-->
 <% provide(:title, "Upgrade account") %>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@person) do |f| %>
-      <%= render 'shared/error_messages', :object => f.object %>
-      <%= render 'fields', f: f %>
-      <%= f.submit "Save Changes", 'data-inline' => true %>
-    <% end %>
+<%= form_for(@person) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= render 'fields', f: f %>
+  <%= f.submit "Save Changes", 'data-inline' => true %>
+<% end %>
 
-    <%= gravatar_for @person %>
-    <a href="http://gravatar.com/emails" target="_blank" >change</a>
-  </div>
-</div>
+<%= gravatar_for @person %>
+<a href="http://gravatar.com/emails" target="_blank" >change</a>

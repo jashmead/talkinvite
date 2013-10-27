@@ -3,16 +3,10 @@
 <% provide(:heading, 'Search for talks') %>
 <% provide(:title, 'Search for talks') %>
 
-<div class="row">
-  <div class="span6 offset3">
-
-    <%= form_tag("/talks/found", method: "get") do %>
-      <%= label_tag(:search_q, "Search for:") %>
-      <%= search_field(:search, :q) %>
-      <br/>
-      <%= submit_tag("Search", { 'name' => 'button', 'data-inline' => true } ) %>
-      <%= submit_tag("Start Talk", { 'name' => 'button', 'data-inline' => true } ) %>
-    <% end %>
-
-  </div>
-</div>
+<%= form_tag("/talks/found", method: "get") do %>
+  <%= label_tag(:search_q, "Search for:") %>
+  <%= search_field(:search, :q) %>
+  <br/>
+  <%= submit_tag("Search", { 'name' => 'button', 'data-inline' => true } ) %>
+  <%= submit_tag("Start Talk", { 'name' => 'button', 'data-inline' => true } ) %>
+<% end %>

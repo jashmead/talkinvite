@@ -1,12 +1,8 @@
 <% provide(:title, 'Sign up') %>
 <% provide(:data_role, 'dialog') %>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@person) do |f| %>
-      <%= render 'shared/error_messages', :object => f.object %>
-      <%= render 'fields', f: f %>
-      <%= f.submit "Create my account", 'data-inline' => true %>
-    <% end %>
-  </div>
-</div>
+<%= form_for(@person) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= render 'fields', f: f %>
+  <%= f.submit "Create my account", 'data-inline' => true %>
+<% end %>

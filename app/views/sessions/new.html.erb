@@ -1,22 +1,17 @@
 <% provide(:title, "Sign in") %>
 <% provide(:data_role, "dialog") %>
 
-<div class="row">
-  <!-- bootstrap stuff:  span6, offset3 -->
-  <div class="span6 offset3">
-    <!-- url is passed to form, as the 'action' -->
-    <!-- why no '@session'? -->
-    <%= form_for(:session, url: sessions_path) do |f| %>
+<!-- url is passed to form, as the 'action' -->
+<!-- why no '@session'? -->
+<%= form_for(:session, url: sessions_path) do |f| %>
 
-      <!-- unable to get :placeholder to work with these or to null them out, 
-        may be a problem in the browser (Firefox) -->
-      <%= f.text_field :email, placeholder: 'your.email@your_email_provider', size: 60 %>
+  <!-- unable to get :placeholder to work with these or to null them out, 
+    may be a problem in the browser (Firefox) -->
+  <%= f.text_field :email, placeholder: 'your.email@your_email_provider', size: 60 %>
 
-      <%= f.password_field :password, placeholder: :password, size: 20 %>
+  <%= f.password_field :password, placeholder: :password, size: 20 %>
 
-      <%= f.submit "Sign in", 'data-inline' => true %>
-    <% end %>
-    <hr>
-    <%= button_inline "New to TalkInvite? Sign up now!", signup_path %>
-  </div>
-</div>
+  <%= f.submit "Sign in", 'data-inline' => true %>
+<% end %>
+<hr>
+<%= button_inline "New to TalkInvite? Sign up now!", signup_path %>
