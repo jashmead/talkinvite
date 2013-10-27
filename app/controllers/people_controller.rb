@@ -45,6 +45,7 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
+    logger.debug("PeopleController.new")
     @person = Person.new
   end
 
@@ -56,6 +57,8 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
+    logger.debug("PeopleController.create: #{params.inspect}")
+
     @person = Person.new(person_params)
 
     if @person.save 
@@ -142,7 +145,12 @@ class PeopleController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_person
       ## ActiveRecord will raise an exception if the record is not found
-      @person = Person.find(params[:id])
+      begin
+        @person = Person.find(params[:id])
+      rescue
+        logger.debug("PeopleController.set_person: params: #{params.inspect}")
+        @person = Person.new
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

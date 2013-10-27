@@ -2,9 +2,11 @@
   <% if signed_in? %>
     <a href="<%=root_path%>"><i class="fa fa-comments-o fa-lg"></i>&nbsp;&nbsp;Home</a>
     <h1><%=yield :title%></h1>
-    <a href="<%=settings_path%>"><i class="fa fa-cogs fa-lg"></i>&nbsp;&nbsp;Settings</a>
+    <% logger.debug("_header.html.erb:  settings_path: #{settings_path}") %>
+    <a href="<%=signout_path%>"><i class="fa fa-cogs fa-lg"></i>&nbsp;&nbsp;Sign Out</a>
   <% else %>
     <% if @data_role == 'page' %>
+      <!-- TBD add data-rel="dialog" when ready; set signup page as permanently dialog when ready -->
       <a href="<%=signin_path%>"><i class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;Log In</a>
       <h1><%=yield :title%></h1>
       <a href="<%=signup_path%>"><i class="fa fa-sign-in fa-rotate-270 fa-lg"></i>&nbsp;&nbsp;Sign Up</a>
