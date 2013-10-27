@@ -6,7 +6,7 @@
     <%= form_for(@person) do |f| %>
       <%= render 'shared/error_messages', :object => f.object %>
       <%= render 'fields', f: f %>
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create my account", 'data-inline' => true %>
     <% end %>
   </div>
 </div>

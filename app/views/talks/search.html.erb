@@ -1,11 +1,4 @@
 <!-- 
-  cloned from people 
-  don't use name 'search' for a button; it confuses RoR or someone
-  -- TBD: the search_field is from ruby-on-rails -- compare to equivalent for jQuery Mobile & resolve differences
-  -- TBD: the submit_tag is also from rails -- compare to equivalent for jQuery Mobile & resolve differences: see edit, delete buttons
-  -- TBD: kill all 'btn' references
-  -- TBD: kill all span & offset references
-  -- TBD: get rid of the show/edit buttons, those are really ugly, make everything work by internal links
 -->
 <% provide(:heading, 'Search for talks') %>
 <% provide(:title, 'Search for talks') %>
@@ -17,8 +10,8 @@
       <%= label_tag(:search_q, "Search for:") %>
       <%= search_field(:search, :q) %>
       <br/>
-      <%= submit_tag("Search", { 'name' => 'button', 'class' => 'btn btn-primary' } ) %>
-      <%= submit_tag("Start Talk", { 'name' => 'button', 'class' => 'btn btn-info' } ) %>
+      <%= submit_tag("Search", { 'name' => 'button', 'data-inline' => true } ) %>
+      <%= submit_tag("Start Talk", { 'name' => 'button', 'data-inline' => true } ) %>
     <% end %>
 
   </div>
