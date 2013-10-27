@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title><%= yield(:title) %></title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <!-- TBD:  see if we would rather use stylesheet_link_tag here -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -11,15 +12,23 @@
     <meta name="viewport" content="user-scalable=no,width=device-width" />
   </head>
   <body>
-    <%=render 'layouts/header'%>
-    <div data-role="content" class="<%=controller.controller_name%>" id="<%=controller.controller_name%>-<%=controller.action_name%>">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-      <%=yield%>
+    <%  
+        @data_role = yield :data_role
+        if @data_role.empty?
+          @data_role = 'page'
+        end
+    %>
+    <div data-role="<%=raw @data_role%>" id="<%=controller.controller_name%>-<%=controller.action_name%>">
+	    <%=render 'layouts/header'%>
+	    <div data-role="content" class="<%=controller.controller_name%>">
+	      <% flash.each do |key, value| %>
+	        <div class="alert alert-<%= key %>"><%= value %></div>
+	      <% end %>
+	      <%=yield%>
+	    </div>
+	    <!-- page showing scrollbar on right, tho plenty of space, why? -->
+	    <%= render 'layouts/footer' %>
+	    <%= debug(params) if Rails.env.development? %>
     </div>
-    <!-- page showing scrollbar on right, tho plenty of space, why? -->
-    <%= render 'layouts/footer' %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

@@ -4,8 +4,13 @@
     <h1><%=yield :title%></h1>
     <a href="<%=settings_path%>"><i class="fa fa-cogs fa-lg"></i>&nbsp;&nbsp;Settings</a>
   <% else %>
-    <a href="<%=signin_path%>"><i class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;Log In</a>
-    <h1><%=yield :title%></h1>
-    <a href="<%=signup_path%>"><i class="fa fa-sign-in fa-rotate-270 fa-lg"></i>&nbsp;&nbsp;Sign Up</a>
+    <% if @data_role == 'page' %>
+      <a href="<%=signin_path%>"><i class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;Log In</a>
+      <h1><%=yield :title%></h1>
+      <a href="<%=signup_path%>"><i class="fa fa-sign-in fa-rotate-270 fa-lg"></i>&nbsp;&nbsp;Sign Up</a>
+    <% else %>
+      <!-- TBD: flip swatches for dialogs? -->
+      <h1><%=yield :title%></h1>
+    <% end %>
   <% end %>
 </div>
