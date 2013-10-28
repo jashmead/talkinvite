@@ -32,6 +32,10 @@
     <%= f.text_field :file_path, placeholder: :file_path, readonly: true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @attachment %>
+  <% end %>
+
 <% end %>

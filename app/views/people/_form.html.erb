@@ -18,6 +18,10 @@
     <%= f.text_field :email, placeholder: :email %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @person %>
+  <% end %>
+
 <% end %>

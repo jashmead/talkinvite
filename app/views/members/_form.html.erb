@@ -26,6 +26,10 @@
     <%= f.text_field :member_type, placeholder: :member_type %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @member %>
+  <% end %>
+
 <% end %>

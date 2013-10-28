@@ -91,8 +91,8 @@ describe "Authentication" do
 
         before do
           visit edit_person_path(person)
-          fill_in "Email",    with: person.email
-          fill_in "Password", with: person.password
+          fill_in "session_email",    with: person.email
+          fill_in "session_password", with: person.password
           click_button "Sign in"
         end
 
@@ -109,8 +109,8 @@ describe "Authentication" do
             before do
               delete signout_path   ## why?
               visit signin_path
-              fill_in "Email",    with: person.email
-              fill_in "Password", with: person.password
+              fill_in "session_email",    with: person.email
+              fill_in "session_password", with: person.password
               click_button "Sign in"
             end
 

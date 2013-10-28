@@ -119,10 +119,10 @@ describe "People pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example Person"
-        fill_in "Email",        with: "person@talkinvite.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirm",      with: "foobar"
+        fill_in "person_name",         with: "Example Person"
+        fill_in "person_email",        with: "person@talkinvite.com"
+        fill_in "person_password",     with: "foobar"
+        fill_in "person_password_confirmation",      with: "foobar"
       end
 
       it "should create a person" do
@@ -168,10 +168,10 @@ describe "People pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
       before do
-        fill_in "Name",             with: new_name
-        fill_in "Email",            with: new_email
-        fill_in "Password",         with: person.password
-        fill_in "Confirm Password", with: person.password
+        fill_in "person_name",             with: new_name
+        fill_in "person_email",            with: new_email
+        fill_in "person_password",         with: person.password
+        fill_in "person_password_confirmation", with: person.password
         click_button "Save changes"
       end
 

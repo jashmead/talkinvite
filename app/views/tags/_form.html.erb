@@ -21,6 +21,10 @@
     <%= f.number_field :tagable_id, placeholder: :tagable_id%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @tag %>
+  <% end %>
+
 <% end %>

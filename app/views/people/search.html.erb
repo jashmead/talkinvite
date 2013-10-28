@@ -6,14 +6,8 @@
 <% provide(:heading, 'Search for people') %>
 <% provide(:title, 'Search for people') %>
 
-<div class="row">
-  <div class="span6 offset3">
-
-    <%= form_tag("/people/found", method: "get") do %>
-      <%= label_tag(:search_q, "Search for:") %>
-      <%= search_field(:search, :q) %>
-      <%= submit_tag("Search") %>
-    <% end %>
-
-  </div>
-</div>
+<%= form_tag("/people/found", method: "get") do %>
+  <%= label_tag(:search_q, "Search for:") %>
+  <%= search_field(:search, :q) %>
+  <%= submit_tag("Search") %>
+<% end %>

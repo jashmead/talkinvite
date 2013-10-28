@@ -177,9 +177,7 @@ describe "search" do
         expect(page).to have_selector('div#gottalk')
 
         within('div#gottalk') do
-          expect(page).to have_selector('table tr') # at least one element
           expect(page).to have_content('summary')
-          expect(page).to have_content('description')
         end
 
       end

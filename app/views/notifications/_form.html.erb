@@ -25,6 +25,10 @@
     <%= f.text_area :note_text, placeholder: :note_text %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @notification %>
+  <% end %>
+
 <% end %>

@@ -1,9 +1,9 @@
 include ApplicationHelper
 
 def valid_signin(person)
-  fill_in "Email",    with: person.email
-  fill_in "Password", with: person.password
-  click_button "Sign in"
+  fill_in "session_email",    with: person.email
+  fill_in "session_password", with: person.password
+  click_button "Sign In"
 end
 
 RSpec::Matchers.define :have_error_message do |message|
@@ -22,8 +22,8 @@ def sign_in(person, options={})
   else
     # visit signin_path is not working:  no signin_path, no visit; hunh? -- and they show up at the top level in the gottalk spec
     visit signin_path
-    fill_in "Email",    with: person.email
-    fill_in "Password", with: person.password
+    fill_in "session_email",    with: person.email
+    fill_in "session_password", with: person.password
     click_button "Sign in"
   end
 end

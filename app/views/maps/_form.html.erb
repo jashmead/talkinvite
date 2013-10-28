@@ -27,6 +27,10 @@
     <%= f.text_area :history, placeholder: :history, readonly: true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @map %>
+  <% end %>
+
 <% end %>

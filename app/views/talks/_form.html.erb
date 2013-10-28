@@ -25,6 +25,10 @@
     <%= f.number_field :venue_id, placeholder: :venue_id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @talk %>
+  <% end %>
+
 <% end %>

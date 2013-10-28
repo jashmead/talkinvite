@@ -25,6 +25,10 @@
     <%= f.text_area :message_text, placeholder: :message_text %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @message %>
+  <% end %>
+
 <% end %>

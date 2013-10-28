@@ -1,6 +1,5 @@
-<!-- how to manage title here? -->
-<!-- what is notice for? -->
-<p id="notice"><%= notice %></p>
+<% content_for(:title, 'Credit') %>
+<% content_for(:data_role, 'dialog') %>
 
 <p>
   <strong>Name:</strong>
@@ -11,9 +10,3 @@
   <strong>Description:</strong>
   <%= @credit.description %>
 </p>
-
-<% if admin? %>
-<%= link_to 'Edit', edit_credit_path(@credit) %> |
-<% else %>
-<%= link_to 'Back', credits_path %>
-<% end %>

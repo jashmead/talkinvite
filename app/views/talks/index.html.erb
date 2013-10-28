@@ -2,9 +2,11 @@
 <% provide(:heading, 'List of talks') %>
 
 <% if @talks && @talks.size > 0 %>
-<%= render partial: 'talk_table' %>
+  <ul>
+    <%= render partial: 'talk_table' %>
+  </ul>
 <% else %>
-No talks found.  Would you like to start one?
+  No talks found.  Would you like to start one?
 <% end %>
 
 <br>

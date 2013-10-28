@@ -1,14 +1,11 @@
 <% provide(:title, "Edit profile") %>
+<% content_for(:data_role, 'dialog') %>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@person) do |f| %>
-      <%= render 'shared/error_messages', :object => f.object %>
-      <%= render 'fields', f: f %>
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+<%= form_for(@person) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= render 'fields', f: f %>
+  <%= f.submit "Save changes", 'data-inline' => true %>
+<% end %>
 
-    <%= gravatar_for @person %>
-    <a href="http://gravatar.com/emails" target="_blank" >change</a>
-  </div>
-</div>
+<%= gravatar_for @person %>
+<a href="http://gravatar.com/emails" target="_blank" >change</a>
