@@ -3,6 +3,7 @@
 ## 1. json code is not currently being exercised
 ## 1. in some sense, ApplicationController is the center of the application
 ## 1. to get at the functions in app/helpers, use view_context, i.e. view_context.current_layout
+## 1. search_q & report_q currently (10/28/13) flagged as overcomplex by codeclimate
 
 class ApplicationController < ActionController::Base
 
@@ -42,15 +43,15 @@ class ApplicationController < ActionController::Base
       
   # report success
   def report_q(klass, rows, q) 
-    if rows.size == 0
-      plural = klass.to_s.downcase.pluralize
-      flash.now[:alert] = "No matching #{plural} found for '#{q}'.  Please try again."
-    elsif rows.size == 1
-      singular = klass.to_s.downcase
-      flash.now[:success] = "Found one matching #{singular}."
-    else 
-      plural = klass.to_s.downcase.pluralize
-      flash.now[:success] = "Found #{rows.size.to_s} matching #{plural}."
+    count = rows.size
+    singular = klass.to_s.downcase
+    case count
+      when 0
+        flash.now[:alert] = "No matching #{singular.pluralize} found for '#{q}'.  Please try again."
+      when 1
+        flash.now[:success] = "Found one matching #{singular}."
+      else 
+        flash.now[:success] = "Found #{count.to_s} matching #{singular.pluralize}."
     end
   end
 
