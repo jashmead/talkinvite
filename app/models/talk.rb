@@ -6,7 +6,7 @@
 # 1. description -- text, optional, counts as 'why'
 # 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
 # 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when'
-# 1. venue_id -- venue is a general term for location, part of 'where'
+# 1. venue_id -- venue is a general term for location, part of 'where'; may want to get more specific; we'll see
 # 1. posted_dt -- when this is announced to the world
 # 1. active_flag -- active talks are those that have been posted & not cancelled
 
@@ -17,12 +17,13 @@
 # 1. Socials
 
 # Planned fields
+# 1. venue_desc -- string, is 'where_type', as 'here' or tags
 # 1. who_type -- as any, members_only, ...
-# 1. where_type -- as 'here' or tagged location
 # 1. why_type -- ?
 # 1. repeating talk?
 
 # TBD: validate start_dt < end_dt
+# TBD: instantiate the many searches we have listed here
 
 # do all the searches here, not in controller
 

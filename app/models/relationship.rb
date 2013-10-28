@@ -1,6 +1,13 @@
 # Relationships
 #
 # starts as following/followed, but generalize to friends & the like
+#
+# Fields: 
+# 1. follower_id -- like twitter
+# 1. followed_id -- like twitter
+
+# Possible fields:
+# 1. relationship_type -- like google circles, wait till we have talking stuff going, & keep information
 
 class Relationship < ActiveRecord::Base
   ## how are we sorting out which id goes with which belongs_to?

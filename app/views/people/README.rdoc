@@ -37,3 +37,5 @@ if we are not the person who created the talk, or if a (different) person is sho
 add in follow/unfollow; add in gravatar, if available
 
 destroy has to reduce to deactivate, once others have started to use
+
+add in oauth screen, when we get to that point
