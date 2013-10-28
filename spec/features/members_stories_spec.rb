@@ -8,37 +8,37 @@ describe "check member stories" do
   describe "accept/decline/maybe" do
 
     describe "already member" do
-      pending "check accept" 
-      pending "check decline" 
-      pending "check maybe" 
+      # pending "check accept" 
+      # pending "check decline" 
+      # pending "check maybe" 
     end
 
     describe "not already member" do
-      pending "check accept" 
-      pending "check decline" 
-      pending "check maybe" 
+      # pending "check accept" 
+      # pending "check decline" 
+      # pending "check maybe" 
     end
 
     describe "no change in member type by others unless admin" do
-      pending "other not admin"
-      pending "other is admin"
+      # pending "other not admin"
+      # pending "other is admin"
     end
 
   end
 
   describe "admin/unadmin" do
 
-    pending "make admin if creator"
+    # pending "make admin if creator"
 
-    pending "make admin if current user is admin"
+    # pending "make admin if current user is admin"
 
-    pending "do not make admin if current user is not admin and not creator"
+    # pending "do not make admin if current user is not admin and not creator"
 
-    pending "make unadmin if creator"
+    # pending "make unadmin if creator"
 
-    pending "make unadmin if self"
+    # pending "make unadmin if self"
 
-    pending "no not make unadmin if current user is not the member and not admin"
+    # pending "no not make unadmin if current user is not the member and not admin"
 
   end
 

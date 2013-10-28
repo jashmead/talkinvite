@@ -8,15 +8,15 @@ describe "check social stories" do
   describe "invite/tweet/faceit" do
 
     describe "already social" do
-      pending "check invite" 
-      pending "check tweet" 
-      pending "check faceit" 
+      # pending "check invite" 
+      # pending "check tweet" 
+      # pending "check faceit" 
     end
 
     describe "not already social" do
-      pending "check invite" 
-      pending "check tweet" 
-      pending "check faceit" 
+      # pending "check invite" 
+      # pending "check tweet" 
+      # pending "check faceit" 
     end
 
   end

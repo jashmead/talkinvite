@@ -6,4 +6,23 @@ The features directory is supposed to work better with capybara tests
 Stories_pages_spec.rb is a kind of road map of the applications, as it is expected to be used.
 
 The per model files here are for testing at a semantic level; in terms of higher level interactions.
-We aren't sure how well this works in practice; we'll see.
+-- We aren't sure how well this works in practice; we'll see.
+
+per assertions in https://github.com/rspec/rspec-rails/blob/master/Capybara.md, have moved this file to spec/features
+-- does this make any difference?  visit & page were already working & are for most other request files
+
+-- 'it' has to be a leaf node?
+
+-- if we convert a leaf describe to an 'it', it is suddenly a (passing) test
+
+it appears that 'save_and_open_page' has to be inside an 'it'
+-- because launchy is being called via capybara, not directly?
+-- launchy definitely uses capybara, see the capybara embedded in the tmp url!
+-- putting in a 'require launchy' doesn't help
+
+Tools:
+1. let(:person) { FactoryGirl.create(:person) } # try admin as well
+1. sign_in person
+1. visit page, i.e. visit start_path
+1. should have_title(title)
+1. should have_selector('h1', text:stuff)
