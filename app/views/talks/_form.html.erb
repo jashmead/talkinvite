@@ -1,4 +1,13 @@
-<! TBD:  fold in new talk fields; breakout into partials; add in map & calendar pickers; check perms on delete; add members, tags; messages; relationships -->
+<! TBD:  fold in new talk fields; breakout into partials; add in map & calendar pickers; check perms on delete; add members, tags; messages; relationships
+  layout:
+    Title
+    summary -- what (+ = tags)
+    when -- ( can be now or what not, popup to calendar! how does popup get information back? via JS variables or a tag,
+      resolves to start & end dates )
+    where -- ( can be here or nearby, popup to map! get information back via JS variable or a tag, resolves to venue# + perhaps a string))
+    who -- needed?  defaults to all/any, can be a tag, or perhaps a list of members
+    details -- why
+-->
 <%= form_for(@talk) do |f| %>
   <% if @talk.errors.any? %>
     <div id="error_explanation">
