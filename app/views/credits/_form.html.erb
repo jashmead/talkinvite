@@ -1,6 +1,7 @@
-<!-- add a delete tag, for admins only -->
-<!-- add ability to tag the credit, and to add attachments & tags to it, once we are working on those -->
+<!-- TBD: add ability to tag the credit, and to add attachments & tags to it, once we are working on those -->
+<% logger.debug("credits/edit: @data_role: #{@data_role}") %>
 <%= form_for(@credit) do |f| %>
+
   <% if @credit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@credit.errors.count, "error") %> kept this credit from being saved:</h2>
@@ -16,6 +17,7 @@
   <div class="field">
     <%= f.text_area :name, placeholder: :name %>
   </div>
+
   <div class="field">
     <%= f.text_area :description, placeholder: :description %>
   </div>
@@ -23,5 +25,13 @@
   <div class="actions">
     <%= f.submit 'data-inline' => true %>
   </div>
+
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @credit %>
+  <% end %>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @credit %>
+  <% end %>
+
 
 <% end %>

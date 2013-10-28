@@ -1,16 +1,19 @@
+<!-- TBD: flip swatches for dialogs? -->
 <div data-role="header">
   <% if signed_in? %>
-    <%= root_link %>
-    <h1><%=yield :title%></h1>
-    <%= sign_out_link %>
+    <% if @data_role == 'page' %>
+      <%= root_link %>
+      <h1><%=yield :title%></h1>
+      <%= sign_out_link %>
+    <% else %>
+      <h1><%=yield :title%></h1>
+    <% end %>
   <% else %>
     <% if @data_role == 'page' %>
-      <!-- TBD add data-rel="dialog" when ready; set signup page as permanently dialog when ready -->
       <%= signin_link %>
       <h1><%=yield :title%></h1>
       <%= signup_link %>
     <% else %>
-      <!-- TBD: flip swatches for dialogs? -->
       <h1><%=yield :title%></h1>
     <% end %>
   <% end %>

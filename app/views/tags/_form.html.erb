@@ -23,4 +23,8 @@
   <div class="actions">
     <%= f.submit 'data-inline' => true %>
   </div>
+  <% if controller.action_name == 'edit' %>
+    <%= button_delete @tag %>
+  <% end %>
+
 <% end %>

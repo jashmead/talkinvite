@@ -1,9 +1,4 @@
-<% content_for(:title, 'Thank ' + @credit.name) %>
+<% content_for(:title, 'Credit') %>
+<% content_for(:data_role, 'dialog') %>
 
 <%= render 'form' %>
-
-<% if admin? %>
-<%= button_delete @credit %>
-<% end %>
-
-<%= button_back credits_path %>
