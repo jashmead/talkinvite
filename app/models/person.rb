@@ -10,13 +10,14 @@
 # 1.  password, password_confirmation, password_digest
 # 
 # == Children
-# 1. Relationships
-# 1. Members
 # 1. Comments
+# 1. Members
+# 1. Messages -- from sender & from receiver
 # 1. Notifications
+# 1. Relationships -- foreign keys are missing
 # 1. Socials
-# 1. Messages
-# 1. Venues -- as proxy for locations
+# 1. Talks -- creator
+# 1. Venues -- creator
 
 # == Fields planned
 # 1. active_flag -- use to deactivate when the user has killed, in case there is other data we need to keep associated with this

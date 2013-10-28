@@ -7,16 +7,16 @@
 # 1. latitude -- decimal
 
 # == Children
-# 1. Talks
+# 1. Talks -- creator
 
 # Planned or at least contemplated fields:
 # 1. map_type
 # 1. full_address
-# 1. broken out parts of full_address
-# 1. country?
-# 1. phone(s)
-# 1. url(s)
-# 1. email(s)
+# 1. broken out parts of full_address: street1, street2, city, state, post_code (zip)
+# 1. country
+# 1. phone(s) -- needed if we are using the contacts?
+# 1. url(s) -- from attachments? from contacts?
+# 1. email(s) -- from contacts?
 #
 # Searches by name, description, venue_type, & location possible
 #   start with name & description & venue_type

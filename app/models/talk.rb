@@ -1,12 +1,12 @@
-# Talks -- Most important table
+# Talks -- Key table
 # 
 # == Fields
-# 1. summary -- string, mandatory
-# 1. description -- text, optional
-# 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
-# 1. end_dt -- could have used duration, but end_dt is more intuitive
-# 1. venue_id -- venue is a general term for location
 # 1. person_id -- hope to allow anonymous at some point, but not clear how to do this
+# 1. summary -- string, mandatory, counts as 'what'
+# 1. description -- text, optional, counts as 'why'
+# 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
+# 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when'
+# 1. venue_id -- venue is a general term for location, part of 'where'
 # 1. posted_dt -- when this is announced to the world
 # 1. active_flag -- active talks are those that have been posted & not cancelled
 
@@ -15,10 +15,12 @@
 # 1. Comments
 # 1. Notifications
 # 1. Socials
-# 1. Venues -- as proxy for locations
 
 # Planned fields
 # 1. who_type -- as any, members_only, ...
+# 1. where_type -- as 'here' or tagged location
+# 1. why_type -- ?
+# 1. repeating talk?
 
 # TBD: validate start_dt < end_dt
 
