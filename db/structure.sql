@@ -526,7 +526,11 @@ CREATE TABLE talks (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     person_id integer NOT NULL,
-    venue_id integer
+    venue_id integer,
+    start_dt timestamp without time zone,
+    end_dt timestamp without time zone,
+    posted_dt timestamp without time zone,
+    active_flag boolean DEFAULT true
 );
 
 
@@ -995,6 +999,22 @@ ALTER TABLE ONLY notifications
 
 
 --
+-- Name: relationship2from_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY relationships
+    ADD CONSTRAINT relationship2from_person_fk FOREIGN KEY (followed_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: relationship2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY relationships
+    ADD CONSTRAINT relationship2to_person_fk FOREIGN KEY (follower_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
 -- Name: social2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1163,3 +1183,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131016172957');
 INSERT INTO schema_migrations (version) VALUES ('20131018133657');
 
 INSERT INTO schema_migrations (version) VALUES ('20131025151810');
+
+INSERT INTO schema_migrations (version) VALUES ('20131028185404');
+
+INSERT INTO schema_migrations (version) VALUES ('20131028195018');
