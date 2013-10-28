@@ -1,8 +1,14 @@
-# Talks -- Key table, this is what we invite people to!
+# Talks -- Most important table
 # 
 # == Fields
 # 1. summary -- string, mandatory
 # 1. description -- text, optional
+# 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
+# 1. end_dt -- could have used duration, but end_dt is more intuitive
+# 1. venue_id -- venue is a general term for location
+# 1. person_id -- hope to allow anonymous at some point, but not clear how to do this
+# 1. posted_dt -- when this is announced to the world
+# 1. active_flag -- active talks are those that have been posted & not cancelled
 
 # == Children
 # 1. Members
@@ -12,7 +18,9 @@
 # 1. Venues -- as proxy for locations
 
 # Planned fields
-# 1. venue_id
+# 1. who_type -- as any, members_only, ...
+
+# TBD: validate start_dt < end_dt
 
 # do all the searches here, not in controller
 
@@ -49,7 +57,7 @@ class Talk < ActiveRecord::Base
   validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
   validates :person_id, presence: true
 
-  ## why is the 'self.' needed?
+  ## why is the 'self.' needed? -- because it is a class method, not an instance method
   def self.from_people_followed_by(person)
     ## followed_people association will automagically return an array of ids from followed_people
     ## pluralization is changing followed_people to followed_person_ids
@@ -104,4 +112,5 @@ class Talk < ActiveRecord::Base
   def self.twitter( key_phrase ) 
 
   end
+
 end
