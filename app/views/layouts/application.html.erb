@@ -17,16 +17,8 @@
         if @data_role.empty?
           @data_role = 'page'
         end
-        @data_theme = yield :data_theme
-        if @data_theme.empty?
-          if @data_role == 'page'
-            @data_theme = 'f'
-          else
-            @data_theme = 'd'
-          end
-        end
     %>
-    <div data-role="<%=raw @data_role%>" id="<%=controller.controller_name%>-<%=controller.action_name%>" data-theme="<%=raw @data_theme%>">
+    <div data-role="<%=@data_role%>" id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=data_theme()%>">
 	    <%=render 'layouts/header'%>
       <!-- TBD:  get the flash to popup a transient alert box instead -->
 	    <div data-role="content" class="<%=controller.controller_name%>">

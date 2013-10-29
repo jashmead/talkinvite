@@ -18,6 +18,7 @@ module ApplicationHelper
     end
   end
 
+  # TBD:  add in the 'back' button to the mobile init pages
   def button_back (back_path) 
     button_inline('Back', back_path)
   end
@@ -30,6 +31,29 @@ module ApplicationHelper
 
   def button_inline (tag, new_path) 
     link_to tag, new_path, 'data-role' => 'button', 'data-inline' => true
+  end
+
+  def data_theme ( controller_name = nil ) 
+    if ! controller_name 
+      controller_name = controller.controller_name
+    end
+    theme_letter = case controller_name
+      when 'talks'
+        'b' # blue  -- likely to be graphite's water
+      when 'people', 'members', 'relationships'
+        'c' # red   -- likely to be graphite's royal
+      when 'venues'
+        'd' # green -- none of the graphite themes look that much better
+      when 'tags', 'messages', 'comments', 'notifications', 'socials'
+        'e' # cyan  -- likely to be graphite's mint
+      when 'credits', 'faqs', 'static_pages', 'ads'
+        'f' # orange -- likely to be yellow or ochre or graphite's sand
+      when 'attachments', 'calendars', 'maps'
+        'a' # or go for white on black? inverse of 'a'?
+      else
+        'a' # black and white
+    end
+    return " data-theme=\"#{theme_letter}\" ".html_safe
   end
 
 end
