@@ -530,7 +530,9 @@ CREATE TABLE talks (
     start_dt timestamp without time zone,
     end_dt timestamp without time zone,
     posted_dt timestamp without time zone,
-    active_flag boolean DEFAULT true
+    active_flag boolean DEFAULT true,
+    where_desc character varying(255) DEFAULT 'here'::character varying,
+    when_desc character varying(255) DEFAULT 'now'::character varying
 );
 
 
@@ -1187,3 +1189,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131025151810');
 INSERT INTO schema_migrations (version) VALUES ('20131028185404');
 
 INSERT INTO schema_migrations (version) VALUES ('20131028195018');
+
+INSERT INTO schema_migrations (version) VALUES ('20131029163859');

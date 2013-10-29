@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   # returns a correct data-theme="l" where l can be from a to f, depending on the context
-  def data_theme ( controller_name = nil ) 
+  def swatch ( controller_name = nil ) 
     if ! controller_name 
       controller_name = controller.controller_name
     end
