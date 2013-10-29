@@ -1,4 +1,4 @@
-<% content_for(:title, 'Images, PDFs, URLs, & other Attachments') %>
+<% provide(:title, 'Images, PDFs, URLs, & other Attachments') %>
 <% if @attachments && @attachments.size > 0 %>
 	<ul "data-role"="listview">
 	    <% @attachments.each do |attachment| %>

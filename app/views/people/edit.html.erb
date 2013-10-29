@@ -1,5 +1,5 @@
 <% provide(:title, "Edit profile") %>
-<% content_for(:data_role, 'dialog') %>
+<% provide(:data_role, 'dialog') %>
 
 <%= form_for(@person) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>

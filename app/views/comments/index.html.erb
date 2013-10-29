@@ -1,4 +1,4 @@
-<% content_for(:title, 'Comments') %>
+<% provide(:title, 'Comments') %>
 <% if @comments && @comments.size > 0 %>
 	<ul "data-role"="listview">
 	    <% @comments.each do |comment| %>

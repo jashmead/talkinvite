@@ -1,5 +1,5 @@
 <!-- entry point for testing root/partials system -->
-<% content_for(:title, 'Frequently Asked Questions') %>
+<% provide(:title, 'Frequently Asked Questions') %>
 <% if @faqs && @faqs.size > 0 %>
 	<ul "data-role"="listview">
 	    <% @faqs.each do |faq| %>

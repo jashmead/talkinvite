@@ -1,4 +1,4 @@
-<% content_for(:title, 'Messages') %>
+<% provide(:title, 'Messages') %>
 <% if @messages && @messages.size > 0 %>
 	<ul 'data-role'="listview">
 	    <% @messages.each do |message| %>

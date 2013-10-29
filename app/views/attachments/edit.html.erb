@@ -1,5 +1,5 @@
 <%= render 'form' %>
-<% content_for(:data_role, 'dialog') %>
+<% provide(:data_role, 'dialog') %>
 
 <!-- make sure any delete cleans up on file system as well -->
 <%= button_back attachments_path %>

@@ -1,4 +1,4 @@
-<% content_for(:title, 'Socials') %>
+<% provide(:title, 'Socials') %>
 <% if @socials && @socials.size > 0 %>
 	<ul data-role="listview">
 	    <% @socials.each do |social| %>

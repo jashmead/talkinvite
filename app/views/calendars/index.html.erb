@@ -1,4 +1,4 @@
-<% content_for(:title, 'Materialized Calendars') %>
+<% provide(:title, 'Materialized Calendars') %>
 <% if @calendars && @calendars.size > 0 %>
 	<ul "data-role"="listview">
 	    <% @calendars.each do |calendar| %>

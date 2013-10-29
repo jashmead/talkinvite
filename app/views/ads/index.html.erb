@@ -1,4 +1,4 @@
-<% content_for(:title, 'Ads & Marketing Spots!') %>
+<% provide(:title, 'Ads & Marketing Spots!') %>
 <% if @ads && @ads.size > 0 %>
 	<ul "data-role"="listview">
 	    <% @ads.each do |ad| %>

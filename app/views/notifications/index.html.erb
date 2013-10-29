@@ -1,4 +1,4 @@
-<% content_for(:title, 'Notifications') %>
+<% provide(:title, 'Notifications') %>
 <% if @notifications && @notifications.size > 0 %>
 	<ul data-role="listview">
 	    <% @notifications.each do |notification| %>

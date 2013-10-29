@@ -1,4 +1,4 @@
-<% content_for(:title, 'Credits') %>
+<% provide(:title, 'Credits') %>
 <% if @credits && @credits.size > 0 %>
 	<ul "data-role"="listview">
 	    <% @credits.each do |credit| %>

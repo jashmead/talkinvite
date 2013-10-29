@@ -1,4 +1,4 @@
-<% content_for(:title, 'Tags') %>
+<% provide(:title, 'Tags') %>
 <% if @tags && @tags.size > 0 %>
 	<ul data-role="listview">
 	    <% @tags.each do |tag| %>

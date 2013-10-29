@@ -1,4 +1,4 @@
-<% content_for(:title, 'Materialized Maps') %>
+<% provide(:title, 'Materialized Maps') %>
 <% if @maps && @maps.size > 0 %>
 	<ul "data-role"="listview">
 	    <% @maps.each do |map| %>
