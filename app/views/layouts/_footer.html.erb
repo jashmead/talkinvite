@@ -11,18 +11,34 @@
 	      # we are assuming that the url has the form: /controller/action, 
 	      #   if it gets more complex than this, 
 	      #   perhaps we can use some elegant Ruby unRouting method with which we may work nav button magic
-        url_bits = url.split('/')
-	      action = url_bits.pop
-	      if action === controller.action_name
-	        klasses = "class=\"ui-disabled\"" # no point go to a page from itself
-	      elsif ! active_button
-	        active_button = action
-	        klasses = "class=\"ui-btn-active\""   # mark first non-self button as active
-	      else
-	        klasses = ''
-	      end
-        data_theme = swatch( url_bits.pop )
-	      label = action.to_s.titleize
+
+        logger.debug("_footer: url: #{url.inspect}, #{url.class}")
+
+        if url.class.to_s == 'String' 
+	        url_bits = url.split('/')
+          logger.debug("_footer: url_bits: #{url_bits.inspect}")
+		      action = url_bits.pop
+		      label = action.to_s.titleize
+	        controller_name = url_bits.pop
+        else
+          action = url['action']
+          label = url['label']
+          controller_name = url['controller_name']
+          url = "/#{controller_name}/#{action}"
+        end
+
+        logger.debug("_footer: action: #{action}, label: #{label}, controller_name: #{controller_name}")
+
+        if action === controller.action_name
+          klasses = "class=\"ui-disabled\"" # no point go to a page from itself
+        elsif ! active_button
+          active_button = action
+          klasses = "class=\"ui-btn-active\""   # mark first non-self button as active
+        else
+          klasses = ''
+        end
+
+        data_theme = swatch( controller_name )
 	    %>
 	    <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{url}\" #{data_theme}>#{label}</a></li>" %>
     <% end %>

@@ -8,6 +8,7 @@
 # could also build a 'sitemap', basically the pages that don't require you to specify a record,
 #   -- possibly with signed in & not signed in versions
 #   -- there is a great icon for this in the font-awesome set
+
 # compare sitemap, home, start
 #   -- start exists, home & sitemap don't (as yet)
 #   -- could also build page all_searches, just for talks

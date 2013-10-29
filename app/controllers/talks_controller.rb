@@ -3,9 +3,9 @@ class TalksController < ApplicationController
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
   before_action :correct_person, only: :destroy
 
-  def footer_fields 
-    [ '/talks/start', '/talks/my_talks', '/talks/nearby', '/talks/recent', '/help' ]
-  end
+  # def footer_fields 
+    # [ '/talks/start', '/talks/my_talks', '/talks/nearby', '/talks/recent', '/help' ]
+  # end
 
   # GET /talks
   # GET /talks.json
