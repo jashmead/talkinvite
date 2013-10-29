@@ -2,7 +2,8 @@
 <% if ! controller.footer_fields.empty? %>
 <!-- TBD:  see if we like ui-bar -->
 <!-- TBD:  use different id's for different footers, then set ui-state-persist="true" p74 of Mastering  -->
-<div data-role="footer" data-position="fixed" data-id="footer">
+<!-- data-theme has to be applied to the footer, not the navbar, to take effect -->
+<div data-role="footer" data-position="fixed" data-id="footer" data-theme="<%=raw @data_theme%>">
   <div data-role="navbar">
     <ul>
     <% active_button = nil; controller.footer_fields.each do |url| %>

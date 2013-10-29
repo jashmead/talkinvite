@@ -1,5 +1,5 @@
 <!-- TBD: flip swatches for dialogs? -->
-<div data-role="header">
+<div data-role="header" data-theme="<%=raw @data_theme%>">
   <% if signed_in? %>
     <% if @data_role == 'page' %>
       <%= root_link %>
