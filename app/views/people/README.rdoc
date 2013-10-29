@@ -14,7 +14,7 @@
 ==== Session forms
 
 1. sign_in
-1. sign_out
+1. signout
 
 ==== People forms
 

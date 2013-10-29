@@ -39,8 +39,10 @@
         end
 
         data_theme = swatch( controller_name )
+        iconstr = iconify(action)
+        logger.debug("_footer: iconstr: #{iconstr}")
 	    %>
-	    <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{url}\" #{data_theme}>#{label}</a></li>" %>
+      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{url}\" #{data_theme} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
     <% end %>
     </ul>
   </div>

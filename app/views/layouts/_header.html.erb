@@ -3,7 +3,7 @@
   <% if signed_in? %>
     <% if @data_role == 'page' %>
       <h1><%=yield :title%></h1>
-      <%= sign_out_link %>
+      <%= signout_link %>
     <% else %>
       <h1><%=yield :title%></h1>
     <% end %>

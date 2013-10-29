@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
 
   def destroy
     ## logger.debug("SessionsController.destroy: self: #{self.inspect}") #DDT
-    sign_out
+    signout
     redirect_to root_url
   end
 

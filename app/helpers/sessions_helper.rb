@@ -68,8 +68,63 @@ module SessionsHelper
     end
   end
 
-  def sign_out
-  ##  logger.debug("SessionsHelper.sign_out: current_person: #{self.current_person.inspect}") # DDT
+  def iconify ( action_name = nil, large = nil ) 
+
+    if ! action_name
+      return ''
+    end
+
+    # http://fortawesome.github.io/Font-Awesome/cheatsheet/
+    klasses = case action_name.to_s
+      # all those icons that map directly to a font-awesome name
+      #  'pinterest', 'reply', 'search', 'skype', 'tag, 'tags', 'twitter'
+      when 'beer', 'calendar', 'camera', 'check', 'coffee', 'facebook', 'home', 'instagram',
+        'pencil', 'pinterest', 'print', 'reply', 'search', 'share', 'sitemap', 'skype', 'tag', 'tags', 'trash', 'twitter'
+        'fa-' + action_name
+      # rest in alphabetic order of action_name
+      when 'about'
+        'fa-dot-circle-o'
+      when 'comment'
+        'fa-comment-o'
+      when 'comments'
+        'fa-comments-o'
+      when 'contact'
+        'fa-envelope-o'
+      when 'delete', 'destroy'
+        'fa-minus-cirle'
+      when 'google_plus'
+        'fa-google-plus'
+      when 'help', 'helps'
+        'fa-question'
+      when 'message'
+        'fa-bolt'
+      when 'person'
+        'fa-user'
+      when 'privacy'
+        'fa-eye'
+      when 'settings'
+        'fa-cog'
+      when 'signin'
+        'fa-sign-in'
+      when 'signout'
+        'fa-sign-in fa-flip-vertical'
+      when 'signup'
+        'fa-sign-in fa-rotate-270'
+      when 'start'
+        'fa-home'
+      else
+        return ''
+    end
+
+    if large
+      klasses += ' fa-lg'
+    end
+
+    return "<i class=\"fa #{klasses} fa-lg\" ></i>"
+  end
+
+  def signout
+  ##  logger.debug("SessionsHelper.signout: current_person: #{self.current_person.inspect}") # DDT
     
     ## self.current_person = Person.find_by :name, 'anonymous'    ## why does this fail when it hits PostgreSQL?
     self.current_person = Person.where("name = ?", 'anonymous').first
@@ -107,11 +162,11 @@ module SessionsHelper
     link_to( "<i class=\"fa fa-cogs fa-lg\"></i>&nbsp;&nbsp;Settings".html_safe, settings_path)
   end
 
-  def sign_out_link
+  def signout_link
     # TBD:  test to see if we are signed in first
     # icon is the vertical flip of the sign-in icon
     link_to( 
-      "Sign Out&nbsp;&nbsp;<i class=\"fa fa-sign-in fa-flip-vertical fa-lg\"></i>".html_safe, 
+      "Sign Out&nbsp;&nbsp;#{iconify(:signout, true)}".html_safe, 
       signout_path, 
       method: :delete,
       'class' => 'ui-btn-right' # force button to the right side of the header, leaving space for the back button
@@ -120,12 +175,13 @@ module SessionsHelper
 
   def signin_link
     # TBD:  test to see if we are signed in first
-    link_to( "<i class=\"fa fa-sign-in fa-lg\"></i>&nbsp;&nbsp;Sign In".html_safe, signin_path, 'data-rel' => 'dialog')
+    link_to( "#{iconify(:signin, true)}&nbsp;&nbsp;Sign In".html_safe, signin_path, 'data-rel' => 'dialog')
   end
 
   def signup_link
     # TBD:  test to see if we are signed in first
-    link_to( "<i class=\"fa fa-sign-in fa-rotate-270 fa-lg\"></i>&nbsp;&nbsp;Sign Up".html_safe, signup_path, 'data-rel' => 'dialog')
+    logger.debug("SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}")
+    link_to( "#{iconify(:signup, true)}</i>&nbsp;&nbsp;Sign Up".html_safe, signup_path, 'data-rel' => 'dialog')
   end
 
 end
