@@ -33,6 +33,7 @@ module ApplicationHelper
     link_to tag, new_path, 'data-role' => 'button', 'data-inline' => true
   end
 
+  # returns a correct data-theme="l" where l can be from a to f, depending on the context
   def data_theme ( controller_name = nil ) 
     if ! controller_name 
       controller_name = controller.controller_name
