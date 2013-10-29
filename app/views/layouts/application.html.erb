@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <title><%= yield(:title) %></title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <link href="/themes/Bootstrap.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+    <link href="/themes/Bootstrap.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet" />
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
@@ -17,8 +17,12 @@
         if @data_role.empty?
           @data_role = 'page'
         end
+        ## currently get into problems with dialogs not closing when they should, 
+        ##  so they pile up into a great stack
+        ##  turning off dialogs alltogether till this can be resolved
+        @data_role = 'page' 
     %>
-    <div data-role="<%=@data_role%>" id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=swatch%>">
+    <div data-role="<%=@data_role%>" id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=swatch%> >
 	    <%=render 'layouts/header'%>
       <!-- TBD:  get the flash to popup a transient alert box instead -->
 	    <div data-role="content" class="<%=controller.controller_name%>">

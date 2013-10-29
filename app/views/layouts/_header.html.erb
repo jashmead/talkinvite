@@ -2,7 +2,6 @@
 <div data-role="header" <%=swatch%> >
   <% if signed_in? %>
     <% if @data_role == 'page' %>
-      <%= root_link %>
       <h1><%=yield :title%></h1>
       <%= sign_out_link %>
     <% else %>

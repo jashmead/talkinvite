@@ -110,7 +110,12 @@ module SessionsHelper
   def sign_out_link
     # TBD:  test to see if we are signed in first
     # icon is the vertical flip of the sign-in icon
-    link_to( "Sign Out&nbsp;&nbsp;<i class=\"fa fa-sign-in fa-flip-vertical fa-lg\"></i>".html_safe, signout_path, method: :delete)
+    link_to( 
+      "Sign Out&nbsp;&nbsp;<i class=\"fa fa-sign-in fa-flip-vertical fa-lg\"></i>".html_safe, 
+      signout_path, 
+      method: :delete,
+      'class' => 'ui-btn-right' # force button to the right side of the header, leaving space for the back button
+    )
   end
 
   def signin_link

@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     # routes for nav buttons typically don't have parameters in them...
     # note that root_path (used in logo) and start are the same thing
     #   -- is this good?
-    [ '/start', '/about', '/contact', '/privacy', '/help' ]
+    [ '/home', '/static_pages/about', '/static_pages/contact', '/static_pages/privacy', '/faqs/helps' ]
   end
 
   # pull out the query string & make sure it is not empty
