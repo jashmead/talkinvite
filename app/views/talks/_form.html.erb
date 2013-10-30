@@ -7,6 +7,10 @@
     where -- ( can be here or nearby, popup to map! get information back via JS variable or a tag, resolves to venue# + perhaps a string))
     who -- needed?  defaults to all/any, can be a tag, or perhaps a list of members
     details -- why
+  -- needs field groups
+  -- needs an 'is_valid' js function policing the form to make sure that we can save, 
+    and disabling the button if we can't:
+      basically record is valid & we are signed in
 -->
 <%= form_for(@talk) do |f| %>
   <% if @talk.errors.any? %>
@@ -22,17 +26,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :summary, placeholder: :summary %>
-  </div>
-  <div class="field">
-    <%= f.text_area :description, placeholder: :description %>
+    <%= f.text_field :summary, placeholder: "about?" %>
   </div>
   <!-- TBD: replace person & venue with the corresponding names -->
   <div class="field">
-    <%= f.number_field :person_id, placeholder: :person_id %>
+    <%= f.hidden_field :person_id %>
   </div>
   <div class="field">
-    <%= f.number_field :venue_id, placeholder: :venue_id %>
+    <%= f.text_field :when_desc, placeholder: "when?" %>
+  </div>
+  <div class="field">
+    <%= f.text_field :where_desc, placeholder: "where?" %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :venue_id %>
+  </div>
+  <div class="field">
+    <%= f.text_field :who_desc, placeholder: "who?" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description, placeholder: "why?" %>
   </div>
   <div class="actions">
     <%= f.submit 'data-inline' => true %>

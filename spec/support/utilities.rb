@@ -20,7 +20,7 @@ def sign_in(person, options={})
     cookies[:remember_token] = remember_token
     person.update_attribute(:remember_token, Person.encrypt(remember_token))
   else
-    # visit signin_path is not working:  no signin_path, no visit; hunh? -- and they show up at the top level in the gottalk spec
+    # visit signin_path is not working:  no signin_path, no visit; hunh?
     visit signin_path
     fill_in "session_email",    with: person.email
     fill_in "session_password", with: person.password

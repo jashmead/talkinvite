@@ -2,7 +2,7 @@
 
 ==== Core pages
 
-1. gottalk -- page name is (currently) 'start'
+1. control 
 1. edit -- control page for a page, used by all participants
   * you can flag the talk open or protected or private
 1. advanced_search* -- optional, but fun & good element in design
@@ -12,11 +12,9 @@
 
 ==== Search pages
 
-1. my_talks* -- implies favorites
+1. my_talks*
 1. nearby*
 1. recent*
-1. categories*
-1. trending -- similar to recent, but includes popularity
 
 ==== Pick pages
 

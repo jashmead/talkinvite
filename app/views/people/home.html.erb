@@ -1,0 +1,23 @@
+<% provide(:title, "Home") %>
+<% provide(:data_role, 'page') %>
+<!--
+  control center for individual
+-->
+
+<%= form_for(@person) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <ul>
+    <li>
+      Talks
+    </li>
+    <li>
+      Messages
+    </li>
+    <li>
+      Settings
+    </li>
+  </ul>
+<% end %>
+
+<%= gravatar_for @person %>
+<a href="http://gravatar.com/emails" target="_blank" >change</a>

@@ -4,7 +4,11 @@ class TalksController < ApplicationController
   before_action :correct_person, only: :destroy
 
   def footer_fields 
-    [ @@home_page, '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
+    if signed_in?
+      [ @@home_page, '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
+    else
+      [ @@home_page, '/talks/new', '/talks/recent', '/talks/search', @@help_page ]
+    end
   end
 
   # GET /talks
@@ -20,11 +24,16 @@ class TalksController < ApplicationController
 
   # GET /talks/new
   def new
+    logger.debug("TalksController.new")
     @talk = Talk.new
   end
 
   # GET /talks/1/edit
   def edit
+  end
+
+  def control
+    @talk = Talk.find(params[:id])
   end
 
   def search_fields
@@ -60,19 +69,17 @@ class TalksController < ApplicationController
   end
 
   # start is the default starting point for the entire website
-  # right now, it is a virtual page, switching to my_talks or gottalk, depending
+  # right now, it is a virtual page, redirecting to appropriate start points for signed_in & not signed_in users
   def start
-    ## logger.debug("CC: TalksController.start")
+    logger.debug("CC: TalksController.start")
     if signed_in?
-      @talks = Talk.talks_by_person( current_person )
-      render 'my_talks' and return
+      redirect_to '/people/home'
     else 
-      @talks = Talk.gottalk
-      render 'gottalk' and return
+      redirect_to '/talks/recent'
     end
   end
 
-  ## found & gottalk are two responses to completed searches
+  ## found -- responds to completed searches
   def found
     if params['button'] == 'Start Talk'
       @talk = Talk.new( { 'summary' => check_q } )
@@ -83,53 +90,16 @@ class TalksController < ApplicationController
     end
   end
 
-  # gottalk is a snazzed up version of talks/search
-  def gottalk
-    @talks = Talk.gottalk
-    if ! @talks
-      ## logger.debug("CC: TalksController.gottalk: no talks found")
-      flash.now[:info] = "No talks found"
-    else
-      ## logger.debug("CC: TalksController.gottalk: #{@talks.size} talks found")
-      # can we get pluralize to work here?
-      if @talks.size == 1
-        flash.now[:info] = "One talk found"
-      else
-        flash.now[:info] = "#{@talks.size} talks found"
-      end 
-    end 
-    @talks
-  end
-
   # divers searches for talks -- in a way, the heart of the system
   #   can also add twitter, facebook, favorite urls or topics, ...
   #   actual search should be done with the Talk model,
   #     -- some stubs already present
 
-  def category  ## categories might be sports, movies, politics, ...
-    teapot_q
-  end
-
-  # go to talks with your friends are part of
-  def my_friends
-    teapot_q
-  end
-
-  ## my_tags works by checking tags you've put on yourself & looking for talks with them
-  def my_tags 
-    teapot_q
-  end
-
   def my_talks
     ## logger.debug("CC: TalksController.my_talks")
     ## can probably consolidate once we have debugged
-    if signed_in?
-      person = current_person
-      @talks = Talk.talks_by_person(person)
-    else
-      @talks = Talk.gottalk
-    end
-    @talks
+    person = current_person
+    @talks = Talk.talks_by_person(person)
   end
 
   def nearby

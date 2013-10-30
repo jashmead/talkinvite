@@ -77,14 +77,6 @@ class Talk < ActiveRecord::Base
     talks = Talk.order('talks.updated_at desc').limit(10)
   end
 
-  # for now, for gottalk, just return the most recent
-  #   if person argument supplied, then feature that person more prominently, somehow
-  def self.gottalk
-    talks1 = self.recent.limit(10)
-    ## logger.debug("MM: self.gottalk: #{talks1.inspect}")
-    talks1
-  end
-
   ## check nearby in known talkinviters (who make their location known),
   ##  nearby according to twitter,
   ##  and so on
@@ -103,11 +95,6 @@ class Talk < ActiveRecord::Base
 
   # troll web for quotes using the key_phrase
   def self.quote ( key_phrase )
-
-  end
-
-  # look for stuff in various categories
-  def self.category( tag, key_phrase )
 
   end
 

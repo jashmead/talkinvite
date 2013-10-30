@@ -1,8 +1,14 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
+  # default search_fields seem fine...
+
   def footer_fields 
-    [ '/talks/my_talks', '/venues/search', '/venues/nearby', '/venues/recent', '/help' ]
+    if signed_in?
+      [ '/talks/my_talks', '/venues/search', '/talks/nearby', '/talks/recent', @@help_page ]
+    else
+      super
+    end
   end
 
   # GET /venues

@@ -155,35 +155,6 @@ describe "search" do
 
     end # simple search form
 
-    describe "gottalk" do 
-
-      # this assignment not working, can't use 'let' inside 'before', but outside doesn't create the talk or something...
-      # let(:talk1) { FactoryGirl.create(:talk) }
-      # let(:talk2) { FactoryGirl.create(:talk) }
-
-      before do
-        FactoryGirl.create(:talk, summary: 'summary')
-        FactoryGirl.create(:talk, description: 'description')
-        visit gottalk_talks_path
-      end
-
-      it "should render the found page" do
-
-        ## save_and_open_page
-
-        expect(page).to have_title("Got Talk?")
-        expect(page).to have_selector('h1', 'Got Talk?')
-        expect(page).to have_button('Start Talk')
-        expect(page).to have_selector('div#gottalk')
-
-        within('div#gottalk') do
-          expect(page).to have_content('summary')
-        end
-
-      end
-
-    end # "gottalk"
-
   end # talks
 
 end # searches

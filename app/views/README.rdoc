@@ -12,7 +12,7 @@ responsive design, smaller elements, i.e. span4 or mobile-width, and nearby cont
 
 === Start/Home page
 
-currently using start, which forks into gottalk & my_talks
+currently using start, which forks into people/home, talks/recent
 
 -- might prefer a menu style page
 

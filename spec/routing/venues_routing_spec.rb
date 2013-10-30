@@ -34,11 +34,6 @@ describe VenuesController do
     describe "search routes" do
       it "routes to #search" do
 	      get("/venues/found").should route_to("venues#found")
-	      get("/venues/my_friends").should route_to("venues#my_friends")
-	      get("/venues/my_tags").should route_to("venues#my_tags")
-	      get("/venues/my_talks").should route_to("venues#my_talks")
-	      get("/venues/nearby").should route_to("venues#nearby")
-	      get("/venues/recent").should route_to("venues#recent")
 	      get("/venues/search").should route_to("venues#search")
       end
     end

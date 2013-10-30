@@ -1,5 +1,8 @@
 <% provide(:title, "Edit profile") %>
 <% provide(:data_role, 'dialog') %>
+<!--
+  allow for upload of profile picture as well as obvious changes
+-->
 
 <%= form_for(@person) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>

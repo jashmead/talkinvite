@@ -7,25 +7,21 @@ bits which don't really fit into the lifecycle framework
 
 === Got Talk?
 
-1. start point is 'talks/start', forks to gottalk (not signed in), my_talks (signed)
-1. talks/gottalk has a phrase box (search/add), plus a whole bunch of squares with hover links
+1. start point is 'talks/start', forks to talks/recent if not signed in, people/home if signed in
 1. talks/my_talks has your recent talks & lots of controls
 
 ==== Let's Talk about X
 
 1. key phrases -- type key phrase, search web
 1. recent event -- type key phrase, search web
-1. category, i.e. sports, fashion -- canned set of tags
 1. subject I've already talked about -- tags associated with my talks or with me
 1. like a previous talk -- my talks
 1. part of an ongoing conversation -- talks by talk2talk
 1. associated with an organization (i.e. meetup), school -- talks by talk2talk
 1. associated witeh a specific location -- location to talks
 1. associated with a specific set of friends (or just one or two) -- people to talks
-1. trending on twitter, facebook, or other socials -- web search, also personal web search
 1. cool url for image, document, video on web -- cut & paste
 1. personal event -- type key phrase
-1. trending -- tags on twitter, in google, so twitter search, web search
 
 response, search for talk, pick talk(s), add if not present
 

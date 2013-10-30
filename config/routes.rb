@@ -14,6 +14,7 @@
 #   -- could also build page all_searches, just for talks
 #
 # TBD:  static_pages/sitemap, talks/all_searches
+# TBD:  make sure all routes named here are accessible via the normal flow
 
 Talkinvite::Application.routes.draw do
 
@@ -51,7 +52,7 @@ Talkinvite::Application.routes.draw do
       get :map, :calendar
     end
     collection do
-      get :found, :my_friends, :my_tags, :my_talks,  :nearby, :recent, :search
+      get :found, :search
     end
   end
 
@@ -66,11 +67,6 @@ Talkinvite::Application.routes.draw do
   end
 
   ## put most specific routes at the top:
-
-  # have start point to a static page route, 
-  #   which then sends you to 
-  #     'talks/my_talks' if you are
-  #     'talks/gottalk' if you are not
 
   match '/settings', to: 'people#edit', via: 'get'
   match '/profile', to: 'people#show', via: 'get'
@@ -106,14 +102,10 @@ Talkinvite::Application.routes.draw do
       get :following, :followers, :oauth, :map, :calendar
     end
     collection do
-      get :search, :found, :my_friends, :my_tags, :my_talks, :recent, :nearby, :upgrade
+      get :search, :found, :upgrade, :home
     end
   end
 
-  match '/category', to: 'talks#category', via: 'get'
-  match '/gottalk', to: 'talks#gottalk', via: 'get'
-  match '/my_friends', to: 'talks#my_friends', via: 'get'
-  match '/my_tags', to: 'talks#my_tags', via: 'get'
   match '/my_talks', to: 'talks#my_talks', via: 'get'
   match '/nearby', to: 'talks#nearby', via: 'get'
   match '/recent', to: 'talks#recent', via: 'get'
@@ -126,12 +118,11 @@ Talkinvite::Application.routes.draw do
   resources :talks do
     ## collection will have lots of 'pick a talk' type pages
     member do
-      get :map, :calendar
+      get :map, :calendar, :control
     end
     collection do
       ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
-      get :category, :found, :gottalk, :my_friends, :my_tags, :my_talks, :nearby, :recent,
-        :roulette, :search, :start
+      get :found, :my_talks, :nearby, :recent, :roulette, :search
     end
   end
 

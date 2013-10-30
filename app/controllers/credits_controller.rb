@@ -1,6 +1,10 @@
 class CreditsController < ApplicationController
   before_action :set_credit, only: [:show, :edit, :update, :destroy]
 
+  # default search_fields seem fine...
+
+  # default footer_fields seem fine...
+
   # GET /credits
   # GET /credits.json
   def index

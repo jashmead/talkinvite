@@ -121,13 +121,6 @@ describe "Talk pages" do
     describe "recent" do
     end
 
-    describe "trending" do
-    end
-
-    # include sports, fashion, news, politices, tech, & so on
-    describe "categories" do
-    end
-  
   end
 
   # lists of talks in various formats

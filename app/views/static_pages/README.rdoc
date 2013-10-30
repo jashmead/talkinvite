@@ -6,7 +6,7 @@
 1. contact -- contact, now connected
 1. help -- partly goes to faq, partly to help email, partly to articles, which will be needed, side-by-side or top-to-bottom on articles/faq, now connected
 1. privacy -- modest privacy for most, but real privacy & private talks for paid subscribers, so an upsell point
-1. start -- virtual page, routes you to talks/gottalk or talks/my_talks depending
+1. start -- virtual page, routes you to talks/recent or people/home depending
 1. upgrade* -- not yet built
 1. home* -- menu centric page, clean start point:  better to call it center?
 

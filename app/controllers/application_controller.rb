@@ -20,19 +20,18 @@ class ApplicationController < ActionController::Base
   end
 
   # footer_fields often changed by controllers
-  @@home_page = { 'controller_name' => 'talks', 'label' => 'Home', 'action' => 'start' }
+  # only six controllers need footer_fields:  people, talks, venues, faqs, credits, & ads
+  @@home_page = { 'controller_name' => 'talks', 'label' => 'Home', 'action' => 'home' }
   @@help_page = { 'controller_name' => 'faqs', 'label' => 'Help', 'action' => 'helps' }
 
   def footer_fields 
     # routes for nav buttons typically don't have parameters in them...
     # note that root_path (used in logo) and start are the same thing
-    [ 
-      @@home_page,
-      '/static_pages/about', 
-      '/static_pages/contact', 
-      '/static_pages/privacy', 
-      @@help_page
-    ]
+    if signed_in?
+      [ '/people/settings', '/static_pages/about', '/static_pages/contact', '/static_pages/privacy', @@help_page ]
+    else
+      [ '/people/about', '/static_pages/about', '/static_pages/contact', '/static_pages/privacy', @@help_page ]
+    end
   end
 
   # pull out the query string & make sure it is not empty
@@ -62,27 +61,6 @@ class ApplicationController < ActionController::Base
   end
 
   def found
-    teapot_q
-  end
-
-  # basic searches for talks, people, venues
-  def my_friends
-    teapot_q
-  end
-
-  def my_tags
-    teapot_q
-  end
-
-  def my_talks
-    teapot_q
-  end
-
-  def nearby
-    teapot_q
-  end
-
-  def recent
     teapot_q
   end
 

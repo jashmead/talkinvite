@@ -21,7 +21,11 @@ class PeopleController < ApplicationController
 
   # TBD: switch on admin flag to an admin menu?
   def footer_fields 
-    [ '/talks/search', '/talks/my_talks', '/talks/nearby', '/talks/recent', '/help' ]
+    if signed_in?
+      [ '/people/settings', '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
+    else
+      [ '/people/about', '/talks/new', '/talks/recent', '/talks/search', @@help_page ]
+    end
   end
 
   # GET /people
@@ -50,8 +54,14 @@ class PeopleController < ApplicationController
   end
 
   # GET /people/1/edit
+  # 'settings' is a synonym for 'edit'
   def edit
     # don't need to look for person here; done in 'before_action' callback by set_person
+  end
+
+  # 'home' is a control panel type thing
+  def home
+
   end
 
   # POST /people
