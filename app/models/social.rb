@@ -15,8 +15,8 @@
 
 class Social < ActiveRecord::Base
 
-  belongs_to :person
-  belongs_to :talk
+  belongs_to :person, inverse_of: :socials
+  belongs_to :talk, inverse_of: :socials
 
   ## default_scope is not working in the newer/older test
   default_scope -> { order('socials.created_at desc') }

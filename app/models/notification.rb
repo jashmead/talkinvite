@@ -1,7 +1,7 @@
 class Notification < ActiveRecord::Base
 
-  belongs_to :person
-  belongs_to :talk
+  belongs_to :person, inverse_of: :notifications
+  belongs_to :talk, inverse_of: :notifications
 
   ## default_scope is not working in the newer/older test
   default_scope -> { order('notifications.created_at desc') }

@@ -4,11 +4,7 @@ class TalksController < ApplicationController
   before_action :correct_person, only: :destroy
 
   def footer_fields 
-    if signed_in?
-      [ @@home_page, '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
-    else
-      [ @@home_page, '/talks/new', '/talks/recent', '/talks/search', @@help_page ]
-    end
+    [ '/talks/start', '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
   end
 
   # GET /talks

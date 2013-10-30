@@ -68,20 +68,18 @@ module SessionsHelper
     end
   end
 
-  def iconify ( action_name = nil, large = nil ) 
+  # http://fortawesome.github.io/Font-Awesome/cheatsheet/
+  # iconify spotted as complex by codeclimate 10/29/13, complexity 29 -- replace with hash? -- started with minor cleanup
+  def iconify (action_name) 
 
-    if ! action_name
-      return ''
-    end
+    action_s = action_name.to_s
 
-    # http://fortawesome.github.io/Font-Awesome/cheatsheet/
-    klasses = case action_name.to_s
+    klasses = case action_s
       # all those icons that map directly to a font-awesome name
-      #  'pinterest', 'reply', 'search', 'skype', 'tag, 'tags', 'twitter'
       when 'ban', 'beer', 'calendar', 'camera', 'check', 'coffee', 'facebook', 'film', 'glass', 'home', 'info', 'instagram',
         'pencil', 'pinterest', 'print', 'random', 'reply', 'search', 'share', 'sitemap', 'skype', 'sort', 
         'tag', 'tags', 'trash', 'twitter'
-        'fa-' + action_name
+        'fa-' + action_s
       # rest in alphabetic order of action_name
       when 'about'
         'fa-dot-circle-o'
@@ -131,11 +129,7 @@ module SessionsHelper
         return ''
     end
 
-    if large
-      klasses += ' fa-lg'
-    end
-
-    return "<i class=\"fa #{klasses} fa-lg\" ></i>"
+    return "<i class=\"fa #{klasses}\" ></i>"
   end
 
   def signout
@@ -181,7 +175,7 @@ module SessionsHelper
     # TBD:  test to see if we are signed in first
     # icon is the vertical flip of the sign-in icon
     link_to( 
-      "Sign Out&nbsp;&nbsp;#{iconify(:signout, true)}".html_safe, 
+      "Sign Out&nbsp;&nbsp;#{iconify(:signout)}".html_safe, 
       signout_path, 
       method: :delete,
       'class' => 'ui-btn-right' # force button to the right side of the header, leaving space for the back button
@@ -190,13 +184,13 @@ module SessionsHelper
 
   def signin_link
     # TBD:  test to see if we are signed in first
-    link_to( "#{iconify(:signin, true)}&nbsp;&nbsp;Sign In".html_safe, signin_path, 'data-rel' => 'dialog')
+    link_to( "#{iconify(:signin)}&nbsp;&nbsp;Sign In".html_safe, signin_path, 'data-rel' => 'dialog')
   end
 
   def signup_link
     # TBD:  test to see if we are signed in first
     ## logger.debug("SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}")
-    link_to( "#{iconify(:signup, true)}</i>&nbsp;&nbsp;Sign Up".html_safe, signup_path, 'data-rel' => 'dialog')
+    link_to( "#{iconify(:signup)}</i>&nbsp;&nbsp;Sign Up".html_safe, signup_path, 'data-rel' => 'dialog')
   end
 
 end

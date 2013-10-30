@@ -6,8 +6,8 @@
 #
 class Comment < ActiveRecord::Base
 
-  belongs_to :person
-  belongs_to :talk
+  belongs_to :person, inverse_of: :comments
+  belongs_to :talk, inverse_of: :comments
 
   ## default scope is not working in new/older tests
   default_scope -> { order('comments.created_at desc') }

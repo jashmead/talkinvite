@@ -23,9 +23,8 @@
 # Start with PostgreSQL native location stuff, easier to get started with
 
 class Venue < ActiveRecord::Base
-  belongs_to :person
-  
-  has_many :talks
+  belongs_to :person, inverse_of: :venues
+  has_many :talks, inverse_of: :venue
 
   has_many :tags, :as => :tagable
   has_many :attachments, :as => :attachable

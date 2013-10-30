@@ -21,17 +21,12 @@ class ApplicationController < ActionController::Base
 
   # footer_fields often changed by controllers
   # only six controllers need footer_fields:  people, talks, venues, faqs, credits, & ads
-  @@home_page = { 'controller_name' => 'talks', 'label' => 'Home', 'action' => 'home' }
   @@help_page = { 'controller_name' => 'faqs', 'label' => 'Help', 'action' => 'helps' }
 
   def footer_fields 
     # routes for nav buttons typically don't have parameters in them...
     # note that root_path (used in logo) and start are the same thing
-    if signed_in?
-      [ '/people/settings', '/static_pages/about', '/static_pages/contact', '/static_pages/privacy', @@help_page ]
-    else
-      [ '/people/about', '/static_pages/about', '/static_pages/contact', '/static_pages/privacy', @@help_page ]
-    end
+    [ '/talks/start', '/static_pages/about', '/static_pages/contact', '/static_pages/privacy', @@help_page ]
   end
 
   # pull out the query string & make sure it is not empty
@@ -74,8 +69,7 @@ class ApplicationController < ActionController::Base
   # Return to search screen on error or no rows found
   # Return the (paginated) rows found on success.
   # Called by 'found'.
-  # codeclimate currently assigns complexity 39
-  # eliminated intermediate steps, see what happens
+  # search_q spotted as complex by codeclimate 10/29/13, complexity 31 (was 39, but cleaned up)
   def search_q(klass)
 
     # explicit renders here keep the default render in the caller from executing

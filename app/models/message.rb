@@ -12,8 +12,8 @@ class Message < ActiveRecord::Base
   ## belongs_to :person
   ## belongs_to :talk
 
-  belongs_to :sender, class_name: "Person"
-  belongs_to :receiver, class_name: "Person"
+  belongs_to :sender, inverse_of: :messages, class_name: "Person"
+  belongs_to :receiver, inverse_of: :messages, class_name: "Person"
 
   ## default_scope is not working in the newer/older test
   default_scope -> { order('messages.created_at desc') }

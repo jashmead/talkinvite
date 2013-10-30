@@ -10,8 +10,8 @@
 
 class Member < ActiveRecord::Base
 
-  belongs_to :person
-  belongs_to :talk
+  belongs_to :person, inverse_of: :members
+  belongs_to :talk, inverse_of: :members
 
   ## default_scope is not working in the newer/older test
   default_scope -> { order('members.created_at desc') }

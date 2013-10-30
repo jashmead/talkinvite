@@ -44,13 +44,13 @@ class Talk < ActiveRecord::Base
 
   ## include Searchy
 
-  belongs_to :person
-  belongs_to :venue
+  belongs_to :person, inverse_of: :talks
+  belongs_to :venue, inverse_of: :talks
 
-  has_many :members, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :notifications, dependent: :destroy
-  has_many :socials, dependent: :destroy
+  has_many :members, inverse_of: :talk, dependent: :destroy
+  has_many :comments, inverse_of: :talk, dependent: :destroy
+  has_many :notifications, inverse_of: :talk, dependent: :destroy
+  has_many :socials, inverse_of: :talk, dependent: :destroy
   has_many :tags, :as => :tagable
   has_many :attachments, :as => :attachable
 
@@ -86,22 +86,13 @@ class Talk < ActiveRecord::Base
     self.recent
   end
 
+  # is talks_by_person needed?
   def self.talks_by_person( person ) 
     # RoR probably knows to use 'id' when called with 'person', experiment later
     if ! person
       person = Person.anonymous
     end
     self.find_by_person_id(person.id)
-  end
-
-  # troll web for quotes using the key_phrase
-  def self.quote ( key_phrase )
-
-  end
-
-  # look for hash_tags & other stuff on twitter
-  def self.twitter( key_phrase ) 
-
   end
 
 end

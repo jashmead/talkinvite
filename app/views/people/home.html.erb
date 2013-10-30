@@ -4,20 +4,24 @@
   control center for individual
 -->
 
-<%= form_for(@person) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <ul>
-    <li>
-      Talks
-    </li>
-    <li>
-      Messages
-    </li>
-    <li>
-      Settings
-    </li>
-  </ul>
+<% if @person %>
+	<%= form_for(@person) do |f| %>
+	  <%= render 'shared/error_messages', :object => f.object %>
+	  <ul>
+	    <li>
+	      Talks
+	    </li>
+	    <li>
+	      Messages
+	    </li>
+	    <li>
+	      Settings
+	    </li>
+	  </ul>
+	<% end %>
+  <%= gravatar_for @person %>
+  <a href="http://gravatar.com/emails" target="_blank" >change</a>
+<% else %>
+  <% logger.debug("people/home:  no person selected!") %>
+  <p>I'm terribly sorry, do I know you?</p>
 <% end %>
-
-<%= gravatar_for @person %>
-<a href="http://gravatar.com/emails" target="_blank" >change</a>

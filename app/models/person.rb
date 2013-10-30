@@ -23,12 +23,13 @@
 # 1. active_flag -- use to deactivate when the user has killed, in case there is other data we need to keep associated with this
 # 1. group_flag -- we are really a group, and relationships are memberships in that group
 
+# Person spotted as complex by codeclimate 10/29/13, complexity 31
 class Person < ActiveRecord::Base
 
   ## include Searchy
 
   ## this line *creates* the attribute/method of Person called 'talks'
-  has_many :talks, dependent: :destroy
+  has_many :talks, inverse_of: :person, dependent: :destroy
   ## we are starting with the relationships that point 'to' the current person record
 
   # relationships
@@ -41,7 +42,8 @@ class Person < ActiveRecord::Base
   ## note that using 'has_many :followeds, through :relationships' would have worked automagically
   has_many :followed_people, through: :relationships, source: :followed, dependent: :destroy
 
-  has_many :reverse_relationships, 
+  # holding off on 'inverse_of' here
+  has_many :reverse_relationships,
     foreign_key: "followed_id",
     class_name:  "Relationship",
     dependent:   :destroy
@@ -51,16 +53,16 @@ class Person < ActiveRecord::Base
 
   # messages were setup in || with relationships
   # follower -> sender, followed -> receiver
-  has_many :sent_messages, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
-  has_many :receivers, through: :sent_messages, source: :receivers, dependent: :destroy
-  has_many :received_messages, foreign_key: "receiver_id", class_name: "Message", dependent: :destroy
-  has_many :senders, through: :received_messages, source: :sender
+  has_many :sent_messages, inverse_of: :person, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
+  has_many :receivers, inverse_of: :person, through: :sent_messages, source: :receivers, dependent: :destroy
+  has_many :received_messages, inverse_of: :person, foreign_key: "receiver_id", class_name: "Message", dependent: :destroy
+  has_many :senders, inverse_of: :person, through: :received_messages, source: :sender
 
-  has_many :members, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :notifications, dependent: :destroy
-  has_many :venues, dependent: :destroy
-  has_many :socials, dependent: :destroy
+  has_many :members, inverse_of: :person, dependent: :destroy
+  has_many :comments, inverse_of: :person, dependent: :destroy
+  has_many :notifications, inverse_of: :person, dependent: :destroy
+  has_many :venues, inverse_of: :person, dependent: :destroy
+  has_many :socials, inverse_of: :person, dependent: :destroy
 
   has_many :tags, :as => :tagable
   has_many :attachments, :as => :attachable
