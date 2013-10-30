@@ -5,8 +5,8 @@ FactoryGirl.define do
     person
     venue_type "venues"
 
-    name "MyString"
-    description "MyText"
+    sequence(:name)  { |n| "Venue #{n}" }
+    sequence(:description) { |n| "Venue Description_#{n}"}
 
     longitude "90.0000000000000000000000"
     latitude "30.0000000000000000000000"

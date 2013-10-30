@@ -50,11 +50,18 @@ class VenuesController < ApplicationController
     destroy_q(@venue, venues_url)
   end
 
-  def found
-    @venues = search_q(Venue)
+  def search
   end
 
-  def search
+  ## found -- responds to completed searches
+  ## may want to build a found_q to consolidate common elements
+  def found
+    if params['button'] == 'Add Venue'
+      @venue = Venue.new( { 'name' => check_q } )
+      render 'new' and return
+    else
+      @venues = search_q(Venue)
+    end
   end
 
   def map

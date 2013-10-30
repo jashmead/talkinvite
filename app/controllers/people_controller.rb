@@ -191,7 +191,9 @@ class PeopleController < ApplicationController
 
     # fetch_children likely to be slow; may want to break it down, once it is working
     # TBD:  how do we save these back? there must be a tool!
+    # TBD:  how do we fetch all the records for an association?
     def fetch_children
+=begin
       @my_talks = @person.talks # talks we've created
       @my_venues = @person.venues  # venues we've introduced to system
 
@@ -215,6 +217,7 @@ class PeopleController < ApplicationController
       @tags = @person.tagable
       # my attachments:
       @attachments = @person.attachable
+=end
     end
 
     # person has no parents, so no fetch_parents

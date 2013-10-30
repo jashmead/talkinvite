@@ -40,14 +40,7 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     @talk = current_person.talks.build(talk_params)
-    if @talk.save
-      flash[:success] = "Talk Started"
-      redirect_to edit_talk_url(@talk)
-    else
-      @feed_talks = []
-      # really want to return to the form that called us
-      render 'talks/search'
-    end
+    create_q(@talk)
   end
 
   # PATCH/PUT /talks/1
@@ -77,11 +70,10 @@ class TalksController < ApplicationController
 
   ## found -- responds to completed searches
   def found
-    if params['button'] == 'Start Talk'
+    if params['button'] == 'New Talk'
       @talk = Talk.new( { 'summary' => check_q } )
       render 'new' and return
     else
-      ## logger.debug("CC: TalksController.found: params: #{params.inspect}")
       @talks = search_q(Talk)
     end
   end

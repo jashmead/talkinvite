@@ -11,8 +11,8 @@ describe "people/search" do
 
   subject { page }        ## what, exactly, does this do? sets 'it', I think
 
-  let(:page_title) { 'Search for people' }
-  let(:heading) { 'Search for people' } # can't use :heading here?
+  let(:page_title) { 'Search for People' }
+  let(:heading) { 'Search for People' } # can't use :heading here?
 
   describe "renders the search person form" do
     before { visit "/people/search" }  ## replace with a 'path', once we have worked that out

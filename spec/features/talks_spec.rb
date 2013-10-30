@@ -11,15 +11,11 @@ describe 'talks' do
 
     # trying to get core functionality working, even when we are not signed in!
     describe 'when not signed in' do
-
+      pending("they should be allowed to fill in the form, but then get a signin/new account request when they save")
     end
 
     describe 'when signed in' do
-      let(:person) { FactoryGirl.create(:person) }
-    end
-
-    describe 'when signed in as admin' do
-      let(:admin) { FactoryGirl.create(:admin) }
+      pending("they should be able to create a new talk")
     end
 
   end

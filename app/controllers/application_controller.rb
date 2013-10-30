@@ -64,6 +64,7 @@ class ApplicationController < ActionController::Base
       else 
         flash.now[:success] = "Found #{count.to_s} matching #{singular.pluralize}."
     end
+    logger.debug("CC: ApplicationController.report_q: flash.now: #{flash.now.inspect}")
   end
 
   def found
