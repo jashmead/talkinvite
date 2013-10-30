@@ -104,12 +104,12 @@ class TalksController < ApplicationController
 
   def nearby
     @talks = Talk.nearby(page: params[:page])
+    render 'index'
   end
 
   def recent
     @talks = Talk.recent(page: params[:page])
-    ## logger.debug("CC: TalksController.recent: @talks: #{@talks.inspect}")
-    @talks
+    render 'index'
   end
 
   def roulette # like chatroulette :)

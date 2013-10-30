@@ -55,7 +55,7 @@ class Talk < ActiveRecord::Base
   has_many :attachments, :as => :attachable
 
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
-  default_scope -> { order('talks.created_at desc') }
+  default_scope -> { order('talks.updated_at desc') }
 
   validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
   validates :person_id, presence: true
@@ -72,9 +72,10 @@ class Talk < ActiveRecord::Base
     where( "person_id in (#{followed_person_ids}) or person_id = :person_id", person_id: person)
   end
 
-  def self.recent
+  def self.recent (location)
     # with default scope, the most recently changed
-    talks = Talk.order('talks.updated_at desc').limit(10)
+    logger.debug("Talk.recent")
+    Talk.limit(10)
   end
 
   ## check nearby in known talkinviters (who make their location known),
