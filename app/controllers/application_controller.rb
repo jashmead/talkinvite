@@ -5,6 +5,17 @@
 ## 1. to get at the functions in app/helpers, use view_context, i.e. view_context.current_layout
 ## 1. search_q & report_q currently (10/28/13) flagged as overcomplex by codeclimate
 
+## for associations we have 
+#     assocation, 
+#     association=, 
+#     build_association (in memory only), 
+#     create_association (in memory & on disk)
+##  use association to fetch, build + = to create in memory, create to build & save at the same time
+##  -- does 'update' on parent automagically save the children?  can check the logs to see, or check the ActiveRecord docs
+
+## have defined fetch_children for people, talks, & venues, and fetch_parents for talks
+#   -- could define similar for the rest of the tables; wait till we see what is needed in practice for them
+
 class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.

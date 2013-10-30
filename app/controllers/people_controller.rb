@@ -61,7 +61,7 @@ class PeopleController < ApplicationController
 
   # 'home' is a control panel type thing
   def home
-
+    fetch_children
   end
 
   # POST /people
@@ -189,5 +189,34 @@ class PeopleController < ApplicationController
       redirect_to(root_url) unless current_person.sub? || current_person.admin?
     end
 
-    ## expect we will have a def subscriber here at some point
+    # fetch_children likely to be slow; may want to break it down, once it is working
+    # TBD:  how do we save these back? there must be a tool!
+    def fetch_children
+      @my_talks = @person.talks # talks we've created
+      @my_venues = @person.venues  # venues we've introduced to system
+
+      @comments = @person.comments
+      @notifications = @person.notifications
+      @socials = @person.socials
+
+      @sent_messages = @person.sent_messages
+      @received_messages = @person.received_messages
+
+      @talks = @person.memberships
+
+      # our twitter roots are showing here!
+      # people who follow me
+      @followers = followers
+
+      # people I follow
+      @following = following
+
+      # my tags:
+      @tags = @person.tagable
+      # my attachments:
+      @attachments = @person.attachable
+    end
+
+    # person has no parents, so no fetch_parents
+
 end

@@ -77,4 +77,19 @@ class VenuesController < ApplicationController
     def venue_params
       params.require(:venue).permit(:person_id, :name, :description, :longitude, :latitude, :venue_type)
     end
+
+    # fetch_children likely to be slow; may want to break it down, once it is working
+    # TBD:  how do we save these back? there must be a tool!
+    def fetch_children
+
+      # talks that use me as their location:
+      @talks = @venue.talks
+
+      # my tags:
+      @tags = @venue.tagable
+
+      # my attachments:
+      @attachments = @venue.attachable
+    end
+
 end

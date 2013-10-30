@@ -15,6 +15,8 @@
 #
 # we are assuming that each attachment is focused on a specific target record, making polymorphism appropriate
 
+# not validating attachable_type: ActiveRecord should handle:  should be limited to Person, Talk, Venue
+
 class Attachment < ActiveRecord::Base
   belongs_to :attachable, :polymorphic => true
 
@@ -23,10 +25,6 @@ class Attachment < ActiveRecord::Base
   validates :attachable_type, presence: true  # i.e. image
 
   validates :attachment_type, presence: true
-
-  # may be adding attachments & perhaps others to this list
-  # if attachable_type is a 'url', then the file_path is the 'url' in question
-  validates_inclusion_of :attachable_type, :in => [ 'talks', 'venues', 'people' ]
 
   validates :attachable_id, presence: true
 

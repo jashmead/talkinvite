@@ -15,6 +15,7 @@
 #
 # we are assuming that each tag is focused on a specific target record, making polymorphism appropriate
 #
+# not validating tagable_type: ActiveRecord should handle:  should be limited to Person, Talk, Venue
 
 class Tag < ActiveRecord::Base
   belongs_to :tagable, :polymorphic => true
@@ -22,9 +23,6 @@ class Tag < ActiveRecord::Base
   validates :tag_type, presence: true
   validates :tagable_id, presence: true
   validates :tagable_type, presence: true
-
-  # may be adding attachments & perhaps others to this list
-  validates_inclusion_of :tagable_type, :in => [ 'talks', 'venues', 'people' ]
 
   # there will probably be reverse searches here, we have already created the corresponding index
 end

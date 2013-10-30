@@ -145,4 +145,27 @@ class TalksController < ApplicationController
       # logger.debug("ZZ: TalksController.correct_person: id = #{params[:id]}, @talk = #{@talk.inspect}") #DDT
       redirect_to root_url if @talk.nil?
     end
+
+    # fetch_children likely to be slow; may want to break it down, once it is working
+    # TBD:  how do we save these back? there must be a tool!
+    def fetch_children
+
+      @comments = @talk.comments
+      @notifications = @talk.notifications
+      @socials = @talk.socials
+
+      @talks = @talk.guests
+
+      # my tags:
+      @tags = @talk.tagable
+      # my attachments:
+      @attachments = @talk.attachable
+    end
+
+    def fetch_parents
+      # see if this even works!
+      @venue = @talk.venue
+      @person = @talk.person
+    end
+
 end

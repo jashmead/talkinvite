@@ -59,6 +59,8 @@ class Person < ActiveRecord::Base
   has_many :senders, inverse_of: :person, through: :received_messages, source: :sender
 
   has_many :members, inverse_of: :person, dependent: :destroy
+  has_many :memberships, inverse_of: :person, through: :members, source: :talks
+
   has_many :comments, inverse_of: :person, dependent: :destroy
   has_many :notifications, inverse_of: :person, dependent: :destroy
   has_many :venues, inverse_of: :person, dependent: :destroy

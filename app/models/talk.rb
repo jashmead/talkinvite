@@ -48,6 +48,8 @@ class Talk < ActiveRecord::Base
   belongs_to :venue, inverse_of: :talks
 
   has_many :members, inverse_of: :talk, dependent: :destroy
+  has_many :guests, inverse_of: :person, through: :members, source: :talks
+
   has_many :comments, inverse_of: :talk, dependent: :destroy
   has_many :notifications, inverse_of: :talk, dependent: :destroy
   has_many :socials, inverse_of: :talk, dependent: :destroy
