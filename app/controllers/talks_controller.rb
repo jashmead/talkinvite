@@ -3,9 +3,9 @@ class TalksController < ApplicationController
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
   before_action :correct_person, only: :destroy
 
-  # def footer_fields 
-    # [ '/talks/start', '/talks/my_talks', '/talks/nearby', '/talks/recent', '/help' ]
-  # end
+  def footer_fields 
+    [ @@home_page, '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
+  end
 
   # GET /talks
   # GET /talks.json
@@ -62,7 +62,7 @@ class TalksController < ApplicationController
   # start is the default starting point for the entire website
   # right now, it is a virtual page, switching to my_talks or gottalk, depending
   def start
-    logger.debug("CC: TalksController.start")
+    ## logger.debug("CC: TalksController.start")
     if signed_in?
       @talks = Talk.talks_by_person( current_person )
       render 'my_talks' and return
@@ -78,7 +78,7 @@ class TalksController < ApplicationController
       @talk = Talk.new( { 'summary' => check_q } )
       render 'new' and return
     else
-      logger.debug("CC: TalksController.found: params: #{params.inspect}")
+      ## logger.debug("CC: TalksController.found: params: #{params.inspect}")
       @talks = search_q(Talk)
     end
   end
@@ -121,7 +121,7 @@ class TalksController < ApplicationController
   end
 
   def my_talks
-    logger.debug("CC: TalksController.my_talks")
+    ## logger.debug("CC: TalksController.my_talks")
     ## can probably consolidate once we have debugged
     if signed_in?
       person = current_person
@@ -138,7 +138,7 @@ class TalksController < ApplicationController
 
   def recent
     @talks = Talk.recent(page: params[:page])
-    logger.debug("CC: TalksController.recent: @talks: #{@talks.inspect}")
+    ## logger.debug("CC: TalksController.recent: @talks: #{@talks.inspect}")
     @talks
   end
 
@@ -147,7 +147,7 @@ class TalksController < ApplicationController
   end
 
   def search
-    logger.debug("CC: TalksController.search")
+    ## logger.debug("CC: TalksController.search")
   end
 
   def map

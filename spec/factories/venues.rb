@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :venue do
     person
-    venue_type "venue"
+    venue_type "venues"
 
     name "MyString"
     description "MyText"

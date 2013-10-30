@@ -5,7 +5,7 @@ class CreditsController < ApplicationController
   # GET /credits.json
   def index
     @credits = Credit.all
-    logger.debug("CreditsController.index: @credits: #{@credits.inspect}")
+    ## logger.debug("CreditsController.index: @credits: #{@credits.inspect}")
     @credits
   end
 

@@ -18,9 +18,6 @@
 =end
 
 class Credit < ActiveRecord::Base
-  has_many :tags, :as => :tagable
-  has_many :attachments, :as => :attachable
-
   validates :name, presence: true
   validates_uniqueness_of :name
   validates :description, presence: true

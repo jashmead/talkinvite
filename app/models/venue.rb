@@ -1,6 +1,6 @@
 # == Fields
 # 1. person_id -- creator
-# 1. venue_type -- personal, anonymous, venue
+# 1. venue_type -- venues (obvious), people (current location of person), talks (venue associated with a particular talk), '' for anything else
 # 1. name 
 # 1. description 
 # 1. longitude -- decimal
@@ -26,11 +26,12 @@ class Venue < ActiveRecord::Base
   belongs_to :person
   
   has_many :talks
+
   has_many :tags, :as => :tagable
   has_many :attachments, :as => :attachable
 
   validates :person_id, presence: true
   validates :name, presence: true
-  validates_inclusion_of :venue_type, :in => [ 'venue', 'person', 'talk', 'attachment', 'tag', 'social', 'message' ] # singleton name of table using venue
+  validates_inclusion_of :venue_type, :in => [ '', 'venues', 'people', 'talks' ]
 
 end

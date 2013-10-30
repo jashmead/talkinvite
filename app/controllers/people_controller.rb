@@ -36,7 +36,7 @@ class PeopleController < ApplicationController
   def show
     # don't need to look for person here; done in 'before_action' callback by set_person
     if ! @person 
-      logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
+      ## logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end
@@ -45,7 +45,7 @@ class PeopleController < ApplicationController
 
   # GET /people/new
   def new
-    logger.debug("PeopleController.new")
+    ## logger.debug("PeopleController.new")
     @person = Person.new
   end
 
@@ -57,7 +57,7 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    logger.debug("PeopleController.create: #{params.inspect}")
+    ## logger.debug("PeopleController.create: #{params.inspect}")
 
     @person = Person.new(person_params)
 
@@ -148,7 +148,7 @@ class PeopleController < ApplicationController
       begin
         @person = Person.find(params[:id])
       rescue
-        logger.debug("PeopleController.set_person: params: #{params.inspect}")
+        ## logger.debug("PeopleController.set_person: params: #{params.inspect}")
         @person = Person.new
       end
     end

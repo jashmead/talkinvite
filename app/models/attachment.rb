@@ -26,7 +26,7 @@ class Attachment < ActiveRecord::Base
 
   # may be adding attachments & perhaps others to this list
   # if attachable_type is a 'url', then the file_path is the 'url' in question
-  validates_inclusion_of :attachable_type, :in => [ 'talks', 'venues', 'people', 'urls', 'faqs', 'credits', 'maps', 'calendars', 'credits' ]
+  validates_inclusion_of :attachable_type, :in => [ 'talks', 'venues', 'people' ]
 
   validates :attachable_id, presence: true
 

@@ -1,5 +1,5 @@
-<%= render 'form' %>
+<% provide(:title, 'FAQ') %>
 <% provide(:data_role, 'dialog') %>
 
+<%= render 'form' %>
 <%= button_delete @faq %>
-<%= button_back faqs_path %>

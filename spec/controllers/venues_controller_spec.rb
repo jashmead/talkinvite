@@ -25,7 +25,7 @@ describe VenuesController do
   # adjust the attributes here as well.
 
   let(:person) { FactoryGirl.create(:person) }
-  let(:valid_attributes) { { "name" => "Where am I", "person_id" => person.id, "venue_type" => "venue"  } }
+  let(:valid_attributes) { { "name" => "Where am I", "person_id" => person.id, "venue_type" => "venues"  } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

@@ -11,7 +11,7 @@ module ApplicationHelper
       layout
     else
       ## layout.identifier = /Volumes/Isis/talkinvite/talkinvite/app/views/layouts/application.html.erb
-      logger.debug("ApplicationHelper.layout: #{layout.inspect}")
+      ## logger.debug("ApplicationHelper.layout: #{layout.inspect}")
 
       ## this gives "application" if that is the first layout, but will give, say, 'credits' if that is the top layout
       File.basename(layout.identifier).split('.').first 

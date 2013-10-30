@@ -4,7 +4,7 @@ describe Venue do
 
   # better to build up fresh person than to rely on the standard people (anonymous, venueinvite, ...)
   let(:person) { FactoryGirl.create(:person) }
-  before { @venue = person.venues.build(name: "Nowhere", description: "Let's go here!") }
+  before { @venue = person.venues.build(name: "Nowhere", description: "Let's go here!", venue_type: 'venues') }
 
   subject { @venue }
 

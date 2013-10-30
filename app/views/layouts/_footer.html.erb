@@ -3,7 +3,7 @@
 <!-- TBD:  see if we like ui-bar -->
 <!-- TBD:  use different id's for different footers, then set ui-state-persist="true" p74 of Mastering  -->
 <!-- data-theme has to be applied to the footer, not the navbar, to take effect -->
-<div data-role="footer" data-position="fixed" data-id="footer" <%=swatch%> >
+<div data-role="footer" data-position="fixed" data-id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=swatch%> >
   <div data-role="navbar">
     <ul>
     <% active_button = nil; controller.footer_fields.each do |url| %>
@@ -12,11 +12,11 @@
 	      #   if it gets more complex than this, 
 	      #   perhaps we can use some elegant Ruby unRouting method with which we may work nav button magic
 
-        logger.debug("_footer: url: #{url.inspect}, #{url.class}")
+        # logger.debug("_footer: url: #{url.inspect}, #{url.class}")
 
         if url.class.to_s == 'String' 
 	        url_bits = url.split('/')
-          logger.debug("_footer: url_bits: #{url_bits.inspect}")
+          ## logger.debug("_footer: url_bits: #{url_bits.inspect}")
 		      action = url_bits.pop
 		      label = action.to_s.titleize
 	        controller_name = url_bits.pop
@@ -27,7 +27,7 @@
           url = "/#{controller_name}/#{action}"
         end
 
-        logger.debug("_footer: action: #{action}, label: #{label}, controller_name: #{controller_name}")
+        # logger.debug("_footer: action: #{action}, label: #{label}, controller_name: #{controller_name}")
 
         if action === controller.action_name
           klasses = "class=\"ui-disabled\"" # no point go to a page from itself
@@ -40,7 +40,7 @@
 
         data_theme = swatch( controller_name )
         iconstr = iconify(action)
-        logger.debug("_footer: iconstr: #{iconstr}")
+        # logger.debug("_footer: iconstr: #{iconstr}")
 	    %>
       <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{url}\" #{data_theme} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
     <% end %>

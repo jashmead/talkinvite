@@ -19,19 +19,19 @@ class ApplicationController < ActionController::Base
     [ 'name', 'description' ]
   end
 
-  # footer_fields will be changed by most controllers
-  # will include both the path & in any cases an icon
-  # start with an array, however
+  # footer_fields often changed by controllers
+  @@home_page = { 'controller_name' => 'talks', 'label' => 'Home', 'action' => 'start' }
+  @@help_page = { 'controller_name' => 'faqs', 'label' => 'Help', 'action' => 'helps' }
+
   def footer_fields 
     # routes for nav buttons typically don't have parameters in them...
     # note that root_path (used in logo) and start are the same thing
-    #   -- is this good?
     [ 
-      { 'controller_name' => 'talks', 'label' => 'Home', 'action' => 'start' }, 
+      @@home_page,
       '/static_pages/about', 
       '/static_pages/contact', 
       '/static_pages/privacy', 
-      { 'controller_name' => 'faqs', 'label' => 'Help', 'action' => 'helps' }
+      @@help_page
     ]
   end
 

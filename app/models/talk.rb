@@ -81,7 +81,7 @@ class Talk < ActiveRecord::Base
   #   if person argument supplied, then feature that person more prominently, somehow
   def self.gottalk
     talks1 = self.recent.limit(10)
-    logger.debug("MM: self.gottalk: #{talks1.inspect}")
+    ## logger.debug("MM: self.gottalk: #{talks1.inspect}")
     talks1
   end
 

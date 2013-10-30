@@ -55,7 +55,7 @@ module SessionsHelper
   ## current_person is a method, @current_person is an attribute -- admittedly a fuzzy distinction in Ruby
   ## see if we are signed in currently
   def signed_in?
-    logger.debug("SessionsHelper.signed_in?: current_person: #{current_person.inspect}")
+    ## logger.debug("SessionsHelper.signed_in?: current_person: #{current_person.inspect}")
     !current_person.nil?
   end
 
@@ -78,26 +78,35 @@ module SessionsHelper
     klasses = case action_name.to_s
       # all those icons that map directly to a font-awesome name
       #  'pinterest', 'reply', 'search', 'skype', 'tag, 'tags', 'twitter'
-      when 'beer', 'calendar', 'camera', 'check', 'coffee', 'facebook', 'home', 'instagram',
-        'pencil', 'pinterest', 'print', 'reply', 'search', 'share', 'sitemap', 'skype', 'tag', 'tags', 'trash', 'twitter'
+      when 'ban', 'beer', 'calendar', 'camera', 'check', 'coffee', 'facebook', 'film', 'glass', 'home', 'info', 'instagram',
+        'pencil', 'pinterest', 'print', 'random', 'reply', 'search', 'share', 'sitemap', 'skype', 'sort', 
+        'tag', 'tags', 'trash', 'twitter'
         'fa-' + action_name
       # rest in alphabetic order of action_name
       when 'about'
         'fa-dot-circle-o'
-      when 'comment'
+      when 'cancel'
+        'fa-ban'
+      when 'comment', 'talk'
         'fa-comment-o'
-      when 'comments'
+      when 'comments', 'talks'
         'fa-comments-o'
       when 'contact'
         'fa-envelope-o'
+      when 'data', 'table'
+        'fa-table'
       when 'delete', 'destroy'
         'fa-minus-cirle'
+      when 'edit'
+        'fa-pencil'
       when 'google_plus'
         'fa-google-plus'
       when 'help', 'helps'
         'fa-question'
       when 'message'
         'fa-bolt'
+      when 'new'
+        'fa-plus-circle'
       when 'person'
         'fa-user'
       when 'privacy'
@@ -112,6 +121,12 @@ module SessionsHelper
         'fa-sign-in fa-rotate-270'
       when 'start'
         'fa-home'
+      when 'venue'
+        'fa-location-arrow'
+      when 'wine'
+        'fa-glass'
+      when /^my_/
+        'fa-user'
       else
         return ''
     end
@@ -180,7 +195,7 @@ module SessionsHelper
 
   def signup_link
     # TBD:  test to see if we are signed in first
-    logger.debug("SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}")
+    ## logger.debug("SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}")
     link_to( "#{iconify(:signup, true)}</i>&nbsp;&nbsp;Sign Up".html_safe, signup_path, 'data-rel' => 'dialog')
   end
 

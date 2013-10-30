@@ -1,9 +1,14 @@
 == Views
 
 === Philosophy
+
 simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
 
+-- now fixed by use of Bootstrap 
+
 responsive design, smaller elements, i.e. span4 or mobile-width, and nearby controls
+
+-- no responsive design, purely mobile
 
 === Start/Home page
 
