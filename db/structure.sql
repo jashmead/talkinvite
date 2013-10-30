@@ -534,7 +534,8 @@ CREATE TABLE talks (
     where_desc character varying(255) DEFAULT 'here'::character varying,
     when_desc character varying(255) DEFAULT 'now'::character varying,
     longitude numeric,
-    latitude numeric
+    latitude numeric,
+    who_desc character varying(255)
 );
 
 
@@ -1195,3 +1196,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131028195018');
 INSERT INTO schema_migrations (version) VALUES ('20131029163859');
 
 INSERT INTO schema_migrations (version) VALUES ('20131030134603');
+
+INSERT INTO schema_migrations (version) VALUES ('20131030141718');
