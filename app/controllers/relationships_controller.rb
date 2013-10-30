@@ -1,6 +1,7 @@
 class RelationshipsController < ApplicationController
   before_action :signed_in_person
 
+  # at some point, may return relationship_type, a comment?
   def search_fields 
     []
   end

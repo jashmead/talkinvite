@@ -5,6 +5,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
+  # at some point, may return member_type? a comment?
   def search_fields
     []
   end

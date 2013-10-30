@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   # this is how we get signed_in? and its friends:
   include SessionsHelper
 
-  # default search fields
+  # default search fields: currently only the big three (talks, people, venues) use searches
   def search_fields 
     [ 'name', 'description' ]
   end
@@ -80,14 +80,11 @@ class ApplicationController < ActionController::Base
     end
 
     # build up the query string & the array of parameters
-    if search_fields().size == 0
-      # note the implicit limit will keep this from returning all the rows
-      @rows = klass.all
-    else
-      q_like = '%' + q + '%'
-      query_array = search_fields().map { |f| f + ' like ? ' }
-      @rows = klass.where(query_array.join(' or '), *query_array.map { |f| q_like } )
-    end
+    # if search_fields returns no fields (why is it being called?) then the where clause will be empty & get all rows
+
+    q_like = '%' + q + '%'
+    query_array = search_fields().map { |f| f + ' like ? ' }
+    @rows = klass.where(query_array.join(' or '), *query_array.map { |f| q_like } )
 
     report_q(klass, @rows, q) 
 
