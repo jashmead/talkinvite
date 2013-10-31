@@ -32,27 +32,6 @@ class Person < ActiveRecord::Base
   has_many :talks, inverse_of: :person, dependent: :destroy
   ## we are starting with the relationships that point 'to' the current person record
 
-  # relationships
-
-  ## this line *creates* the attribute/method of Person called 'relationships'
-  ## 'followers' method created implicitly by the following:
-  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
-
-  ## and this *creates* the attribute/method of Person called 'followed_people'
-  ## note that using 'has_many :followeds, through :relationships' would have worked automagically
-  has_many :followed_people, through: :relationships, source: :followed, dependent: :destroy
-
-  # holding off on 'inverse_of' here
-  has_many :reverse_relationships,
-    foreign_key: "followed_id",
-    class_name:  "Relationship",
-    dependent:   :destroy
-
-  ## 'source' is optional, since followers will automagically give follower_id as the key
-  has_many :followers, through: :reverse_relationships, source: :follower
-
-  # messages were setup in || with relationships
-  # follower -> sender, followed -> receiver
   has_many :sent_messages, inverse_of: :person, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
   has_many :receivers, inverse_of: :person, through: :sent_messages, source: :receivers, dependent: :destroy
   has_many :received_messages, inverse_of: :person, foreign_key: "receiver_id", class_name: "Message", dependent: :destroy
@@ -65,9 +44,6 @@ class Person < ActiveRecord::Base
   has_many :notifications, inverse_of: :person, dependent: :destroy
   has_many :venues, inverse_of: :person, dependent: :destroy
   has_many :socials, inverse_of: :person, dependent: :destroy
-
-  has_many :tags, :as => :tagable
-  has_many :attachments, :as => :attachable
 
   before_save { self.email = email.downcase }
 
@@ -104,29 +80,6 @@ class Person < ActiveRecord::Base
 
   def Person.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)  # 'to_s' is to make sure we can handle nil tokens
-  end
-
-  def feed
-    # could use 'talks' to get all of the associated talks!
-    # Talk.where("person_id = ?", id)
-    Talk.from_people_followed_by(self)  # which includes 'self', we always follow ourselves!
-  end
-
-  def following?(other_person)
-    ## note there is an implicit 'self.' in front of the relationships
-    relationships.find_by(followed_id: other_person.id)
-  end
-
-  def follow!(other_person)
-    ## note there is an implicit 'self.' in front of the relationships
-    ## logger.debug("ZZ: follow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
-    relationships.create!(followed_id: other_person.id)
-  end
-
-  def unfollow!(other_person)
-    ## note there is an implicit 'self.' in front of the relationships
-    ## logger.debug("ZZ: unfollow!: person = #{self.inspect}, other_person = #{other_person.inspect}")
-    relationships.find_by(followed_id: other_person.id).destroy!
   end
 
   # tried 'anonymous' in the app/helpers, got whined at...

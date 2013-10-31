@@ -16,22 +16,7 @@
       </p>
 
     </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
   </aside>
-
-  <div class="span8">
-    <%= render 'follow_form' if signed_in? %>
-    <%= render 'shared/stats' %>
-    <% if @person.talks.any? %>
-      <h3>Talks (<%= @person.talks.count %>)</h3>
-      <ol class="talks">
-        <%= render @talks %>
-      </ol>
-      <%= will_paginate @talks %>
-    <% end %>
-  </div>
 
 </div>
 

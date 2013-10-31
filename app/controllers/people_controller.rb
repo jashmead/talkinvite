@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
   ##    no this cause additional failures
   ##    need deeper understanding before we can continue
   ##    put :index back in for now
-  before_action :signed_in_person, only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_action :signed_in_person, only: [:index, :edit, :update, :destroy ]
   before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
@@ -113,23 +113,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  ## codeclimate complained about duplication in following & followers, so sweated it out to follow_common
-  def following
-    follow_common('Following', 'followed_people')
-  end
-
-  def followers
-    follow_common('Followers', 'followers')
-  end
-
-  def follow_common(title, follow_method) 
-    @title = title
-    @person = Person.find(params[:id])
-    @people = @person.send(follow_method).paginate(page: params[:page])
-
-    render :show_follow
-  end
-
   def search
   end
 
@@ -190,28 +173,14 @@ class PeopleController < ApplicationController
     def fetch_children
 =begin
       @my_talks = @person.talks # talks we've created
-      @my_venues = @person.venues  # venues we've introduced to system
 
       @comments = @person.comments
       @notifications = @person.notifications
-      @socials = @person.socials
 
       @sent_messages = @person.sent_messages
       @received_messages = @person.received_messages
 
       @talks = @person.memberships
-
-      # our twitter roots are showing here!
-      # people who follow me
-      @followers = followers
-
-      # people I follow
-      @following = following
-
-      # my tags:
-      @tags = @person.tagable
-      # my attachments:
-      @attachments = @person.attachable
 =end
     end
 

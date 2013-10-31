@@ -139,19 +139,12 @@ class TalksController < ApplicationController
 
       @comments = @talk.comments
       @notifications = @talk.notifications
-      @socials = @talk.socials
 
       @talks = @talk.guests
-
-      # my tags:
-      @tags = @talk.tagable
-      # my attachments:
-      @attachments = @talk.attachable
     end
 
     def fetch_parents
       # see if this even works!
-      @venue = @talk.venue
       @person = @talk.person
     end
 

@@ -268,38 +268,6 @@ ALTER SEQUENCE people_id_seq OWNED BY people.id;
 
 
 --
--- Name: relationships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE relationships (
-    id integer NOT NULL,
-    follower_id integer,
-    followed_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: relationships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE relationships_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: relationships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE relationships_id_seq OWNED BY relationships.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -403,13 +371,6 @@ ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationships_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
 
 
@@ -467,14 +428,6 @@ ALTER TABLE ONLY notifications
 
 ALTER TABLE ONLY people
     ADD CONSTRAINT people_pkey PRIMARY KEY (id);
-
-
---
--- Name: relationships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY relationships
-    ADD CONSTRAINT relationships_pkey PRIMARY KEY (id);
 
 
 --
@@ -603,22 +556,6 @@ ALTER TABLE ONLY notifications
 
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notification2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: relationship2from_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY relationships
-    ADD CONSTRAINT relationship2from_person_fk FOREIGN KEY (followed_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: relationship2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY relationships
-    ADD CONSTRAINT relationship2to_person_fk FOREIGN KEY (follower_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -770,3 +707,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131030134603');
 INSERT INTO schema_migrations (version) VALUES ('20131030141718');
 
 INSERT INTO schema_migrations (version) VALUES ('20131031142216');
+
+INSERT INTO schema_migrations (version) VALUES ('20131031150054');

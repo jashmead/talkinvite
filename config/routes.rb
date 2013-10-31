@@ -69,12 +69,8 @@ Talkinvite::Application.routes.draw do
   # match '/teapot', to: 'static_pages#teapot', via: 'get'
 
   resources :people do
-    ## member will give paths of the form:  /people/1/following, /people/1/followers
-    ## actions are following, followers
-    ## paths are following_people_path(id), followers_people_path(id)
-    ##  i.e. people/1/following
     member do
-      get :following, :followers, :oauth, :map
+      get :oauth, :map
     end
     collection do
       get :search, :found, :upgrade, :home
@@ -103,8 +99,6 @@ Talkinvite::Application.routes.draw do
 
   ## this map.connect thing might be useful, but apparently 'map' is just not found
   ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
-
-  resources :relationships, only: [:create, :destroy]
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

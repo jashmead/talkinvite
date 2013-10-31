@@ -39,18 +39,16 @@ module ApplicationHelper
       controller_name = controller.controller_name
     end
     theme_letter = case controller_name
-      when 'talks'
+      when 'talks', 'services'
         'b' # blue  -- likely to be graphite's water
-      when 'people', 'members', 'relationships'
+      when 'people', 'members'
         'c' # red   -- likely to be graphite's royal
-      when 'venues'
-        'd' # green -- none of the graphite themes look that much better
-      when 'tags', 'messages', 'comments', 'notifications', 'socials'
+      when 'messages', 'comments', 'notifications'
         'e' # cyan  -- likely to be graphite's mint
-      when 'credits', 'faqs', 'static_pages', 'ads'
+      when 'faqs', 'static_pages'
         'f' # orange -- likely to be yellow or ochre or graphite's sand
-      when 'attachments', 'calendars', 'maps'
-        'a' # or go for white on black? inverse of 'a'?
+      when 'maps'
+        'd' # green, in anticipation of the revival of venues, locations?
       else
         'a' # black and white
     end

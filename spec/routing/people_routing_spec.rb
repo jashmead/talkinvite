@@ -39,8 +39,6 @@ describe PeopleController do
         get("/people/home").should route_to("people#home")
       end
       it "routes to personalized #search" do
-        get("/people/1/following").should route_to("people#following", :id => "1")
-        get("/people/1/followers").should route_to("people#followers", :id => "1")
         get("/people/1/oauth").should route_to("people#oauth", :id => "1")
       end
     end

@@ -18,9 +18,6 @@ describe Talk do
   it { should respond_to(:notifications) }
   it { should respond_to(:socials) }
 
-  # it { should respond_to(:tagable) }
-  it { should respond_to(:tags) }
-
   its(:person) { should eq person }
 
   it { should be_valid }

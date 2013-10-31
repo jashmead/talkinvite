@@ -22,34 +22,16 @@ describe Person do
   it { should respond_to(:admin) }
   it { should respond_to(:sub) }
   it { should respond_to(:talks) }
-  it { should respond_to(:feed) } # ok, what is feed
-  it { should respond_to(:relationships) } 
   # it { should respond_to(:to_people) }
 
   it { should respond_to(:members) }
   it { should respond_to(:comments) }
   it { should respond_to(:notifications) }
-  it { should respond_to(:socials) }
-
-  ## why two levels?  we need relationships and we need followed_people
-  it { should respond_to(:relationships) }
-  it { should respond_to(:followed_people) }
-
-  ## we need reverse_relationships & also a step beyond that (followers)
-  it { should respond_to(:reverse_relationships) }
-  it { should respond_to(:followers) }
 
   it { should respond_to(:sent_messages) } 
   it { should respond_to(:receivers) }
   it { should respond_to(:received_messages) }
   it { should respond_to(:senders) }
-
-  # it { should respond_to(:tagable) }  # why doens't this work?
-  it { should respond_to(:tags) }
-
-  it { should respond_to(:following?) }
-  it { should respond_to(:follow!) }
-  it { should respond_to(:unfollow!) }
 
   it { should be_valid }
 
@@ -190,52 +172,6 @@ describe Person do
       end
     end
 =end
-
-    describe "status" do
-      let(:unfollowed_talk) do
-        FactoryGirl.create(:talk, person: FactoryGirl.create(:person))
-      end
-      let(:followed_person) { FactoryGirl.create(:person) }
-      
-      before do
-        @person.follow!(followed_person)
-        3.times { followed_person.talks.create!(summary: "Lorem ipsum") }
-      end
-
-      # apparently :feed as a symbol can also be invoked as a function!  weird, like watching plastic man at work
-      its(:feed) { should include(newer_talk) }
-      its(:feed) { should include(older_talk) }
-      its(:feed) { should_not include(unfollowed_talk) }
-      its(:feed) do
-        followed_person.talks.each do |talk|
-          should include(talk)
-        end
-      end
-    end
-
-  end
-
-  describe "following" do
-    let(:other_person) { FactoryGirl.create(:person) }
-    before do
-      @person.save
-      @person.follow!(other_person)
-    end
-
-    it { should be_following(other_person) }
-    its(:followed_people) { should include(other_person) }
-
-    describe "and unfollowing" do
-      before { @person.unfollow!(other_person) }
-
-      it { should_not be_following(other_person) }
-      its(:followed_people) { should_not include(other_person) }
-    end
-
-    describe "followed person" do
-      subject { other_person }
-      its(:followers) { should include(@person) }
-    end
 
   end
 
