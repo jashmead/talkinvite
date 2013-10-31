@@ -49,11 +49,6 @@ class MembersController < ApplicationController
     destroy_q(@member, members_url)
   end
 
-  def map
-    @member = Member.find(params[:id])
-    map_q(@member, params)
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member

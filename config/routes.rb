@@ -1,9 +1,14 @@
 # routes.rb functions as a de facto map of the system
 #
 # main entry points are:
-# 1. talks  -- especially searches
-# 1. people -- especially signin/signup
-# 1. venues -- less important than talks or people
+# 1. talk pages:  new, edit, my talks, search 
+# 1. maps:  add map, change, save
+# 1. search for talks
+# 1. session pages:  signin, signout
+# 1. account pages:  profile, edit settings
+# 1. member pages:  join (& regrets)
+# 1. static pages:  about, contact, privacy
+# 1. faqs (& credits & help & bug report):  list, search, show
 # 
 # could also build a 'sitemap', basically the pages that don't require you to specify a record,
 #   -- possibly with signed in & not signed in versions
@@ -35,11 +40,7 @@ Talkinvite::Application.routes.draw do
 
   resources :comments
 
-  resources :members do
-    member do
-      get :map
-    end
-  end
+  resources :members 
 
   ## put most specific routes at the top:
 
