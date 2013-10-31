@@ -29,114 +29,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ads; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE ads (
-    id integer NOT NULL,
-    name character varying(255),
-    description text,
-    internal_flag boolean DEFAULT true,
-    content text,
-    source text,
-    strategy text,
-    stats text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: ads_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE ads_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ads_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE ads_id_seq OWNED BY ads.id;
-
-
---
--- Name: attachments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE attachments (
-    id integer NOT NULL,
-    name character varying(255),
-    description text,
-    attachment_type character varying(255) DEFAULT 'image'::character varying,
-    attachable_type character varying(255),
-    attachable_id integer,
-    file_path character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE attachments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE attachments_id_seq OWNED BY attachments.id;
-
-
---
--- Name: calendars; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE calendars (
-    id integer NOT NULL,
-    name character varying(255),
-    description text,
-    chronometry text DEFAULT '{}'::text,
-    settings text DEFAULT '{}'::text,
-    history text DEFAULT '{}'::text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: calendars_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE calendars_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: calendars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE calendars_id_seq OWNED BY calendars.id;
-
-
---
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -167,38 +59,6 @@ CREATE SEQUENCE comments_id_seq
 --
 
 ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
-
-
---
--- Name: credits; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE credits (
-    id integer NOT NULL,
-    name text,
-    description text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: credits_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE credits_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: credits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE credits_id_seq OWNED BY credits.id;
 
 
 --
@@ -449,73 +309,6 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: socials; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE socials (
-    id integer NOT NULL,
-    person_id integer NOT NULL,
-    talk_id integer NOT NULL,
-    social_type character varying(255) DEFAULT 'invite'::character varying NOT NULL,
-    social_text text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: socials_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE socials_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: socials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE socials_id_seq OWNED BY socials.id;
-
-
---
--- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE tags (
-    id integer NOT NULL,
-    tag_type character varying(255),
-    tagable_type character varying(255),
-    tagable_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE tags_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
-
-
---
 -- Name: talks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -526,7 +319,6 @@ CREATE TABLE talks (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     person_id integer NOT NULL,
-    venue_id integer,
     start_dt timestamp without time zone,
     end_dt timestamp without time zone,
     posted_dt timestamp without time zone,
@@ -559,74 +351,10 @@ ALTER SEQUENCE talks_id_seq OWNED BY talks.id;
 
 
 --
--- Name: venues; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE venues (
-    id integer NOT NULL,
-    venue_type character varying(255) DEFAULT 'venue'::character varying,
-    person_id integer,
-    name character varying(255),
-    description text,
-    longitude numeric,
-    latitude numeric,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: venues_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE venues_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: venues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY ads ALTER COLUMN id SET DEFAULT nextval('ads_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY attachments ALTER COLUMN id SET DEFAULT nextval('attachments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY calendars ALTER COLUMN id SET DEFAULT nextval('calendars_id_seq'::regclass);
-
-
---
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY credits ALTER COLUMN id SET DEFAULT nextval('credits_id_seq'::regclass);
 
 
 --
@@ -682,52 +410,7 @@ ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationship
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY socials ALTER COLUMN id SET DEFAULT nextval('socials_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
-
-
---
--- Name: ads_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY ads
-    ADD CONSTRAINT ads_pkey PRIMARY KEY (id);
-
-
---
--- Name: attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY attachments
-    ADD CONSTRAINT attachments_pkey PRIMARY KEY (id);
-
-
---
--- Name: calendars_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY calendars
-    ADD CONSTRAINT calendars_pkey PRIMARY KEY (id);
 
 
 --
@@ -736,14 +419,6 @@ ALTER TABLE ONLY calendars
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
-
-
---
--- Name: credits_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY credits
-    ADD CONSTRAINT credits_pkey PRIMARY KEY (id);
 
 
 --
@@ -803,22 +478,6 @@ ALTER TABLE ONLY relationships
 
 
 --
--- Name: socials_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY socials
-    ADD CONSTRAINT socials_pkey PRIMARY KEY (id);
-
-
---
--- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY tags
-    ADD CONSTRAINT tags_pkey PRIMARY KEY (id);
-
-
---
 -- Name: talks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -827,39 +486,10 @@ ALTER TABLE ONLY talks
 
 
 --
--- Name: venues_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY venues
-    ADD CONSTRAINT venues_pkey PRIMARY KEY (id);
-
-
---
--- Name: index_attachments_on_attachable_id_and_attachable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_attachments_on_attachable_id_and_attachable_type ON attachments USING btree (attachable_id, attachable_type);
-
-
---
--- Name: index_attachments_on_file_path; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_attachments_on_file_path ON attachments USING btree (file_path);
-
-
---
 -- Name: index_comments_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_comments_on_person_id_and_talk_id ON comments USING btree (person_id, talk_id);
-
-
---
--- Name: index_credits_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_credits_on_name ON credits USING btree (name);
 
 
 --
@@ -898,38 +528,10 @@ CREATE INDEX index_people_on_remember_token ON people USING btree (remember_toke
 
 
 --
--- Name: index_socials_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_socials_on_person_id_and_talk_id ON socials USING btree (person_id, talk_id);
-
-
---
--- Name: index_tags_on_tag_type_and_tagable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_tags_on_tag_type_and_tagable_type ON tags USING btree (tag_type, tagable_type);
-
-
---
--- Name: index_tags_on_tagable_id_and_tagable_type_and_tag_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_tags_on_tagable_id_and_tagable_type_and_tag_type ON tags USING btree (tagable_id, tagable_type, tag_type);
-
-
---
 -- Name: index_talks_on_person_id_and_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_talks_on_person_id_and_created_at ON talks USING btree (person_id, created_at);
-
-
---
--- Name: index_talks_on_venue_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_talks_on_venue_id ON talks USING btree (venue_id);
 
 
 --
@@ -1020,43 +622,11 @@ ALTER TABLE ONLY relationships
 
 
 --
--- Name: social2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY socials
-    ADD CONSTRAINT social2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: social2to_talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY socials
-    ADD CONSTRAINT social2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
 -- Name: talk2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY talks
     ADD CONSTRAINT talk2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
-
-
---
--- Name: talks2venues_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY talks
-    ADD CONSTRAINT talks2venues_fk FOREIGN KEY (venue_id) REFERENCES venues(id) ON UPDATE SET NULL ON DELETE SET NULL;
-
-
---
--- Name: venue2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY venues
-    ADD CONSTRAINT venue2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -1198,3 +768,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131029163859');
 INSERT INTO schema_migrations (version) VALUES ('20131030134603');
 
 INSERT INTO schema_migrations (version) VALUES ('20131030141718');
+
+INSERT INTO schema_migrations (version) VALUES ('20131031142216');
