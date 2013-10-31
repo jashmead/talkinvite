@@ -18,11 +18,7 @@
 
 Talkinvite::Application.routes.draw do
 
-  resources :calendars
-
   resources :maps
-
-  resources :credits
 
   resources :faqs do
     member do
@@ -33,28 +29,7 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  resources :ads
-
-  resources :attachments
-
-  resources :tags
-
   resources :messages
-
-  resources :socials do
-    member do
-      get :map, :calendar
-    end
-  end
-
-  resources :venues do 
-    member do
-      get :map, :calendar
-    end
-    collection do
-      get :found, :search
-    end
-  end
 
   resources :notifications
 
@@ -62,7 +37,7 @@ Talkinvite::Application.routes.draw do
 
   resources :members do
     member do
-      get :map, :calendar
+      get :map
     end
   end
 
@@ -99,7 +74,7 @@ Talkinvite::Application.routes.draw do
     ## paths are following_people_path(id), followers_people_path(id)
     ##  i.e. people/1/following
     member do
-      get :following, :followers, :oauth, :map, :calendar
+      get :following, :followers, :oauth, :map
     end
     collection do
       get :search, :found, :upgrade, :home
@@ -118,7 +93,7 @@ Talkinvite::Application.routes.draw do
   resources :talks do
     ## collection will have lots of 'pick a talk' type pages
     member do
-      get :map, :calendar, :control
+      get :map, :control
     end
     collection do
       ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource

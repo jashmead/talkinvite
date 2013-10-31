@@ -146,11 +146,6 @@ class PeopleController < ApplicationController
     map_q(@person, params)
   end
 
-  def calendar
-    @person = Person.find(params[:id])
-    calendar_q(@person, params)
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person

@@ -152,13 +152,6 @@ class ApplicationController < ActionController::Base
   def map_q(model, params)
   end
 
-  def calendar_q(model, params)
-  end
-
-##	  def teapot
-##	    teapot_q
-##	  end
-
   protected
     ## only controllers can call a teapot
     ## teapot_q is our:  we haven't built that quite yet page

@@ -113,11 +113,6 @@ class TalksController < ApplicationController
     map_q(@talk, params)
   end
 
-  def calendar
-    @talk = Talk.find(params[:id])
-    calendar_q(@talk, params)
-  end
-
   # TBD:  all_searches
 
   private
