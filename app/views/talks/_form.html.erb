@@ -4,7 +4,7 @@
     summary -- what (+ = tags)
     when -- ( can be now or what not, popup to calendar! how does popup get information back? via JS variables or a tag,
       resolves to start & end dates )
-    where -- ( can be here or nearby, popup to map! get information back via JS variable or a tag, resolves to venue# + perhaps a string))
+    where -- can be here or nearby, popup to map! get information back via JS variable or a tag
     who -- needed?  defaults to all/any, can be a tag, or perhaps a list of members
     details -- why
   -- needs field groups
@@ -28,7 +28,7 @@
   <div class="field">
     <%= f.text_field :summary, placeholder: "about?" %>
   </div>
-  <!-- TBD: replace person & venue with the corresponding names -->
+  <!-- TBD: replace person with the corresponding name -->
   <div class="field">
     <%= f.hidden_field :person_id %>
   </div>

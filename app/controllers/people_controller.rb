@@ -175,7 +175,7 @@ class PeopleController < ApplicationController
       @my_talks = @person.talks # talks we've created
 
       @comments = @person.comments
-      @notifications = @person.notifications
+      @posts = @person.posts
 
       @sent_messages = @person.sent_messages
       @received_messages = @person.received_messages

@@ -23,20 +23,22 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :services
+
   resources :maps
 
   resources :faqs do
     member do
-      get :help
+      get :help, :credit
     end
     collection do
-      get :helps
+      get :helps, :credits
     end
   end
 
   resources :messages
 
-  resources :notifications
+  resources :posts
 
   resources :comments
 

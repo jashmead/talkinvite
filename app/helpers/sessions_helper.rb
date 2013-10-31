@@ -119,7 +119,7 @@ module SessionsHelper
         'fa-sign-in fa-rotate-270'
       when 'start'
         'fa-home'
-      when 'venue'
+      when 'location', 'venue'  # venue can show up here even without being a table!
         'fa-location-arrow'
       when 'wine'
         'fa-glass'

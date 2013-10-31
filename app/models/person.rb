@@ -5,7 +5,7 @@
 # 1.  email -- mandatory, validated 
 # 1.  description -- text, optional
 # 1.  admin -- boolean, administrator, includes talkinvite
-# 1.  sub -- boolean, subscriber, does not include anonymous
+# 1.  sub -- boolean, subscriber, does not include anonymous, not clear if we need this...
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
 # 1.  password, password_confirmation, password_digest
 # 
@@ -13,15 +13,11 @@
 # 1. Comments
 # 1. Members
 # 1. Messages -- from sender & from receiver
-# 1. Notifications
-# 1. Relationships -- foreign keys are missing
-# 1. Socials
+# 1. Posts
 # 1. Talks -- creator
-# 1. Venues -- creator
 
-# == Fields planned
+# == Fields contemplated
 # 1. active_flag -- use to deactivate when the user has killed, in case there is other data we need to keep associated with this
-# 1. group_flag -- we are really a group, and relationships are memberships in that group
 
 # Person spotted as complex by codeclimate 10/29/13, complexity 31
 class Person < ActiveRecord::Base
@@ -41,9 +37,7 @@ class Person < ActiveRecord::Base
   has_many :memberships, inverse_of: :person, through: :members, source: :talks
 
   has_many :comments, inverse_of: :person, dependent: :destroy
-  has_many :notifications, inverse_of: :person, dependent: :destroy
-  has_many :venues, inverse_of: :person, dependent: :destroy
-  has_many :socials, inverse_of: :person, dependent: :destroy
+  has_many :posts, inverse_of: :person, dependent: :destroy
 
   before_save { self.email = email.downcase }
 
@@ -96,6 +90,11 @@ class Person < ActiveRecord::Base
   end
 
   private
+
+    def add_default_service
+      # put in a single record for the 'talkinvite' service!
+      # use after save trap & also the service.rb model file
+    end
 
     def create_remember_token
       # create token

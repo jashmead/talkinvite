@@ -43,7 +43,7 @@ module ApplicationHelper
         'b' # blue  -- likely to be graphite's water
       when 'people', 'members'
         'c' # red   -- likely to be graphite's royal
-      when 'messages', 'comments', 'notifications'
+      when 'messages', 'comments', 'posts'
         'e' # cyan  -- likely to be graphite's mint
       when 'faqs', 'static_pages'
         'f' # orange -- likely to be yellow or ochre or graphite's sand

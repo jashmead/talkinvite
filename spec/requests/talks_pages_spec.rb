@@ -90,8 +90,8 @@ describe "Talk pages" do
     describe "comments" do
     end
 
-    describe "notifications" do
-      describe "posts" do 
+    describe "posts" do
+      describe "talkinvite" do 
       end
   
       describe "emails" do

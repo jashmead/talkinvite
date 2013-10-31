@@ -28,7 +28,7 @@ class Faq < ActiveRecord::Base
   validates_uniqueness_of :question
   validates :answer, presence: true
   validates :faq_type, presence: true
-  validates_inclusion_of :faq_type, :in => [ 'faq', 'help' ]
+  validates_inclusion_of :faq_type, :in => [ 'faq', 'help', 'credit' ]
 
   default_scope -> { order('faqs.question asc') }
 end

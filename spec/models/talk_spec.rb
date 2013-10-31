@@ -15,8 +15,7 @@ describe Talk do
 
   it { should respond_to(:members) }
   it { should respond_to(:comments) }
-  it { should respond_to(:notifications) }
-  it { should respond_to(:socials) }
+  it { should respond_to(:posts) }
 
   its(:person) { should eq person }
 

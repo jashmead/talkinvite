@@ -59,7 +59,19 @@ class FaqsController < ApplicationController
     # logger.debug("CC: FaqsController.help: params: #{params.inspect}")
     @helps = Faq.where("id = ? and faq_type = ?", params[:id], 'help')
     # logger.debug("CC: FaqsController.help: @help: #{@help.inspect}")
-    @help = @helps[0]
+    @help = @helps[0]   # why?
+  end
+
+  def credits
+    @credits = Faq.where("faq_type = ?", 'credit')
+  end
+
+  # where returns array! find returns record
+  def credit 
+    # logger.debug("CC: FaqsController.credit: params: #{params.inspect}")
+    @credits = Faq.where("id = ? and faq_type = ?", params[:id], 'credit')
+    # logger.debug("CC: FaqsController.credit: @credit: #{@credit.inspect}")
+    @credit = @credits[0]   # why?
   end
 
   private

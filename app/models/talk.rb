@@ -6,20 +6,18 @@
 # 1. description -- text, optional, counts as 'why'
 # 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
 # 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when'
-# 1. venue_id -- venue is a general term for location, part of 'where'; may want to get more specific; we'll see
 # 1. posted_dt -- when this is announced to the world
 # 1. active_flag -- active talks are those that have been posted & not cancelled
+# 1. where_desc
+# 1. who_type -- as any, members_only, ...
+# 1. why_type -- ?
 
 # == Children
 # 1. Members
 # 1. Comments
-# 1. Notifications
-# 1. Socials
+# 1. Posts
 
 # Planned fields
-# 1. venue_desc -- string, is 'where_type', as 'here' or tags
-# 1. who_type -- as any, members_only, ...
-# 1. why_type -- ?
 # 1. repeating talk?
 
 # TBD: validate start_dt < end_dt
@@ -45,14 +43,12 @@ class Talk < ActiveRecord::Base
   ## include Searchy
 
   belongs_to :person, inverse_of: :talks
-  belongs_to :venue, inverse_of: :talks
 
   has_many :members, inverse_of: :talk, dependent: :destroy
   has_many :guests, inverse_of: :person, through: :members, source: :talks
 
   has_many :comments, inverse_of: :talk, dependent: :destroy
-  has_many :notifications, inverse_of: :talk, dependent: :destroy
-  has_many :socials, inverse_of: :talk, dependent: :destroy
+  has_many :posts, inverse_of: :talk, dependent: :destroy
 
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('talks.updated_at desc') }

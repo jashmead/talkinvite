@@ -136,9 +136,8 @@ class TalksController < ApplicationController
     # fetch_children likely to be slow; may want to break it down, once it is working
     # TBD:  how do we save these back? there must be a tool!
     def fetch_children
-
       @comments = @talk.comments
-      @notifications = @talk.notifications
+      @posts = @talk.posts
 
       @talks = @talk.guests
     end
