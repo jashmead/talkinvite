@@ -2,11 +2,14 @@
 #
 # main entry points are:
 # 1. talk pages:  new, edit, my talks, search 
-# 1. maps:  add map, change, save
-# 1. search for talks
-# 1. session pages:  signin, signout
 # 1. account pages:  profile, edit settings
+# 1. session pages:  signin, signout
+# 1. maps:  add map, change, save
 # 1. member pages:  join (& regrets)
+# 1. posts: announce (also change, cancel, mark done)
+# 1. services: setup services for use in posts
+# 1. comments: add comments to talk
+# 1. messages:  talk to other talkers
 # 1. static pages:  about, contact, privacy
 # 1. faqs (& credits & help & bug report):  list, search, show
 # 
@@ -59,6 +62,8 @@ Talkinvite::Application.routes.draw do
   #   try this:
   match '/help/:id', to: 'faqs#help', via: 'get'
   match '/help', to: 'faqs#helps', via: 'get'
+  match '/credit/:id', to: 'faqs#credit', via: 'get'
+  match '/credits', to: 'faqs#credits', via: 'get'
 
   ## Static pages:
   get "static_pages/about"

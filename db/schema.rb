@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031172122) do
+ActiveRecord::Schema.define(version: 20131031174854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,17 +65,6 @@ ActiveRecord::Schema.define(version: 20131031172122) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "notifications", force: true do |t|
-    t.integer  "person_id"
-    t.integer  "talk_id"
-    t.string   "note_type",  default: "announce"
-    t.text     "note_text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "notifications", ["person_id", "talk_id"], name: "index_notifications_on_person_id_and_talk_id", unique: true, using: :btree
 
   create_table "people", force: true do |t|
     t.string   "name",                            null: false
