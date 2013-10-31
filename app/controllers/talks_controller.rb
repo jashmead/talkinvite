@@ -1,3 +1,7 @@
+# Talks Central!
+#
+# there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to active
+
 class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
@@ -64,7 +68,8 @@ class TalksController < ApplicationController
     if signed_in?
       redirect_to '/people/home'
     else 
-      redirect_to '/talks/recent'
+      # talks are automatically listed 'active' only, most recent first, and nearby in preference (default radius of search)
+      redirect_to '/talks'
     end
   end
 
@@ -90,22 +95,14 @@ class TalksController < ApplicationController
     @talks = Talk.talks_by_person(person)
   end
 
-  def nearby
-    @talks = Talk.nearby(page: params[:page])
-    render 'index'
-  end
-
-  def recent
-    @talks = Talk.recent(page: params[:page])
-    render 'index'
-  end
-
-  def roulette # like chatroulette :)
-    teapot_q
-  end
-
+  # search will be limited to active (with override), to nearby (including infinite distance), & in most recent first order
   def search
     ## logger.debug("CC: TalksController.search")
+  end
+
+  # active will show only the 'active' talks
+  def active
+    @talks = Talk.where('talk_status = ?', 'active')
   end
 
   def map

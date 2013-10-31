@@ -38,15 +38,11 @@ describe TalksController do
 
       get("/talks/found").should route_to("talks#found")            # found is internal path
       get("/talks/my_talks").should route_to("talks#my_talks")
-      get("/talks/nearby").should route_to("talks#nearby")
-      get("/talks/recent").should route_to("talks#recent")
-      get("/talks/roulette").should route_to("talks#roulette")
+      get("/talks/active").should route_to("talks#active")
       get("/talks/search").should route_to("talks#search")
 
       get("/my_talks").should route_to("talks#my_talks")
-      get("/nearby").should route_to("talks#nearby")
-      get("/recent").should route_to("talks#recent")
-      get("/roulette").should route_to("talks#roulette")
+      get("/active").should route_to("talks#active")
       get("/search").should route_to("talks#search")
 
     end

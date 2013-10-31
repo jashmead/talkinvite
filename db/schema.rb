@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031174854) do
+ActiveRecord::Schema.define(version: 20131031181943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,12 +108,12 @@ ActiveRecord::Schema.define(version: 20131031174854) do
     t.datetime "start_dt"
     t.datetime "end_dt"
     t.datetime "posted_dt"
-    t.boolean  "active_flag", default: true
     t.string   "where_desc",  default: "here"
     t.string   "when_desc",   default: "now"
     t.decimal  "longitude"
     t.decimal  "latitude"
     t.string   "who_desc"
+    t.string   "talk_status", default: "new"
   end
 
   add_index "talks", ["person_id", "created_at"], name: "index_talks_on_person_id_and_created_at", using: :btree

@@ -115,10 +115,7 @@ describe "Talk pages" do
     describe "my talks" do
     end
 
-    describe "nearby" do
-    end
-
-    describe "recent" do
+    describe "active" do
     end
 
   end

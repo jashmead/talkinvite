@@ -86,10 +86,8 @@ Talkinvite::Application.routes.draw do
   end
 
   match '/my_talks', to: 'talks#my_talks', via: 'get'
-  match '/nearby', to: 'talks#nearby', via: 'get'
-  match '/recent', to: 'talks#recent', via: 'get'
-  match '/roulette', to: 'talks#roulette', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
+  match '/active', to: 'talks#active', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
   resources :sessions, only: [:new, :create, :destroy]  
@@ -101,7 +99,7 @@ Talkinvite::Application.routes.draw do
     end
     collection do
       ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
-      get :found, :my_talks, :nearby, :recent, :roulette, :search
+      get :found, :my_talks, :search, :active
     end
   end
 

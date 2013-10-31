@@ -7,7 +7,7 @@
 # 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
 # 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when'
 # 1. posted_dt -- when this is announced to the world
-# 1. active_flag -- active talks are those that have been posted & not cancelled
+# 1. talk_status -- active talks are those that have been posted & not cancelled
 # 1. where_desc
 # 1. who_type -- as any, members_only, ...
 # 1. why_type -- ?
@@ -56,19 +56,7 @@ class Talk < ActiveRecord::Base
   validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
   validates :person_id, presence: true
 
-  def self.recent (location)
-    # with default scope, the most recently changed
-    logger.debug("Talk.recent")
-    Talk.limit(10)
-  end
-
-  ## check nearby in known talkinviters (who make their location known),
-  ##  nearby according to twitter,
-  ##  and so on
-  def self.nearby (location) 
-    # OK, how do we *really* do 'nearby'?
-    self.recent
-  end
+  validates_inclusion_of :talk_status, in: [ 'new', 'active', 'cancelled', 'done' ] 
 
   # is talks_by_person needed?
   def self.talks_by_person( person ) 

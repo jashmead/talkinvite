@@ -24,7 +24,7 @@ class PeopleController < ApplicationController
     if signed_in?
       [ '/people/settings', '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
     else
-      [ '/people/about', '/talks/new', '/talks/recent', '/talks/search', @@help_page ]
+      [ '/static_pages/about', '/talks/new', '/talks/active', '/talks/search', @@help_page ]
     end
   end
 
