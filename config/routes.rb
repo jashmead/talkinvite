@@ -1,4 +1,5 @@
 # routes.rb functions as a de facto map of the system
+#   -- put most specific routes at the top:
 #
 # main entry points are:
 # 1. talk pages:  new, edit, my talks, search 
@@ -17,80 +18,36 @@
 #   -- possibly with signed in & not signed in versions
 #   -- there is a great icon for this in the font-awesome set
 
-# compare sitemap, home, start
-#   -- start exists, home & sitemap don't (as yet)
-#   -- could also build page all_searches, just for talks
-#
-# TBD:  static_pages/sitemap, talks/all_searches
+# TBD:  static_pages/sitemap
 # TBD:  make sure all routes named here are accessible via the normal flow
 
 Talkinvite::Application.routes.draw do
 
-  resources :services
-
-  resources :maps
-
-  resources :faqs do
-    member do
-      get :help, :credit
-    end
-    collection do
-      get :helps, :credits
-    end
-  end
+  # Message pages (person to person, no talk)
 
   resources :messages
 
-  resources :posts
+  # Talk component pages:
 
   resources :comments
 
   resources :members 
 
-  ## put most specific routes at the top:
+  resources :posts
 
-  match '/settings', to: 'people#edit', via: 'get'
-  match '/profile', to: 'people#show', via: 'get'
-  match '/signup', to: 'people#new', via: 'get'
-  match '/upgrade', to: 'people#upgrade', via: 'get'
-  
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  resources :services
 
-  # really want to route help with no id to helps, help with id to specific help,
-  #   so /help -> /faqs/helps, /help/1 -> /faqs/1
-  #   try this:
-  match '/help/:id', to: 'faqs#help', via: 'get'
-  match '/help', to: 'faqs#helps', via: 'get'
-  match '/credit/:id', to: 'faqs#credit', via: 'get'
-  match '/credits', to: 'faqs#credits', via: 'get'
+  resources :maps
 
-  ## Static pages:
-  get "static_pages/about"
-  get "static_pages/contact"
-  get "static_pages/privacy"
-
-  match '/about', to: 'static_pages#about', via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/privacy', to: 'static_pages#privacy', via: 'get'
-
-  # match '/teapot', to: 'static_pages#teapot', via: 'get'
-
-  resources :people do
-    member do
-      get :oauth, :map
-    end
-    collection do
-      get :search, :found, :upgrade, :home
-    end
-  end
+  # Talk pages
 
   match '/my_talks', to: 'talks#my_talks', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
   match '/active', to: 'talks#active', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
-  resources :sessions, only: [:new, :create, :destroy]  
+  ## this map.connect thing might be useful, but apparently 'map' is just not found
+  ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
 
   resources :talks do
     ## collection will have lots of 'pick a talk' type pages
@@ -103,8 +60,57 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  ## this map.connect thing might be useful, but apparently 'map' is just not found
-  ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
+  # Account pages:  people & sessions
+
+  match '/settings', to: 'people#edit', via: 'get'
+  match '/profile', to: 'people#show', via: 'get'
+  match '/signup', to: 'people#new', via: 'get'
+  match '/upgrade', to: 'people#upgrade', via: 'get'
+  
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+
+  resources :sessions, only: [:new, :create, :destroy]  
+
+  resources :people do
+    member do
+      get :oauth, :map
+    end
+    collection do
+      get :search, :found, :upgrade, :home
+    end
+  end
+
+  # FAQ, Credit, & Help pages:
+
+  # really want to route help with no id to helps, help with id to specific help,
+  #   so /help -> /faqs/helps, /help/1 -> /faqs/1
+  #   try this:
+  match '/help/:id', to: 'faqs#help', via: 'get'
+  match '/help', to: 'faqs#helps', via: 'get'
+  match '/credit/:id', to: 'faqs#credit', via: 'get'
+  match '/credits', to: 'faqs#credits', via: 'get'
+
+  resources :faqs do
+    member do
+      get :help, :credit
+    end
+    collection do
+      get :helps, :credits
+    end
+  end
+
+  ## Static pages:
+
+  get "static_pages/about"
+  get "static_pages/contact"
+  get "static_pages/privacy"
+
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/privacy', to: 'static_pages#privacy', via: 'get'
+
+  # match '/teapot', to: 'static_pages#teapot', via: 'get'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
