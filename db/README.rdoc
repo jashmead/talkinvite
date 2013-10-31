@@ -6,4 +6,4 @@ Can't reset database due to dependencies among tables, but:
 1.  use "kill -15" to terminate dead but blocking procs
 1.  to get plsql language back in will need to run top of structure.sql as postgres
 1.  use rake db:seed to reseed
-1.  good way to reorder columns
+1.  good way to reorder columns -- note this can count as "dinking"!

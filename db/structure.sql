@@ -317,20 +317,25 @@ ALTER SEQUENCE services_id_seq OWNED BY services.id;
 
 CREATE TABLE talks (
     id integer NOT NULL,
+    person_id integer NOT NULL,
     summary character varying(255) NOT NULL,
     description text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    person_id integer NOT NULL,
+
+    when_desc character varying(255),
     start_dt timestamp without time zone,
     end_dt timestamp without time zone,
-    posted_dt timestamp without time zone,
-    where_desc character varying(255) DEFAULT 'here'::character varying,
-    when_desc character varying(255) DEFAULT 'now'::character varying,
+
+    where_desc character varying(255),
     longitude numeric,
     latitude numeric,
+
     who_desc character varying(255),
-    talk_status character varying(255) DEFAULT 'new'::character varying
+
+    talk_status character varying(255) DEFAULT 'new'::character varying,
+    posted_dt timestamp without time zone,
+
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -766,3 +771,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131031172122');
 INSERT INTO schema_migrations (version) VALUES ('20131031174854');
 
 INSERT INTO schema_migrations (version) VALUES ('20131031181943');
+
+INSERT INTO schema_migrations (version) VALUES ('20131031191728');
+
+INSERT INTO schema_migrations (version) VALUES ('20131031192217');
