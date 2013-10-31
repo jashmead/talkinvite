@@ -1,5 +1,7 @@
 # routes.rb functions as a de facto map of the system
 #   -- put most specific routes at the top:
+#   -- 10/31/13 -- checked that all routes have a controller 
+#     -- & that all controller actions are internal or have a route
 #
 # main entry points are:
 # 1. talk pages:  new, edit, my talks, search 
@@ -28,6 +30,7 @@ Talkinvite::Application.routes.draw do
   resources :messages
 
   # Talk component pages:
+  #   these are all nested under talks, so might want to go the nested resource route
 
   resources :comments
 
@@ -62,30 +65,31 @@ Talkinvite::Application.routes.draw do
 
   # Account pages:  people & sessions
 
-  match '/settings', to: 'people#edit', via: 'get'
-  match '/profile', to: 'people#show', via: 'get'
-  match '/signup', to: 'people#new', via: 'get'
-  match '/upgrade', to: 'people#upgrade', via: 'get'
-  
+  # sessions page:
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   resources :sessions, only: [:new, :create, :destroy]  
 
+  # people pages: 
+
+  match '/upgrade', to: 'people#upgrade', via: 'get'
+  match '/profile', to: 'people#show', via: 'get'
+  match '/settings', to: 'people#edit', via: 'get'
+  match '/signup', to: 'people#new', via: 'get'
+  
   resources :people do
     member do
       get :oauth, :map
     end
     collection do
-      get :search, :found, :upgrade, :home
+      get :home, :search, :found, :upgrade
     end
   end
 
   # FAQ, Credit, & Help pages:
 
-  # really want to route help with no id to helps, help with id to specific help,
-  #   so /help -> /faqs/helps, /help/1 -> /faqs/1
-  #   try this:
+  # help & credits are really views of faqs
   match '/help/:id', to: 'faqs#help', via: 'get'
   match '/help', to: 'faqs#helps', via: 'get'
   match '/credit/:id', to: 'faqs#credit', via: 'get'

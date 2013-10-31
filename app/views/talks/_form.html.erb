@@ -1,21 +1,7 @@
-<! TBD:  fold in new talk fields; breakout into partials; add in map & calendar pickers; check perms on delete; add members, tags; messages; relationships
-  layout:
-    Title
-    summary -- what (+ = tags)
-    when -- ( can be now or what not, popup to calendar! how does popup get information back? via JS variables or a tag,
-      resolves to start & end dates )
-    where -- can be here or nearby, popup to map! get information back via JS variable or a tag
-    who -- needed?  defaults to all/any, can be a tag, or perhaps a list of members
-    details -- why
-  -- needs field groups
-  -- needs an 'is_valid' js function policing the form to make sure that we can save, 
-    and disabling the button if we can't:
-      basically record is valid & we are signed in
--->
 <%= form_for(@talk) do |f| %>
   <% if @talk.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@talk.errors.count, "error") %> kept this talk from being saved:</h2>
+      <h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
 
       <ul>
       <% @talk.errors.full_messages.each do |msg| %>
@@ -26,29 +12,54 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :summary, placeholder: "about?" %>
-  </div>
-  <!-- TBD: replace person with the corresponding name -->
-  <div class="field">
-    <%= f.hidden_field :person_id %>
+    <%= f.label :person_id %><br>
+    <%= f.number_field :person_id %>
   </div>
   <div class="field">
-    <%= f.text_field :when_desc, placeholder: "when?" %>
+    <%= f.label :summary %><br>
+    <%= f.text_field :summary %>
   </div>
   <div class="field">
-    <%= f.text_field :where_desc, placeholder: "where?" %>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.text_field :who_desc, placeholder: "who?" %>
+    <%= f.label :when_desc %><br>
+    <%= f.text_field :when_desc %>
   </div>
   <div class="field">
-    <%= f.text_area :description, placeholder: "why?" %>
+    <%= f.label :start_dt %><br>
+    <%= f.datetime_select :start_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :end_dt %><br>
+    <%= f.datetime_select :end_dt %>
+  </div>
+  <div class="field">
+    <%= f.label :where_desc %><br>
+    <%= f.text_field :where_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :who_desc %><br>
+    <%= f.text_field :who_desc %>
+  </div>
+  <div class="field">
+    <%= f.label :talk_status %><br>
+    <%= f.text_field :talk_status %>
+  </div>
+  <div class="field">
+    <%= f.label :posted_dt %><br>
+    <%= f.datetime_select :posted_dt %>
   </div>
   <div class="actions">
-    <%= f.submit 'data-inline' => true %>
+    <%= f.submit %>
   </div>
-  <% if controller.action_name == 'edit' %>
-    <%= button_delete @talk %>
-  <% end %>
-
 <% end %>

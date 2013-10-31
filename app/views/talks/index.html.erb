@@ -1,13 +1,49 @@
-<% provide(:title, 'List of talks') %>
+<h1>Listing talks</h1>
 
-<% if @talks && @talks.size > 0 %>
-  <ul>
-    <%= render partial: 'talk_table' %>
-  </ul>
-<% else %>
-  No talks found.  Would you like to start one?
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Person</th>
+      <th>Summary</th>
+      <th>Description</th>
+      <th>When desc</th>
+      <th>Start dt</th>
+      <th>End dt</th>
+      <th>Where desc</th>
+      <th>Longitude</th>
+      <th>Latitude</th>
+      <th>Who desc</th>
+      <th>Talk status</th>
+      <th>Posted dt</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @talks.each do |talk| %>
+      <tr>
+        <td><%= talk.person_id %></td>
+        <td><%= talk.summary %></td>
+        <td><%= talk.description %></td>
+        <td><%= talk.when_desc %></td>
+        <td><%= talk.start_dt %></td>
+        <td><%= talk.end_dt %></td>
+        <td><%= talk.where_desc %></td>
+        <td><%= talk.longitude %></td>
+        <td><%= talk.latitude %></td>
+        <td><%= talk.who_desc %></td>
+        <td><%= talk.talk_status %></td>
+        <td><%= talk.posted_dt %></td>
+        <td><%= link_to 'Show', talk %></td>
+        <td><%= link_to 'Edit', edit_talk_path(talk) %></td>
+        <td><%= link_to 'Destroy', talk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <br>
 
-<%= render 'start_talk_button' %>
+<%= link_to 'New Talk', new_talk_path %>

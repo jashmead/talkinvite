@@ -1,1 +1,1 @@
-json.extract! @talk, :summary, :description, :created_at, :updated_at
+json.extract! @talk, :person_id, :summary, :description, :when_desc, :start_dt, :end_dt, :where_desc, :longitude, :latitude, :who_desc, :talk_status, :posted_dt, :created_at, :updated_at

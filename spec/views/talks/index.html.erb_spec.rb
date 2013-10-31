@@ -21,7 +21,7 @@ describe "talks/index" do
     render
     # save_and_open_page
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "li", :text => "Summary1".to_s, :count => 1
-    assert_select "li", :text => "Summary2".to_s, :count => 1
+    assert_select "tr > td", :text => "Summary1".to_s, :count => 1
+    assert_select "tr > td", :text => "Summary2".to_s, :count => 1
   end
 end

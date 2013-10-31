@@ -1,18 +1,64 @@
-<% provide(:title, 'Show Talk') %>
-<% provide(:data_role, 'dialog') %>
-<div class="talk">
-  <p id="notice"><%= notice %></p>
-  
-  <p>
-    <strong>Summary:</strong>
-    <%= @talk.summary %>
-  </p>
-  
-  <p>
-    <strong>Description:</strong>
-    <%= @talk.description %>
-  </p>
-</div>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @talk.person_id %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @talk.summary %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @talk.description %>
+</p>
+
+<p>
+  <strong>When desc:</strong>
+  <%= @talk.when_desc %>
+</p>
+
+<p>
+  <strong>Start dt:</strong>
+  <%= @talk.start_dt %>
+</p>
+
+<p>
+  <strong>End dt:</strong>
+  <%= @talk.end_dt %>
+</p>
+
+<p>
+  <strong>Where desc:</strong>
+  <%= @talk.where_desc %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @talk.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @talk.latitude %>
+</p>
+
+<p>
+  <strong>Who desc:</strong>
+  <%= @talk.who_desc %>
+</p>
+
+<p>
+  <strong>Talk status:</strong>
+  <%= @talk.talk_status %>
+</p>
+
+<p>
+  <strong>Posted dt:</strong>
+  <%= @talk.posted_dt %>
+</p>
 
 <%= link_to 'Edit', edit_talk_path(@talk) %> |
 <%= link_to 'Back', talks_path %>
