@@ -32,12 +32,33 @@ class ApplicationController < ActionController::Base
 
   # footer_fields often changed by controllers
   # only six controllers need footer_fields:  people, talks, venues, faqs, credits, & ads
-  @@help_page = { 'controller_name' => 'faqs', 'label' => 'Help', 'action' => 'helps' }
+
+  def foot_left
+    if signed_in?
+      { 'controller_name' => 'people', 'label' => 'Home', 'action' => 'home' }
+    else
+      { 'controller_name' => 'talks', 'label' => 'Active', 'action' => 'active' }
+    end
+  end
+
+  def foot_right
+    if admin?
+      { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action' => 'sitemap' }
+    else
+      { 'controller_name' => 'faqs', 'label' => 'Help', 'action' => 'helps' }
+    end
+  end
+
+  # center feet are what changes controller to controller
+  def feet_center 
+    [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
+  end
 
   def footer_fields 
-    # routes for nav buttons typically don't have parameters in them...
+    logger.debug("ApplicationController.footer_fields: admin: #{admin?}, signed_in?: #{signed_in?}")
+    # currently, routes for nav buttons don't have parameters in them...
     # note that root_path (used in logo) and start are the same thing
-    [ '/talks/start', '/static_pages/about', '/static_pages/contact', '/static_pages/privacy', @@help_page ]
+    [ foot_left ] + feet_center + [ foot_right ]
   end
 
   # pull out the query string & make sure it is not empty

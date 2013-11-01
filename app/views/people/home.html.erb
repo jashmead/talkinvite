@@ -2,20 +2,19 @@
 <% provide(:data_role, 'page') %>
 <!--
   control center for individual
+  messages will be on a button, with the count of unread shown!
+  settings should be at the top right
 -->
 
 <% if @person %>
 	<%= form_for(@person) do |f| %>
 	  <%= render 'shared/error_messages', :object => f.object %>
-	  <ul>
+	  <ul data_role="listview">
+      <li>
+        Basic fields
+      </li>
 	    <li>
 	      Talks
-	    </li>
-	    <li>
-	      Messages
-	    </li>
-	    <li>
-	      Settings
 	    </li>
 	  </ul>
 	<% end %>

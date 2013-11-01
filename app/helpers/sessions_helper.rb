@@ -153,11 +153,12 @@ module SessionsHelper
 
   ## placeholders for admin & sub booleans; seem to work fine
   def admin?
-    current_person && current_person.admin
+    logger.debug("admin?: #{signed_in?.inspect}, #{current_person.inspect}")
+    signed_in? && current_person.admin
   end
 
   def sub?
-    current_person && current_person.sub
+    signed_in? && current_person.sub
   end
 
   # useful links in alphabetical order:
@@ -166,11 +167,18 @@ module SessionsHelper
     link_to( "<i class=\"fa fa-comments-o fa-lg\"></i>&nbsp;&nbsp;Home".html_safe, root_path )
   end
 
+  # settings_link not really needed at this point:  leave code in till sure of this, however
   def settings_link
     # TBD:  test to see if we are signed in first
-    link_to( "<i class=\"fa fa-cogs fa-lg\"></i>&nbsp;&nbsp;Settings".html_safe, settings_path)
+    link_to( 
+      "#{iconify(:settings)}&nbsp;&nbsp;Settings".html_safe,
+      settings_path, 
+      method: :get,
+      'class' => 'ui-btn-right' # force button to the right side of the header, leaving space for the back button
+    )
   end
 
+  # signout link only available on settings & related pages
   def signout_link
     # TBD:  test to see if we are signed in first
     # icon is the vertical flip of the sign-in icon

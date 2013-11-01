@@ -20,11 +20,11 @@ class PeopleController < ApplicationController
   end
 
   # TBD: switch on admin flag to an admin menu?
-  def footer_fields 
+  def feet_center
     if signed_in?
-      [ '/people/settings', '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
+      [ '/talks/new', '/talks/my_talks', '/talks/search' ]
     else
-      [ '/static_pages/about', '/talks/new', '/talks/active', '/talks/search', @@help_page ]
+      [ '/talks/new', '/talks/active', '/talks/search' ]
     end
   end
 

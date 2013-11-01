@@ -7,8 +7,13 @@ class TalksController < ApplicationController
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
   before_action :correct_person, only: :destroy
 
-  def footer_fields 
-    [ '/talks/start', '/talks/new', '/talks/my_talks', '/talks/search', @@help_page ]
+  # currently talks & people share the list of nav buttons, but that is likely to change
+  def feet_center
+    if signed_in?
+      [ '/talks/new', '/talks/my_talks', '/talks/search' ]
+    else
+      [ '/talks/new', '/talks/active', '/talks/search' ]
+    end
   end
 
   # GET /talks
@@ -63,13 +68,14 @@ class TalksController < ApplicationController
 
   # start is the default starting point for the entire website
   # right now, it is a virtual page, redirecting to appropriate start points for signed_in & not signed_in users
+  # TBD:  start page is dying on load from credits
   def start
     logger.debug("CC: TalksController.start")
     if signed_in?
       redirect_to '/people/home'
     else 
       # talks are automatically listed 'active' only, most recent first, and nearby in preference (default radius of search)
-      redirect_to '/talks'
+      redirect_to '/talks/active'
     end
   end
 

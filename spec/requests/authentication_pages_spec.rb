@@ -22,13 +22,6 @@ describe "Authentication" do
 
       it { should have_title('Sign in') }
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
-
-      describe "after visiting another page" do
-        # note this was failing until we correctly instantiated the target page (by changing it to 'Help')
-        before { click_link "Help" }
-        it { should_not have_selector('div.alert.alert-error') }
-      end
-
     end
 
 ## TBD: have to fix up authentication when we get to that point
