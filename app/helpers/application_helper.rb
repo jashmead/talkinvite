@@ -41,7 +41,7 @@ module ApplicationHelper
     theme_letter = case controller_name
       when 'talks', 'services'
         'b' # blue  -- likely to be graphite's water
-      when 'people', 'members'
+      when 'people', 'members', 'sessions'
         'c' # red   -- likely to be graphite's royal
       when 'messages', 'comments', 'posts'
         'e' # cyan  -- likely to be graphite's mint

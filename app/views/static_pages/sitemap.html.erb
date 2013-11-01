@@ -1,0 +1,21 @@
+<!-- entry point for testing root/partials system -->
+<% provide(:title, 'Site Map') %>
+<% if @routes && @routes.size > 0 %>
+	<ul data-role="listview">
+	    <% @routes.each do |route| %>
+        <%
+          logger.debug("Site Map: route: #{route.inspect}")
+          path = route[0]
+          label = route[1]
+          route_controller = route[2]
+          data_theme = swatch(route_controller)
+          # logger.debug("Site Map: label: #{label}, icon: #{icon}, route_controller: #{route_controller}, action: #{action}, data_theme = #{data_theme}")
+        %>
+        <li <%=data_theme%> >
+        <%= link_to label, path %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>Apparently we have no pages at our site! Something has surely gone wrong.</p>
+<% end %>

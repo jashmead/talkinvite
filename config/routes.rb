@@ -77,6 +77,7 @@ Talkinvite::Application.routes.draw do
   match '/profile', to: 'people#show', via: 'get'
   match '/settings', to: 'people#edit', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
+  match '/home', to: 'people#home', via: 'get'
   
   resources :people do
     member do
@@ -109,10 +110,12 @@ Talkinvite::Application.routes.draw do
   get "static_pages/about"
   get "static_pages/contact"
   get "static_pages/privacy"
+  get "static_pages/sitemap"
 
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/privacy', to: 'static_pages#privacy', via: 'get'
+  match '/sitemap', to: 'static_pages#sitemap', via: 'get'
 
   # match '/teapot', to: 'static_pages#teapot', via: 'get'
 

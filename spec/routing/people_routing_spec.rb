@@ -48,6 +48,7 @@ describe PeopleController do
       get("/settings").should route_to("people#edit")
       get("/signup").should route_to("people#new")
       get("/upgrade").should route_to("people#upgrade")
+      get("/home").should route_to("people#home")
     end
 
     it "routes to #map" do
