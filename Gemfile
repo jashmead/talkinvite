@@ -37,6 +37,8 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  # webrat is at odds with much of our system
+  # gem 'webrat', '>= 0.7.2'    # added in to see if it would help resolve some problems with the sitemap testing, no impact
 end
 
 # Use Uglifier as compressor for JavaScript assets
