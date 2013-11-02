@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title><%= yield(:title) %></title>
+    <title><%= @title ||= yield(:title) %></title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <link href="/themes/Bootstrap.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet" />
@@ -13,14 +13,13 @@
   </head>
   <body>
     <%  
-        @data_role = yield :data_role
-        if @data_role.empty?
-          @data_role = 'page'
+        # set data_role for overall page:
+        if ! @data_role || @data_role == ''
+          @data_role = yield(:data_role)
+          if @data_role == '' 
+            @data_role = 'page'
+          end
         end
-        ## currently get into problems with dialogs not closing when they should, 
-        ##  -- so they pile up into a great stack
-        ##  -- turning off dialogs alltogether till this can be resolved
-        ##  -- need to make sure that closing a dialog closes it!
     %>
     <div data-role="<%=@data_role%>" id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=swatch%> >
 	    <%=render 'layouts/header'%>

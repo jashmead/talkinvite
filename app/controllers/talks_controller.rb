@@ -19,7 +19,9 @@ class TalksController < ApplicationController
   # GET /talks
   # GET /talks.json
   def index
+    @title = 'All Talks'
     @talks = Talk.all
+    logger.debug("CC: TalksController.index: @talks: #{@talks.inspect}")
   end
 
   # GET /talks/1
@@ -108,7 +110,9 @@ class TalksController < ApplicationController
 
   # active will show only the 'active' talks
   def active
+    @title = 'Current Talks'
     @talks = Talk.where('talk_status = ?', 'active')
+    render 'index'
   end
 
   def map

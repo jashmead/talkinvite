@@ -2,18 +2,18 @@
 <div data-role="header" <%=swatch%> >
   <% if signed_in? %>
     <% if @data_role == 'page' %>
-      <h1><%=yield :title%></h1>
+      <h1><%=@title%></h1>
       <%= signout_link %>
     <% else %>
-      <h1><%=yield :title%></h1>
+      <h1><%=@title%></h1>
     <% end %>
   <% else %>
     <% if @data_role == 'page' %>
       <%= signin_link %>
-      <h1><%=yield :title%></h1>
+      <h1><%=@title%></h1>
       <%= signup_link %>
     <% else %>
-      <h1><%=yield :title%></h1>
+      <h1><%=@title%></h1>
     <% end %>
   <% end %>
 </div>

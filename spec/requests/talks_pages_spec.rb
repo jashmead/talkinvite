@@ -77,9 +77,6 @@ describe "Talk pages" do
     describe "as map" do
     end
 
-    describe "as calendar" do
-    end
-
     describe "as tag cloud" do
     end
 
@@ -109,25 +106,84 @@ describe "Talk pages" do
   
   end
 
+  describe "talk index" do
+    before do
+      sign_in FactoryGirl.create(:person)
+      FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'active')
+      FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'active')
+      FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'new')
+      visit talks_path
+    end
+
+    # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
+    it { should have_title('All Talks') }
+    it { should have_content('All Talks') }
+
+    it "should list each talk" do
+      # save_and_open_page
+      Talk.all.each do |talk|
+        ## if we are using table rather than list to format people, so li->td
+        expect(page).to have_selector('tr > td', text: talk.summary)
+      end
+    end
+  end
+
+  describe "active talks" do
+    before do
+      sign_in FactoryGirl.create(:person)
+      FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'active')
+      FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'active')
+      FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'new')
+      visit active_talks_path
+    end
+
+    # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
+    it { should have_title('Current Talks') }
+    it { should have_content('Current Talks') }
+
+    it "should list active talks" do
+      save_and_open_page
+      # note there is an additional 'tr' in the header
+      expect(page).to have_selector('tr', :count => 3)
+      Talk.all.each do |talk|
+        ## if we are using table rather than list to format people, so li->td
+        if talk.talk_status == 'active'
+          expect(page).to have_selector('tr > td', text: talk.summary)
+        else
+          expect(page).not_to have_selector('tr > td', text:talk.summary)
+        end
+      end
+    end
+  end
+
   # see also 'search_pages_spec.rb'
   describe "talk searches" do
 
+    describe "all" do
+
+      # 'let' has to be outside of the before
+      let(:talk1) { FactoryGirl.create(:talk, :person, summary: 'Big Talk') }
+      let(:talk2) { FactoryGirl.create(:talk, :person) }
+      let(:talk3) { FactoryGirl.create(:talk, :person, talk_status: 'done') }
+      let(:talk4) { FactoryGirl.create(:talk, :person, talk_status: 'cancelled') }
+      let(:talk5) { FactoryGirl.create(:talk, :person, talk_status: 'new') }
+
+      before { 
+        visit talks_path
+      }
+
+      it "should list all talks" do
+        expect(page).to have_content 'Talks'
+        # expect(page).to have_content 'Big Talk'
+      end
+
+    end
+
     describe "my talks" do
+      before { visit my_talks_talks_path }
     end
 
-    describe "active" do
-    end
-
   end
 
-  # lists of talks in various formats
-  describe "talk lists" do
-
-  end
-
-  # can pick more than one talk in some cases
-  describe "talk picks" do
-
-  end
 
 end
