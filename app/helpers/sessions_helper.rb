@@ -7,7 +7,7 @@ module SessionsHelper
   ##    end
   ##  instead use:
   def current_person
-  ##  logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
+  ##  # logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
 
     encrypted_remember_token = Person.encrypt(cookies[:remember_token])
 
@@ -28,7 +28,7 @@ module SessionsHelper
   def current_person=(person)
     # stores variable for later use
     # any reason for @current_person versus self.current_person?
-  ##  logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
+  ##  # logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
     @current_person = person
   end
 
@@ -133,7 +133,7 @@ module SessionsHelper
   end
 
   def signout
-  ##  logger.debug("SessionsHelper.signout: current_person: #{self.current_person.inspect}") # DDT
+  ##  # logger.debug("SessionsHelper.signout: current_person: #{self.current_person.inspect}") # DDT
     
     ## self.current_person = Person.find_by :name, 'anonymous'    ## why does this fail when it hits PostgreSQL?
     self.current_person = Person.where("name = ?", 'anonymous').first
@@ -143,17 +143,19 @@ module SessionsHelper
 
   # the supplied default is 'person', so will turn into 'redirect_to person', which is what we had before
   def redirect_back_or(default)
+    # logger.debug("AH: SessionsHelper: redirect_or_back: default: #{default.inspect}, session[:return_to]: #{session[:return_to].inspect}")
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
   end
 
   def store_location
+    # logger.debug("AH: SessionsHelper: store_location: #{request.url.inspect}, request.get?: #{request.get?}")
     session[:return_to] = request.url if request.get?
   end
 
   ## placeholders for admin & sub booleans; seem to work fine
   def admin?
-    logger.debug("admin?: #{signed_in?.inspect}, #{current_person.inspect}")
+    # logger.debug("admin?: #{signed_in?.inspect}, #{current_person.inspect}")
     signed_in? && current_person.admin
   end
 

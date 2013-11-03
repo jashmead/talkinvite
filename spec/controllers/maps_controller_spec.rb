@@ -77,8 +77,8 @@ describe MapsController do
       end
 
       it "redirects to the created map" do
-        post :create, {:map => valid_attributes}, valid_session
-        response.should redirect_to(Map.last)
+        post :create, {:map => valid_attributes}, { :return_to => maps_path }
+        response.should redirect_to(maps_path)
       end
     end
 
@@ -119,8 +119,8 @@ describe MapsController do
 
       it "redirects to the map" do
         map = Map.create! valid_attributes
-        put :update, {:id => map.to_param, :map => valid_attributes}, valid_session
-        response.should redirect_to(map)
+        put :update, {:id => map.to_param, :map => valid_attributes}, { return_to: maps_path }
+        response.should redirect_to(maps_path)
       end
     end
 

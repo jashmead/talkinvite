@@ -1,17 +1,11 @@
+<!-- show form is meant for regular users, to give detail -- not an edit form at all! -->
+
 <% provide(:title, 'FAQ') %>
 <% provide(:data_role, 'dialog') %>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Question:</strong>
+<h2>
   <%= @faq.question %>
-</p>
-
+</h2>
 <p>
-  <strong>Answer:</strong>
   <%= @faq.answer %>
 </p>
-
-<%= link_to 'Edit', edit_faq_path(@faq) %> |
-<%= link_to 'Back', faqs_path %>

@@ -78,8 +78,8 @@ describe CommentsController do
       end
 
       it "redirects to the created comment" do
-        post :create, {:comment => valid_attributes}, valid_session
-        response.should redirect_to(Comment.last)
+        post :create, {:comment => valid_attributes}, { return_to: comments_path }
+        response.should redirect_to(comments_path)
       end
     end
 
@@ -120,8 +120,8 @@ describe CommentsController do
 
       it "redirects to the comment" do
         comment = Comment.create! valid_attributes
-        put :update, {:id => comment.to_param, :comment => valid_attributes}, valid_session
-        response.should redirect_to(comment)
+        put :update, {:id => comment.to_param, :comment => valid_attributes}, { return_to: comments_path }
+        response.should redirect_to(comments_path)
       end
     end
 

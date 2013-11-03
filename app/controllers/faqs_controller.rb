@@ -12,6 +12,7 @@ class FaqsController < ApplicationController
   # GET /faqs
   # GET /faqs.json
   def index
+    super
     @faqs = Faq.all
   end
 
@@ -22,16 +23,19 @@ class FaqsController < ApplicationController
 
   # GET /faqs/new
   def new
+    # logger.debug("CC: FaqsController.new: session: #{session.inspect}  return_to: #{session[:return_to].inspect}")
     @faq = Faq.new
   end
 
   # GET /faqs/1/edit
   def edit
+    # logger.debug("CC: FaqsController.edit: session: #{session.inspect}  return_to: #{session[:return_to].inspect}")
   end
 
   # POST /faqs
   # POST /faqs.json
   def create
+    # logger.debug("CC: FaqsController.create: session: #{session.inspect}  return_to: #{session[:return_to].inspect}")
     @faq = Faq.new(faq_params)
     create_q(@faq)
   end
@@ -39,6 +43,7 @@ class FaqsController < ApplicationController
   # PATCH/PUT /faqs/1
   # PATCH/PUT /faqs/1.json
   def update
+    # logger.debug("CC: FaqsController.update: session: #{session.inspect}  return_to: #{session[:return_to].inspect}")
     update_q(@faq, faq_params)
   end
 

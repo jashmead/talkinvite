@@ -92,6 +92,11 @@ class ApplicationController < ActionController::Base
     teapot_q
   end
 
+  # common code for index methods
+  def index
+    store_location
+  end
+
   def search
     # placeholder; individual controllers should redefine this when their searches are built
     teapot_q
@@ -139,9 +144,10 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       if model.save
         format.html { 
-          redirect_to model, 
-          notice: model.class.to_s.downcase + ' was successfully created.'
+          redirect_back_or root_url
+          flash.now[:success] = model.class.to_s.downcase + ' was successfully created.'
         }
+        # TBD: on format.json, do we want action: 'show' or do we want 'index'?  what does 'location: model' mean?
         format.json { render action: 'show', status: :created, location: model }
       else
         fail_q(model, format, 'new')
@@ -153,8 +159,10 @@ class ApplicationController < ActionController::Base
   def update_q(model, params)
     respond_to do |format|
       if model.update(params)
-        format.html { redirect_to model, 
-          notice: model.class.to_s.downcase + ' was successfully updated.' }
+        format.html { 
+          # TBD:  is root_path right as the default?
+          redirect_back_or root_url
+          flash.now[:success] = model.class.to_s.downcase + ' was successfully updated.' }
         format.json { head :no_content }
       else
         fail_q(model, format, 'edit')

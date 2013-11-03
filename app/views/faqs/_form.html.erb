@@ -20,11 +20,8 @@
   </div>
   <div class="actions">
     <%= f.submit 'data-inline' => true %>
+    <% if controller.action_name == 'edit' %>
+      <%= button_delete @faq %>
+    <% end %>
   </div>
-  <% if controller.action_name == 'edit' %>
-    <%= button_delete @faq %>
-  <% end %>
-
-
-  <p>FAQs whose question starts 'How ' will be treated as part of the TalkInvite help system</p>
 <% end %>

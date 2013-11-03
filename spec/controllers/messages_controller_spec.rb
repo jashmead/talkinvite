@@ -82,8 +82,8 @@ describe MessagesController do
       end
 
       it "redirects to the created message" do
-        post :create, {:message => valid_attributes}, valid_session
-        response.should redirect_to(Message.last)
+        post :create, {:message => valid_attributes}, { return_to: messages_path }
+        response.should redirect_to(messages_path)
       end
     end
 
@@ -124,8 +124,8 @@ describe MessagesController do
 
       it "redirects to the message" do
         message = Message.create! valid_attributes
-        put :update, {:id => message.to_param, :message => valid_attributes}, valid_session
-        response.should redirect_to(message)
+        put :update, {:id => message.to_param, :message => valid_attributes}, { return_to: messages_path }
+        response.should redirect_to(messages_path)
       end
     end
 

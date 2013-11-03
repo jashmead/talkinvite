@@ -80,7 +80,9 @@ describe FaqsController do
   end
 
   describe "POST create" do
+
     describe "with valid params" do
+
       it "creates a new Faq" do
         expect {
           post :create, {:faq => valid_attributes}, valid_session
@@ -93,10 +95,11 @@ describe FaqsController do
         assigns(:faq).should be_persisted
       end
 
-      it "redirects to the created faq" do
-        post :create, {:faq => valid_attributes}, valid_session
-        response.should redirect_to(Faq.last)
+      it "redirects to the list of faqs" do
+        post :create, {:faq => valid_attributes}, { :return_to => faqs_url }
+        response.should redirect_to(faqs_url)
       end
+
     end
 
     describe "with invalid params" do
@@ -118,6 +121,9 @@ describe FaqsController do
 
   describe "PUT update" do
     describe "with valid params" do
+      let(:person) { FactoryGirl.create(:person) }
+      before { sign_in person, no_capybara: true }
+
       it "updates the requested faq" do
         faq = Faq.create! valid_attributes
         # Assuming there are no other faqs in the database, this
@@ -134,11 +140,12 @@ describe FaqsController do
         assigns(:faq).should eq(faq)
       end
 
-      it "redirects to the faq" do
+      it "redirects to the list of faqs" do
         faq = Faq.create! valid_attributes
-        put :update, {:id => faq.to_param, :faq => valid_attributes}, valid_session
-        response.should redirect_to(faq)
+        put :update, {:id => faq.to_param, :faq => valid_attributes}, { :return_to => faqs_url }
+        response.should redirect_to(faqs_url)
       end
+
     end
 
     describe "with invalid params" do

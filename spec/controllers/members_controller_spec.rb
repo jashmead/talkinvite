@@ -79,8 +79,8 @@ describe MembersController do
       end
 
       it "redirects to the created member" do
-        post :create, {:member => valid_attributes}, valid_session
-        response.should redirect_to(Member.last)
+        post :create, {:member => valid_attributes}, { return_to: members_path }
+        response.should redirect_to(members_path)
       end
     end
 
@@ -121,8 +121,8 @@ describe MembersController do
 
       it "redirects to the member" do
         member = Member.create! valid_attributes
-        put :update, {:id => member.to_param, :member => valid_attributes}, valid_session
-        response.should redirect_to(member)
+        put :update, {:id => member.to_param, :member => valid_attributes}, { return_to: members_path }
+        response.should redirect_to(members_path)
       end
     end
 

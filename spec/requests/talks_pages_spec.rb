@@ -142,7 +142,7 @@ describe "Talk pages" do
     it { should have_content('Current Talks') }
 
     it "should list active talks" do
-      save_and_open_page
+      # save_and_open_page
       # note there is an additional 'tr' in the header
       expect(page).to have_selector('tr', :count => 3)
       Talk.all.each do |talk|
