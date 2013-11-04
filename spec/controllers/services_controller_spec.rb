@@ -77,8 +77,8 @@ describe ServicesController do
       end
 
       it "redirects to the created service" do
-        post :create, {:service => valid_attributes}, valid_session
-        response.should redirect_to(Service.last)
+        post :create, {:service => valid_attributes}, { return_to: services_url }
+        response.should redirect_to(services_url)
       end
     end
 
@@ -119,8 +119,8 @@ describe ServicesController do
 
       it "redirects to the service" do
         service = Service.create! valid_attributes
-        put :update, {:id => service.to_param, :service => valid_attributes}, valid_session
-        response.should redirect_to(service)
+        put :update, {:id => service.to_param, :service => valid_attributes}, { return_to: services_url }
+        response.should redirect_to(services_url)
       end
     end
 

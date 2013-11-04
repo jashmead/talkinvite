@@ -79,9 +79,9 @@ describe PostsController do
         assigns(:post).should be_persisted
       end
 
-      it "redirects to the created post" do
-        post :create, {:post => valid_attributes}, valid_session
-        response.should redirect_to(Post.last)
+      it "redirects to the list of posts" do
+        post :create, {:post => valid_attributes}, { return_to: posts_url }
+        response.should redirect_to(posts_url)
       end
     end
 
@@ -120,10 +120,10 @@ describe PostsController do
         assigns(:post).should eq(post)
       end
 
-      it "redirects to the post" do
+      it "redirects to the list of posts" do
         post = Post.create! valid_attributes
-        put :update, {:id => post.to_param, :post => valid_attributes}, valid_session
-        response.should redirect_to(post)
+        put :update, {:id => post.to_param, :post => valid_attributes}, { return_to: posts_url }
+        response.should redirect_to(posts_url)
       end
     end
 
