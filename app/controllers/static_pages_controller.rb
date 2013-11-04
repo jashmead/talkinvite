@@ -1,6 +1,8 @@
+# what is philosophy on 'store_location'? 
+#   -- for now, since sitemap is an entry point, include it there
+#   -- note that sitemap currently only exposed to admins
+#   -- other actions here are leaf nodes, leave alone
 class StaticPagesController < ApplicationController
-
-  #TBD:  sitemap
 
   # dummy out the search_fields; should never be searching this any way
   def search_fields
@@ -18,6 +20,7 @@ class StaticPagesController < ApplicationController
 
   def sitemap
     # we read the action off the path, and the controller too if it is not explicitly given as the third element
+    store_location
     @routes = []
     if signed_in?
       @routes += [

@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+    super
     @messages = Message.all
   end
 

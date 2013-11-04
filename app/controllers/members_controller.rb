@@ -13,6 +13,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
+    super
     @members = Member.all
   end
 

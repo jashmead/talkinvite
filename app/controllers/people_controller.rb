@@ -32,6 +32,7 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     # logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
+    super
     @people = Person.all(params[:search]).paginate(page: params[:page])
   end
 

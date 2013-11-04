@@ -4,6 +4,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
+    super
     @services = Service.all
   end
 
