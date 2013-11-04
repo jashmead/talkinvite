@@ -154,9 +154,16 @@ class PeopleController < ApplicationController
     end
 
     def correct_person
-      @person = Person.find(params[:id])
-      ## what is ontological status of 'current_person'?
-      redirect_to(root_url) unless current_person?(@person)
+      logger.debug("ZZ: PeopleController.correct_person: params: = #{params.inspect}")
+      person_id = params[:id]
+      if ! person_id || person_id == ''
+        redirect_to(talks_path)
+      else
+        @person = Person.find(person_id)
+        logger.debug("ZZ: PeopleController.correct_person: @person = #{@person.inspect}")
+        ## what is ontological status of 'current_person'?
+        redirect_to(root_url) unless current_person?(@person)
+      end
     end
 
     def admin_person

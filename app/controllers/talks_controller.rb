@@ -1,4 +1,3 @@
-# Talks Central!
 #
 # there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to active
 
@@ -136,7 +135,7 @@ class TalksController < ApplicationController
     def correct_person
       # find the talk(s) through the person
       @talk = current_person.talks.find_by(id: params[:id])
-      # logger.debug("ZZ: TalksController.correct_person: id = #{params[:id]}, @talk = #{@talk.inspect}") #DDT
+      logger.debug("ZZ: TalksController.correct_person: id = #{params[:id]}, @talk = #{@talk.inspect}") #DDT
       redirect_to root_url if @talk.nil?
     end
 

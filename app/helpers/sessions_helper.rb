@@ -28,11 +28,12 @@ module SessionsHelper
   def current_person=(person)
     # stores variable for later use
     # any reason for @current_person versus self.current_person?
-  ##  # logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
+    logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
     @current_person = person
   end
 
   def current_person?(person)
+    logger.debug("SessionsHelper.current_person?: current_person: #{@current_person.inspect}") #DDT
     person == current_person ## not @current_person?
   end
 
