@@ -43,6 +43,8 @@ class Person < ActiveRecord::Base
 
   before_create :create_remember_token
 
+  after_save :create_talkinvite_service
+
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('people.created_at desc') }
 
@@ -97,11 +99,23 @@ class Person < ActiveRecord::Base
     end
 
     def create_remember_token
-      # create token
       # have to use 'self', otherwise we would get a *local* variable called remember_token
       self.remember_token = Person.encrypt(Person.new_remember_token)
-      ##  logger.debug("Person.create_remember_token: self.remember_token: #{self.remember_token}")#DDT
-      self.remember_token #DDT
+    end
+
+    # make sure that every person has at least the 'talkinvite' service
+    def create_talkinvite_service
+
+      logger.debug("Person.create_talkinvite_service: self: #{self.inspect}")
+
+      if self.id?
+        logger.debug("Person.create_talkinvite_service: self.id: #{self.id.inspect}")
+        @services = Service.where('person_id = ? and service_type = ?', self.id, 'talkinvite')
+        if ! @services || @services.size == 0
+          Service.create!( person_id: self.id, service_type: 'talkinvite' )
+        end
+      end
+
     end
 
 end

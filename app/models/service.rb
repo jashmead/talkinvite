@@ -4,5 +4,5 @@ class Service < ActiveRecord::Base
   validates :person_id, presence: true
   validates :service_type, presence: true
 
-  validates_inclusion_of :service_type, :in => [ 'talkinvite' ]
+  validates_inclusion_of :service_type, :in => [ 'talkinvite', 'dm' ]
 end

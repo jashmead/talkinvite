@@ -56,7 +56,7 @@ class StaticPagesController < ApplicationController
     ]
 
     @routes.push( [ help_path, 'Help' , 'static_pages' ] )
-    # @routes.push([ new_help_path, 'New Help' , 'static_pages' ]) if admin?
+    @routes.push([ new_help_path, 'New Help' , 'static_pages' ]) if admin?
     @routes.push( [ credits_path, 'Credits' , 'static_pages' ] )
     @routes.push([ new_credit_path, 'New Credit' , 'static_pages' ]) if admin?
     @routes.push( [ faqs_path, 'FAQs' , 'static_pages' ] ) 
