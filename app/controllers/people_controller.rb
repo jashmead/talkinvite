@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
   ##    need deeper understanding before we can continue
   ##    put :index back in for now
   before_action :signed_in_person, only: [:index, :edit, :home, :update, :destroy ]
-  before_action :correct_person, only: [:edit, :home, :update]
+  before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
   def search_fields
@@ -61,6 +61,8 @@ class PeopleController < ApplicationController
 
   # 'home' is a control panel type thing
   def home
+    # we should already have checked that we are signed in!
+    @person = current_person
     fetch_children
   end
 
@@ -153,17 +155,11 @@ class PeopleController < ApplicationController
     )
     end
 
+    # correct_person used by edit, update; verifies that we are editing only our own stuff
+    # similar 'home' page forces change to current person
     def correct_person
-      logger.debug("ZZ: PeopleController.correct_person: params: = #{params.inspect}")
-      person_id = params[:id]
-      if ! person_id || person_id == ''
-        redirect_to(talks_path)
-      else
-        @person = Person.find(person_id)
-        logger.debug("ZZ: PeopleController.correct_person: @person = #{@person.inspect}")
-        ## what is ontological status of 'current_person'?
-        redirect_to(root_url) unless current_person?(@person)
-      end
+      @person = Person.find(params[:id])
+      redirect_to(root_url) unless current_person?(@person)
     end
 
     def admin_person
