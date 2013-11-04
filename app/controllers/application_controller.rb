@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
     if admin?
       { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action' => 'sitemap' }
     else
-      { 'controller_name' => 'faqs', 'label' => 'Help', 'action' => 'helps' }
+      { 'controller_name' => 'helps', 'label' => 'Help', 'action' => 'index' }  # TBD: switch index to search
     end
   end
 

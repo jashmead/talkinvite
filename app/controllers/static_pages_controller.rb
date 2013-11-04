@@ -26,8 +26,8 @@ class StaticPagesController < ApplicationController
       @routes += [
         [ home_path, 'Home', 'people' ],
         [ profile_path, 'Profile', 'people' ],
-        [ settings_path, 'Settings', 'people' ],
-        [ upgrade_people_path, 'Upgrade', 'people' ]
+        [ settings_path, 'Settings', 'people' ]
+        ## [ upgrade_people_path, 'Upgrade', 'people' ]
       ]
     else 
       @routes += [
@@ -49,13 +49,16 @@ class StaticPagesController < ApplicationController
         [ new_talk_path, 'New Talk', 'talks' ]
       ]
     end
+
+=begin
     # maps should only show if there is a current talk
     @routes += [
       [ maps_path, 'Maps', 'maps' ],
       [ new_map_path, 'New Map', 'maps' ],
     ]
+=end
 
-    @routes.push( [ help_path, 'Help' , 'static_pages' ] )
+    @routes.push( [ helps_path, 'Help' , 'static_pages' ] )
     @routes.push([ new_help_path, 'New Help' , 'static_pages' ]) if admin?
     @routes.push( [ credits_path, 'Credits' , 'static_pages' ] )
     @routes.push([ new_credit_path, 'New Credit' , 'static_pages' ]) if admin?
