@@ -102,8 +102,7 @@ CREATE TABLE faqs (
     question text,
     answer text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    faq_type character varying(255) DEFAULT 'faq'::character varying
+    updated_at timestamp without time zone
 );
 
 
@@ -124,6 +123,38 @@ CREATE SEQUENCE faqs_id_seq
 --
 
 ALTER SEQUENCE faqs_id_seq OWNED BY faqs.id;
+
+
+--
+-- Name: helps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE helps (
+    id integer NOT NULL,
+    name character varying(255),
+    description character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: helps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE helps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: helps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE helps_id_seq OWNED BY helps.id;
 
 
 --
@@ -410,6 +441,13 @@ ALTER TABLE ONLY faqs ALTER COLUMN id SET DEFAULT nextval('faqs_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY helps ALTER COLUMN id SET DEFAULT nextval('helps_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclass);
 
 
@@ -477,6 +515,14 @@ ALTER TABLE ONLY credits
 
 ALTER TABLE ONLY faqs
     ADD CONSTRAINT faqs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: helps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY helps
+    ADD CONSTRAINT helps_pkey PRIMARY KEY (id);
 
 
 --
@@ -819,3 +865,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131031191728');
 INSERT INTO schema_migrations (version) VALUES ('20131031192217');
 
 INSERT INTO schema_migrations (version) VALUES ('20131103003016');
+
+INSERT INTO schema_migrations (version) VALUES ('20131104151029');
+
+INSERT INTO schema_migrations (version) VALUES ('20131104153940');
