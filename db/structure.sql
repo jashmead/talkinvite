@@ -589,10 +589,24 @@ CREATE UNIQUE INDEX index_comments_on_person_id_and_talk_id ON comments USING bt
 
 
 --
+-- Name: index_credits_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_credits_on_name ON credits USING btree (name);
+
+
+--
 -- Name: index_faqs_on_question; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_faqs_on_question ON faqs USING btree (question);
+
+
+--
+-- Name: index_helps_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_helps_on_name ON helps USING btree (name);
 
 
 --
@@ -869,3 +883,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131103003016');
 INSERT INTO schema_migrations (version) VALUES ('20131104151029');
 
 INSERT INTO schema_migrations (version) VALUES ('20131104153940');
+
+INSERT INTO schema_migrations (version) VALUES ('20131104154538');
