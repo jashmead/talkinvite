@@ -1,4 +1,4 @@
-<%= form_for(@faq) do |f| %>
+<%= form_for(@faq, builder: FormBuilderJqm) do |f| %>
   <% if @faq.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@faq.errors.count, "error") %> kept this faq from being saved:</h2>
@@ -11,13 +11,10 @@
     </div>
   <% end %>
 
-  <!-- TBD:  add in popup for faq_types -->
-  <div class="field">
-    <%= f.text_area :question, placeholder: :question %>
-  </div>
-  <div class="field">
-    <%= f.text_area :answer, placeholder: :answer %>
-  </div>
+  <%= f.text_area :question, placeholder: :question %>
+
+  <%= f.text_area :answer, placeholder: :answer %>
+
   <div class="actions">
     <%= f.submit 'data-inline' => true %>
     <% if controller.action_name == 'edit' %>

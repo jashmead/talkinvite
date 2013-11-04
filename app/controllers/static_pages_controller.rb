@@ -19,7 +19,6 @@ class StaticPagesController < ApplicationController
   def sitemap
     # we read the action off the path, and the controller too if it is not explicitly given as the third element
     @routes = []
-    logger.debug("CC: StaticPagesController.sitemap: @routes: #{@routes}")
     if signed_in?
       @routes += [
         [ home_path, 'Home', 'people' ],
@@ -33,7 +32,6 @@ class StaticPagesController < ApplicationController
         [ signup_path, 'Create New Account (Sign Up)', 'people' ]
       ]
     end
-    logger.debug("CC: StaticPagesController.sitemap: @routes: #{@routes}")
     @routes += [
       [ search_people_path, 'Search for People', 'people' ],
       [ people_path, 'List of People', 'people' ],
@@ -48,26 +46,25 @@ class StaticPagesController < ApplicationController
         [ new_talk_path, 'New Talk', 'talks' ]
       ]
     end
-    logger.debug("CC: StaticPagesController.sitemap: @routes: #{@routes}")
+    # maps should only show if there is a current talk
     @routes += [
       [ maps_path, 'Maps', 'maps' ],
       [ new_map_path, 'New Map', 'maps' ],
-
-      [ help_path, 'Help' , 'static_pages' ],
-      [ credits_path, 'Credits' , 'static_pages' ],
-      [ faqs_path, 'FAQs' , 'static_pages' ]
     ]
-    if admin?
-      @routes.push([ new_faq_path, 'New FAQ' , 'static_pages' ])
-    end
-    logger.debug("CC: StaticPagesController.sitemap: @routes: #{@routes}")
+
+    @routes.push( [ help_path, 'Help' , 'static_pages' ] )
+    # @routes.push([ new_help_path, 'New Help' , 'static_pages' ]) if admin?
+    @routes.push( [ credits_path, 'Credits' , 'static_pages' ] )
+    @routes.push([ new_credit_path, 'New Credit' , 'static_pages' ]) if admin?
+    @routes.push( [ faqs_path, 'FAQs' , 'static_pages' ] ) 
+    @routes.push([ new_faq_path, 'New FAQ' , 'static_pages' ]) if admin?
+
     @routes += [
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
       [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
-    logger.debug("CC: StaticPagesController.sitemap: @routes: #{@routes}")
   end
 
 end

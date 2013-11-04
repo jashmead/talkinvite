@@ -11,8 +11,8 @@ class PeopleController < ApplicationController
   ##    no this cause additional failures
   ##    need deeper understanding before we can continue
   ##    put :index back in for now
-  before_action :signed_in_person, only: [:index, :edit, :update, :destroy ]
-  before_action :correct_person, only: [:edit, :update]
+  before_action :signed_in_person, only: [:index, :edit, :home, :update, :destroy ]
+  before_action :correct_person, only: [:edit, :home, :update]
   before_action :admin_person, only: [:destroy]
 
   def search_fields

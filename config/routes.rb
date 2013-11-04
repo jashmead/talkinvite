@@ -25,6 +25,8 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :credits
+
   # Message pages (person to person, no talk)
 
   resources :messages
@@ -88,20 +90,17 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  # FAQ, Credit, & Help pages:
+  # FAQs:
 
-  # help & credits are really views of faqs
   match '/help/:id', to: 'faqs#help', via: 'get'
   match '/help', to: 'faqs#helps', via: 'get'
-  match '/credit/:id', to: 'faqs#credit', via: 'get'
-  match '/credits', to: 'faqs#credits', via: 'get'
 
   resources :faqs do
     member do
-      get :help, :credit
+      get :help
     end
     collection do
-      get :helps, :credits
+      get :helps
     end
   end
 

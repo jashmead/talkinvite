@@ -40,14 +40,5 @@ describe FaqsController do
       get("/help/1").should route_to("faqs#help", :id => "1")
     end
 
-    # tests for credit are correct
-    it "routes to #credits" do
-      get("/credits").should route_to("faqs#credits")
-    end
-
-    it "routes to #credit" do
-      get("/credit/1").should route_to("faqs#credit", :id => "1")
-    end
-
   end
 end
