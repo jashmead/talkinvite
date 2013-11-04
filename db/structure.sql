@@ -302,9 +302,9 @@ ALTER SEQUENCE people_id_seq OWNED BY people.id;
 
 CREATE TABLE posts (
     id integer NOT NULL,
-    person_id integer,
-    talk_id integer,
-    service_type character varying(255) DEFAULT 'talkinvite'::character varying,
+    person_id integer NOT NULL,
+    talk_id integer NOT NULL,
+    service_type character varying(255) DEFAULT 'talkinvite'::character varying NOT NULL,
     service_notes text,
     post_type character varying(255) DEFAULT 'announce'::character varying NOT NULL,
     post_message text,
@@ -885,3 +885,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131104151029');
 INSERT INTO schema_migrations (version) VALUES ('20131104153940');
 
 INSERT INTO schema_migrations (version) VALUES ('20131104154538');
+
+INSERT INTO schema_migrations (version) VALUES ('20131104162828');
