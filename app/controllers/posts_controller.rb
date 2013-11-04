@@ -54,12 +54,9 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   # DELETE /posts/1.json
+  # TBD:  is 'destroy_q' the right way to destory a post?
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@post, posts_url)
   end
 
   private

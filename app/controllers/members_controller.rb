@@ -46,6 +46,7 @@ class MembersController < ApplicationController
 
   # DELETE /members/1
   # DELETE /members/1.json
+  # destroy for members like destroy for services, may need to be specialized
   def destroy
     destroy_q(@member, members_url)
   end

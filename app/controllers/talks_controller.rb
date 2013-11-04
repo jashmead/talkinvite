@@ -1,4 +1,3 @@
-#
 # there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to active
 
 class TalksController < ApplicationController
@@ -63,9 +62,9 @@ class TalksController < ApplicationController
 
   # DELETE /talks/1
   # DELETE /talks/1.json
+  # talk destroy has to be a bit specialized
   def destroy
-    @talk.destroy
-    redirect_to root_url
+    destroy_q(@talk, root_url)
   end
 
   # start is the default starting point for the entire website

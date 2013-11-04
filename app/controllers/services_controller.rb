@@ -54,12 +54,11 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1
   # DELETE /services/1.json
+  # since services, like members, never really seen on their own, this may not be correct
   def destroy
-    @service.destroy
-    respond_to do |format|
-      format.html { redirect_to services_url }
-      format.json { head :no_content }
-    end
+    # TBD: should not let a person destroy the 'talkinvite' service
+    #destroy_q(@service, services_url) if @service.service_type != 'talkinvite'
+    destroy_q(@service, services_url)
   end
 
   private

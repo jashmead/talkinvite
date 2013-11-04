@@ -38,11 +38,7 @@ class CreditsController < ApplicationController
   # DELETE /credits/1
   # DELETE /credits/1.json
   def destroy
-    @credit.destroy
-    respond_to do |format|
-      format.html { redirect_to credits_url }
-      format.json { head :no_content }
-    end
+    destroy_q(@credit, credits_url)
   end
 
   private

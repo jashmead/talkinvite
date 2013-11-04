@@ -107,6 +107,7 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   # commenting out the respond_to bit causes tests to fail with a missing template error.  Hunh?
+  # TBD: destroy is not using 'destroy_q' at this point.  Should it? probably not
   def destroy
     ## note use of method chaining to combine find & destroy into one line
     Person.find(params[:id]).destroy

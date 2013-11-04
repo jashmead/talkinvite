@@ -34,6 +34,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # specialized destroy, since destroy does not mean here what it normally does
   def destroy
     ## logger.debug("SessionsController.destroy: self: #{self.inspect}") #DDT
     signout

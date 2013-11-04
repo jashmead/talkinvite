@@ -24,7 +24,6 @@ describe FaqsController do
   # Faq. As you add validations to Faq, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) { { "question" => "MyQuestion", "answer" => "MyAnswer" } }
-  let(:help_attributes) { { "question" => "How do I X?", "answer" => "You do Y", "faq_type" => "help" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -39,28 +38,11 @@ describe FaqsController do
     end
   end
 
-  describe "GET helps" do
-    it "assigns all helps as @helps" do
-      help = Faq.create! help_attributes
-      get :helps, {}, valid_session
-      assigns(:helps).should eq([help])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested faq as @faq" do
       faq = Faq.create! valid_attributes
       get :show, {:id => faq.to_param}, valid_session
       assigns(:faq).should eq(faq)
-    end
-  end
-
-  # this test stopped working with faq_type turned on 
-  describe "GET one help" do
-    it "assigns the requested help as @help" do
-      help = Faq.create! help_attributes
-      get :help, {:id => help.to_param}, valid_session
-      assigns(:help).should eq(help)
     end
   end
 

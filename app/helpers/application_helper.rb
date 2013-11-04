@@ -45,10 +45,12 @@ module ApplicationHelper
         'c' # red   -- likely to be graphite's royal
       when 'messages', 'comments', 'posts'
         'e' # cyan  -- likely to be graphite's mint
-      when 'faqs', 'static_pages'
+      when 'faqs', 'static_pages', 'credits'
         'f' # orange -- likely to be yellow or ochre or graphite's sand
       when 'maps'
         'd' # green, in anticipation of the revival of venues, locations?
+      when 'helps'
+        'a' # black & white
       else
         'a' # black and white
     end

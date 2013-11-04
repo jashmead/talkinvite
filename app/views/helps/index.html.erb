@@ -1,0 +1,20 @@
+<!-- entry point for testing root/partials system -->
+<!-- may want to add in a search field and/or a pagination system -->
+<% provide(:title, 'Helps') %>
+<% if @helps && @helps.size > 0 %>
+	<ul "data-role"="listview">
+	    <% @helps.each do |help| %>
+        <li>
+        <%= link_to help.name, admin? ? edit_help_path(help) : help_path(help) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+  <p>Curious paucity of help pages!  Are we so unhelpful?</p>
+<% end %>
+
+<% if admin? %>
+  <hr>
+  <%= button_inline 'New Help', new_help_path %>
+<% end %>
+

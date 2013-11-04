@@ -1,7 +1,6 @@
 ## only admins can add faqs?
-## they double as help text; we'll see how that evolves
 class FaqsController < ApplicationController
-  before_action :set_faq, only: [:show, :edit, :update, :destroy, :help]
+  before_action :set_faq, only: [:show, :edit, :update, :destroy ]
 
   def search_fields
     [ 'question', 'answer' ]
@@ -50,33 +49,7 @@ class FaqsController < ApplicationController
   # DELETE /faqs/1
   # DELETE /faqs/1.json
   def destroy
-    @faq.destroy
     destroy_q(@faq, faqs_url)
-  end
-
-  def helps
-    # could use a 'help_flag' to be a bit less ad-hoc
-    @helps = Faq.where("faq_type = ?", 'help')
-  end
-
-  # where returns array! find returns record
-  def help 
-    # logger.debug("CC: FaqsController.help: params: #{params.inspect}")
-    @helps = Faq.where("id = ? and faq_type = ?", params[:id], 'help')
-    # logger.debug("CC: FaqsController.help: @help: #{@help.inspect}")
-    @help = @helps[0]   # why?
-  end
-
-  def credits
-    @credits = Faq.where("faq_type = ?", 'credit')
-  end
-
-  # where returns array! find returns record
-  def credit 
-    # logger.debug("CC: FaqsController.credit: params: #{params.inspect}")
-    @credits = Faq.where("id = ? and faq_type = ?", params[:id], 'credit')
-    # logger.debug("CC: FaqsController.credit: @credit: #{@credit.inspect}")
-    @credit = @credits[0]   # why?
   end
 
   private

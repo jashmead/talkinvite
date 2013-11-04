@@ -25,6 +25,8 @@
 
 Talkinvite::Application.routes.draw do
 
+  resources :helps
+
   resources :credits
 
   # Message pages (person to person, no talk)
@@ -92,17 +94,7 @@ Talkinvite::Application.routes.draw do
 
   # FAQs:
 
-  match '/help/:id', to: 'faqs#help', via: 'get'
-  match '/help', to: 'faqs#helps', via: 'get'
-
-  resources :faqs do
-    member do
-      get :help
-    end
-    collection do
-      get :helps
-    end
-  end
+  resources :faqs 
 
   ## Static pages:
 
