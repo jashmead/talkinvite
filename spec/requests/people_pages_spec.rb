@@ -17,8 +17,8 @@ describe "People pages" do
     end
 
     # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
-    it { should have_title('All people') }
-    it { should have_content('All people') }
+    it { should have_title('List of People') }
+    it { should have_content('List of People') }
 
     it "should list each person" do
       Person.all.each do |person|

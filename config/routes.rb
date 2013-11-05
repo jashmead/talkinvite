@@ -79,7 +79,7 @@ Talkinvite::Application.routes.draw do
 
   match '/upgrade', to: 'people#upgrade', via: 'get'
   match '/profile', to: 'people#show', via: 'get'
-  match '/settings', to: 'people#edit', via: 'get'
+  match '/settings', to: 'people#settings', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
   match '/home', to: 'people#home', via: 'get'
   

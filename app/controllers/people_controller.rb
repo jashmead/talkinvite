@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
   ##    no this cause additional failures
   ##    need deeper understanding before we can continue
   ##    put :index back in for now
-  before_action :signed_in_person, only: [:index, :edit, :home, :update, :destroy ]
+  before_action :signed_in_person, only: [:index, :edit, :settings, :home, :update, :destroy ]
   before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
@@ -31,8 +31,9 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    # logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
     super
+    logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
+    @title = "List of People"
     @people = Person.all(params[:search]).paginate(page: params[:page])
   end
 
@@ -55,9 +56,15 @@ class PeopleController < ApplicationController
   end
 
   # GET /people/1/edit
-  # 'settings' is a synonym for 'edit'
+  # 'settings' is almost a synonym for 'edit', except that the person is forced to be the signed in person
   def edit
+    logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     # don't need to look for person here; done in 'before_action' callback by set_person
+  end
+
+  def settings
+    logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
+    @person = current_person
   end
 
   # 'home' is a control panel type thing

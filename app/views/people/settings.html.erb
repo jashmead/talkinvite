@@ -1,0 +1,10 @@
+<% provide(:title, "Settings") %>
+<!--
+  allow for upload of profile picture as well as obvious changes
+-->
+
+<%= form_for(@person) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <%= render 'fields', f: f %>
+  <%= f.submit "Save changes", 'data-inline' => true %>
+<% end %>

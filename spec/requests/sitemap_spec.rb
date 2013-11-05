@@ -1,4 +1,6 @@
 # annoyingly enough, we can't use the 'expect(page)' construct except inside an 'it' block
+# this page ensures that all key pages are visited at least once, which is good
+
 require 'spec_helper'
 
 # spec to check out sitemap
@@ -7,6 +9,19 @@ describe "sitemap" do
 
   subject { page }
 
+  let(:simple_list) { [ "About", "Current Talks", "Contact", "Credits", 
+      "Frequently Asked Questions", "Help", 
+      "List of Talks", 
+      "Search for Talks"
+    ] }
+
+  let(:signedin_list) { [ "Home", "My Talks", 
+    "Settings", 
+    "List of People", 
+    "Search for People" ] }
+
+  let(:admin_list) { [ "New Credit", "New FAQ", "New Help" ] }
+
   before { visit sitemap_path }
 
   it "should list itself" do
@@ -14,22 +29,32 @@ describe "sitemap" do
     expect(page).to have_title("Site Map")
   end
 
-  describe "help" do
+  describe "check common pages" do
 
-    before { click_link "Help" }
+    # apparently the "each" construct only works inside an 'it' block
+    it "should list each page" do
 
-    it "should have a help page" do
-      expect(page).to have_title("Helps")
+      simple_list.each do |title|
+
+        # can't use a 2nd 'it' inside here, but do not need to?
+        visit sitemap_path
+        click_link title
+        expect(page).to have_title(title)
+
+      end
+
     end
 
-  end
+    it "should not list each signed in pages when we are not signed in" do
 
-  describe "contact" do
+      visit sitemap_path
 
-    before { click_link "Contact" }
+      signedin_list.each do |title|
 
-    it "should have a help page" do
-      expect(page).to have_title("Contact")
+        expect(page).not_to have_title(title)
+
+      end
+
     end
 
   end
@@ -40,24 +65,36 @@ describe "sitemap" do
       sign_in FactoryGirl.create(:person)
     end
 
-    describe "home" do
-      before do
-        click_link "Home"
-      end
+    it "should each be listed" do
 
-      it "should go to the home page" do
-        expect(page).to have_title("Home")
+      signedin_list.each do |title|
+
+        # can't use a 2nd 'it' inside here, but do not need to?
+        visit sitemap_path
+        click_link title
+        save_and_open_page
+        expect(page).to have_title(title)
+
       end
 
     end
 
-    describe "my talks" do
-      before do
-        click_link "My Talks"
-      end
+  end
 
-      it "should go to my talks" do
-        expect(page).to have_title("My Talks")
+  describe "admin pages" do
+
+    before do
+      sign_in FactoryGirl.create(:admin)
+    end
+
+    it "list admin pages" do
+
+      admin_list.each do |title|
+
+        visit sitemap_path
+        click_link title
+        expect(page).to have_title(title)
+
       end
 
     end

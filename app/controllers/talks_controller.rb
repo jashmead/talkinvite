@@ -18,7 +18,6 @@ class TalksController < ApplicationController
   # GET /talks.json
   def index
     super
-    @title = 'All Talks'
     @talks = Talk.all
     logger.debug("CC: TalksController.index: @talks: #{@talks.inspect}")
   end

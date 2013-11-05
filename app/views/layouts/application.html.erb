@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title><%= @title ||= yield(:title) %></title>
+    <title><%=@title ||= yield(:title)%></title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <link href="/themes/Bootstrap.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet" />

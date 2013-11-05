@@ -22,10 +22,10 @@ class StaticPagesController < ApplicationController
     # we read the action off the path, and the controller too if it is not explicitly given as the third element
     store_location
     @routes = []
+    # Profile is a dialog
     if signed_in?
       @routes += [
         [ home_path, 'Home', 'people' ],
-        [ profile_path, 'Profile', 'people' ],
         [ settings_path, 'Settings', 'people' ]
         ## [ upgrade_people_path, 'Upgrade', 'people' ]
       ]
@@ -40,13 +40,12 @@ class StaticPagesController < ApplicationController
       [ people_path, 'List of People', 'people' ],
 
       [ search_talks_path, 'Search for Talks', 'talks' ],
-      [ active_talks_path, 'Active Talks', 'talks' ],
-      [ talks_path, 'List Talks', 'talks' ],
+      [ active_talks_path, 'Current Talks', 'talks' ],
+      [ talks_path, 'List of Talks', 'talks' ],
     ]
     if signed_in?
       @routes += [
-        [ my_talks_path, 'My Talks', 'talks' ],
-        [ new_talk_path, 'New Talk', 'talks' ]
+        [ my_talks_path, 'My Talks', 'talks' ]
       ]
     end
 
@@ -62,7 +61,7 @@ class StaticPagesController < ApplicationController
     @routes.push([ new_help_path, 'New Help' , 'static_pages' ]) if admin?
     @routes.push( [ credits_path, 'Credits' , 'static_pages' ] )
     @routes.push([ new_credit_path, 'New Credit' , 'static_pages' ]) if admin?
-    @routes.push( [ faqs_path, 'FAQs' , 'static_pages' ] ) 
+    @routes.push( [ faqs_path, 'Frequently Asked Questions' , 'static_pages' ] ) 
     @routes.push([ new_faq_path, 'New FAQ' , 'static_pages' ]) if admin?
 
     @routes += [
