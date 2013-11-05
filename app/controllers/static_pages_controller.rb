@@ -26,7 +26,6 @@ class StaticPagesController < ApplicationController
       @routes = [
         [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ]
-        ## [ upgrade_people_path, 'Upgrade', 'people' ]
       ]
     else 
       @routes = [

@@ -107,10 +107,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  def upgrade
-    # return to upgrade on failure, to settings on success
-  end
-
   # DELETE /people/1
   # DELETE /people/1.json
   # commenting out the respond_to bit causes tests to fail with a missing template error.  Hunh?

@@ -77,7 +77,6 @@ Talkinvite::Application.routes.draw do
 
   # people pages: 
 
-  match '/upgrade', to: 'people#upgrade', via: 'get'
   match '/profile', to: 'people#show', via: 'get'
   match '/settings', to: 'people#settings', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
@@ -88,7 +87,7 @@ Talkinvite::Application.routes.draw do
       get :oauth, :map
     end
     collection do
-      get :home, :search, :found, :upgrade
+      get :home, :search, :found
     end
   end
 

@@ -1,4 +1,5 @@
 <% if error_messages.errors.any? %>
+  <% logger.debug("shared/_error_messages: error_messages: #{error_messages.inspect}") %>
   <div id="error_explanation">
     <div class="alert alert-error">
       <h2><%= pluralize(error_messages.errors.count, "error") %> kept this <%error_messages.class.to_s.downcase%> from being saved/deleted.</h2>

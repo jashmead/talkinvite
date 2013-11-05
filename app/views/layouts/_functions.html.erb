@@ -12,9 +12,4 @@
     options = args.extract_options!
     form_for(model, *(args << options.merge(builder: FormBuilderJqm)), &block)
   end 
-
-  def button_delete(model) 
-    link_to 'Delete', model, method: :delete, data: { confirm: 'Are you sure?' },
-      'data-inline' => true, 'data-role' => 'button'
-  end
 %>

@@ -1,13 +1,13 @@
 <%= form_for_jqm(@faq) do |f| %>
 
-  <%= render partial: 'shared/error_messages', object: @faq %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <%= f.text_area :question, placeholder: :question, value: '?' %>
+  <%= f.text_area :question, placeholder: :question, required: true %>
 
-  <%= f.text_area :answer, placeholder: :answer, value: '!' %>
+  <%= f.text_area :answer, placeholder: :answer, required: true %>
 
   <%= f.submit %>
 
-  <%= render partial: 'shared/delete_button', object: @faq %>
+  <%= render partial: 'shared/delete_button', :object => f.object %>
 
 <% end %>

@@ -1,20 +1,14 @@
-<%= form_for(@credit, :builder => FormBuilderJqm) do |f| %>
-  <% if @credit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@credit.errors.count, "error") %> prohibited this credit from being saved:</h2>
+<%= form_for_jqm(@credit) do |f| %>
 
-      <ul>
-      <% @credit.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <%= f.text_field :name %>
-  <%= f.text_area :description %>
+  <%= f.text_field :name, placeholder: :name, required: true %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.text_area :description, placeholder: :description, required: true %>
+
+  <%= f.submit %>
+
+  <%= render partial: 'shared/delete_button', :object => f.object %>
+
 <% end %>
+
