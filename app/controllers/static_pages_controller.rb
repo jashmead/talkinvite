@@ -21,39 +21,35 @@ class StaticPagesController < ApplicationController
   def sitemap
     # we read the action off the path, and the controller too if it is not explicitly given as the third element
     store_location
-    @routes = []
-    # Profile is a dialog
+
     if signed_in?
-      @routes += [
+      @routes = [
         [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ]
         ## [ upgrade_people_path, 'Upgrade', 'people' ]
       ]
     else 
-      @routes += [
+      @routes = [
         [ signin_path, 'Sign In', 'sessions' ],
-        [ signup_path, 'Create New Account (Sign Up)', 'people' ]
+        [ signup_path, 'New Account', 'people' ]
       ]
     end
+
     @routes += [
       [ search_people_path, 'Search for People', 'people' ],
       [ people_path, 'List of People', 'people' ],
-
       [ search_talks_path, 'Search for Talks', 'talks' ],
       [ active_talks_path, 'Current Talks', 'talks' ],
-      [ talks_path, 'List of Talks', 'talks' ],
+      [ talks_path, 'List of Talks', 'talks' ]
     ]
-    if signed_in?
-      @routes += [
-        [ my_talks_path, 'My Talks', 'talks' ]
-      ]
-    end
+
+    @routes.push( [ my_talks_path, 'My Talks', 'talks' ] ) if signed_in?
 
 =begin
     # maps should only show if there is a current talk
     @routes += [
       [ maps_path, 'Maps', 'maps' ],
-      [ new_map_path, 'New Map', 'maps' ],
+      [ new_map_path, 'New Map', 'maps' ]
     ]
 =end
 
@@ -61,18 +57,17 @@ class StaticPagesController < ApplicationController
     @routes.push([ new_credit_path, 'New Credit' , 'credits' ]) if admin?
     @routes.push( [ faqs_path, 'Frequently Asked Questions' , 'faqs' ] ) 
     @routes.push([ new_faq_path, 'New FAQ' , 'faqs' ]) if admin?
+    @routes.push( [ helps_path, 'Help' , 'helps' ] )
+    @routes.push([ new_help_path, 'New Help' , 'helps' ]) if admin?
 
     @routes += [
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
-      [ static_pages_privacy_path, 'Privacy' , 'static_pages' ]
+      [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
+      [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
 
-    @routes.push( [ helps_path, 'Help' , 'helps' ] )
-    @routes.push([ new_help_path, 'New Help' , 'helps' ]) if admin?
-
-    @routes.push( [ static_pages_sitemap_path, 'Site Map', 'static_pages' ] )
 
   end
 
-end
+  end

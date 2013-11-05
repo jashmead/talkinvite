@@ -29,6 +29,11 @@ describe "sitemap" do
     "Settings"
   ] }
 
+  let(:not_signedin_list) { [
+    "Sign In",
+    "New Account"
+  ] }
+
   let(:admin_list) { [ "New Credit", "New FAQ", "New Help" ] }
 
   before { visit sitemap_path }
@@ -83,6 +88,18 @@ describe "sitemap" do
         click_link title
         # save_and_open_page
         expect(page).to have_title(title)
+
+      end
+
+    end
+
+    it "but should not list not signed in pages when we are signed in" do
+
+      visit sitemap_path
+
+      not_signedin_list.each do |title|
+
+        expect(page).not_to have_title(title)
 
       end
 
