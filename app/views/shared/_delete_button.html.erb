@@ -1,0 +1,6 @@
+<%=
+  logger.debug("shared/_delete_button: delete_button: #{delete_button.inspect}")
+  if controller.action_name == 'edit' 
+    button_delete delete_button
+  end
+%>

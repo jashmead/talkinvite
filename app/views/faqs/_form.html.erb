@@ -15,11 +15,8 @@
 
   <%= f.text_area :answer, placeholder: :answer %>
 
-  <div class="actions">
-    <%= f.submit 'data-inline' => true %>
-    <% if controller.action_name == 'edit' %>
-      <%= button_delete @faq %>
-    <% end %>
-  </div>
+  <%= f.submit %>
+
+  <%= render partial: 'shared/delete_button', object: @faq %>
 
 <% end %>
