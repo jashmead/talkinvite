@@ -7,8 +7,8 @@ describe "Authentication" do
   describe "signin page" do
     before { visit signin_path }
 
-    it { should have_content('Sign in') }
-    it { should have_title('Sign in') }
+    it { should have_content('Sign In') }
+    it { should have_title('Sign In') }
 
   end
 
@@ -18,9 +18,9 @@ describe "Authentication" do
     # test with no information:
     describe "with invalid information" do
       # click the sign in button (without having entered anything)
-      before { click_button "Sign in" }
+      before { click_button "Sign In" }
 
-      it { should have_title('Sign in') }
+      it { should have_title('Sign In') }
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
     end
 
@@ -35,12 +35,12 @@ describe "Authentication" do
       it { should have_link('People',     href: people_path) }
       it { should have_link('Profile',     href: person_path(person)) }
       it { should have_link('Settings',     href: edit_person_path(person)) }
-      it { should have_link('Sign out',    href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Sign Out',    href: signout_path) }
+      it { should_not have_link('Sign In', href: signin_path) }
 
       describe "followed by signout" do
-        before { click_link 'Sign out' }
-        it { should have_link 'Sign in' }
+        before { click_link 'Sign Out' }
+        it { should have_link 'Sign In' }
       end
 
     end
@@ -54,7 +54,7 @@ describe "Authentication" do
 
       let(:person) { FactoryGirl.create(:person) }
 
-      it { should_not have_link('Sign out') }
+      it { should_not have_link('Sign Out') }
       it { should_not have_link('Profile') }
       it { should_not have_link('Settings') }
 
@@ -86,7 +86,7 @@ describe "Authentication" do
           visit edit_person_path(person)
           fill_in "session_email",    with: person.email
           fill_in "session_password", with: person.password
-          click_button "Sign in"
+          click_button "Sign In"
         end
 
         describe "after signing in" do
@@ -104,7 +104,7 @@ describe "Authentication" do
               visit signin_path
               fill_in "session_email",    with: person.email
               fill_in "session_password", with: person.password
-              click_button "Sign in"
+              click_button "Sign In"
             end
 
             it "should render the default (profile) page" do
@@ -120,7 +120,7 @@ describe "Authentication" do
 
         describe "visiting the edit page" do
           before { visit edit_person_path(person) }
-          it { should have_title('Sign in') }
+          it { should have_title('Sign In') }
         end
 
         describe "submitting to the update action" do
@@ -132,7 +132,7 @@ describe "Authentication" do
 
         describe "visiting the people index" do
           before { visit people_path }
-          it { should have_title('Sign in') }
+          it { should have_title('Sign In') }
         end
 
       end # non-signed in, people controller

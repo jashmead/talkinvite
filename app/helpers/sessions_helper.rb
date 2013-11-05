@@ -204,7 +204,7 @@ module SessionsHelper
   def signup_link
     # TBD:  test to see if we are signed in first
     ## logger.debug("SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}")
-    link_to( "#{iconify(:signup)}</i>&nbsp;&nbsp;Sign Up".html_safe, signup_path, 'data-rel' => 'dialog')
+    link_to( "#{iconify(:signup)}</i>&nbsp;&nbsp;New Account".html_safe, signup_path, 'data-rel' => 'dialog')
   end
 
 end

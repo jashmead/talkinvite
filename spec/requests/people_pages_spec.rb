@@ -111,8 +111,8 @@ describe "People pages" do
 
     let(:submit) { "Create my account" }
 
-    it { should have_content('Sign up') }
-    it { should have_title('Sign up') }
+    it { should have_content('New Account') }
+    it { should have_title('New Account') }
 
     describe "with invalid information" do
       it "should not create a person" do

@@ -24,6 +24,6 @@ def sign_in(person, options={})
     visit signin_path
     fill_in "session_email",    with: person.email
     fill_in "session_password", with: person.password
-    click_button "Sign in"
+    click_button "Sign In"
   end
 end
