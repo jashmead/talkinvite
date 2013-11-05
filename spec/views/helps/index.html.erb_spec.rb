@@ -4,11 +4,11 @@ describe "helps/index" do
   before(:each) do
     assign(:helps, [
       stub_model(Help,
-        :question => "MyName1",
+        :name => "MyName1",
         :description => "MyDescription1"
       ),
       stub_model(Help,
-        :question => "MyName2",
+        :name => "MyName2",
         :description => "MyDescription2"
       )
     ])
