@@ -10,6 +10,7 @@
 #   -- logger
 #   -- functions defined in application_helpers.rb (ApplicationHelpers)
 #   -- link_to
+
 # WORKAROUND:  partials appear to have access to all functions available to forms
 #   -- therefore put code needing the application helpers, the controller object, & so on 
 #   -- in 'app/views/shared'

@@ -22,7 +22,6 @@ class FaqsController < ApplicationController
 
   # GET /faqs/new
   def new
-    # logger.debug("CC: FaqsController.new: session: #{session.inspect}  return_to: #{session[:return_to].inspect}")
     @faq = Faq.new
   end
 
