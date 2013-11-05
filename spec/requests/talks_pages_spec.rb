@@ -119,8 +119,8 @@ describe "Talk pages" do
     end
 
     # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
-    it { should have_title('All Talks') }
-    it { should have_content('All Talks') }
+    it { should have_title('List of Talks') }
+    it { should have_content('List of Talks') }
 
     it "should list each talk" do
       # save_and_open_page

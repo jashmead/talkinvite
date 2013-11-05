@@ -57,12 +57,10 @@ class StaticPagesController < ApplicationController
     ]
 =end
 
-    @routes.push( [ helps_path, 'Help' , 'static_pages' ] )
-    @routes.push([ new_help_path, 'New Help' , 'static_pages' ]) if admin?
-    @routes.push( [ credits_path, 'Credits' , 'static_pages' ] )
-    @routes.push([ new_credit_path, 'New Credit' , 'static_pages' ]) if admin?
-    @routes.push( [ faqs_path, 'Frequently Asked Questions' , 'static_pages' ] ) 
-    @routes.push([ new_faq_path, 'New FAQ' , 'static_pages' ]) if admin?
+    @routes.push( [ credits_path, 'Credits' , 'credits' ] )
+    @routes.push([ new_credit_path, 'New Credit' , 'credits' ]) if admin?
+    @routes.push( [ faqs_path, 'Frequently Asked Questions' , 'faqs' ] ) 
+    @routes.push([ new_faq_path, 'New FAQ' , 'faqs' ]) if admin?
 
     @routes += [
       [ static_pages_about_path, 'About' , 'static_pages' ],
@@ -70,6 +68,10 @@ class StaticPagesController < ApplicationController
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
       [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
+
+    @routes.push( [ helps_path, 'Help' , 'helps' ] )
+    @routes.push([ new_help_path, 'New Help' , 'helps' ]) if admin?
+
   end
 
 end
