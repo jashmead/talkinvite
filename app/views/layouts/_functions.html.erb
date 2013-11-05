@@ -1,0 +1,11 @@
+<%
+  # function library for layouts:
+  def test_flow(tag)
+    logger.debug("layouts/_functions:test_flow: #{tag}")
+  end
+
+  def form_for_jqm(model, *args, &block)
+    options = args.extract_options!
+    form_for(model, *(args << options.merge(builder: FormBuilderJqm)), &block)
+  end 
+%>

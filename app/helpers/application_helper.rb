@@ -29,8 +29,8 @@ module ApplicationHelper
       'data-inline' => true, 'data-role' => 'button' 
   end
 
-  def button_inline (tag, new_path) 
-    link_to tag, new_path, 'data-role' => 'button', 'data-inline' => true
+  def button_inline (tag, link_path) 
+    link_to tag, link_path, 'data-role' => 'button', 'data-inline' => true
   end
 
   # returns a correct data-theme="l" where l can be from a to f, depending on the context

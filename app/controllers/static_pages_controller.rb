@@ -65,12 +65,13 @@ class StaticPagesController < ApplicationController
     @routes += [
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
-      [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
-      [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
+      [ static_pages_privacy_path, 'Privacy' , 'static_pages' ]
     ]
 
     @routes.push( [ helps_path, 'Help' , 'helps' ] )
     @routes.push([ new_help_path, 'New Help' , 'helps' ]) if admin?
+
+    @routes.push( [ static_pages_sitemap_path, 'Site Map', 'static_pages' ] )
 
   end
 

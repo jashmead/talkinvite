@@ -1,4 +1,5 @@
 <%= form_for(@help, :builder => FormBuilderJqm) do |f| %>
+
   <% if @help.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@help.errors.count, "error") %> prohibited this help from being saved:</h2>

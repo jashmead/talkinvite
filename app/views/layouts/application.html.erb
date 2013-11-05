@@ -9,10 +9,12 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
+    <% render 'layouts/functions' %>
     <meta name="viewport" content="user-scalable=no,width=device-width" />
   </head>
   <body>
     <%  
+        test_flow("application")
         # set data_role for overall page:
         if ! @data_role || @data_role == ''
           @data_role = yield(:data_role)

@@ -1,8 +1,8 @@
-<%= form_for(@faq, builder: FormBuilderJqm) do |f| %>
+<%= form_for_jqm(@faq) do |f| %>
+
   <% if @faq.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@faq.errors.count, "error") %> kept this faq from being saved:</h2>
-
       <ul>
       <% @faq.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -21,4 +21,5 @@
       <%= button_delete @faq %>
     <% end %>
   </div>
+
 <% end %>

@@ -1,3 +1,6 @@
+# FormBuildJqm automagically picked if we specify the "builder" option to form_for:
+#   <%= form_for(@faq, builder: FormBuilderJqm) do |f| %> 
+
 class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
   def pre_bit(attribute)

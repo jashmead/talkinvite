@@ -1,4 +1,6 @@
 ## what context are these functions running in?
+## SessionsHelper is pulled in via an explicit "include SessionsHelper" in application_controller.rb
+## TBD: sessions_helper.rb  is a logical place to put a session[:current_talk] updater & friends, setting up specs accordingly
 module SessionsHelper
 
   ##  this won't work! apparently doesn't carry thru to next page
@@ -6,6 +8,7 @@ module SessionsHelper
   ##      @current_person
   ##    end
   ##  instead use:
+
   def current_person
     logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
 

@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # this is how we get signed_in? and its friends:
+  # include only applies to modules; looks at app/helpers for files (& other places?)
   include SessionsHelper
 
   # default search fields: currently only the big three (talks, people, venues) use searches
