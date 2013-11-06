@@ -273,7 +273,8 @@ CREATE TABLE people (
     updated_at timestamp without time zone,
     remember_token character varying(255),
     admin boolean DEFAULT false NOT NULL,
-    sub boolean DEFAULT false NOT NULL
+    sub boolean DEFAULT false NOT NULL,
+    description text
 );
 
 
@@ -887,3 +888,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131104153940');
 INSERT INTO schema_migrations (version) VALUES ('20131104154538');
 
 INSERT INTO schema_migrations (version) VALUES ('20131104162828');
+
+INSERT INTO schema_migrations (version) VALUES ('20131106161020');
