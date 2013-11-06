@@ -5,9 +5,9 @@ describe "maps/show" do
     @map = assign(:map, stub_model(Map,
       :name => "Name",
       :description => "Description",
-      :geometry => "MyText",
-      :settings => "MyText",
-      :history => "MyText"
+      :geometry => "MyGeometry",
+      :settings => "MySettings",
+      :history => "MyHistory"
     ))
   end
 
@@ -16,8 +16,8 @@ describe "maps/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Name/)
     rendered.should match(/Description/)
-    rendered.should match(/MyText/)
-    rendered.should match(/MyText/)
-    rendered.should match(/MyText/)
+    rendered.should match(/MyGeometry/)
+    rendered.should match(/MySettings/)
+    rendered.should match(/MyHistory/)
   end
 end

@@ -1,36 +1,13 @@
-<%= form_for(@map) do |f| %>
-  <% if @map.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@map.errors.count, "error") %> kept this map from being saved:</h2>
+<%= form_for_jqm(@map) do |f| %>
 
-      <ul>
-      <% @map.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <div class="field">
-    <%= f.text_field :name, placeholder: :name%>
-  </div>
-  <div class="field">
-    <%= f.text_field :description, placeholder: :description %>
-  </div>
-  <div class="field">
-    <%= f.text_area :geometry, placeholder: :geometry %>
-  </div>
-  <div class="field">
-    <%= f.text_area :settings, placeholder: :settings %>
-  </div>
-  <div class="field">
-    <%= f.text_area :history, placeholder: :history, readonly: true %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'data-inline' => true %>
-  </div>
-  <% if controller.action_name == 'edit' %>
-    <%= button_delete @map %>
-  <% end %>
+  <%= f.text_field :name, placeholder: :name%>
+  <%= f.text_field :description, placeholder: :description %>
+  <%= f.text_area :geometry, placeholder: :geometry %>
+  <%= f.text_area :settings, placeholder: :settings %>
+  <%= f.text_area :history, placeholder: :history, readonly: true %>
+
+  <%= f.label :description %><br>
 
 <% end %>

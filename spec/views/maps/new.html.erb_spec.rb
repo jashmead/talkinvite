@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "maps/new" do
   before(:each) do
     assign(:map, stub_model(Map,
-      :name => "MyString",
-      :description => "MyString",
-      :geometry => "MyText",
-      :settings => "MyText",
-      :history => "MyText"
+      :name => "MyName",
+      :description => "MyDescription",
+      :geometry => "MyGeometry",
+      :settings => "MySettings",
+      :history => "MyHistory"
     ).as_new_record)
   end
 

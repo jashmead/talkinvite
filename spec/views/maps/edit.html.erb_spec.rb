@@ -4,10 +4,7 @@ describe "maps/edit" do
   before(:each) do
     @map = assign(:map, stub_model(Map,
       :name => "MyString",
-      :description => "MyString",
-      :geometry => "MyText",
-      :settings => "MyText",
-      :history => "MyText"
+      :description => "MyString"
     ))
   end
 
@@ -18,9 +15,6 @@ describe "maps/edit" do
     assert_select "form[action=?][method=?]", map_path(@map), "post" do
       assert_select "input#map_name[name=?]", "map[name]"
       assert_select "input#map_description[name=?]", "map[description]"
-      assert_select "textarea#map_geometry[name=?]", "map[geometry]"
-      assert_select "textarea#map_settings[name=?]", "map[settings]"
-      assert_select "textarea#map_history[name=?]", "map[history]"
     end
   end
 end

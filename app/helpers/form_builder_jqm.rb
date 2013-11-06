@@ -25,7 +25,59 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     '</div>'
   end
 
+  def check_box(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def color_local_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def date_local_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def datetime_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def datetime_local_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def file_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def hidden_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
   def number_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def password_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def phone_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def radio_button(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def range_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def esarch_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def telephone_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end
 
@@ -34,6 +86,18 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
   end
 
   def text_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def time_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def url_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def week_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end
 
