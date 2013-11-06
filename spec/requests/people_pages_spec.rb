@@ -109,7 +109,7 @@ describe "People pages" do
 
     before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+    let(:submit) { "Create Person" }
 
     it { should have_content('New Account') }
     it { should have_title('New Account') }
@@ -157,13 +157,6 @@ describe "People pages" do
     describe "page" do
       ## TBD:  not getting a match on profile: it { should have_content("Update your profile") }
       it { should have_title("Edit profile") }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
-    end
-
-    describe "with invalid information" do
-      before { click_button "Save changes" }
-
-      it { should have_content('error') }
     end
 
     describe "with valid information" do
@@ -175,7 +168,7 @@ describe "People pages" do
         fill_in "person_email",            with: new_email
         fill_in "person_password",         with: person.password
         fill_in "person_password_confirmation", with: person.password
-        click_button "Save changes"
+        click_button "Update Person"
       end
 
       it { should have_title(new_name) }

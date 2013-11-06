@@ -1,9 +1,4 @@
 <% provide(:title, 'New Account') %>
 <% provide(:data_role, 'dialog') %>
-<% provide(:data_role, 'dialog') %>
 
-<%= form_for(@person) do |f| %>
-  <%= render 'shared/error_messages', :object => f.object %>
-  <%= render 'fields', f: f %>
-  <%= f.submit "Create my account", 'data-inline' => true %>
-<% end %>
+<%= render 'form' %>

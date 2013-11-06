@@ -4,7 +4,7 @@ describe "services/new" do
   before(:each) do
     assign(:service, stub_model(Service,
       :person_id => 1,
-      :service_type => "MyString",
+      :service_type => "talkinvite",
       :service_notes => "MyText"
     ).as_new_record)
   end

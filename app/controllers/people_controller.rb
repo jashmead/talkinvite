@@ -179,9 +179,9 @@ class PeopleController < ApplicationController
     # TBD:  how do we save these back? there must be a tool!
     # TBD:  how do we fetch all the records for an association?
     def fetch_children
-=begin
-      @my_talks = @person.talks # talks we've created
+      @talks = Talk.where('person_id = ?', @person.id)
 
+=begin
       @comments = @person.comments
       @posts = @person.posts
 

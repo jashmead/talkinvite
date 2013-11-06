@@ -1,27 +1,15 @@
-<%= form_for(@person) do |f| %>
-  <% if @person.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@person.errors.count, "error") %> kept this person from being saved:</h2>
+<%= form_for_jqm(@person) do |f| %>
 
-      <ul>
-      <% @person.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <div class="field">
-    <%= f.text_field :name, placeholder: :name %>
-  </div>
-  <div class="field">
-    <%= f.text_field :email, placeholder: :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'data-inline' => true %>
-  </div>
-  <% if controller.action_name == 'edit' %>
-    <%= button_delete @person %>
-  <% end %>
+  <%= f.text_field :name, placeholder: :name, required: true %>
+  <%= f.email_field :email, placeholder: :email, required: true %>
+  <%= f.password_field :password, placeholder: :password, required: true %>
+  <%= f.password_field :password_confirmation, placeholder: :password_confirmation, required: true %>
+
+  <%= f.submit %>
+  <%= render partial: 'shared/delete_button', :object => f.object %>
 
 <% end %>
+
+

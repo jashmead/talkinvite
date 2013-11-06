@@ -1,26 +1,10 @@
 <% provide(:title, "Home") %>
 <% provide(:data_role, 'page') %>
-<!--
-  control center for individual
-  messages will be on a button, with the count of unread shown!
-  settings should be at the top right
--->
 
-<% if @person %>
-	<%= form_for(@person) do |f| %>
-	  <%= render 'shared/error_messages', :object => f.object %>
-	  <ul data_role="listview">
-      <li>
-        Basic fields
-      </li>
-	    <li>
-	      Talks
-	    </li>
-	  </ul>
-	<% end %>
-  <%= gravatar_for @person %>
-  <a href="http://gravatar.com/emails" target="_blank" >change</a>
-<% else %>
-  <% logger.debug("people/home:  no person selected!") %>
-  <p>I'm terribly sorry, do I know you?</p>
-<% end %>
+<%= render 'form' %>
+
+<ul data_role="listview">
+  <li>
+    Talks
+  </li>
+</ul>
