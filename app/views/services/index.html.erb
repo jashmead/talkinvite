@@ -5,27 +5,22 @@
     <tr>
       <th>Person</th>
       <th>Service type</th>
-      <th>Service notes</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @services.each do |service| %>
       <tr>
-        <td><%= service.person_id %></td>
-        <td><%= service.service_type %></td>
-        <td><%= service.service_notes %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to service.person_id, person_path(service.person_id) %>
+        </td>
+        <td>
+          <%= link_to service.service_type, service_path(service) %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Service', new_service_path %>
+<hr>
+<%= button_inline 'New Service', new_service_path %>

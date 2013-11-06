@@ -25,11 +25,15 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     '</div>'
   end
 
-  def text_field(attribute, options = {} )
+  def number_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end
 
   def text_area(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def text_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end
 
