@@ -1,24 +1,6 @@
-<% provide(:title, @person.name) %>
-<% provide(:data_role, 'dialog') %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <!-- h1 is not leaving the name very big:  because we are in an 'aside', which is only 1.4em for font -->
-        <%= gravatar_for @person %>
-        <%= @person.name %>
-      </h1>
-      <!-- what is notice? setup notice function in ruby-on-rails to fill in -->
-      <p id="notice"><%= notice %></p>
+<%# heading is the name, email does not belong on this page! So for right now, just the description %>
+<% provide(:title, 'Profile') %>
 
-      <p>
-        <strong>Email:</strong>
-        <%= @person.email %>
-      </p>
-
-    </section>
-  </aside>
-
-</div>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<p>
+  <%= @person.description %>
+</p>

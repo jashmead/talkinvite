@@ -43,7 +43,8 @@ describe PeopleController do
     end
 
     it "routes to account management tool" do
-      get("/profile").should route_to("people#show")
+      get("/profile").should route_to("people#profile")
+      get("/people/profile").should route_to("people#profile")
       get("/settings").should route_to("people#settings")
       get("/signup").should route_to("people#new")
       get("/home").should route_to("people#home")

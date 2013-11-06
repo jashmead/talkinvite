@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
   ##    no this cause additional failures
   ##    need deeper understanding before we can continue
   ##    put :index back in for now
-  before_action :signed_in_person, only: [:index, :edit, :settings, :home, :update, :destroy ]
+  before_action :signed_in_person, only: [:index, :edit, :settings, :home, :update, :destroy, :profile ]
   before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
@@ -42,11 +42,19 @@ class PeopleController < ApplicationController
   def show
     # don't need to look for person here; done in 'before_action' callback by set_person
     if ! @person 
-      ## logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
+      logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end
-    @talks = @person.talks.paginate(page: params[:page])
+    @title = @person.name
+    logger.debug("CC: PeopleController.show: @title: #{@title}, @person: #{@person.inspect}")
+    # @talks = @person.talks.paginate(page: params[:page])
+  end
+
+  def profile
+    @person = current_person
+    @title = @person.name
+    render 'show' and return
   end
 
   # GET /people/new

@@ -3,27 +3,17 @@ require 'spec_helper'
 describe "people/show" do
   before(:each) do
     @person = assign(:person, stub_model(Person,
-      :name => "Name",
-      :email => "Email"
+      :name => "MyName",
+      :email => "name@email.com",
+      :description => "Description"
     ))
   end
 
   it "renders attributes in <p>" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/Name/)
-    rendered.should match(/Email/)
+    # rendered.should match(/MyName/)           # name not appearing?
+    rendered.should match(/Description/)
+    rendered.should_not match(/name@email.com/)  # email should not show on profile page!
   end
 end
-
-## TBD: looking for person #0 is triggering an error before we can trap it
-=begin
-describe "people/noshow" do
-  before do
-    visit '/people/0'
-  end
-
-  it "on noshow, switch to 'search' page" do
-  end
-end
-=end

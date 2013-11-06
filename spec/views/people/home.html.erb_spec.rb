@@ -4,7 +4,8 @@ describe "people/home" do
   before(:each) do
     @person = assign(:person, stub_model(Person,
       :name => "MyString",
-      :email => "MyString"
+      :email => "MyString",
+      :description => "About Me"
     ))
   end
 
@@ -16,6 +17,7 @@ describe "people/home" do
     assert_select "form[action=?][method=?]", person_path(@person), "post" do
       assert_select "input#person_name[name=?]", "person[name]"
       assert_select "input#person_email[name=?]", "person[email]"
+      assert_select "input#person_description[name=?]", "person[description]"
     end
 =end
   end

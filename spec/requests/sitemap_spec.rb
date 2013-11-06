@@ -21,6 +21,7 @@ describe "sitemap" do
     "Search for Talks"
   ] }
 
+  # profile not tested here because the title is supposed to be person.name, need to work up more code to check
   let(:signedin_list) { [ 
     "Home", 
     "List of People", 
@@ -62,11 +63,8 @@ describe "sitemap" do
     it "but should not list signed in pages when we are not signed in" do
 
       visit sitemap_path
-
       signedin_list.each do |title|
-
         expect(page).not_to have_title(title)
-
       end
 
     end
@@ -76,7 +74,17 @@ describe "sitemap" do
   describe "signed in pages" do
 
     before do
-      sign_in FactoryGirl.create(:person)
+      sign_in FactoryGirl.create(:person, :name => 'J. Random User', :email => 'jru@talkinvite.com', :description => "What? Me Worry?")
+    end
+
+    it "check profile page" do
+      visit sitemap_path
+      click_link 'Profile'
+      # save_and_open_page
+      expect(page).to have_title('J. Random User')
+      expect(page).to have_selector('h1', 'J. Random User')
+      expect(page).to have_text(/Worry/)
+      expect(page).not_to have_text(/jru@talkinvite.com/)
     end
 
     it "when signed in, should also see pages that are only for those signed in" do

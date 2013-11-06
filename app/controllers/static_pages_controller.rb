@@ -22,14 +22,16 @@ class StaticPagesController < ApplicationController
   #   could clean up by making routes an array with flags
   #   perhaps best as a set of hashes, with one hash being the 'signed_in', 'not_signed_in', 'common', 'admin' flag
   #   clean enuf for now, in any case
+  # note:  spec for sitemap serves as a quick test of all the entry-point forms, at least they turn on
   def sitemap
     # we read the action off the path, and the controller too if it is not explicitly given as the third element
     store_location
 
     if signed_in?
       @routes = [
-        [ home_path, 'Home', 'people', 'signed_in' ],
+        [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ],
+        [ profile_path, 'Profile', 'people' ],
         [ my_talks_path, 'My Talks', 'talks' ]
       ]
     else 

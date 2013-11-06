@@ -12,10 +12,10 @@ describe "people/search" do
   subject { page }        ## what, exactly, does this do? sets 'it', I think
 
   let(:page_title) { 'Search for People' }
-  let(:heading) { 'Search for People' } # can't use :heading here?
+  let(:heading) { 'Search for People' } 
 
   describe "renders the search person form" do
-    before { visit "/people/search" }  ## replace with a 'path', once we have worked that out
+    before { visit search_people_path }
 
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }

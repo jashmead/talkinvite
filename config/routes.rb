@@ -77,7 +77,7 @@ Talkinvite::Application.routes.draw do
 
   # people pages: 
 
-  match '/profile', to: 'people#show', via: 'get'
+  match '/profile', to: 'people#profile', via: 'get'
   match '/settings', to: 'people#settings', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
   match '/home', to: 'people#home', via: 'get'
@@ -87,7 +87,7 @@ Talkinvite::Application.routes.draw do
       get :oauth, :map
     end
     collection do
-      get :home, :search, :found
+      get :home, :search, :found, :profile
     end
   end
 

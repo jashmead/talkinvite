@@ -32,9 +32,6 @@ describe "People pages" do
       ## the 'delete_all' is a bit troubling...
       after(:all) { Person.delete_all }
 
-      # it { should have_selector('div', class: 'pagination') }
-      it { should have_selector('div.pagination') }
-  
       it "should list each person" do
         Person.paginate(page: 1).each do |person|
           expect(page).to have_selector('li', text: person.name)
@@ -148,6 +145,7 @@ describe "People pages" do
   end
 
   describe "edit" do
+
     let(:person) { FactoryGirl.create(:person) }
     before do
       sign_in person
@@ -163,6 +161,7 @@ describe "People pages" do
 
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
+
       before do
         fill_in "person_name",             with: new_name
         fill_in "person_email",            with: new_email
@@ -171,14 +170,18 @@ describe "People pages" do
         click_button "Update Person"
       end
 
+      # it { save_and_open_page } # have to surround the save_and_open_page in an it{}
+
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
-      ## TBD: it { should have_link('Sign out', href: signout_path) }
+
+      it { should have_link('Sign Out', href: signout_path) }
 
       # direct tests of database saves:
       # specify versus 'it'?
       specify { expect(person.reload.name).to  eq new_name }
       specify { expect(person.reload.email).to eq new_email }
+
     end
 
     describe "forbidden attributes" do

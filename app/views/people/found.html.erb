@@ -10,8 +10,6 @@
     ## logger.debug("VV: @people.methods: #{methods}")
 %>
 
-<!-- will 'render @people' work? -->
-<%= will_paginate %>
 <ul class="people">
   <% @people.each do |person| %>
   <li>
@@ -20,7 +18,6 @@
   </li>
   <% end %>
 </ul>
-<%= will_paginate %>
 
 <br>
 
