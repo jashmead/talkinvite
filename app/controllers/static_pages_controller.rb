@@ -18,14 +18,19 @@ class StaticPagesController < ApplicationController
   def privacy
   end
 
+  # codeclimate finds 'sitemap' too complex; 
+  #   could clean up by making routes an array with flags
+  #   perhaps best as a set of hashes, with one hash being the 'signed_in', 'not_signed_in', 'common', 'admin' flag
+  #   clean enuf for now, in any case
   def sitemap
     # we read the action off the path, and the controller too if it is not explicitly given as the third element
     store_location
 
     if signed_in?
       @routes = [
-        [ home_path, 'Home', 'people' ],
-        [ settings_path, 'Settings', 'people' ]
+        [ home_path, 'Home', 'people', 'signed_in' ],
+        [ settings_path, 'Settings', 'people' ],
+        [ my_talks_path, 'My Talks', 'talks' ]
       ]
     else 
       @routes = [
@@ -34,39 +39,39 @@ class StaticPagesController < ApplicationController
       ]
     end
 
-    @routes += [
-      [ search_people_path, 'Search for People', 'people' ],
-      [ people_path, 'List of People', 'people' ],
-      [ search_talks_path, 'Search for Talks', 'talks' ],
-      [ active_talks_path, 'Current Talks', 'talks' ],
-      [ talks_path, 'List of Talks', 'talks' ]
-    ]
-
-    @routes.push( [ my_talks_path, 'My Talks', 'talks' ] ) if signed_in?
+    if admin?
+      @routes += [
+        [ new_credit_path, 'New Credit' , 'credits' ],
+        [ new_faq_path, 'New FAQ' , 'faqs' ],
+        [ new_help_path, 'New Help' , 'helps' ]
+      ]
+    end
 
 =begin
-    # maps should only show if there is a current talk
-    @routes += [
-      [ maps_path, 'Maps', 'maps' ],
-      [ new_map_path, 'New Map', 'maps' ]
-    ]
+    if current_talk 
+      # and fold in comments & so on as well
+      @routes += [
+        [ maps_path, 'Maps', 'maps' ],
+        [ new_map_path, 'New Map', 'maps' ]
+      ]
+    end
 =end
 
-    @routes.push( [ credits_path, 'Credits' , 'credits' ] )
-    @routes.push([ new_credit_path, 'New Credit' , 'credits' ]) if admin?
-    @routes.push( [ faqs_path, 'Frequently Asked Questions' , 'faqs' ] ) 
-    @routes.push([ new_faq_path, 'New FAQ' , 'faqs' ]) if admin?
-    @routes.push( [ helps_path, 'Help' , 'helps' ] )
-    @routes.push([ new_help_path, 'New Help' , 'helps' ]) if admin?
-
     @routes += [
+      [ people_path, 'List of People', 'people' ],
+      [ search_people_path, 'Search for People', 'people' ],
+      [ search_talks_path, 'Search for Talks', 'talks' ],
+      [ active_talks_path, 'Current Talks', 'talks' ],
+      [ talks_path, 'List of Talks', 'talks' ],
+      [ credits_path, 'Credits' , 'credits' ],
+      [ faqs_path, 'Frequently Asked Questions' , 'faqs' ],
+      [ helps_path, 'Help' , 'helps' ],
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
       [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
 
-
   end
 
-  end
+end

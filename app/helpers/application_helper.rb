@@ -5,6 +5,12 @@
 #   to get at code from inside a controller
 #     -- use the view_context, 
 #     -- i.e. to call current_layout use view_context.current_layout
+#
+#   put view helpers as test_flow & form_for_jqm here
+#     -- this works
+#     -- can store classes in app/helpers as well, i.e. FormBuilderJqm
+#     -- looks as if the module_helper files may only be called from within their specific 'view set'
+#
 module ApplicationHelper
 
   ## see http://stackoverflow.com/questions/3326579/rails3-get-current-layout-name-inside-view
@@ -61,5 +67,16 @@ module ApplicationHelper
     end
     return " data-theme=\"#{theme_letter}\" ".html_safe
   end
+
+  # test_flow used to figure out where stuff needs to live so we can get at it
+  def test_flow(tag)
+    logger.debug("layouts/_functions.test_flow: #{tag}")
+  end
+
+  # from http://api.rubyonrails.org, form_for documentation:
+  def form_for_jqm(model, *args, &block)
+    options = args.extract_options!
+    form_for(model, *(args << options.merge(builder: FormBuilderJqm)), &block)
+  end 
 
 end

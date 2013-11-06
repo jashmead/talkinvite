@@ -40,21 +40,23 @@ class ApplicationController < ActionController::Base
   end
 
   def footer_fields 
-    logger.debug("ApplicationController.footer_fields: admin: #{admin?}, signed_in?: #{signed_in?}")
+    # logger.debug("ApplicationController.footer_fields: admin: #{admin?}, signed_in?: #{signed_in?}")
     # currently, routes for nav buttons don't have parameters in them...
-    # note that root_path (used in logo) and start are the same thing
-    feet = []
-    if signed_in?
-      feet.push( { 'controller_name' => 'people', 'label' => 'Home', 'action' => 'home' } )
-    else
-      feet.push( { 'controller_name' => 'talks', 'label' => 'Active', 'action' => 'active' } )
-    end
+    # note that root_path and start are the same thing
+    # currently have three tabs specific to controller, plus wings specific to login status
+    # codeclimate disliked the previous design, too duplicative, perhaps
+    
+    # put home or active talks on the left
+    feet = signed_in? ? [ { 'controller_name' => 'people', 'label' => 'Home', 'action' => 'home' } ]
+      : [ { 'controller_name' => 'talks', 'label' => 'Active', 'action' => 'active' } ]
+
+    # core of the tabs:
     feet += feet_center
-    if admin?
-      feet.push( { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action' => 'sitemap' } )
-    else
-      feet.push( { 'controller_name' => 'helps', 'label' => 'Help', 'action' => 'index' } )  # TBD: switch index to search 
-    end
+
+    # put sitemap or help on the right
+    feet += admin? ? [ { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action' => 'sitemap' } ]
+      : [ { 'controller_name' => 'helps', 'label' => 'Help', 'action' => 'index' } ]
+
   end
 
   # pull out the query string & make sure it is not empty
