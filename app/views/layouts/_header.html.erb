@@ -1,9 +1,9 @@
-<!-- TBD: flip swatches for dialogs? no point when using the Bootstrap color scheme -->
+<!-- TBD: invert or otherwise changes swatches for dialogs? -- see how it looks in practice first -->
 <div data-role="header" <%=swatch%> >
   <% if signed_in? %>
     <% if @data_role == 'page' %>
       <h1><%=@title%></h1>
-      <%= signout_link %>
+      <%= settings_link %>
     <% else %>
       <h1><%=@title%></h1>
     <% end %>

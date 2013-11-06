@@ -20,10 +20,9 @@
 #   -- possibly with signed in & not signed in versions
 #   -- there is a great icon for this in the font-awesome set
 
-# TBD:  static_pages/sitemap
-# TBD:  make sure all routes named here are accessible via the normal flow
-
 Talkinvite::Application.routes.draw do
+
+  # TBD: add in a route of the form /help/faqs and so on, i.e. /help/page_name, then put at bottom right corner of each page
 
   resources :helps
 

@@ -13,7 +13,7 @@
 ##  use association to fetch, build + = to create in memory, create to build & save at the same time
 ##  -- does 'update' on parent automagically save the children?  can check the logs to see, or check the ActiveRecord docs
 
-## have defined fetch_children for people, talks, & venues, and fetch_parents for talks
+## have defined fetch_children for people and talks and fetch_parents for talks
 #   -- could define similar for the rest of the tables; wait till we see what is needed in practice for them
 
 class ApplicationController < ActionController::Base
@@ -26,15 +26,15 @@ class ApplicationController < ActionController::Base
   # include only applies to modules; looks at app/helpers for files (& other places?)
   include SessionsHelper
 
-  # default search fields: currently only the big three (talks, people, venues) use searches
+  # default search fields: currently only the big two (talks, people) use searches
   def search_fields 
     [ 'name', 'description' ]
   end
 
   # footer_fields often changed by controllers
-  # only six controllers need footer_fields:  people, talks, venues, faqs, credits, & ads
+  # only some controllers need footer_fields:  people, talks, faqs, credits, helps
 
-  # center feet are what changes controller to controller
+  # center feet are what changes controller to controller; override this to change
   def feet_center 
     [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
   end
@@ -54,6 +54,8 @@ class ApplicationController < ActionController::Base
     feet += feet_center
 
     # put sitemap or help on the right
+    # TBD: if help, switch to using /help/page_name with specific page_name's calling up that page's help
+    # e.g. /help/people_edit or /help/profile should explain how to edit your profile
     feet += admin? ? [ { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action' => 'sitemap' } ]
       : [ { 'controller_name' => 'helps', 'label' => 'Help', 'action' => 'index' } ]
 
@@ -83,7 +85,6 @@ class ApplicationController < ActionController::Base
       else 
         flash.now[:success] = "Found #{count.to_s} matching #{singular.pluralize}."
     end
-    logger.debug("CC: ApplicationController.report_q: flash.now: #{flash.now.inspect}")
   end
 
   def found

@@ -1,6 +1,5 @@
 ## what context are these functions running in?
 ## SessionsHelper is pulled in via an explicit "include SessionsHelper" in application_controller.rb
-## TBD: sessions_helper.rb  is a logical place to put a session[:current_talk] updater & friends, setting up specs accordingly
 module SessionsHelper
 
   ##  this won't work! apparently doesn't carry thru to next page
@@ -37,7 +36,7 @@ module SessionsHelper
 
   def current_person?(person)
     logger.debug("SessionsHelper.current_person?: current_person: #{@current_person.inspect}") #DDT
-    person == current_person ## not @current_person?
+    person == current_person  # comparison is to what is returned from the function 'current_person'
   end
 
   def sign_in(person)
@@ -205,6 +204,24 @@ module SessionsHelper
     # TBD:  test to see if we are signed in first
     ## logger.debug("SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}")
     link_to( "#{iconify(:signup)}</i>&nbsp;&nbsp;New Account".html_safe, signup_path, 'data-rel' => 'dialog')
+  end
+
+  # @current_talk is an attribute of the current Session
+  #   -- also stored in session[:current_talk]
+  #   -- could store in associated person record, in field called something like current_talk_id -- integer, fk'd
+  def current_talk
+    logger.debug("SessionsHelper.current_talk: current_talk: #{@current_talk.inspect}") # DDT
+    @current_talk ||= session[:current_talk]
+  end
+
+  def current_talk=(talk)
+    logger.debug("SessionsHelper.current_talk=: current_talk: #{@current_talk.inspect}") #DDT
+    @current_talk = session[:current_talk] = talk
+  end
+
+  def current_talk?(talk)
+    logger.debug("SessionsHelper.current_talk?: current_talk: #{@current_talk.inspect}") #DDT
+    talk == current_talk  # comparison is to what is returned from the function 'current_talk'
   end
 
 end

@@ -7,17 +7,21 @@ start point is meta_admin, a menu style page
 
 ==== Behind the Talk
 
--- these are mostly under 'static_pages', tho that represents a slight conflation of categories
+-- static pages
 
 about
 
 contact
 
-faqs/help* -- table at some point
-
 privacy
 
-credits* -- will spin off to a model of its own
+-- tables
+
+faqs
+
+helps
+
+credits
 
 ==== Admin Forms
 
@@ -29,8 +33,7 @@ standard resource list (with admin privileges) should be fine.
 1. tags
 1. members
 1. credits
-1. attachments
-1. venues
+1. helps
+1. faqs
 
-don't really need admin access to maps, calendars, sessions, schema_migrations, circles, svgs, & other support tables 
-
+don't really need admin access to maps, sessions, schema_migrations & any other support tables that happen to will themselves into existence

@@ -24,7 +24,7 @@
     %>
     <div data-role="<%=@data_role%>" id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=swatch%> >
 	    <%=render 'layouts/header'%>
-      <!-- TBD:  get the flash to popup a transient alert box instead -->
+      <!-- TBD:  get the flash to popup a transient alert box instead? -->
 	    <div data-role="content" class="<%=controller.controller_name%>">
 	      <% flash.each do |key, value| %>
 	        <div class="alert alert-<%= key %>"><%= value %></div>

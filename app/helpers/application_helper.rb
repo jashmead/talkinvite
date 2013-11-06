@@ -29,7 +29,6 @@ module ApplicationHelper
     end
   end
 
-  # TBD:  add in the 'back' button to the mobile init pages
   def button_back (back_path) 
     button_inline('Back', back_path)
   end
@@ -70,7 +69,7 @@ module ApplicationHelper
 
   # test_flow used to figure out where stuff needs to live so we can get at it
   def test_flow(tag)
-    logger.debug("layouts/_functions.test_flow: #{tag}")
+    logger.info("layouts/_functions.test_flow: #{tag}")
   end
 
   # from http://api.rubyonrails.org, form_for documentation:

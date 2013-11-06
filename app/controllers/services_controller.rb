@@ -41,7 +41,7 @@ class ServicesController < ApplicationController
   # since services, like members, never really seen on their own, this may not be correct
   def destroy
     # TBD: should not let a person destroy the 'talkinvite' service
-    #destroy_q(@service, services_url) if @service.service_type != 'talkinvite'
+    # destroy_q(@service, services_url) if @service.service_type != 'talkinvite'
     destroy_q(@service, services_url)
   end
 

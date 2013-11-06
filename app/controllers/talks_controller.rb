@@ -19,7 +19,7 @@ class TalksController < ApplicationController
   def index
     super
     @talks = Talk.all
-    logger.debug("CC: TalksController.index: @talks: #{@talks.inspect}")
+    # logger.debug("CC: TalksController.index: @talks: #{@talks.inspect}")
   end
 
   # GET /talks/1
@@ -29,7 +29,7 @@ class TalksController < ApplicationController
 
   # GET /talks/new
   def new
-    logger.debug("TalksController.new")
+    # logger.debug("TalksController.new")
     @talk = Talk.new
   end
 
@@ -61,16 +61,16 @@ class TalksController < ApplicationController
 
   # DELETE /talks/1
   # DELETE /talks/1.json
-  # talk destroy has to be a bit specialized
+  # TBD: TalksController.destroy will need to be customized to requirements of talks
   def destroy
     destroy_q(@talk, root_url)
   end
 
   # start is the default starting point for the entire website
   # right now, it is a virtual page, redirecting to appropriate start points for signed_in & not signed_in users
-  # TBD:  start page is dying on load from credits
+  # TBD:  switch 'start' to be a one stop fits all place to start a talk & sign in if you haven't before
   def start
-    logger.debug("CC: TalksController.start")
+    # logger.debug("CC: TalksController.start")
     if signed_in?
       redirect_to '/people/home'
     else 
@@ -118,7 +118,7 @@ class TalksController < ApplicationController
     map_q(@talk, params)
   end
 
-  # TBD:  all_searches
+  # TBD:  specialized searches
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -134,7 +134,7 @@ class TalksController < ApplicationController
     def correct_person
       # find the talk(s) through the person
       @talk = current_person.talks.find_by(id: params[:id])
-      logger.debug("ZZ: TalksController.correct_person: id = #{params[:id]}, @talk = #{@talk.inspect}") #DDT
+      # logger.debug("ZZ: TalksController.correct_person: id = #{params[:id]}, @talk = #{@talk.inspect}") #DDT
       redirect_to root_url if @talk.nil?
     end
 

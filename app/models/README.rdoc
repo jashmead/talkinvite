@@ -10,43 +10,33 @@ In order of creation:
 1. People -- will be adding locations to this
 1. Sessions
 1. Talks -- links up to people, will be adding venues to this
-1. Relationships -- links to people, from & to both, can indicate membership in a group 
-
 1. Members -- links to talk & to people, includes 'admin' status (with reference to talk), payload is rsvp_status, member_type
 1. Comments -- links to talk & to people, payload is text
-1. Notifications -- starts as just email to each person
-1. Venues -- links to creator, has location type (as two fields), venue_type, name, description, will need to add talk to point up to this, once ready, acts as proxy for a generic 'location' object, to reduce amount of stuff
-1. Socials -- track what we need to of tweets, faces, & the like.  Similar to notifications, except 'broadcast' is different. Note there are legal requirements associated with some of these.
 1. Messages -- person to person, various modalities, sender, receiver, talk
-
-1. Tags -- links to talks, venues & people; polymorphic tho not perverse.
-1. Attachments -- including images, points up to talks, messages, notifications, people, & pretty much everything, polymorphic links, include urls here?, seems logical
-1. Ads -- polymorphic into talks, tags, locations, users?, pretty much everything!
 1. Faqs -- doubles as help text, no links, question, answer, tags point to this as well!
 1. Credits -- links to creator, name, details, url, tags point to this as well!
+1. Helps
 1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field). virtual table, like sessions.
-1. Calendars -- links to creator, has datasets, center, scale, has link to talk
 
 Currently tabled tables
 
 1. Connections -- talk2talk, connections, creator, from_talk, to_talk, an advanced feature, may not need, can use for clone previous, repeating, & so on. May help with searches (big in our design).  At this point, we don't know how we want to use:  clone-father, repeating, and so on.  Could implement with a self-join, side-table, settings field, lots of ways.  Fairly complex, even more complex than relationships. Wait on need. YAGNI.
-1. Circles? -- goes to relationships
+1. Circles? Relationships? 
 1. SVGs? -- not yet, not sure needed
 1. Groups? -- goes to relationships + a field in people (to indicate really a group)
 1. Recurring talks? -- like meetups? -- goes to talk2talk plus a field in talks to indicate ongoing
 1. Ratings? -- fold in to tags
 1. Sessions -- internal db support for sessions model?
-
 1. Requests -- previously used, a bit much however
 1. Errors -- previously used, a bit much however
 1. Pages -- a bit too meta
 1. Qxs -- great name, but errors on side of inscrutable
 
-Connections is most promising but might find it easier to add a source_id field to talks, then index it, with talk_type would have all the functionality we have in mind currently, i.e. clone & also repeating
-
 === Data types
 
 Note we can't use 'type' as a field name, conflicts with Ruby
+
+Mostly line up with the input types wrapped in form_for_jqm.rb
 
 All tables include the Ruby on Rails fields:
 1.  id
@@ -54,14 +44,18 @@ All tables include the Ruby on Rails fields:
 3.  updated_at  -- datetime
 
 Shorter fields are generally strings, longer text.
-1.  summary/about
-1.  contents/details/descriptions
+1.  name/summary/about
+1.  description/contents/details
 
 Locations -- for maps, ultimately, include alternate kinds of maps
 1.  latitude & longitude is fine
 
 Datetimes & Intervals -- for calendars
 1.  datetime or else start & duration or else start & end
+
+=== Class Structure
+
+TBD:  create a class that all TalkInvite models will inherit from?
 
 URLs
 1.  security concern if supplied by user, part of about field

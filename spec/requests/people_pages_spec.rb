@@ -134,7 +134,7 @@ describe "People pages" do
         before { click_button submit }
         let(:person) { Person.find_by(email: 'person@talkinvite.com') }
 
-        ## TBD: it { should have_link('Sign out') }
+        ## TBD: it { should have_link('Settings') }
         it { should have_title(person.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
 
@@ -153,8 +153,8 @@ describe "People pages" do
     end
 
     describe "page" do
-      ## TBD:  not getting a match on profile: it { should have_content("Update your profile") }
-      it { should have_title("Edit profile") }
+      # it { save_and_open_page }
+      it { should have_title(person.name) }
     end
 
     describe "with valid information" do
@@ -162,6 +162,7 @@ describe "People pages" do
       let(:new_name)  { "New Name" }
       let(:new_email) { "new@example.com" }
 
+      # TBD:  add in tests of descriptions & other new fields
       before do
         fill_in "person_name",             with: new_name
         fill_in "person_email",            with: new_email
@@ -175,7 +176,7 @@ describe "People pages" do
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
 
-      it { should have_link('Sign Out', href: signout_path) }
+      it { should have_link('Settings', href: settings_path) }
 
       # direct tests of database saves:
       # specify versus 'it'?

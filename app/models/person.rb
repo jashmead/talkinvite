@@ -3,11 +3,11 @@
 # == Fields
 # 1.  name -- string, doesn't have to be unique (so long as email is!), but is mandatory
 # 1.  email -- mandatory, validated 
-# 1.  description -- text, optional
 # 1.  admin -- boolean, administrator, includes talkinvite
 # 1.  sub -- boolean, subscriber, does not include anonymous, not clear if we need this...
 # 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
 # 1.  password, password_confirmation, password_digest
+# 1.  description -- text, optional
 # 
 # == Children
 # 1. Comments
@@ -18,15 +18,16 @@
 
 # == Fields contemplated
 # 1. active_flag -- use to deactivate when the user has killed, in case there is other data we need to keep associated with this
+# 1. current_talk_id -- store that id in the database
+# 1. url
+# 1. photo
 
-# Person spotted as complex by codeclimate 10/29/13, complexity 31
 class Person < ActiveRecord::Base
 
   ## include Searchy
 
   ## this line *creates* the attribute/method of Person called 'talks'
   has_many :talks, inverse_of: :person, dependent: :destroy
-  ## we are starting with the relationships that point 'to' the current person record
 
   has_many :sent_messages, inverse_of: :person, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
   has_many :receivers, inverse_of: :person, through: :sent_messages, source: :receivers, dependent: :destroy
@@ -64,9 +65,6 @@ class Person < ActiveRecord::Base
   def find_by_remember_token( encrypted_remember_token ) 
     ##  logger.debug("Person.find_by_remember_token: encrypted_remember_token: %{encrypted_remember_token}") #DDT
     person = Person.where(remember_token: encrypted_remember_token)
-
-    ##  logger.debug("Person.find_by_remember_token:  person: #{person}") #DDT
-    person #to make sure person is returned
   end
 
   # class method, hence the 'Person.'
@@ -84,7 +82,7 @@ class Person < ActiveRecord::Base
     if ! anonymous || anonymous.size == 0
       # logger.debug("MM: Person.anonymous: creating anonymous record")
       Person.create!( name: 'anonymous', email: 'anonymous@talkinvite.com', 
-        password: 'scrofulous-nonsense', password_confirmation: 'scrofulous-nonsense')
+        password: ')Scr0ful0us@n0ns3ns3.N#rD(', password_confirmation: ')Scr0ful0us@n0ns3ns3.N#rD(' )
       anonymous = self.find_by_name('anonymous')
     end
     ## logger.debug("MM: Person.anonymous: #{anonymous}")
@@ -93,11 +91,6 @@ class Person < ActiveRecord::Base
 
   private
 
-    def add_default_service
-      # put in a single record for the 'talkinvite' service!
-      # use after save trap & also the service.rb model file
-    end
-
     def create_remember_token
       # have to use 'self', otherwise we would get a *local* variable called remember_token
       self.remember_token = Person.encrypt(Person.new_remember_token)
@@ -105,11 +98,10 @@ class Person < ActiveRecord::Base
 
     # make sure that every person has at least the 'talkinvite' service
     def create_talkinvite_service
-
-      logger.debug("Person.create_talkinvite_service: self: #{self.inspect}")
+      # logger.debug("Person.create_talkinvite_service: self: #{self.inspect}")
 
       if self.id?
-        logger.debug("Person.create_talkinvite_service: self.id: #{self.id.inspect}")
+        # logger.debug("Person.create_talkinvite_service: self.id: #{self.id.inspect}")
         @services = Service.where('person_id = ? and service_type = ?', self.id, 'talkinvite')
         if ! @services || @services.size == 0
           Service.create!( person_id: self.id, service_type: 'talkinvite' )

@@ -1,12 +1,12 @@
 == View Helpers & Partials
 
-key to getting the site to work using page frame concept
-
-have to 'objectify' the partials to let them be shared easily
-
 mobile first
 
-list of page frames to partialize:
+helpers for forms go in app/helpers/application_helpers.rb
+
+partials for forms go in app/views/shared (or in the per controller directories)
+
+page frames:
 1. simple -- static page, like about
 1. form -- core of control, uses either new/create or edit/update
 1. quick search -- just a small form with open area, search, & possibly advanced search

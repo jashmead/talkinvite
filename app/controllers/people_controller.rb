@@ -19,7 +19,6 @@ class PeopleController < ApplicationController
     [ 'name', 'email' ]
   end
 
-  # TBD: switch on admin flag to an admin menu?
   def feet_center
     if signed_in?
       [ '/talks/new', '/talks/my_talks', '/talks/search' ]
@@ -32,7 +31,7 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     super
-    logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
+    # logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
     @title = "List of People"
     @people = Person.all(params[:search]).paginate(page: params[:page])
   end
@@ -42,12 +41,12 @@ class PeopleController < ApplicationController
   def show
     # don't need to look for person here; done in 'before_action' callback by set_person
     if ! @person 
-      logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
+      # logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end
     @title = @person.name
-    logger.debug("CC: PeopleController.show: @title: #{@title}, @person: #{@person.inspect}")
+    # logger.debug("CC: PeopleController.show: @title: #{@title}, @person: #{@person.inspect}")
     # @talks = @person.talks.paginate(page: params[:page])
   end
 
@@ -66,13 +65,16 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   # 'settings' is almost a synonym for 'edit', except that the person is forced to be the signed in person
   def edit
-    logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
+    # logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     # don't need to look for person here; done in 'before_action' callback by set_person
+    @title = @person.name
   end
 
   def settings
-    logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
+    # logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
+    @title = @person.name
+    render 'edit' and return
   end
 
   # 'home' is a control panel type thing
@@ -118,7 +120,7 @@ class PeopleController < ApplicationController
   # DELETE /people/1
   # DELETE /people/1.json
   # commenting out the respond_to bit causes tests to fail with a missing template error.  Hunh?
-  # TBD: destroy is not using 'destroy_q' at this point.  Should it? probably not
+  # TBD: PeopleControllers.destroy will need to be customized to People
   def destroy
     ## note use of method chaining to combine find & destroy into one line
     Person.find(params[:id]).destroy

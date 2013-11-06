@@ -45,6 +45,10 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
+  def email_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
   def file_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end

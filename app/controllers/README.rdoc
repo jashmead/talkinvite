@@ -12,6 +12,7 @@ Example:  the params.require in people_controller.rb: params.require(:person).pe
 1.  subs
 
 === New controller functions
+
 1. map
 1. calendar
 1. circle

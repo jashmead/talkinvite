@@ -38,32 +38,19 @@ Form has:
 ==== Root tables
 
 1. People
-1. Talks
-1. Venues
-1. Credits -- simplest
+1. Talks -- entry point for newbies
+1. Credits
 1. Faqs
-1. Ads -- admin only
+1. Helps
 
 ==== Link tables
 
-1. Tags -- one per target, no person_id, may have polymorphism in its future
 1. Comments -- zero to many for each person/talk pair, may have polymorphism in its future
-
+1. Services
+1. Posts
 1. Members -- one for each person/talk pair
-1. Notifications -- zero to many for each person/talk pair
-1. Socials -- person/talk/like notifications but pointed at outside world
-
-1. Relationships -- person to person, max one record per type of relationship
 1. Messages -- many for each person to person
-
-1. Attachments -- definitely polymorphic
-
-1. Talk2Talk -- name not definite yet, person?/talk/talk
-
-==== Virtual
-
 1. Maps -- will need data, settings, controls
-1. Calendars -- will need data, settings, controls
 
 ==== System
 
@@ -105,25 +92,29 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 * expandable items expand (& shrink)
 * views shift as they should
 
-=== TBD
+=== HBD -- Have Been Done
 
 1. popups or similar for all validates inclusion, see p23 of Mastering, -- as indicated
-1. email form for contact, for now, just an email href -- done
 1. back-button on dialogs, Mastering p58 (data-rel=back) and data-add-back-btn="true" -- now working
-1. placeholder instead of labels -- nearly done on this, see f.label usage, only talks & people left -- done!
+1. placeholder instead of labels -- actually best to do both, see form_for_jqm
 1. get dialogs to work:  dialogs are about, contact, privacy, signup (people#new), & signin (session#new) -- done!
-1. verify sendmail working on heroku, once we have it working on iMac, with email href, no immediate need -- later
-1. replace flash messages with something more jquerymobile friendly -- still, they do work -- later
 1. the submit_tag is also from rails -- compare to equivalent for jQuery Mobile & resolve differences: see edit, delete buttons -- now ok
 1. kill all 'btn' references -- done
-1. kill all span & offset references -- done
-1. fix all buttons (data-inline = true) -- done, I think
+1. verify that all forms have been given a valid @record before they get started; log errors if they haven't been -- this is spotted during all but the most primitive testing
+
+=== TBD
+
+1. kill all offset, span references
+1. email form for contact, for now, just an email href
+1. verify sendmail working on heroku, once we have it working on iMac, with email href, no immediate need -- later
+1. replace flash messages with something more jquerymobile friendly -- still, they do work -- later
+1. fix all buttons (data-inline = true)
 1. get rid of the show/edit buttons, those are really ugly, make everything work by internal links -- already gone, no one left in _talk_table, now all gone!
 1. use of 'required' for all required fields -- do in detail
 1. use of 'readonly' for all readonly fields -- do in detail
 1. check for icons for each page:  arrows, delete, plus, gear, refresh, grid, star, alert, info, home, search and they can be left, right, and so on, as well as notext -- do in detail, -- done
 1. group buttons on edit forms & related:  using data-role = controlgroup, data-type=horizontal -- do in detail
 1. work out system of transitions
-1. roll theme that is more appropriate, add in 'f', 'g', 'h' swatches at some point -- done
+1. roll theme that is more appropriate, add in 'f', 'g', 'h' swatches at some point
 1. the search_field is from ruby-on-rails -- compare to equivalent for jQuery Mobile & resolve differences
-1. verify that all forms have been given a valid @record before they get started; log errors if they haven't been
+1. switch updates to reverts (disabled until a change made or make invisible)

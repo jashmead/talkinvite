@@ -21,9 +21,7 @@
 # 1. repeating talk?
 
 # TBD: validate start_dt < end_dt
-# TBD: instantiate the many searches we have listed here
-
-# do all the searches here, not in controller
+# TBD: add in customized searches (here, not in controller)
 
 =begin
   To go back & forth between people & talks:

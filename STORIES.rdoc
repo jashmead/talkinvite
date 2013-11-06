@@ -64,7 +64,7 @@ second, notify using:
 1. set defines
 1. calendar controls shared by other time specific tables in set mode, or as individual?
 
-==== Check out venues
+==== Check out locations
 physical/virtual
 1. locations/command
 1. map
