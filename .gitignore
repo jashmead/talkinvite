@@ -14,7 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-*.bak
+*.bak*
 *.out
 *.lst
 ?
