@@ -62,6 +62,7 @@ class Talk < ActiveRecord::Base
     if ! person
       person = Person.anonymous
     end
+    # TBD: does find_by_person_id throw exception on no rows found?
     self.find_by_person_id(person.id)
   end
 

@@ -94,6 +94,8 @@ module SessionsHelper
         'fa-comments-o'
       when 'contact'
         'fa-envelope-o'
+      when 'credit', 'credits'
+        'fa-heart'
       when 'data', 'table'
         'fa-table'
       when 'delete', 'destroy'

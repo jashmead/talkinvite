@@ -14,8 +14,9 @@ class MessagesController < ApplicationController
   end
 
   def my_messages
-    person = current_person
-    @messages = Message.messages_by_person(person)
+    @person = current_person
+    @title = "My Messages"
+    @messages = Message.messages_by_person(@person)
     render 'index' and return
   end
 

@@ -25,8 +25,9 @@ describe "sitemap" do
   let(:signedin_list) { [ 
     "Home", 
     "List of People", 
+    "My Messages",
     "My Talks", 
-    "Search for People" 
+    "Search for People"
   ] }
 
   let(:not_signedin_list) { [

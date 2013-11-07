@@ -27,4 +27,13 @@ class Message < ActiveRecord::Base
 
   ## searches:  given person & talk, get all messages in reverse updated_at order
 
+  # is talks_by_person needed?
+  def self.messages_by_person( person ) 
+    # RoR probably knows to use 'id' when called with 'person', experiment later
+    if ! person
+      person = Person.anonymous
+    end
+    self.where('sender_id = ? or receiver_id = ?', person.id, person.id)
+  end
+
 end

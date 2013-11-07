@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   # only some controllers need footer_fields:  people, talks, faqs, credits, helps
 
   def feet_for_help_pages 
-    [ 'helps', '/credits', '/faqs' ]
+    [ '/helps', '/credits', '/faqs' ]
   end
 
   def feet_for_people_pages

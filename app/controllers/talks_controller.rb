@@ -99,8 +99,10 @@ class TalksController < ApplicationController
   def my_talks
     ## logger.debug("CC: TalksController.my_talks")
     ## can probably consolidate once we have debugged
-    person = current_person
-    @talks = Talk.talks_by_person(person)
+    @person = current_person
+    @title = "My Talks"
+    @talks = Talk.talks_by_person(@person)
+    render 'index' and return
   end
 
   # search will be limited to active (with override), to nearby (including infinite distance), & in most recent first order

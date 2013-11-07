@@ -27,6 +27,7 @@ class StaticPagesController < ApplicationController
   #   perhaps best as a set of hashes, with one hash being the 'signed_in', 'not_signed_in', 'common', 'admin' flag
   #   clean enuf for now, in any case
   # note:  spec for sitemap serves as a quick test of all the entry-point forms, at least they turn on
+  # TBD:  where should the sitemap itself be located? should it be accessible to users in general?
   def sitemap
     # we read the action off the path, and the controller too if it is not explicitly given as the third element
     store_location
@@ -36,7 +37,8 @@ class StaticPagesController < ApplicationController
         [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ],
         [ profile_path, 'Profile', 'people' ],
-        [ my_talks_path, 'My Talks', 'talks' ]
+        [ my_talks_path, 'My Talks', 'talks' ],
+        [ my_messages_path, 'My Messages', 'messages' ]
       ]
     else 
       @routes = [
