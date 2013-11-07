@@ -18,6 +18,23 @@ class HelpsController < ApplicationController
     @help = Help.new
   end
 
+  def help
+    @helps = Help.where('name = ?', params[:name])
+    if ! @helps || @helps.size == 0
+      if admin?
+        # give the admin a change to create the help
+        @help = Help.new( name: params[:name], description: "Help for page " + params[:name] )
+        render 'new' and return
+      end
+      render 'index' and return
+    end
+    @help = @helps[0]
+    if admin?
+      render 'edit' and return
+    end
+    render 'show' and return
+  end
+
   # GET /helps/1/edit
   def edit
   end

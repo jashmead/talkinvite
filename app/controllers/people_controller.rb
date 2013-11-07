@@ -163,12 +163,14 @@ class PeopleController < ApplicationController
     # Here we allow only password & password_confirmation, but not the true field, password_digest!
     # We also do *not* allow admin or sub flags to be set from here
     def person_params
+      # params whitelist does *not* include admin, sub, remember_token
       params.require(:person).permit(
         :name, 
         :email, 
         :password, 
-        :password_confirmation
-    )
+        :password_confirmation,
+        :description
+      )
     end
 
     # correct_person used by edit, update; verifies that we are editing only our own stuff

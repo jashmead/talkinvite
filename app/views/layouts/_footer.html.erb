@@ -8,43 +8,47 @@
 	<div data-role="footer" data-position="fixed" data-id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=swatch%> >
 	  <div data-role="navbar">
 	    <ul>
-	    <% active_button = nil; controller.footer_fields.each do |url| %>
+	    <% active_button_set = false; controller.footer_fields.each do |url| %>
 		    <%
 		      # we are assuming that the url has the form: /controller/action, 
 		      #   if it gets more complex than this, 
 		      #   perhaps we can use some elegant Ruby unRouting method with which we may work nav button magic
 	
-	        # logger.debug("_footer: url: #{url.inspect}, #{url.class}")
+	        logger.debug("_footer: url: #{url.inspect}, #{url.class}")
 	
 	        if url.class.to_s == 'String' 
 		        url_bits = url.split('/')
 	          ## logger.debug("_footer: url_bits: #{url_bits.inspect}")
-			      action = url_bits.pop
-			      label = action.to_s.titleize
+			      action_name = url_bits.pop
+			      label = action_name.to_s.titleize
 		        controller_name = url_bits.pop
+            href = url
 	        else
-	          action = url['action']
+            # note: if you use a symbol to define a hash element, apparently you have to use one to dereference as well.
+            # note:  therefore, if possible, use symbols both to define & to dereference hashes
+            action_name = url['action_name']
+            controller_name = url['controller_name']
 	          label = url['label']
-	          controller_name = url['controller_name']
-	          url = "/#{controller_name}/#{action}"
+            href = url['href'] || "/#{controller_name}/#{action_name}"
 	        end
 	
-	        # logger.debug("_footer: action: #{action}, label: #{label}, controller_name: #{controller_name}")
+	        logger.debug("_footer: action_name: #{action_name}, label: #{label}, controller_name: #{controller_name}, href: #{href}")
 	
-	        if action === controller.action_name
+	        if action_name === controller.action_name && controller_name === controller.controller_name
 	          klasses = "class=\"ui-disabled\"" # no point go to a page from itself
-	        elsif ! active_button
-	          active_button = action
+	        elsif ! active_button_set
+	          active_button_set = true
 	          klasses = "class=\"ui-btn-active\""   # mark first non-self button as active
 	        else
 	          klasses = ''
 	        end
 	
 	        data_theme = swatch( controller_name )
-	        iconstr = iconify(action)
+	        iconstr = iconify(action_name)
 	        # logger.debug("_footer: iconstr: #{iconstr}")
+
 		    %>
-	      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{url}\" #{data_theme} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
+	      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{href}\" #{data_theme} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
 	    <% end %>
 	    </ul>
 	  </div>

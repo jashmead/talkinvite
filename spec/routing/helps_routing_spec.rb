@@ -31,5 +31,11 @@ describe HelpsController do
       delete("/helps/1").should route_to("helps#destroy", :id => "1")
     end
 
+    it "routes to #help when given a name" do
+      # NOTE:  since help action fans out into index, show, & edit, we only need to hit the controller action to get a match on routing
+      get("/help/named_help").should route_to("helps#help", :name => "named_help")
+      get("/helps/named_help").should route_to("helps#help", :name => "named_help")
+    end
+
   end
 end

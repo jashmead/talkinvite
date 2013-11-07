@@ -39,25 +39,44 @@ class ApplicationController < ActionController::Base
     [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
   end
 
-  def footer_fields 
-    # logger.debug("ApplicationController.footer_fields: admin: #{admin?}, signed_in?: #{signed_in?}")
-    # currently, routes for nav buttons don't have parameters in them...
-    # note that root_path and start are the same thing
+  def current_help_page 
+    # logger.debug("ApplicationController.current_help_page: #{self.controller_name}_#{self.action_name} self: #{self.inspect}")
+    return [ 
+      'label' => 'Help', 
+      'action_name' => 'help', 
+      'controller_name' => 'helps', 
+      # variable 'controller' not avaiable here, 
+      #   but we *are* the controller so call the controller_name & action_name methods on self
+      'href' => '/helps/' + self.controller_name + '_' + self.action_name
+    ]
+  end
+
+  def home_page
+    [ { 'controller_name' => 'people', 'label' => 'Home', 'action_name' => 'home' } ]
+  end
+
+  # TBD:  switch to a real start page when we have one built!, see notes for talks#start
+  # start_page used as root page
+  def start_page
+    [ { 'controller_name' => 'talks', 'label' => 'Active', 'action_name' => 'active' } ]
+  end
+
+  def sitemap_page
+    [ { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action_name' => 'sitemap' } ] 
+  end
+
+  def footer_fields
+
     # currently have three tabs specific to controller, plus wings specific to login status
-    # codeclimate disliked the previous design, too duplicative, perhaps
     
     # put home or active talks on the left
-    feet = signed_in? ? [ { 'controller_name' => 'people', 'label' => 'Home', 'action' => 'home' } ]
-      : [ { 'controller_name' => 'talks', 'label' => 'Active', 'action' => 'active' } ]
+    feet = signed_in? ? home_page : start_page
 
     # core of the tabs:
     feet += feet_center
 
     # put sitemap or help on the right
-    # TBD: if help, switch to using /help/page_name with specific page_name's calling up that page's help
-    # e.g. /help/people_edit or /help/profile should explain how to edit your profile
-    feet += admin? ? [ { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action' => 'sitemap' } ]
-      : [ { 'controller_name' => 'helps', 'label' => 'Help', 'action' => 'index' } ]
+    feet += current_help_page 
 
   end
 

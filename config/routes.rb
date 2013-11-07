@@ -28,6 +28,7 @@ Talkinvite::Application.routes.draw do
 
   # talks:
 
+  # TBD:  see if we want to use named talks, using same logic as named help
   match '/my_talks', to: 'talks#my_talks', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
   match '/active', to: 'talks#active', via: 'get'
@@ -85,9 +86,14 @@ Talkinvite::Application.routes.draw do
   end
 
   # faqs & related
-  # TBD: add in a route of the form /help/faqs and so on, i.e. /help/page_name, then put at bottom right corner of each page
 
-  # get '/help/:name', to 'helps#by_name'
+  get '/helps/new', to: 'helps#new' # otherwise new is treated as the name of a help text
+
+  # TBD:  add a /help/page/action route?
+  # note:  get is a function within the routing, to & constraints are named options to 'get'
+  # note:  somehow both /help/talks_my_talks & /helps/talks_my_talks feel acceptable
+  get '/help/:name', to: 'helps#help', constraints: { name: /[A-Za-z][A-Za-z0-9_]*/ }
+  get '/helps/:name', to: 'helps#help', constraints: { name: /[A-Za-z][A-Za-z0-9_]*/ }
 
   resources :helps, :faqs, :credits
 

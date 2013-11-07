@@ -69,6 +69,12 @@ class TalksController < ApplicationController
   # start is the default starting point for the entire website
   # right now, it is a virtual page, redirecting to appropriate start points for signed_in & not signed_in users
   # TBD:  switch 'start' to be a one stop fits all place to start a talk & sign in if you haven't before
+  # TBD:  icon for start talk screen? just a comment bubble?
+  #   -- first open is a simple: what, where, when, why, who
+  # TBD:  icon for my talks screen? 
+  #   -- second is a my talks
+  #   -- third is find in talks, search option
+  #   -- fourth is find on web, web icon
   def start
     # logger.debug("CC: TalksController.start")
     if signed_in?
@@ -128,7 +134,8 @@ class TalksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def talk_params
-      params.require(:talk).permit(:summary, :description, :person_id)
+      params.require(:talk).permit(:summary, :description, :person_id, 
+        :start_dt, :end_dt, :posted_dt, :longitude, :latitude, :who_desc, :talk_status, :where_desc, :when_desc)
     end
 
     def correct_person
