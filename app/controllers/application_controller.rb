@@ -81,8 +81,8 @@ class ApplicationController < ActionController::Base
 
     # currently have three tabs specific to controller, plus wings specific to login status
     
-    # put home or active talks on the left
-    feet = signed_in? ? home_page : start_page
+    # put home (or sitemap) or active talks on the left
+    feet = signed_in? ? ( self.action_name === 'home' ? sitemap_page : home_page ) : start_page
 
     # core of the tabs:
     feet += feet_center
