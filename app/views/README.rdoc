@@ -101,10 +101,10 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 1. the submit_tag is also from rails -- compare to equivalent for jQuery Mobile & resolve differences: see edit, delete buttons -- now ok
 1. kill all 'btn' references -- done
 1. verify that all forms have been given a valid @record before they get started; log errors if they haven't been -- this is spotted during all but the most primitive testing
+1. kill all offset, span references -- appears done
 
 === TBD
 
-1. kill all offset, span references
 1. email form for contact, for now, just an email href
 1. verify sendmail working on heroku, once we have it working on iMac, with email href, no immediate need -- later
 1. replace flash messages with something more jquerymobile friendly -- still, they do work -- later
@@ -118,3 +118,4 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 1. roll theme that is more appropriate, add in 'f', 'g', 'h' swatches at some point
 1. the search_field is from ruby-on-rails -- compare to equivalent for jQuery Mobile & resolve differences
 1. switch updates to reverts (disabled until a change made or make invisible)
+1. add duplicate/clone button to those forms that could benefit from it

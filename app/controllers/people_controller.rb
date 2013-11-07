@@ -5,20 +5,23 @@
 ##  'format' bits are needed; how do they work? -- commented out for now...
 ##  params[:page] defaults to nil, presumably a way to override the default page
 
+
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
   ## removed index (& therefore search) from list of routes that require you to be signed in; 
   ##    no this cause additional failures
   ##    need deeper understanding before we can continue
   ##    put :index back in for now
+
   before_action :signed_in_person, only: [:index, :edit, :settings, :home, :update, :destroy, :profile ]
   before_action :correct_person, only: [:edit, :update]
   before_action :admin_person, only: [:destroy]
 
   def search_fields
-    [ 'name', 'email' ]
+    [ 'name', 'email', 'description' ]
   end
 
+  # TBD: we can change the footer for profile, settings, & home.  Do we wish to?
   def feet_center
     if signed_in?
       [ '/talks/new', '/talks/my_talks', '/talks/search' ]
@@ -46,8 +49,7 @@ class PeopleController < ApplicationController
       render :search and return
     end
     @title = @person.name
-    # logger.debug("CC: PeopleController.show: @title: #{@title}, @person: #{@person.inspect}")
-    # @talks = @person.talks.paginate(page: params[:page])
+    @data_role = 'dialog' if @person != current_person
   end
 
   def profile

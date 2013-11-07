@@ -1,3 +1,7 @@
+# help controller
+
+# TBD: on the footer, do we want to use the faqs, credits, & helps? or stick with about, contact, & privacy?
+
 class HelpsController < ApplicationController
   before_action :set_help, only: [:show, :edit, :update, :destroy]
 

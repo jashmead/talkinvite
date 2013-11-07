@@ -144,11 +144,11 @@ describe "Talk pages" do
     it { should have_content('Current Talks') }
 
     it "should list active talks" do
-      save_and_open_page
+      # save_and_open_page
       # there are ul's in the footer, so have to be a bit more discriminatory in defining our selector:
       expect(page).to have_selector('#talks-active-content li', :count => 2)
       Talk.all.each do |talk|
-        ## if we are using table rather than list to format people, so li->td
+        # if we are using table rather than list to format people, so li->td
         if talk.talk_status == 'active'
           expect(page).to have_selector('a', text: talk.summary)
         else
