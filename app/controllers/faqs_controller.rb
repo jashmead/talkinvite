@@ -6,7 +6,9 @@ class FaqsController < ApplicationController
     [ 'question', 'answer' ]
   end
 
-  # default footer_fields seem fine...
+  def feet_center
+    feet_for_help_pages
+  end
 
   # GET /faqs
   # GET /faqs.json

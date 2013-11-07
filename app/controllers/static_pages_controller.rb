@@ -9,6 +9,10 @@ class StaticPagesController < ApplicationController
     []
   end
 
+  def feet_center
+    feet_for_static_pages
+  end
+
   def about
   end
 

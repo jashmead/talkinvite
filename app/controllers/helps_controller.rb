@@ -22,6 +22,10 @@ class HelpsController < ApplicationController
     @help = Help.new
   end
 
+  def feet_center
+    feet_for_help_pages
+  end
+
   def help
     @helps = Help.where('name = ?', params[:name])
     if ! @helps || @helps.size == 0

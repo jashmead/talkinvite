@@ -24,7 +24,13 @@ Talkinvite::Application.routes.draw do
 
   # Message pages (person to person, no talk)
 
-  resources :messages
+  match '/my_messages', to: 'messages#my_messages', via: 'get'
+
+  resources :messages do
+    collection do
+      get :my_messages
+    end
+  end
 
   # talks:
 

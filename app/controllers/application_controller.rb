@@ -34,9 +34,17 @@ class ApplicationController < ActionController::Base
   # footer_fields often changed by controllers
   # only some controllers need footer_fields:  people, talks, faqs, credits, helps
 
+  def feet_for_help_pages 
+    [ 'helps', '/credits', '/faqs' ]
+  end
+
+  def feet_for_static_pages
+    [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
+  end
+
   # center feet are what changes controller to controller; override this to change
   def feet_center 
-    [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
+    feet_for_static_pages
   end
 
   def current_help_page 

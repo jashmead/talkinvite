@@ -79,4 +79,7 @@ URLs
 
 === Adding/subtracting columns for existing table
 
-1. make sure the 
+1. make sure the model_params function has the new fields, if appropriate
+1. make sure the search_fields function has the new fields, if appropriate
+
+

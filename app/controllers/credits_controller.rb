@@ -1,6 +1,10 @@
 class CreditsController < ApplicationController
   before_action :set_credit, only: [:show, :edit, :update, :destroy]
 
+  def feet_center
+    feet_for_help_pages
+  end
+
   # GET /credits
   # GET /credits.json
   def index

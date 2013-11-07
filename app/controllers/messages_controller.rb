@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy]
+  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_messages]
 
   def search_fields
     [ 'message_text' ]
@@ -11,6 +11,12 @@ class MessagesController < ApplicationController
   def index
     super
     @messages = Message.all
+  end
+
+  def my_messages
+    person = current_person
+    @messages = Message.messages_by_person(person)
+    render 'index' and return
   end
 
   # GET /messages/1
