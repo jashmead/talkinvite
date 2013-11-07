@@ -36,7 +36,8 @@ describe "talks/index" do
 
   it "renders a list of talks" do
     render
-    assert_select "tr > td", :text => "Summary1".to_s, :count => 1
-    assert_select "tr > td", :text => "Summary2".to_s, :count => 1
+    assert_select "a", :content => /Summary1/    # it's content for 'a', not 'text'
+    assert_select "a", :content => /Summary2/
+    assert_select "a", :content => /New Talk/
   end
 end

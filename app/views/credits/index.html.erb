@@ -1,8 +1,7 @@
-<!-- entry point for testing root/partials system -->
 <!-- may want to add in a search field and/or a pagination system -->
 <% provide(:title, 'Credits') %>
 <% if @credits && @credits.size > 0 %>
-	<ul "data-role"="listview">
+	<ul data-role="listview">
 	    <% @credits.each do |credit| %>
         <li>
         <%= link_to credit.name, admin? ? edit_credit_path(credit) : credit_path(credit) %>

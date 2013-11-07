@@ -5,7 +5,7 @@
 <!-- NOTE: data-theme has to be applied to the footer, not the navbar, to take effect -->
 <!-- NOTE: don't bother with navbar in dialogs:  it is distracting in that context -->
 <% if @data_role == 'page' %>
-	<div data-role="footer" data-position="fixed" data-id="<%=controller.controller_name%>-<%=controller.action_name%>" <%=swatch%> >
+	<div data-role="footer" data-position="fixed" data-id="<%=tagged_id('footer')%>" <%=swatch%> >
 	  <div data-role="navbar">
 	    <ul>
 	    <% active_button_set = false; controller.footer_fields.each do |url| %>

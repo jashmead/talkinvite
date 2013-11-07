@@ -2,7 +2,7 @@
 <!-- may want to add in a search field and/or a pagination system -->
 <% provide(:title, 'Frequently Asked Questions') %>
 <% if @faqs && @faqs.size > 0 %>
-	<ul "data-role"="listview">
+	<ul data-role="listview">
 	    <% @faqs.each do |faq| %>
         <li>
         <%= link_to faq.question, admin? ? edit_faq_path(faq) : faq_path(faq) %>

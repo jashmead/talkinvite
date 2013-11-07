@@ -1,16 +1,17 @@
 # accessibility of tools here not entirely clear
-#   appears code here is accessible from inside a form, 
+
+#   code here is accessible from inside a form, 
 #     -- but not from inside a controller 
-#     -- or from inside 'form_for'?
-#   to get at code from inside a controller
+#       -- or from inside 'form_for'?
+
+#   to get at this code from inside a controller
 #     -- use the view_context, 
 #     -- i.e. to call current_layout use view_context.current_layout
-#
+
 #   put view helpers as test_flow & form_for_jqm here
-#     -- this works
 #     -- can store classes in app/helpers as well, i.e. FormBuilderJqm
 #     -- looks as if the module_helper files may only be called from within their specific 'view set'
-#
+
 module ApplicationHelper
 
   ## see http://stackoverflow.com/questions/3326579/rails3-get-current-layout-name-inside-view
@@ -77,5 +78,13 @@ module ApplicationHelper
     options = args.extract_options!
     form_for(model, *(args << options.merge(builder: FormBuilderJqm)), &block)
   end 
+
+  # TBD:  see if we can use content_for or div_for where we are using this
+  #   -- noting that jQuery Mobile needs unique ids across the *set* of all pages!
+  def tagged_id(tag = nil)
+    id_bits = [ controller.controller_name, controller.action_name]
+    id_bits.push(tag) if tag
+    id_bits.join('-').html_safe
+  end
 
 end

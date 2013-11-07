@@ -1,6 +1,6 @@
 <% provide(:title, 'Materialized Maps') %>
 <% if @maps && @maps.size > 0 %>
-	<ul "data-role"="listview">
+	<ul data-role="listview">
 	    <% @maps.each do |map| %>
         <li>
           <%= link_to map.name, edit_map_path(map) %>
