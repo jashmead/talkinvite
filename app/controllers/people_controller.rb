@@ -67,6 +67,7 @@ class PeopleController < ApplicationController
   def edit
     # logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     # don't need to look for person here; done in 'before_action' callback by set_person
+    @data_role = 'page'
     @title = @person.name
   end
 

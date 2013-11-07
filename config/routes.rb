@@ -22,38 +22,29 @@
 
 Talkinvite::Application.routes.draw do
 
-  # TBD: add in a route of the form /help/faqs and so on, i.e. /help/page_name, then put at bottom right corner of each page
-
-  resources :helps
-
-  resources :credits
-
   # Message pages (person to person, no talk)
 
   resources :messages
 
-  # Talk component pages:
-  #   these are all nested under talks, so might want to go the nested resource route
-
-  resources :comments
-
-  resources :members 
-
-  resources :posts
-
-  resources :services
-
-  resources :maps
-
-  # Talk pages
+  # talks:
 
   match '/my_talks', to: 'talks#my_talks', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
   match '/active', to: 'talks#active', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
-  ## this map.connect thing might be useful, but apparently 'map' is just not found
-  ## map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
+  #   these are all nested under talks, so might want to go the nested resource route
+  # TBD:  see if we wish to nest posts, members, comments, & maps under talks
+
+  resources :comments, :members, :posts, :maps
+
+  # Talk pages
+
+  # this map.connect thing might be useful, but apparently 'map' is just not found
+  # map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
+  # talks are currently nested inside people,
+  #   -- but once we allow multiple 'organizers', this will no longer be true
+  #   -- therefore, do not nest
 
   resources :talks do
     ## collection will have lots of 'pick a talk' type pages
@@ -66,16 +57,19 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  # Account pages:  people & sessions
+  # Account & related pages:
 
-  # sessions page:
+  # services nested under poeple, may wish to shift to nested architecture for that
+  # TBD:  see if we wish to nest services inside people
+  resources :services
+  
+  # sessions:
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   resources :sessions, only: [:new, :create, :destroy]  
 
   # people pages: 
-
   match '/profile', to: 'people#profile', via: 'get'
   match '/settings', to: 'people#settings', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
@@ -90,9 +84,12 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  # FAQs:
+  # faqs & related
+  # TBD: add in a route of the form /help/faqs and so on, i.e. /help/page_name, then put at bottom right corner of each page
 
-  resources :faqs 
+  # get '/help/:name', to 'helps#by_name'
+
+  resources :helps, :faqs, :credits
 
   ## Static pages:
 
