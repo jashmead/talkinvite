@@ -21,10 +21,6 @@ class PeopleController < ApplicationController
     [ 'name', 'email', 'description' ]
   end
 
-  def feet_for_people_pages
-    [ '/talks/new', '/talks/my_talks', '/messages/my_messages' ]
-  end
-
   # TBD: we can change the footer for profile, settings, & home.  Do we wish to?
   def feet_center
     if signed_in?

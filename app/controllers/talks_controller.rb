@@ -7,11 +7,7 @@ class TalksController < ApplicationController
 
   # currently talks & people share the list of nav buttons, but that is likely to change
   def feet_center
-    if signed_in?
-      [ '/talks/new', '/talks/my_talks', '/talks/search' ]
-    else
-      [ '/talks/new', '/talks/active', '/talks/search' ]
-    end
+    feet_for_people_pages
   end
 
   # GET /talks

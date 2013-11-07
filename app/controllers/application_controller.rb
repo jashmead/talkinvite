@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     [ 'helps', '/credits', '/faqs' ]
   end
 
+  def feet_for_people_pages
+    [ '/talks/new', '/talks/my_talks', '/messages/my_messages' ]
+  end
+
   def feet_for_static_pages
     [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
   end
