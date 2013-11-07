@@ -1,65 +1,27 @@
-<%= form_for(@talk) do |f| %>
-  <% if @talk.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
+<!-- TBD: rough cut of talks/_form:  will need a fair amount of javascript to fix this up! -->
+<%= form_for_jqm(@talk) do |f| %>
 
-      <ul>
-      <% @talk.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <div class="field">
-    <%= f.label :person_id %><br>
-    <%= f.number_field :person_id %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_field :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :when_desc %><br>
-    <%= f.text_field :when_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :start_dt %><br>
-    <%= f.datetime_select :start_dt %>
-  </div>
-  <div class="field">
-    <%= f.label :end_dt %><br>
-    <%= f.datetime_select :end_dt %>
-  </div>
-  <div class="field">
-    <%= f.label :where_desc %><br>
-    <%= f.text_field :where_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :who_desc %><br>
-    <%= f.text_field :who_desc %>
-  </div>
-  <div class="field">
-    <%= f.label :talk_status %><br>
-    <%= f.text_field :talk_status %>
-  </div>
-  <div class="field">
-    <%= f.label :posted_dt %><br>
-    <%= f.datetime_select :posted_dt %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.number_field :person_id, placeholder: :person_id, required: true %>
+
+  <%= f.text_field :summary, placeholder: :summary, required: true %>
+
+  <%= f.text_field :when_desc, placeholder: :when %>
+  <%= f.datetime_select :start_dt %>
+  <%= f.datetime_select :end_dt %>
+
+  <%= f.text_field :where_desc, placeholder: :where %>
+  <%= f.number_field :longitude, placeholder: :longitude %>
+  <%= f.number_field :latitude, placeholder: :latitude %>
+
+  <%= f.text_area :description, placeholder: 'Why? Details if you would' %>
+  <%= f.text_field :who_desc, placeholder: :who %>
+
+  <%= f.text_field :talk_status %>
+  <%= f.datetime_select :posted_dt %>
+
+  <%= f.submit %>
+  <%= render partial: 'shared/delete_button', :object => f.object %>
+
 <% end %>
