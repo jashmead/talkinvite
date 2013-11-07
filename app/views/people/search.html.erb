@@ -4,7 +4,6 @@
     -- use hidden field tag to drive the switch
 -->
 <% provide(:title, 'Search for People') %>
-<% provide(:data_role, 'dialog') %>
 
 <%= form_tag("/people/found", method: "get") do %>
   <%= label_tag(:search_q, "Search for:") %>
