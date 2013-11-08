@@ -27,6 +27,7 @@ describe "sitemap" do
     "List of People", 
     "My Messages",
     "My Talks", 
+    "New Talk",
     "Search for People"
   ] }
 

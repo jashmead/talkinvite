@@ -1,5 +1,7 @@
 # talks_pages_spec -- tests for talks
 #   searches broken out into talk_searches
+#   -- tried using test code from Rails 4 in Action, but that just fails, 
+#     -- with many errors, see "creating_talks_spec.rb" for fails
 
 require 'spec_helper'
 
@@ -29,38 +31,52 @@ describe "Talk pages" do
       end
     end
 
-# TBD: why is test whining about missing '@person'
-=begin
     describe "with valid information" do
-      before { fill_in 'talk_summary', with: 'Loren ipsum' }
+      before do 
+        fill_in 'Summary', with: 'Loren ipsum'
+      end
       it "should create a talk" do
         expect { click_button "Create Talk" }.to change(Talk, :count).by(1)
       end
     end
-=end
 
   end
 
 # TBD get talk destroy spec working
-=begin
   ## bizarrity:  when root_path set to static_pages#splash, this fails, when it is set to home_path it works
   ## recheck delete when we have a edit_talk_path working
   describe "talk destruction" do
-    before { FactoryGirl.create(:talk, person: person) }
+    # note;  'let' does *not* work in a before clause, only works inline
+    let(:talk) { FactoryGirl.create(:talk, person: person) }
 
     describe "as correct person" do
-      before { visit edit_talk_path }
+      before { visit edit_talk_path(talk) }
 
       it "should delete a talk" do
-        # how do we know there is a talk ready to be deleted?
-        # because we just created one 8 lines back! with FactoryGirl(:talk...)
         expect { click_link "Delete" }.to change(Talk, :count).by(-1)
       end
     end
   end
-=end
 
   describe "talk edits" do
+
+    # note;  'let' does *not* work in a before clause, only works inline
+    let(:talk) { FactoryGirl.create(:talk, person: person, summary: "First summary") }
+
+    describe "as correct person" do
+      let(:new_summary)  { "New Summary" }
+      before do 
+        visit edit_talk_path(talk)
+        fill_in "Summary", with: new_summary
+        click_button "Update Talk"
+      end
+
+      it "summary should have been changed" do
+        save_and_open_page
+        # specify { expect(talk.reload.summary).to eq new_summary }
+      end
+
+    end
 
   end
 

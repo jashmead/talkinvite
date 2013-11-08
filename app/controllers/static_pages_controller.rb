@@ -38,6 +38,7 @@ class StaticPagesController < ApplicationController
         [ settings_path, 'Settings', 'people' ],
         [ profile_path, 'Profile', 'people' ],
         [ my_talks_path, 'My Talks', 'talks' ],
+        [ new_talk_path, 'New Talk', 'talks' ],
         [ my_messages_path, 'My Messages', 'messages' ]
       ]
     else 

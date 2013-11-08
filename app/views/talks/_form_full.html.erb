@@ -8,13 +8,17 @@
   <%= f.text_field :summary, placeholder: :summary, required: true %>
 
   <%= f.text_field :when_desc, placeholder: :when %>
+  <%= f.datetime_select :start_dt %>
+  <%= f.datetime_select :end_dt %>
 
   <%= f.text_field :where_desc, placeholder: :where %>
+  <%= f.number_field :longitude, placeholder: :longitude %>
+  <%= f.number_field :latitude, placeholder: :latitude %>
 
   <%= f.text_area :description, placeholder: 'Why? Details if you would' %>
+  <%= f.text_field :who_desc, placeholder: :who %>
 
   <%= f.text_field :talk_status %>
-
   <%= f.datetime_select :posted_dt %>
 
   <%= f.submit %>

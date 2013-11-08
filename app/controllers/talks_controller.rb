@@ -52,7 +52,7 @@ class TalksController < ApplicationController
   # PATCH/PUT /talks/1.json
   ## what is correct handling of update of current talk? -- use logger.debug to find
   def update
-    update_q(@talk, talk_params, Talk)
+    update_q(@talk, talk_params)
   end
 
   # DELETE /talks/1
