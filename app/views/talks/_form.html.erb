@@ -1,9 +1,9 @@
-<!-- TBD: rough cut of talks/_form:  will need a fair amount of javascript to fix this up! -->
+<!-- TBD: add in post option if the talk hasn't been posted yet (i.e. is 'new') -->
+<!-- TBD: add in latitude, longitude, map options -->
+<!-- TBD: add in better date, perhaps even a calendar option -->
 <%= form_for_jqm(@talk) do |f| %>
 
   <%= render partial: 'shared/error_messages', object: f.object %>
-
-  <%= f.number_field :person_id, placeholder: :person_id, required: true %>
 
   <%= f.text_field :summary, placeholder: :summary, required: true %>
 
@@ -18,6 +18,7 @@
   <%= f.datetime_select :posted_dt %>
 
   <%= f.submit %>
+
   <%= render partial: 'shared/delete_button', :object => f.object %>
 
 <% end %>

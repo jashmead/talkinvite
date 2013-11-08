@@ -17,13 +17,6 @@
  
 class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
-  def pre_field(attribute)
-    '<div class="fieldcontain field ui-hide-label">' + label(attribute)
-  end
-
-  def post_field
-    '</div>'
-  end
 
   def check_box(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
@@ -105,8 +98,18 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
+  # TBD: switch to jqm style buttons; if editing, automagically put in delete button unless told not to
   def submit
     super 'data-inline' => true
   end
+
+  private
+    def pre_field(attribute)
+      '<div class="fieldcontain field ui-hide-label">' + label(attribute)
+    end
+
+    def post_field
+      '</div>'
+    end
 
 end

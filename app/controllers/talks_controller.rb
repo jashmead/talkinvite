@@ -24,6 +24,8 @@ class TalksController < ApplicationController
   end
 
   # GET /talks/new
+  # TBD:  allow people who aren't signed in to start a talk, but don't allow save until they have an id
+  #   -- and explain why in the help page
   def new
     # logger.debug("TalksController.new")
     @talk = Talk.new
