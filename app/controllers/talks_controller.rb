@@ -52,6 +52,7 @@ class TalksController < ApplicationController
   # PATCH/PUT /talks/1.json
   ## what is correct handling of update of current talk? -- use logger.debug to find
   def update
+    logger.debug("TalksController.update: params: #{params.inspect}")
     update_q(@talk, talk_params)
   end
 
@@ -59,6 +60,7 @@ class TalksController < ApplicationController
   # DELETE /talks/1.json
   # TBD: TalksController.destroy will need to be customized to requirements of talks
   def destroy
+    logger.debug("TalksController.destroy: params: #{params.inspect}")
     destroy_q(@talk, root_url)
   end
 

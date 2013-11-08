@@ -73,7 +73,7 @@ describe "Talk pages" do
 
       it "summary should have been changed" do
         save_and_open_page
-        # specify { expect(talk.reload.summary).to eq new_summary }
+        #aspecify { expect(talk.reload.summary).to eq new_summary }
       end
 
     end

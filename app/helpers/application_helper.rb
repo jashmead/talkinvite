@@ -30,8 +30,9 @@ module ApplicationHelper
     end
   end
 
-  def button_back (back_path) 
-    button_inline('Back', back_path)
+  # TBD:  does 'button_back' actually work?
+  def button_back (tag) 
+    link_to tag, :back, 'data-inline' => true, 'data-role' => 'button'
   end
 
   # TBD:  add a warning color to the delete button, here or better via css
@@ -40,6 +41,7 @@ module ApplicationHelper
       'data-inline' => true, 'data-role' => 'button' 
   end
 
+  # TBD:  various front ends to button_inline possible, as for 'new', 'update', and so on...
   def button_inline (tag, link_path) 
     link_to tag, link_path, 'data-role' => 'button', 'data-inline' => true
   end
