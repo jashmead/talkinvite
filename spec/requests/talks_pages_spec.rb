@@ -42,9 +42,6 @@ describe "Talk pages" do
 
   end
 
-# TBD get talk destroy spec working
-  ## bizarrity:  when root_path set to static_pages#splash, this fails, when it is set to home_path it works
-  ## recheck delete when we have a edit_talk_path working
   describe "talk destruction" do
     # note;  'let' does *not* work in a before clause, only works inline
     let(:talk) { FactoryGirl.create(:talk, person: person) }
@@ -80,6 +77,7 @@ describe "Talk pages" do
 
   end
 
+  # TBD: get talk member functions working
   describe "talk members" do
 
     describe "talk join" do
@@ -90,7 +88,7 @@ describe "Talk pages" do
 
   end
 
-  # as map, calendar, tag cloud, ...
+  # TBD: get talk map, tag cloud, calendar views working
   describe "talk views" do
 
     describe "as map" do
@@ -101,28 +99,28 @@ describe "Talk pages" do
 
   end
 
-  describe "talk comms" do
+  # TBD: get talk posts working
+  describe "posts" do
+    describe "talkinvite" do 
+    end
+
+    describe "emails" do
+    end
+
+    describe "tweets" do
+    end
+
+    describe "facebook" do
+    end
+  end
+
+  # TBD: get talk messages working
+  describe "messages" do
+  end
+
+  # TBD: get talk comments working
+  describe "talk comments" do
     
-    describe "comments" do
-    end
-
-    describe "posts" do
-      describe "talkinvite" do 
-      end
-  
-      describe "emails" do
-      end
-
-      describe "tweets" do
-      end
-
-      describe "facebook" do
-      end
-    end
-
-    describe "messages" do
-    end
-  
   end
 
   describe "talk index" do
@@ -197,11 +195,14 @@ describe "Talk pages" do
 
     end
 
+    #TBD: get 'my_talks' working
     describe "my talks" do
       before { visit my_talks_talks_path }
     end
 
-  end
+    # TBD: get talk searches by location working
 
+    # TBD: get talk searches by time working
+  end
 
 end

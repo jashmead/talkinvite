@@ -4,6 +4,10 @@
 #   appears that it depends on the directory
 #   and on whether capybara is in use
 
+# TBD:  explain why 'creating_talks_spec' doesn't work at all
+#   -- taken from Rails 4 in Action, should have been ok
+#   -- can do all the tests via stuff in talks_pages_spec but would like better understanding of capybara & associated
+
 # questions: 
 #   we have not declare 'page' as subject, but we can refer to it?
 #   how do we sign in?
@@ -15,6 +19,12 @@
 #   without better understanding of where the fails are coming from, 
 #     can't get code lifted from Rails in Action 4 to work
 #   so comment out everything until we do have a better understanding
+
+# capybara notes:
+# from rubydoc.info/github/jnicklas/capybara/master#Navigating
+#   feature <=> describe :type => :feature
+#   given <=> let
+#   scenario <=> it
 
 require 'spec_helper'
 

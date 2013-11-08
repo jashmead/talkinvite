@@ -26,6 +26,9 @@ class TalksController < ApplicationController
   # GET /talks/new
   # TBD:  allow people who aren't signed in to start a talk, but don't allow save until they have an id
   #   -- and explain why in the help page
+  #   -- when they start the new talk, put up a flash that says they'll need to log in/create new account before they can save/post
+  #   -- at some point, verify their email, thus avoiding annoying spam
+  #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
     # logger.debug("TalksController.new")
     @talk = Talk.new
