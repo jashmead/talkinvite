@@ -1,17 +1,9 @@
 <!-- TBD: fix 'show' up, once '_form' is OK
 <% provide(:title, 'Talk') %>
 
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Person:</strong>
-  <%= @talk.person_id %>
-</p>
+<h2><%= @talk.summary %></h2>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @talk.summary %>
-</p>
-
+<!-- TBD:  wrap @talk.description in simple_format -->
 <p>
   <strong>Description:</strong>
   <%= @talk.description %>
@@ -62,5 +54,4 @@
   <%= @talk.posted_dt %>
 </p>
 
-<%= link_to 'Edit', edit_talk_path(@talk) %> |
-<%= link_to 'Back', talks_path %>
+<%= link_to 'Edit', edit_person_talk_path(@person, @talk) %> |

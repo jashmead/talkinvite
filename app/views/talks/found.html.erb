@@ -5,10 +5,16 @@
 
 <%= will_paginate %>
 <ul class="talks">
-  <%= render partial: 'talk_found', collection: @talks, as: :talk %>
+<% @talks.each do |talk| %>
+  <li>
+    <% logger.debug("_found: @person: #{@person}, talk: #{talk}") %>
+    <%= link_to talk.summary, person_talk_path(@person, talk) %>
+  </li>
+  end
+<% end %>
 </ul>
 <%= will_paginate %>
 
 <br>
 
-<%= link_to 'New Talk', new_talk_path %>
+<%= link_to 'New Talk', new_person_talk_path(@person) %>

@@ -16,10 +16,6 @@
 # 1. static pages:  about, contact, privacy
 # 1. faqs (& credits & help & bug report):  list, search, show
 # 
-# could also build a 'sitemap', basically the pages that don't require you to specify a record,
-#   -- possibly with signed in & not signed in versions
-#   -- there is a great icon for this in the font-awesome set
-
 Talkinvite::Application.routes.draw do
 
   # Message pages (person to person, no talk)
@@ -53,17 +49,6 @@ Talkinvite::Application.routes.draw do
   #   -- but once we allow multiple 'organizers', this will no longer be true
   #   -- therefore, do not nest
 
-  resources :talks do
-    ## collection will have lots of 'pick a talk' type pages
-    member do
-      get :map, :control
-    end
-    collection do
-      ## 'my_talks' uses current account to select set of talks, doesn't need to be member resource
-      get :found, :my_talks, :search, :active
-    end
-  end
-
   # Account & related pages:
 
   # services nested under poeple, may wish to shift to nested architecture for that
@@ -83,12 +68,27 @@ Talkinvite::Application.routes.draw do
   match '/home', to: 'people#home', via: 'get'
   
   resources :people do
+
+    resources :talks do
+      ## collection will have lots of 'pick a talk' type pages
+      # these are for a specific talk
+      member do
+        get :map, :control
+      end
+      # these are for talks in general
+      collection do
+        get :found, :search, :active, :my_talks
+      end
+    end
+
     member do
       get :oauth, :map
     end
+
     collection do
       get :home, :search, :found, :profile
     end
+
   end
 
   # faqs & related

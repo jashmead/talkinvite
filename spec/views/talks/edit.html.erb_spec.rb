@@ -1,20 +1,35 @@
 require 'spec_helper'
 
 describe "talks/edit" do
-  before(:each) do
-    @talk = assign(:talk, stub_model(Talk,
-      :summary => "MyString",
-      :description => "MyText"
-    ))
+  
+  subject { page }        ## what, exactly, does this do? sets 'it', I think
+
+  let(:page_title) { 'New Talk' }
+  let(:heading) { 'New Talk' } 
+  let(:person) { FactoryGirl.create(:person) }
+  let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
+
+  before do 
+    sign_in person
+    visit edit_person_talk_path(person.id, talk.id)
   end
 
-  it "renders the edit talk form" do
-    render
+  it "renders new talk form" do
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "form[action=?][method=?]", talk_path(@talk), "post" do
-      assert_select "input#talk_summary[name=?]", "talk[summary]"
-      assert_select "textarea#talk_description[name=?]", "talk[description]"
-    end
+    save_and_open_page
+
+    # assert_select doesn't work here
+
+    # tried a lot of variations on form[action=new_person_talk_path(person.id)], none worked,
+    #   -- even tho the edit_person_talk_path(person.id, talk.id) was clearly visible in the form
+    #   -- tried quoting the path, using ~=, using have_link matcher, ...
+    #   -- would be nice to verify we have hit the exact right page...
+
+    should have_selector("form[method=post]")
+    should have_selector("input#talk_summary[name=\"talk[summary]\"]")
+    should have_selector("textarea#talk_description[name=\"talk[description]\"]")
+
   end
+
 end
+

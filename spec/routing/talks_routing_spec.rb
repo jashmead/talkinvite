@@ -4,52 +4,45 @@ describe TalksController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/talks").should route_to("talks#index")
+      get("/people/1/talks").should route_to("talks#index", :person_id => "1")
     end
 
     it "routes to #new" do
-      get("/talks/new").should route_to("talks#new")
+      get("/people/1/talks/new").should route_to("talks#new", :person_id => "1")
     end
 
     it "routes to #show" do
-      get("/talks/1").should route_to("talks#show", :id => "1")
+      get("/people/1/talks/1").should route_to("talks#show", :id => "1", :person_id => "1")
     end
 
     it "routes to #edit" do
-      get("/talks/1/edit").should route_to("talks#edit", :id => "1")
+      get("/people/1/talks/1/edit").should route_to("talks#edit", :id => "1", :person_id => "1")
     end
 
     it "routes to #create" do
-      post("/talks").should route_to("talks#create")
+      post("/people/1/talks").should route_to("talks#create", :person_id => "1")
     end
 
     it "routes to #update" do
-      put("/talks/1").should route_to("talks#update", :id => "1")
+      put("/people/1/talks/1").should route_to("talks#update", :id => "1", :person_id => "1")
     end
 
     it "routes to #destroy" do
-      delete("/talks/1").should route_to("talks#destroy", :id => "1")
+      delete("/people/1/talks/1").should route_to("talks#destroy", :id => "1", :person_id => "1")
     end
 
     ## to test 'start', we would have to setup a signed_in & a not signed_in case..., since 'start' forks on this condition
 
-    ## add in the search routes
-    it "routes to #search" do
-
-      get("/talks/found").should route_to("talks#found")            # found is internal path
-      get("/talks/my_talks").should route_to("talks#my_talks")
-      get("/talks/active").should route_to("talks#active")
-      get("/talks/search").should route_to("talks#search")
-
-      get("/my_talks").should route_to("talks#my_talks")
-      get("/active").should route_to("talks#active")
-      get("/search").should route_to("talks#search")
-
+    it "member routes" do
+      get("/people/1/talks/2/map").should route_to("talks#map", :id => "2", :person_id => "1")
+      get("/people/1/talks/2/control").should route_to("talks#control", :id => "2", :person_id => "1")
     end
 
-    it "routes to #map" do
-      get("/talks/1/map").should route_to("talks#map", :id => "1")
-      get("/talks/1/control").should route_to("talks#control", :id => "1")
+    it "collection routes" do
+      get("/people/1/talks/found").should route_to("talks#found", :person_id => "1")            # found is internal path
+      get("/people/1/talks/my_talks").should route_to("talks#my_talks", :person_id => "1")
+      get("/people/1/talks/active").should route_to("talks#active", :person_id => "1")
+      get("/people/1/talks/search").should route_to("talks#search", :person_id => "1")
     end
 
   end

@@ -1,7 +1,10 @@
 # there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to active
 
 class TalksController < ApplicationController
+  # should always have a person for a talk
+  before_action :set_person
   before_action :set_talk, only: [:show, :edit, :update, :destroy]
+  # TBD:  allow the 'new' action without a person, require before a create however
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
   before_action :correct_person, only: :destroy
 
@@ -14,8 +17,10 @@ class TalksController < ApplicationController
   # GET /talks.json
   def index
     super
+    @person = current_person
+    # @talks = Talk.talks_by_person(@person)
     @talks = Talk.all
-    # logger.debug("CC: TalksController.index: @talks: #{@talks.inspect}")
+    logger.debug("TalksController.index: @talks: #{@talks.inspect}")
   end
 
   # GET /talks/1
@@ -30,8 +35,9 @@ class TalksController < ApplicationController
   #   -- at some point, verify their email, thus avoiding annoying spam
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
-    # logger.debug("TalksController.new")
-    @talk = Talk.new
+    logger.debug("TalksController.new")
+    # @talk = Talk.new
+    @talk = @person.talks.build
   end
 
   # GET /talks/1/edit
@@ -50,7 +56,28 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     @talk = current_person.talks.build(talk_params)
-    create_q(@talk)
+    if @talk.save
+      flash.now[:success] = "Talk has been created"
+      redirect_to [@person, @talk]
+    else
+      flash[:alert] = "Talk has not been created"
+      render 'new'
+    end
+=begin
+    respond_to do |format|
+      if @talk.save
+        format.html { 
+          flash.now[:success] = @talk.class.to_s.downcase + ' was successfully created.'
+          redirect_to [@person, @talk]
+        }
+        # TBD: on format.json, do we want action: 'show' or do we want 'index'?  what does 'location: @talk' mean?
+        format.json { render action: 'show', status: :created, location: @talk }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @talk.errors, status: :unprocessable_entity }
+      end
+    end
+=end
   end
 
   # PATCH/PUT /talks/1
@@ -106,15 +133,16 @@ class TalksController < ApplicationController
   def my_talks
     ## logger.debug("CC: TalksController.my_talks")
     ## can probably consolidate once we have debugged
-    @person = current_person
     @title = "My Talks"
+    @person = current_person
     @talks = Talk.talks_by_person(@person)
     render 'index' and return
   end
 
   # search will be limited to active (with override), to nearby (including infinite distance), & in most recent first order
   def search
-    ## logger.debug("CC: TalksController.search")
+    @person = Person.find(params[:person_id])
+    logger.debug("TalksController.search: params: #{params.inspect}")
   end
 
   # active will show only the 'active' talks
@@ -132,9 +160,13 @@ class TalksController < ApplicationController
   # TBD:  specialized searches
 
   private
+    def set_person
+      @person = Person.find(params[:person_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_talk
-      @talk = Talk.find(params[:id])
+      @talk = @person.talks.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

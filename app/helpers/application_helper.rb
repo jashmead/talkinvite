@@ -51,7 +51,7 @@ module ApplicationHelper
     if ! controller_name 
       controller_name = controller.controller_name
     end
-    logger.debug("swatch(#{controller_name})")
+    # logger.debug("swatch(#{controller_name})")
     theme_letter = case controller_name
       when 'talks', 'services'
         'b' # blue  -- likely to be graphite's water

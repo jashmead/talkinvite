@@ -86,7 +86,8 @@ describe "search" do
   describe "talks" do
 
     ## let has to go here & not in a 'before' group? apparently so
-    let(:talk) { FactoryGirl.create(:talk) } 
+    let(:person) { FactoryGirl.create(:person) }
+    let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
 
     # how to loop thru multiple possible visit paths, i.e. search_talks_path and start_talks_path
 
@@ -94,7 +95,7 @@ describe "search" do
 
       before do
         ## and it looks as if visits have to go in a before group
-        visit search_talks_path
+        visit search_person_talks_path(talk.person_id)
       end
 
       describe "search with no rows expected" do
@@ -135,15 +136,17 @@ describe "search" do
       describe "search with two rows expected" do
 
         before do
-          FactoryGirl.create(:talk)
-          FactoryGirl.create(:talk)
-          fill_in "search_q",    with: "About"
+          FactoryGirl.create(:talk, :summary => "SnagglePuss 1")
+          FactoryGirl.create(:talk, :summary => "SnagglePuss 2")
+          fill_in "search_q",    with: "SnagglePuss"
           click_button "Search"
         end
 
         describe "after click of search" do
 
           it "should render the found page" do
+            # save_and_open_page
+
             expect(page).to have_content('Found 2 matching talks')
             expect(page).to have_title("Talks")
             expect(page).to_not have_title("Search for Talks")

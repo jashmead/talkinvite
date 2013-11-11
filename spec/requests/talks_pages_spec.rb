@@ -10,12 +10,16 @@ describe "Talk pages" do
   subject { page }
 
   let(:person) { FactoryGirl.create(:person) }
+  let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
+
   before { sign_in person }
 
   ##  recheck talk creation when we have a new talk path working, 
   ##    these tests are geared to tutorial's microposts & home page
   describe "talk creation" do
-    before { visit new_talk_path }
+    before do
+        visit new_person_talk_path(talk.person_id)
+    end
 
     describe "with invalid information" do
       it "should not create a talk" do
@@ -42,6 +46,7 @@ describe "Talk pages" do
 
   end
 
+=begin
   describe "talk destruction" do
     # note;  'let' does *not* work in a before clause, only works inline
     let(:talk) { FactoryGirl.create(:talk, person: person) }
@@ -204,5 +209,6 @@ describe "Talk pages" do
 
     # TBD: get talk searches by time working
   end
+=end
 
 end

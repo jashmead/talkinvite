@@ -13,9 +13,11 @@ describe "talks/search" do
 
   let(:page_title) { 'Search for Talks' }
   let(:heading) { 'Search for Talks' } # can't use :heading here?
+  let(:person) { FactoryGirl.create(:person) }
+  let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
 
   describe "renders the search talk form" do
-    before { visit "/talks/search" }  ## replace with a 'path', once we have worked that out
+    before { visit search_person_talks_path(talk.person_id) }
 
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }
