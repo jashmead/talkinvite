@@ -11,7 +11,8 @@ class Post < ActiveRecord::Base
   validates :service_type, presence: true
   validates :post_type, presence: true
 
-  validates_inclusion_of :service_type, :in => [ 'talkinvite' ]
-  validates_inclusion_of :post_type, :in => [ 'announce', 'change', 'cancel', 'done' ]  # may have others, ultimately
+  # TBD: figure out how to get the lists from shared code, say in the module Talkinvite
+  validates_inclusion_of :service_type, :in => [ 'talkinvite', 'dm', 'twitter', 'facebook' ]
+  validates_inclusion_of :post_type, :in => [ 'start', 'posted', 'done', 'cancelled' ]
 
 end

@@ -69,9 +69,9 @@ class StaticPagesController < ApplicationController
     @routes += [
       [ people_path, 'List of People', 'people' ],
       [ search_people_path, 'Search for People', 'people' ],
-      [ search_talks_path, 'Search for Talks', 'talks' ],
-      [ active_talks_path, 'Current Talks', 'talks' ],
-      [ talks_path, 'List of Talks', 'talks' ],
+      [ search_path, 'Search for Talks', 'talks' ],
+      [ active_path, 'Current Talks', 'talks' ],
+      # [ talks_path, 'List of Talks', 'talks' ],   # try going with only search, no list
       [ credits_path, 'Credits' , 'credits' ],
       [ faqs_path, 'Frequently Asked Questions' , 'faqs' ],
       [ helps_path, 'Help' , 'helps' ],

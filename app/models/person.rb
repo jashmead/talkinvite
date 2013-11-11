@@ -24,8 +24,6 @@
 
 class Person < ActiveRecord::Base
 
-  ## include Searchy
-
   ## this line *creates* the attribute/method of Person called 'talks'
   has_many :talks, inverse_of: :person, dependent: :destroy
 
@@ -37,10 +35,16 @@ class Person < ActiveRecord::Base
   has_many :members, inverse_of: :person, dependent: :destroy
   has_many :memberships, inverse_of: :person, through: :members, source: :talks
 
-  has_many :comments, inverse_of: :person, dependent: :destroy
   has_many :posts, inverse_of: :person, dependent: :destroy
 
-  before_save { self.email = email.downcase }
+  has_many :comments, inverse_of: :person, dependent: :destroy
+
+  has_many :services, inverse_of: :person, dependent: :destroy
+
+  before_save do
+    # TBD:  make the name lowercase & space-free? -- would rather not, tho would let us route to /people/anonymous/talks...
+    self.email = email.downcase
+  end
 
   before_create :create_remember_token
 
@@ -78,15 +82,23 @@ class Person < ActiveRecord::Base
 
   # tried 'anonymous' in the app/helpers, got whined at...
   def self.anonymous 
-    anonymous = self.find_by_name('anonymous')
-    if ! anonymous || anonymous.size == 0
-      # logger.debug("MM: Person.anonymous: creating anonymous record")
-      Person.create!( name: 'anonymous', email: 'anonymous@talkinvite.com', 
-        password: ')Scr0ful0us@n0ns3ns3.N#rD(', password_confirmation: ')Scr0ful0us@n0ns3ns3.N#rD(' )
-      anonymous = self.find_by_name('anonymous')
+    begin 
+      logger.debug("Person.anonymous")
+      self.find_by_name!('anonymous')
     end
-    ## logger.debug("MM: Person.anonymous: #{anonymous}")
-    anonymous
+  end
+
+  def self.force!(name, email, password, options = {})
+    logger.debug("Person.force!: #{name}, #{email}, #{password}, #{options.inspect}")
+    Person.find_by_name( name ) or
+      Person.create!(
+        name: name,
+        email: email,
+        password: password,
+        password_confirmation: password, 
+        admin: options['admin'] || false,
+        sub: options['sub'] || false
+      )
   end
 
   private

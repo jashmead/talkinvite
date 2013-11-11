@@ -6,7 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# CAVEAT:  you can't name a field 'type', it confuses RoR (possibly because 'type' is used for polymorphism)
+# CAVEATS:  
+#   -- you can't name a field 'type', it confuses RoR (possibly because 'type' is used for polymorphism)
+#   -- you also can't name a table 'files'
 #
 # NOTES:
 #   -- don't force id's on these records; not in keeping with the spirit of rails or postgres
@@ -28,19 +30,16 @@
 #   -- setup the save script as a rake task, i.e. db:make_seeds
 #   -- set up seed admins as one file, credits, faqs, & helps as another
 #   -- no RI issues with these tables!
-# TBD:  need to clear out existing admins before doing the load? simplest is "delete from people" which will cascade down
+# TBD:  how to run a trace of some kind inside seeds.rb?  logger is not available, apparently
 
-anonymous1 = Person.create!( name: 'anonymous', email: 'anonymous@talkinvite.com', 
-  password: 'foobar', password_confirmation: 'foobar' )
+  # find_or_create_by: http://guides.rubyonrails.org/active_record_querying.html#find-or-create-by
 
-talkinvite1 = Person.create!( name: 'talkinvite', email: 'talkinvite@talkinvite.com', 
-  password: 'foobar', password_confirmation: 'foobar', admin: true)
+  # TBD:  we aren't seeing these records getting saved; why?
+  #   -- tried using find_or_create_by, then save; that also did nothing!
 
-jashmead1 = Person.create!( name: 'jashmead', email: 'jashmead@talkinvite.com', 
-  password: 'foobar', password_confirmation: 'foobar', admin: true, sub: true)
-
-jrandomuser1 = Person.create!( name: 'jrandomuser', email: 'jrandomuser@talkinvite.com', 
-  password: 'foobar', password_confirmation: 'foobar')
-
-jrandomsubscriber1 = Person.create!( name: 'jrandomsubscriber', email: 'jrandomsubscriber@talkinvite.com', 
-  password: 'foobar', password_confirmation: 'foobar', sub: true)
+# real users are getting real passwords
+Person.force!( 'anonymous', 'anonymous@talkinvite.com', 'W}8#u{T;w 0["uq' )
+Person.force!( 'talkinvite', 'talkinvite@talkinvite.com', 'xorx*18En;53^X_', { admin: true, sub: true })
+Person.force!( 'jashmead', 'jashmead@talkinvite.com', 'Dr@g0n13', { admin: true, sub: true } )
+Person.force!( 'jrandomuser1', 'jrandomuser@talkinvite.com', 'foobar' )
+Person.force!( 'jrandomsub1', 'jrandomsub@talkinvite.com', '_?,:y65(q!&R2fU', { sub: true } )

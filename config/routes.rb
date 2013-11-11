@@ -14,7 +14,9 @@
 # 1. comments: add comments to talk
 # 1. messages:  talk to other talkers
 # 1. static pages:  about, contact, privacy
-# 1. faqs (& credits & help & bug report):  list, search, show
+# 1. faqs
+# 1. credits
+# 1. helps
 # 
 Talkinvite::Application.routes.draw do
 
@@ -31,14 +33,17 @@ Talkinvite::Application.routes.draw do
   # talks:
 
   # TBD:  see if we want to use named talks, using same logic as named help
-  match '/my_talks', to: 'talks#my_talks', via: 'get'
+
+  # Anonymous routes:
   match '/search', to: 'talks#search', via: 'get'
   match '/active', to: 'talks#active', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
+  match '/talks', to: 'talks#index', via: 'get'
 
-  #   these are all nested under talks, so might want to go the nested resource route
+  # Signed in routes:
+  match '/my_talks', to: 'talks#my_talks', via: 'get'
+
   # TBD:  see if we wish to nest posts, members, comments, & maps under talks
-
   resources :comments, :members, :posts, :maps
 
   # Talk pages
