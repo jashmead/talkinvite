@@ -392,7 +392,7 @@ CREATE TABLE talks (
     longitude numeric,
     latitude numeric,
     who_desc character varying(255),
-    talk_status character varying(255) DEFAULT 'new'::character varying,
+    talk_status character varying(255) DEFAULT 'start'::character varying NOT NULL,
     where_desc character varying(255),
     when_desc character varying(255)
 );
@@ -710,6 +710,14 @@ ALTER TABLE ONLY posts
 
 
 --
+-- Name: service2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY services
+    ADD CONSTRAINT service2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
 -- Name: talk2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -890,3 +898,9 @@ INSERT INTO schema_migrations (version) VALUES ('20131104154538');
 INSERT INTO schema_migrations (version) VALUES ('20131104162828');
 
 INSERT INTO schema_migrations (version) VALUES ('20131106161020');
+
+INSERT INTO schema_migrations (version) VALUES ('20131111172645');
+
+INSERT INTO schema_migrations (version) VALUES ('20131111181942');
+
+INSERT INTO schema_migrations (version) VALUES ('20131111214007');
