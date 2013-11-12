@@ -1,8 +1,8 @@
-=== Credits
+=== Helps
 
 ==== Index
 
-list of associated credits, with a search box at the top
+list of associated helps, with a search box at the top
 
 has new button
 
@@ -12,7 +12,7 @@ has new button
 
 only if you are an admin
 
-has save & delete buttons
+have save & delete buttons
 
 ==== New
 

@@ -2,21 +2,16 @@
 
 === Philosophy
 
-simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
-
--- now fixed by use of Bootstrap 
-
-responsive design, smaller elements, i.e. span4 or mobile-width, and nearby controls
+-- simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
 
 -- no responsive design, purely mobile
 
 === Start/Home page
 
-currently using start, which forks into people/home, talks/recent
+-- currently using start, which forks into people/home, talks/recent
 
--- might prefer a menu style page
+-- could use sitemap or about
 
-For details, see below (kept in layouts/README.rdoc)
 === Static elements
 1. logo -- not really needed in mobile, replace with start except on start page, where it is blank?
 1. title -- talk summary, person name, whatever
@@ -56,17 +51,12 @@ Form has:
 
 1. Schema_migrations -- no controllers or views for these
 
-=== Policies
+==== Upcoming/virtual
 
-1. id for each layout
-1. test for each layout
-1. max reuse
-1. class for main type for each layout
-1. develop from root top down, using partials
-1. leaf is next, may do as dialogs, with different header
-1. accordian effects later
-1. link to new page later
-1. responsive design, but focused on mobile first -- how?
+1. Calendars -- like maps
+1. Trending -- twitter, google, facebooks, whatnot
+1. Topics -- or interests, used for searches
+1. Tags -- about nouns, used for searches
 
 === Styles
 
@@ -74,9 +64,12 @@ Form has:
   * blue for talks, green for persons, cyan for messages & so on, include faqs in cyan?
   * rich brown for places, nearly black
   * yellow for marketing (& credits?), red only for messages
+  -- see the function swatch()
+
 1. Icons
   * circle for people, square? for talks, uppointing triangle for locations
   * lightning for messages?
+  -- see the function iconify()
 
 === Warnings
 

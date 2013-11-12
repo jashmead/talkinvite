@@ -1,12 +1,28 @@
-=== Member Views
+=== Members
 
-Starting with the usual set, but really need:
+==== Index
 
-1. accept/decline/maybe
-1. admin/unadmin
-1. show (with individual talk, person)
-1. index -- for a list of the members in a talk, or memberships a person has
+list of associated comments, summary of talk at top
 
-do not need edit, since the only thing you can do with a membership is change the status
+==== Show
 
-delete is done when talk or person is deleted, and only then
+==== Edit 
+
+only if it is yours
+
+==== New
+
+for the current talk only
+
+==== Buttons
+
+RSVP based on current state
+-- you can only fix your own
+
+Message the specific user
+  -- popup for how
+    internal message
+    email
+
+allow use of location for this talk
+  -- others can see where you are

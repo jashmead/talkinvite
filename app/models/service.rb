@@ -8,10 +8,14 @@ class Service < ActiveRecord::Base
   # probably a bunch of other types as well
   #   talkvite is base
   #   dm is local messaging
+
   # TBD:  figure out how to get this list to be returned from a function
   #   -- tried setting up Module with require, include, but relevant function not found
   # validates_inclusion_of :service_type, :in => service_list()
-  validates_inclusion_of :service_type, :in => [ 'talkinvite', 'dm', 'twitter', 'facebook' ]
 
-  # TBD:  use the 'force!' idea to force creation of a talkinvite service
+  # TBD:  have other be programmable if that is doable...
+
+  validates_inclusion_of :service_type, :in => [ 'talkinvite', 'dm', 'twitter', 'facebook', 'google+', 'other' ]
+
+  # TBD:  use the 'force!' idea to force creation of services for the core people; good in seeds.rb
 end

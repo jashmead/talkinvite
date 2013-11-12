@@ -1,0 +1,15 @@
+=== Sessions
+
+==== Signin
+
+-- should allow both name & email signin
+
+-- includes reset password button
+
+==== Signout
+
+==== Buttons
+
+-- signout
+
+-- reset password

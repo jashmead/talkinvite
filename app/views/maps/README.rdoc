@@ -1,0 +1,24 @@
+=== Maps
+
+==== Edit
+
+only layout, and a partial at that
+
+takes a search by address
+-- works out latitude & longitude 
+
+has a scale control
+
+has a zoom control
+
+has a show X control
+  -- other members
+  -- tweets (see trending)
+
+==== TBD
+
+previous entries:
+  -- may save to local storage
+  -- and pop back with previous entries
+
+alternate universes

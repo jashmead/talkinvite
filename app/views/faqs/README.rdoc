@@ -1,8 +1,8 @@
-=== Credits
+=== FAQs
 
 ==== Index
 
-list of associated credits, with a search box at the top
+list of associated helps, with a search box at the top
 
 has new button
 
@@ -21,3 +21,4 @@ only if you are an admin
 ==== TBD
 
 url field
+

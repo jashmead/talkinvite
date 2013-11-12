@@ -1,33 +1,76 @@
 === Talks forms
 
-==== Core pages
+==== Index & search
 
-1. control 
-1. edit -- control page for a page, used by all participants
-  * you can flag the talk open or protected or private
-1. advanced_search* -- optional, but fun & good element in design
-1. index -- list, start point of found
-1. found
-1. my_talks
+merge control & edit, but keep permissions simple on edit (you can only delete/change what you created)
 
-==== Search pages
+index, found, search, & advanced search merge; all really just search + current results
+  advanced search is a button on search
 
-1. my_talks*
-1. nearby*
-1. recent*
+i & s gets some search buttons
 
-==== Pick pages
+-- advanced search
+  -- goes back to list
 
-1. pick_list
+-- my talks
+  -- goes back to list
 
-==== Partials
+-- nearby
+  -- goes back to list
 
-talks header
-talks footer
+-- trending
+  -- goes to topics screen
+    -- twitter, google, reddit, pinterest, & so on
 
-==== Plans
+==== New
 
-if we are not the person who created the talk, or if a (different) person is shown at all,
-add in follow/unfollow; add in gravatar, if available
+new stays separate
+  -- the five w's screen
+  -- so the logo is WWWWW
+    -- what, who, where, when, & why
 
-destroy has to reduce to deactivate, once others have started to use
+has a 'post' button
+
+==== Edit
+
+edit has summary at top
+  -- plus a button to change
+
+edit has description
+
+edit has location as a tag line with a button to show map
+
+edit has time as a tag line with a button to show calendar
+
+edit gets rsvp button: join/leave/maybe
+
+edit gets comments line with a button to show comments
+  -- comments are new page
+
+edit gets post button for originator
+  posts are just a current status, maybe a history button
+
+edit gets post button for other members, if they are signed in
+
+has a 'post' button
+
+has a delete button until it is posted
+
+==== New & Edit
+
+both get a duplicate button
+
+==== Members list
+
+get current members list
+  -- see members/index
+
+members list can drop down into 1) user profile 2) your own settings
+
+==== Posts list
+
+from history button, with an add
+
+==== Comments list
+
+from comments button

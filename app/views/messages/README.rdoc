@@ -1,2 +1,29 @@
 === Messages
 
+==== Index
+
+ones you've sent or received
+-- thats it
+-- usually by talk
+
+==== New
+
+generally get the to bit from context
+
+==== Search people
+
+cuts over to an embedded search people form
+
+==== TBD: search contacts
+
+use phone's contact list/address book
+
+use google+
+
+use facebook
+
+use twitter
+
+==== Implementation
+
+via database, when messages put in, you get a push

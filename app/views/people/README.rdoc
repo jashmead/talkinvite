@@ -1,37 +1,31 @@
-=== People forms
+=== People
 
-==== Account forms
+==== New account
 
-1. sign_up -- up
-1. profile -- page name is 'show', public face of user
-1. settings -- page name is 'edit', control nexus for user
-1. advanced_ search*, based off edit
-1. upgrades** -- trade money for privacy & no ads
-1. history**
+name, email, description
 
-==== Session forms
+TBD:  image
 
-1. sign_in
-1. signout
+==== Profile
 
-==== People forms
+what other people see
 
-1. found -- done, variation on list
-1. list -- page name is 'index'
+==== Settings
 
-==== Partials
+really an edit
 
-1. account header
-1. account footer
-1. account talks
-1. account messages
-1. account notifications (including tweets)
+includes services list, which see
 
-==== Plans
+includes permissions list
+  -- allow use of location
+    always, never, per talk, ask each time
 
-if we are not the person who created the talk, or if a (different) person is shown at all,
-add in gravatar, if available
+==== Index/search
 
-destroy has to reduce to deactivate, once others have started to use
+invoked from talks/edit to find members
 
-add in oauth screen, when we get to that point
+==== TBD
+
+oauth
+
+upgrades

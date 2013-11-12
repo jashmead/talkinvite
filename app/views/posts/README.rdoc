@@ -1,8 +1,8 @@
-=== Comments
+=== Posts
 
 ==== Index
 
-list of associated comments, summary of talk at top
+list of associated posts, summary of talk at top
 
 ==== Show
 
@@ -13,5 +13,4 @@ only if it is yours
 ==== New
 
 for the current talk only
-
 

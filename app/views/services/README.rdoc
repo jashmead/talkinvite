@@ -1,0 +1,28 @@
+=== Services
+
+all forms are only available for current person (& an admin)
+
+appear at the bottom of the settings form
+
+==== Index
+
+list of services for current person
+
+has new button
+
+==== Edit 
+
+has save & delete buttons
+
+==== New
+
+mostly as a button leading to a form
+
+==== TBD
+
+inactive flag
+
+keep handles for the specific services & ask:
+  -- accept incoming messages using this?
+  -- search web using this?
+  
