@@ -9,7 +9,7 @@ module SessionsHelper
   ##  instead use:
 
   def current_person
-    logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
+    # logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
 
     encrypted_remember_token = Person.encrypt(cookies[:remember_token])
 
@@ -22,7 +22,7 @@ module SessionsHelper
     # have to spell out the find_by_remember_token
     @current_person ||= Person.find_by_remember_token( encrypted_remember_token )
 
-    logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") #DDT
+    # logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") #DDT
     @current_person #DDT -- needed to make sure return value is correct
   end
 
@@ -30,18 +30,18 @@ module SessionsHelper
   def current_person=(person)
     # stores variable for later use
     # any reason for @current_person versus self.current_person?
-    logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
+    # logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
     @current_person = person
   end
 
   def current_person?(person)
-    logger.debug("SessionsHelper.current_person?: current_person: #{@current_person.inspect}") #DDT
+    # logger.debug("SessionsHelper.current_person?: current_person: #{@current_person.inspect}") #DDT
     person == current_person  # comparison is to what is returned from the function 'current_person'
   end
 
   # guesswork as to how to best handle anonymous
   def anonymous
-    logger.debug("SessionsHelper.anonymous")
+    # logger.debug("SessionsHelper.anonymous")
     @anonymous = Person.find_by_name('anonymous')
   end
 
@@ -218,17 +218,17 @@ module SessionsHelper
   #   -- also stored in session[:current_talk]
   #   -- could store in associated person record, in field called something like current_talk_id -- integer, fk'd
   def current_talk
-    logger.debug("SessionsHelper.current_talk: current_talk: #{@current_talk.inspect}") # DDT
+    # logger.debug("SessionsHelper.current_talk: current_talk: #{@current_talk.inspect}") # DDT
     @current_talk ||= session[:current_talk]
   end
 
   def current_talk=(talk)
-    logger.debug("SessionsHelper.current_talk=: current_talk: #{@current_talk.inspect}") #DDT
+    # logger.debug("SessionsHelper.current_talk=: current_talk: #{@current_talk.inspect}") #DDT
     @current_talk = session[:current_talk] = talk
   end
 
   def current_talk?(talk)
-    logger.debug("SessionsHelper.current_talk?: current_talk: #{@current_talk.inspect}") #DDT
+    # logger.debug("SessionsHelper.current_talk?: current_talk: #{@current_talk.inspect}") #DDT
     talk == current_talk  # comparison is to what is returned from the function 'current_talk'
   end
 

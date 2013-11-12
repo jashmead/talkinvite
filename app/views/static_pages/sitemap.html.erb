@@ -1,6 +1,6 @@
 <!-- entry point for testing root/partials system -->
 <% provide(:title, 'Site Map') %>
-<% logger.debug("sitemap: @routes: #{@routes.inspect}") %>
+<% # logger.debug("sitemap: @routes: #{@routes.inspect}") %>
 <% if @routes && @routes.size > 0 %>
 	<ul data-role="listview">
 	    <% @routes.each do |route| %>

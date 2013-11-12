@@ -7,7 +7,7 @@
 <ul class="talks">
 <% @talks.each do |talk| %>
   <li>
-    <% logger.debug("_found: @person: #{@person}, talk: #{talk}") %>
+    <% # logger.debug("_found: @person: #{@person}, talk: #{talk}") %>
     <%= link_to talk.summary, person_talk_path(@person, talk) %>
   </li>
   end

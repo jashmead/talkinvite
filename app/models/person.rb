@@ -83,7 +83,7 @@ class Person < ActiveRecord::Base
   # tried 'anonymous' in the app/helpers, got whined at...
   def self.anonymous 
     begin 
-      logger.debug("Person.anonymous")
+      # logger.debug("Person.anonymous")
       self.find_by_name!('anonymous')
     end
   end

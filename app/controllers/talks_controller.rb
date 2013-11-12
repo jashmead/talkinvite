@@ -37,7 +37,7 @@ class TalksController < ApplicationController
   #   -- at some point, verify their email, thus avoiding annoying spam
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
-    logger.debug("TalksController.new")
+    # logger.debug("TalksController.new")
     @talk = @person.talks.build
   end
 
@@ -58,9 +58,9 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     params.permit!
-    logger.debug("TalksController.create: @person: #{@person.inspect}, params: #{params.inspect}")
+    # logger.debug("TalksController.create: @person: #{@person.inspect}, params: #{params.inspect}")
     @talk = @person.talks.create(talk_params)
-    logger.debug("TalksController.create: @talk: #{@talk.inspect}")
+    # logger.debug("TalksController.create: @talk: #{@talk.inspect}")
     if @talk.save
         flash.now[:success] = "Talk has been created"
         redirect_to [@person, @talk]
@@ -74,7 +74,7 @@ class TalksController < ApplicationController
   # PATCH/PUT /talks/1.json
   ## what is correct handling of update of current talk? -- use logger.debug to find
   def update
-    logger.debug("TalksController.update: params: #{params.inspect}")
+    # logger.debug("TalksController.update: params: #{params.inspect}")
     update_q(@talk, params)
   end
 
@@ -82,7 +82,7 @@ class TalksController < ApplicationController
   # DELETE /talks/1.json
   # TBD: TalksController.destroy will need to be customized to requirements of talks
   def destroy
-    logger.debug("TalksController.destroy: params: #{params.inspect}")
+    # logger.debug("TalksController.destroy: params: #{params.inspect}")
     destroy_q(@talk, root_url)
   end
 
@@ -121,7 +121,7 @@ class TalksController < ApplicationController
   #     -- some stubs already present
 
   def my_talks
-    logger.debug("TalksController.my_talks: params: #{params.inspect}")
+    # logger.debug("TalksController.my_talks: params: #{params.inspect}")
 
     @title = "My Talks"
     @person = current_person || anonymous
@@ -133,7 +133,7 @@ class TalksController < ApplicationController
   # search will be limited to posted (with override), to nearby (including infinite distance), & in most recent first order
   def search
     @person = current_person || anonymous
-    logger.debug("TalksController.search: params: #{params.inspect}")
+    # logger.debug("TalksController.search: params: #{params.inspect}")
   end
 
   # posted will show only the 'posted' talks
@@ -155,7 +155,7 @@ class TalksController < ApplicationController
       @person = Person.find_by_id(params[:person_id]) or
         current_person or
         anonymous
-      logger.debug("TalksController.set_person: @person: #{@person}")
+      # logger.debug("TalksController.set_person: @person: #{@person}")
     end
 
     # Use callbacks to share common setup or constraints between actions.
