@@ -181,6 +181,6 @@ Talkinvite::Application.routes.draw do
   #     resources :products
   #   end
 
-  root to: "talks#start"
+  root to: "static_pages#sitemap"
 
 end
