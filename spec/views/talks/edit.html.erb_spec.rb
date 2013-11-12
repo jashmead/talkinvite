@@ -16,7 +16,7 @@ describe "talks/edit" do
 
   it "renders new talk form" do
 
-    save_and_open_page
+    # save_and_open_page
 
     # assert_select doesn't work here
 
