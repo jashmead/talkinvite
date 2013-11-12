@@ -112,3 +112,5 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 1. the search_field is from ruby-on-rails -- compare to equivalent for jQuery Mobile & resolve differences
 1. switch updates to reverts (disabled until a change made or make invisible)
 1. add duplicate/clone button to those forms that could benefit from it
+1. add tooltips to everything
+1. add all help pages

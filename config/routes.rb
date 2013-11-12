@@ -41,6 +41,7 @@ Talkinvite::Application.routes.draw do
   match '/start', to: 'talks#start', via: 'get'
 
   # Signed in routes:
+  # TBD:  eliminate my_talks, now included in 'home'
   get '/my_talks', to: 'talks#my_talks'
 
   # Allow direct-to-talks routes, since we always have a default person:  either the current_person or anonymous
@@ -74,29 +75,39 @@ Talkinvite::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]  
 
   # people pages: 
+  # TBD: merge edit & settings
+  # TBD: merge show & profile
   match '/profile', to: 'people#profile', via: 'get'
   match '/settings', to: 'people#settings', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
   match '/home', to: 'people#home', via: 'get'
   
+  # TBD:  kill the 'show' & 'edit' routes here? reroute 'delete' to 'inactivate'
   resources :people do
 
     resources :talks do
       ## collection will have lots of 'pick a talk' type pages
       # these are for a specific talk
+      # TBD: eliminate all of the member routes
       member do
         get :map, :control
       end
       # these are for talks in general
+      # TBD:  eliminate all of the collection routes
       collection do
         get :found, :search, :posted, :my_talks
       end
     end
 
+    # TBD: implement 'oauth'
+    # TBD: see if we need 'map'
     member do
       get :oauth, :map
     end
 
+    # TBD: eliminate search & found
+    # TBD: merge profile & edit
+    # note:  'home' is the only valid option here
     collection do
       get :home, :search, :found, :profile
     end

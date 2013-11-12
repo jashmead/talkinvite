@@ -56,6 +56,7 @@ class PeopleController < ApplicationController
     @data_role = 'dialog' if @person != current_person
   end
 
+  # TBD: merge profile back into 'show'
   def profile
     @person = current_person
     @title = @person.name
@@ -69,7 +70,7 @@ class PeopleController < ApplicationController
   end
 
   # GET /people/1/edit
-  # 'settings' is almost a synonym for 'edit', except that the person is forced to be the signed in person
+  # TBD:  if not admin or correct_person, switch to 'show'
   def edit
     # logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     # don't need to look for person here; done in 'before_action' callback by set_person
@@ -77,6 +78,8 @@ class PeopleController < ApplicationController
     @title = @person.name
   end
 
+  # TBD: merge settings back into 'edit'
+  # TBD:  if not admin or correct_person, switch to 'show'
   def settings
     # logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
@@ -85,6 +88,8 @@ class PeopleController < ApplicationController
   end
 
   # 'home' is a control panel type thing
+  # TBD:  set @title to be person.name
+  # TBD:  if not admin or correct_person, switch to 'show'
   def home
     # we should already have checked that we are signed in!
     @person = current_person
@@ -195,10 +200,10 @@ class PeopleController < ApplicationController
     end
 
     # fetch_children likely to be slow; may want to break it down, once it is working
-    # TBD:  how do we save these back? there must be a tool!
+    # note:  save of included talks is done per talk, the only way they can be edited
     # TBD:  how do we fetch all the records for an association?
     def fetch_children
-      @talks = Talk.where('person_id = ?', @person.id)
+      @talks = Talk.talks_by_person(@person)
 
 =begin
       @comments = @person.comments

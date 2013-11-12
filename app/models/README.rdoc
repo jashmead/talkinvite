@@ -18,6 +18,13 @@ In order of creation:
 1. Helps
 1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field). virtual table, like sessions.
 
+Planned but not yet implemented tables:
+
+1. Topics
+1. Tags
+1. Ads
+1. Calendars
+
 Currently tabled tables
 
 1. Connections -- talk2talk, connections, creator, from_talk, to_talk, an advanced feature, may not need, can use for clone previous, repeating, & so on. May help with searches (big in our design).  At this point, we don't know how we want to use:  clone-father, repeating, and so on.  Could implement with a self-join, side-table, settings field, lots of ways.  Fairly complex, even more complex than relationships. Wait on need. YAGNI.

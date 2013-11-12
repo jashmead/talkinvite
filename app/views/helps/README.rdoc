@@ -12,6 +12,9 @@ has new button
 
 only if you are an admin
 
+wring out all space & other characters from the names: make them purely alphanumeric (including '_')
+  -- do this 'on blur'
+
 have save & delete buttons
 
 ==== New

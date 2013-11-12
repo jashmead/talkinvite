@@ -29,15 +29,17 @@ class StaticPagesController < ApplicationController
         [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ],
         [ profile_path, 'Profile', 'people' ],
-        [ my_talks_person_talks_path(@person), 'My Talks', 'talks' ],
+        # [ my_talks_person_talks_path(@person), 'My Talks', 'talks' ],
         [ new_person_talk_path(@person), 'Create Talk', 'talks' ],
         [ my_messages_path, 'My Messages', 'messages' ]
+        # change password will go here
       ]
     else 
       @person = anonymous
       @routes = [
         [ signin_path, 'Sign In', 'sessions' ],
         [ signup_path, 'New Account', 'people' ]
+        # email password will go here
       ]
     end
     @person ||= anonymous # in case current_person came back nil

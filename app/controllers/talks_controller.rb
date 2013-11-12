@@ -120,6 +120,7 @@ class TalksController < ApplicationController
   #   actual search should be done with the Talk model,
   #     -- some stubs already present
 
+  # TBD:  eliminate my_talks, only belongs as a search on the model
   def my_talks
     # logger.debug("TalksController.my_talks: params: #{params.inspect}")
 

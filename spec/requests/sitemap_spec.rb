@@ -33,7 +33,7 @@ describe "sitemap" do
     "Home", 
     # "List of People", 
     "My Messages",
-    "My Talks", 
+    # "My Talks", 
     "Create Talk",
     "Search for People"
   ] }

@@ -1,30 +1,83 @@
 === People
 
+==== Home
+
+-- put name as title, put button in to change name, fix sitemap check to track this
+  -- remove email & description, not needed here!
+    -- use settings for these
+  -- therefore, remove the _form element
+
+-- get bottom buttons to line up, use a control group
+  -- if we have bottom buttons
+  -- since we don't have any fields, we don't need to include a save button!
+
+  -- leave new button
+    -- no, we have no fields in the latest design, so no save button needed!
+
+  -- get titles on bottom to be "more human", i.e. Save 
+    -- and then shift to revert button, not save
+    -- check out docs for submit_tag, these are the low level function
+
+-- add in box of talks
+  -- show summary & time_in_words
+  -- create current by person
+  -- use talks/index as a starting point
+
+-- fix up footer, all three elements are broken
+  -- new talk is broken (& also redundant)
+  -- my talks is broken (& also redundant) -- replace with search
+  -- messages is empty currently, replace with search people?
+
 ==== New account
 
 name, email, description
-
-TBD:  image
+  -- to get more control, see settings
+  -- add in url
+  -- add in profile picture (using file upload)
 
 ==== Profile
 
 what other people see
 
+-- includes name, description, url, profile picture
+  
+-- includes a 'message' button
+
 ==== Settings
 
-really an edit
+-- really an edit
+  -- needs checks against being seen even from 'get'
 
-includes services list, which see
+-- says Settings on the top
 
-includes permissions list
+-- has fields name, description, url, email, phone (?), 
+
+-- add url field
+
+-- allow inactivation
+
+-- includes services list, which see
+
+-- includes permissions list
   -- allow use of location
     always, never, per talk, ask each time
+  -- do in json, as part of settings fields (which create)
 
 ==== Index/search
 
 invoked from talks/edit to find members
 
+if invoked 'raw', then has
+  -- search field
+  -- advanced search popup
+  -- canned searches
+  -- listview with other people:
+    -- name
+      -- highlighted if they are connected in any way
+
 ==== TBD
+
+change_password
 
 oauth
 
