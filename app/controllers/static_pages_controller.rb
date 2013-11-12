@@ -72,13 +72,13 @@ class StaticPagesController < ApplicationController
       [ search_path, 'Search for Talks', 'talks' ],
       # [ posted_person_talks_path(@person), 'Current Talks', 'talks' ],
       # [ person_talks_path(@person), 'List of Talks', 'talks' ],   # try going with only search, no list
+      [ helps_path, 'Help' , 'helps' ],
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
-      [ static_pages_sitemap_path, 'Site Map', 'static_pages' ],
-      [ helps_path, 'Help' , 'helps' ],
       [ credits_path, 'Credits' , 'credits' ],
-      [ faqs_path, 'Frequently Asked Questions' , 'faqs' ]
+      [ faqs_path, 'Frequently Asked Questions' , 'faqs' ],
+      [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
 
     if admin?

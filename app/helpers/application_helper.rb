@@ -60,12 +60,13 @@ module ApplicationHelper
         'c' # red   -- likely to be graphite's royal
       when 'messages', 'comments', 'posts'
         'e' # cyan  -- likely to be graphite's mint
-      when 'helps'
-        'a' # could also use 'f', orange
-      when 'faqs', 'static_pages', 'credits'
-        'a' # dull stuff so black & white
+      when 'helps', 'faqs'
+        'f' # orange -- warm & friendly, we hope!
       when 'maps'
         'd' # green, in anticipation of the revival of venues, locations?
+      # using black & white for the non-working parts of the system
+      when 'static_pages', 'credits'
+        'a' # dull stuff so black & white
       else
         'a' # black and white
     end
