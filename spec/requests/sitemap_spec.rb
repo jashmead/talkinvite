@@ -31,7 +31,7 @@ describe "sitemap" do
   # profile not tested here because the title is supposed to be person.name, need to work up more code to check
   let(:signedin_list) { [ 
     "Home", 
-    "List of People", 
+    # "List of People", 
     "My Messages",
     "My Talks", 
     "Create Talk",

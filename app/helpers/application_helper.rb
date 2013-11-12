@@ -47,6 +47,7 @@ module ApplicationHelper
   end
 
   # returns a correct data-theme="l" where l can be from a to f, depending on the context
+  # a = black & white, b = blue, c = red, d = green, e = cyan, f = orange
   def swatch ( controller_name = nil ) 
     if ! controller_name 
       controller_name = controller.controller_name
@@ -59,12 +60,12 @@ module ApplicationHelper
         'c' # red   -- likely to be graphite's royal
       when 'messages', 'comments', 'posts'
         'e' # cyan  -- likely to be graphite's mint
+      when 'helps'
+        'a' # could also use 'f', orange
       when 'faqs', 'static_pages', 'credits'
-        'f' # orange -- likely to be yellow or ochre or graphite's sand
+        'a' # dull stuff so black & white
       when 'maps'
         'd' # green, in anticipation of the revival of venues, locations?
-      when 'helps'
-        'a' # black & white
       else
         'a' # black and white
     end

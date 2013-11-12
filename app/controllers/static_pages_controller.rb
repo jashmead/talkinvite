@@ -53,14 +53,6 @@ class StaticPagesController < ApplicationController
 
     logger.debug("StaticPagesController.sitemap: @person: #{@person.inspect}")
 
-    if admin?
-      @routes += [
-        [ new_credit_path, 'New Credit' , 'credits' ],
-        [ new_faq_path, 'New FAQ' , 'faqs' ],
-        [ new_help_path, 'New Help' , 'helps' ]
-      ]
-    end
-
 =begin
     if current_talk 
       # and fold in comments & so on as well
@@ -75,19 +67,28 @@ class StaticPagesController < ApplicationController
     #   -- and from talks_path to person_talks_path
     #   -- why?
     @routes += [
-      [ people_path, 'List of People', 'people' ],
+      # [ people_path, 'List of People', 'people' ],
       [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],
-      [ posted_person_talks_path(@person), 'Current Talks', 'talks' ],
-      [ person_talks_path(@person), 'List of Talks', 'talks' ],   # try going with only search, no list
-      [ credits_path, 'Credits' , 'credits' ],
-      [ faqs_path, 'Frequently Asked Questions' , 'faqs' ],
-      [ helps_path, 'Help' , 'helps' ],
+      # [ posted_person_talks_path(@person), 'Current Talks', 'talks' ],
+      # [ person_talks_path(@person), 'List of Talks', 'talks' ],   # try going with only search, no list
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
-      [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
+      [ static_pages_sitemap_path, 'Site Map', 'static_pages' ],
+      [ helps_path, 'Help' , 'helps' ],
+      [ credits_path, 'Credits' , 'credits' ],
+      [ faqs_path, 'Frequently Asked Questions' , 'faqs' ]
     ]
+
+    if admin?
+      @routes += [
+        [ new_credit_path, 'New Credit' , 'credits' ],
+        [ new_faq_path, 'New FAQ' , 'faqs' ],
+        [ new_help_path, 'New Help' , 'helps' ]
+      ]
+    end
+
     logger.debug("StaticPagesController.sitemap: @routes: #{@routes.inspect}")
 
   end
