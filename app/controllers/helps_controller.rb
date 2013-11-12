@@ -1,5 +1,7 @@
-# help controller
+# Help controller
 
+# massively parallel to faqs & credis
+#
 # TBD: on the footer, do we want to use the faqs, credits, & helps? or stick with about, contact, & privacy?
 
 class HelpsController < ApplicationController

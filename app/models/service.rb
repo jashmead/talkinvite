@@ -1,3 +1,10 @@
+#
+# Services
+#
+# Point up to people
+#
+# restricted types, but as yet no service_types table planned
+#
 class Service < ActiveRecord::Base
 
   belongs_to :person, inverse_of: :services

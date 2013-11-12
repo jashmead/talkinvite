@@ -14,3 +14,9 @@ only if it is yours
 
 for the current talk only
 
+==== Post
+
+-- post current talk
+  -- TBD: multiple services
+  -- to start:  just add to the site as posted!
+

@@ -1,9 +1,13 @@
 #
-# Comments
+# Comments 
+#
+# Child of talks
 #
 # May have polymorphism in its future
-# Therefor will need a commentable_type & commentable_id field, latter replacing talk_id
+# In that case, will need a commentable_type & commentable_id field, latter replacing talk_id
 #
+# Posts are comments that change the talks status, comments are posts that don't change the status
+
 class Comment < ActiveRecord::Base
 
   belongs_to :person, inverse_of: :comments

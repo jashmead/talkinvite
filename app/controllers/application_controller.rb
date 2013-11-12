@@ -1,3 +1,5 @@
+# Application Controller
+
 ## 1. shared controller code goes here
 ## 1. for no doubt excellent reason, all functions here end in '_q'
 ## 1. json code is not currently being exercised
@@ -5,13 +7,31 @@
 ## 1. to get at the functions in app/helpers, use view_context, i.e. view_context.current_layout
 ## 1. search_q & report_q currently (10/28/13) flagged as overcomplex by codeclimate
 
-## for associations we have 
+## for associations, going from child to parent, we have:
 #     assocation, 
 #     association=, 
 #     build_association (in memory only), 
 #     create_association (in memory & on disk)
 ##  use association to fetch, build + = to create in memory, create to build & save at the same time
 ##  -- does 'update' on parent automagically save the children?  can check the logs to see, or check the ActiveRecord docs
+
+# for associations, going from parent to child, we have:
+
+# 1.children(force_reload = false)
+# 1.children<<(object, ...)
+# 1.children.delete(object, ...)
+# 1.children.destroy(object, ...)
+# 1.children=objects
+# 1.child_ids
+# 1.child_ids=ids
+# 1.children.clear
+# 1.children.empty?
+# 1.children.size
+# 1.children.find(...)
+# 1.children.where(...)
+# 1.children.exists?(...)
+# 1.children.build(attributes = {}, ...)
+# 1.children.create(attributes = {})
 
 ## have defined fetch_children for people and talks and fetch_parents for talks
 #   -- could define similar for the rest of the tables; wait till we see what is needed in practice for them

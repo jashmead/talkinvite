@@ -1,3 +1,8 @@
+#
+# Posts
+#
+# Posts are comments that also change the state of the talk
+#
 class Post < ActiveRecord::Base
 
   belongs_to :person, inverse_of: :posts

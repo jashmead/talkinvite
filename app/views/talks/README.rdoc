@@ -18,7 +18,7 @@ i & s gets some search buttons
 -- nearby
   -- goes back to list
 
--- trending
+-- TBD: trending
   -- goes to topics screen
     -- twitter, google, reddit, pinterest, & so on
 
@@ -43,18 +43,23 @@ edit has location as a tag line with a button to show map
 edit has time as a tag line with a button to show calendar
 
 edit gets rsvp button: join/leave/maybe
+  -- if you aren't the originator
+  -- choice depends on your state with respect to the group
+  -- ultimately a 'private' button
 
 edit gets comments line with a button to show comments
   -- comments are new page
 
 edit gets post button for originator
-  posts are just a current status, maybe a history button
+  posts are just a current status, maybe a history/timeline button
 
 edit gets post button for other members, if they are signed in
 
 has a 'post' button
 
 has a delete button until it is posted
+
+stats button
 
 ==== New & Edit
 
@@ -74,3 +79,14 @@ from history button, with an add
 ==== Comments list
 
 from comments button
+
+==== Related forms
+
+stats
+  -- # of members
+  -- # of accesses
+
+rate the talk
+
+ranking
+

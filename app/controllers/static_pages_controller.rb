@@ -1,3 +1,7 @@
+# Static Pages
+#
+# Meritrious but slightly outdated.
+
 class StaticPagesController < ApplicationController
 
   # dummy out the search_fields; should never be searching this any way

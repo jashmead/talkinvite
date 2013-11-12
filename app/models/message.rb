@@ -1,3 +1,4 @@
+# Messages
 #
 # search should in general be only of messages from or two the current account
 #   should look for stuff associated with the from & to people

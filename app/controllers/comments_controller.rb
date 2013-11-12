@@ -1,3 +1,7 @@
+# Comments Controller
+#
+# index is always nested
+#
 ## all that we can really do with comments are add them, delete if owner (or admin), edit if owner (or admin?)
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]

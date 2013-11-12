@@ -1,3 +1,7 @@
+# Talks Controller
+
+# most important single piece of code
+
 # there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to posted
 
 class TalksController < ApplicationController

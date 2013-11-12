@@ -21,6 +21,7 @@
 # 1. current_talk_id -- store that id in the database
 # 1. url
 # 1. photo
+# 1. preferred start page (currently defaulting to sitemap)
 
 class Person < ActiveRecord::Base
 

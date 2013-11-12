@@ -19,9 +19,24 @@
 
 # Planned fields
 # 1. repeating talk?
+# 1. private talk?
+# 1. open -- anyone can edit?
+# 1. post talk comments
 
+# == Searches
+#
+# 1. My talks
+# 1. My current talks
+# 1. By tag -- once tags are in
+# 1. By topic -- once topics are in
+# 1. Advanced:  by name, description, url, and so on
+# 1. Like a previous talk
+# 1. Like my other talks
+# 1. Associated with a group -- once groups are in
+# 1. Nearby -- once locations are up
+# 1. Liked by X, with X as a member
+#
 # TBD: validate start_dt < end_dt
-# TBD: add in customized searches (here, not in controller)
 
 =begin
   To go back & forth between people & talks:

@@ -17,4 +17,4 @@ Example:  the params.require in people_controller.rb: params.require(:person).pe
 1. calendar
 1. circle
 1. control -- varies by model
-1. side-by-side & other multi-frame constructs, since they need input from controller for each frame
+1. side-by-side & other multi-frame constructs, since they need input from controller for each frame; may have been obsolesced by transition to jQuery Mobile

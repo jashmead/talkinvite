@@ -1,3 +1,7 @@
+# Services
+#
+# what services available to which people?
+
 # TBD: Services don't really have a lot of actions associated with them; thin their controller out at some point
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]

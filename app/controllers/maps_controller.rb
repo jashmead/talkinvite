@@ -1,3 +1,8 @@
+# Maps Controller
+#
+# may need to use multiple source for maps, i.e. google, yahoo, open street map
+#
+# default set of resources overrich
 class MapsController < ApplicationController
   before_action :set_map, only: [:show, :edit, :update, :destroy]
 

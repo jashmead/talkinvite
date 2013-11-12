@@ -1,3 +1,5 @@
+# Members Controller
+# 
 ##  add accept/decline/maybe operations here, calling on the model functions with the same names
 ##  add admin/unadmin operations here, calling on the model functions with the same names
 ##  expect these will be using ajax in final design

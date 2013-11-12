@@ -1,3 +1,7 @@
+# People Controller
+# 
+# 1. 2nd most important controller
+#
 ##  will be adding actions:  signin, signout, settings
 ##  will be adding profile_picture
 ##  will be adding current_location (in session on server, at this point)

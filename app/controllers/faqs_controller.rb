@@ -1,4 +1,7 @@
-## only admins can add faqs?
+# FAQs Controller
+#
+# only admins can add faqs?
+#
 class FaqsController < ApplicationController
   before_action :set_faq, only: [:show, :edit, :update, :destroy ]
 

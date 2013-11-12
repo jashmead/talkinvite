@@ -11,6 +11,7 @@
 #   -- how built?
 #   -- why do you need to be signed in?  -- easier, frankly
 #   -- why ads?  -- have to pay to keep the servers spinning, seemed more appropriate, especially if ads relevant
+#   -- if a talk is open, what is to keep any member from changing disastrously? fear of the schmoo award
 
 class Faq < ActiveRecord::Base
   validates :question, presence: true
