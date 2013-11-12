@@ -1,6 +1,6 @@
 <!-- may want to add in a search field and/or a pagination system -->
 <% provide(:title, 'Credits') %>
-<% if @credits && @credits.size > 0 %>
+<% if @credits %>
 	<ul data-role="listview">
 	    <% @credits.each do |credit| %>
         <li>

@@ -1,26 +1,28 @@
-<!-- TBD: add in post option if the talk hasn't been posted yet (i.e. is 'new') -->
+<!-- TBD: add in post option if the talk hasn't been posted yet (i.e. talk_status is 'start') -->
 <!-- TBD: add in latitude, longitude, map options -->
 <!-- TBD: add in better date, perhaps even a calendar option -->
+<% logger.debug("views/talks/new: @person: #{@person}, @talk: #{@talk}") %>
 <%= form_for_jqm [ @person, @talk ] do |f| %>
 
   <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <%= f.text_field :summary, placeholder: :summary, required: true %>
+  <%= f.text_field :summary, placeholder: :what, required: true %>
 
   <%= f.text_field :when_desc, placeholder: :when %>
 
   <%= f.text_field :where_desc, placeholder: :where %>
 
-  <%= f.text_area :description, placeholder: 'Why? Details if you would' %>
+  <%= f.text_area :description, placeholder: :why %>
 
   <%= f.text_field :talk_status %>
 
+  <%= f.submit %>
   <%= 
       if controller.action_name === 'new'
-        link_to 'Create Talk', new_person_talk_path, 'data-role' => 'button', 'data-inline' => true
+        link_to 'Create Talk', person_talk_path(@person, @talk), :method => :post, 'data-role' => 'button', 'data-inline' => true
       else
-        link_to 'Edit Talk', edit_person_talk_path, 'data-role' => 'button', 'data-inline' => true
-        link_to 'Delete Talk', person_talk_path, :method => 'delete', 'data-role' => 'button', 'data-inline' => true
+        link_to 'Edit Talk', edit_person_talk_path(@person, @talk), :method => :put, 'data-role' => 'button', 'data-inline' => true
+        link_to 'Delete Talk', [@person, @talk], :method => :delete, 'data-role' => 'button', 'data-inline' => true
       end
   %>
 

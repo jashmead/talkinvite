@@ -30,6 +30,7 @@ class CreditsController < ApplicationController
   # POST /credits.json
   def create
     @credit = Credit.new(credit_params)
+    logger.debug("CreditsController.create: credit_params: #{credit_params.inspect}, @credit: #{@credit.inspect}")
     create_q(@credit)
   end
 

@@ -36,7 +36,6 @@ describe TalksController do
 
   ## index setup from http://rubydoc.info/gems/rspec-rails/frames
   describe "GET #index" do
-=begin
     it "responds successfully with an HTTP 200 status code" do
       # get :index
       # get ('/people/' + person.id.to_s + '/talks/index')
@@ -62,14 +61,15 @@ describe TalksController do
     end
   end
 
+=begin
   describe "GET show" do
     it "assigns the requested talk as @talk" do
       talk = Talk.create! valid_attributes
       get :show, {:id => talk.to_param}
       assigns(:talk).should eq(talk)
     end
-=end
   end
+=end
 
 # TBD: fix new spec for talks
 =begin

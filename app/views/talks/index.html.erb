@@ -1,9 +1,10 @@
 <% provide(:title, 'List of Talks') %>
-<% logger.debug("index: @talks: #{@talks.inspect}") %>
-<% if @talks && @talks.size > 0 %>
+<% logger.debug("views/talks/index: @talks: #{@talks.inspect}") %>
+<% if @talks %>
   <ul data-role="listview">
       <% @talks.each do |talk| %>
         <li>
+        <% logger.debug("views/talks/index: talk: #{talk.inspect}") %>
         <%= link_to talk.summary %>
         </li>
       <% end %>

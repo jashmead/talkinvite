@@ -33,20 +33,25 @@ class StaticPagesController < ApplicationController
     store_location
 
     if signed_in?
+      @person = current_person
       @routes = [
         [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ],
         [ profile_path, 'Profile', 'people' ],
-        [ my_talks_path, 'My Talks', 'talks' ],
-        [ new_talk_path, 'New Talk', 'talks' ],
+        [ my_talks_person_talks_path(@person), 'My Talks', 'talks' ],
+        [ new_person_talk_path(@person), 'Create Talk', 'talks' ],
         [ my_messages_path, 'My Messages', 'messages' ]
       ]
     else 
+      @person = anonymous
       @routes = [
         [ signin_path, 'Sign In', 'sessions' ],
         [ signup_path, 'New Account', 'people' ]
       ]
     end
+    @person ||= anonymous # in case current_person came back nil
+
+    logger.debug("StaticPagesController.sitemap: @person: #{@person.inspect}")
 
     if admin?
       @routes += [
@@ -66,12 +71,15 @@ class StaticPagesController < ApplicationController
     end
 =end
 
+    # TBD we had to shift from active_path to active_person_talks_path  (& then to posted_person_talks_path)
+    #   -- and from talks_path to person_talks_path
+    #   -- why?
     @routes += [
       [ people_path, 'List of People', 'people' ],
       [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],
-      [ active_path, 'Current Talks', 'talks' ],
-      # [ talks_path, 'List of Talks', 'talks' ],   # try going with only search, no list
+      [ posted_person_talks_path(@person), 'Current Talks', 'talks' ],
+      [ person_talks_path(@person), 'List of Talks', 'talks' ],   # try going with only search, no list
       [ credits_path, 'Credits' , 'credits' ],
       [ faqs_path, 'Frequently Asked Questions' , 'faqs' ],
       [ helps_path, 'Help' , 'helps' ],
@@ -80,6 +88,7 @@ class StaticPagesController < ApplicationController
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
       [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
+    logger.debug("StaticPagesController.sitemap: @routes: #{@routes.inspect}")
 
   end
 

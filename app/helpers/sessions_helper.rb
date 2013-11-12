@@ -39,6 +39,12 @@ module SessionsHelper
     person == current_person  # comparison is to what is returned from the function 'current_person'
   end
 
+  # guesswork as to how to best handle anonymous
+  def anonymous
+    logger.debug("SessionsHelper.anonymous")
+    @anonymous = Person.find_by_name('anonymous')
+  end
+
   def sign_in(person)
     remember_token = Person.new_remember_token
 

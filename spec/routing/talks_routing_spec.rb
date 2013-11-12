@@ -41,9 +41,23 @@ describe TalksController do
     it "collection routes" do
       get("/people/1/talks/found").should route_to("talks#found", :person_id => "1")            # found is internal path
       get("/people/1/talks/my_talks").should route_to("talks#my_talks", :person_id => "1")
-      get("/people/1/talks/active").should route_to("talks#active", :person_id => "1")
+      get("/people/1/talks/posted").should route_to("talks#posted", :person_id => "1")
       get("/people/1/talks/search").should route_to("talks#search", :person_id => "1")
     end
+
+=begin
+    it "anonymous special routes" do
+      get("/search").should route_to("talks#search")
+      get("/posted").should route_to("talks#posted")
+      get("/start").should route_to("talks#start")
+      get("/talks").should route_to("talks#index")
+      get("/talks/new").should route_to("talks#new")
+    end
+
+    it "signed in special routes" do
+      get("/my_talks").should route_to("talks#my_talks")
+    end
+=end
 
   end
 

@@ -88,8 +88,9 @@ class Person < ActiveRecord::Base
     end
   end
 
+  # TBD:  add in create of default service?
   def self.force!(name, email, password, options = {})
-    logger.debug("Person.force!: #{name}, #{email}, #{password}, #{options.inspect}")
+    # logger.debug("Person.force!: #{name}, #{email}, #{password}, #{options.inspect}")
     Person.find_by_name( name ) or
       Person.create!(
         name: name,

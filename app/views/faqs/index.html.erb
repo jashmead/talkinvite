@@ -1,7 +1,7 @@
 <!-- entry point for testing root/partials system -->
 <!-- may want to add in a search field and/or a pagination system -->
 <% provide(:title, 'Frequently Asked Questions') %>
-<% if @faqs && @faqs.size > 0 %>
+<% if @faqs %>
 	<ul data-role="listview">
 	    <% @faqs.each do |faq| %>
         <li>

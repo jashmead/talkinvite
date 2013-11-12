@@ -2,11 +2,11 @@
 
 FactoryGirl.define do
   factory :talk do
-    person    # how does this work? how is 'person' set?  why is 'person' not being returned?
+    person
 
     sequence(:summary)  { |n| "About #{n}" }
     sequence(:description) { |n| "description_#{n}"}
 
-    talk_status "active"
+    talk_status "start"
   end
 end

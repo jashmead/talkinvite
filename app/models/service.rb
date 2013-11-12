@@ -10,6 +10,8 @@ class Service < ActiveRecord::Base
   #   dm is local messaging
   # TBD:  figure out how to get this list to be returned from a function
   #   -- tried setting up Module with require, include, but relevant function not found
+  # validates_inclusion_of :service_type, :in => service_list()
   validates_inclusion_of :service_type, :in => [ 'talkinvite', 'dm', 'twitter', 'facebook' ]
 
+  # TBD:  use the 'force!' idea to force creation of a talkinvite service
 end

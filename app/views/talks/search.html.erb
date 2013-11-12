@@ -1,9 +1,9 @@
 <% provide(:title, 'Search for Talks') %>
 
-<%= form_tag("/people/" + @person.id.to_s + "/talks/found", method: "get") do %>
+<%= form_tag(found_person_talks_path(@person), method: "get") do %>
   <%= label_tag(:search_q, "Search for:") %>
   <%= search_field(:search, :q) %>
   <%= submit_tag("Search", { 'name' => 'button', 'data-inline' => true } ) %>
   <br/>
-  <%= submit_tag("New Talk", { 'name' => 'button', 'data-inline' => true } ) %>
+  <%= submit_tag("Create Talk", { 'name' => 'button', 'data-inline' => true } ) %>
 <% end %>

@@ -1,7 +1,7 @@
 <!-- entry point for testing root/partials system -->
 <!-- may want to add in a search field and/or a pagination system -->
 <% provide(:title, 'Helps') %>
-<% if @helps && @helps.size > 0 %>
+<% if @helps %>
 	<ul data-role="listview">
 	    <% @helps.each do |help| %>
         <li>

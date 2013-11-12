@@ -1,9 +1,11 @@
-# there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to active
+# there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to posted
 
 class TalksController < ApplicationController
+
   # should always have a person for a talk
   before_action :set_person
-  before_action :set_talk, only: [:show, :edit, :update, :destroy]
+  before_action :set_talk, only: [:show, :edit, :update, :destroy, :control]
+
   # TBD:  allow the 'new' action without a person, require before a create however
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
   before_action :correct_person, only: :destroy
@@ -17,15 +19,15 @@ class TalksController < ApplicationController
   # GET /talks.json
   def index
     super
-    @person = current_person
+    # TBD: can we use an association method for this? person.talk & person.talks seemed to fail? maybe because no talks present
     # @talks = Talk.talks_by_person(@person)
     @talks = Talk.all
-    logger.debug("TalksController.index: @talks: #{@talks.inspect}")
   end
 
   # GET /talks/1
   # GET /talks/1.json
   def show
+    @talk = @person.talks.find(params[:id])
   end
 
   # GET /talks/new
@@ -36,16 +38,16 @@ class TalksController < ApplicationController
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
     logger.debug("TalksController.new")
-    # @talk = Talk.new
     @talk = @person.talks.build
   end
 
   # GET /talks/1/edit
   def edit
+    @talk = @person.talks.find(params[:id])
   end
 
   def control
-    @talk = Talk.find(params[:id])
+    @talk = @person.talks.find(params[:id])
   end
 
   def search_fields
@@ -55,29 +57,17 @@ class TalksController < ApplicationController
   # POST /talks
   # POST /talks.json
   def create
-    @talk = current_person.talks.build(talk_params)
+    params.permit!
+    logger.debug("TalksController.create: @person: #{@person.inspect}, params: #{params.inspect}")
+    @talk = @person.talks.create(talk_params)
+    logger.debug("TalksController.create: @talk: #{@talk.inspect}")
     if @talk.save
-      flash.now[:success] = "Talk has been created"
-      redirect_to [@person, @talk]
+        flash.now[:success] = "Talk has been created"
+        redirect_to [@person, @talk]
     else
       flash[:alert] = "Talk has not been created"
       render 'new'
     end
-=begin
-    respond_to do |format|
-      if @talk.save
-        format.html { 
-          flash.now[:success] = @talk.class.to_s.downcase + ' was successfully created.'
-          redirect_to [@person, @talk]
-        }
-        # TBD: on format.json, do we want action: 'show' or do we want 'index'?  what does 'location: @talk' mean?
-        format.json { render action: 'show', status: :created, location: @talk }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @talk.errors, status: :unprocessable_entity }
-      end
-    end
-=end
   end
 
   # PATCH/PUT /talks/1
@@ -85,7 +75,7 @@ class TalksController < ApplicationController
   ## what is correct handling of update of current talk? -- use logger.debug to find
   def update
     logger.debug("TalksController.update: params: #{params.inspect}")
-    update_q(@talk, talk_params)
+    update_q(@talk, params)
   end
 
   # DELETE /talks/1
@@ -108,10 +98,10 @@ class TalksController < ApplicationController
   def start
     # logger.debug("CC: TalksController.start")
     if signed_in?
-      redirect_to '/people/home'
+      redirect_to home_people(@person)
     else 
-      # talks are automatically listed 'active' only, most recent first, and nearby in preference (default radius of search)
-      redirect_to '/talks/active'
+      # talks are automatically listed 'posted' only, most recent first, and nearby in preference (default radius of search)
+      redirect_to posted_person_talks(@person)
     end
   end
 
@@ -131,25 +121,26 @@ class TalksController < ApplicationController
   #     -- some stubs already present
 
   def my_talks
-    ## logger.debug("CC: TalksController.my_talks")
-    ## can probably consolidate once we have debugged
+    logger.debug("TalksController.my_talks: params: #{params.inspect}")
+
     @title = "My Talks"
-    @person = current_person
+    @person = current_person || anonymous
     @talks = Talk.talks_by_person(@person)
+
     render 'index' and return
   end
 
-  # search will be limited to active (with override), to nearby (including infinite distance), & in most recent first order
+  # search will be limited to posted (with override), to nearby (including infinite distance), & in most recent first order
   def search
-    @person = Person.find(params[:person_id])
+    @person = current_person || anonymous
     logger.debug("TalksController.search: params: #{params.inspect}")
   end
 
-  # active will show only the 'active' talks
-  def active
+  # posted will show only the 'posted' talks
+  def posted
     @title = 'Current Talks'
-    @talks = Talk.where('talk_status = ?', 'active')
-    render 'index'
+    @talks = Talk.where('talk_status = ?', 'posted')
+    render 'index' and return
   end
 
   def map
@@ -161,12 +152,16 @@ class TalksController < ApplicationController
 
   private
     def set_person
-      @person = Person.find(params[:person_id])
+      @person = Person.find_by_id(params[:person_id]) or
+        current_person or
+        anonymous
+      logger.debug("TalksController.set_person: @person: #{@person}")
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_talk
-      @talk = @person.talks.find(params[:id])
+      # @person = current_person || anonymous
+      @talk = Talk.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

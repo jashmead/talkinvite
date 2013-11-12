@@ -1,6 +1,6 @@
 <!-- replace person_id & talk_id with name & name, then redo this -->
 <% provide(:title, 'Materialized members') %>
-<% if @members && @members.size > 0 %>
+<% if @members %>
 	<ul data-role="listview">
 	    <% @members.each do |member| %>
         <li>

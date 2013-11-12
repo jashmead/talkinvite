@@ -1,5 +1,5 @@
 <% provide(:title, 'Comments') %>
-<% if @comments && @comments.size > 0 %>
+<% if @comments %>
 	<ul data-role="listview">
 	    <% @comments.each do |comment| %>
         <li>

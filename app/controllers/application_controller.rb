@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
   # TBD:  switch to a real start page when we have one built!, see notes for talks#start
   # start_page used as root page
   def start_page
-    [ { 'controller_name' => 'talks', 'label' => 'Active', 'action_name' => 'active' } ]
+    [ { 'controller_name' => 'talks', 'label' => 'Posted', 'action_name' => 'posted' } ]
   end
 
   def sitemap_page

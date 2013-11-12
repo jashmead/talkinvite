@@ -7,7 +7,7 @@
 # 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
 # 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when'
 # 1. posted_dt -- when this is announced to the world
-# 1. talk_status -- active talks are those that have been posted & not cancelled
+# 1. talk_status -- posted talks are those that have been posted & not cancelled or finished
 # 1. where_desc
 # 1. who_type -- as any, members_only, ...
 # 1. why_type -- ?
@@ -54,16 +54,16 @@ class Talk < ActiveRecord::Base
   validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
   validates :person_id, presence: true
 
-  validates_inclusion_of :talk_status, in: [ 'new', 'active', 'cancelled', 'done' ] 
+  validates_inclusion_of :talk_status, in: [ 'start', 'posted', 'cancelled', 'done' ] 
 
-  # is talks_by_person needed?
+  # TBD: is talks_by_person needed? the association methods should be able to take care of this
   def self.talks_by_person( person ) 
     # RoR probably knows to use 'id' when called with 'person', experiment later
     if ! person
-      person = Person.anonymous
+      return none # TBD:  is 'none' the right way to return an empty set of relations?
     end
     # TBD: does find_by_person_id throw exception on no rows found?
-    self.find_by_person_id(person.id)
+    self.where('person_id = ?', person.id)
   end
 
 end

@@ -1,5 +1,5 @@
 <% provide(:title, 'Messages') %>
-<% if @messages && @messages.size > 0 %>
+<% if @messages %>
 	<ul 'data-role'="listview">
 	    <% @messages.each do |message| %>
         <li>

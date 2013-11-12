@@ -36,12 +36,19 @@ Talkinvite::Application.routes.draw do
 
   # Anonymous routes:
   match '/search', to: 'talks#search', via: 'get'
-  match '/active', to: 'talks#active', via: 'get'
+  # TBD:  why was the /posted path not working from sitemap?
+  match '/posted', to: 'talks#posted', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
-  match '/talks', to: 'talks#index', via: 'get'
 
   # Signed in routes:
-  match '/my_talks', to: 'talks#my_talks', via: 'get'
+  get '/my_talks', to: 'talks#my_talks'
+
+  # Allow direct-to-talks routes, since we always have a default person:  either the current_person or anonymous
+  match '/talks/new', :controller => 'talks', :action => 'new', via: 'get'
+  match '/talks/search', to: 'talks#search', via: 'get'
+
+  # TBD: why was the /talks path not working from sitemap?
+  match '/talks', to: 'talks#index', via: 'get'
 
   # TBD:  see if we wish to nest posts, members, comments, & maps under talks
   resources :comments, :members, :posts, :maps
@@ -82,7 +89,7 @@ Talkinvite::Application.routes.draw do
       end
       # these are for talks in general
       collection do
-        get :found, :search, :active, :my_talks
+        get :found, :search, :posted, :my_talks
       end
     end
 

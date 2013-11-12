@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :post do
-    person_id 1
-    talk_id 1
+    person 
+    talk
     service_type "talkinvite"
     service_notes "{}"
     post_type "announce"

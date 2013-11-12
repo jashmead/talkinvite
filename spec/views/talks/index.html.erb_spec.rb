@@ -19,7 +19,7 @@ describe "talks/index" do
   end
 
   it "renders a list of talks" do
-    # save_and_open_page
+    save_and_open_page
     should have_selector('li', /Snigglet1/)
     should have_selector('li', /Snigglet4/)
     should have_link("New Talk")

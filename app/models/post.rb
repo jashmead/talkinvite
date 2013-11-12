@@ -13,6 +13,6 @@ class Post < ActiveRecord::Base
 
   # TBD: figure out how to get the lists from shared code, say in the module Talkinvite
   validates_inclusion_of :service_type, :in => [ 'talkinvite', 'dm', 'twitter', 'facebook' ]
-  validates_inclusion_of :post_type, :in => [ 'start', 'posted', 'done', 'cancelled' ]
+  validates_inclusion_of :post_type, :in => [ 'announce', 'cancel', 'conclude' ]
 
 end
