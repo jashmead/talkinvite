@@ -4,6 +4,7 @@
 
 # there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to posted
 
+
 class TalksController < ApplicationController
 
   # should always have a person for a talk
@@ -12,6 +13,7 @@ class TalksController < ApplicationController
 
   # TBD:  allow the 'new' action without a person, require before a create however
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
+  # TBD:  see if we want to add correct_person before 'edit'
   before_action :correct_person, only: :destroy
 
   # currently talks & people share the list of nav buttons, but that is likely to change
@@ -21,17 +23,18 @@ class TalksController < ApplicationController
 
   # GET /talks
   # GET /talks.json
+  # TBD:  work out how we want to use TalksController#index
   def index
     super
     # TBD: can we use an association method for this? person.talk & person.talks seemed to fail? maybe because no talks present
     # @talks = Talk.talks_by_person(@person)
-    @talks = Talk.all
+    # TBD: when we replace Talk.all, we will need to fix the corresponding spec as well...
+    @talks = Talk.all # debugging fallback
   end
 
   # GET /talks/1
   # GET /talks/1.json
   def show
-    @talk = @person.talks.find(params[:id])
   end
 
   # GET /talks/new
@@ -41,17 +44,12 @@ class TalksController < ApplicationController
   #   -- at some point, verify their email, thus avoiding annoying spam
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
-    # logger.debug("TalksController.new")
+    # logger.debug("TalksController.new: @person: #{@person.inspect}, @person.methods: #{@person.methods.inspect}")
     @talk = @person.talks.build
   end
 
   # GET /talks/1/edit
   def edit
-    @talk = @person.talks.find(params[:id])
-  end
-
-  def control
-    @talk = @person.talks.find(params[:id])
   end
 
   def search_fields
@@ -160,25 +158,29 @@ class TalksController < ApplicationController
       @person = Person.find_by_id(params[:person_id]) or
         current_person or
         anonymous
-      # logger.debug("TalksController.set_person: @person: #{@person}")
+      logger.debug("TalksController.set_person: @person: #{@person}")
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_talk
-      # @person = current_person || anonymous
+      # could work thru @person, but that can be a bit trickier
       @talk = Talk.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def talk_params
+      logger.debug("TalksController.talk_params: params: #{params.inspect}")
+      # note: params:
+      #   -- "#require" makes sure that the parameters include a 'talk' hash
+      #   -- "#permit" allows only the white-listed fields thru
+      #   -- returns the params object itself
       params.require(:talk).permit(:summary, :description, :person_id, 
         :start_dt, :end_dt, :posted_dt, :longitude, :latitude, :who_desc, :talk_status, :where_desc, :when_desc)
     end
 
     def correct_person
-      # find the talk(s) through the person
+      # find the talk through the person, if not found, this person doesn't own the talk
       @talk = current_person.talks.find_by(id: params[:id])
-      # logger.debug("ZZ: TalksController.correct_person: id = #{params[:id]}, @talk = #{@talk.inspect}") #DDT
       redirect_to root_url if @talk.nil?
     end
 

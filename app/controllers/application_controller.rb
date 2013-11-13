@@ -55,15 +55,20 @@ class ApplicationController < ActionController::Base
   # only some controllers need footer_fields:  people, talks, faqs, credits, helps
 
   def feet_for_help_pages 
-    [ '/helps', '/credits', '/faqs' ]
+    # [ '/helps', '/credits', '/faqs' ]
+    [ helps_path, credits_path, faqs_path ]
   end
 
   def feet_for_people_pages
-    [ '/talks/new', '/talks/my_talks', '/messages/my_messages' ]
+    @person = current_person || anonymous
+    # [ '/talks/new', '/talks/my_talks', '/messages/my_messages' ]
+    # TBD:  my_messages_messages will have to be reworked once we make messages nested within people
+    [ new_person_talk_path(@person), search_person_talks_path(@person), my_messages_messages_path ]
   end
 
   def feet_for_static_pages
-    [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
+    # [ '/static_pages/about', '/static_pages/contact', '/static_pages/privacy' ]
+    [ static_pages_about_path, static_pages_contact_path, static_pages_privacy_path ]
   end
 
   # center feet are what changes controller to controller; override this to change

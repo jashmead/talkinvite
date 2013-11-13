@@ -90,7 +90,7 @@ Talkinvite::Application.routes.draw do
       # these are for a specific talk
       # TBD: eliminate all of the member routes
       member do
-        get :map, :control
+        get :map
       end
       # these are for talks in general
       # TBD:  eliminate all of the collection routes
