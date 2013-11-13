@@ -8,6 +8,8 @@ has new button
 
 ==== Show
 
+should not show the name explicitly
+
 ==== Edit 
 
 only if you are an admin
@@ -16,6 +18,8 @@ wring out all space & other characters from the names: make them purely alphanum
   -- do this 'on blur'
 
 have save & delete buttons
+
+TBD:  when hitting help for a 2nd time to setup a pages's help, got a create not an edit button
 
 ==== New
 

@@ -16,16 +16,13 @@
 
   <%= f.text_field :talk_status %>
 
-  <%= f.submit %>
   <%= 
-      if controller.action_name === 'new'
-        link_to 'Create Talk', person_talk_path(@person, @talk), :method => :post, 'data-role' => 'button', 'data-inline' => true
-      else
-        link_to 'Edit Talk', edit_person_talk_path(@person, @talk), :method => :put, 'data-role' => 'button', 'data-inline' => true
-        link_to 'Delete Talk', [@person, @talk], :method => :delete, 'data-role' => 'button', 'data-inline' => true
-      end
+    # TBD: setup spec to make sure delete works?
+    f.submit 
+    if controller.action_name === 'edit'
+      f.submit 'Delete', :confirm => "Are you sure you want to delete this talk?", :method => :delete
+    end
   %>
-
 
 <% end %>
 

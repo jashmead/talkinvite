@@ -2,14 +2,17 @@
 
   <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <%= f.text_field :name, placeholder: :name, required: true %>
+  <%= f.text_area :name, placeholder: :name, required: true %>
 
   <%= f.text_area :description, placeholder: :description, required: true %>
 
-  <%= f.submit %>
+  <% if controller.action_name == 'new' %>
+  <%= f.submit 'Create Help' %>
+  <% else %>
+  <%= f.submit 'Update Help' %>
+  <% end %>
 
   <%= render partial: 'shared/delete_button', :object => f.object %>
 
 <% end %>
-
 

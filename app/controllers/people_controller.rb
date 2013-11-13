@@ -92,11 +92,11 @@ class PeopleController < ApplicationController
   end
 
   # 'home' is a control panel type thing
-  # TBD:  set @title to be person.name
   # TBD:  if not admin or correct_person, switch to 'show'
   def home
-    # we should already have checked that we are signed in!
+    # we force the current @person to be the current_person
     @person = current_person
+    @title = @person.name
     fetch_children
   end
 

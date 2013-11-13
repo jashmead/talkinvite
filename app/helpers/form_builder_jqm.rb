@@ -18,6 +18,13 @@
 class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
 
+# TBD:  is there a problem with the wrapping for button?
+=begin
+  def button(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+=end
+
   def check_box(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end
@@ -99,8 +106,9 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
   end
 
   # TBD: switch to jqm style buttons; if editing, automagically put in delete button unless told not to
-  def submit
-    super 'data-inline' => true
+  def submit(value = '', options = {})
+    options['data-inline'] = true
+    super value, options
   end
 
   private

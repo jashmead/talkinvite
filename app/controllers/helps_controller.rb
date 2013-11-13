@@ -65,6 +65,7 @@ class HelpsController < ApplicationController
   # DELETE /helps/1
   # DELETE /helps/1.json
   def destroy
+    logger.debug("HelpsController.destroy")
     destroy_q(@help, helps_url)
   end
 
@@ -76,6 +77,7 @@ class HelpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def help_params
+      logger.debug("HelpsController.help_params: params: #{params.inspect}")
       params.require(:help).permit(:name, :description)
     end
 end

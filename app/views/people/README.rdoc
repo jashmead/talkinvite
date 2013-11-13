@@ -26,7 +26,8 @@
 -- fix up footer, all three elements are broken
   -- new talk is broken (& also redundant)
   -- my talks is broken (& also redundant) -- replace with search
-  -- messages is empty currently, replace with search people?
+  -- messages is empty currently, replace with search people? -- no
+  -- fixed
 
 ==== New account
 

@@ -44,7 +44,9 @@ class TalksController < ApplicationController
   #   -- at some point, verify their email, thus avoiding annoying spam
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
-    # logger.debug("TalksController.new: @person: #{@person.inspect}, @person.methods: #{@person.methods.inspect}")
+    @person = current_person || anonymous
+    logger.debug("TalksController.new: @person: #{@person.inspect}")
+    logger.debug("TalksController.new: @person.methods: #{@person.methods.inspect}")
     @talk = @person.talks.build
   end
 

@@ -28,9 +28,9 @@ describe "sitemap" do
   ] }
 =end
 
-  # profile not tested here because the title is supposed to be person.name, need to work up more code to check
+  # profile, settings, home not tested here because the title is supposed to be person.name, need to work up more code to check
   let(:signedin_list) { [ 
-    "Home", 
+    # "Home", 
     # "List of People", 
     "My Messages",
     # "My Talks", 
@@ -113,6 +113,18 @@ describe "sitemap" do
 
       # TBD:  find out why 'have_text' doesn't see the email; save_and_open_page shows it is on the page
       # expect(page).to have_text(/jru@talkinvite.com/)
+
+    end
+
+    it "check home page" do
+
+      visit sitemap_path
+      click_link 'Home'
+
+      # save_and_open_page
+      expect(page).to have_title('J. Random User')
+      expect(page).to have_selector('h1', 'J. Random User')
+      # we do not print the description in the home page
 
     end
 
