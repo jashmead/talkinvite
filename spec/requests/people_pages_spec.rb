@@ -119,8 +119,8 @@ describe "People pages" do
 
     describe "with valid information" do
       before do
-        fill_in "person_name",         with: "Example Person"
-        fill_in "person_email",        with: "person@talkinvite.com"
+        fill_in "person_name",         with: "Mr. X"
+        fill_in "person_email",        with: "mr-x@talkinvite.com"
         fill_in "person_password",     with: "foobar"
         fill_in "person_password_confirmation",      with: "foobar"
       end
@@ -132,10 +132,13 @@ describe "People pages" do
       describe "after saving the person" do
 
         before { click_button submit }
-        let(:person) { Person.find_by(email: 'person@talkinvite.com') }
+        let(:person) { Person.find_by(email: 'mr-x@talkinvite.com') }
 
-        ## TBD: it { should have_link('Settings') }
-        it { should have_title(person.name) }
+        it { should have_link('Settings') }
+        it { 
+          # save_and_open_page
+          should have_title(person.name)
+        }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
 
       end

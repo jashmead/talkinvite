@@ -48,6 +48,7 @@ what other people see
 
 -- really an edit
   -- needs checks against being seen even from 'get'
+  -- replace edit with settings
 
 -- says Settings on the top
 

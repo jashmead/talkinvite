@@ -16,13 +16,13 @@
 
   <%= f.text_field :talk_status %>
 
-  <%= 
-    # TBD: setup spec to make sure delete works?
-    f.submit 
-    if controller.action_name === 'edit'
-      f.submit 'Delete', :confirm => "Are you sure you want to delete this talk?", :method => :delete
-    end
-  %>
+  <% if controller.action_name == 'new' %>
+  <%= f.submit 'Create Talk' %>
+  <% else %>
+  <%= f.submit 'Update Talk' %>
+  <% end %>
+
+  <%= render partial: 'shared/delete_button', :object => f.object %>
 
 <% end %>
 
