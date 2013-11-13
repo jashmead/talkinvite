@@ -11,16 +11,26 @@
 
 
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :destroy]
-  ## removed index (& therefore search) from list of routes that require you to be signed in; 
-  ##    no this cause additional failures
-  ##    need deeper understanding before we can continue
-  ##    put :index back in for now
 
-  before_action :signed_in_person, only: [:index, :edit, :settings, :home, :update, :destroy, :profile ]
+  # profile, settings, & home are only available to the 'correct_person': logged in as the person being profiled, set, or home'd
+  # edit & update only available to the 'correct_person'
+
+  before_action :set_person, only: [:show, :edit, :update, :destroy, :settings, :home]
+
+  ## removed index (& therefore search) from list of routes that require you to be signed in; 
+  ##    -- no, this caused additional failures
+  ##    -- need deeper understanding before we can continue
+  ##    -- put :index back in for now
+
+  before_action :signed_in_person, only: [ :index, :edit, :update, :destroy, :settings, :home, :profile ]
+
+  # do not need correct_person for settings, profile, & home because they reroute *to* the correct_person
   before_action :correct_person, only: [:edit, :update]
+
+  # most a regular person can do is inactivate
   before_action :admin_person, only: [:destroy]
 
+  # TBD:  add in the new fields, as url
   def search_fields
     [ 'name', 'email', 'description' ]
   end
@@ -58,13 +68,14 @@ class PeopleController < ApplicationController
     end
     @title = @person.name
     @data_role = 'dialog' if @person != current_person
+    render 'show' # have to spell it out in case we were called from 'profile'
   end
 
   # TBD: merge profile back into 'show'
   def profile
     @person = current_person
     @title = @person.name
-    render 'show' and return
+    show
   end
 
   # GET /people/new
@@ -76,23 +87,23 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   # TBD:  if not admin or correct_person, switch to 'show'
   def edit
-    # logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
+    logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     # don't need to look for person here; done in 'before_action' callback by set_person
-    @data_role = 'page'
+    if @person != current_person
+      render 'show' and return
+    end
     @title = @person.name
+    render 'edit' # have to spell it out in case we were called from 'settings'
   end
 
-  # TBD: merge settings back into 'edit'
-  # TBD:  if not admin or correct_person, switch to 'show'
+  # settings are the same as edit, except we force the person to be the current_person
   def settings
-    # logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
+    logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
-    @title = @person.name
-    render 'edit' and return
+    edit
   end
 
   # 'home' is a control panel type thing
-  # TBD:  if not admin or correct_person, switch to 'show'
   def home
     # we force the current @person to be the current_person
     @person = current_person
@@ -169,7 +180,7 @@ class PeopleController < ApplicationController
       begin
         @person = Person.find(params[:id])
       rescue
-        # logger.debug("PeopleController.set_person: params: #{params.inspect}")
+        logger.debug("PeopleController.set_person: params: #{params.inspect}")
         @person = Person.new
       end
     end

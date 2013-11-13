@@ -33,7 +33,6 @@ class StaticPagesController < ApplicationController
         [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ],
         [ profile_path, 'Profile', 'people' ],
-        # [ my_talks_person_talks_path(@person), 'My Talks', 'talks' ],
         [ new_person_talk_path(@person), 'Create Talk', 'talks' ],
         [ my_messages_path, 'My Messages', 'messages' ]
         # change password will go here
@@ -53,11 +52,8 @@ class StaticPagesController < ApplicationController
     # note: we had to shift from active_path to active_person_talks_path  (& then to posted_person_talks_path)
     #   -- and from talks_path to person_talks_path
     @routes += [
-      # [ people_path, 'List of People', 'people' ],
       [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],
-      # [ posted_person_talks_path(@person), 'Current Talks', 'talks' ],
-      # [ person_talks_path(@person), 'List of Talks', 'talks' ],   # try going with only search, no list
       [ helps_path, 'Help' , 'helps' ],
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],

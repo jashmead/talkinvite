@@ -12,7 +12,7 @@ class TalksController < ApplicationController
   before_action :set_talk, only: [:show, :edit, :update, :destroy, :control]
 
   # TBD:  allow the 'new' action without a person, require before a create however
-  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_talks]
+  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy ]
   # TBD:  see if we want to add correct_person before 'edit'
   before_action :correct_person, only: :destroy
 
@@ -105,7 +105,7 @@ class TalksController < ApplicationController
       redirect_to home_people(@person)
     else 
       # talks are automatically listed 'posted' only, most recent first, and nearby in preference (default radius of search)
-      redirect_to posted_person_talks(@person)
+      redirect_to search_talks_url
     end
   end
 
@@ -124,28 +124,10 @@ class TalksController < ApplicationController
   #   actual search should be done with the Talk model,
   #     -- some stubs already present
 
-  # TBD:  eliminate my_talks, only belongs as a search on the model
-  def my_talks
-    # logger.debug("TalksController.my_talks: params: #{params.inspect}")
-
-    @title = "My Talks"
-    @person = current_person || anonymous
-    @talks = Talk.talks_by_person(@person)
-
-    render 'index' and return
-  end
-
   # search will be limited to posted (with override), to nearby (including infinite distance), & in most recent first order
   def search
     @person = current_person || anonymous
     # logger.debug("TalksController.search: params: #{params.inspect}")
-  end
-
-  # posted will show only the 'posted' talks
-  def posted
-    @title = 'Current Talks'
-    @talks = Talk.where('talk_status = ?', 'posted')
-    render 'index' and return
   end
 
   def map

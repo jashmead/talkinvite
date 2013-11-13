@@ -200,14 +200,10 @@ describe "Talk pages" do
 
     end
 
-    #TBD: get 'my_talks' working
-    describe "my talks" do
-      before { visit my_talks_talks_path }
-    end
-
+    # TBD: get 'my_talks' working
     # TBD: get talk searches by location working
-
     # TBD: get talk searches by time working
+
   end
 =end
 

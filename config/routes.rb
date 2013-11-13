@@ -32,17 +32,11 @@ Talkinvite::Application.routes.draw do
 
   # talks:
 
-  # TBD:  see if we want to use named talks, using same logic as named help
-
   # Anonymous routes:
   match '/search', to: 'talks#search', via: 'get'
-  # TBD:  why was the /posted path not working from sitemap?
-  match '/posted', to: 'talks#posted', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
   # Signed in routes:
-  # TBD:  eliminate my_talks, now included in 'home'
-  get '/my_talks', to: 'talks#my_talks'
 
   # Allow direct-to-talks routes, since we always have a default person:  either the current_person or anonymous
   match '/talks/new', :controller => 'talks', :action => 'new', via: 'get'
@@ -95,7 +89,7 @@ Talkinvite::Application.routes.draw do
       # these are for talks in general
       # TBD:  eliminate all of the collection routes
       collection do
-        get :found, :search, :posted, :my_talks
+        get :found, :search
       end
     end
 
@@ -120,7 +114,6 @@ Talkinvite::Application.routes.draw do
 
   # TBD:  add a /help/page/action route?
   # note:  get is a function within the routing, to & constraints are named options to 'get'
-  # note:  somehow both /help/talks_my_talks & /helps/talks_my_talks feel acceptable
   get '/help/:name', to: 'helps#help', constraints: { name: /[A-Za-z][A-Za-z0-9_]*/ }
   get '/helps/:name', to: 'helps#help', constraints: { name: /[A-Za-z][A-Za-z0-9_]*/ }
 

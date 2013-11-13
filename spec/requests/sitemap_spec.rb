@@ -1,6 +1,10 @@
 # annoyingly enough, we can't use the 'expect(page)' construct except inside an 'it' block
 # this page ensures that all key pages are visited at least once, which is good
-# note that each it counts as a single example
+
+# note: each 'it' is counted as a single example in the report
+# note: 'it' has to be 'leaf' node; describe can be anywhere
+#  -- ruby code seems to work (generally) inside 'it', but not inside 'describe'
+#  -- therefore correct hierarchy is describe, describe, it { ruby code }
 
 require 'spec_helper'
 
@@ -18,22 +22,12 @@ describe "sitemap" do
     "Frequently Asked Questions", 
     "Help",
     "Search for Talks"
-    # "Current Talks", 
-    # "List of Talks"
   ] }
-
-=begin
-  let(:simple_list) { [
-    "List of Talks"
-  ] }
-=end
 
   # profile, settings, home not tested here because the title is supposed to be person.name, need to work up more code to check
   let(:signedin_list) { [ 
     # "Home", 
-    # "List of People", 
     "My Messages",
-    # "My Talks", 
     "Create Talk",
     "Search for People"
   ] }
@@ -54,12 +48,12 @@ describe "sitemap" do
 
   describe "check common pages" do
 
-    # apparently the "each" construct only works inside an 'it' block
     it "should list each common page" do
 
+      # apparently the "each" construct only works *inside* an 'it' block
       simple_list.each do |title|
 
-        # can't use a 2nd 'it' inside here, but do not need to?
+        # can't nest 'it', but don't need to
         visit sitemap_path
         # save_and_open_page
         click_link title

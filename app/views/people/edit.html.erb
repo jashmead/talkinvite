@@ -1,3 +1,4 @@
 <% provide(:title, "Edit profile") %>
+<% logger.debug("views/people/edit: @title: #{@title}, @person: #{@person.inspect}") %>
 
 <%= render 'form_with_password' %>

@@ -8,9 +8,8 @@ module SessionsHelper
   ##    end
   ##  instead use:
 
+  # current_person is really 'logged_in_person', who are you signed in as?
   def current_person
-    # logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") # DDT
-
     encrypted_remember_token = Person.encrypt(cookies[:remember_token])
 
     # the following syntax fails with a PostgreSQL error
@@ -21,9 +20,6 @@ module SessionsHelper
 
     # have to spell out the find_by_remember_token
     @current_person ||= Person.find_by_remember_token( encrypted_remember_token )
-
-    # logger.debug("SessionsHelper.current_person: current_person: #{@current_person.inspect}") #DDT
-    @current_person #DDT -- needed to make sure return value is correct
   end
 
   # why is this squib needed?
