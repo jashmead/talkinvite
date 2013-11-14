@@ -131,7 +131,7 @@ describe "sitemap" do
         # can't use a 2nd 'it' inside here, but do not need to?
         visit sitemap_path
         click_link title
-        save_and_open_page
+        # save_and_open_page
         expect(page).to have_title(title)
 
       end
