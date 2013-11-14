@@ -16,9 +16,9 @@
 
   <%= f.text_field :talk_status %>
 
-  <% if controller.action_name == 'new' %>
+  <% if @talk.new_record? %>
     <%= f.submit 'Create Talk' %>
-  <% elsif controller.action_name == 'edit' || controller.action_name == 'control' %>
+  <% else %>
     <%= f.submit 'Update Talk' %>
   <% end %>
 

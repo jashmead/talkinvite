@@ -6,9 +6,9 @@
 
   <%= f.text_area :description, placeholder: :description, required: true %>
 
-  <% if controller.action_name == 'new' %>
+  <% if @credit.new_record? %>
     <%= f.submit 'Create Credit' %>
-  <% elsif controller.action_name == 'edit' %>
+  <% else %>
     <%= f.submit 'Update Credit' %>
   <% end %>
 

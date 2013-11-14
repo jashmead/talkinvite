@@ -6,9 +6,9 @@
 
   <%= f.text_area :answer, placeholder: :answer, required: true %>
 
-  <% if controller.action_name == 'new' %>
+  <% if @faq.new_record? %>
     <%= f.submit 'Create Faq' %>
-  <% elsif controller.action_name == 'edit' %>
+  <% else %>
     <%= f.submit 'Update Faq' %>
   <% end %>
 

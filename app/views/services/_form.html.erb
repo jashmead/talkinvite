@@ -6,7 +6,11 @@
   <%= f.text_field :service_type, placeholder: :service_type, required: true %>
   <%= f.text_area :service_notes, placeholder: :service_notes %>
 
-  <%= f.submit %>
+  <% if f.object.new_record? %>
+    <%= f.submit 'Create Service' %>
+  <% else %>
+    <%= f.submit 'Update Service' %>
+  <% end %>
   <%= render partial: 'shared/delete_button', :object => f.object %>
 
 <% end %>

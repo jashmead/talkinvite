@@ -6,9 +6,9 @@
 
   <%= f.text_area :description, placeholder: :description, required: true %>
 
-  <% if controller.action_name == 'new' %>
+  <% if @help.new_record? %>
     <%= f.submit 'Create Help' %>
-  <% elsif controller.action_name == 'edit' %>
+  <% else %>
     <%= f.submit 'Update Help' %>
   <% end %>
 
