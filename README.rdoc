@@ -46,6 +46,8 @@ Master & demo skill set, get an app up.
 
 :include:app/views/static_pages/README.rdoc
 
+:include:spec/README.rdoc
+
 :include:spec/features/README.rdoc
 
 :include:spec/models/README.rdoc

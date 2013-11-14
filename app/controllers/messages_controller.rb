@@ -9,6 +9,10 @@ class MessagesController < ApplicationController
     [ 'message_text' ]
   end
 
+  def feet_center
+    feet_for_people_pages
+  end
+
   # GET /messages
   # GET /messages.json
   def index

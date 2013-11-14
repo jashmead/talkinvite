@@ -38,11 +38,7 @@ class PeopleController < ApplicationController
   # TBD: we can change the footer for profile, settings, & home.  Do we wish to?
   def feet_center
     if signed_in?
-      if self.action_name === 'settings'
-        feet_for_static_pages
-      else
-        feet_for_people_pages
-      end
+      feet_for_people_pages
     else
       feet_for_static_pages
     end

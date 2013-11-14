@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
   def talks_new_page
     { 'action_name' => 'new',
       'controller_name' => 'talks',
-      'label' => 'Talk', # since icon will carry the action
+      'label' => 'New Talk', # since icon will carry the action
       'url' => new_person_talk_path(@person)
     }
   end

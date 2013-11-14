@@ -1,0 +1,5 @@
+=== RSpec tests
+
+TBD:  clear the pending
+
+TBD:  figure out how to use the helpers or get rid of
