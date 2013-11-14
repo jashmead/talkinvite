@@ -66,6 +66,12 @@ Talkinvite::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  # note: sayonara method provides a 'get' interface to 'sessions#destroy'
+  match '/sayonara', to: 'sessions#sayonara',   via: 'get'
+
+  # note: if the /sayonara is to work, the /sessions/sayonara must be included
+  match '/sessions/sayonara', to: 'sessions#sayonara', via: 'get'
+
   resources :sessions, only: [:new, :create, :destroy]  
 
   # people pages: 

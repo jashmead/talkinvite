@@ -41,4 +41,13 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  # TBD: can we specify the method (i.e. 'delete') in the button itself?
+  # note: sayonara is called from a signout button via 'get', just maps to the destroy
+  # note: can't just call 'destroy' here because this is a 'get' method, that a 'delete' method
+  # TBD: will codeclimate regard even this much duplication (with 'destroy') as too much?
+  def sayonara
+    signout
+    redirect_to root_url
+  end
+
 end

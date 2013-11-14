@@ -59,9 +59,7 @@ class ApplicationController < ActionController::Base
   end
 
   def feet_for_people_pages
-    @person = current_person || anonymous
-    # TBD:  my_messages_messages will have to be reworked once we make messages nested within people
-    [ new_person_talk_path(@person), search_person_talks_path(@person), signout_path ]
+    [ talks_new_page, talks_search_page, signout_page ]
   end
 
   def feet_for_static_pages
@@ -73,38 +71,60 @@ class ApplicationController < ActionController::Base
     feet_for_static_pages
   end
 
+  # note:  accommodating current_help_page is much of the reason for the generality of the footer
   def current_help_page 
     # logger.debug("ApplicationController.current_help_page: #{self.controller_name}_#{self.action_name} self: #{self.inspect}")
     return [ 
       'label' => 'Help', 
       'action_name' => 'help', 
       'controller_name' => 'helps', 
-      # variable 'controller' not avaiable here, 
-      #   but we *are* the controller so call the controller_name & action_name methods on self
+      # note: variable 'controller' not available here, 
+      #   --  but we *are* the controller so call the controller_name & action_name methods on self
       'href' => '/helps/' + self.controller_name + '_' + self.action_name
     ]
   end
 
   def home_page
-    [ { 'controller_name' => 'people', 'label' => 'Home', 'action_name' => 'home' } ]
+    { 'action_name' => 'home', 'controller_name' => 'people', 'label' => 'Home', 'url' => home_path }
   end
 
-  # TBD:  switch to a real start page when we have one built!, see notes for talks#start
-  # start_page used as root page
-  def start_page
-    [ { 'controller_name' => 'talks', 'label' => 'Posted', 'action_name' => 'posted' } ]
+  # note: 'sayonara' provides a 'get' interface to 'sessions#destroy'
+  def signout_page
+    { 'action_name' => 'sayonara', 'controller_name' => 'sessions', 'label' => 'Signout', 'url' => sayonara_path } 
   end
 
   def sitemap_page
-    [ { 'controller_name' => 'static_pages', 'label' => 'Site Map', 'action_name' => 'sitemap' } ] 
+    { 'action_name' => 'sitemap', 'controller_name' => 'static_pages', 'label' => 'Site Map', 'url' => sitemap_path } 
   end
 
+  # TBD:  switch to a real start page when we have one built!, see notes for talks#start
+  def start_page
+    { 'action_name' => 'posted', 'controller_name' => 'talks', 'label' => 'Posted', 'url' => start_path } 
+  end
+
+  def talks_new_page
+    { 'action_name' => 'new',
+      'controller_name' => 'talks',
+      'label' => 'Talk', # since icon will carry the action
+      'url' => new_person_talk_path(@person)
+    }
+  end
+
+  def talks_search_page
+    { 'action_name' => 'search',
+      'controller_name' => 'talks',
+      'label' => 'Talks',  # since icon will carry the action
+      'url' => search_person_talks_path(@person)
+    } 
+  end
+
+  # actual interpretation of each foot is done in views/layouts/_footer.html.erb
   def footer_fields
 
     # currently have three tabs specific to controller, plus wings specific to login status
     
     # put home (or sitemap) or active talks on the left
-    feet = signed_in? ? ( self.action_name === 'home' ? sitemap_page : home_page ) : start_page
+    feet = [ signed_in? ? ( self.action_name === 'home' ? sitemap_page : home_page ) : start_page ]
 
     # core of the tabs:
     feet += feet_center

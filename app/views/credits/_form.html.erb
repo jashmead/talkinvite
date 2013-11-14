@@ -7,9 +7,9 @@
   <%= f.text_area :description, placeholder: :description, required: true %>
 
   <% if controller.action_name == 'new' %>
-  <%= f.submit 'Create Credit' %>
-  <% else %>
-  <%= f.submit 'Update Credit' %>
+    <%= f.submit 'Create Credit' %>
+  <% elsif controller.action_name == 'edit' %>
+    <%= f.submit 'Update Credit' %>
   <% end %>
 
   <%= render partial: 'shared/delete_button', :object => f.object %>

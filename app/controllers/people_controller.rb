@@ -180,6 +180,7 @@ class PeopleController < ApplicationController
       begin
         @person = Person.find(params[:id])
       rescue
+        # TBD: is defaulting this a good idea?
         logger.debug("PeopleController.set_person: params: #{params.inspect}")
         @person = Person.new
       end

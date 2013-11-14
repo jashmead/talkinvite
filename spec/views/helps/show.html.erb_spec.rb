@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "helps/show" do
   before(:each) do
-    @faq = assign(:faq, stub_model(Faq,
+    @help = assign(:help, stub_model(Help,
       :name => "Myname",
       :description => "MyDescription"
     ))
