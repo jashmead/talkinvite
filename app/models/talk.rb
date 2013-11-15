@@ -39,21 +39,47 @@
 # TBD: validate start_dt < end_dt
 
 =begin
-  To go back & forth between people & talks:
-    talk.person -- creator
-    person.talks -- their talks
-    person.talks.create(arg) -- create a talk for the person
-    person.talks.create!(arg) -- create a talk for the person, die on failure
-    person.talks.build(arg) -- build a new talk for the person, not (yet) saved to the database
-  Using these instead of:
-    Talk.create
-    Talk.create!
-    Talk.new
+for associations
+
+use association to fetch, build + = to create in memory, create to build & save at the same time
+  TBD:  does 'update' on parent automagically save the children?  can check the logs to see, or check the ActiveRecord docs
+
+going from child to parent (talk to person) we have:
+
+  assocation, 
+  association=, 
+  build_association (in memory only), 
+  create_association (in memory & on disk)
+
+  example:  @talk.person, @talk.person=, @talk.build_person, @talk.create_person
+
+going from parent to child (talk to posts, members, & comments) we have:
+
+  children(force_reload = false)
+  children<<(object, ...)
+  children.delete(object, ...)
+  children.destroy(object, ...)
+  children=objects
+  child_ids
+  child_ids=ids
+  children.clear
+  children.empty?
+  children.size
+  children.find(...)
+  children.where(...)
+  children.exists?(...)
+  children.build(attributes = {}, ...)
+  children.create(attributes = {})
+
+  @talk.posts, @talk.posts<<(post, ...), @talk.posts.delete(post,...), @talk.posts.destroy(post,...),
+    @talk.posts = posts, @talk.post_ids, @talk.post_ids = ids, @talk.posts.clear, @talk.posts.empty?,
+    @talk.posts.size, @talk.posts.find(post_id,...), @talk.posts.where(post where condition),
+    @talk.posts.exists? (check for posts?), @talk.posts.build(attributes = {}, ...), 
+    @talk.create(attributes = {}, ...)
+
 =end
 
 class Talk < ActiveRecord::Base
-
-  ## include Searchy
 
   belongs_to :person, inverse_of: :talks
 
@@ -63,15 +89,14 @@ class Talk < ActiveRecord::Base
   has_many :comments, inverse_of: :talk, dependent: :destroy
   has_many :posts, inverse_of: :talk, dependent: :destroy
 
-  ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
+  ## note: the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('talks.updated_at desc') }
 
-  validates :summary, presence: true, length: { minimum: 6, maximum: 255 }
+  validates :summary, presence: true, length: { minimum: 1, maximum: 255 }
   validates :person_id, presence: true
-
   validates_inclusion_of :talk_status, in: [ 'start', 'posted', 'cancelled', 'done' ] 
 
-  # TBD: is talks_by_person needed? the association methods should be able to take care of this
+  # TBD:  upgrade talks_by_person to include memberships
   def self.talks_by_person( person ) 
     # RoR probably knows to use 'id' when called with 'person', experiment later
     if ! person

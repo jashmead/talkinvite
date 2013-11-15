@@ -86,6 +86,32 @@ describe "footers" do
 
 =end
 
+  describe "check sitemap when not signed in" do
+
+    it "if not signed in" do
+      [ 'About', 'Contact', 'Privacy' ].each do |footer_title|
+        # because the footer element can be 'Sign Out', sign in (as admin) before *each* test
+        visit sitemap_path
+        click_link title
+        within('.footer') do
+            should have_selector('a', :text => footer_title)
+            click_link footer_title
+        end
+      end
+    end
+
+    # note:  this code will have to be adjusted if we decide to start somewhere else, i.e. 'About'
+    it "check 'start' option separate" do
+      visit sitemap_path
+      within('.footer') do
+          should have_selector('a', :text => 'Start')
+          click_link 'Start'
+          should have_title("Search for Talks")
+      end
+    end
+
+  end
+
   describe "check help pages" do
     it "should have help footer" do
       # apparently the "each" construct only works *inside* an 'it' block

@@ -13,16 +13,16 @@ describe Talk do
   it { should respond_to(:person_id) }
   it { should respond_to(:person) }
 
+  it { should respond_to(:posts) }
   it { should respond_to(:members) }
   it { should respond_to(:comments) }
-  it { should respond_to(:posts) }
 
   its(:person) { should eq person }
 
   it { should be_valid }
 
   describe "with a summary that's too short" do
-    before { @talk.summary = "a" }
+    before { @talk.summary = "" }
     it { should be_invalid }
   end
 

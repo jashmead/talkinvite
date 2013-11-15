@@ -6,14 +6,8 @@
 
   <%= f.text_area :description, placeholder: :description, required: true %>
 
-  <% if @credit.new_record? %>
-    <%= f.submit 'Create Credit' %>
-  <% else %>
-    <%= f.submit 'Update Credit' %>
-  <% end %>
+  <% logger.debug("credits/_form: f.object: #{f.object.inspect}") %>
 
-  <%= render partial: 'shared/delete_button', :object => f.object %>
+  <%= render partial: 'shared/submit_button', :object => f %>
 
 <% end %>
-
-

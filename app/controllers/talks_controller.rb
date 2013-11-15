@@ -30,6 +30,8 @@ class TalksController < ApplicationController
     # @talks = Talk.talks_by_person(@person)
     # TBD: when we replace Talk.all, we will need to fix the corresponding spec as well...
     @talks = Talk.all # debugging fallback
+    logger.debug("TalksController.index: @person: #{@person.inspect}, @talks: #{@talks.inspect}")
+    @talks
   end
 
   # GET /talks/1
@@ -45,8 +47,6 @@ class TalksController < ApplicationController
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
     @person = current_person || anonymous
-    logger.debug("TalksController.new: @person: #{@person.inspect}")
-    logger.debug("TalksController.new: @person.methods: #{@person.methods.inspect}")
     @talk = @person.talks.build
   end
 
@@ -62,9 +62,7 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     params.permit!
-    # logger.debug("TalksController.create: @person: #{@person.inspect}, params: #{params.inspect}")
     @talk = @person.talks.create(talk_params)
-    # logger.debug("TalksController.create: @talk: #{@talk.inspect}")
     if @talk.save
         flash.now[:success] = "Talk has been created"
         redirect_to [@person, @talk]
@@ -100,12 +98,12 @@ class TalksController < ApplicationController
   #   -- third is find in talks, search option
   #   -- fourth is find on web, web icon
   def start
-    # logger.debug("CC: TalksController.start")
     if signed_in?
       redirect_to home_people(@person)
     else 
-      # talks are automatically listed 'posted' only, most recent first, and nearby in preference (default radius of search)
-      redirect_to search_talks_url
+      logger.debug("TalksController.start: @person: #{@person.inspect}, search_person_talks_url: #{search_person_talks_url(@person).inspect}")
+      # redirect_to search_person_talks_url(@person)
+      redirect_to '/talks/search'
     end
   end
 
@@ -147,7 +145,7 @@ class TalksController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_talk
-      # could work thru @person, but that can be a bit trickier
+      # could work thru @person, but that can be a bit trickier, what with anonymous & all
       @talk = Talk.find(params[:id])
     end
 

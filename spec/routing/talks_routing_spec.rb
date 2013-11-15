@@ -42,14 +42,17 @@ describe TalksController do
       get("/people/1/talks/search").should route_to("talks#search", :person_id => "1")
     end
 
-=begin
     it "anonymous special routes" do
-      get("/search").should route_to("talks#search")
-      get("/start").should route_to("talks#start")
       get("/talks").should route_to("talks#index")
+
+      get("/talks/search").should route_to("talks#search")
+      get("/search").should route_to("talks#search")
+
+      get("/talks/start").should route_to("talks#start")
+      get("/start").should route_to("talks#start")
+
       get("/talks/new").should route_to("talks#new")
     end
-=end
 
   end
 

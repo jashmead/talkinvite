@@ -27,11 +27,12 @@ class StaticPagesController < ApplicationController
   def sitemap
     store_location
 
+    # turned off the options that are present in the sitemap header 
     if signed_in?
       @person = current_person
       @routes = [
         [ home_path, 'Home', 'people' ],
-        [ settings_path, 'Settings', 'people' ],
+        # [ settings_path, 'Settings', 'people' ],
         [ profile_path, 'Profile', 'people' ],
         [ new_person_talk_path(@person), 'Create Talk', 'talks' ],
         [ my_messages_path, 'My Messages', 'messages' ]
@@ -40,8 +41,8 @@ class StaticPagesController < ApplicationController
     else 
       @person = anonymous
       @routes = [
-        [ signin_path, 'Sign In', 'sessions' ],
-        [ signup_path, 'New Account', 'people' ]
+        #[ signin_path, 'Sign In', 'sessions' ],
+        #[ signup_path, 'New Account', 'people' ]
         # email password will go here
       ]
     end

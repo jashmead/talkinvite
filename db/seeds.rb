@@ -5,6 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#   
+#   note:  better to use 'create!' to avoid silent fails
 
 # CAVEATS:  
 #   -- you can't name a field 'type', it confuses RoR (possibly because 'type' is used for polymorphism)
@@ -13,7 +15,7 @@
 # NOTES:
 #   -- don't force id's on these records; not in keeping with the spirit of rails or postgres
 
-# TBD:  fix seed passwords to be real
+# TBD:  fix seed passwords to be real -- done
 # TBD:  allow load from a seeds.sql
 #   per http://stackoverflow.com/questions/8342642/how-can-i-import-a-sql-file-into-a-rails-database
 #     ActiveRecord::Base.connection.execute(IO.read("path/to/file"))
@@ -30,6 +32,7 @@
 #   -- setup the save script as a rake task, i.e. db:make_seeds
 #   -- set up seed admins as one file, credits, faqs, & helps as another
 #   -- no RI issues with these tables!
+#   -- note:  we can do a rake db:structure:load from structure.sql!
 # TBD:  how to run a trace of some kind inside seeds.rb?  logger is not available, apparently
 
   # find_or_create_by: http://guides.rubyonrails.org/active_record_querying.html#find-or-create-by

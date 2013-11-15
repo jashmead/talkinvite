@@ -6,12 +6,6 @@
 
   <%= f.text_area :answer, placeholder: :answer, required: true %>
 
-  <% if @faq.new_record? %>
-    <%= f.submit 'Create Faq' %>
-  <% else %>
-    <%= f.submit 'Update Faq' %>
-  <% end %>
-
-  <%= render partial: 'shared/delete_button', :object => f.object %>
+  <%= render partial: 'shared/submit_button', :object => f %>
 
 <% end %>

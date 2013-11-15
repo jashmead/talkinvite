@@ -99,7 +99,7 @@ class ApplicationController < ActionController::Base
 
   # TBD:  switch to a real start page when we have one built!, see notes for talks#start
   def start_page
-    { 'action_name' => 'posted', 'controller_name' => 'talks', 'label' => 'Posted', 'url' => start_path } 
+    { 'action_name' => 'start', 'controller_name' => 'talks', 'label' => 'Start', 'url' => start_path } 
   end
 
   def talks_new_page

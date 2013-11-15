@@ -46,15 +46,64 @@ describe "Talk pages" do
 
   end
 
+  describe "talk index" do
+    before do
+      sign_in FactoryGirl.create(:person)
+      FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'posted', :person_id => person.id)
+      FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'posted', :person_id => person.id)
+      FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'start', :person_id => person.id)
+      visit person_talks_path(person)
+    end
+
+    # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
+    it { should have_title('List of Talks') }
+    it { should have_content('List of Talks') }
+
+    it "should list each talk" do
+      # save_and_open_page
+      Talk.all.each do |talk|
+        expect(page).to have_selector('a', text: talk.summary)
+      end
+    end
+  end
+
+  # see also 'search_pages_spec.rb'
+  describe "talk searches" do
+
+    describe "all" do
+
+      before do
+        sign_in FactoryGirl.create(:person)
+        FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'posted', :person_id => person.id)
+        FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'posted', :person_id => person.id)
+        FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'start', :person_id => person.id)
+        visit person_talks_path(person)
+      end
+
+      it "should list all talks" do
+        # save_and_open_page
+        expect(page).to have_content 'Talks'
+        expect(page).to have_content 'Big Talk'
+      end
+
+    end
+
+    # TBD: get 'my_talks' working
+    # TBD: get talk searches by location working
+    # TBD: get talk searches by time working
+
+  end
+
 =begin
   describe "talk destruction" do
     # note;  'let' does *not* work in a before clause, only works inline
     let(:talk) { FactoryGirl.create(:talk, person: person) }
 
     describe "as correct person" do
-      before { visit edit_talk_path(talk) }
+      before { visit edit_person_talk_path(person, talk) }
 
       it "should delete a talk" do
+        # save_and_open_page
         expect { click_link "Delete" }.to change(Talk, :count).by(-1)
       end
     end
@@ -127,84 +176,7 @@ describe "Talk pages" do
   describe "talk comments" do
     
   end
-
-  describe "talk index" do
-    before do
-      sign_in FactoryGirl.create(:person)
-      FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'active')
-      FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'active')
-      FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'new')
-      visit talks_path
-    end
-
-    # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
-    it { should have_title('List of Talks') }
-    it { should have_content('List of Talks') }
-
-    it "should list each talk" do
-      # save_and_open_page
-      Talk.all.each do |talk|
-        expect(page).to have_selector('a', text: talk.summary)
-      end
-    end
-  end
-
-  describe "active talks" do
-    before do
-      sign_in FactoryGirl.create(:person)
-      FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'active')
-      FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'active')
-      FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'new')
-      visit active_talks_path
-    end
-
-    # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
-    it { should have_title('Current Talks') }
-    it { should have_content('Current Talks') }
-
-    it "should list active talks" do
-      # save_and_open_page
-      # there are ul's in the footer, so have to be a bit more discriminatory in defining our selector:
-      expect(page).to have_selector('#talks-active-content li', :count => 2)
-      Talk.all.each do |talk|
-        # if we are using table rather than list to format people, so li->td
-        if talk.talk_status == 'active'
-          expect(page).to have_selector('a', text: talk.summary)
-        else
-          expect(page).not_to have_selector('a', text:talk.summary)
-        end
-      end
-    end
-  end
-
-  # see also 'search_pages_spec.rb'
-  describe "talk searches" do
-
-    describe "all" do
-
-      # 'let' has to be outside of the before
-      let(:talk1) { FactoryGirl.create(:talk, :person, summary: 'Big Talk') }
-      let(:talk2) { FactoryGirl.create(:talk, :person) }
-      let(:talk3) { FactoryGirl.create(:talk, :person, talk_status: 'done') }
-      let(:talk4) { FactoryGirl.create(:talk, :person, talk_status: 'cancelled') }
-      let(:talk5) { FactoryGirl.create(:talk, :person, talk_status: 'new') }
-
-      before { 
-        visit talks_path
-      }
-
-      it "should list all talks" do
-        expect(page).to have_content 'Talks'
-        # expect(page).to have_content 'Big Talk'
-      end
-
-    end
-
-    # TBD: get 'my_talks' working
-    # TBD: get talk searches by location working
-    # TBD: get talk searches by time working
-
-  end
 =end
+
 
 end

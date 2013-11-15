@@ -16,13 +16,6 @@
 
   <%= f.text_field :talk_status %>
 
-  <% if @talk.new_record? %>
-    <%= f.submit 'Create Talk' %>
-  <% else %>
-    <%= f.submit 'Update Talk' %>
-  <% end %>
-
-  <%= render partial: 'shared/delete_button', :object => f.object %>
+  <%= render partial: 'shared/submit_button', :object => f %>
 
 <% end %>
-

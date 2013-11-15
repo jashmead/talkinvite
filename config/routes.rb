@@ -32,33 +32,29 @@ Talkinvite::Application.routes.draw do
 
   # talks:
 
-  # Anonymous routes:
+  match '/talks/index', to: 'talks#index', via: 'get'
+  match '/talks', to: 'talks#index', via: 'get'
+
+  # search is just index + a search field
+  match '/talks/search', to: 'talks#search', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
+
+  # start currently maps into search
+  match '/talks/start', to: 'talks#start', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
-  # Signed in routes:
-
-  # Allow direct-to-talks routes, since we always have a default person:  either the current_person or anonymous
+  # since we always have a default person (even if only anonymous) can fold in a 'new'
   match '/talks/new', :controller => 'talks', :action => 'new', via: 'get'
-  match '/talks/search', to: 'talks#search', via: 'get'
-
-  # TBD: why was the /talks path not working from sitemap?
-  match '/talks', to: 'talks#index', via: 'get'
 
   # TBD:  see if we wish to nest posts, members, comments, & maps under talks
   resources :comments, :members, :posts, :maps
 
-  # Talk pages
-
   # this map.connect thing might be useful, but apparently 'map' is just not found
   # map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
-  # talks are currently nested inside people,
-  #   -- but once we allow multiple 'organizers', this will no longer be true
-  #   -- therefore, do not nest
 
   # Account & related pages:
 
-  # services nested under poeple, may wish to shift to nested architecture for that
+  # services nested under people, may wish to shift to nested architecture for that
   # TBD:  see if we wish to nest services inside people
   resources :services
   
