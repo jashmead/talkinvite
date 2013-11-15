@@ -237,7 +237,8 @@ CREATE TABLE messages (
     message_type character varying(255) DEFAULT 'email'::character varying,
     message_text text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    talk_id integer
 );
 
 
@@ -388,7 +389,6 @@ CREATE TABLE talks (
     person_id integer NOT NULL,
     start_dt timestamp without time zone,
     end_dt timestamp without time zone,
-    posted_dt timestamp without time zone,
     longitude numeric,
     latitude numeric,
     who_desc character varying(255),
@@ -618,6 +618,13 @@ CREATE UNIQUE INDEX index_members_on_person_id_and_talk_id ON members USING btre
 
 
 --
+-- Name: index_messages_on_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_messages_on_talk_id ON messages USING btree (talk_id);
+
+
+--
 -- Name: index_people_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -691,6 +698,14 @@ ALTER TABLE ONLY messages
 
 ALTER TABLE ONLY messages
     ADD CONSTRAINT message2sender_fk FOREIGN KEY (sender_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: message2talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT message2talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE SET NULL;
 
 
 --
@@ -904,3 +919,9 @@ INSERT INTO schema_migrations (version) VALUES ('20131111172645');
 INSERT INTO schema_migrations (version) VALUES ('20131111181942');
 
 INSERT INTO schema_migrations (version) VALUES ('20131111214007');
+
+INSERT INTO schema_migrations (version) VALUES ('20131115164140');
+
+INSERT INTO schema_migrations (version) VALUES ('20131115165112');
+
+INSERT INTO schema_migrations (version) VALUES ('20131115165825');
