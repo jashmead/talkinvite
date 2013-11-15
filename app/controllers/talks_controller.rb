@@ -83,7 +83,7 @@ class TalksController < ApplicationController
   # DELETE /talks/1.json
   # TBD: TalksController.destroy will need to be customized to requirements of talks
   def destroy
-    destroy_q(@talk, root_url)
+    destroy_q(@talk, home_path)
   end
 
   # start is root_path for system
@@ -155,8 +155,8 @@ class TalksController < ApplicationController
     def fetch_children
       @comments = @talk.comments
       @posts = @talk.posts
-
-      @talks = @talk.guests
+      @guests = @talk.guests
+      logger.debug("TalksController.fetch_children: c,p,g: #{@comments.inspect}, #{@posts.inspect}, #{@guests.inspect}")
     end
 
     def fetch_parents

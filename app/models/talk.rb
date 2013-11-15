@@ -89,6 +89,9 @@ class Talk < ActiveRecord::Base
   has_many :comments, inverse_of: :talk, dependent: :destroy
   has_many :posts, inverse_of: :talk, dependent: :destroy
 
+  # Note:  we are *not* using has_many :messages here;
+  #   -- having two paths from people to messages (direct & via talks) seems to confuse RoR
+
   ## note: the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('talks.updated_at desc') }
 

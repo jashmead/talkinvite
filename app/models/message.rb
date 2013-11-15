@@ -16,6 +16,9 @@ class Message < ActiveRecord::Base
   belongs_to :sender, inverse_of: :messages, class_name: "Person"
   belongs_to :receiver, inverse_of: :messages, class_name: "Person"
 
+  # Note:  we are *not* using belongs_to :talk here;
+  #   -- having two paths from people to messages (direct & via talks) seems to confuse RoR
+
   validates :sender_id, presence: true
   validates :receiver_id, presence: true
   validates :message_type, presence: true

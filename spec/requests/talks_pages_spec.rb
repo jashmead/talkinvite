@@ -14,8 +14,10 @@ describe "Talk pages" do
 
   before { sign_in person }
 
-  ##  recheck talk creation when we have a new talk path working, 
-  ##    these tests are geared to tutorial's microposts & home page
+  ##  TBD: recheck talk creation when we have a new talk path working, 
+  ##    -- these tests are geared to tutorial's microposts & home page
+
+  # new & create tests:
   describe "talk creation" do
     before do
         visit new_person_talk_path(talk.person_id)
@@ -46,6 +48,7 @@ describe "Talk pages" do
 
   end
 
+  # index tests:
   describe "talk index" do
     before do
       sign_in FactoryGirl.create(:person)
@@ -88,13 +91,30 @@ describe "Talk pages" do
 
     end
 
-    # TBD: get 'my_talks' working
-    # TBD: get talk searches by location working
-    # TBD: get talk searches by time working
+  end
+
+  describe "talk edits" do
+
+    # note;  'let' does *not* work in a before clause, only works inline
+    let(:talk) { FactoryGirl.create(:talk, person: person, summary: "First summary") }
+
+    describe "as correct person" do
+      let(:new_summary)  { "New Summary" }
+      before do 
+        visit edit_person_talk_path(person, talk)
+        fill_in "Summary", with: new_summary
+        click_button "Update Talk"
+      end
+
+      it "summary should have been changed" do
+        # save_and_open_page
+        expect(talk.reload.summary).to eq new_summary
+      end
+
+    end
 
   end
 
-=begin
   describe "talk destruction" do
     # note;  'let' does *not* work in a before clause, only works inline
     let(:talk) { FactoryGirl.create(:talk, person: person) }
@@ -109,49 +129,7 @@ describe "Talk pages" do
     end
   end
 
-  describe "talk edits" do
-
-    # note;  'let' does *not* work in a before clause, only works inline
-    let(:talk) { FactoryGirl.create(:talk, person: person, summary: "First summary") }
-
-    describe "as correct person" do
-      let(:new_summary)  { "New Summary" }
-      before do 
-        visit edit_talk_path(talk)
-        fill_in "Summary", with: new_summary
-        click_button "Update Talk"
-      end
-
-      it "summary should have been changed" do
-        # save_and_open_page
-        expect(talk.reload.summary).to eq new_summary
-      end
-
-    end
-
-  end
-
-  # TBD: get talk member functions working
-  describe "talk members" do
-
-    describe "talk join" do
-    end
-
-    describe "talk leave" do
-    end
-
-  end
-
-  # TBD: get talk map, tag cloud, calendar views working
-  describe "talk views" do
-
-    describe "as map" do
-    end
-
-    describe "as tag cloud" do
-    end
-
-  end
+=begin
 
   # TBD: get talk posts working
   describe "posts" do
@@ -166,6 +144,20 @@ describe "Talk pages" do
 
     describe "facebook" do
     end
+
+    describe "dm" do 
+    end
+  end
+
+  # TBD: get talk member functions working
+  describe "talk members" do
+
+    describe "talk join" do
+    end
+
+    describe "talk leave" do
+    end
+
   end
 
   # TBD: get talk messages working
@@ -174,8 +166,19 @@ describe "Talk pages" do
 
   # TBD: get talk comments working
   describe "talk comments" do
-    
   end
+
+  # TBD: get talk map, tag cloud, calendar views working
+  describe "talk views" do
+
+    describe "as map" do
+    end
+
+    describe "as tag cloud" do
+    end
+
+  end
+
 =end
 
 

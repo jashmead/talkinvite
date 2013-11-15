@@ -240,7 +240,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def destroy_q(model, url) 
+  # note:  ':back' not a good choice for url since usually the source page will have been rendered irrelevant by the destroy
+  def destroy_q(model, url)
     model.destroy
     respond_to do |format|
       format.html { redirect_to url }

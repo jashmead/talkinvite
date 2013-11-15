@@ -2,6 +2,7 @@
 # this page ensures that all key pages are visited at least once, which is good
 
 # note: each 'it' is counted as a single example in the report
+
 # note: 'it' has to be 'leaf' node; describe can be anywhere
 #  -- ruby code seems to work (generally) inside 'it', but not inside 'describe'
 #  -- therefore correct hierarchy is describe, describe, it { ruby code }
@@ -48,23 +49,22 @@ describe "footers" do
   let(:static_footer_list) { [ 'Home', 'About', 'Contact', 'Privacy' ] }
 
 =begin
-# tried to define @page_list & @footer_list variables:
+# note:  have tried every variation on let & before I can think of to set @page_list & @footer_list variables
+#   -- none worked, in general they left the variabiles as nil
 
-    @page_list = {
-      'help' => [ "Credits", "Frequently Asked Questions", "Help", "New Credit", "New FAQ", "New Help" ],
-      'home' => [ "Home" ],
-      'people' => [ "Create Talk", "My Messages", "Search for People", "Search for Talks", "Settings" ],
-      'static' => [ "About", "Contact", "Site Map" ]
-    }
+  @page_list = {
+    'help' => [ "Credits", "Frequently Asked Questions", "Help", "New Credit", "New FAQ", "New Help" ],
+    'home' => [ "Home" ],
+    'people' => [ "Create Talk", "My Messages", "Search for People", "Search for Talks", "Settings" ],
+    'static' => [ "About", "Contact", "Site Map" ]
+  }
 
-    @footer_list = {
-      'help' => [ 'Home', 'Helps', 'Credits', 'Faqs' ],
-      'home' => [ 'Site Map', 'New Talk', 'Talks', 'Signout' ],
-      'people' => [ 'Home', 'New Talk', 'Talks', 'Signout' ],
-      'static' => [ 'Home', 'About', 'Contact', 'Privacy' ]
-    }
-
-# but every effort to de-reference via each failed with nil object whine, e.g.
+  @footer_list = {
+    'help' => [ 'Home', 'Helps', 'Credits', 'Faqs' ],
+    'home' => [ 'Site Map', 'New Talk', 'Talks', 'Signout' ],
+    'people' => [ 'Home', 'New Talk', 'Talks', 'Signout' ],
+    'static' => [ 'Home', 'About', 'Contact', 'Privacy' ]
+  }
 
   describe "check footers" do
     # apparently the "each" construct only works *inside* an 'it' block
