@@ -28,8 +28,6 @@ class TalksController < ApplicationController
     super
     # TBD: can we use an association method for this? person.talk & person.talks seemed to fail? maybe because no talks present
     # @talks = Talk.talks_by_person(@person)
-    # TBD: when we replace Talk.all, we will need to fix the corresponding spec as well...
-    @talks = Talk.all # debugging fallback
     logger.debug("TalksController.index: @person: #{@person.inspect}, @talks: #{@talks.inspect}")
     @talks
   end
@@ -157,7 +155,7 @@ class TalksController < ApplicationController
       #   -- "#permit" allows only the white-listed fields thru
       #   -- returns the params object itself
       params.require(:talk).permit(:summary, :description, :person_id, 
-        :start_dt, :end_dt, :posted_dt, :longitude, :latitude, :who_desc, :talk_status, :where_desc, :when_desc)
+        :start_dt, :end_dt, :longitude, :latitude, :who_desc, :talk_status, :where_desc, :when_desc)
     end
 
     def correct_person
