@@ -96,6 +96,10 @@ class Talk < ActiveRecord::Base
   validates :person_id, presence: true
   validates_inclusion_of :talk_status, in: [ 'start', 'posted', 'cancelled', 'done' ] 
 
+  def self.posted
+    self.where('talk_status = ?', 'posted')
+  end
+
   # TBD:  upgrade talks_by_person to include memberships
   def self.talks_by_person( person ) 
     # RoR probably knows to use 'id' when called with 'person', experiment later

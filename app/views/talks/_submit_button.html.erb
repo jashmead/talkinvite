@@ -1,0 +1,17 @@
+<% 
+  # hand-built talk submit button
+  talk = submit_button.object
+  logger.debug("talks/_submit_button: talk: #{talk.inspect}")
+  logger.debug("talks/_submit_button: person_talks_path: #{person_talks_path(talk.person_id).inspect}")
+  logger.debug("talks/_submit_button: person_talk_url: #{person_talk_url(talk.person_id, talk.id).inspect}")
+  if talk.new_record?
+%>
+  <%= submit_button.submit 'Create Talk' %>
+<% else %>
+  <%= submit_button.submit 'Update Talk' %>
+  <%=
+    link_to 'Delete', person_talk_url(talk.person_id, talk.id), method: :delete, 
+      data: { confirm: "Are you sure you want to delete this talk?" },
+      'data-inline' => true, 'data-role' => 'button'
+  %>
+<% end %>

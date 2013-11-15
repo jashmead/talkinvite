@@ -1,7 +1,7 @@
 <% 
   model = submit_button.object
   name = model.class.to_s
-  if submit_button.object.new_record?
+  if model.new_record?
 %>
   <%= submit_button.submit 'Create ' + name %>
 <% else %>

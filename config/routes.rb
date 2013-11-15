@@ -32,6 +32,8 @@ Talkinvite::Application.routes.draw do
 
   # talks:
 
+  # TBD:  cleanup the alternative routes into talks?
+  # START of alternative routes into talks
   match '/talks/index', to: 'talks#index', via: 'get'
   match '/talks', to: 'talks#index', via: 'get'
 
@@ -45,6 +47,7 @@ Talkinvite::Application.routes.draw do
 
   # since we always have a default person (even if only anonymous) can fold in a 'new'
   match '/talks/new', :controller => 'talks', :action => 'new', via: 'get'
+  # END of alternative routes into talks
 
   # TBD:  see if we wish to nest posts, members, comments, & maps under talks
   resources :comments, :members, :posts, :maps

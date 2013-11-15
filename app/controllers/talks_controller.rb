@@ -9,12 +9,17 @@ class TalksController < ApplicationController
 
   # should always have a person for a talk
   before_action :set_person
-  before_action :set_talk, only: [:show, :edit, :update, :destroy, :control]
+  # TBD:  add in posts, comments, members?
+  before_action :set_talk, only: [:show, :edit, :update, :destroy, :control, :map]
 
   # TBD:  allow the 'new' action without a person, require before a create however
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy ]
-  # TBD:  see if we want to add correct_person before 'edit'
-  before_action :correct_person, only: :destroy
+
+  # note: for control:  
+  #   -- owner can do anything, 
+  #   -- anyone can join, 
+  #   -- members can leave, post, comment, message, & map
+  before_action :correct_person, only: [:edit, :destroy]
 
   # currently talks & people share the list of nav buttons, but that is likely to change
   def feet_center
@@ -23,11 +28,9 @@ class TalksController < ApplicationController
 
   # GET /talks
   # GET /talks.json
-  # TBD:  work out how we want to use TalksController#index
   def index
     super
-    # @talks = Talk.talks_by_person(@person)
-    @talks = Talk.all
+    @talks = Talk.all # all just works much better than anything else
   end
 
   # GET /talks/1
@@ -42,71 +45,60 @@ class TalksController < ApplicationController
   #   -- at some point, verify their email, thus avoiding annoying spam
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
-    @person = current_person || anonymous
     @talk = @person.talks.build
   end
 
   # GET /talks/1/edit
+  # TBD:  allow easy flipping between edit & control?  or treat edit as scaffolding while en route to control?
   def edit
   end
 
+  # GET /talks/1/control
+  # TBD:  saving from control is done via ajax
+  # TBD:  add control into routes
+  def control
+    fetch_children
+  end
+
   def search_fields
-    [ 'summary', 'description' ]
+    [ 'summary', 'description', 'who_desc', 'where_desc', 'when_desc' ]
   end
 
   # POST /talks
   # POST /talks.json
   def create
-    params.permit!
+    # TBD:  we would like to return to the 'control' screen from create, not to the default
     @talk = @person.talks.create(talk_params)
-    if @talk.save
-        flash.now[:success] = "Talk has been created"
-        redirect_to [@person, @talk]
-    else
-      flash[:alert] = "Talk has not been created"
-      render 'new'
-    end
+    create_q(@talk)
   end
 
   # PATCH/PUT /talks/1
   # PATCH/PUT /talks/1.json
-  ## what is correct handling of update of current talk? -- use logger.debug to find
+  # TBD:  verify update is working correctly
   def update
-    # logger.debug("TalksController.update: params: #{params.inspect}")
-    update_q(@talk, params)
+    update_q(@talk, talk_params)
   end
 
   # DELETE /talks/1
   # DELETE /talks/1.json
   # TBD: TalksController.destroy will need to be customized to requirements of talks
   def destroy
-    # logger.debug("TalksController.destroy: params: #{params.inspect}")
     destroy_q(@talk, root_url)
   end
 
-  # start is the default starting point for the entire website
-  # right now, it is a virtual page, redirecting to appropriate start points for signed_in & not signed_in users
-  # TBD:  switch 'start' to be a one stop fits all place to start a talk & sign in if you haven't before
-  # TBD:  icon for start talk screen? just a comment bubble?
-  #   -- first open is a simple: what, where, when, why, who
-  # TBD:  icon for my talks screen? 
-  #   -- second is a my talks
-  #   -- third is find in talks, search option
-  #   -- fourth is find on web, web icon
+  # start is root_path for system
   def start
     if signed_in?
       redirect_to home_people(@person)
     else 
-      logger.debug("TalksController.start: @person: #{@person.inspect}, search_person_talks_url: #{search_person_talks_url(@person).inspect}")
-      # redirect_to search_person_talks_url(@person)
       redirect_to '/talks/search'
     end
   end
 
-  ## found -- responds to completed searches
+  # found = search + index; also, has a 'Create Talk' button
   def found
-    if params['button'] == 'New Talk'
-      @talk = Talk.new( { 'summary' => check_q } )
+    if params['button'] == 'Create Talk'
+      @talk = Talk.new( { summary: check_q, person_id: @person.id } )
       render 'new' and return
     else
       @talks = search_q(Talk)
@@ -118,14 +110,10 @@ class TalksController < ApplicationController
   #   actual search should be done with the Talk model,
   #     -- some stubs already present
 
-  # search will be limited to posted (with override), to nearby (including infinite distance), & in most recent first order
   def search
-    @person = current_person || anonymous
-    # logger.debug("TalksController.search: params: #{params.inspect}")
   end
 
   def map
-    @talk = Talk.find(params[:id])
     map_q(@talk, params)
   end
 
@@ -133,8 +121,8 @@ class TalksController < ApplicationController
 
   private
     def set_person
-      @person = Person.find_by_id(params[:person_id]) or
-        current_person or
+      @person = Person.find_by_id(params[:person_id]) ||
+        current_person ||
         anonymous
       logger.debug("TalksController.set_person: @person: #{@person}")
     end

@@ -20,11 +20,10 @@ In order of creation:
 
 Planned but not yet implemented tables:
 
-1. Topics
-1. Tags
-1. Ads
-1. Calendars
-1. Ratings
+1. Topics -- for twitter searches & the like
+1. Tags -- for interests for people
+1. Ads -- to generate revenue; in parallel with talks, comments, to blend in with them
+1. Calendars -- in parallel with Maps
 
 Currently tabled tables
 

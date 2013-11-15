@@ -175,11 +175,11 @@ class ApplicationController < ActionController::Base
   end
 
   # Search klass for string 'q'.
-  # Set flash messages appropriately.
-  # Return to search screen on error or no rows found
-  # Return the (paginated) rows found on success.
-  # Called by 'found'.
-  # search_q spotted as complex by codeclimate 10/29/13, complexity 31 (was 39, but cleaned up)
+  # -- Set flash messages appropriately.
+  # -- Return to search screen on error or no rows found
+  # -- Return the (paginated) rows found on success.
+  # -- Called by 'found'.
+  # -- search_q spotted as complex by codeclimate 10/29/13, complexity 31 (was 39, but cleaned up)
   def search_q(klass)
 
     # explicit renders here keep the default render in the caller from executing
@@ -211,7 +211,6 @@ class ApplicationController < ActionController::Base
       format.json { render json: model.errors, status: :unprocessable_entity }
   end
 
-  # we may be able to read the klass off the model, a bit more DRY
   def create_q(model)
     respond_to do |format|
       if model.save
@@ -227,7 +226,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # we may be able to read the klass off the model, a bit more DRY
   def update_q(model, params)
     respond_to do |format|
       if model.update(params)
@@ -255,7 +253,7 @@ class ApplicationController < ActionController::Base
 
   protected
     ## only controllers can call a teapot
-    ## teapot_q is our:  we haven't built that quite yet page
+    ## teapot_q is internal:  is the 'under-construction' error
     def teapot_q
 
       # 518 is the HTTP teapot error, as in "I'm steamed because I'm a teapot"
