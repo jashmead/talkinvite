@@ -26,10 +26,8 @@ class TalksController < ApplicationController
   # TBD:  work out how we want to use TalksController#index
   def index
     super
-    # TBD: can we use an association method for this? person.talk & person.talks seemed to fail? maybe because no talks present
     # @talks = Talk.talks_by_person(@person)
-    logger.debug("TalksController.index: @person: #{@person.inspect}, @talks: #{@talks.inspect}")
-    @talks
+    @talks = Talk.all
   end
 
   # GET /talks/1

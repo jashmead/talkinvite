@@ -53,8 +53,8 @@ describe TalksController do
     end
 
     it "loads all of the talks into @talks" do
-      # talk1, talk2 = Talk.create!( { summary: "Summary 1", person: person } ), Talk.create!( { summary: "Summary 2", person: person } )
-      talk1, talk2 = FactoryGirl.create( :talk, { person: person } ), FactoryGirl.create( :talk, { person: person } )
+      talk1 = FactoryGirl.create( :talk, { person: person } )
+      talk2 = FactoryGirl.create( :talk, { person: person } )
       get :index
 
       expect(assigns(:talks)).to match_array([talk1, talk2])

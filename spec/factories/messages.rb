@@ -4,7 +4,8 @@ FactoryGirl.define do
   factory :message do
     sender
     receiver
-    message_type "email"
+    talk
+    message_type "talkinvite"
     sequence(:message_text) { |n| "this is message # #{n}"}
   end
 end

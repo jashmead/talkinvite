@@ -234,7 +234,7 @@ CREATE TABLE messages (
     id integer NOT NULL,
     sender_id integer,
     receiver_id integer,
-    message_type character varying(255) DEFAULT 'email'::character varying,
+    message_type character varying(255) DEFAULT 'talkinvite'::character varying NOT NULL,
     message_text text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -925,3 +925,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131115164140');
 INSERT INTO schema_migrations (version) VALUES ('20131115165112');
 
 INSERT INTO schema_migrations (version) VALUES ('20131115165825');
+
+INSERT INTO schema_migrations (version) VALUES ('20131115170724');
