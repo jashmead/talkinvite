@@ -1,0 +1,8 @@
+<%= form_tag(found_person_talks_path(@person), method: "get") do %>
+  <div class="fieldcontain field ui-hide-label">
+    <%= label_tag(:search_q, "Search") %>
+    <%= search_field(:search, :q) %>
+  </div>
+  <% # TBD:  get search_field, search button, & create button all on one line %>
+  <%= submit_tag("Search", { 'name' => 'button', 'data-inline' => true } ) %>
+<% end %>

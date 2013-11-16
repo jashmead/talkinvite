@@ -1,4 +1,5 @@
 <% if @talks %>
+  <% # TBD:  integrate jquery_mobile_paginate_link_renderer.rb, then bracket the loop with 'will_paginate' %>
   <ul data-role="listview">
       <% @talks.each do |talk| %>
         <li>
@@ -8,5 +9,5 @@
       <% end %>
   </ul>
 <% else %>
-  <p>The world awaits your proposals for conversation!</p>
+  <p>No talks found.</p>
 <% end %>

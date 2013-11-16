@@ -80,13 +80,21 @@ describe "Talk pages" do
         FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'posted', :person_id => person.id)
         FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'posted', :person_id => person.id)
         FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'start', :person_id => person.id)
-        visit person_talks_path(person)
+        visit search_person_talks_path(person)
       end
 
-      it "should list all talks" do
-        # save_and_open_page
-        expect(page).to have_content 'Talks'
-        expect(page).to have_content 'Big Talk'
+      it "should find talks when there is a match" do
+        fill_in "search_q", with: "Third"
+        click_button 'Search'
+        expect(page).to have_content 'Third'
+        expect(page).not_to have_content 'Big Talk'
+      end
+
+      it "should find not find talks when there is not a match" do
+        fill_in "search_q", with: "ZZTop"
+        click_button 'Search'
+        expect(page).not_to have_content 'Third'
+        expect(page).not_to have_content 'Big Talk'
       end
 
     end

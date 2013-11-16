@@ -102,6 +102,7 @@ class TalksController < ApplicationController
       render 'new' and return
     else
       @talks = search_q(Talk)
+      logger.debug("TalksController.found: @talks: #{@talks.inspect}")
     end
   end
 

@@ -202,7 +202,9 @@ class ApplicationController < ActionController::Base
       render :search and return
     end
 
-    @rows.paginate(page: params[:page])
+    # will_paginate: https://github.com/mislav/will_paginate
+    # @rows.paginate(page: params[:page], per_page: 10)
+    @rows # put in pagination later, see jquery_mobile_paginate_link_renderer.rb
   end
 
   # suppress codeclimate duplication warning

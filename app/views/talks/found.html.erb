@@ -1,20 +1,5 @@
-<!-- cloned from people/found.html.erb -->
-<!-- without the 'as:', the talk variablae does not show up inside 'talk_found' -->
+<% provide(:title, 'List of Talks') %>
 
-<% provide(:title, 'Talks') %>
-
-<%= will_paginate %>
-<ul class="talks">
-<% @talks.each do |talk| %>
-  <li>
-    <% # logger.debug("_found: @person: #{@person}, talk: #{talk}") %>
-    <%= link_to talk.summary, person_talk_path(@person, talk) %>
-  </li>
-  end
-<% end %>
-</ul>
-<%= will_paginate %>
-
-<br>
-
-<%= link_to 'Create Talk', new_person_talk_path(@person) %>
+<%= render partial: 'talks_search' %>
+<%= render partial: 'talks_index' %>
+<%= render partial: 'talk_create' %>
