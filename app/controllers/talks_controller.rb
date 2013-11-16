@@ -36,6 +36,7 @@ class TalksController < ApplicationController
   # GET /talks/1
   # GET /talks/1.json
   def show
+    @title = @talk.summary
   end
 
   # GET /talks/new

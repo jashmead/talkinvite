@@ -1,52 +1,21 @@
-<!-- TBD: fix 'show' up, once '_form' is OK
 <% provide(:title, 'Talk') %>
 
-<h2><%= @talk.summary %></h2>
-
-<!-- TBD:  wrap @talk.description in simple_format -->
 <p>
-  <strong>Description:</strong>
   <%= @talk.description %>
 </p>
 
 <p>
-  <strong>When desc:</strong>
   <%= @talk.when_desc %>
 </p>
 
 <p>
-  <strong>Start dt:</strong>
-  <%= @talk.start_dt %>
-</p>
-
-<p>
-  <strong>End dt:</strong>
-  <%= @talk.end_dt %>
-</p>
-
-<p>
-  <strong>Where desc:</strong>
   <%= @talk.where_desc %>
 </p>
 
 <p>
-  <strong>Longitude:</strong>
-  <%= @talk.longitude %>
+  <%= @talk.person.name %>
 </p>
 
 <p>
-  <strong>Latitude:</strong>
-  <%= @talk.latitude %>
-</p>
-
-<p>
-  <strong>Who desc:</strong>
-  <%= @talk.who_desc %>
-</p>
-
-<p>
-  <strong>Talk status:</strong>
   <%= @talk.talk_status %>
 </p>
-
-<%= link_to 'Edit', edit_person_talk_path(@person, @talk) %> |

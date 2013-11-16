@@ -27,3 +27,12 @@ def sign_in(person, options={})
     click_button "Sign In"
   end
 end
+
+=begin
+# http://www.tamingthemindmonkey.com/2011/11/07/capybara-matchers-and-scoping-in-view-specs
+# -- didn't solve the problem but may help at some later point...
+def rendered
+  # Using @rendered variable, which is set by the render-method.
+  Capybara.string(@rendered)
+end
+=end

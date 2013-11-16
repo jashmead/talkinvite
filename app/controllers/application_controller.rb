@@ -195,6 +195,7 @@ class ApplicationController < ActionController::Base
   # -- Return the (paginated) rows found on success.
   # -- Called by 'found'.
   # -- search_q spotted as complex by codeclimate 10/29/13, complexity 31 (was 39, but cleaned up)
+  # TBD:  refactor so we can run the search on a per Model basis
   def search_q(klass)
 
     # explicit renders here keep the default render in the caller from executing
@@ -209,6 +210,7 @@ class ApplicationController < ActionController::Base
 
     q_like = '%' + q + '%'
     query_array = search_fields().map { |f| f + ' like ? ' }
+    # TBD:  fold in includes per Model
     @rows = klass.where(query_array.join(' or '), *query_array.map { |f| q_like } )
 
     report_q(klass, @rows, q) 
