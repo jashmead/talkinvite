@@ -57,6 +57,7 @@ class MembersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
+      current_talk = @member.talk
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

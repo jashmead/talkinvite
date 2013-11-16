@@ -7,31 +7,46 @@
 ## 1. to get at the functions in app/helpers, use view_context, i.e. view_context.current_layout
 ## 1. search_q & report_q currently (10/28/13) flagged as overcomplex by codeclimate
 
-## for associations, going from child to parent, we have:
-#     assocation, 
-#     association=, 
-#     build_association (in memory only), 
-#     create_association (in memory & on disk)
-##  use association to fetch, build + = to create in memory, create to build & save at the same time
-##  -- does 'update' on parent automagically save the children?  can check the logs to see, or check the ActiveRecord docs
+=begin
+for associations
 
-# for associations, going from parent to child, we have:
+use association to fetch, build + = to create in memory, create to build & save at the same time
+  TBD:  does 'update' on parent automagically save the children?  can check the logs to see, or check the ActiveRecord docs
 
-# 1.children(force_reload = false)
-# 1.children<<(object, ...)
-# 1.children.delete(object, ...)
-# 1.children.destroy(object, ...)
-# 1.children=objects
-# 1.child_ids
-# 1.child_ids=ids
-# 1.children.clear
-# 1.children.empty?
-# 1.children.size
-# 1.children.find(...)
-# 1.children.where(...)
-# 1.children.exists?(...)
-# 1.children.build(attributes = {}, ...)
-# 1.children.create(attributes = {})
+going from child to parent (talk to person) we have:
+
+  assocation, 
+  association=, 
+  build_association (in memory only), 
+  create_association (in memory & on disk)
+
+  example:  @talk.person, @talk.person=, @talk.build_person, @talk.create_person
+
+going from parent to child (talk to posts, members, & comments) we have:
+
+  children(force_reload = false)
+  children<<(object, ...)
+  children.delete(object, ...)
+  children.destroy(object, ...)
+  children=objects
+  child_ids
+  child_ids=ids
+  children.clear
+  children.empty?
+  children.size
+  children.find(...)
+  children.where(...)
+  children.exists?(...)
+  children.build(attributes = {}, ...)
+  children.create(attributes = {})
+
+  @talk.posts, @talk.posts<<(post, ...), @talk.posts.delete(post,...), @talk.posts.destroy(post,...),
+    @talk.posts = posts, @talk.post_ids, @talk.post_ids = ids, @talk.posts.clear, @talk.posts.empty?,
+    @talk.posts.size, @talk.posts.find(post_id,...), @talk.posts.where(post where condition),
+    @talk.posts.exists? (check for posts?), @talk.posts.build(attributes = {}, ...), 
+    @talk.create(attributes = {}, ...)
+
+=end
 
 ## have defined fetch_children for people and talks and fetch_parents for talks
 #   -- could define similar for the rest of the tables; wait till we see what is needed in practice for them

@@ -216,16 +216,6 @@ class PeopleController < ApplicationController
     # TBD:  how do we fetch all the records for an association?
     def fetch_children
       @talks = Talk.talks_by_person(@person)
-
-=begin
-      @comments = @person.comments
-      @posts = @person.posts
-
-      @sent_messages = @person.sent_messages
-      @received_messages = @person.received_messages
-
-      @talks = @person.memberships
-=end
     end
 
     # person has no parents, so no fetch_parents

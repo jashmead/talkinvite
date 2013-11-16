@@ -101,6 +101,10 @@ class TalksController < ApplicationController
       @talk = Talk.new( { summary: check_q, person_id: @person.id } )
       render 'new' and return
     else
+      # TBD:  fix search to automatically pull in supporting detail, as person
+      #   -- could use includes 
+      #   -- could hand-build the sql
+      #   -- as this is an efficiency thing, defer till system core is up
       @talks = search_q(Talk)
       logger.debug("TalksController.found: @talks: #{@talks.inspect}")
     end
@@ -132,6 +136,7 @@ class TalksController < ApplicationController
     def set_talk
       # could work thru @person, but that can be a bit trickier, what with anonymous & all
       @talk = Talk.find(params[:id])
+      current_talk = @talk
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
