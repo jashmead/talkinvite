@@ -32,7 +32,7 @@ Talkinvite::Application.routes.draw do
 
   # talks:
 
-  # TBD:  cleanup the alternative routes into talks?
+  # Since 'talks' are the central concept, allow for direct routes to them
   # START of alternative routes into talks
   match '/talks/index', to: 'talks#index', via: 'get'
   match '/talks', to: 'talks#index', via: 'get'
@@ -46,11 +46,12 @@ Talkinvite::Application.routes.draw do
   match '/start', to: 'talks#start', via: 'get'
 
   # since we always have a default person (even if only anonymous) can fold in a 'new'
+  # TBD:  we will need to trap the save & make sure we have a non-anonymous person on our hands before save!
   match '/talks/new', :controller => 'talks', :action => 'new', via: 'get'
   # END of alternative routes into talks
 
   # TBD:  see if we wish to nest posts, members, comments, & maps under talks
-  resources :comments, :members, :posts, :maps
+  resources :comments, :members, :maps
 
   # this map.connect thing might be useful, but apparently 'map' is just not found
   # map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
@@ -85,17 +86,22 @@ Talkinvite::Application.routes.draw do
   resources :people do
 
     resources :talks do
+
+      resources :posts
       ## collection will have lots of 'pick a talk' type pages
       # these are for a specific talk
       # TBD: eliminate all of the member routes
+
       member do
         get :map
       end
+
       # these are for talks in general
       # TBD:  eliminate all of the collection routes
       collection do
         get :found, :search
       end
+
     end
 
     # TBD: implement 'oauth'

@@ -81,6 +81,9 @@ going from parent to child (talk to posts, members, & comments) we have:
 
 class Talk < ActiveRecord::Base
 
+  include ActiveModel::Validations
+  validates_with TalkValidator
+
   belongs_to :person, inverse_of: :talks
 
   has_many :members, inverse_of: :talk, dependent: :destroy

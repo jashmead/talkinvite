@@ -20,22 +20,26 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @person = current_person
   end
 
   # GET /posts/1/edit
   def edit
+    # TBD:  only the author can edit!
   end
 
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.person_id = current_person.id
     create_q(@post)
   end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    # TBD:  only the author can edit!
     update_q(@post, post_params)
   end
 
@@ -50,7 +54,8 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
-      current_talk = @post.talk
+      @talk = @post.talk
+      # TBD:  if no talk, throw exception?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

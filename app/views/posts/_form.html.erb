@@ -1,41 +1,16 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%
+  # workaround apparent bug in form_for
+  # TBD:  generalize the url builder
+  @url = @post.new_record? ? new_person_talk_post_url(@person, @talk) : person_talk_post_url(@person, @talk, @post) 
+%>
+<%= form_for_jqm [ @person, @talk, @post ], { url: @url } do |f| %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <div class="field">
-    <%= f.label :person_id %><br>
-    <%= f.number_field :person_id %>
-  </div>
-  <div class="field">
-    <%= f.label :talk_id %><br>
-    <%= f.number_field :talk_id %>
-  </div>
-  <div class="field">
-    <%= f.label :service_type %><br>
-    <%= f.text_field :service_type %>
-  </div>
-  <div class="field">
-    <%= f.label :service_notes %><br>
-    <%= f.text_area :service_notes %>
-  </div>
-  <div class="field">
-    <%= f.label :post_type %><br>
-    <%= f.text_field :post_type %>
-  </div>
-  <div class="field">
-    <%= f.label :post_message %><br>
-    <%= f.text_area :post_message %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.text_field :post_type %>
+
+  <%= f.text_area :post_message, placeholder: :message %>
+
+  <%= render partial: 'posts/submit_button', :object => f %>
+
 <% end %>

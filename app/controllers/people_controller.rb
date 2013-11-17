@@ -104,7 +104,6 @@ class PeopleController < ApplicationController
     # we force the current @person to be the current_person
     @person = current_person
     @title = @person.name
-    fetch_children
   end
 
   # POST /people
@@ -210,14 +209,5 @@ class PeopleController < ApplicationController
     def subscriber
       redirect_to(root_url) unless current_person.sub? || current_person.admin?
     end
-
-    # fetch_children likely to be slow; may want to break it down, once it is working
-    # note:  save of included talks is done per talk, the only way they can be edited
-    # TBD:  how do we fetch all the records for an association?
-    def fetch_children
-      @talks = Talk.talks_by_person(@person)
-    end
-
-    # person has no parents, so no fetch_parents
 
 end

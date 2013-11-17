@@ -4,7 +4,6 @@
 
 # there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to posted
 
-
 class TalksController < ApplicationController
 
   # should always have a person for a talk
@@ -58,7 +57,6 @@ class TalksController < ApplicationController
   # TBD:  saving from control is done via ajax
   # TBD:  add control into routes
   def control
-    fetch_children
   end
 
   def search_fields
@@ -137,7 +135,6 @@ class TalksController < ApplicationController
     def set_talk
       # could work thru @person, but that can be a bit trickier, what with anonymous & all
       @talk = Talk.find(params[:id])
-      current_talk = @talk
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -155,20 +152,6 @@ class TalksController < ApplicationController
       # find the talk through the person, if not found, this person doesn't own the talk
       @talk = current_person.talks.find_by(id: params[:id])
       redirect_to root_url if @talk.nil?
-    end
-
-    # fetch_children likely to be slow; may want to break it down, once it is working
-    # TBD:  how do we save these back? there must be a tool!
-    def fetch_children
-      @comments = @talk.comments
-      @posts = @talk.posts
-      @guests = @talk.guests
-      logger.debug("TalksController.fetch_children: c,p,g: #{@comments.inspect}, #{@posts.inspect}, #{@guests.inspect}")
-    end
-
-    def fetch_parents
-      # see if this even works!
-      @person = @talk.person
     end
 
 end

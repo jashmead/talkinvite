@@ -210,22 +210,4 @@ module SessionsHelper
     link_to( "#{iconify(:signup)}</i>&nbsp;&nbsp;New Account".html_safe, signup_path, 'data-rel' => 'dialog')
   end
 
-  # @current_talk is an attribute of the current Session
-  #   -- also stored in session[:current_talk]
-  #   -- could store in associated person record, in field called something like current_talk_id -- integer, fk'd
-  def current_talk
-    # logger.debug("SessionsHelper.current_talk: current_talk: #{@current_talk.inspect}") # DDT
-    @current_talk ||= session[:current_talk]
-  end
-
-  def current_talk=(talk)
-    # logger.debug("SessionsHelper.current_talk=: current_talk: #{@current_talk.inspect}") #DDT
-    @current_talk = session[:current_talk] = talk
-  end
-
-  def current_talk?(talk)
-    # logger.debug("SessionsHelper.current_talk?: current_talk: #{@current_talk.inspect}") #DDT
-    talk == current_talk  # comparison is to what is returned from the function 'current_talk'
-  end
-
 end

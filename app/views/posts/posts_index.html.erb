@@ -1,0 +1,13 @@
+<% if @posts %>
+  <ul data-role="listview">
+      <% @posts.each do |post| %>
+        <li>
+        <%= 
+          link_to post.talk.summary + ' (' + post.person.name + ')', edit_person_talk_post_path(post.person_id, post.talk_id, post.id) 
+        %>
+        </li>
+      <% end %>
+  </ul>
+<% else %>
+  <p>No posts found.</p>
+<% end %>
