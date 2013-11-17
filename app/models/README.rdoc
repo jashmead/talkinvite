@@ -20,6 +20,7 @@ In order of creation:
 
 Planned but not yet implemented tables:
 
+1. Attachments -- for file uploads, generalize from profile image uploads
 1. Topics -- for twitter searches & the like
 1. Tags -- for interests for people
 1. Ads -- to generate revenue; in parallel with talks, comments, to blend in with them

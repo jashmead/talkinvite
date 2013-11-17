@@ -30,8 +30,6 @@ describe PostsController do
   let(:valid_attributes) { { "talk_id" => talk.id, "person_id" => person2.id, "post_type" => "announce", "service_type" => "talkinvite",
     "post_message" => "hello" } }
 
-# TBD: turn PostsController back on once we have worked out how to use nested paths
-=begin
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # PostsController. Be sure to keep this updated too.
@@ -163,6 +161,5 @@ describe PostsController do
       response.should redirect_to(posts_url)
     end
   end
-=end
 
 end

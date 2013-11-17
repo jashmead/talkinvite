@@ -1,6 +1,7 @@
 require "spec_helper"
 
 describe MessagesController do
+
   describe "routing" do
 
     it "routes to #index" do
@@ -31,11 +32,6 @@ describe MessagesController do
       delete("/messages/1").should route_to("messages#destroy", :id => "1")
     end
 
-    it "routes to my messages" do
-      get("/messages/my_messages").should route_to("messages#my_messages")
-
-      get("/my_messages").should route_to("messages#my_messages")
-    end
-
   end
+
 end

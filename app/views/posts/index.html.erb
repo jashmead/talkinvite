@@ -1,3 +1,14 @@
-<% provide(:title, 'List of Posts') %>
-<%= render partial: 'posts_index' %>
-<%= render partial: 'post_create' %>
+<% provide(:title, 'Posts') %>
+<% if @posts %>
+	<ul 'data-role'="listview">
+	    <% @posts.each do |post| %>
+        <li>
+        <%= link_to post.post_text, edit_post_path(post) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>We are talking to  no one today!</p>
+<% end %>
+<hr>
+<%= button_inline 'New Post', new_post_path %>

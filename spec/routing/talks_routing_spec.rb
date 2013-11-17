@@ -12,11 +12,11 @@ describe TalksController do
     end
 
     it "routes to #show" do
-      get("/people/1/talks/1").should route_to("talks#show", :id => "1", :person_id => "1")
+      get("/people/1/talks/2").should route_to("talks#show", :id => "2", :person_id => "1")
     end
 
     it "routes to #edit" do
-      get("/people/1/talks/1/edit").should route_to("talks#edit", :id => "1", :person_id => "1")
+      get("/people/1/talks/2/edit").should route_to("talks#edit", :id => "2", :person_id => "1")
     end
 
     it "routes to #create" do
@@ -24,11 +24,11 @@ describe TalksController do
     end
 
     it "routes to #update" do
-      put("/people/1/talks/1").should route_to("talks#update", :id => "1", :person_id => "1")
+      put("/people/1/talks/2").should route_to("talks#update", :id => "2", :person_id => "1")
     end
 
     it "routes to #destroy" do
-      delete("/people/1/talks/1").should route_to("talks#destroy", :id => "1", :person_id => "1")
+      delete("/people/1/talks/2").should route_to("talks#destroy", :id => "2", :person_id => "1")
     end
 
     ## to test 'start', we would have to setup a signed_in & a not signed_in case..., since 'start' forks on this condition

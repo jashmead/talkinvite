@@ -30,6 +30,5 @@ describe ServicesController do
     it "routes to #destroy" do
       delete("/services/1").should route_to("services#destroy", :id => "1")
     end
-
   end
 end

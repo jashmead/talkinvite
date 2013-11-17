@@ -1,6 +1,7 @@
 <% provide(:title, "Home") %>
-<% provide(:data_role, 'page') %>
 
-<%= render 'form' %>
+<% if @talks %>
+  <%= render 'talk', collection: @talks %>
+<% end %>
 
-<%= link_to 'New Talk', new_person_talk_path(@person), 'data-role' => 'button', 'data-inline' => true %>
+<%= link_to 'Create Talk', new_person_talk_path(@person), 'data-role' => 'button', 'data-inline' => true %>

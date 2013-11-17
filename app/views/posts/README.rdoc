@@ -1,7 +1,29 @@
-=== Posts forms
+=== Posts
 
-==== Index & search
+==== Index
+
+ones you've sent or received
+-- thats it
+-- usually by talk
 
 ==== New
 
-==== Edit
+generally get the to bit from context
+
+==== Search people
+
+cuts over to an embedded search people form
+
+==== TBD: search contacts
+
+use phone's contact list/address book
+
+use google+
+
+use facebook
+
+use twitter
+
+==== Implementation
+
+via database, when posts put in, you get a push

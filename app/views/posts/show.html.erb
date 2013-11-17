@@ -1,18 +1,26 @@
 <% provide(:title, 'Post') %>
 
-<!-- TBD:  wrap @post.post_message in simple_format -->
+<p id="notice"><%= notice %></p>
+
 <p>
-  <%= @post.post_message %>
+  <strong>Sender:</strong>
+  <%= @post.sender_id %>
 </p>
 
 <p>
-  <%= @post.talk.summary %>
+  <strong>Receiver:</strong>
+  <%= @post.receiver_id %>
 </p>
 
 <p>
-  <%= @post.person.name %>
-</p>
-
-<p>
+  <strong>Post type:</strong>
   <%= @post.post_type %>
 </p>
+
+<p>
+  <strong>Post text:</strong>
+  <%= @post.post_text %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

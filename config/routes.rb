@@ -20,8 +20,6 @@
 # 
 Talkinvite::Application.routes.draw do
 
-  # Message pages (person to person, no talk)
-
   match '/my_messages', to: 'messages#my_messages', via: 'get'
 
   resources :messages do
@@ -29,6 +27,8 @@ Talkinvite::Application.routes.draw do
       get :my_messages
     end
   end
+
+  resources :posts, :members, :comments, :maps
 
   # talks:
 
@@ -50,9 +50,6 @@ Talkinvite::Application.routes.draw do
   match '/talks/new', :controller => 'talks', :action => 'new', via: 'get'
   # END of alternative routes into talks
 
-  # TBD:  see if we wish to nest posts, members, comments, & maps under talks
-  resources :comments, :members, :maps
-
   # this map.connect thing might be useful, but apparently 'map' is just not found
   # map.connect "talks/:action", :controller => 'talks', :action => /[a-z]+/i
 
@@ -60,8 +57,9 @@ Talkinvite::Application.routes.draw do
 
   # services nested under people, may wish to shift to nested architecture for that
   # TBD:  see if we wish to nest services inside people
-  resources :services
   
+  resources :services
+
   # sessions:
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
@@ -86,11 +84,6 @@ Talkinvite::Application.routes.draw do
   resources :people do
 
     resources :talks do
-
-      resources :posts
-      ## collection will have lots of 'pick a talk' type pages
-      # these are for a specific talk
-      # TBD: eliminate all of the member routes
 
       member do
         get :map

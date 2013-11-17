@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    # TBD: '@talk'?
     @post = Post.new
     @person = current_person
   end
@@ -31,8 +32,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    # TBD:  do we need to set person_id explicitly?
     @post = Post.new(post_params)
-    @post.person_id = current_person.id
     create_q(@post)
   end
 
@@ -55,7 +56,7 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
       @talk = @post.talk
-      # TBD:  if no talk, throw exception?
+      @person = @post.person
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

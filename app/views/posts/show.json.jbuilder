@@ -1,1 +1,1 @@
-json.extract! @post, :person_id, :talk_id, :post_message, :post_type, :created_at, :updated_at
+json.extract! @post, :sender_id, :receiver_id, :post_type, :post_text, :created_at, :updated_at
