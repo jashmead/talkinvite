@@ -63,18 +63,18 @@ describe "Authentication" do
         ## should make sure we can't do a 'new' or 'edit' either, both would annoy
         ## expect something similar to this for posts as well
         describe "submitting to the create action" do
-          before { post person_talks_path(person) }
+          before { post talks_path }
           specify { expect(response).to redirect_to(signin_path) }
         end
 
         # adding in check on edits
         describe "submitting to the update action" do
-          before { patch person_talk_path(person, FactoryGirl.create(:talk)) }
+          before { patch talk_path(FactoryGirl.create(:talk)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
 
         describe "submitting to the destroy action" do
-          before { delete person_talk_path(person, FactoryGirl.create(:talk)) }
+          before { delete talk_path(FactoryGirl.create(:talk)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
 

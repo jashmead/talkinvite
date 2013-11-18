@@ -20,7 +20,7 @@ describe "Talk pages" do
   # new & create tests:
   describe "talk creation" do
     before do
-        visit new_person_talk_path(talk.person_id)
+        visit new_talk_path
     end
 
     describe "with invalid information" do
@@ -55,7 +55,7 @@ describe "Talk pages" do
       FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'posted', :person_id => person.id)
       FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'posted', :person_id => person.id)
       FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'start', :person_id => person.id)
-      visit person_talks_path(person)
+      visit talks_path
     end
 
     # fix 'All', setting to 'My' or whatever (or '1st degree', '2nd degree', ...)
@@ -80,7 +80,7 @@ describe "Talk pages" do
         FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'posted', :person_id => person.id)
         FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'posted', :person_id => person.id)
         FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'start', :person_id => person.id)
-        visit search_person_talks_path(person)
+        visit search_talks_path
       end
 
       it "should find talks when there is a match" do
@@ -109,7 +109,7 @@ describe "Talk pages" do
     describe "as correct person" do
       let(:new_summary)  { "New Summary" }
       before do 
-        visit edit_person_talk_path(person, talk)
+        visit edit_talk_path(talk)
         fill_in "Summary", with: new_summary
         click_button "Update Talk"
       end
@@ -128,7 +128,7 @@ describe "Talk pages" do
     let(:talk) { FactoryGirl.create(:talk, person: person) }
 
     describe "as correct person" do
-      before { visit edit_person_talk_path(person, talk) }
+      before { visit edit_talk_path(talk) }
 
       it "should delete a talk" do
         # save_and_open_page

@@ -97,7 +97,7 @@ describe "search" do
 
       before do
         ## and it looks as if visits have to go in a before group
-        visit search_person_talks_path(talk.person_id)
+        visit search_talks_path
       end
 
       describe "search with no rows expected" do

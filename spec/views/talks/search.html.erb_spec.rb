@@ -17,7 +17,7 @@ describe "talks/search" do
   let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
 
   describe "renders the search talk form" do
-    before { visit search_person_talks_path(talk.person_id) }
+    before { visit search_talks_path }
 
     ## note each of these tests restarts the whole process, nice
     it { should have_title(page_title) }

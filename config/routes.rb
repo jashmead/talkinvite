@@ -2,6 +2,9 @@
 #   -- put most specific routes at the top:
 #   -- 10/31/13 -- checked that all routes have a controller 
 #     -- & that all controller actions are internal or have a route
+#   -- 11/18/13 -- reverted to completely unnested routes:
+#     -- controller tests not working
+#     -- form & form spec paths trickier
 #
 # main entry points are:
 # 1. talk pages:  new, edit, my talks, search 
@@ -31,6 +34,19 @@ Talkinvite::Application.routes.draw do
   resources :posts, :members, :comments, :maps
 
   # talks:
+
+  resources :talks do
+
+    member do
+      get :map
+    end
+
+    # these are for talks in general
+    collection do
+      get :found, :search, :start
+    end
+
+  end
 
   # Since 'talks' are the central concept, allow for direct routes to them
   # START of alternative routes into talks
@@ -82,20 +98,6 @@ Talkinvite::Application.routes.draw do
   
   # TBD:  kill the 'show' & 'edit' routes here? reroute 'delete' to 'inactivate'
   resources :people do
-
-    resources :talks do
-
-      member do
-        get :map
-      end
-
-      # these are for talks in general
-      # TBD:  eliminate all of the collection routes
-      collection do
-        get :found, :search
-      end
-
-    end
 
     # TBD: implement 'oauth'
     # TBD: see if we need 'map'

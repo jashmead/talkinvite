@@ -61,7 +61,6 @@ describe TalksController do
     end
   end
 
-=begin
   describe "GET show" do
     it "assigns the requested talk as @talk" do
       talk = Talk.create! valid_attributes
@@ -69,7 +68,6 @@ describe TalksController do
       assigns(:talk).should eq(talk)
     end
   end
-=end
 
 # TBD: fix new spec for talks
 =begin
@@ -77,7 +75,7 @@ describe TalksController do
   ## could the RI be part of the problem?
   describe "GET new" do
     it "assigns a new talk as @talk" do
-      get :new
+      get :new, {:person_id => person.id}
       assigns(:talk).should be_a_new(Talk)
     end
   end

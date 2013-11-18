@@ -11,7 +11,7 @@ describe "talks/edit" do
 
   before do 
     sign_in person
-    visit edit_person_talk_path(person, talk)
+    visit edit_talk_path(talk)
   end
 
 # TBD:  don't know why this doesn't work; try as a request; those seem to work better

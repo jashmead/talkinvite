@@ -121,7 +121,7 @@ class ApplicationController < ActionController::Base
     { 'action_name' => 'new',
       'controller_name' => 'talks',
       'label' => 'New Talk', # since icon will carry the action
-      'url' => new_person_talk_path(@person)
+      'url' => new_talk_path
     }
   end
 
@@ -129,7 +129,7 @@ class ApplicationController < ActionController::Base
     { 'action_name' => 'search',
       'controller_name' => 'talks',
       'label' => 'Talks',  # since icon will carry the action
-      'url' => search_person_talks_path(@person)
+      'url' => search_talks_path
     } 
   end
 

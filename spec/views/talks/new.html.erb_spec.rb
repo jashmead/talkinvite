@@ -11,7 +11,7 @@ describe "talks/new" do
 
   before do 
     sign_in person
-    visit new_person_talk_path(person.id)
+    visit new_talk_path
   end
 
   it "renders new talk form" do

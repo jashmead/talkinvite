@@ -6,8 +6,8 @@ describe "talks/index" do
 
   let(:person) { FactoryGirl.create(:person) }
 
-  let!(:talk0) { FactoryGirl.create(:talk) }
-  let!(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s, :summary => "Snigglet") }
+  let!(:talk) { FactoryGirl.create(:talk) }
+  let!(:talk0) { FactoryGirl.create(:talk, :person_id => person.id.to_s, :summary => "Snigglet0") }
   let!(:talk1) { FactoryGirl.create(:talk, :person_id => person.id.to_s, :summary => "Snigglet1")}
   let!(:talk2) { FactoryGirl.create(:talk, :person_id => person.id.to_s, :summary => "Snigglet2")}
   let!(:talk3) { FactoryGirl.create(:talk, :person_id => person.id.to_s, :summary => "Snigglet3")}
@@ -15,7 +15,7 @@ describe "talks/index" do
 
   before do 
     sign_in person
-    visit person_talks_path(person.id)
+    visit talks_path
   end
 
   it "renders a list of talks" do

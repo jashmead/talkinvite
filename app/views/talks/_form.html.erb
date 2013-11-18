@@ -1,8 +1,7 @@
 <!-- TBD: add in post option if the talk hasn't been posted yet (i.e. talk_status is 'start') -->
 <!-- TBD: add in latitude, longitude, map options -->
 <!-- TBD: add in better date, perhaps even a calendar option -->
-<% # logger.debug("views/talks/new: @person: #{@person}, @talk: #{@talk}") %>
-<%= form_for_jqm [ @person, @talk ] do |f| %>
+<%= form_for_jqm @talk do |f| %>
 
   <%= render partial: 'shared/error_messages', object: f.object %>
 

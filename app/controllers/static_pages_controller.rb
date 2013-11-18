@@ -34,7 +34,7 @@ class StaticPagesController < ApplicationController
         [ home_path, 'Home', 'people' ],
         # [ settings_path, 'Settings', 'people' ],
         [ profile_path, 'Profile', 'people' ],
-        [ new_person_talk_path(@person), 'Create Talk', 'talks' ],
+        [ new_talk_path, 'Create Talk', 'talks' ],
         [ my_messages_path, 'My Messages', 'messages' ]
         # change password will go here
       ]
@@ -50,8 +50,6 @@ class StaticPagesController < ApplicationController
 
     # logger.debug("StaticPagesController.sitemap: @person: #{@person.inspect}")
 
-    # note: we had to shift from active_path to active_person_talks_path  (& then to posted_person_talks_path)
-    #   -- and from talks_path to person_talks_path
     @routes += [
       [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],

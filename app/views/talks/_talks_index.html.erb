@@ -3,14 +3,13 @@
   <ul data-role="listview">
       <% @talks.each do |talk| %>
         <li>
-        <% logger.debug("views/talks/index: talk: #{talk.inspect}") %>
         <% 
           # TBD: setup @talks to include person names, avoid per row sql
           # TBD: set up grid in jquery mobile to keep person names lined up
           # TBD: include a time in days, using DateHelper & distance_of_time_in_words_to_now, once start_dt is set
         %>
         <%= 
-          link_to talk.summary + ' (' + talk.person.name + ')', edit_person_talk_path(talk.person_id, talk.id) 
+          link_to talk.summary + ' (' + talk.person.name + ')', edit_talk_path(talk.id) 
         %>
         </li>
       <% end %>
