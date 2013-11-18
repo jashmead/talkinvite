@@ -20,7 +20,7 @@ describe "footers" do
   # TBD:  figure out how to multi-dimensional hashes/arrays here; then can DRY
   let(:help_page_list) { [
     "Credits",
-    "Frequently Asked Questions", 
+    "FAQs", 
     "List of Help",
     "New Credit",
     "New FAQ",

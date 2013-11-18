@@ -8,6 +8,11 @@ describe SessionsController do
       get("/signin").should route_to("sessions#new")
     end
 
+    it "routes to #reset_password" do
+      get("/sessions/reset_password").should route_to("sessions#reset_password")
+      get("/reset_password").should route_to("sessions#reset_password")
+    end
+
     it "routes to #create" do
       post("/sessions").should route_to("sessions#create")
     end

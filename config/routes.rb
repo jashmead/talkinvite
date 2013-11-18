@@ -86,7 +86,10 @@ Talkinvite::Application.routes.draw do
   # note: if the /sayonara is to work, the /sessions/sayonara must be included
   match '/sessions/sayonara', to: 'sessions#sayonara', via: 'get'
 
-  resources :sessions, only: [:new, :create, :destroy]  
+  match '/sessions/reset_password', to: 'sessions#reset_password', via: 'get'
+  match '/reset_password', to: 'sessions#reset_password', via: 'get'
+
+  resources :sessions, only: [:new, :create, :destroy, :reset_password]  
 
   # people pages: 
   # TBD: merge edit & settings
@@ -95,6 +98,8 @@ Talkinvite::Application.routes.draw do
   match '/settings', to: 'people#settings', via: 'get'
   match '/signup', to: 'people#new', via: 'get'
   match '/home', to: 'people#home', via: 'get'
+  match '/change_password', to: 'people#change_password', via: 'get'
+  match '/people/change_password', to: 'people#change_password', via: 'get'
   
   # TBD:  kill the 'show' & 'edit' routes here? reroute 'delete' to 'inactivate'
   resources :people do
@@ -102,14 +107,14 @@ Talkinvite::Application.routes.draw do
     # TBD: implement 'oauth'
     # TBD: see if we need 'map'
     member do
-      get :oauth, :map
+      get :map, :oauth
     end
 
     # TBD: eliminate search & found
     # TBD: merge profile & edit
     # note:  'home' is the only valid option here
     collection do
-      get :home, :search, :found, :profile
+      get :home, :search, :found, :profile, :change_password
     end
 
   end

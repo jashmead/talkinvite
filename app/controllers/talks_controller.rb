@@ -57,6 +57,7 @@ class TalksController < ApplicationController
   # TBD:  saving from control is done via ajax
   # TBD:  add control into routes
   def control
+    logger.debug("TalksController.control: #{@talk.inspect}")
   end
 
   def search_fields

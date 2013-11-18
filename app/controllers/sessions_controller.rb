@@ -30,6 +30,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  # no one is logged in; they are requesting a reset for a specific person
+  def reset_password
+  end
+
   # specialized destroy, since destroy does not mean here what it normally does
   def destroy
     signout

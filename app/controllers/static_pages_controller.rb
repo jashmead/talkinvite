@@ -29,14 +29,16 @@ class StaticPagesController < ApplicationController
   def sitemap
     store_location
     
+    logger.debug("StaticPagesController.sitemap:  current_talk: #{current_talk.inspect}")
+
     # TBD:  put all options in, but leave disabled?
     if signed_in?
       @person = current_person
       @routes = [
         [ home_path, 'Home', 'people' ],
         [ settings_path, 'Settings', 'people' ],
-        [ profile_path, 'Profile', 'people' ]
-        # change password will go here
+        [ profile_path, 'Profile', 'people' ],
+        [ change_password_path, 'Change Password', 'people' ]
       ]
       if current_talk
         @routes += [ control_talk_path(current_talk), "Current Talk", 'talks' ]
@@ -49,8 +51,8 @@ class StaticPagesController < ApplicationController
       @person = anonymous
       @routes = [
         [ signin_path, 'Sign In', 'sessions' ],
-        [ signup_path, 'New Account', 'people' ]
-        # email password will go here
+        [ signup_path, 'New Account', 'people' ],
+        [ reset_password_path, 'Reset Password', 'sessions' ]
       ]
     end
     @person ||= anonymous # in case current_person came back nil
@@ -61,11 +63,11 @@ class StaticPagesController < ApplicationController
       [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],
       [ helps_path, 'List of Help Pages' , 'helps' ],
+      [ faqs_path, 'FAQs' , 'faqs' ],
+      [ credits_path, 'Credits' , 'credits' ],
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
-      [ credits_path, 'Credits' , 'credits' ],
-      [ faqs_path, 'Frequently Asked Questions' , 'faqs' ],
       [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
 

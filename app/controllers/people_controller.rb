@@ -9,14 +9,14 @@ class PeopleController < ApplicationController
   # profile, settings, & home are only available to the 'correct_person': logged in as the person being profiled, set, or home'd
   # edit & update only available to the 'correct_person'
 
-  before_action :set_person, only: [:show, :edit, :update, :destroy, :settings, :home]
+  before_action :set_person, only: [:show, :edit, :update, :destroy, :settings, :home, :change_password]
 
   ## removed index (& therefore search) from list of routes that require you to be signed in; 
   ##    -- no, this caused additional failures
   ##    -- need deeper understanding before we can continue
   ##    -- put :index back in for now
 
-  before_action :signed_in_person, only: [ :index, :edit, :update, :destroy, :settings, :home, :profile ]
+  before_action :signed_in_person, only: [ :index, :edit, :update, :destroy, :settings, :home, :profile, :change_password ]
 
   # do not need correct_person for settings, profile, & home because they reroute *to* the correct_person
   before_action :correct_person, only: [:edit, :update]
@@ -83,7 +83,6 @@ class PeopleController < ApplicationController
       render 'show' and return
     end
     @title = @person.name
-    render 'edit' # have to spell it out in case we were called from 'settings'
   end
 
   # settings are the same as edit, except we force the person to be the current_person
@@ -91,7 +90,12 @@ class PeopleController < ApplicationController
   def settings
     logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
-    edit
+    @title = @person.name
+  end
+
+  def change_password
+    logger.debug("PeopleController.change_password: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
+    @person = current_person
   end
 
   # 'home' is a control panel type thing
@@ -99,6 +103,7 @@ class PeopleController < ApplicationController
   def home
     # we force the current @person to be the current_person
     @person = current_person
+    @talks = Talk.talks_by_person(@person)
     @title = @person.name
   end
 
@@ -159,6 +164,7 @@ class PeopleController < ApplicationController
     teapot_q
   end
 
+  # people can have a location associated with them so get a map as well
   def map
     @person = Person.find(params[:id])
     map_q(@person, params)

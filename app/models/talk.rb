@@ -103,16 +103,18 @@ class Talk < ActiveRecord::Base
   validates_inclusion_of :talk_status, in: [ 'start', 'posted', 'cancelled', 'done' ] 
 
   def self.posted
+    # TBD:  use scopes to help collect 'posted'?
     self.where('talk_status = ?', 'posted')
   end
 
   # TBD:  upgrade talks_by_person to include memberships
   def self.talks_by_person( person ) 
-    # RoR probably knows to use 'id' when called with 'person', experiment later
     if ! person
-      return none # TBD:  is 'none' the right way to return an empty set of relations?
+      # TBD:  is 'none' the right way to return an empty set of relations?
+      return none 
     end
     # TBD: does find_by_person_id throw exception on no rows found?
+    # TBD: replace this with a union on all members but only active
     self.where('person_id = ?', person.id)
   end
 

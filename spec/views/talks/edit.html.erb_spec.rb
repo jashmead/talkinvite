@@ -4,8 +4,8 @@ describe "talks/edit" do
   
   subject { page }        ## what, exactly, does this do? sets 'it', I think
 
-  let(:page_title) { 'New Talk' }
-  let(:heading) { 'New Talk' } 
+  let(:page_title) { 'Update Talk' }
+  let(:heading) { 'Update Talk' } 
   let(:person) { FactoryGirl.create(:person) }
   let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
 
@@ -15,8 +15,7 @@ describe "talks/edit" do
   end
 
 # TBD:  don't know why this doesn't work; try as a request; those seem to work better
-=begin
-  it "renders new talk form" do
+  it "renders edit talk form" do
 
     # save_and_open_page
 
@@ -32,7 +31,6 @@ describe "talks/edit" do
     should have_selector("textarea#talk_description[name=\"talk[description]\"]")
 
   end
-=end
 
 end
 

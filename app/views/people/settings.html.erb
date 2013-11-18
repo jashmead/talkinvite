@@ -1,4 +1,5 @@
-<% provide(:title, "Edit Person") %>
+<% provide(:title, "Settings") %>
 <% logger.debug("views/people/edit: @title: #{@title}, @person: #{@person.inspect}") %>
 
+<!-- eliminate the 'with_password' -->
 <%= render 'form_with_password' %>

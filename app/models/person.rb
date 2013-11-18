@@ -64,8 +64,8 @@ class Person < ActiveRecord::Base
 
   # TBD:  replace validates password & confirmation with a validate block, called on new account & from reset forms, but not from settings
   #   -- or, use update attribute or related to do the save
-  #   -- or add in an unless { controller.action_name === 'settings' }
-  #   -- and use 'with_options'
+  #   -- or, add in an unless { controller.action_name === 'settings' }
+  #   -- or, use 'with_options'
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true

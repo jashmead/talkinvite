@@ -8,14 +8,14 @@
 
 ==== Signout
 
-==== Reset Password
+==== TBD: Reset Password
 
 needs to be a form so they can specify the name and/or the email to send the new password to
 -- put the supporting fields in the session object?
 -- see the examples before moving further on this
 
-==== Buttons
+==== Signout Button
 
--- signout
+very prominent, a security plus
 
--- reset password
+==== TBD:  Specs for 'new' & 'reset_password' pages

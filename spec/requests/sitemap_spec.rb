@@ -19,7 +19,7 @@ describe "sitemap" do
     "About", 
     "Contact", 
     "Credits", 
-    "Frequently Asked Questions", 
+    "FAQs", 
     "List of Help",
     "Search for Talks"
   ] }
@@ -29,14 +29,16 @@ describe "sitemap" do
     # "Home", 
     "My Messages",
     "Create Talk",
-    "Search for People"
+    "Search for People",
+    "Change Password"
   ] }
 
   # let(:signedin_list) { [ "My Messages" ] }
 
   let(:not_signedin_list) { [
     "Sign In",
-    "New Account"
+    "New Account",
+    "Reset Password"
   ] }
 
   let(:admin_list) { [ "New Credit", "New FAQ", "New Help" ] }
