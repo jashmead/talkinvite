@@ -4,6 +4,8 @@
 #
 # Expect we will add a 'url' field to this
 #
+# TBD:  add url field -- note that this can be included in the description
+#
 class Credit < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name

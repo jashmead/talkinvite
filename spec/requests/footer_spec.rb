@@ -21,7 +21,7 @@ describe "footers" do
   let(:help_page_list) { [
     "Credits",
     "Frequently Asked Questions", 
-    "Help",
+    "List of Help",
     "New Credit",
     "New FAQ",
     "New Help"

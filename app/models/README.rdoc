@@ -25,6 +25,7 @@ Planned but not yet implemented tables:
 1. Tags -- for interests for people
 1. Ads -- to generate revenue; in parallel with talks, comments, to blend in with them
 1. Calendars -- in parallel with Maps
+1. Sessions -- for security & quality & flexibility, see session hijacking in guide on security
 
 Currently tabled tables
 

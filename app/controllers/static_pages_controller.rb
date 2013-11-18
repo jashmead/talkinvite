@@ -1,6 +1,8 @@
 # Static Pages
 #
-# Meritrious but slightly outdated.
+=begin
+  TBD:  add in topics pages/routes -- i.e. stuff to talk about
+=end
 
 class StaticPagesController < ApplicationController
 
@@ -26,23 +28,28 @@ class StaticPagesController < ApplicationController
   # may make a reasonable start page as well
   def sitemap
     store_location
-
-    # turned off the options that are present in the sitemap header 
+    
+    # TBD:  put all options in, but leave disabled?
     if signed_in?
       @person = current_person
       @routes = [
         [ home_path, 'Home', 'people' ],
-        # [ settings_path, 'Settings', 'people' ],
-        [ profile_path, 'Profile', 'people' ],
+        [ settings_path, 'Settings', 'people' ],
+        [ profile_path, 'Profile', 'people' ]
+        # change password will go here
+      ]
+      if current_talk
+        @routes += [ control_talk_path(current_talk), "Current Talk", 'talks' ]
+      end
+      @routes += [
         [ new_talk_path, 'Create Talk', 'talks' ],
         [ my_messages_path, 'My Messages', 'messages' ]
-        # change password will go here
       ]
     else 
       @person = anonymous
       @routes = [
-        #[ signin_path, 'Sign In', 'sessions' ],
-        #[ signup_path, 'New Account', 'people' ]
+        [ signin_path, 'Sign In', 'sessions' ],
+        [ signup_path, 'New Account', 'people' ]
         # email password will go here
       ]
     end
@@ -53,7 +60,7 @@ class StaticPagesController < ApplicationController
     @routes += [
       [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],
-      [ helps_path, 'Help' , 'helps' ],
+      [ helps_path, 'List of Help Pages' , 'helps' ],
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],

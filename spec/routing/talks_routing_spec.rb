@@ -35,6 +35,7 @@ describe TalksController do
 
     it "member routes" do
       get("/talks/1/map").should route_to("talks#map", :id => "1")
+      get("/talks/1/control").should route_to("talks#control", :id => "1")
     end
 
     it "collection routes" do

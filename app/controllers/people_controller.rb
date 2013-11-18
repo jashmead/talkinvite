@@ -1,14 +1,8 @@
 # People Controller
 # 
-# 1. 2nd most important controller
+# 2nd most important controller
 #
-##  will be adding actions:  signin, signout, settings
-##  will be adding profile_picture
-##  will be adding current_location (in session on server, at this point)
-##  will be adding checks on destroy:  you have to be signed in, an admin, & not deleting yourself
-##  'format' bits are needed; how do they work? -- commented out for now...
-##  params[:page] defaults to nil, presumably a way to override the default page
-
+# TBD:  add in separate change password form
 
 class PeopleController < ApplicationController
 
@@ -93,6 +87,7 @@ class PeopleController < ApplicationController
   end
 
   # settings are the same as edit, except we force the person to be the current_person
+  # TBD:  put password stuff in a button
   def settings
     logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
@@ -100,6 +95,7 @@ class PeopleController < ApplicationController
   end
 
   # 'home' is a control panel type thing
+  # TBD:  add talks box, eliminate update fields
   def home
     # we force the current @person to be the current_person
     @person = current_person

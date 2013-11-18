@@ -38,7 +38,7 @@ Talkinvite::Application.routes.draw do
   resources :talks do
 
     member do
-      get :map
+      get :control, :map
     end
 
     # these are for talks in general

@@ -41,6 +41,20 @@ module SessionsHelper
     @anonymous = Person.find_by_name('anonymous')
   end
 
+  # current_talk is really 'logged_in_talk', who are you signed in as?
+  def current_talk
+    @current_talk ||= session[:current_talk]
+  end
+
+  # why is this squib needed?
+  def current_talk=(talk)
+    @current_talk = session[:current_talk] = talk
+  end
+
+  def current_talk?(talk)
+    talk == current_talk  # comparison is to what is returned from the function 'current_talk'
+  end
+
   def sign_in(person)
     remember_token = Person.new_remember_token
 
@@ -108,6 +122,8 @@ module SessionsHelper
         'fa-google-plus'
       when 'help', 'helps'
         'fa-question'
+      when 'location', 'venue'  # venue can show up here even without being a table!
+        'fa-location-arrow'
       when 'message'
         'fa-bolt'
       when 'new'
@@ -126,8 +142,8 @@ module SessionsHelper
         'fa-sign-in fa-rotate-270'
       when 'start'
         'fa-home'
-      when 'location', 'venue'  # venue can show up here even without being a table!
-        'fa-location-arrow'
+      when 'talk'
+        'fa-circle'
       when 'wine'
         'fa-glass'
       when /^my_/

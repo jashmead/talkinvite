@@ -1,5 +1,9 @@
 ## Sessions controller has no model
 
+# TBD:  add in reset password form
+
+# TBD:  should we be using 'reset_session' (see http://ipc.webitedesigncost.com/security.html)  on a successful login?
+
 class SessionsController < ApplicationController
 
   # dummy out the search_fields; should never be searching this any way
@@ -8,27 +12,19 @@ class SessionsController < ApplicationController
   end
 
   def new
-    ## 'self' is pretty big
-    ## logger.debug("SessionsController.new: self: #{self.inspect}") #DDT
   end
 
+  # TBD:  allow signin by name as well as by email: fix this code & the form
   def create
-    ## logger.debug("SessionsController.create: self: #{self.inspect}") #DDT
-
     person = Person.find_by(email: params[:session][:email].downcase)
-    ##  logger.debug("SessionsController.create: person: #{person.inspect}") #DDT
 
     if person && person.authenticate(params[:session][:password])
-      ##  logger.debug("SessionsController.create: email found: #{person.email.inspect}") #DDT
-
-      # Sign the user in and redirect to the user's show page.
+      # Sign the user in
       sign_in person
-      # why redirect to 'person' when we have no valid person?
+
+      # TBD:  make redirect on signin to to their last-viewed page?
       redirect_back_or person
     else
-      # email not a method or attribute of person?
-      # logger.debug("SessionsController.create: email not found: #{person.email.inspect}") #DDT
-
       flash.now[:error] = 'Invalid email/password combination. Please try again.'
       render 'new'
     end
@@ -36,7 +32,6 @@ class SessionsController < ApplicationController
 
   # specialized destroy, since destroy does not mean here what it normally does
   def destroy
-    ## logger.debug("SessionsController.destroy: self: #{self.inspect}") #DDT
     signout
     redirect_to root_url
   end

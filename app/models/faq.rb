@@ -4,6 +4,7 @@
 #
 # expect will often have attachment url's here, pointing to more detailed pages
 #   and tags
+# TBD:  add url field?
 # 
 # faqs we are planning:
 #   -- why the colors?

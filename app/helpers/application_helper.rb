@@ -19,13 +19,8 @@ module ApplicationHelper
     # call interior function controller._layout
     layout = controller.send(:_layout)
     if layout.instance_of? String
-      # logger.debug("ApplicationHelper.current_layout(1): #{layout.inspect}")
       layout
     else
-      ## layout.identifier = /Volumes/Isis/talkinvite/talkinvite/app/views/layouts/application.html.erb
-      ## logger.debug("ApplicationHelper.layout: #{layout.inspect}")
-
-      ## this gives "application" if that is the first layout, but will give, say, 'credits' if that is the top layout
       File.basename(layout.identifier).split('.').first 
     end
   end

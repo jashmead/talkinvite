@@ -8,7 +8,7 @@ class TalksController < ApplicationController
 
   # should always have a person for a talk
   before_action :set_person
-  # TBD:  add in posts, comments, members?
+  # these actions all need a talk; set current_talk as a side-effect
   before_action :set_talk, only: [:show, :edit, :update, :destroy, :control, :map]
 
   # TBD:  allow the 'new' action without a person, require before a create however
@@ -67,7 +67,7 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     # TBD:  we would like to return to the 'control' screen from create, not to the default
-    @talk = @person.talks.create(talk_params)
+    current_talk = @talk = @person.talks.create(talk_params)
     create_q(@talk)
   end
 
@@ -83,6 +83,8 @@ class TalksController < ApplicationController
   # TBD: TalksController.destroy will need to be customized to requirements of talks
   def destroy
     destroy_q(@talk, home_path)
+    # nil out the current talk
+    unset_talk
   end
 
   # start is root_path for system
@@ -133,8 +135,12 @@ class TalksController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_talk
-      # could work thru @person, but that can be a bit trickier, what with anonymous & all
-      @talk = Talk.find(params[:id])
+      # current_person refers to person currently logged in, often *not* the same as talk.person_id
+      current_talk = @talk = Talk.find(params[:id])
+    end
+
+    def unset_talk
+      current_talk = nil
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -148,6 +154,7 @@ class TalksController < ApplicationController
         :start_dt, :end_dt, :longitude, :latitude, :who_desc, :talk_status, :where_desc, :when_desc)
     end
 
+    # note:  correct_person (in talks controller) means currently logged in person is the owner of the talk
     def correct_person
       # find the talk through the person, if not found, this person doesn't own the talk
       @talk = current_person.talks.find_by(id: params[:id])

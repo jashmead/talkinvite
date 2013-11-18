@@ -62,11 +62,15 @@ class Person < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: true
 
+  # TBD:  replace validates password & confirmation with a validate block, called on new account & from reset forms, but not from settings
+  #   -- or, use update attribute or related to do the save
+  #   -- or add in an unless { controller.action_name === 'settings' }
+  #   -- and use 'with_options'
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  # there is a problem with find_by(:remember_token, remember_token); not clear why...
+  # TBD: there is a problem with find_by(:remember_token, remember_token); why?
   def find_by_remember_token( encrypted_remember_token ) 
     ##  logger.debug("Person.find_by_remember_token: encrypted_remember_token: %{encrypted_remember_token}") #DDT
     person = Person.where(remember_token: encrypted_remember_token)
