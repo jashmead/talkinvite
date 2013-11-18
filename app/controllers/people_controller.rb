@@ -101,7 +101,8 @@ class PeopleController < ApplicationController
   # 'home' is a control panel type thing
   # TBD:  add talks box, eliminate update fields
   def home
-    # we force the current @person to be the current_person
+    # TBD: how to manage return navigation 
+    store_location  # so if we click on something we'll come back here:  it is home, after all!
     @person = current_person
     @talks = Talk.talks_by_person(@person)
     @title = @person.name

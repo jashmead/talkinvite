@@ -1,34 +1,12 @@
-<%= form_for(@message) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> kept this message from being saved:</h2>
-
-      <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for_jqm(@message) do |f| %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
   <!-- TBD: replace sender#, receiver#, message_type with appropriate human comprehensible names -->
-  <div class="field">
     <%= f.number_field :sender_id, placeholder: :sender_id %>
-  </div>
-  <div class="field">
     <%= f.number_field :receiver_id, placeholder: :receiver_id %>
-  </div>
-  <div class="field">
     <%= f.text_field :message_type, placeholder: :message_type %>
-  </div>
-  <div class="field">
     <%= f.text_area :message_text, placeholder: :message_text %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'data-inline' => true %>
-  </div>
-  <% if controller.action_name == 'edit' %>
-    <%= button_delete @message %>
-  <% end %>
+
+  <%= render partial: 'shared/submit_button', :object => f %>
 
 <% end %>

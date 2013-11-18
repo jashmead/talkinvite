@@ -1,35 +1,14 @@
-<%= form_for(@member) do |f| %>
-  <% if @member.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@member.errors.count, "error") %> kept this member from being saved:</h2>
-
-      <ul>
-      <% @member.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for_jqm(@member) do |f| %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
   <!-- TBD: replace person & talk with the corresponding names -->
-  <div class="field">
     <%= f.number_field :talk_id, placeholder: :talk_id %>
-  </div>
-  <div class="field">
     <%= f.number_field :person_id, placeholder: :person_id %>
-  </div>
-  <!-- replace status, member_type with select --> 
-  <div class="field">
+  <!-- TBD: replace status, member_type with select --> 
     <%= f.text_field :rsvp_status, placeholder: :rsvp_status %>
-  </div>
-  <div class="field">
     <%= f.text_field :member_type, placeholder: :member_type %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'data-inline' => true %>
-  </div>
-  <% if controller.action_name == 'edit' %>
-    <%= button_delete @member %>
-  <% end %>
+
+  <%= render partial: 'shared/submit_button', :object => f %>
+
 
 <% end %>

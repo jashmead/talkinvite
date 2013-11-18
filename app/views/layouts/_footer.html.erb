@@ -5,7 +5,7 @@
 <!-- NOTE: data-theme has to be applied to the footer, not the navbar, to take effect -->
 <!-- NOTE: don't bother with navbar in dialogs:  it is distracting in that context -->
 <% if @data_role == 'page' %>
-	<div class="footer" data-role="footer" data-position="fixed" data-id="<%=tagged_id('footer')%>" <%=swatch%> >
+	<div class="footer" data-role="footer" data-position="fixed" data-id="<%=tagged_id('footer')%>" <%=data_theme%> >
 	  <div class="navbar" data-role="navbar">
 	    <ul>
 	    <% # active_button_set = false
@@ -49,13 +49,10 @@
 	          klasses = ''
 	        end
 	
-	        data_theme = swatch( controller_name )
 	        iconstr = iconify( action_name || controller_name )
 
-	        # logger.debug("_footer: action_name: #{action_name}, label: #{label}, controller_name: #{controller_name}, href: #{href}, data_theme: #{data_theme}")
-
 		    %>
-	      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{href}\" #{data_theme} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
+	      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{href}\" #{data_theme(controller_name)} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
 	    <% end %>
 	    </ul>
 	  </div>

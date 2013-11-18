@@ -3,7 +3,7 @@
 
 <!-- url is passed to form, as the 'action' -->
 <!-- why no '@session'? -->
-<%= form_for(:session, url: sessions_path) do |f| %>
+<%= form_for_jqm(:session, url: sessions_path) do |f| %>
 
   <!-- unable to get :placeholder to work with these or to null them out, 
     may be a problem in the browser (Firefox) -->
@@ -12,6 +12,5 @@
   <%= f.password_field :password, placeholder: :password, size: 20 %>
 
   <%= f.submit "Sign In", 'data-inline' => true %>
+  <%= button_inline "Create Account", signup_path %>
 <% end %>
-<hr>
-<%= button_inline "New to TalkInvite? Sign up now!", signup_path %>

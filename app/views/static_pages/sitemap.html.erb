@@ -1,6 +1,6 @@
 <!-- entry point for testing root/partials system -->
 <% provide(:title, 'Site Map') %>
-<% # logger.debug("sitemap: @routes: #{@routes.inspect}") %>
+<% # TBD:  include icons? feeding them to the jQueryMobile icon eater? %>
 <% if @routes && @routes.size > 0 %>
 	<ul data-role="listview">
 	    <% @routes.each do |route| %>
@@ -10,7 +10,7 @@
           route_controller = route[2]
           data_theme = swatch(route_controller)
         %>
-        <li <%=data_theme%> >
+        <li <%=data_theme(route_controller)%> >
         <%= link_to label, path %>
         </li>
 	    <% end %>

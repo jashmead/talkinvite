@@ -6,6 +6,7 @@
   <%= f.email_field :email, placeholder: :email, required: true %>
   <%= f.text_area :description, placeholder: :description %>
 
+  <br/>
   <% if @person.new_record? %>
   <%= f.submit 'Create Person' %>
   <% else %>

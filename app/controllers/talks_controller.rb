@@ -46,6 +46,7 @@ class TalksController < ApplicationController
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
     @talk = @person.talks.build
+    logger.debug("TalksController.new: @talk: #{@talk.inspect}")
   end
 
   # GET /talks/1/edit

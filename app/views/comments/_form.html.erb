@@ -1,31 +1,12 @@
-<%= form_for(@comment) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> kept this comment from being saved:</h2>
+<%= form_for_jqm(@comment) do |f| %>
 
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
 
   <!-- TBD:  replace person with name, talk with summary -->
-  <div class="field">
-    <%= f.number_field :person_id, placeholder: :person_id %>
-  </div>
-  <div class="field">
-    <%= f.number_field :talk_id, placeholder: :talk_id %>
-  </div>
-  <div class="field">
-    <%= f.text_area :comment_text, placeholder: :comment_text %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'data-inline' => true %>
-  </div>
-  <% if controller.action_name == 'edit' %>
-    <%= button_delete @comment %>
-  <% end %>
+  <%= f.number_field :person_id, placeholder: :person_id %>
+  <%= f.number_field :talk_id, placeholder: :talk_id %>
+  <%= f.text_area :comment_text, placeholder: :comment_text %>
+
+  <%= render partial: 'shared/submit_button', :object => f %>
 
 <% end %>

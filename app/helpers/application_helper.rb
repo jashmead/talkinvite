@@ -65,7 +65,10 @@ module ApplicationHelper
       else
         'a' # black and white
     end
-    return " data-theme=\"#{theme_letter}\" ".html_safe
+  end
+
+  def data_theme( controller_name = nil ) 
+    return " data-theme=\"#{swatch( controller_name )}\" ".html_safe
   end
 
   # test_flow used to figure out where stuff needs to live so we can get at it

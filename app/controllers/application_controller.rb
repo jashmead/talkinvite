@@ -234,6 +234,8 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       if model.save
         format.html { 
+          # we should have stored the previous location in session
+          # TBD:  why does root take us to 'sitemap' rather than 'home'?
           redirect_back_or root_url
           flash.now[:success] = model.class.to_s.downcase + ' was successfully created.'
         }

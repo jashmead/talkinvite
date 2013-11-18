@@ -53,9 +53,12 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
+# if we wrap the hidden field, the label will show, so let hidden fields pass thru to form_for
+=begin
   def hidden_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end
+=end
 
   def number_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe

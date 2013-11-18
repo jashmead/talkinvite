@@ -104,9 +104,10 @@ module SessionsHelper
         'fa-dot-circle-o'
       when 'cancel'
         'fa-ban'
-      when 'comment', 'talk'
+      # using outline'd comments for talk, filled in comments for comments
+      when 'comment'
         'fa-comment-o'
-      when 'comments', 'talks'
+      when 'comments'
         'fa-comments-o'
       when 'contact'
         'fa-envelope-o'
@@ -143,7 +144,13 @@ module SessionsHelper
       when 'start'
         'fa-home'
       when 'talk'
-        'fa-circle'
+        'fa-rocket'
+      # use two rockets for talks?
+      # or use two people & comments?
+      when 'talks'
+        return '<span class="fa-stack fa-lg">'
+          + '<i class="fa fa-rocket fa-stack-1x fa-flip-vertical"></i>' 
+          + '<i class="fa fa-rocket fa-stack-1x text-danger"></i>'
       when 'wine'
         'fa-glass'
       when /^my_/
@@ -166,13 +173,14 @@ module SessionsHelper
 
   # the supplied default is 'person', so will turn into 'redirect_to person', which is what we had before
   def redirect_back_or(default)
-    # logger.debug("AH: SessionsHelper: redirect_or_back: default: #{default.inspect}, session[:return_to]: #{session[:return_to].inspect}")
+    logger.debug("SessionsHelper: redirect_or_back: default: #{default.inspect}, session[:return_to]: #{session[:return_to].inspect}")
+    # TBD:  use a redirect to :back?
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
   end
 
   def store_location
-    # logger.debug("AH: SessionsHelper: store_location: #{request.url.inspect}, request.get?: #{request.get?}")
+    logger.debug("SessionsHelper: store_location: #{request.url.inspect}, request.get?: #{request.get?}")
     session[:return_to] = request.url if request.get?
   end
 
