@@ -67,6 +67,7 @@ class Person < ActiveRecord::Base
   #   -- or, add in an unless { controller.action_name === 'settings' }
   #   -- or, use 'with_options'
   has_secure_password
+  logger.debug(__FILE__ + ": @action_name: #{@action_name}, self: #{self.inspect}")
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 

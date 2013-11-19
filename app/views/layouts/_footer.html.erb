@@ -50,6 +50,7 @@
 	        end
 	
 	        iconstr = iconify( action_name || controller_name )
+          # logger.debug(__FILE__ + ": iconstr: #{iconstr.inspect}, url: #{url.inspect}")
 
 		    %>
 	      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{href}\" #{data_theme(controller_name)} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>

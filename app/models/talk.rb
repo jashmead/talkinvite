@@ -12,7 +12,7 @@
 # 1. latitude -- y coordinate, not visible to users
 # 1. who_type -- as any, members_only, ...
 
--- get posted datetime from posts
+# -- get posted datetime from posts
 
 # == Children
 

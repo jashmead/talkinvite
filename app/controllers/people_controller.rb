@@ -56,7 +56,7 @@ class PeopleController < ApplicationController
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end
-    @title = @person.name
+    @title = @person.name.titlecase
     @data_role = 'dialog' if @person != current_person
     render 'show' # have to spell it out in case we were called from 'profile'
   end
@@ -64,7 +64,7 @@ class PeopleController < ApplicationController
   # TBD: merge profile back into 'show'
   def profile
     @person = current_person
-    @title = @person.name
+    @title = @person.name.titlecase
     show
   end
 
@@ -82,7 +82,7 @@ class PeopleController < ApplicationController
     if @person != current_person
       render 'show' and return
     end
-    @title = @person.name
+    @title = @person.name.titlecase
   end
 
   # settings are the same as edit, except we force the person to be the current_person
@@ -90,7 +90,8 @@ class PeopleController < ApplicationController
   def settings
     logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
-    @title = @person.name
+    @title = @person.name.titlecase
+    @action_name = 'settings'
   end
 
   def change_password
@@ -105,7 +106,7 @@ class PeopleController < ApplicationController
     store_location  # so if we click on something we'll come back here:  it is home, after all!
     @person = current_person
     @talks = Talk.talks_by_person(@person)
-    @title = @person.name
+    @title = @person.name.titlecase
   end
 
   # POST /people

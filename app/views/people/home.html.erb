@@ -1,13 +1,16 @@
 <% provide(:title, "Home") %>
 
 <% if @talks %>
-  <ul data-role="listview">
+  <ul data-role="listview" data-inset="true">
   <% @talks.each do |talk| %>
     <!-- TBD: replace 'li' with better formatting, links to talk control, link to person, call of calendar on click of when, & when_desc formatted in days! -->
-    <li><%= link_to talk.summary+ '/' + talk.person.name + '/' + talk.when_desc, control_talk_path(talk) %></li> 
+    <li <%=data_theme('talks')%>><%= link_to talk.summary+ '/' + talk.person.name + '/' + talk.when_desc, control_talk_path(talk) %></li> 
   <% end %>
   </ul>
 <% end %>
-<hr/>
 
-<%= link_to 'Create Talk', new_talk_path, 'data-role' => 'button', 'data-inline' => true, 'data-theme' => swatch('talks') %>
+<% if signed_in? %>
+  <%= link_to 'Create Talk', new_talk_path, 
+    'data-role' => 'button', 'data-inline' => true, 
+    'data-theme' => swatch('talks') %>
+<% end %>

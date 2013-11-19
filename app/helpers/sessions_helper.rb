@@ -137,16 +137,17 @@ module SessionsHelper
         'fa-cog'
       when 'signin'
         'fa-sign-in'
-      when 'signout'
+      when 'signout', 'sayonara'
         'fa-sign-in fa-flip-vertical'
       when 'signup'
         'fa-sign-in fa-rotate-270'
       when 'start'
         'fa-home'
+      # TBD:  use rocket for talk? or use a comment indicator? or use a single 'T'?
       when 'talk'
         'fa-rocket'
-      # use two rockets for talks?
-      # or use two people & comments?
+      # TBD: use two rockets for talks?
+      #   -- or use two people & comments?
       when 'talks'
         return '<span class="fa-stack fa-lg">'
           + '<i class="fa fa-rocket fa-stack-1x fa-flip-vertical"></i>' 
