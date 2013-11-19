@@ -68,8 +68,12 @@ class Person < ActiveRecord::Base
   #   -- or, use 'with_options'
   has_secure_password
   logger.debug(__FILE__ + ": @action_name: #{@action_name}, self: #{self.inspect}")
+  # TBD: we want to validate password on new account & change password but not on settings
+  #   -- how?
+  # if false 
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  # end
 
   # TBD: there is a problem with find_by(:remember_token, remember_token); why?
   def find_by_remember_token( encrypted_remember_token ) 

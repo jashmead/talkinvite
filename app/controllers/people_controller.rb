@@ -128,11 +128,13 @@ class PeopleController < ApplicationController
 
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
+  # update should be called by edit, settings
   def update
     ## correct_person finds the appropriate person
     ## @person = Person.find(params[:id])
+    # update_attributes should not be running validations? or should it?
+    logger.debug("PeopleController.update: @person: #{@person.inspect}");
     if @person.update_attributes(person_params)
-      ## logger.debug("QQ: PeopleController.update: success");
       flash[:success] = "Profile updated"
       sign_in @person     # why needed?
       redirect_to @person

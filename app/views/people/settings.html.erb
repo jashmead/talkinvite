@@ -1,5 +1,14 @@
 <% provide(:title, "Settings") %>
-<% logger.debug("views/people/edit: @title: #{@title}, @person: #{@person.inspect}") %>
+<% logger.debug("views/people/settings: @title: #{@title}, @person: #{@person.inspect}") %>
+<%= form_for_jqm(@person) do |f| %>
 
-<!-- eliminate the 'with_password' -->
-<%= render 'form_with_password' %>
+  <%= render partial: 'shared/error_messages', object: f.object %>
+
+  <%= render partial: 'form_core', object: f %>
+
+  <% # TBD:  once a safe way is found do to this, leave passwords out of the settings %>
+  <%= render partial: 'password', object: f %>
+
+  <%= render partial: 'person_save', object: f %>
+
+<% end %>

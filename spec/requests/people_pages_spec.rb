@@ -23,7 +23,7 @@ describe "People pages" do
     it "should list each person" do
       Person.all.each do |person|
         ## if we are using table rather than list to format people, so li->td
-        expect(page).to have_selector('li', text: person.name)
+        expect(page).to have_selector('a', text: person.name)
       end
     end
 
@@ -34,7 +34,7 @@ describe "People pages" do
 
       it "should list each person" do
         Person.paginate(page: 1).each do |person|
-          expect(page).to have_selector('li', text: person.name)
+          expect(page).to have_selector('a', text: person.name)
         end
       end
     end
