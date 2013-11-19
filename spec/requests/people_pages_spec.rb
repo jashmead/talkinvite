@@ -81,26 +81,33 @@ describe "People pages" do
 
   # profile tests 'show' form
   # TBD:  add talk list to profile page
-=begin
-  describe "profile page" do
+  describe "home page" do
 
-    let(:person) { FactoryGirl.create(:person) }
-    let!(:t1) { FactoryGirl.create(:talk, person: person, summary: "FooBar") }
-    let!(:t2) { FactoryGirl.create(:talk, person: person, summary: "BarFoo") }
+    let!(:person) { FactoryGirl.create(:person) }
+    # get rid of when_desc & where_desc once page is fixed up
+    let!(:t1) { FactoryGirl.create(:talk, person: person, summary: "FooBar", when_desc: "nowish", where_desc: "hereish") }
+    let!(:t2) { FactoryGirl.create(:talk, person: person, summary: "BarFoo", when_desc: "nowish", where_desc: "hereish") }
 
-    before { visit person_path(person) }
+    before { 
+      sign_in person
+      visit home_people_path(person)
+    }
 
     it { should have_content(person.name) }
     it { should have_title(person.name) }
 
     describe "talks" do
-      it { should have_content(t1.summary) }
-      it { should have_content(t2.summary) }
-      it { should have_content(person.talks.count) }
+      it { 
+        # save_and_open_page
+        should have_content(t1.summary)
+      }
+      it { 
+        should have_content(t2.summary)
+      }
+      # it { should have_content(person.talks.count) }
     end
 
   end # end of profile page
-=end
 
   describe "signup page" do
 
