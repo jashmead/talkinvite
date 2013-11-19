@@ -1,5 +1,11 @@
 === Messages
 
+-- TBD: attachments
+
+-- TBD: delayed sending, cancel if not received
+
+-- TBD: delete on receipt?
+
 ==== Index
 
 ones you've sent or received
@@ -8,22 +14,29 @@ ones you've sent or received
 
 ==== New
 
-generally get the to bit from context
+there has to be a target person to send a message
 
-==== Search people
+==== TBD: Search people
 
 cuts over to an embedded search people form
-
-==== TBD: search contacts
-
-use phone's contact list/address book
-
-use google+
-
-use facebook
-
-use twitter
+  -- TBD:  how
+  -- for a talk, because you clicked on one
+  -- with groups, if we build those
+  -- with mobile's contact tools
+  -- google+
+  -- facebook
+  -- twitter
 
 ==== Implementation
 
-via database, when messages put in, you get a push
+TBD: via database, when messages put in, you get a push
+
+TBD: via email
+
+TBD: via text
+
+TBD: other dm services available on the phone
+
+TBD: twitter type stuff
+  -- contact twitter about their rules?
+  -- similar issues for the others

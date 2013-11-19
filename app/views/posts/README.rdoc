@@ -1,29 +1,23 @@
 === Posts
 
-==== Index
+-- comments that change the state of the talk (usually)
 
-ones you've sent or received
--- thats it
--- usually by talk
+==== Index Partial
+
+-- not usually in evidence directly
 
 ==== New
 
-generally get the to bit from context
+-- generally implicit
 
-==== Search people
+==== Broadcast
 
-cuts over to an embedded search people form
+-- button on form?
+  -- state of form?
 
-==== TBD: search contacts
+-- turned into a message?
+  -- per member
+  -- best
 
-use phone's contact list/address book
-
-use google+
-
-use facebook
-
-use twitter
-
-==== Implementation
-
-via database, when posts put in, you get a push
+-- tagged as new information on the form?
+  -- new to whom?

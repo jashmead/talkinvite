@@ -1,10 +1,14 @@
 === Sessions
 
+-- all of the forms here should be dialogs
+
 ==== Signin
 
 -- should allow both name & email signin
 
 -- includes reset password button
+
+-- includes new account button
 
 ==== Signout
 
@@ -17,5 +21,3 @@ needs to be a form so they can specify the name and/or the email to send the new
 ==== Signout Button
 
 very prominent, a security plus
-
-==== TBD:  Specs for 'new' & 'reset_password' pages

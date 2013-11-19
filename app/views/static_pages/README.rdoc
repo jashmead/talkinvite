@@ -8,6 +8,14 @@
 
 -- contact, now connected
 
+-- TBD: form
+
+-- TBD: bug report
+
+-- TBD: feature request
+
+-- TBD: question/support request
+
 ==== Privacy 
 
 -- modest privacy for most, but real privacy & private talks for paid subscribers, so an upsell point
@@ -16,8 +24,3 @@
 
 starting point for users, for testing, & for development
 -- all pages are accessible from here, directly, or by one or two hops
-
-==== Upgrade* 
-
--- not yet built
-

@@ -1,5 +1,9 @@
 === FAQs
 
+TBD:  url field
+
+TBD:  attachments?
+
 ==== Index
 
 list of associated helps, with a search box at the top
@@ -17,8 +21,4 @@ has save & delete buttons
 ==== New
 
 only if you are an admin
-
-==== TBD
-
-url field
 

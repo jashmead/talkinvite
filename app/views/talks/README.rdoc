@@ -1,26 +1,19 @@
 === Talks forms
 
+==== Index Partial
+  -- in Home
+
 ==== Index & search
 
-merge control & edit, but keep permissions simple on edit (you can only delete/change what you created)
+-- build up from search, index, new button (only if logged in)
 
-index, found, search, & advanced search merge; all really just search + current results
-  advanced search is a button on search
-
-i & s gets some search buttons
-
--- advanced search
-  -- goes back to list
-
--- my talks
-  -- goes back to list
-
--- nearby
-  -- goes back to list
-
--- TBD: trending
-  -- goes to topics screen
-    -- twitter, google, reddit, pinterest, & so on
+-- search will get buttons for specialized searches:
+  -- location
+  -- time
+  -- my
+  -- friends
+    -- better with groups
+  -- popular
 
 ==== New
 
@@ -31,7 +24,16 @@ new stays separate
 
 has a 'post' button
 
+==== Show
+
+same as Edit, but talk is off limits for some reason
+  -- cancelled, not yours, out of date
+
 ==== Edit
+
+-- just the talk fields themselves, an intermediate step at this point
+
+==== Control
 
 edit has summary at top
   -- plus a button to change
@@ -47,23 +49,23 @@ edit gets rsvp button: join/leave/maybe
   -- choice depends on your state with respect to the group
   -- ultimately a 'private' button
 
-edit gets comments line with a button to show comments
-  -- comments are new page
+if just started, has a 'post' button
+  -- till end time, has a 'cancel' button'
+  -- till end time, has an announce button
+    -- uses posts
+  -- once we are past the 'end' date, no changes can be made to the talk itself
+    -- allow followon comments
 
-edit gets post button for originator
-  posts are just a current status, maybe a history/timeline button
+==== Address button
+  -- uses key words
+  -- stores longitude, latitude internally
 
-edit gets post button for other members, if they are signed in
+==== Map button
+  -- a partial, opens up Map partial
+  -- save map to server?
 
-has a 'post' button
-
-has a delete button until it is posted
-
-stats button
-
-==== New & Edit
-
-both get a duplicate button
+==== RSVP button
+  -- depends on your current state
 
 ==== Members list
 
@@ -72,21 +74,20 @@ get current members list
 
 members list can drop down into 1) user profile 2) your own settings
 
-==== Posts list
-
-from history button, with an add
+==== Comment button
+  -- opens up within the form
+  -- born for ajax
 
 ==== Comments list
 
 from comments button
 
-==== Related forms
+==== Announcements (posts)
+
+==== TBD: Attachments
+
+==== TBD: Related forms
 
 stats
   -- # of members
   -- # of accesses
-
-rate the talk
-
-ranking
-

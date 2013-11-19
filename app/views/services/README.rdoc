@@ -1,10 +1,12 @@
 === Services
 
-all forms are only available for current person (& an admin)
+-- default is 'talkinvite'
 
-appear at the bottom of the settings form
+-- also, email, dm, twitter, facebook
 
-==== Index
+TBD: appear at the bottom of the settings form
+
+==== Index Partial
 
 list of services for current person
 
@@ -25,4 +27,3 @@ inactive flag
 keep handles for the specific services & ask:
   -- accept incoming messages using this?
   -- search web using this?
-  

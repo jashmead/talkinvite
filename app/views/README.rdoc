@@ -30,8 +30,11 @@ Form has:
 
 === Tables
 
-==== Root tables
+-- see also list in app/models/README.rdoc
 
+==== Root tables (models)
+
+1. Sessions (virtual table)
 1. People
 1. Talks -- entry point for newbies
 1. Credits
@@ -54,9 +57,10 @@ Form has:
 ==== Upcoming/virtual
 
 1. Calendars -- like maps
-1. Trending -- twitter, google, facebooks, whatnot
 1. Topics -- or interests, used for searches
 1. Tags -- about nouns, used for searches
+1. Attachments
+1. Trending -- twitter, google, facebooks, whatnot
 
 === Styles
 
@@ -67,6 +71,7 @@ Form has:
   -- see the function swatch()
 
 1. Icons
+  * preferred icon for people is a homunculous
   * circle for people, square? for talks, uppointing triangle for locations
   * lightning for messages?
   -- see the function iconify()
@@ -85,32 +90,34 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 * expandable items expand (& shrink)
 * views shift as they should
 
-=== HBD -- Have Been Done
+=== Conventions
 
-1. popups or similar for all validates inclusion, see p23 of Mastering, -- as indicated
-1. back-button on dialogs, Mastering p58 (data-rel=back) and data-add-back-btn="true" -- now working
-1. placeholder instead of labels -- actually best to do both, see form_for_jqm
-1. get dialogs to work:  dialogs are about, contact, privacy, signup (people#new), & signin (session#new) -- done!
-1. the submit_tag is also from rails -- compare to equivalent for jQuery Mobile & resolve differences: see edit, delete buttons -- now ok
-1. kill all 'btn' references -- done
-1. verify that all forms have been given a valid @record before they get started; log errors if they haven't been -- this is spotted during all but the most primitive testing
-1. kill all offset, span references -- appears done
+use popups or similar for all lists, as types of posts
 
-=== TBD
+back button on all pages
 
-1. email form for contact, for now, just an email href
-1. verify sendmail working on heroku, once we have it working on iMac, with email href, no immediate need -- later
-1. replace flash messages with something more jquerymobile friendly -- still, they do work -- later
-1. fix all buttons (data-inline = true)
-1. get rid of the show/edit buttons, those are really ugly, make everything work by internal links -- already gone, no one left in _talk_table, now all gone!
-1. use of 'required' for all required fields -- do in detail
-1. use of 'readonly' for all readonly fields -- do in detail
-1. check for icons for each page:  arrows, delete, plus, gear, refresh, grid, star, alert, info, home, search and they can be left, right, and so on, as well as notext -- do in detail, -- done
-1. group buttons on edit forms & related:  using data-role = controlgroup, data-type=horizontal -- do in detail
-1. work out system of transitions
-1. roll theme that is more appropriate, add in 'f', 'g', 'h' swatches at some point
-1. the search_field is from ruby-on-rails -- compare to equivalent for jQuery Mobile & resolve differences
-1. switch updates to reverts (disabled until a change made or make invisible)
-1. add duplicate/clone button to those forms that could benefit from it
-1. add tooltips to everything
-1. add all help pages
+placeholders + hidden labels
+  -- implementation in form_for_jqm
+  -- hidden fields do not need label!
+
+required for all required fields
+
+readonly for all readonly fields
+  -- TBD: use for 'show' pages?
+
+lots of icons
+
+standardized transitions
+  -- one pair for popups
+  -- another pair for master/detail
+
+try a variety of themes
+
+add tooltips on everything
+  -- TBD: does title work for this?
+
+one help page per page
+
+group buttons on edit forms & related:  using data-role = controlgroup, data-type=horizontal -- do in detail
+
+all buttons are data-inline = true

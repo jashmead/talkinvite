@@ -3,17 +3,19 @@
   @import common.css.scss; to use
   leading '_' to make clear it is a 'partial' in sass terms
 
-  have tried marking talks with background-color light blue, 
+  TBD: how to mark talks?
+    have tried marking talks with background-color light blue, 
     but it is a) not very light & b) distracting
     -- maybe a much lighter blue?
     -- borders?
     -- keep experimenting
 
-  headings are too far to the right for current sizing
+  TBD: headings are too far to the right for current sizing
     -- either shift to the left, or set the page width smaller
 
 */
 
+// have turned off bootstrap as apparently it & jQueryMobile do not believe in peaceful co-existence
 // @import "bootstrap";  // needed to include '$grayLighter' & anything else bootstappy I expect
 // bootstrap defines, from: http://bootstrap.lesscss.ru/less.html
 

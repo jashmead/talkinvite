@@ -1,5 +1,7 @@
 === Credits
 
+-- TBD: url field
+
 ==== Index
 
 list of associated credits, with a search box at the top
@@ -17,7 +19,3 @@ has save & delete buttons
 ==== New
 
 only if you are an admin
-
-==== TBD
-
-url field

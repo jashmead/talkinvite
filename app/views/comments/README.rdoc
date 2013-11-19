@@ -1,6 +1,14 @@
 === Comments
 
-==== Index
+-- are really a kind of post that doesn't change the talks state
+
+-- has a from person, talk being referenced
+
+-- messages are different
+  -- have a target person, not talk
+  -- may not even reference a talk
+
+==== Index Partial
 
 list of associated comments, summary of talk at top
 
@@ -13,5 +21,3 @@ only if it is yours
 ==== New
 
 for the current talk only
-
-

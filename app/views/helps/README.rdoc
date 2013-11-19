@@ -1,14 +1,28 @@
 === Helps
 
+-- TBD: url field
+
+-- TBD: hide name field
+
+-- TBD: add in summary field, includes page's title
+
+-- TBD: create help for all pages!
+
+-- TBD: clone button
+
+-- TBD: attachments?
+
 ==== Index
 
 list of associated helps, with a search box at the top
 
-has new button
+has new button, if we are an admin
+
+-- TBD:  subsets of help
 
 ==== Show
 
-should not show the name explicitly
+TBD: should not show the name explicitly
 
 ==== Edit 
 
@@ -19,12 +33,6 @@ wring out all space & other characters from the names: make them purely alphanum
 
 have save & delete buttons
 
-TBD:  when hitting help for a 2nd time to setup a pages's help, got a create not an edit button
-
 ==== New
 
 only if you are an admin
-
-==== TBD
-
-url field

@@ -5,17 +5,21 @@
 # 1. summary -- string, mandatory, counts as 'what'
 # 1. description -- text, optional, counts as 'why'
 # 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
-# 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when'
-# 1. posted_dt -- when this is announced to the world
+# 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when', replace with duration?
 # 1. talk_status -- posted talks are those that have been posted & not cancelled or finished
-# 1. where_desc
+# 1. where_desc -- key word or address; rename as address
+# 1. longitude -- x coordinate, not visible to users
+# 1. latitude -- y coordinate, not visible to users
 # 1. who_type -- as any, members_only, ...
-# 1. why_type -- ?
+
+-- get posted datetime from posts
 
 # == Children
+
 # 1. Members
 # 1. Comments
 # 1. Posts
+# 1. Maps
 
 # Planned fields
 # 1. repeating talk?

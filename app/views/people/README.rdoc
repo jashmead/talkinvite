@@ -3,38 +3,29 @@
 ==== Home
 
 -- put name as title, put button in to change name, fix sitemap check to track this
-  -- remove email & description, not needed here!
-    -- use settings for these
-  -- therefore, remove the _form element
+  -- no form element, not needed here
+  -- no SAVE element
 
 -- get bottom buttons to line up, use a control group
   -- if we have bottom buttons
   -- since we don't have any fields, we don't need to include a save button!
 
-  -- leave new button
-    -- no, we have no fields in the latest design, so no save button needed!
-
-  -- get titles on bottom to be "more human", i.e. Save 
-    -- and then shift to revert button, not save
-    -- check out docs for submit_tag, these are the low level function
+-- get titles on bottom to be "more human", i.e. Save 
+  -- and then shift to revert button, not save
+  -- check out docs for submit_tag, these are the low level function
 
 -- add in box of talks
   -- show summary & time_in_words
   -- create current by person
   -- use talks/index as a starting point
 
--- fix up footer, all three elements are broken
-  -- new talk is broken (& also redundant)
-  -- my talks is broken (& also redundant) -- replace with search
-  -- messages is empty currently, replace with search people? -- no
-  -- fixed
+-- New Talk, Search Talks, & Messages are in bottom
 
 ==== New account
 
-name, email, description
-  -- to get more control, see settings
-  -- add in url
-  -- add in profile picture (using file upload)
+name, email, description, picture, url
+  -- TBD: add in url
+  -- TBD: add in profile picture (using file upload)
 
 ==== Profile
 
@@ -44,43 +35,46 @@ what other people see
   
 -- includes a 'message' button
 
+-- TBD: rename 'show' as 'profile'?
+
 ==== Settings
+
+-- new account + 
 
 -- really an edit
   -- needs checks against being seen even from 'get'
-  -- replace edit with settings
+  -- TBD: replace edit with settings
 
--- says Settings on the top
+-- user name at top
 
--- has fields name, description, url, email, phone (?), 
+-- has fields: name, description, url, email, profile picture phone (?), 
 
--- add url field
+-- TBD: add url field
 
--- allow inactivation
+-- TBD: allow inactivation
 
--- includes services list, which see
+-- TBD: includes services list, which see
 
--- includes permissions list
+-- TBD: includes permissions list
   -- allow use of location
     always, never, per talk, ask each time
   -- do in json, as part of settings fields (which create)
 
 ==== Index/search
 
-invoked from talks/edit to find members
+-- made up of search partial, index partial, new talk partial
 
-if invoked 'raw', then has
-  -- search field
-  -- advanced search popup
-  -- canned searches
-  -- listview with other people:
-    -- name
-      -- highlighted if they are connected in any way
+-- invoked from talks/edit to find members
 
-==== TBD
+-- search partial:
+  -- phrase
+  -- one degree of connection
+  
+-- index partial
+  -- TBD:  pagination?
+  
+==== TBD: change_password
 
-change_password
+==== TBD: oauth
 
-oauth
-
-upgrades
+==== TBD: upgrades

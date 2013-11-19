@@ -21,11 +21,28 @@ In order of creation:
 Planned but not yet implemented tables:
 
 1. Attachments -- for file uploads, generalize from profile image uploads
+  * polymorphic
+  * point up to talks, people, credits, faqs, helps, pretty much everything
+  * standard, work from examples
+  * needs maintenance reports
+  * have a creator (for people has to be the person him or her self)
 1. Topics -- for twitter searches & the like
+  * from hashtags, google news
+  * and hand submitted
+  * used for subjects (summary -> subject)
+  * count as tag
 1. Tags -- for interests for people
+  * like attachments, attach to everything
+  * and like attachments has an originator
+  * needs tools, to get tagclouds  
 1. Ads -- to generate revenue; in parallel with talks, comments, to blend in with them
+  * unclear, will need content, stats, strategy, contact/source
 1. Calendars -- in parallel with Maps
+  * virtual table, like maps
+  * used to help coordinate people converging on a talk, again like maps
 1. Sessions -- for security & quality & flexibility, see session hijacking in guide on security
+  * presumably is really two tables, parent & fields
+  * use examples, if we decide to go this way at all
 
 Currently tabled tables
 
@@ -33,13 +50,19 @@ Currently tabled tables
 1. Circles? Relationships? 
 1. SVGs? -- not yet, not sure needed
 1. Groups? -- goes to relationships + a field in people (to indicate really a group)
+  * can be useful for searches for talkees
 1. Recurring talks? -- like meetups? -- goes to talk2talk plus a field in talks to indicate ongoing
+  * recurring field + schedule, like calendar on mac
 1. Ratings? -- fold in to tags
-1. Sessions -- internal db support for sessions model?
+  * or is a simple like this better
 1. Requests -- previously used, a bit much however
+  * think not`
 1. Errors -- previously used, a bit much however
+  * expect we will stick with logs for immediate future
 1. Pages -- a bit too meta
+  * too too meta
 1. Qxs -- great name, but errors on side of inscrutable
+  * is this a table or an alien civilization?
 
 === Data types
 
