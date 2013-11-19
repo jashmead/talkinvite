@@ -60,21 +60,24 @@ what other people see
     always, never, per talk, ask each time
   -- do in json, as part of settings fields (which create)
 
-==== Index/search
+==== Index/search/found
+
+-- TBD: definitely old style at this point
+
+-- TBD:  kill the gravatars, replace with profile images
+
+-- TBD:  add limit, offset, & saved search (somehow)
 
 -- made up of search partial, index partial, new talk partial
 
 -- invoked from talks/edit to find members
-
--- search partial:
-  -- phrase
-  -- one degree of connection
-  
--- index partial
-  -- TBD:  pagination?
   
 ==== TBD: change_password
+
+-- rough cut up
 
 ==== TBD: oauth
 
 ==== TBD: upgrades
+
+-- probably a rev 2

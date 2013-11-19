@@ -97,6 +97,7 @@ class PeopleController < ApplicationController
   def change_password
     logger.debug("PeopleController.change_password: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
+    @title = ("password 4 " + @person.name).titlecase
   end
 
   # 'home' is a control panel type thing

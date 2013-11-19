@@ -33,40 +33,26 @@ class StaticPagesController < ApplicationController
 
     # TBD:  put all options in, but leave disabled?
     # TBD:  include icons?
-    if signed_in?
-      @routes = [
-        [ home_path, 'Home', 'people' ],
-        [ settings_path, 'Settings', 'people' ],
-        [ profile_path, 'Profile', 'people' ],
-        [ change_password_path, 'Change Password', 'people' ]
-      ]
-      @routes.push( [ control_talk_path(current_talk), "Current Talk", 'talks' ] ) if current_talk
-      @routes += [
-        [ new_talk_path, 'Create Talk', 'talks' ],
-        [ my_messages_path, 'My Messages', 'messages' ]
-      ]
-    else 
-      @routes = [
-        [ signin_path, 'Sign In', 'sessions' ],
-        [ signup_path, 'New Account', 'people' ],
-        [ reset_password_path, 'Reset Password', 'sessions' ]
-      ]
-    end
-
-    @routes += [
+    # fourth field is a flag saying when to show; if not present, show
+    @routes = [
+      [ home_path, 'Home', 'people', signed_in? ],
+      [ settings_path, 'Settings', 'people', signed_in? ],
+      [ profile_path, 'Profile', 'people', signed_in? ],
+      [ change_password_path, 'Change Password', 'people', signed_in? ],
+      [ control_talk_path(current_talk), "Current Talk", 'talks', signed_in? && current_talk ],
+      [ new_talk_path, 'Create Talk', 'talks', signed_in? ],
+      [ my_messages_path, 'My Messages', 'messages', signed_in? ],
+      [ signin_path, 'Sign In', 'sessions', ! signed_in? ],
+      [ signup_path, 'New Account', 'people', ! signed_in? ],
+      [ reset_password_path, 'Reset Password', 'sessions', ! signed_in? ],
       [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],
-      [ helps_path, 'List of Help Pages' , 'helps' ]
-    ]
-    @routes.push( [ new_help_path, 'New Help' , 'helps' ] ) if admin?
-
-    @routes.push( [ faqs_path, 'FAQs' , 'faqs' ] )
-    @routes.push( [ new_faq_path, 'New FAQ' , 'faqs' ] ) if admin?
-
-    @routes.push( [ credits_path, 'Credits' , 'credits' ] )
-    @routes.push( [ new_credit_path, 'New Credit' , 'credits' ] ) if admin?
-
-    @routes += [
+      [ helps_path, 'List of Help Pages' , 'helps' ],
+      [ new_help_path, 'New Help' , 'helps', admin? ],
+      [ faqs_path, 'FAQs' , 'faqs' ],
+      [ new_faq_path, 'New FAQ' , 'faqs', admin? ],
+      [ credits_path, 'Credits' , 'credits' ],
+      [ new_credit_path, 'New Credit' , 'credits', admin? ],
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],

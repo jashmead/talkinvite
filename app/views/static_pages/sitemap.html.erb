@@ -9,10 +9,12 @@
           label = route[1]
           route_controller = route[2]
           data_theme = swatch(route_controller)
+          if route.length < 4 || route[3]
         %>
-        <li <%=data_theme(route_controller)%> >
-        <%= link_to label, path %>
-        </li>
+          <li <%=data_theme(route_controller)%> >
+          <%= link_to label, path %>
+          </li>
+        <% end %>
 	    <% end %>
 	</ul>
 <% else %>

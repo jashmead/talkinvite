@@ -29,8 +29,7 @@ describe "sitemap" do
     # "Home", 
     "My Messages",
     "Create Talk",
-    "Search for People",
-    "Change Password"
+    "Search for People"
   ] }
 
   # let(:signedin_list) { [ "My Messages" ] }
@@ -123,6 +122,17 @@ describe "sitemap" do
       expect(page).to have_title('J. Random User')
       expect(page).to have_selector('h1', 'J. Random User')
       # we do not print the description in the home page
+
+    end
+
+    it "check change password page" do
+
+      visit sitemap_path
+      click_link 'Change Password'
+
+      # save_and_open_page
+      expect(page).to have_title('Password 4 J. Random User')
+      expect(page).to have_selector('h1', 'J. Random User')
 
     end
 
