@@ -12,12 +12,12 @@ describe "people/change_password" do
   it "renders the change password form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    # TBD:  find something to check here, like the button, which should be change password
     assert_select "form[action=?][method=?]", person_path(@person), "post" do
       # rendered.should match(/MyName/)           # name not appearing?
       # assert_select "input#person_name[name=?]", "person[name]"
-      assert_select "input#person_email[name=?]", "person[email]"
-      assert_select "textarea#person_description[name=?]", "person[description]"
+      # assert_select "input#person_email[name=?]", "person[email]"
+      # assert_select "textarea#person_description[name=?]", "person[description]"
     end
   end
 end

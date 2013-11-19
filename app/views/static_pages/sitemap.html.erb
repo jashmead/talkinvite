@@ -1,6 +1,5 @@
 <!-- entry point for testing root/partials system -->
 <% provide(:title, 'Site Map') %>
-<% # TBD:  include icons? feeding them to the jQueryMobile icon eater? %>
 <% if @routes && @routes.size > 0 %>
 	<ul data-role="listview">
 	    <% @routes.each do |route| %>

@@ -70,7 +70,12 @@ what other people see
 
 -- made up of search partial, index partial, new talk partial
 
--- invoked from talks/edit to find members
+-- invoked from talks/edit to find members, from sitemap for no doubt excellent reason
+
+-- TBD:  add in first/prev/next/last buttons
+  -- use session[:search_people][:search_q], [:offset], [:total_found] to track
+  -- disable or simply do not show prev if already at zero
+  -- same philosophy as for talks/search
   
 ==== TBD: change_password
 

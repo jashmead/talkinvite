@@ -1,8 +1,6 @@
 # Static Pages
 #
-=begin
-  TBD:  add in topics pages/routes -- i.e. stuff to talk about
-=end
+# TBD:  add in topics pages/routes -- i.e. stuff to talk about
 
 class StaticPagesController < ApplicationController
 
@@ -29,10 +27,10 @@ class StaticPagesController < ApplicationController
   def sitemap
     store_location
     
-    logger.debug("StaticPagesController.sitemap:  current_talk: #{current_talk.inspect}")
+    # logger.debug("StaticPagesController.sitemap:  current_talk: #{current_talk.inspect}")
 
-    # TBD:  put all options in, but leave disabled?
-    # TBD:  include icons?
+    # note: icons could be included, but do not seem to add much
+    # note: tried showing unavailable pages as 'sans link', results not particularly attractive
     # fourth field is a flag saying when to show; if not present, show
     @routes = [
       [ home_path, 'Home', 'people', signed_in? ],

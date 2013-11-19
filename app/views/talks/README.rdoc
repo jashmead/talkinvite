@@ -3,9 +3,10 @@
 ==== Index Partial
   -- in Home
 
-==== Index & search
+==== Index/search/found
 
 -- build up from search, index, new button (only if logged in)
+  -- use partials, same as for people
 
 -- search will get buttons for specialized searches:
   -- location
@@ -15,6 +16,11 @@
     -- better with groups
   -- popular
 
+-- TBD:  add in first/prev/next/last buttons
+  -- use session[:search_people][:search_q], [:offset], [:total_found] to track
+  -- disable or simply do not show prev if already at zero
+  -- same philosophy as for people/search
+  
 ==== New
 
 new stays separate
