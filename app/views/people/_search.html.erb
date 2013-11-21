@@ -1,0 +1,9 @@
+<% 
+  # TBD:  add in First/Prev/Next/perhaps even Last buttons 
+  # TBD: add in additional kinds of search
+%>
+<%= form_tag(found_people_path, method: "get") do %>
+  <%= label_tag(:search_q, "Search for:") %>
+  <%= search_field(:search, :q) %>
+  <%= submit_tag("Search") %>
+<% end %>

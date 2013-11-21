@@ -42,9 +42,8 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     super
-    # logger.debug("CC: PeopleController.index: params: '#{params.inspect}'")
-    @title = "List of People"
-    @people = Person.all(params[:search]).paginate(page: params[:page])
+    @people = Person.all
+    # @title = pluralize(@people.count, "person").titlecase
   end
 
   # GET /people/1
@@ -56,6 +55,7 @@ class PeopleController < ApplicationController
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end
+    logger.debug("PeopleController.show: @person: #{@person.inspect}")
     @title = @person.name.titlecase
     @data_role = 'dialog' if @person != current_person
     render 'show' # have to spell it out in case we were called from 'profile'
@@ -159,9 +159,12 @@ class PeopleController < ApplicationController
   end
 
   def search
+    logger.debug("PeopleController.search")
   end
 
   def found
+    logger.debug("PeopleController.found")
+    # TBD:  add in a title of the form N people found?
     @people = search_q(Person)
   end
 

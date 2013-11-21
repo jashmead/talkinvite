@@ -1,24 +1,5 @@
 <% provide(:title, 'People') %>
 
-<%
-    layout = current_layout
-    ## logger.debug("VV: controller._layout: #{layout.inspect}")
-
-    ## logger.debug("VV: #{__FILE__}: @people: #{@people.inspect}")
-
-    methods = @people.methods - Object.methods
-    ## logger.debug("VV: @people.methods: #{methods}")
-%>
-
-<ul class="people">
-  <% @people.each do |person| %>
-  <li>
-    <%= gravatar_for person, size: 52 %>
-    <%= link_to person.name, person %>
-  </li>
-  <% end %>
-</ul>
-
-<br>
-
+<%= render partial: 'search' %>
+<%= render partial: 'list' %>
 <%= link_to 'New Person', new_person_path %>

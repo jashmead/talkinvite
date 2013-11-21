@@ -1,9 +1,2 @@
 <% provide(:title, 'List of People') %>
-
-<ul class="people">
-  <%= render @people %>
-</ul>
-
-<br>
-
-<%= button_inline 'New Person', new_person_path %>
+<%= render partial: 'list' %>

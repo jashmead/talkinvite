@@ -52,7 +52,7 @@ class Person < ActiveRecord::Base
   after_save :create_talkinvite_service
 
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
-  default_scope -> { order('people.created_at desc') }
+  default_scope -> { order('people.name asc') }
 
   validates :name, presence: true, length: { maximum: 80 }
 

@@ -5,9 +5,4 @@
 -->
 <% provide(:title, 'Search for People') %>
 
-<%= form_tag(found_people_path, method: "get") do %>
-  <%= label_tag(:search_q, "Search for:") %>
-  <%= search_field(:search, :q) %>
-  <br/>
-  <%= submit_tag("Search") %>
-<% end %>
+<%= render partial: 'search' %>

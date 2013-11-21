@@ -90,4 +90,20 @@ module ApplicationHelper
     id_bits.join('-').html_safe
   end
 
+  # TBD:  find a cleaner way to do this
+  #   -- from http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#method-i-pluralize
+  #   -- function needed inside controllers, so copied here
+  #   -- can we use the setting that gives access to view stuff to apps?
+=begin
+  def pluralize(count, singular, plural = nil)
+    word = if (count == 1 || count =~ /^1(\.0+)?$/)
+      singular
+    else
+      plural || singular.pluralize
+    end
+
+    "#{count || 0} #{word}"
+  end
+=end
+
 end
