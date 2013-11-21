@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Object - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>bin/rails
+    <li>spec/spec_helper.rb
+    <li>spec/support/utilities.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">BasicObject
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Capybara::DSL</span>
+  
+  
+  
+    <li><a class="include" href="ApplicationHelper.html">ApplicationHelper</a>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-sign_in">#sign_in</a>
+    
+    <li><a href="#method-i-valid_signin">#valid_signin</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./ADMIN_rdoc.html">ADMIN</a>
+  
+    <li class="file"><a href="./DEVNOTES_rdoc.html">DEVNOTES</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./MONETIZATION_rdoc.html">MONETIZATION</a>
+  
+    <li class="file"><a href="./Procfile.html">Procfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./STORIES_rdoc.html">STORIES</a>
+  
+    <li class="file"><a href="./app/controllers/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/controllers/m.html">m</a>
+  
+    <li class="file"><a href="./app/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/ads/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/attachments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/calendars/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/comments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/credits/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/faqs/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/friends/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/groups/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/helps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/l.html">l</a>
+  
+    <li class="file"><a href="./app/views/layouts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/maps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/members/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/messages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/people/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/posts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/relationships/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/services/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/sessions/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/static_pages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/tags/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/talks/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/venues/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./config/d.html">d</a>
+  
+    <li class="file"><a href="./db/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="./spec/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/features/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/requests/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/routing/d.html">d</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./WillPaginate.html">WillPaginate</a>
+  
+    <li><a href="./WillPaginate/ActionView.html">WillPaginate::ActionView</a>
+  
+    <li><a href="./WillPaginate/ActionView/JqueryMobilePaginateLinkRenderer.html">WillPaginate::ActionView::JqueryMobilePaginateLinkRenderer</a>
+  
+    <li><a href="./ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="./ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="./Talkinvite.html">Talkinvite</a>
+  
+    <li><a href="./Talkinvite/Application.html">Talkinvite::Application</a>
+  
+    <li><a href="./AddAdminAndSubToPeople.html">AddAdminAndSubToPeople</a>
+  
+    <li><a href="./AddColumnPersonToTalks.html">AddColumnPersonToTalks</a>
+  
+    <li><a href="./AddColumnToFaqs.html">AddColumnToFaqs</a>
+  
+    <li><a href="./AddColumnToMaps.html">AddColumnToMaps</a>
+  
+    <li><a href="./AddColumnToPeople.html">AddColumnToPeople</a>
+  
+    <li><a href="./AddColumnToTweets.html">AddColumnToTweets</a>
+  
+    <li><a href="./AddColumnsToTalks.html">AddColumnsToTalks</a>
+  
+    <li><a href="./AddForeignKeyFromTalksToPeople.html">AddForeignKeyFromTalksToPeople</a>
+  
+    <li><a href="./AddForeignKeyToMessages.html">AddForeignKeyToMessages</a>
+  
+    <li><a href="./AddForeignKeysToRelationships.html">AddForeignKeysToRelationships</a>
+  
+    <li><a href="./AddIndexToPeopleEmail.html">AddIndexToPeopleEmail</a>
+  
+    <li><a href="./AddIndexesToRelationships.html">AddIndexesToRelationships</a>
+  
+    <li><a href="./AddLocationColumnsToTalks.html">AddLocationColumnsToTalks</a>
+  
+    <li><a href="./AddMoreColumnsToTalks.html">AddMoreColumnsToTalks</a>
+  
+    <li><a href="./AddPasswordDigest.html">AddPasswordDigest</a>
+  
+    <li><a href="./AddRememberTokenToPeople.html">AddRememberTokenToPeople</a>
+  
+    <li><a href="./AddTalk2userFk.html">AddTalk2userFk</a>
+  
+    <li><a href="./AddTalkIdToMessages.html">AddTalkIdToMessages</a>
+  
+    <li><a href="./AddTypeToPeople.html">AddTypeToPeople</a>
+  
+    <li><a href="./AddUniqueIndexToAttachments.html">AddUniqueIndexToAttachments</a>
+  
+    <li><a href="./AddVenueIdToTalks.html">AddVenueIdToTalks</a>
+  
+    <li><a href="./AddWhoDescColumnToTalks.html">AddWhoDescColumnToTalks</a>
+  
+    <li><a href="./AlterColumnForLocation.html">AlterColumnForLocation</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChangeColumnMessageTypeForMessages.html">ChangeColumnMessageTypeForMessages</a>
+  
+    <li><a href="./ChangeColumnsTalks.html">ChangeColumnsTalks</a>
+  
+    <li><a href="./ChangeDefaultForPostType.html">ChangeDefaultForPostType</a>
+  
+    <li><a href="./ChangePosts.html">ChangePosts</a>
+  
+    <li><a href="./ChangeTablePosts.html">ChangeTablePosts</a>
+  
+    <li><a href="./ChangeTableServices.html">ChangeTableServices</a>
+  
+    <li><a href="./Comment.html">Comment</a>
+  
+    <li><a href="./CommentsController.html">CommentsController</a>
+  
+    <li><a href="./CommentsHelper.html">CommentsHelper</a>
+  
+    <li><a href="./CreateComments.html">CreateComments</a>
+  
+    <li><a href="./CreateCredits.html">CreateCredits</a>
+  
+    <li><a href="./CreateFaqs.html">CreateFaqs</a>
+  
+    <li><a href="./CreateHelps.html">CreateHelps</a>
+  
+    <li><a href="./CreateMaps.html">CreateMaps</a>
+  
+    <li><a href="./CreateMembers.html">CreateMembers</a>
+  
+    <li><a href="./CreateMessages.html">CreateMessages</a>
+  
+    <li><a href="./CreatePeople.html">CreatePeople</a>
+  
+    <li><a href="./CreatePosts.html">CreatePosts</a>
+  
+    <li><a href="./CreateRelationships2.html">CreateRelationships2</a>
+  
+    <li><a href="./CreateRelationships3.html">CreateRelationships3</a>
+  
+    <li><a href="./CreateServices.html">CreateServices</a>
+  
+    <li><a href="./CreateTable.html">CreateTable</a>
+  
+    <li><a href="./CreateTalks.html">CreateTalks</a>
+  
+    <li><a href="./CreateUniqueIndexes.html">CreateUniqueIndexes</a>
+  
+    <li><a href="./Credit.html">Credit</a>
+  
+    <li><a href="./CreditsController.html">CreditsController</a>
+  
+    <li><a href="./CreditsHelper.html">CreditsHelper</a>
+  
+    <li><a href="./DeathToNulls.html">DeathToNulls</a>
+  
+    <li><a href="./DefaultValues2.html">DefaultValues2</a>
+  
+    <li><a href="./Defaults.html">Defaults</a>
+  
+    <li><a href="./DropColumnFromFaqs.html">DropColumnFromFaqs</a>
+  
+    <li><a href="./DropColumnLocationIdFromTalks.html">DropColumnLocationIdFromTalks</a>
+  
+    <li><a href="./DropColumnPersonTypeFromPeople.html">DropColumnPersonTypeFromPeople</a>
+  
+    <li><a href="./DropColumnPostedDtFromTalks.html">DropColumnPostedDtFromTalks</a>
+  
+    <li><a href="./DropMapsAndCalendars.html">DropMapsAndCalendars</a>
+  
+    <li><a href="./DropTableMessages.html">DropTableMessages</a>
+  
+    <li><a href="./DropTableNotifications.html">DropTableNotifications</a>
+  
+    <li><a href="./DropTableRelationships.html">DropTableRelationships</a>
+  
+    <li><a href="./DropTalkIdFromMessages.html">DropTalkIdFromMessages</a>
+  
+    <li><a href="./DropsLotsOfTables.html">DropsLotsOfTables</a>
+  
+    <li><a href="./EndRelationships.html">EndRelationships</a>
+  
+    <li><a href="./Faq.html">Faq</a>
+  
+    <li><a href="./FaqsController.html">FaqsController</a>
+  
+    <li><a href="./FaqsHelper.html">FaqsHelper</a>
+  
+    <li><a href="./Fixup.html">Fixup</a>
+  
+    <li><a href="./FixupMessages.html">FixupMessages</a>
+  
+    <li><a href="./FixupSocials.html">FixupSocials</a>
+  
+    <li><a href="./ForeignKeys.html">ForeignKeys</a>
+  
+    <li><a href="./FormBuilderJqm.html">FormBuilderJqm</a>
+  
+    <li><a href="./Help.html">Help</a>
+  
+    <li><a href="./HelpsController.html">HelpsController</a>
+  
+    <li><a href="./HelpsHelper.html">HelpsHelper</a>
+  
+    <li><a href="./KillDefaults.html">KillDefaults</a>
+  
+    <li><a href="./Map.html">Map</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MemberDefaults.html">MemberDefaults</a>
+  
+    <li><a href="./MemberTypeDefault.html">MemberTypeDefault</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./Message.html">Message</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./MessagesHelper.html">MessagesHelper</a>
+  
+    <li><a href="./Migration.html">Migration</a>
+  
+    <li><a href="./NotNull.html">NotNull</a>
+  
+    <li><a href="./NotNull2.html">NotNull2</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PeopleController.html">PeopleController</a>
+  
+    <li><a href="./PeopleHelper.html">PeopleHelper</a>
+  
+    <li><a href="./Person.html">Person</a>
+  
+    <li><a href="./Post.html">Post</a>
+  
+    <li><a href="./PostsController.html">PostsController</a>
+  
+    <li><a href="./PostsHelper.html">PostsHelper</a>
+  
+    <li><a href="./RelationshipsForeignKeys2.html">RelationshipsForeignKeys2</a>
+  
+    <li><a href="./RelationshipsForeignKeys3.html">RelationshipsForeignKeys3</a>
+  
+    <li><a href="./RemoveColumnsFromPeople.html">RemoveColumnsFromPeople</a>
+  
+    <li><a href="./RemoveFiveTables.html">RemoveFiveTables</a>
+  
+    <li><a href="./RenameColumnForPeople.html">RenameColumnForPeople</a>
+  
+    <li><a href="./RenameColumnForTags.html">RenameColumnForTags</a>
+  
+    <li><a href="./RenameColumns.html">RenameColumns</a>
+  
+    <li><a href="./RenameColumnsInCredits.html">RenameColumnsInCredits</a>
+  
+    <li><a href="./RenameTwitterColumnForPeople.html">RenameTwitterColumnForPeople</a>
+  
+    <li><a href="./Service.html">Service</a>
+  
+    <li><a href="./ServiceForeignKeys.html">ServiceForeignKeys</a>
+  
+    <li><a href="./ServicesController.html">ServicesController</a>
+  
+    <li><a href="./ServicesHelper.html">ServicesHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./SetDefaultValues.html">SetDefaultValues</a>
+  
+    <li><a href="./StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="./StatusForTalks.html">StatusForTalks</a>
+  
+    <li><a href="./Talk.html">Talk</a>
+  
+    <li><a href="./TalkValidator.html">TalkValidator</a>
+  
+    <li><a href="./TalksController.html">TalksController</a>
+  
+    <li><a href="./TalksHelper.html">TalksHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Object</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="APP_PATH">APP_PATH
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-sign_in" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sign_in</span><span
+            class="method-args">(person, options={})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Object.html#method-i-sign_in">#sign_in</a> is not working, inspite
+of being cloned from tutorial</p>
+          
+
+          
+          <div class="method-source-code" id="sign_in-source">
+            <pre><span class="ruby-comment"># File spec/support/utilities.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sign_in</span>(<span class="ruby-identifier">person</span>, <span class="ruby-identifier">options</span>={})
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:no_capybara</span>]
+    <span class="ruby-comment"># Sign in when not using Capybara.</span>
+    <span class="ruby-identifier">remember_token</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new_remember_token</span>
+    <span class="ruby-identifier">cookies</span>[<span class="ruby-value">:remember_token</span>] = <span class="ruby-identifier">remember_token</span>
+    <span class="ruby-identifier">person</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value">:remember_token</span>, <span class="ruby-constant">Person</span>.<span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">remember_token</span>))
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># visit signin_path is not working:  no signin_path, no visit; hunh?</span>
+    <span class="ruby-identifier">visit</span> <span class="ruby-identifier">signin_path</span>
+    <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;session_email&quot;</span>,    <span class="ruby-identifier">with</span><span class="ruby-operator">:</span> <span class="ruby-identifier">person</span>.<span class="ruby-identifier">email</span>
+    <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;session_password&quot;</span>, <span class="ruby-identifier">with</span><span class="ruby-operator">:</span> <span class="ruby-identifier">person</span>.<span class="ruby-identifier">password</span>
+    <span class="ruby-identifier">click_button</span> <span class="ruby-string">&quot;Sign In&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sign_in-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sign_in-method -->
+
+    
+      <div id="method-i-valid_signin" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">valid_signin</span><span
+            class="method-args">(person)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="valid_signin-source">
+            <pre><span class="ruby-comment"># File spec/support/utilities.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">valid_signin</span>(<span class="ruby-identifier">person</span>)
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;session_email&quot;</span>,    <span class="ruby-identifier">with</span><span class="ruby-operator">:</span> <span class="ruby-identifier">person</span>.<span class="ruby-identifier">email</span>
+  <span class="ruby-identifier">fill_in</span> <span class="ruby-string">&quot;session_password&quot;</span>, <span class="ruby-identifier">with</span><span class="ruby-operator">:</span> <span class="ruby-identifier">person</span>.<span class="ruby-identifier">password</span>
+  <span class="ruby-identifier">click_button</span> <span class="ruby-string">&quot;Sign In&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- valid_signin-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- valid_signin-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

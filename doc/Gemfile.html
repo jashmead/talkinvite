@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Gemfile - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./ADMIN_rdoc.html">ADMIN</a>
+  
+    <li class="file"><a href="./DEVNOTES_rdoc.html">DEVNOTES</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./MONETIZATION_rdoc.html">MONETIZATION</a>
+  
+    <li class="file"><a href="./Procfile.html">Procfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./STORIES_rdoc.html">STORIES</a>
+  
+    <li class="file"><a href="./app/controllers/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/controllers/m.html">m</a>
+  
+    <li class="file"><a href="./app/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/ads/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/attachments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/calendars/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/comments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/credits/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/faqs/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/friends/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/groups/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/helps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/l.html">l</a>
+  
+    <li class="file"><a href="./app/views/layouts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/maps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/members/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/messages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/people/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/posts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/relationships/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/services/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/sessions/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/static_pages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/tags/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/talks/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/venues/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./config/d.html">d</a>
+  
+    <li class="file"><a href="./db/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="./spec/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/features/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/requests/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/routing/d.html">d</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./WillPaginate.html">WillPaginate</a>
+  
+    <li><a href="./WillPaginate/ActionView.html">WillPaginate::ActionView</a>
+  
+    <li><a href="./WillPaginate/ActionView/JqueryMobilePaginateLinkRenderer.html">WillPaginate::ActionView::JqueryMobilePaginateLinkRenderer</a>
+  
+    <li><a href="./ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="./ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="./Talkinvite.html">Talkinvite</a>
+  
+    <li><a href="./Talkinvite/Application.html">Talkinvite::Application</a>
+  
+    <li><a href="./AddAdminAndSubToPeople.html">AddAdminAndSubToPeople</a>
+  
+    <li><a href="./AddColumnPersonToTalks.html">AddColumnPersonToTalks</a>
+  
+    <li><a href="./AddColumnToFaqs.html">AddColumnToFaqs</a>
+  
+    <li><a href="./AddColumnToMaps.html">AddColumnToMaps</a>
+  
+    <li><a href="./AddColumnToPeople.html">AddColumnToPeople</a>
+  
+    <li><a href="./AddColumnToTweets.html">AddColumnToTweets</a>
+  
+    <li><a href="./AddColumnsToTalks.html">AddColumnsToTalks</a>
+  
+    <li><a href="./AddForeignKeyFromTalksToPeople.html">AddForeignKeyFromTalksToPeople</a>
+  
+    <li><a href="./AddForeignKeyToMessages.html">AddForeignKeyToMessages</a>
+  
+    <li><a href="./AddForeignKeysToRelationships.html">AddForeignKeysToRelationships</a>
+  
+    <li><a href="./AddIndexToPeopleEmail.html">AddIndexToPeopleEmail</a>
+  
+    <li><a href="./AddIndexesToRelationships.html">AddIndexesToRelationships</a>
+  
+    <li><a href="./AddLocationColumnsToTalks.html">AddLocationColumnsToTalks</a>
+  
+    <li><a href="./AddMoreColumnsToTalks.html">AddMoreColumnsToTalks</a>
+  
+    <li><a href="./AddPasswordDigest.html">AddPasswordDigest</a>
+  
+    <li><a href="./AddRememberTokenToPeople.html">AddRememberTokenToPeople</a>
+  
+    <li><a href="./AddTalk2userFk.html">AddTalk2userFk</a>
+  
+    <li><a href="./AddTalkIdToMessages.html">AddTalkIdToMessages</a>
+  
+    <li><a href="./AddTypeToPeople.html">AddTypeToPeople</a>
+  
+    <li><a href="./AddUniqueIndexToAttachments.html">AddUniqueIndexToAttachments</a>
+  
+    <li><a href="./AddVenueIdToTalks.html">AddVenueIdToTalks</a>
+  
+    <li><a href="./AddWhoDescColumnToTalks.html">AddWhoDescColumnToTalks</a>
+  
+    <li><a href="./AlterColumnForLocation.html">AlterColumnForLocation</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChangeColumnMessageTypeForMessages.html">ChangeColumnMessageTypeForMessages</a>
+  
+    <li><a href="./ChangeColumnsTalks.html">ChangeColumnsTalks</a>
+  
+    <li><a href="./ChangeDefaultForPostType.html">ChangeDefaultForPostType</a>
+  
+    <li><a href="./ChangePosts.html">ChangePosts</a>
+  
+    <li><a href="./ChangeTablePosts.html">ChangeTablePosts</a>
+  
+    <li><a href="./ChangeTableServices.html">ChangeTableServices</a>
+  
+    <li><a href="./Comment.html">Comment</a>
+  
+    <li><a href="./CommentsController.html">CommentsController</a>
+  
+    <li><a href="./CommentsHelper.html">CommentsHelper</a>
+  
+    <li><a href="./CreateComments.html">CreateComments</a>
+  
+    <li><a href="./CreateCredits.html">CreateCredits</a>
+  
+    <li><a href="./CreateFaqs.html">CreateFaqs</a>
+  
+    <li><a href="./CreateHelps.html">CreateHelps</a>
+  
+    <li><a href="./CreateMaps.html">CreateMaps</a>
+  
+    <li><a href="./CreateMembers.html">CreateMembers</a>
+  
+    <li><a href="./CreateMessages.html">CreateMessages</a>
+  
+    <li><a href="./CreatePeople.html">CreatePeople</a>
+  
+    <li><a href="./CreatePosts.html">CreatePosts</a>
+  
+    <li><a href="./CreateRelationships2.html">CreateRelationships2</a>
+  
+    <li><a href="./CreateRelationships3.html">CreateRelationships3</a>
+  
+    <li><a href="./CreateServices.html">CreateServices</a>
+  
+    <li><a href="./CreateTable.html">CreateTable</a>
+  
+    <li><a href="./CreateTalks.html">CreateTalks</a>
+  
+    <li><a href="./CreateUniqueIndexes.html">CreateUniqueIndexes</a>
+  
+    <li><a href="./Credit.html">Credit</a>
+  
+    <li><a href="./CreditsController.html">CreditsController</a>
+  
+    <li><a href="./CreditsHelper.html">CreditsHelper</a>
+  
+    <li><a href="./DeathToNulls.html">DeathToNulls</a>
+  
+    <li><a href="./DefaultValues2.html">DefaultValues2</a>
+  
+    <li><a href="./Defaults.html">Defaults</a>
+  
+    <li><a href="./DropColumnFromFaqs.html">DropColumnFromFaqs</a>
+  
+    <li><a href="./DropColumnLocationIdFromTalks.html">DropColumnLocationIdFromTalks</a>
+  
+    <li><a href="./DropColumnPersonTypeFromPeople.html">DropColumnPersonTypeFromPeople</a>
+  
+    <li><a href="./DropColumnPostedDtFromTalks.html">DropColumnPostedDtFromTalks</a>
+  
+    <li><a href="./DropMapsAndCalendars.html">DropMapsAndCalendars</a>
+  
+    <li><a href="./DropTableMessages.html">DropTableMessages</a>
+  
+    <li><a href="./DropTableNotifications.html">DropTableNotifications</a>
+  
+    <li><a href="./DropTableRelationships.html">DropTableRelationships</a>
+  
+    <li><a href="./DropTalkIdFromMessages.html">DropTalkIdFromMessages</a>
+  
+    <li><a href="./DropsLotsOfTables.html">DropsLotsOfTables</a>
+  
+    <li><a href="./EndRelationships.html">EndRelationships</a>
+  
+    <li><a href="./Faq.html">Faq</a>
+  
+    <li><a href="./FaqsController.html">FaqsController</a>
+  
+    <li><a href="./FaqsHelper.html">FaqsHelper</a>
+  
+    <li><a href="./Fixup.html">Fixup</a>
+  
+    <li><a href="./FixupMessages.html">FixupMessages</a>
+  
+    <li><a href="./FixupSocials.html">FixupSocials</a>
+  
+    <li><a href="./ForeignKeys.html">ForeignKeys</a>
+  
+    <li><a href="./FormBuilderJqm.html">FormBuilderJqm</a>
+  
+    <li><a href="./Help.html">Help</a>
+  
+    <li><a href="./HelpsController.html">HelpsController</a>
+  
+    <li><a href="./HelpsHelper.html">HelpsHelper</a>
+  
+    <li><a href="./KillDefaults.html">KillDefaults</a>
+  
+    <li><a href="./Map.html">Map</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MemberDefaults.html">MemberDefaults</a>
+  
+    <li><a href="./MemberTypeDefault.html">MemberTypeDefault</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./Message.html">Message</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./MessagesHelper.html">MessagesHelper</a>
+  
+    <li><a href="./Migration.html">Migration</a>
+  
+    <li><a href="./NotNull.html">NotNull</a>
+  
+    <li><a href="./NotNull2.html">NotNull2</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PeopleController.html">PeopleController</a>
+  
+    <li><a href="./PeopleHelper.html">PeopleHelper</a>
+  
+    <li><a href="./Person.html">Person</a>
+  
+    <li><a href="./Post.html">Post</a>
+  
+    <li><a href="./PostsController.html">PostsController</a>
+  
+    <li><a href="./PostsHelper.html">PostsHelper</a>
+  
+    <li><a href="./RelationshipsForeignKeys2.html">RelationshipsForeignKeys2</a>
+  
+    <li><a href="./RelationshipsForeignKeys3.html">RelationshipsForeignKeys3</a>
+  
+    <li><a href="./RemoveColumnsFromPeople.html">RemoveColumnsFromPeople</a>
+  
+    <li><a href="./RemoveFiveTables.html">RemoveFiveTables</a>
+  
+    <li><a href="./RenameColumnForPeople.html">RenameColumnForPeople</a>
+  
+    <li><a href="./RenameColumnForTags.html">RenameColumnForTags</a>
+  
+    <li><a href="./RenameColumns.html">RenameColumns</a>
+  
+    <li><a href="./RenameColumnsInCredits.html">RenameColumnsInCredits</a>
+  
+    <li><a href="./RenameTwitterColumnForPeople.html">RenameTwitterColumnForPeople</a>
+  
+    <li><a href="./Service.html">Service</a>
+  
+    <li><a href="./ServiceForeignKeys.html">ServiceForeignKeys</a>
+  
+    <li><a href="./ServicesController.html">ServicesController</a>
+  
+    <li><a href="./ServicesHelper.html">ServicesHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./SetDefaultValues.html">SetDefaultValues</a>
+  
+    <li><a href="./StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="./StatusForTalks.html">StatusForTalks</a>
+  
+    <li><a href="./Talk.html">Talk</a>
+  
+    <li><a href="./TalkValidator.html">TalkValidator</a>
+  
+    <li><a href="./TalksController.html">TalksController</a>
+  
+    <li><a href="./TalksHelper.html">TalksHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<p># <a href="Gemfile.html">Gemfile</a> for project Mencken Tarot &#39;mt&#39;</p>
+
+<p>source &#39;<a href="https://rubygems.org">rubygems.org</a>&#39;</p>
+
+<p>ruby &#39;2.0.0&#39;</p>
+
+<p># Bundle edge Rails instead: gem &#39;rails&#39;, github:
+&#39;rails/rails&#39; gem &#39;rails&#39;, &#39;4.0.0&#39;</p>
+
+<p># Use Postgres as the database for Active Record gem &#39;pg&#39;</p>
+
+<p># Use SCSS for stylesheets gem &#39;sass-rails&#39;, &#39;~&gt; 4.0.0&#39;</p>
+
+<p># switch to bootstrap, rspec, factory_girl, selenium, capybara # bootstrap
+css # gem &#39;bootstrap-sass&#39;            # need to comment out before
+move to jQuery Mobile? there may be something still depending on it # gem
+&#39;bootstrap-sass-rails&#39;    # no apparent benefit, inspite of greater
+specificity # gem &#39;bootstrap-will_paginate&#39; # fix up will_paginate
+stuff to match bootstrap, produced no apparent improvement # gem
+&#39;will_paginate-bootstrap&#39; # this gem didn&#39;t make any difference
+either…</p>
+
+<p>## load capybara before rspec ## how does capybara drive the web? via
+Rack::Test &amp; Selenium group :development, :test do</p>
+
+<pre>gem &#39;selenium-webdriver&#39;
+gem &#39;capybara&#39;, &#39;&gt;= 2.0.0&#39;
+# launchy makes available a &#39;save_and_open_page&#39; command to see the page
+#   -- you have to have visited the page before you can do this!
+#   -- since launchy is being called via capybara, 
+#     -- you have to be &#39;inside&#39; capybara in some sense, 
+#     i.e. using &#39;it&#39; rather than &#39;describe&#39;
+gem &#39;launchy&#39; # lets us insert a &#39;save_and_open_page&#39; line inside specs to see what the page looks like</pre>
+
+<p>end</p>
+
+<p># keep factory girl in development for testing at the console group
+:development, :test do</p>
+
+<pre>gem &#39;rspec-rails&#39;
+gem &#39;factory_girl_rails&#39;
+# webrat is at odds with much of our system
+# gem &#39;webrat&#39;, &#39;&gt;= 0.7.2&#39;    # added in to see if it would help resolve some problems with the sitemap testing, no impact</pre>
+
+<p>end</p>
+
+<p># Use Uglifier as compressor for JavaScript assets gem &#39;uglifier&#39;,
+&#39;&gt;= 1.3.0&#39;</p>
+
+<p># Use CoffeeScript for .js.coffee assets and views gem
+&#39;coffee-rails&#39;, &#39;~&gt; 4.0.0&#39;</p>
+
+<p># See <a
+href="https://github.com/sstephenson/execjs#readme">github.com/sstephenson/execjs#readme</a>
+for more supported runtimes # gem &#39;therubyracer&#39;, platforms: :ruby</p>
+
+<p># Use jquery as the JavaScript library gem &#39;jquery-rails&#39; gem
+&#39;jquery_mobile_rails&#39; # <a
+href="http://rubydoc.info/gems/jquery_mobile_rails/1.3.2/frames">rubydoc.info/gems/jquery_mobile_rails/1.3.2/frames</a></p>
+
+<p># Turbolinks makes following links in your web application faster. Read
+more: <a
+href="https://github.com/rails/turbolinks">github.com/rails/turbolinks</a>
+gem &#39;turbolinks&#39;</p>
+
+<p># Build JSON APIs with ease. Read more: <a
+href="https://github.com/rails/jbuilder">github.com/rails/jbuilder</a> gem
+&#39;jbuilder&#39;, &#39;~&gt; 1.2&#39;</p>
+
+<p>group :doc do</p>
+
+<pre class="ruby"><span class="ruby-comment"># bundle exec rake doc:rails generates the API under doc/api.</span>
+<span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;sdoc&#39;</span>, <span class="ruby-identifier">require</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+</pre>
+
+<p>end</p>
+
+<p># Use ActiveModel has_secure_password # bcrypt-ruby 3.1.0 does not work
+with Mac, so force backwards gem &#39;bcrypt-ruby&#39;, &#39;3.0.1&#39;</p>
+
+<p>gem &#39;faker&#39; gem &#39;will_paginate&#39; # gem
+&#39;bootstrap-will_paginate&#39; ## no longer using bootstrap</p>
+
+<p>gem &#39;font-awesome-sass&#39; # from the website: <a
+href="http://fortawesome.github.io/Font-Awesome/get-started/">fortawesome.github.io/Font-Awesome/get-started/</a></p>
+
+<pre># and https://github.com/FortAwesome/font-awesome-sass</pre>
+
+<p># Use unicorn as the app server gem &#39;unicorn&#39;</p>
+
+<p># Use Capistrano for deployment # gem &#39;capistrano&#39;, group:
+:development</p>
+
+<p># Use debugger # gem &#39;debugger&#39;, group: [:development, :test]</p>
+
+<p>## we tried haml out, but it has a problem with nested layouts # gem
+&#39;haml&#39;</p>
+
+<p>gem &#39;rdoc&#39;</p>
+
+<p>##  group :development do ##    # RedCloth is supposed to enable rake
+doc:guides  ##    # not working, not worth the trouble to sort out ##   
+gem &#39;RedCloth&#39;, :require =&gt; &#39;redcloth&#39; ##  end</p>
+
+<p>## ransack not playing nicely with the tutorial ## gem &#39;ransack&#39;</p>
+
+<p>## on load to heroku you will see: ##  —–&gt; WARNINGS: ##         Include
+&#39;rails_12factor&#39; gem to enable all platform features ##         See
+<a
+href="https://devcenter.heroku.com/articles/rails-integration-gems">devcenter.heroku.com/articles/rails-integration-gems</a>
+for more information. ## ignore this suggestion; it is a disaster</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

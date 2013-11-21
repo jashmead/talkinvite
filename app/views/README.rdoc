@@ -6,6 +6,91 @@
 
 -- no responsive design, purely mobile
 
+=== Key Pages
+
+==== Talk pages
+
+--
+No good way to produce nested lists in rdoc, apparently.
+They produce white on black text by default.
+Probably there is some way to change.
+++
+
+1. New Talk: * Topics/Tags * Posts * Map/Venue * Calendar * Members (for invites) * Attachments
+1. Talk Control: same partials as for New Talk, some more buttons for RSVP, significant differences for creator/admin versus usual
+1. Search for Talks: simple, location, time, members, attachments?
+
+==== People pages
+
+1. Home * Talks * Messages * TBD: Friends, Groups -- two views of the same information
+1. Settings * Button to Change Password * Friends/Groups
+1. Profile * Send Message Button * Friend/Unfriend * Group/Ungroup
+1. Signup
+1. Change Password
+1. Messages
+1. TBD: Oauth
+1. TBD: Upgrade
+1. Friends, Groups -- two views of same information
+
+==== Session pages
+
+1. Signin
+1. Reset Password 
+
+==== Help & Internal pages
+
+1. Credits
+1. Show Credit
+1. Faqs
+1. Show Faq
+1. Helps
+1. Show Help
+1. Site Map
+
+==== Tags/Topics/Trending
+
+-- under Tags
+
+-- look for tags in google, duckduckgo, others
+
+-- look for tags in twitter
+
+-- use location if possible
+
+1. trending
+1. search
+
+==== Admin Pages
+
+1. New, Edit Credit, Faq, Help (6 pages)
+1. Search for People (maybe)
+
+=== Partials Only
+
+==== Posts
+
+==== Comments
+
+==== Members
+
+==== Maps
+
+==== Tags
+
+==== Attachments
+
+==== Friends
+
+==== Groups
+
+==== Relationships
+
+==== Calendars
+
+==== Venues
+
+==== Ads
+
 === Start/Home page
 
 -- currently using start, which forks into people/home, talks/recent
@@ -65,16 +150,16 @@ Form has:
 === Styles
 
 1. Colors
-  * blue for talks, green for persons, cyan for messages & so on, include faqs in cyan?
-  * rich brown for places, nearly black
-  * yellow for marketing (& credits?), red only for messages
-  -- see the function swatch()
+* blue for talks, green for persons, cyan for messages & so on, include faqs in cyan?
+* rich brown for places, nearly black
+* yellow for marketing (& credits?), red only for messages
+-- see the function swatch()
 
 1. Icons
-  * preferred icon for people is a homunculous
-  * circle for people, square? for talks, uppointing triangle for locations
-  * lightning for messages?
-  -- see the function iconify()
+* preferred icon for people is a homunculous
+* circle for people, square? for talks, uppointing triangle for locations
+* lightning for messages?
+-- see the function iconify()
 
 === Warnings
 
@@ -97,8 +182,8 @@ use popups or similar for all lists, as types of posts
 back button on all pages
 
 placeholders + hidden labels
-  -- implementation in form_for_jqm
-  -- hidden fields do not need label!
+-- implementation in form_for_jqm
+-- hidden fields do not need label!
 
 required for all required fields
 
@@ -108,16 +193,24 @@ readonly for all readonly fields
 lots of icons
 
 standardized transitions
-  -- one pair for popups
-  -- another pair for master/detail
+-- one pair for popups
+-- another pair for master/detail
 
 try a variety of themes
 
 add tooltips on everything
-  -- TBD: does title work for this?
+-- TBD: does title work for this?
 
 one help page per page
 
 group buttons on edit forms & related:  using data-role = controlgroup, data-type=horizontal -- do in detail
 
 all buttons are data-inline = true
+
+==== Security
+
+URLs not allowed in descriptions or the like
+-- explain in help
+-- Cross Site Injection
+
+

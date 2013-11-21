@@ -1,0 +1,9 @@
+=== Friends
+
+-- partials only
+
+-- mutual consent, like google
+
+-- can withdraw from either side?
+
+-- needed as stub for groups

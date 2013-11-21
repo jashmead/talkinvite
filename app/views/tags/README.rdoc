@@ -1,0 +1,32 @@
+=== Tags
+
+-- partials only
+
+-- really topics
+
+-- for each talk, break summary up into non-nonce works as a preliminary set
+
+-- keep set of tags for the person
+
+-- talks only at this point, not polymorphic
+
+==== Full
+
+trending
+
+search
+
+==== Partials
+
+tag list
+
+tag cloud (to pick)
+
+==== Data
+
+1. person_id
+1. tag
+
+-- no description, no immediate need
+
+-- no grouping, no immediate need

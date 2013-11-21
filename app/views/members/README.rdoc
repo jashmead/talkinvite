@@ -1,28 +1,31 @@
 === Members
 
+-- partials only
+
+-- details are given in a link to the members profile page
+
 ==== Index
 
 list of associated comments, summary of talk at top
 
 ==== Show
 
-==== Edit 
+-- maps to users profile
 
-only if it is yours
+==== Edit
+
+-- maps to users setting (only for current person)
 
 ==== New
 
 for the current talk only
 
-==== Buttons
+-- implicit construction, not a form
 
-RSVP based on current state
--- you can only fix your own
+==== RSVP Button
 
-Message the specific user
-  -- popup for how
-    internal message
-    email
+==== Data
 
-allow use of location for this talk
-  -- others can see where you are
+-- comment on why
+-- rsvp status
+-- later, originator/owner status

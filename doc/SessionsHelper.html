@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>module SessionsHelper - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/helpers/sessions_helper.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-admin-3F">#admin?</a>
+    
+    <li><a href="#method-i-anonymous">#anonymous</a>
+    
+    <li><a href="#method-i-current_person">#current_person</a>
+    
+    <li><a href="#method-i-current_person-3D">#current_person=</a>
+    
+    <li><a href="#method-i-current_person-3F">#current_person?</a>
+    
+    <li><a href="#method-i-current_talk">#current_talk</a>
+    
+    <li><a href="#method-i-current_talk-3D">#current_talk=</a>
+    
+    <li><a href="#method-i-current_talk-3F">#current_talk?</a>
+    
+    <li><a href="#method-i-iconify">#iconify</a>
+    
+    <li><a href="#method-i-redirect_back_or">#redirect_back_or</a>
+    
+    <li><a href="#method-i-root_link">#root_link</a>
+    
+    <li><a href="#method-i-settings_link">#settings_link</a>
+    
+    <li><a href="#method-i-sign_in">#sign_in</a>
+    
+    <li><a href="#method-i-signed_in-3F">#signed_in?</a>
+    
+    <li><a href="#method-i-signed_in_person">#signed_in_person</a>
+    
+    <li><a href="#method-i-signin_link">#signin_link</a>
+    
+    <li><a href="#method-i-signout">#signout</a>
+    
+    <li><a href="#method-i-signout_link">#signout_link</a>
+    
+    <li><a href="#method-i-signup_link">#signup_link</a>
+    
+    <li><a href="#method-i-store_location">#store_location</a>
+    
+    <li><a href="#method-i-sub-3F">#sub?</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./ADMIN_rdoc.html">ADMIN</a>
+  
+    <li class="file"><a href="./DEVNOTES_rdoc.html">DEVNOTES</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./MONETIZATION_rdoc.html">MONETIZATION</a>
+  
+    <li class="file"><a href="./Procfile.html">Procfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./STORIES_rdoc.html">STORIES</a>
+  
+    <li class="file"><a href="./app/controllers/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/controllers/m.html">m</a>
+  
+    <li class="file"><a href="./app/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/ads/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/attachments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/calendars/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/comments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/credits/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/faqs/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/friends/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/groups/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/helps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/l.html">l</a>
+  
+    <li class="file"><a href="./app/views/layouts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/maps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/members/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/messages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/people/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/posts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/relationships/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/services/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/sessions/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/static_pages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/tags/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/talks/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/venues/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./config/d.html">d</a>
+  
+    <li class="file"><a href="./db/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="./spec/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/features/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/requests/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/routing/d.html">d</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./WillPaginate.html">WillPaginate</a>
+  
+    <li><a href="./WillPaginate/ActionView.html">WillPaginate::ActionView</a>
+  
+    <li><a href="./WillPaginate/ActionView/JqueryMobilePaginateLinkRenderer.html">WillPaginate::ActionView::JqueryMobilePaginateLinkRenderer</a>
+  
+    <li><a href="./ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="./ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="./Talkinvite.html">Talkinvite</a>
+  
+    <li><a href="./Talkinvite/Application.html">Talkinvite::Application</a>
+  
+    <li><a href="./AddAdminAndSubToPeople.html">AddAdminAndSubToPeople</a>
+  
+    <li><a href="./AddColumnPersonToTalks.html">AddColumnPersonToTalks</a>
+  
+    <li><a href="./AddColumnToFaqs.html">AddColumnToFaqs</a>
+  
+    <li><a href="./AddColumnToMaps.html">AddColumnToMaps</a>
+  
+    <li><a href="./AddColumnToPeople.html">AddColumnToPeople</a>
+  
+    <li><a href="./AddColumnToTweets.html">AddColumnToTweets</a>
+  
+    <li><a href="./AddColumnsToTalks.html">AddColumnsToTalks</a>
+  
+    <li><a href="./AddForeignKeyFromTalksToPeople.html">AddForeignKeyFromTalksToPeople</a>
+  
+    <li><a href="./AddForeignKeyToMessages.html">AddForeignKeyToMessages</a>
+  
+    <li><a href="./AddForeignKeysToRelationships.html">AddForeignKeysToRelationships</a>
+  
+    <li><a href="./AddIndexToPeopleEmail.html">AddIndexToPeopleEmail</a>
+  
+    <li><a href="./AddIndexesToRelationships.html">AddIndexesToRelationships</a>
+  
+    <li><a href="./AddLocationColumnsToTalks.html">AddLocationColumnsToTalks</a>
+  
+    <li><a href="./AddMoreColumnsToTalks.html">AddMoreColumnsToTalks</a>
+  
+    <li><a href="./AddPasswordDigest.html">AddPasswordDigest</a>
+  
+    <li><a href="./AddRememberTokenToPeople.html">AddRememberTokenToPeople</a>
+  
+    <li><a href="./AddTalk2userFk.html">AddTalk2userFk</a>
+  
+    <li><a href="./AddTalkIdToMessages.html">AddTalkIdToMessages</a>
+  
+    <li><a href="./AddTypeToPeople.html">AddTypeToPeople</a>
+  
+    <li><a href="./AddUniqueIndexToAttachments.html">AddUniqueIndexToAttachments</a>
+  
+    <li><a href="./AddVenueIdToTalks.html">AddVenueIdToTalks</a>
+  
+    <li><a href="./AddWhoDescColumnToTalks.html">AddWhoDescColumnToTalks</a>
+  
+    <li><a href="./AlterColumnForLocation.html">AlterColumnForLocation</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChangeColumnMessageTypeForMessages.html">ChangeColumnMessageTypeForMessages</a>
+  
+    <li><a href="./ChangeColumnsTalks.html">ChangeColumnsTalks</a>
+  
+    <li><a href="./ChangeDefaultForPostType.html">ChangeDefaultForPostType</a>
+  
+    <li><a href="./ChangePosts.html">ChangePosts</a>
+  
+    <li><a href="./ChangeTablePosts.html">ChangeTablePosts</a>
+  
+    <li><a href="./ChangeTableServices.html">ChangeTableServices</a>
+  
+    <li><a href="./Comment.html">Comment</a>
+  
+    <li><a href="./CommentsController.html">CommentsController</a>
+  
+    <li><a href="./CommentsHelper.html">CommentsHelper</a>
+  
+    <li><a href="./CreateComments.html">CreateComments</a>
+  
+    <li><a href="./CreateCredits.html">CreateCredits</a>
+  
+    <li><a href="./CreateFaqs.html">CreateFaqs</a>
+  
+    <li><a href="./CreateHelps.html">CreateHelps</a>
+  
+    <li><a href="./CreateMaps.html">CreateMaps</a>
+  
+    <li><a href="./CreateMembers.html">CreateMembers</a>
+  
+    <li><a href="./CreateMessages.html">CreateMessages</a>
+  
+    <li><a href="./CreatePeople.html">CreatePeople</a>
+  
+    <li><a href="./CreatePosts.html">CreatePosts</a>
+  
+    <li><a href="./CreateRelationships2.html">CreateRelationships2</a>
+  
+    <li><a href="./CreateRelationships3.html">CreateRelationships3</a>
+  
+    <li><a href="./CreateServices.html">CreateServices</a>
+  
+    <li><a href="./CreateTable.html">CreateTable</a>
+  
+    <li><a href="./CreateTalks.html">CreateTalks</a>
+  
+    <li><a href="./CreateUniqueIndexes.html">CreateUniqueIndexes</a>
+  
+    <li><a href="./Credit.html">Credit</a>
+  
+    <li><a href="./CreditsController.html">CreditsController</a>
+  
+    <li><a href="./CreditsHelper.html">CreditsHelper</a>
+  
+    <li><a href="./DeathToNulls.html">DeathToNulls</a>
+  
+    <li><a href="./DefaultValues2.html">DefaultValues2</a>
+  
+    <li><a href="./Defaults.html">Defaults</a>
+  
+    <li><a href="./DropColumnFromFaqs.html">DropColumnFromFaqs</a>
+  
+    <li><a href="./DropColumnLocationIdFromTalks.html">DropColumnLocationIdFromTalks</a>
+  
+    <li><a href="./DropColumnPersonTypeFromPeople.html">DropColumnPersonTypeFromPeople</a>
+  
+    <li><a href="./DropColumnPostedDtFromTalks.html">DropColumnPostedDtFromTalks</a>
+  
+    <li><a href="./DropMapsAndCalendars.html">DropMapsAndCalendars</a>
+  
+    <li><a href="./DropTableMessages.html">DropTableMessages</a>
+  
+    <li><a href="./DropTableNotifications.html">DropTableNotifications</a>
+  
+    <li><a href="./DropTableRelationships.html">DropTableRelationships</a>
+  
+    <li><a href="./DropTalkIdFromMessages.html">DropTalkIdFromMessages</a>
+  
+    <li><a href="./DropsLotsOfTables.html">DropsLotsOfTables</a>
+  
+    <li><a href="./EndRelationships.html">EndRelationships</a>
+  
+    <li><a href="./Faq.html">Faq</a>
+  
+    <li><a href="./FaqsController.html">FaqsController</a>
+  
+    <li><a href="./FaqsHelper.html">FaqsHelper</a>
+  
+    <li><a href="./Fixup.html">Fixup</a>
+  
+    <li><a href="./FixupMessages.html">FixupMessages</a>
+  
+    <li><a href="./FixupSocials.html">FixupSocials</a>
+  
+    <li><a href="./ForeignKeys.html">ForeignKeys</a>
+  
+    <li><a href="./FormBuilderJqm.html">FormBuilderJqm</a>
+  
+    <li><a href="./Help.html">Help</a>
+  
+    <li><a href="./HelpsController.html">HelpsController</a>
+  
+    <li><a href="./HelpsHelper.html">HelpsHelper</a>
+  
+    <li><a href="./KillDefaults.html">KillDefaults</a>
+  
+    <li><a href="./Map.html">Map</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MemberDefaults.html">MemberDefaults</a>
+  
+    <li><a href="./MemberTypeDefault.html">MemberTypeDefault</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./Message.html">Message</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./MessagesHelper.html">MessagesHelper</a>
+  
+    <li><a href="./Migration.html">Migration</a>
+  
+    <li><a href="./NotNull.html">NotNull</a>
+  
+    <li><a href="./NotNull2.html">NotNull2</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PeopleController.html">PeopleController</a>
+  
+    <li><a href="./PeopleHelper.html">PeopleHelper</a>
+  
+    <li><a href="./Person.html">Person</a>
+  
+    <li><a href="./Post.html">Post</a>
+  
+    <li><a href="./PostsController.html">PostsController</a>
+  
+    <li><a href="./PostsHelper.html">PostsHelper</a>
+  
+    <li><a href="./RelationshipsForeignKeys2.html">RelationshipsForeignKeys2</a>
+  
+    <li><a href="./RelationshipsForeignKeys3.html">RelationshipsForeignKeys3</a>
+  
+    <li><a href="./RemoveColumnsFromPeople.html">RemoveColumnsFromPeople</a>
+  
+    <li><a href="./RemoveFiveTables.html">RemoveFiveTables</a>
+  
+    <li><a href="./RenameColumnForPeople.html">RenameColumnForPeople</a>
+  
+    <li><a href="./RenameColumnForTags.html">RenameColumnForTags</a>
+  
+    <li><a href="./RenameColumns.html">RenameColumns</a>
+  
+    <li><a href="./RenameColumnsInCredits.html">RenameColumnsInCredits</a>
+  
+    <li><a href="./RenameTwitterColumnForPeople.html">RenameTwitterColumnForPeople</a>
+  
+    <li><a href="./Service.html">Service</a>
+  
+    <li><a href="./ServiceForeignKeys.html">ServiceForeignKeys</a>
+  
+    <li><a href="./ServicesController.html">ServicesController</a>
+  
+    <li><a href="./ServicesHelper.html">ServicesHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./SetDefaultValues.html">SetDefaultValues</a>
+  
+    <li><a href="./StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="./StatusForTalks.html">StatusForTalks</a>
+  
+    <li><a href="./Talk.html">Talk</a>
+  
+    <li><a href="./TalkValidator.html">TalkValidator</a>
+  
+    <li><a href="./TalksController.html">TalksController</a>
+  
+    <li><a href="./TalksHelper.html">TalksHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module SessionsHelper</h1>
+
+  <div id="description" class="description">
+    
+<p>what context are these functions running in? <a
+href="SessionsHelper.html">SessionsHelper</a> is pulled in via an explicit
+“include SessionsHelper” in application_controller.rb</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-admin-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">admin?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>placeholders for admin &amp; sub booleans; seem to work fine</p>
+          
+
+          
+          <div class="method-source-code" id="admin-3F-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">admin?</span>
+  <span class="ruby-comment"># logger.debug(&quot;admin?: #{signed_in?.inspect}, #{current_person.inspect}&quot;)</span>
+  <span class="ruby-identifier">signed_in?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">current_person</span>.<span class="ruby-identifier">admin</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- admin-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- admin-3F-method -->
+
+    
+      <div id="method-i-anonymous" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">anonymous</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>guesswork as to how to best handle anonymous</p>
+          
+
+          
+          <div class="method-source-code" id="anonymous-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">anonymous</span>
+  <span class="ruby-comment"># logger.debug(&quot;SessionsHelper.anonymous&quot;)</span>
+  <span class="ruby-ivar">@anonymous</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-string">&#39;anonymous&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- anonymous-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- anonymous-method -->
+
+    
+      <div id="method-i-current_person" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current_person</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SessionsHelper.html#method-i-current_person">#current_person</a>
+is really &#39;logged_in_person&#39;, who are you signed in as?</p>
+          
+
+          
+          <div class="method-source-code" id="current_person-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_person</span>
+  <span class="ruby-identifier">encrypted_remember_token</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">cookies</span>[<span class="ruby-value">:remember_token</span>])
+
+  <span class="ruby-comment"># the following syntax fails with a PostgreSQL error</span>
+  <span class="ruby-comment"># @current_person ||= Person.find_by( :remember_token, remember_token )</span>
+  <span class="ruby-comment">## PG::InvalidTextRepresentation: ERROR:  invalid input syntax for type boolean: &quot;remember_token&quot;</span>
+  <span class="ruby-comment">## LINE 1: SELECT  &quot;people&quot;.* FROM &quot;people&quot;  WHERE (&#39;remember_token&#39;) L...</span>
+  <span class="ruby-comment">## : SELECT  &quot;people&quot;.* FROM &quot;people&quot;  WHERE (&#39;remember_token&#39;) LIMIT 1</span>
+
+  <span class="ruby-comment"># have to spell out the find_by_remember_token</span>
+  <span class="ruby-ivar">@current_person</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Person</span>.<span class="ruby-identifier">find_by_remember_token</span>( <span class="ruby-identifier">encrypted_remember_token</span> )
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current_person-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current_person-method -->
+
+    
+      <div id="method-i-current_person-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current_person=</span><span
+            class="method-args">(person)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>why is this squib needed?</p>
+          
+
+          
+          <div class="method-source-code" id="current_person-3D-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_person=</span>(<span class="ruby-identifier">person</span>)
+  <span class="ruby-comment"># stores variable for later use</span>
+  <span class="ruby-comment"># any reason for @current_person versus self.current_person?</span>
+  <span class="ruby-comment"># logger.debug(&quot;SessionsHelper.current_person=: current_person: #{@current_person.inspect}&quot;) #DDT</span>
+  <span class="ruby-ivar">@current_person</span> = <span class="ruby-identifier">person</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current_person-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current_person-3D-method -->
+
+    
+      <div id="method-i-current_person-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current_person?</span><span
+            class="method-args">(person)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="current_person-3F-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_person?</span>(<span class="ruby-identifier">person</span>)
+  <span class="ruby-comment"># logger.debug(&quot;SessionsHelper.current_person?: current_person: #{@current_person.inspect}&quot;) #DDT</span>
+  <span class="ruby-identifier">person</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">current_person</span>  <span class="ruby-comment"># comparison is to what is returned from the function &#39;current_person&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current_person-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current_person-3F-method -->
+
+    
+      <div id="method-i-current_talk" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current_talk</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SessionsHelper.html#method-i-current_talk">#current_talk</a> is
+really &#39;logged_in_talk&#39;, who are you signed in as?</p>
+          
+
+          
+          <div class="method-source-code" id="current_talk-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_talk</span>
+  <span class="ruby-ivar">@current_talk</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_talk</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current_talk-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current_talk-method -->
+
+    
+      <div id="method-i-current_talk-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current_talk=</span><span
+            class="method-args">(talk)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>why is this squib needed?</p>
+          
+
+          
+          <div class="method-source-code" id="current_talk-3D-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_talk=</span>(<span class="ruby-identifier">talk</span>)
+  <span class="ruby-ivar">@current_talk</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:current_talk</span>] = <span class="ruby-identifier">talk</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current_talk-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current_talk-3D-method -->
+
+    
+      <div id="method-i-current_talk-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">current_talk?</span><span
+            class="method-args">(talk)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="current_talk-3F-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_talk?</span>(<span class="ruby-identifier">talk</span>)
+  <span class="ruby-identifier">talk</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">current_talk</span>  <span class="ruby-comment"># comparison is to what is returned from the function &#39;current_talk&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current_talk-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current_talk-3F-method -->
+
+    
+      <div id="method-i-iconify" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">iconify</span><span
+            class="method-args">(action_name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="http://fortawesome.github.io/Font-Awesome/cheatsheet/">fortawesome.github.io/Font-Awesome/cheatsheet/</a>
+iconify spotted as complex by codeclimate 10/29/13, complexity 29 – replace
+with hash? – started with minor cleanup</p>
+          
+
+          
+          <div class="method-source-code" id="iconify-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">iconify</span> (<span class="ruby-identifier">action_name</span>) 
+
+  <span class="ruby-identifier">action_s</span> = <span class="ruby-identifier">action_name</span>.<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-identifier">klasses</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">action_s</span>
+    <span class="ruby-comment"># all those icons that map directly to a font-awesome name</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;ban&#39;</span>, <span class="ruby-string">&#39;beer&#39;</span>, <span class="ruby-string">&#39;calendar&#39;</span>, <span class="ruby-string">&#39;camera&#39;</span>, <span class="ruby-string">&#39;check&#39;</span>, <span class="ruby-string">&#39;coffee&#39;</span>, <span class="ruby-string">&#39;facebook&#39;</span>, <span class="ruby-string">&#39;film&#39;</span>, <span class="ruby-string">&#39;glass&#39;</span>, <span class="ruby-string">&#39;home&#39;</span>, <span class="ruby-string">&#39;info&#39;</span>, <span class="ruby-string">&#39;instagram&#39;</span>,
+      <span class="ruby-string">&#39;pencil&#39;</span>, <span class="ruby-string">&#39;pinterest&#39;</span>, <span class="ruby-string">&#39;print&#39;</span>, <span class="ruby-string">&#39;random&#39;</span>, <span class="ruby-string">&#39;reply&#39;</span>, <span class="ruby-string">&#39;search&#39;</span>, <span class="ruby-string">&#39;share&#39;</span>, <span class="ruby-string">&#39;sitemap&#39;</span>, <span class="ruby-string">&#39;skype&#39;</span>, <span class="ruby-string">&#39;sort&#39;</span>, 
+      <span class="ruby-string">&#39;tag&#39;</span>, <span class="ruby-string">&#39;tags&#39;</span>, <span class="ruby-string">&#39;trash&#39;</span>, <span class="ruby-string">&#39;twitter&#39;</span>
+      <span class="ruby-string">&#39;fa-&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">action_s</span>
+    <span class="ruby-comment"># rest in alphabetic order of action_name</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;about&#39;</span>
+      <span class="ruby-string">&#39;fa-dot-circle-o&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;cancel&#39;</span>
+      <span class="ruby-string">&#39;fa-ban&#39;</span>
+    <span class="ruby-comment"># using outline&#39;d comments for talk, filled in comments for comments</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;comment&#39;</span>
+      <span class="ruby-string">&#39;fa-comment-o&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;comments&#39;</span>
+      <span class="ruby-string">&#39;fa-comments-o&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;contact&#39;</span>
+      <span class="ruby-string">&#39;fa-envelope-o&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;credit&#39;</span>, <span class="ruby-string">&#39;credits&#39;</span>
+      <span class="ruby-string">&#39;fa-heart&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;data&#39;</span>, <span class="ruby-string">&#39;table&#39;</span>
+      <span class="ruby-string">&#39;fa-table&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;delete&#39;</span>, <span class="ruby-string">&#39;destroy&#39;</span>
+      <span class="ruby-string">&#39;fa-minus-cirle&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;edit&#39;</span>
+      <span class="ruby-string">&#39;fa-pencil&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;google_plus&#39;</span>
+      <span class="ruby-string">&#39;fa-google-plus&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;help&#39;</span>, <span class="ruby-string">&#39;helps&#39;</span>
+      <span class="ruby-string">&#39;fa-question&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;location&#39;</span>, <span class="ruby-string">&#39;venue&#39;</span>  <span class="ruby-comment"># venue can show up here even without being a table!</span>
+      <span class="ruby-string">&#39;fa-location-arrow&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;message&#39;</span>
+      <span class="ruby-string">&#39;fa-bolt&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;new&#39;</span>
+      <span class="ruby-string">&#39;fa-plus-circle&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;person&#39;</span>
+      <span class="ruby-string">&#39;fa-user&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;privacy&#39;</span>
+      <span class="ruby-string">&#39;fa-eye&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;settings&#39;</span>
+      <span class="ruby-string">&#39;fa-cog&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;signin&#39;</span>
+      <span class="ruby-string">&#39;fa-sign-in&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;signout&#39;</span>, <span class="ruby-string">&#39;sayonara&#39;</span>
+      <span class="ruby-string">&#39;fa-sign-in fa-flip-vertical&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;signup&#39;</span>
+      <span class="ruby-string">&#39;fa-sign-in fa-rotate-270&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;start&#39;</span>
+      <span class="ruby-string">&#39;fa-home&#39;</span>
+    <span class="ruby-comment"># TBD:  use rocket for talk? or use a comment indicator? or use a single &#39;T&#39;?</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;talk&#39;</span>
+      <span class="ruby-string">&#39;fa-rocket&#39;</span>
+    <span class="ruby-comment"># TBD: use two rockets for talks?</span>
+    <span class="ruby-comment">#   -- or use two people &amp; comments?</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;talks&#39;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;&lt;span class=&quot;fa-stack fa-lg&quot;&gt;&#39;</span>
+        <span class="ruby-operator">+</span> <span class="ruby-string">&#39;&lt;i class=&quot;fa fa-rocket fa-stack-1x fa-flip-vertical&quot;&gt;&lt;/i&gt;&#39;</span> 
+        <span class="ruby-operator">+</span> <span class="ruby-string">&#39;&lt;i class=&quot;fa fa-rocket fa-stack-1x text-danger&quot;&gt;&lt;/i&gt;&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;wine&#39;</span>
+      <span class="ruby-string">&#39;fa-glass&#39;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^my_/</span>
+      <span class="ruby-string">&#39;fa-user&#39;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;&lt;i class=\&quot;fa #{klasses}\&quot; &gt;&lt;/i&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- iconify-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- iconify-method -->
+
+    
+      <div id="method-i-redirect_back_or" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">redirect_back_or</span><span
+            class="method-args">(default)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>the supplied default is &#39;person&#39;, so will turn into
+&#39;redirect_to person&#39;, which is what we had before</p>
+          
+
+          
+          <div class="method-source-code" id="redirect_back_or-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">redirect_back_or</span>(<span class="ruby-identifier">default</span>)
+  <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;SessionsHelper: redirect_or_back: default: #{default.inspect}, session[:return_to]: #{session[:return_to].inspect}&quot;</span>)
+  <span class="ruby-comment"># TBD:  use a redirect to :back?</span>
+  <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>)
+  <span class="ruby-identifier">session</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:return_to</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- redirect_back_or-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- redirect_back_or-method -->
+
+    
+      <div id="method-i-root_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">root_link</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>useful links in alphabetical order:</p>
+          
+
+          
+          <div class="method-source-code" id="root_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">root_link</span>
+  <span class="ruby-identifier">link_to</span>( <span class="ruby-string">&quot;&lt;i class=\&quot;fa fa-comments-o fa-lg\&quot;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;Home&quot;</span>.<span class="ruby-identifier">html_safe</span>, <span class="ruby-identifier">root_path</span> )
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- root_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- root_link-method -->
+
+    
+      <div id="method-i-settings_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">settings_link</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SessionsHelper.html#method-i-settings_link">#settings_link</a> not
+really needed at this point:  leave code in till sure of this, however</p>
+          
+
+          
+          <div class="method-source-code" id="settings_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 205</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">settings_link</span>
+  <span class="ruby-comment"># TBD:  test to see if we are signed in first</span>
+  <span class="ruby-identifier">link_to</span>( 
+    <span class="ruby-node">&quot;#{iconify(:settings)}&amp;nbsp;&amp;nbsp;Settings&quot;</span>.<span class="ruby-identifier">html_safe</span>,
+    <span class="ruby-identifier">settings_path</span>, 
+    <span class="ruby-identifier">method</span><span class="ruby-operator">:</span> <span class="ruby-value">:get</span>,
+    <span class="ruby-string">&#39;class&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;ui-btn-right&#39;</span> <span class="ruby-comment"># force button to the right side of the header, leaving space for the back button</span>
+  )
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- settings_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- settings_link-method -->
+
+    
+      <div id="method-i-sign_in" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sign_in</span><span
+            class="method-args">(person)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="sign_in-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sign_in</span>(<span class="ruby-identifier">person</span>)
+  <span class="ruby-identifier">remember_token</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">new_remember_token</span>
+
+  <span class="ruby-comment"># normal format of cookies is cookies[:key] = { value: value, expires: expire_date }</span>
+  <span class="ruby-comment">#   but, if assigning to cookies.permanent, get expires in 20 years</span>
+  <span class="ruby-comment">#   put unencrypted form of remember_token in the person&#39;s cookie:</span>
+  <span class="ruby-identifier">cookies</span>.<span class="ruby-identifier">permanent</span>[<span class="ruby-value">:remember_token</span>] = <span class="ruby-identifier">remember_token</span>  
+
+  <span class="ruby-comment">#   save ENCRYPTED form to the database record:</span>
+  <span class="ruby-identifier">person</span>.<span class="ruby-identifier">update_attribute</span>(<span class="ruby-value">:remember_token</span>, <span class="ruby-constant">Person</span>.<span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">remember_token</span>))
+
+  <span class="ruby-comment"># add a current person attribute to the current object (a controller)</span>
+  <span class="ruby-comment"># this is really an invocation of the &#39;current_person=&#39; attribute writer</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">current_person</span> = <span class="ruby-identifier">person</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sign_in-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sign_in-method -->
+
+    
+      <div id="method-i-signed_in-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signed_in?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="SessionsHelper.html#method-i-current_person">#current_person</a>
+is a method, @<a
+href="SessionsHelper.html#method-i-current_person">#current_person</a> is
+an attribute – admittedly a fuzzy distinction in Ruby see if we are signed
+in currently</p>
+          
+
+          
+          <div class="method-source-code" id="signed_in-3F-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">signed_in?</span>
+  <span class="ruby-comment">## logger.debug(&quot;SessionsHelper.signed_in?: current_person: #{current_person.inspect}&quot;)</span>
+  <span class="ruby-operator">!</span><span class="ruby-identifier">current_person</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- signed_in-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- signed_in-3F-method -->
+
+    
+      <div id="method-i-signed_in_person" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signed_in_person</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>force person to be signed in, whether they are not currently</p>
+          
+
+          
+          <div class="method-source-code" id="signed_in_person-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">signed_in_person</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">signed_in?</span>
+    <span class="ruby-comment">## store location defined in sessions_helper.rb</span>
+    <span class="ruby-identifier">store_location</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">signin_url</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span>  <span class="ruby-string">&#39;Please sign in.&#39;</span> 
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- signed_in_person-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- signed_in_person-method -->
+
+    
+      <div id="method-i-signin_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signin_link</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="signin_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 227</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">signin_link</span>
+  <span class="ruby-comment"># TBD:  test to see if we are signed in first</span>
+  <span class="ruby-identifier">link_to</span>( <span class="ruby-node">&quot;#{iconify(:signin)}&amp;nbsp;&amp;nbsp;Sign In&quot;</span>.<span class="ruby-identifier">html_safe</span>, <span class="ruby-identifier">signin_path</span>, <span class="ruby-string">&#39;data-rel&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;dialog&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- signin_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- signin_link-method -->
+
+    
+      <div id="method-i-signout" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signout</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="signout-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">signout</span>
+<span class="ruby-comment">##  # logger.debug(&quot;SessionsHelper.signout: current_person: #{self.current_person.inspect}&quot;) # DDT</span>
+  
+  <span class="ruby-comment">## self.current_person = Person.find_by :name, &#39;anonymous&#39;    ## why does this fail when it hits PostgreSQL?</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">current_person</span> = <span class="ruby-constant">Person</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;name = ?&quot;</span>, <span class="ruby-string">&#39;anonymous&#39;</span>).<span class="ruby-identifier">first</span>
+
+  <span class="ruby-identifier">cookies</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:remember_token</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- signout-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- signout-method -->
+
+    
+      <div id="method-i-signout_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signout_link</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>signout link only available on settings &amp; related pages</p>
+          
+
+          
+          <div class="method-source-code" id="signout_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">signout_link</span>
+  <span class="ruby-comment"># TBD:  test to see if we are signed in first</span>
+  <span class="ruby-comment"># icon is the vertical flip of the sign-in icon</span>
+  <span class="ruby-identifier">link_to</span>( 
+    <span class="ruby-node">&quot;Sign Out&amp;nbsp;&amp;nbsp;#{iconify(:signout)}&quot;</span>.<span class="ruby-identifier">html_safe</span>, 
+    <span class="ruby-identifier">signout_path</span>, 
+    <span class="ruby-identifier">method</span><span class="ruby-operator">:</span> <span class="ruby-value">:delete</span>,
+    <span class="ruby-string">&#39;class&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;ui-btn-right&#39;</span> <span class="ruby-comment"># force button to the right side of the header, leaving space for the back button</span>
+  )
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- signout_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- signout_link-method -->
+
+    
+      <div id="method-i-signup_link" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">signup_link</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="signup_link-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 232</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">signup_link</span>
+  <span class="ruby-comment"># TBD:  test to see if we are signed in first</span>
+  <span class="ruby-comment">## logger.debug(&quot;SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}&quot;)</span>
+  <span class="ruby-identifier">link_to</span>( <span class="ruby-node">&quot;#{iconify(:signup)}&lt;/i&gt;&amp;nbsp;&amp;nbsp;New Account&quot;</span>.<span class="ruby-identifier">html_safe</span>, <span class="ruby-identifier">signup_path</span>, <span class="ruby-string">&#39;data-rel&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;dialog&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- signup_link-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- signup_link-method -->
+
+    
+      <div id="method-i-store_location" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">store_location</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="store_location-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">store_location</span>
+  <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span>(<span class="ruby-node">&quot;SessionsHelper: store_location: #{request.url.inspect}, request.get?: #{request.get?}&quot;</span>)
+  <span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">url</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">get?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- store_location-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- store_location-method -->
+
+    
+      <div id="method-i-sub-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sub?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="sub-3F-source">
+            <pre><span class="ruby-comment"># File app/helpers/sessions_helper.rb, line 194</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sub?</span>
+  <span class="ruby-identifier">signed_in?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">current_person</span>.<span class="ruby-identifier">sub</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sub-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sub-3F-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

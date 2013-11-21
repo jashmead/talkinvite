@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>README - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../ads/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../attachments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../calendars/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../comments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../credits/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../faqs/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../friends/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../groups/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../helps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../l.html">l</a>
+  
+    <li class="file"><a href="../layouts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../maps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../members/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../messages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../people/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../posts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../relationships/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../services/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../sessions/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../static_pages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../tags/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../talks/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../venues/README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h3 id="label-Talks+forms">Talks forms</h3>
+
+<h4 id="label-Search">Search</h4>
+
+<p>– build up from search, index, new button (only if logged in)</p>
+
+<pre>-- use partials, same as for people</pre>
+
+<p>– search will get buttons for specialized searches:</p>
+
+<pre>-- location
+-- time
+-- my
+-- friends
+  -- better with groups
+-- popular</pre>
+
+<p>– TBD:  add in first/prev/next/last buttons</p>
+
+<pre>-- use session[:search_people][:search_q], [:offset], [:total_found] to track
+-- disable or simply do not show prev if already at zero
+-- same philosophy as for people/search</pre>
+
+<h4 id="label-New">New</h4>
+
+<p>new stays separate</p>
+
+<pre>-- the five w&#39;s screen
+-- so the logo is WWWWW
+  -- what, who, where, when, &amp; why</pre>
+
+<p>has a &#39;post&#39; button</p>
+
+<h4 id="label-Control">Control</h4>
+
+<p>– similar to new, but richer set of controls</p>
+
+<p>– switches depending on whether you have talk/admin role</p>
+
+<p>– shows rsvp button, with assumption that creator is going</p>
+
+<p>– posts are: cancel (we&#39;re on again), change (location/time)</p>
+
+<pre>-- automatic messaging in these cases</pre>
+
+<p>edit has summary at top</p>
+
+<pre>-- plus a button to change</pre>
+
+<p>edit has description</p>
+
+<p>edit has location as a tag line with a button to show map</p>
+
+<p>edit has time as a tag line with a button to show calendar</p>
+
+<p>edit gets rsvp button: join/leave/maybe</p>
+
+<pre>-- if you aren&#39;t the originator
+-- choice depends on your state with respect to the group
+-- ultimately a &#39;private&#39; button</pre>
+
+<p>if just started, has a &#39;post&#39; button</p>
+
+<pre>-- till end time, has a &#39;cancel&#39; button&#39;
+-- till end time, has an announce button
+  -- uses posts
+-- once we are past the &#39;end&#39; date, no changes can be made to the talk itself
+  -- allow followon comments</pre>
+
+<h5 id="label-Address+button">Address button</h5>
+
+<pre>-- uses key words
+-- stores longitude, latitude internally</pre>
+
+<h5 id="label-Map+button">Map button</h5>
+
+<pre>-- a partial, opens up Map partial
+-- save map to server?</pre>
+
+<h5 id="label-RSVP+button">RSVP button</h5>
+
+<pre>-- depends on your current state</pre>
+
+<h5 id="label-Members+list">Members list</h5>
+
+<p>get current members list</p>
+
+<pre>-- see members/index</pre>
+
+<p>members list can drop down into 1) user profile 2) your own settings</p>
+
+<h5 id="label-Comment+button">Comment button</h5>
+
+<pre>-- opens up within the form
+-- born for ajax</pre>
+
+<h5 id="label-Comments+list">Comments list</h5>
+
+<p>from comments button</p>
+
+<h5 id="label-Announcements+%28posts%29">Announcements (posts)</h5>
+
+<h5 id="label-Attachments">Attachments</h5>
+
+<h5 id="label-Tags">Tags</h5>
+
+<h5 id="label-Index+Partial">Index Partial</h5>
+
+<pre>-- in Home</pre>
+
+<h4 id="label-Stats">Stats</h4>
+
+<pre>-- # of members
+-- # of accesses</pre>
+
+<h4 id="label-Fields">Fields</h4>
+
+<p>private/invitation only/by group only</p>
+
+<h4 id="label-Ads">Ads</h4>
+
+<p>blended with ads</p>
+
+<h4 id="label-Show">Show</h4>
+
+<p>– construction view</p>
+
+<p>same as Edit, but talk is off limits for some reason</p>
+
+<pre>-- cancelled, not yours, out of date</pre>
+
+<p>– intermediate to control</p>
+
+<h4 id="label-Edit">Edit</h4>
+
+<p>– construction view</p>
+
+<p>– just the talk fields themselves, an intermediate step at this point</p>
+
+<p>– work done in control</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

@@ -1,0 +1,9 @@
+=== Relationships
+
+-- partials only
+
+-- thru table for groups & friends
+
+-- removed when friends removed
+
+-- no data of its own

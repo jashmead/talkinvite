@@ -1,0 +1,2580 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>README - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./ADMIN_rdoc.html">ADMIN</a>
+  
+    <li class="file"><a href="./DEVNOTES_rdoc.html">DEVNOTES</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./MONETIZATION_rdoc.html">MONETIZATION</a>
+  
+    <li class="file"><a href="./Procfile.html">Procfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./Rakefile.html">Rakefile</a>
+  
+    <li class="file"><a href="./STORIES_rdoc.html">STORIES</a>
+  
+    <li class="file"><a href="./app/controllers/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/controllers/m.html">m</a>
+  
+    <li class="file"><a href="./app/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/ads/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/attachments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/calendars/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/comments/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/credits/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/faqs/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/friends/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/groups/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/helps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/l.html">l</a>
+  
+    <li class="file"><a href="./app/views/layouts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/maps/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/members/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/messages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/people/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/posts/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/relationships/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/services/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/sessions/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/static_pages/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/tags/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/talks/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./app/views/venues/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./config/d.html">d</a>
+  
+    <li class="file"><a href="./db/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./public/robots_txt.html">robots</a>
+  
+    <li class="file"><a href="./spec/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/features/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/models/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/requests/README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./spec/routing/d.html">d</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./WillPaginate.html">WillPaginate</a>
+  
+    <li><a href="./WillPaginate/ActionView.html">WillPaginate::ActionView</a>
+  
+    <li><a href="./WillPaginate/ActionView/JqueryMobilePaginateLinkRenderer.html">WillPaginate::ActionView::JqueryMobilePaginateLinkRenderer</a>
+  
+    <li><a href="./ActiveSupport.html">ActiveSupport</a>
+  
+    <li><a href="./ActiveSupport/TestCase.html">ActiveSupport::TestCase</a>
+  
+    <li><a href="./Talkinvite.html">Talkinvite</a>
+  
+    <li><a href="./Talkinvite/Application.html">Talkinvite::Application</a>
+  
+    <li><a href="./AddAdminAndSubToPeople.html">AddAdminAndSubToPeople</a>
+  
+    <li><a href="./AddColumnPersonToTalks.html">AddColumnPersonToTalks</a>
+  
+    <li><a href="./AddColumnToFaqs.html">AddColumnToFaqs</a>
+  
+    <li><a href="./AddColumnToMaps.html">AddColumnToMaps</a>
+  
+    <li><a href="./AddColumnToPeople.html">AddColumnToPeople</a>
+  
+    <li><a href="./AddColumnToTweets.html">AddColumnToTweets</a>
+  
+    <li><a href="./AddColumnsToTalks.html">AddColumnsToTalks</a>
+  
+    <li><a href="./AddForeignKeyFromTalksToPeople.html">AddForeignKeyFromTalksToPeople</a>
+  
+    <li><a href="./AddForeignKeyToMessages.html">AddForeignKeyToMessages</a>
+  
+    <li><a href="./AddForeignKeysToRelationships.html">AddForeignKeysToRelationships</a>
+  
+    <li><a href="./AddIndexToPeopleEmail.html">AddIndexToPeopleEmail</a>
+  
+    <li><a href="./AddIndexesToRelationships.html">AddIndexesToRelationships</a>
+  
+    <li><a href="./AddLocationColumnsToTalks.html">AddLocationColumnsToTalks</a>
+  
+    <li><a href="./AddMoreColumnsToTalks.html">AddMoreColumnsToTalks</a>
+  
+    <li><a href="./AddPasswordDigest.html">AddPasswordDigest</a>
+  
+    <li><a href="./AddRememberTokenToPeople.html">AddRememberTokenToPeople</a>
+  
+    <li><a href="./AddTalk2userFk.html">AddTalk2userFk</a>
+  
+    <li><a href="./AddTalkIdToMessages.html">AddTalkIdToMessages</a>
+  
+    <li><a href="./AddTypeToPeople.html">AddTypeToPeople</a>
+  
+    <li><a href="./AddUniqueIndexToAttachments.html">AddUniqueIndexToAttachments</a>
+  
+    <li><a href="./AddVenueIdToTalks.html">AddVenueIdToTalks</a>
+  
+    <li><a href="./AddWhoDescColumnToTalks.html">AddWhoDescColumnToTalks</a>
+  
+    <li><a href="./AlterColumnForLocation.html">AlterColumnForLocation</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./ChangeColumnMessageTypeForMessages.html">ChangeColumnMessageTypeForMessages</a>
+  
+    <li><a href="./ChangeColumnsTalks.html">ChangeColumnsTalks</a>
+  
+    <li><a href="./ChangeDefaultForPostType.html">ChangeDefaultForPostType</a>
+  
+    <li><a href="./ChangePosts.html">ChangePosts</a>
+  
+    <li><a href="./ChangeTablePosts.html">ChangeTablePosts</a>
+  
+    <li><a href="./ChangeTableServices.html">ChangeTableServices</a>
+  
+    <li><a href="./Comment.html">Comment</a>
+  
+    <li><a href="./CommentsController.html">CommentsController</a>
+  
+    <li><a href="./CommentsHelper.html">CommentsHelper</a>
+  
+    <li><a href="./CreateComments.html">CreateComments</a>
+  
+    <li><a href="./CreateCredits.html">CreateCredits</a>
+  
+    <li><a href="./CreateFaqs.html">CreateFaqs</a>
+  
+    <li><a href="./CreateHelps.html">CreateHelps</a>
+  
+    <li><a href="./CreateMaps.html">CreateMaps</a>
+  
+    <li><a href="./CreateMembers.html">CreateMembers</a>
+  
+    <li><a href="./CreateMessages.html">CreateMessages</a>
+  
+    <li><a href="./CreatePeople.html">CreatePeople</a>
+  
+    <li><a href="./CreatePosts.html">CreatePosts</a>
+  
+    <li><a href="./CreateRelationships2.html">CreateRelationships2</a>
+  
+    <li><a href="./CreateRelationships3.html">CreateRelationships3</a>
+  
+    <li><a href="./CreateServices.html">CreateServices</a>
+  
+    <li><a href="./CreateTable.html">CreateTable</a>
+  
+    <li><a href="./CreateTalks.html">CreateTalks</a>
+  
+    <li><a href="./CreateUniqueIndexes.html">CreateUniqueIndexes</a>
+  
+    <li><a href="./Credit.html">Credit</a>
+  
+    <li><a href="./CreditsController.html">CreditsController</a>
+  
+    <li><a href="./CreditsHelper.html">CreditsHelper</a>
+  
+    <li><a href="./DeathToNulls.html">DeathToNulls</a>
+  
+    <li><a href="./DefaultValues2.html">DefaultValues2</a>
+  
+    <li><a href="./Defaults.html">Defaults</a>
+  
+    <li><a href="./DropColumnFromFaqs.html">DropColumnFromFaqs</a>
+  
+    <li><a href="./DropColumnLocationIdFromTalks.html">DropColumnLocationIdFromTalks</a>
+  
+    <li><a href="./DropColumnPersonTypeFromPeople.html">DropColumnPersonTypeFromPeople</a>
+  
+    <li><a href="./DropColumnPostedDtFromTalks.html">DropColumnPostedDtFromTalks</a>
+  
+    <li><a href="./DropMapsAndCalendars.html">DropMapsAndCalendars</a>
+  
+    <li><a href="./DropTableMessages.html">DropTableMessages</a>
+  
+    <li><a href="./DropTableNotifications.html">DropTableNotifications</a>
+  
+    <li><a href="./DropTableRelationships.html">DropTableRelationships</a>
+  
+    <li><a href="./DropTalkIdFromMessages.html">DropTalkIdFromMessages</a>
+  
+    <li><a href="./DropsLotsOfTables.html">DropsLotsOfTables</a>
+  
+    <li><a href="./EndRelationships.html">EndRelationships</a>
+  
+    <li><a href="./Faq.html">Faq</a>
+  
+    <li><a href="./FaqsController.html">FaqsController</a>
+  
+    <li><a href="./FaqsHelper.html">FaqsHelper</a>
+  
+    <li><a href="./Fixup.html">Fixup</a>
+  
+    <li><a href="./FixupMessages.html">FixupMessages</a>
+  
+    <li><a href="./FixupSocials.html">FixupSocials</a>
+  
+    <li><a href="./ForeignKeys.html">ForeignKeys</a>
+  
+    <li><a href="./FormBuilderJqm.html">FormBuilderJqm</a>
+  
+    <li><a href="./Help.html">Help</a>
+  
+    <li><a href="./HelpsController.html">HelpsController</a>
+  
+    <li><a href="./HelpsHelper.html">HelpsHelper</a>
+  
+    <li><a href="./KillDefaults.html">KillDefaults</a>
+  
+    <li><a href="./Map.html">Map</a>
+  
+    <li><a href="./MapsController.html">MapsController</a>
+  
+    <li><a href="./MapsHelper.html">MapsHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MemberDefaults.html">MemberDefaults</a>
+  
+    <li><a href="./MemberTypeDefault.html">MemberTypeDefault</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./Message.html">Message</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./MessagesHelper.html">MessagesHelper</a>
+  
+    <li><a href="./Migration.html">Migration</a>
+  
+    <li><a href="./NotNull.html">NotNull</a>
+  
+    <li><a href="./NotNull2.html">NotNull2</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./PeopleController.html">PeopleController</a>
+  
+    <li><a href="./PeopleHelper.html">PeopleHelper</a>
+  
+    <li><a href="./Person.html">Person</a>
+  
+    <li><a href="./Post.html">Post</a>
+  
+    <li><a href="./PostsController.html">PostsController</a>
+  
+    <li><a href="./PostsHelper.html">PostsHelper</a>
+  
+    <li><a href="./RelationshipsForeignKeys2.html">RelationshipsForeignKeys2</a>
+  
+    <li><a href="./RelationshipsForeignKeys3.html">RelationshipsForeignKeys3</a>
+  
+    <li><a href="./RemoveColumnsFromPeople.html">RemoveColumnsFromPeople</a>
+  
+    <li><a href="./RemoveFiveTables.html">RemoveFiveTables</a>
+  
+    <li><a href="./RenameColumnForPeople.html">RenameColumnForPeople</a>
+  
+    <li><a href="./RenameColumnForTags.html">RenameColumnForTags</a>
+  
+    <li><a href="./RenameColumns.html">RenameColumns</a>
+  
+    <li><a href="./RenameColumnsInCredits.html">RenameColumnsInCredits</a>
+  
+    <li><a href="./RenameTwitterColumnForPeople.html">RenameTwitterColumnForPeople</a>
+  
+    <li><a href="./Service.html">Service</a>
+  
+    <li><a href="./ServiceForeignKeys.html">ServiceForeignKeys</a>
+  
+    <li><a href="./ServicesController.html">ServicesController</a>
+  
+    <li><a href="./ServicesHelper.html">ServicesHelper</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./SetDefaultValues.html">SetDefaultValues</a>
+  
+    <li><a href="./StaticPagesController.html">StaticPagesController</a>
+  
+    <li><a href="./StaticPagesHelper.html">StaticPagesHelper</a>
+  
+    <li><a href="./StatusForTalks.html">StatusForTalks</a>
+  
+    <li><a href="./Talk.html">Talk</a>
+  
+    <li><a href="./TalkValidator.html">TalkValidator</a>
+  
+    <li><a href="./TalksController.html">TalksController</a>
+  
+    <li><a href="./TalksHelper.html">TalksHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-TalkInvite">TalkInvite</h1>
+
+<h2 id="label-Objective">Objective</h2>
+
+<p>Master &amp; demo skill set, get an app up.</p>
+
+<h2 id="label-Stories">Stories</h2>
+
+<p>organized by life cycle</p>
+<ol><li>
+<p>life cycle is implicit “story of a talk”</p>
+</li><li>
+<p>include a few squirrelly bits at the end,</p>
+</li></ol>
+
+<p>bits which don&#39;t really fit into the lifecycle framework</p>
+
+<h3 id="label-Got+Talk%3F">Got <a href="Talk.html">Talk</a>?</h3>
+
+<p>Start points:</p>
+<ol><li>
+<p>home – for person, shows their talks</p>
+</li><li>
+<p>talks/new – start a talk</p>
+</li><li>
+<p>talks/search – look for them, with lots of canned searches</p>
+</li><li>
+<p>talks/nearby – and recent – TBD</p>
+</li><li>
+<p>topics/trending – recently interesting topics – TBD</p>
+</li><li>
+<p>sitemap</p>
+</li></ol>
+
+<h4 id="label-Let%27s+Talk+about+X">Let&#39;s <a href="Talk.html">Talk</a> about X</h4>
+
+<p>See searches for talks – and, once they are up, for topics</p>
+<ol><li>
+<p>key phrases – type key phrase, search web</p>
+</li><li>
+<p>recent event – type key phrase, search web</p>
+</li><li>
+<p>subject I&#39;ve already talked about – tags associated with my talks or
+with me</p>
+</li><li>
+<p>like a previous talk – my talks</p>
+</li><li>
+<p>part of an ongoing conversation – talks by talk2talk</p>
+</li><li>
+<p>associated with an organization (i.e. meetup), school – talks by talk2talk</p>
+</li><li>
+<p>associated witeh a specific location – location to talks</p>
+</li><li>
+<p>associated with a specific set of friends (or just one or two) – people to
+talks</p>
+</li><li>
+<p>cool url for image, document, video on web – cut &amp; paste</p>
+</li><li>
+<p>personal event – type key phrase</p>
+</li></ol>
+
+<p>response, search for talk, pick talk(s), add if not present</p>
+
+<h4 id="label-Search+for+Talks">Search for Talks</h4>
+<ol><li>
+<p>by all the categories above, many canned searches</p>
+</li><li>
+<p>mark a set interesting, or add talk, or give up</p>
+</li><li>
+<p>pick a talk functionality!*</p>
+</li></ol>
+
+<h3 id="label-Join+Talk">Join <a href="Talk.html">Talk</a></h3>
+
+<p>perhaps even several</p>
+<ol><li>
+<p>if not signed in, sign in</p>
+</li><li>
+<p>if no account, create &amp; sign in</p>
+</li></ol>
+
+<h4 id="label-Add+Talk">Add <a href="Talk.html">Talk</a></h4>
+<ol><li>
+<p>if not signed in, sign in</p>
+</li><li>
+<p>if no account, create &amp; sign in</p>
+</li><li>
+<p>start the talk:  see talks/new</p>
+</li><li>
+<p>what – summary</p>
+</li><li>
+<p>when – calendar</p>
+</li><li>
+<p>where – maps, locations</p>
+</li><li>
+<p>why – detailed description</p>
+</li><li>
+<p>who – any restrictions (i.e. private, group)</p>
+</li></ol>
+
+<h4 id="label-Check+out+topics">Check out topics</h4>
+<ol><li>
+<p>topics/command</p>
+</li><li>
+<p>sub set of tags</p>
+</li></ol>
+
+<h4 id="label-Send+out+posts">Send out posts</h4>
+
+<p>first, select set of related, search for people by patterns or rules</p>
+
+<p>second, post using:</p>
+<ul><li>
+<p>messaging (internal)</p>
+</li><li>
+<p>email</p>
+</li><li>
+<p>twitter</p>
+</li><li>
+<p>facebook</p>
+</li><li>
+<p>other social media</p>
+</li></ul>
+
+<h4 id="label-Schedule+talk">Schedule talk</h4>
+<ol><li>
+<p>calendars/command</p>
+</li><li>
+<p>set defines</p>
+</li><li>
+<p>calendar controls shared by other time specific tables in set mode, or as
+individual?</p>
+</li></ol>
+
+<h4 id="label-Check+out+locations">Check out locations</h4>
+
+<p>physical/virtual</p>
+<ol><li>
+<p>locations/command</p>
+</li><li>
+<p>map</p>
+</li><li>
+<p>map controls shared by other location specific tables in set mode, or as
+individual</p>
+</li></ol>
+
+<h3 id="label-Talk+On%21"><a href="Talk.html">Talk</a> On!</h3>
+
+<p>start point is currently sitemap</p>
+
+<h4 id="label-Let%27s+Pivot">Let&#39;s Pivot</h4>
+
+<p>talk has been proposed, but hasn&#39;t happened yet</p>
+<ol><li>
+<p>announce the talk – posts</p>
+</li><li>
+<p>change location (can be virtual) – locations</p>
+</li><li>
+<p>change time – calendars</p>
+</li><li>
+<p>talk about the talk: negotiate if a problem or change desired</p>
+</li><li>
+<p>post comments, clarifications, &amp; so on</p>
+</li></ol>
+
+<h4 id="label-Talk+is+happening"><a href="Talk.html">Talk</a> is happening</h4>
+
+<p>post status updates</p>
+
+<h4 id="label-Join%2Fleave">Join/leave</h4>
+
+<p>change membership status</p>
+
+<h4 id="label-Send%2FReceive+Comments">Send/Receive Comments</h4>
+
+<p>can be change of status, time, location, subject, membership</p>
+
+<h4 id="label-Send%2FReceive+Messages">Send/Receive Messages</h4>
+<ol><li>
+<p>one on one</p>
+</li><li>
+<p>side-by-side message screens, two lists, staggered</p>
+</li></ol>
+
+<h4 id="label-My+fellow+talkers">My fellow talkers</h4>
+<ol><li>
+<p>invite someone to join, see above for initial posts</p>
+</li><li>
+<p>to screen, with message</p>
+</li></ol>
+
+<h4 id="label-Time+to+move+on">Time to move on</h4>
+
+<p>new physical or virtual venue</p>
+
+<h3 id="label-Apres+Talk">Apres <a href="Talk.html">Talk</a></h3>
+
+<p>start point is talks/edit</p>
+
+<h4 id="label-timeline%2A">timeline*</h4>
+
+<p>timeline of a talk</p>
+
+<h4 id="label-talk+has+happened">talk has happened</h4>
+<ol><li>
+<p>comments</p>
+</li><li>
+<p>rate</p>
+</li><li>
+<p>save stream of information about the talk</p>
+</li></ol>
+
+<h4 id="label-You+can+never+talk+just+once">You can never talk just once</h4>
+<ol><li>
+<p>fugue into an ongoing conversation</p>
+</li><li>
+<p>connect one talk to another</p>
+</li></ol>
+
+<h3 id="label-Not+just+talk%21%2A">Not just talk!*</h3>
+
+<p>start point is talks/meta</p>
+
+<p>talks/stats*</p>
+
+<p>talks/rankings*</p>
+
+<p>talks/sharing</p>
+<ol><li>
+<p>to web – permalinks</p>
+</li><li>
+<p>to facebook, twitter, &amp; other social – notifications</p>
+</li></ol>
+
+<p>static_pages/wiki**</p>
+
+<h3 id="label-Let%27s+Talk+about+Me%21">Let&#39;s <a href="Talk.html">Talk</a> about Me!</h3>
+
+<p>– except for signin &amp; signup, only shown if you are signed in;  signin
+&amp; signup only shown if you are not signed in</p>
+
+<p>edit – where you go after signin, shows combo of settings &amp; profile –
+leads to your talks &amp; related – was static_pages/home, keep that as
+reference till ready to trash</p>
+
+<p>settings</p>
+
+<p>profile – public face, not settings,</p>
+<ul><li>
+<p>shown to those who look for this user</p>
+</li><li>
+<p>shows link to settings if there is a match of user to user</p>
+</li></ul>
+
+<p>signup – shown if not signed in</p>
+
+<p>signin – shown if not signed in</p>
+
+<p>signout – a button</p>
+
+<p>reset password*</p>
+<ol><li>
+<p>shown to those signing in (from signin screen)</p>
+</li><li>
+<p>option on settings</p>
+</li></ol>
+
+<p>upgrades* – applies to a specific account</p>
+
+<p>close account* – uses destroy method, may reduce to merely make inactive</p>
+
+<h3 id="label-Possibilities">Possibilities</h3>
+<ul><li>
+<p>per person maps</p>
+</li><li>
+<p>my stats</p>
+</li><li>
+<p>expanding circles</p>
+</li><li>
+<p>star trek communicator type css effects</p>
+</li><li>
+<p>links to google hang outs &amp; the like</p>
+</li><li>
+<p>maps &amp; data type functionality</p>
+</li></ul>
+
+<h2 id="label-Schema">Schema</h2>
+
+<h3 id="label-List+of+Tables">List of Tables</h3>
+
+<p>Note we can&#39;t use &#39;file&#39; as a table name, conflicts with Ruby</p>
+
+<p>In order of creation:</p>
+<ol><li>
+<p>Schema_Migrations – no views or controllers for these</p>
+</li><li>
+<p>People – will be adding locations to this</p>
+</li><li>
+<p>Sessions</p>
+</li><li>
+<p>Talks – links up to people, will be adding venues to this</p>
+</li><li>
+<p>Members – links to talk &amp; to people, includes &#39;admin&#39; status
+(with reference to talk), payload is rsvp_status, member_type</p>
+</li><li>
+<p>Comments – links to talk &amp; to people, payload is text</p>
+</li><li>
+<p>Messages – person to person, various modalities, sender, receiver, talk</p>
+</li><li>
+<p>Faqs – doubles as help text, no links, question, answer, tags point to this
+as well!</p>
+</li><li>
+<p>Credits – links to creator, name, details, url, tags point to this as well!</p>
+</li><li>
+<p>Helps</p>
+</li><li>
+<p>Maps – links to creator, has datasets, center, scale, maybe type on it, has
+link to talk, may need settings as well (json field). virtual table, like
+sessions.</p>
+</li></ol>
+
+<p>Planned but not yet implemented tables:</p>
+<ol><li>
+<p>Attachments – for file uploads, generalize from profile image uploads</p>
+</li></ol>
+
+<pre>* polymorphic
+* point up to talks, people, credits, faqs, helps, pretty much everything
+* standard, work from examples
+* needs maintenance reports
+* have a creator (for people has to be the person him or her self)</pre>
+<ol><li>
+<p>Topics – for twitter searches &amp; the like</p>
+</li></ol>
+
+<pre>* from hashtags, google news
+* and hand submitted
+* used for subjects (summary -&gt; subject)
+* count as tag</pre>
+<ol><li>
+<p>Tags – for interests for people</p>
+</li></ol>
+
+<pre>* like attachments, attach to everything
+* and like attachments has an originator
+* needs tools, to get tagclouds</pre>
+<ol><li>
+<p>Ads – to generate revenue; in parallel with talks, comments, to blend in
+with them</p>
+</li></ol>
+
+<pre>* unclear, will need content, stats, strategy, contact/source</pre>
+<ol><li>
+<p>Calendars – in parallel with Maps</p>
+</li></ol>
+
+<pre>* virtual table, like maps
+* used to help coordinate people converging on a talk, again like maps</pre>
+<ol><li>
+<p>Sessions – for security &amp; quality &amp; flexibility, see session
+hijacking in guide on security</p>
+</li></ol>
+
+<pre>* presumably is really two tables, parent &amp; fields
+* use examples, if we decide to go this way at all</pre>
+
+<p>Currently tabled tables</p>
+<ol><li>
+<p>Connections – talk2talk, connections, creator, from_talk, to_talk, an
+advanced feature, may not need, can use for clone previous, repeating,
+&amp; so on. May help with searches (big in our design).  At this point, we
+don&#39;t know how we want to use:  clone-father, repeating, and so on. 
+Could implement with a self-join, side-table, settings field, lots of ways.
+Fairly complex, even more complex than relationships. Wait on need. YAGNI.</p>
+</li><li>
+<p>Circles? Relationships?</p>
+</li><li>
+<p>SVGs? – not yet, not sure needed</p>
+</li><li>
+<p>Groups? – goes to relationships + a field in people (to indicate really a
+group)</p>
+</li></ol>
+
+<pre>* can be useful for searches for talkees</pre>
+<ol><li>
+<p>Recurring talks? – like meetups? – goes to talk2talk plus a field in talks
+to indicate ongoing</p>
+</li></ol>
+
+<pre>* recurring field + schedule, like calendar on mac</pre>
+<ol><li>
+<p>Ratings? – fold in to tags</p>
+</li></ol>
+
+<pre>* or is a simple like this better</pre>
+<ol><li>
+<p>Requests – previously used, a bit much however</p>
+</li></ol>
+
+<pre>* think not`</pre>
+<ol><li>
+<p>Errors – previously used, a bit much however</p>
+</li></ol>
+
+<pre>* expect we will stick with logs for immediate future</pre>
+<ol><li>
+<p>Pages – a bit too meta</p>
+</li></ol>
+
+<pre>* too too meta</pre>
+<ol><li>
+<p>Qxs – great name, but errors on side of inscrutable</p>
+</li></ol>
+
+<pre>* is this a table or an alien civilization?</pre>
+
+<h3 id="label-Data+types">Data types</h3>
+
+<p>Note we can&#39;t use &#39;type&#39; as a field name, conflicts with Ruby</p>
+
+<p>Mostly line up with the input types wrapped in form_for_jqm.rb</p>
+
+<p>All tables include the Ruby on Rails fields:</p>
+<ol><li>
+<p>id</p>
+</li><li>
+<p>created_at – datetime</p>
+</li><li>
+<p>updated_at  – datetime</p>
+</li></ol>
+
+<p>Shorter fields are generally strings, longer text.</p>
+<ol><li>
+<p>name/summary/about</p>
+</li><li>
+<p>description/contents/details</p>
+</li></ol>
+
+<p>Locations – for maps, ultimately, include alternate kinds of maps</p>
+<ol><li>
+<p>latitude &amp; longitude is fine</p>
+</li></ol>
+
+<p>Datetimes &amp; Intervals – for calendars</p>
+<ol><li>
+<p>datetime or else start &amp; duration or else start &amp; end</p>
+</li></ol>
+
+<h3 id="label-Class+Structure">Class Structure</h3>
+
+<p>TBD:  create a class that all TalkInvite models will inherit from?</p>
+
+<p>URLs</p>
+<ol><li>
+<p>security concern if supplied by user, part of about field</p>
+</li><li>
+<p>core of any Web Search tool</p>
+</li></ol>
+
+<h3 id="label-Setup+for+new+table">Setup for new table</h3>
+<ol><li>
+<p>rails generate scaffold table field1:type1 field2:type2 …</p>
+</li><li>
+<p>fix db/migrate file, may need foreign keys for instance</p>
+</li><li>
+<p>rake db:migrate &amp; rake db:migrate RAILS_ENV=test</p>
+</li><li>
+<p>app/models – fix the file &amp; also edit the overall <a
+href="app/controllers/README_rdoc.html">README</a></p>
+</li><li>
+<p>app/views/table/README – possibly</p>
+</li><li>
+<p>app/controllers/table</p>
+</li><li>
+<p>app/helpers/stylesheets/table – just setup new stub, see any eralier for
+example</p>
+</li><li>
+<p>app/routes – possibly, if extra routes needed</p>
+</li><li>
+<p>spec/features/table_stories – put in a few pendings, we aren&#39;t really
+sure how useful stories is</p>
+</li><li>
+<p>spec/controllers/table – fix valid_attributes!</p>
+</li><li>
+<p>spec/models/table – review</p>
+</li><li>
+<p>spec/factories/table – fix, note that ids should not be hardcoded to
+&#39;1&#39;, but can live with it for nonce</p>
+</li><li>
+<p>spec/views/table – new <a
+href="app/controllers/README_rdoc.html">README</a>, possibly, if so add to
+base <a href="README_rdoc.html">README.rdoc</a></p>
+</li></ol>
+
+<h3 id="label-Adding%2Fsubtracting+columns+for+existing+table">Adding/subtracting columns for existing table</h3>
+<ol><li>
+<p>make sure the model_params function has the new fields, if appropriate</p>
+</li><li>
+<p>make sure the search_fields function has the new fields, if appropriate</p>
+</li></ol>
+
+<h2 id="label-Database+Issues">Database Issues</h2>
+
+<h3 id="label-Rebuilds">Rebuilds</h3>
+
+<p>Can&#39;t reset database due to dependencies among tables, but:</p>
+<ol><li>
+<p>can rebuild however</p>
+</li><li>
+<p>make sure that database &amp; all tables owned by talkinvite</p>
+</li><li>
+<p>use “kill -15” to terminate dead but blocking procs</p>
+</li><li>
+<p>to get plsql language back in will need to run top of structure.sql as
+postgres</p>
+</li><li>
+<p>use rake db:seed to reseed</p>
+</li><li>
+<p>good way to reorder columns – note this can count as “dinking”!</p>
+</li></ol>
+
+<h3 id="label-Tables+to+come%2C+possibly">Tables to come, possibly</h3>
+<ol><li>
+<p>Trending</p>
+</li><li>
+<p>Topics</p>
+</li><li>
+<p>Tags</p>
+</li><li>
+<p>Calendars</p>
+</li></ol>
+
+<h2 id="label-Controllers">Controllers</h2>
+
+<h3 id="label-Procedures">Procedures</h3>
+
+<p>When fields in a table are changed, the list of required/allowed parameters
+(params.require) in the controller has to be adjusted according.</p>
+
+<p>Example:  the params.require in people_controller.rb:
+params.require(:person).permit( :name, :email, :about_me, :screen_name,
+:settings, :password, :password_confirmation, :admin, :sub)</p>
+
+<h3 id="label-Namespaces">Namespaces</h3>
+<ol><li>
+<p>admins</p>
+</li><li>
+<p>subs</p>
+</li></ol>
+
+<h3 id="label-New+controller+functions">New controller functions</h3>
+<ol><li>
+<p>map</p>
+</li><li>
+<p>calendar</p>
+</li><li>
+<p>circle</p>
+</li><li>
+<p>control – varies by model</p>
+</li><li>
+<p>side-by-side &amp; other multi-frame constructs, since they need input from
+controller for each frame; may have been obsolesced by transition to jQuery
+Mobile</p>
+</li></ol>
+
+<h2 id="label-Views">Views</h2>
+
+<h3 id="label-Philosophy">Philosophy</h3>
+
+<p>– simple color scheme, only frame, let the people, talks, locations, tags,
+files, provide the visuals</p>
+
+<p>– no responsive design, purely mobile</p>
+
+<h3 id="label-Key+Pages">Key Pages</h3>
+
+<h4 id="label-Talk+pages"><a href="Talk.html">Talk</a> pages</h4>
+<ol><li>
+<p>New Talk: * Topics/Tags * Posts * Map/Venue * Calendar * Members (for
+invites) * Attachments</p>
+</li><li>
+<p><a href="Talk.html">Talk</a> Control: same partials as for New <a
+href="Talk.html">Talk</a>, some more buttons for RSVP, significant
+differences for creator/admin versus usual</p>
+</li><li>
+<p>Search for Talks: simple, location, time, members, attachments?</p>
+</li></ol>
+
+<h4 id="label-People+pages">People pages</h4>
+<ol><li>
+<p>Home * Talks * Messages * TBD: Friends, Groups – two views of the same
+information</p>
+</li><li>
+<p>Settings * Button to Change Password * Friends/Groups</p>
+</li><li>
+<p>Profile * Send <a href="Message.html">Message</a> Button * Friend/Unfriend
+* Group/Ungroup</p>
+</li><li>
+<p>Signup</p>
+</li><li>
+<p>Change Password</p>
+</li><li>
+<p>Messages</p>
+</li><li>
+<p>TBD: Oauth</p>
+</li><li>
+<p>TBD: Upgrade</p>
+</li><li>
+<p>Friends, Groups – two views of same information</p>
+</li></ol>
+
+<h4 id="label-Session+pages">Session pages</h4>
+<ol><li>
+<p>Signin</p>
+</li><li>
+<p>Reset Password</p>
+</li></ol>
+
+<h4 id="label-Help+%26+Internal+pages"><a href="Help.html">Help</a> &amp; Internal pages</h4>
+<ol><li>
+<p>Credits</p>
+</li><li>
+<p>Show <a href="Credit.html">Credit</a></p>
+</li><li>
+<p>Faqs</p>
+</li><li>
+<p>Show <a href="Faq.html">Faq</a></p>
+</li><li>
+<p>Helps</p>
+</li><li>
+<p>Show <a href="Help.html">Help</a></p>
+</li><li>
+<p>Site <a href="Map.html">Map</a></p>
+</li></ol>
+
+<h4 id="label-Tags%2FTopics%2FTrending">Tags/Topics/Trending</h4>
+
+<p>– under Tags</p>
+
+<p>– look for tags in google, duckduckgo, others</p>
+
+<p>– look for tags in twitter</p>
+
+<p>– use location if possible</p>
+<ol><li>
+<p>trending</p>
+</li><li>
+<p>search</p>
+</li></ol>
+
+<h4 id="label-Admin+Pages">Admin Pages</h4>
+<ol><li>
+<p>New, Edit <a href="Credit.html">Credit</a>, <a href="Faq.html">Faq</a>, <a
+href="Help.html">Help</a> (6 pages)</p>
+</li><li>
+<p>Search for People (maybe)</p>
+</li></ol>
+
+<h3 id="label-Partials+Only">Partials Only</h3>
+
+<h4 id="label-Posts">Posts</h4>
+
+<h4 id="label-Comments">Comments</h4>
+
+<h4 id="label-Members">Members</h4>
+
+<h4 id="label-Maps">Maps</h4>
+
+<h4 id="label-Tags">Tags</h4>
+
+<h4 id="label-Attachments">Attachments</h4>
+
+<h4 id="label-Friends">Friends</h4>
+
+<h4 id="label-Groups">Groups</h4>
+
+<h4 id="label-Relationships">Relationships</h4>
+
+<h4 id="label-Calendars">Calendars</h4>
+
+<h4 id="label-Venues">Venues</h4>
+
+<h4 id="label-Ads">Ads</h4>
+
+<h3 id="label-Start%2FHome+page">Start/Home page</h3>
+
+<p>– currently using start, which forks into people/home, talks/recent</p>
+
+<p>– could use sitemap or about</p>
+
+<h3 id="label-Static+elements">Static elements</h3>
+<ol><li>
+<p>logo – not really needed in mobile, replace with start except on start
+page, where it is blank?</p>
+</li><li>
+<p>title – talk summary, person name, whatever</p>
+</li><li>
+<p>account menu – settings/new account on top right</p>
+</li><li>
+<p>header – specific to model</p>
+</li><li>
+<p>footer – specific to model</p>
+</li></ol>
+
+<h3 id="label-Adding+a+field">Adding a field</h3>
+
+<p>fields in the new &amp; other forms must match those in the corresponding
+specs; obvious but easily overlooked point</p>
+
+<p>Form has:</p>
+<ol><li>
+<p>to (with cc)</p>
+</li><li>
+<p>modality</p>
+</li><li>
+<p>content</p>
+</li><li>
+<p>details</p>
+</li></ol>
+
+<h3 id="label-Tables">Tables</h3>
+
+<p>– see also list in <a
+href="app/models/README_rdoc.html">app/models/README.rdoc</a></p>
+
+<h4 id="label-Root+tables+%28models%29">Root tables (models)</h4>
+<ol><li>
+<p>Sessions (virtual table)</p>
+</li><li>
+<p>People</p>
+</li><li>
+<p>Talks – entry point for newbies</p>
+</li><li>
+<p>Credits</p>
+</li><li>
+<p>Faqs</p>
+</li><li>
+<p>Helps</p>
+</li></ol>
+
+<h4 id="label-Link+tables">Link tables</h4>
+<ol><li>
+<p>Comments – zero to many for each person/talk pair, may have polymorphism in
+its future</p>
+</li><li>
+<p>Services</p>
+</li><li>
+<p>Posts</p>
+</li><li>
+<p>Members – one for each person/talk pair</p>
+</li><li>
+<p>Messages – many for each person to person</p>
+</li><li>
+<p>Maps – will need data, settings, controls</p>
+</li></ol>
+
+<h4 id="label-System">System</h4>
+<ol><li>
+<p>Schema_migrations – no controllers or views for these</p>
+</li></ol>
+
+<h4 id="label-Upcoming%2Fvirtual">Upcoming/virtual</h4>
+<ol><li>
+<p>Calendars – like maps</p>
+</li><li>
+<p>Topics – or interests, used for searches</p>
+</li><li>
+<p>Tags – about nouns, used for searches</p>
+</li><li>
+<p>Attachments</p>
+</li><li>
+<p>Trending – twitter, google, facebooks, whatnot</p>
+</li></ol>
+
+<h3 id="label-Styles">Styles</h3>
+<ol><li>
+<p>Colors</p>
+</li></ol>
+<ul><li>
+<p>blue for talks, green for persons, cyan for messages &amp; so on, include
+faqs in cyan?</p>
+</li><li>
+<p>rich brown for places, nearly black</p>
+</li><li>
+<p>yellow for marketing (&amp; credits?), red only for messages</p>
+</li></ul>
+
+<p>– see the function swatch()</p>
+<ol><li>
+<p>Icons</p>
+</li></ol>
+<ul><li>
+<p>preferred icon for people is a homunculous</p>
+</li><li>
+<p>circle for people, square? for talks, uppointing triangle for locations</p>
+</li><li>
+<p>lightning for messages?</p>
+</li></ul>
+
+<p>– see the function iconify()</p>
+
+<h3 id="label-Warnings">Warnings</h3>
+<ol><li>
+<p>don&#39;t use name &#39;search&#39; for a button; it confuses RoR or
+someone</p>
+</li></ol>
+
+<h3 id="label-Testing">Testing</h3>
+<ul><li>
+<p>specified elements present</p>
+</li><li>
+<p>specified links go to correct pages</p>
+</li><li>
+<p>expandable items expand (&amp; shrink)</p>
+</li><li>
+<p>views shift as they should</p>
+</li></ul>
+
+<h3 id="label-Conventions">Conventions</h3>
+
+<p>use popups or similar for all lists, as types of posts</p>
+
+<p>back button on all pages</p>
+
+<p>placeholders + hidden labels – implementation in form_for_jqm – hidden
+fields do not need label!</p>
+
+<p>required for all required fields</p>
+
+<p>readonly for all readonly fields</p>
+
+<pre>-- TBD: use for &#39;show&#39; pages?</pre>
+
+<p>lots of icons</p>
+
+<p>standardized transitions – one pair for popups – another pair for
+master/detail</p>
+
+<p>try a variety of themes</p>
+
+<p>add tooltips on everything – TBD: does title work for this?</p>
+
+<p>one help page per page</p>
+
+<p>group buttons on edit forms &amp; related:  using data-role = controlgroup,
+data-type=horizontal – do in detail</p>
+
+<p>all buttons are data-inline = true</p>
+
+<h4 id="label-Security">Security</h4>
+
+<p>URLs not allowed in descriptions or the like – explain in help – Cross Site
+Injection</p>
+
+<h2 id="label-View+Helpers+%26+Partials">View Helpers &amp; Partials</h2>
+
+<p>mobile first</p>
+
+<p>helpers for forms go in app/helpers/application_helpers.rb</p>
+
+<p>partials for forms go in app/views/shared (or in the per controller
+directories)</p>
+
+<p>page frames:</p>
+<ol><li>
+<p>simple – static page, like about</p>
+</li><li>
+<p>form – core of control, uses either new/create or edit/update</p>
+</li><li>
+<p>quick search – just a small form with open area, search, &amp; possibly
+advanced search</p>
+</li><li>
+<p>search-form* – advanced search</p>
+</li><li>
+<p>index – boring, rare, aka list</p>
+</li><li>
+<p>parent_child*, left-4, right-8 on web, top-4, bottom-4 on mobile</p>
+</li><li>
+<p>map* – square element, done as a partial</p>
+</li><li>
+<p>calendar* – square element, done as a partial</p>
+</li><li>
+<p>menu* – used by menu pages, boring, usually better to morph to images; used
+by start as an element</p>
+</li><li>
+<p>center* – for one item</p>
+</li><li>
+<p>command* – for a class, i.e. talk command is about talks in general, talk
+center is about one specific talk</p>
+</li><li>
+<p>circles*</p>
+</li><li>
+<p>tag_cloud – used by tags, built with svg</p>
+</li><li>
+<p>svg** – pretty much free form, really better to use tag_cloud</p>
+</li><li>
+<p>text_box* – hi-focus frame</p>
+</li><li>
+<p>side-by-side** – image or other element plus commentary, cuts over to
+top-over-bottom</p>
+</li><li>
+<p>tabs – normally contains 4 or 5 views, e.g. map, calendar, list, tags (tag
+cloud)</p>
+</li></ol>
+
+<h3 id="label-People">People</h3>
+
+<h4 id="label-Home">Home</h4>
+
+<p>– put name as title, put button in to change name, fix sitemap check to
+track this</p>
+
+<pre>-- no form element, not needed here
+-- no SAVE element</pre>
+
+<p>– get bottom buttons to line up, use a control group</p>
+
+<pre>-- if we have bottom buttons
+-- since we don&#39;t have any fields, we don&#39;t need to include a save button!</pre>
+
+<p>– get titles on bottom to be “more human”, i.e. Save</p>
+
+<pre>-- and then shift to revert button, not save
+-- check out docs for submit_tag, these are the low level function</pre>
+
+<p>– add in box of talks</p>
+
+<pre>-- show summary &amp; time_in_words
+-- create current by person
+-- use talks/index as a starting point</pre>
+
+<p>– New <a href="Talk.html">Talk</a>, Search Talks, &amp; Messages are in
+bottom</p>
+
+<h4 id="label-Signup">Signup</h4>
+
+<p>name, email, description, picture, url</p>
+
+<pre>-- TBD: add in url
+-- TBD: add in profile picture (using file upload)</pre>
+
+<h4 id="label-Profile">Profile</h4>
+
+<p>what other people see</p>
+
+<p>– includes name, description, url, profile picture</p>
+
+<p>– includes a &#39;message&#39; button</p>
+
+<p>– TBD: rename &#39;show&#39; as &#39;profile&#39;?</p>
+
+<h4 id="label-Settings">Settings</h4>
+
+<p>– new account +</p>
+
+<p>– really an edit</p>
+
+<pre>-- needs checks against being seen even from &#39;get&#39;
+-- TBD: replace edit with settings</pre>
+
+<p>– user name at top</p>
+
+<p>– has fields: name, description, url, email, profile picture phone (?),</p>
+
+<p>– TBD: add url field</p>
+
+<p>– TBD: allow inactivation</p>
+
+<p>– TBD: includes services list, which see</p>
+
+<p>– TBD: includes permissions list</p>
+
+<pre>-- allow use of location
+  always, never, per talk, ask each time
+-- do in json, as part of settings fields (which create)</pre>
+
+<h4 id="label-Change+Password">Change Password</h4>
+
+<p>– rough cut up</p>
+
+<h4 id="label-Messages">Messages</h4>
+
+<p>– messages not seen except with respect to a specific person or talk</p>
+
+<h4 id="label-Index%2Fsearch%2Ffound+--+not+a+key+page%21">Index/search/found – not a key page!</h4>
+
+<p>– TBD: definitely old style at this point</p>
+
+<p>– TBD:  kill the gravatars, replace with profile images</p>
+
+<p>– TBD:  add limit, offset, &amp; saved search (somehow)</p>
+
+<p>– made up of search partial, index partial, new talk partial</p>
+
+<p>– invoked from talks/edit to find members, from sitemap for no doubt
+excellent reason</p>
+
+<p>– TBD:  add in first/prev/next/last buttons</p>
+
+<pre>-- use session[:search_people][:search_q], [:offset], [:total_found] to track
+-- disable or simply do not show prev if already at zero
+-- same philosophy as for talks/search</pre>
+
+<h4 id="label-TBD%3A+oauth">TBD: oauth</h4>
+
+<h4 id="label-TBD%3A+upgrades">TBD: upgrades</h4>
+
+<p>– probably a rev 2</p>
+
+<h3 id="label-Sessions">Sessions</h3>
+
+<p>– all of the forms here should be dialogs</p>
+
+<h4 id="label-Signin">Signin</h4>
+
+<p>– should allow both name &amp; email signin</p>
+
+<p>– includes reset password button</p>
+
+<p>– includes new account button</p>
+
+<h4 id="label-Signout">Signout</h4>
+
+<h4 id="label-TBD%3A+Reset+Password">TBD: Reset Password</h4>
+
+<p>needs to be a form so they can specify the name and/or the email to send
+the new password to – put the supporting fields in the session object? –
+see the examples before moving further on this</p>
+
+<h4 id="label-Signout+Button">Signout Button</h4>
+
+<p>very prominent, a security plus</p>
+
+<h3 id="label-Services">Services</h3>
+
+<p>– default is &#39;talkinvite&#39;</p>
+
+<p>– also, email, dm, twitter, facebook</p>
+
+<p>TBD: appear at the bottom of the settings form</p>
+
+<h4 id="label-Index+Partial">Index Partial</h4>
+
+<p>list of services for current person</p>
+
+<p>has new button</p>
+
+<h4 id="label-Edit+">Edit </h4>
+
+<p>has save &amp; delete buttons</p>
+
+<h4 id="label-New">New</h4>
+
+<p>mostly as a button leading to a form</p>
+
+<h4 id="label-TBD">TBD</h4>
+
+<p>inactive flag</p>
+
+<p>keep handles for the specific services &amp; ask:</p>
+
+<pre>-- accept incoming messages using this?
+-- search web using this?</pre>
+
+<h3 id="label-Talks+forms">Talks forms</h3>
+
+<h4 id="label-Search">Search</h4>
+
+<p>– build up from search, index, new button (only if logged in)</p>
+
+<pre>-- use partials, same as for people</pre>
+
+<p>– search will get buttons for specialized searches:</p>
+
+<pre>-- location
+-- time
+-- my
+-- friends
+  -- better with groups
+-- popular</pre>
+
+<p>– TBD:  add in first/prev/next/last buttons</p>
+
+<pre>-- use session[:search_people][:search_q], [:offset], [:total_found] to track
+-- disable or simply do not show prev if already at zero
+-- same philosophy as for people/search</pre>
+
+<h4 id="label-New">New</h4>
+
+<p>new stays separate</p>
+
+<pre>-- the five w&#39;s screen
+-- so the logo is WWWWW
+  -- what, who, where, when, &amp; why</pre>
+
+<p>has a &#39;post&#39; button</p>
+
+<h4 id="label-Control">Control</h4>
+
+<p>– similar to new, but richer set of controls</p>
+
+<p>– switches depending on whether you have talk/admin role</p>
+
+<p>– shows rsvp button, with assumption that creator is going</p>
+
+<p>– posts are: cancel (we&#39;re on again), change (location/time)</p>
+
+<pre>-- automatic messaging in these cases</pre>
+
+<p>edit has summary at top</p>
+
+<pre>-- plus a button to change</pre>
+
+<p>edit has description</p>
+
+<p>edit has location as a tag line with a button to show map</p>
+
+<p>edit has time as a tag line with a button to show calendar</p>
+
+<p>edit gets rsvp button: join/leave/maybe</p>
+
+<pre>-- if you aren&#39;t the originator
+-- choice depends on your state with respect to the group
+-- ultimately a &#39;private&#39; button</pre>
+
+<p>if just started, has a &#39;post&#39; button</p>
+
+<pre>-- till end time, has a &#39;cancel&#39; button&#39;
+-- till end time, has an announce button
+  -- uses posts
+-- once we are past the &#39;end&#39; date, no changes can be made to the talk itself
+  -- allow followon comments</pre>
+
+<h5 id="label-Address+button">Address button</h5>
+
+<pre>-- uses key words
+-- stores longitude, latitude internally</pre>
+
+<h5 id="label-Map+button"><a href="Map.html">Map</a> button</h5>
+
+<pre>-- a partial, opens up Map partial
+-- save map to server?</pre>
+
+<h5 id="label-RSVP+button">RSVP button</h5>
+
+<pre>-- depends on your current state</pre>
+
+<h5 id="label-Members+list">Members list</h5>
+
+<p>get current members list</p>
+
+<pre>-- see members/index</pre>
+
+<p>members list can drop down into 1) user profile 2) your own settings</p>
+
+<h5 id="label-Comment+button"><a href="Comment.html">Comment</a> button</h5>
+
+<pre>-- opens up within the form
+-- born for ajax</pre>
+
+<h5 id="label-Comments+list">Comments list</h5>
+
+<p>from comments button</p>
+
+<h5 id="label-Announcements+%28posts%29">Announcements (posts)</h5>
+
+<h5 id="label-Attachments">Attachments</h5>
+
+<h5 id="label-Tags">Tags</h5>
+
+<h5 id="label-Index+Partial">Index Partial</h5>
+
+<pre>-- in Home</pre>
+
+<h4 id="label-Stats">Stats</h4>
+
+<pre>-- # of members
+-- # of accesses</pre>
+
+<h4 id="label-Fields">Fields</h4>
+
+<p>private/invitation only/by group only</p>
+
+<h4 id="label-Ads">Ads</h4>
+
+<p>blended with ads</p>
+
+<h4 id="label-Show">Show</h4>
+
+<p>– construction view</p>
+
+<p>same as Edit, but talk is off limits for some reason</p>
+
+<pre>-- cancelled, not yours, out of date</pre>
+
+<p>– intermediate to control</p>
+
+<h4 id="label-Edit">Edit</h4>
+
+<p>– construction view</p>
+
+<p>– just the talk fields themselves, an intermediate step at this point</p>
+
+<p>– work done in control</p>
+
+<h3 id="label-Posts">Posts</h3>
+
+<p>– comments that change the state of the talk (usually)</p>
+
+<p>– partials only!</p>
+
+<h4 id="label-Data">Data</h4>
+
+<p>description, type</p>
+
+<h4 id="label-Side-effects">Side-effects</h4>
+
+<p>usually changes state of parent talk</p>
+
+<h4 id="label-Actions">Actions</h4>
+<ol><li>
+<p>announce</p>
+</li><li>
+<p>change – as time, location</p>
+</li><li>
+<p>cancel</p>
+</li><li>
+<p>mark done (generally automatic)</p>
+</li></ol>
+
+<h3 id="label-Members">Members</h3>
+
+<p>– partials only</p>
+
+<p>– details are given in a link to the members profile page</p>
+
+<h4 id="label-Index">Index</h4>
+
+<p>list of associated comments, summary of talk at top</p>
+
+<h4 id="label-Show">Show</h4>
+
+<p>– maps to users profile</p>
+
+<h4 id="label-Edit">Edit</h4>
+
+<p>– maps to users setting (only for current person)</p>
+
+<h4 id="label-New">New</h4>
+
+<p>for the current talk only</p>
+
+<p>– implicit construction, not a form</p>
+
+<h4 id="label-RSVP+Button">RSVP Button</h4>
+
+<h4 id="label-Data">Data</h4>
+
+<p>– comment on why – rsvp status – later, originator/owner status</p>
+
+<h3 id="label-Comments">Comments</h3>
+
+<p>– are really a kind of post that doesn&#39;t change the talks state</p>
+
+<p>– has a from person, talk being referenced</p>
+
+<p>– like posts, but don&#39;t change state of talk</p>
+
+<p>– messages are different</p>
+
+<pre>-- have a target person, not talk
+-- may not even reference a talk</pre>
+
+<p>– partials only</p>
+
+<h4 id="label-Index">Index</h4>
+
+<p>list of associated comments, summary of talk at top</p>
+
+<h4 id="label-Show">Show</h4>
+
+<h4 id="label-Edit+">Edit </h4>
+
+<p>only if it is yours</p>
+
+<h4 id="label-New">New</h4>
+
+<h3 id="label-Maps">Maps</h3>
+
+<p>– partials only</p>
+
+<p>– uses leaflet, per example</p>
+
+<p>– uses open street map and/or google maps and/or yahoo maps</p>
+
+<h4 id="label-Edit">Edit</h4>
+
+<p>only layout, and a partial at that</p>
+
+<p>takes a search by address – works out latitude &amp; longitude</p>
+
+<p>has a scale control</p>
+
+<p>has a zoom control</p>
+
+<p>has a show X control</p>
+
+<pre>-- other members
+-- tweets (see trending)</pre>
+
+<h4 id="label-Data">Data</h4>
+
+<p>– one per talk</p>
+
+<p>– may get polymorphic when venues added,</p>
+
+<pre>-- in this case, many per venue</pre>
+
+<p>– saves pointer to talk</p>
+
+<pre>-- gets address, location from talk
+-- later may have on its own
+-- has scale, zoom setting, show X setting from previous time</pre>
+
+<h4 id="label-TBD">TBD</h4>
+
+<p>alternate universes</p>
+
+<h3 id="label-Messages">Messages</h3>
+
+<p>– TBD: attachments</p>
+
+<p>– TBD: delayed sending, cancel if not received</p>
+
+<p>– TBD: delete on receipt?</p>
+
+<h4 id="label-Index">Index</h4>
+
+<p>ones you&#39;ve sent or received – thats it – usually by talk</p>
+
+<h4 id="label-New">New</h4>
+
+<p>there has to be a target person to send a message</p>
+
+<h4 id="label-TBD%3A+Search+people">TBD: Search people</h4>
+
+<p>cuts over to an embedded search people form</p>
+
+<pre>-- TBD:  how
+-- for a talk, because you clicked on one
+-- with groups, if we build those
+-- with mobile&#39;s contact tools
+-- google+
+-- facebook
+-- twitter</pre>
+
+<h4 id="label-Implementation">Implementation</h4>
+
+<p>TBD: via database, when messages put in, you get a push</p>
+
+<p>TBD: via email</p>
+
+<p>TBD: via text</p>
+
+<p>TBD: other dm services available on the phone</p>
+
+<p>TBD: twitter type stuff</p>
+
+<pre>-- contact twitter about their rules?
+-- similar issues for the others</pre>
+
+<h4 id="label-Ads">Ads</h4>
+
+<p>blends with ads</p>
+
+<h3 id="label-Credits">Credits</h3>
+
+<p>– TBD: url field</p>
+
+<h4 id="label-Index">Index</h4>
+
+<p>list of associated credits, with a search box at the top</p>
+
+<p>has new button</p>
+
+<h4 id="label-Show">Show</h4>
+
+<h4 id="label-Edit+">Edit </h4>
+
+<p>only if you are an admin</p>
+
+<p>has save &amp; delete buttons</p>
+
+<h4 id="label-New">New</h4>
+
+<p>only if you are an admin</p>
+
+<h3 id="label-FAQs">FAQs</h3>
+
+<p>TBD:  url field</p>
+
+<p>TBD:  attachments?</p>
+
+<h4 id="label-Index">Index</h4>
+
+<p>list of associated helps, with a search box at the top</p>
+
+<p>has new button</p>
+
+<h4 id="label-Show">Show</h4>
+
+<h4 id="label-Edit+">Edit </h4>
+
+<p>only if you are an admin</p>
+
+<p>has save &amp; delete buttons</p>
+
+<h4 id="label-New">New</h4>
+
+<p>only if you are an admin</p>
+
+<h3 id="label-Helps">Helps</h3>
+
+<p>– TBD: url field</p>
+
+<p>– TBD: hide name field</p>
+
+<p>– TBD: add in summary field, includes page&#39;s title</p>
+
+<p>– TBD: create help for all pages!</p>
+
+<p>– TBD: clone button</p>
+
+<p>– TBD: attachments?</p>
+
+<p>– TBD: help type, page, partial, howto, other</p>
+
+<h4 id="label-Index">Index</h4>
+
+<p>list of associated helps, with a search box at the top</p>
+
+<p>has new button, if we are an admin</p>
+
+<p>– TBD:  subsets of help</p>
+
+<h4 id="label-Show">Show</h4>
+
+<p>TBD: should not show the name explicitly</p>
+
+<h4 id="label-Edit+">Edit </h4>
+
+<p>only if you are an admin</p>
+
+<p>wring out all space &amp; other characters from the names: make them purely
+alphanumeric (including &#39;_&#39;)</p>
+
+<pre>-- do this &#39;on blur&#39;</pre>
+
+<p>have save &amp; delete buttons</p>
+
+<h4 id="label-New">New</h4>
+
+<p>only if you are an admin</p>
+
+<h3 id="label-Static+Pages+">Static Pages </h3>
+
+<h4 id="label-About+">About </h4>
+
+<p>– explains point, includes contact, static, now connected</p>
+
+<h4 id="label-Contact+">Contact </h4>
+
+<p>– contact, now connected</p>
+
+<p>– TBD: form</p>
+
+<p>– TBD: bug report</p>
+
+<p>– TBD: feature request</p>
+
+<p>– TBD: question/support request</p>
+
+<h4 id="label-Privacy+">Privacy </h4>
+
+<p>– modest privacy for most, but real privacy &amp; private talks for paid
+subscribers, so an upsell point</p>
+
+<h4 id="label-Sitemap">Sitemap</h4>
+
+<p>starting point for users, for testing, &amp; for development – all pages
+are accessible from here, directly, or by one or two hops</p>
+
+<h3 id="label-Members">Members</h3>
+
+<p>– partials only</p>
+
+<p>– details are given in a link to the members profile page</p>
+
+<h4 id="label-Index">Index</h4>
+
+<p>list of associated comments, summary of talk at top</p>
+
+<h4 id="label-Show">Show</h4>
+
+<p>– maps to users profile</p>
+
+<h4 id="label-Edit">Edit</h4>
+
+<p>– maps to users setting (only for current person)</p>
+
+<h4 id="label-New">New</h4>
+
+<p>for the current talk only</p>
+
+<p>– implicit construction, not a form</p>
+
+<h4 id="label-RSVP+Button">RSVP Button</h4>
+
+<h4 id="label-Data">Data</h4>
+
+<p>– comment on why – rsvp status – later, originator/owner status</p>
+
+<h3 id="label-Maps">Maps</h3>
+
+<p>– partials only</p>
+
+<p>– uses leaflet, per example</p>
+
+<p>– uses open street map and/or google maps and/or yahoo maps</p>
+
+<h4 id="label-Edit">Edit</h4>
+
+<p>only layout, and a partial at that</p>
+
+<p>takes a search by address – works out latitude &amp; longitude</p>
+
+<p>has a scale control</p>
+
+<p>has a zoom control</p>
+
+<p>has a show X control</p>
+
+<pre>-- other members
+-- tweets (see trending)</pre>
+
+<h4 id="label-Data">Data</h4>
+
+<p>– one per talk</p>
+
+<p>– may get polymorphic when venues added,</p>
+
+<pre>-- in this case, many per venue</pre>
+
+<p>– saves pointer to talk</p>
+
+<pre>-- gets address, location from talk
+-- later may have on its own
+-- has scale, zoom setting, show X setting from previous time</pre>
+
+<h4 id="label-TBD">TBD</h4>
+
+<p>alternate universes</p>
+
+<h3 id="label-Attachments">Attachments</h3>
+
+<p>– partials only</p>
+
+<p>– polymorphic, very very polymorphic, per talks, venues, lots of other
+places</p>
+
+<p>– for development, allow <strong>only</strong> talks however</p>
+
+<h4 id="label-Fields">Fields</h4>
+<ol><li>
+<p>person_id – of creator</p>
+</li><li>
+<p>attachable_type – table name, default talk</p>
+</li><li>
+<p>attachable_id, default talk_id</p>
+</li><li>
+<p>filename, original</p>
+</li><li>
+<p>filename, local</p>
+</li><li>
+<p>type of file?</p>
+</li><li>
+<p>size?</p>
+</li><li>
+<p>comments?</p>
+</li></ol>
+
+<p>– no grouping, no immediate need</p>
+
+<h3 id="label-Tags">Tags</h3>
+
+<p>– partials only</p>
+
+<p>– really topics</p>
+
+<p>– for each talk, break summary up into non-nonce works as a preliminary set</p>
+
+<p>– keep set of tags for the person</p>
+
+<p>– talks only at this point, not polymorphic</p>
+
+<h4 id="label-Full">Full</h4>
+
+<p>trending</p>
+
+<p>search</p>
+
+<h4 id="label-Partials">Partials</h4>
+
+<p>tag list</p>
+
+<p>tag cloud (to pick)</p>
+
+<h4 id="label-Data">Data</h4>
+<ol><li>
+<p>person_id</p>
+</li><li>
+<p>tag</p>
+</li></ol>
+
+<p>– no description, no immediate need</p>
+
+<p>– no grouping, no immediate need</p>
+
+<h3 id="label-Friends">Friends</h3>
+
+<p>– partials only</p>
+
+<p>– mutual consent, like google</p>
+
+<p>– can withdraw from either side?</p>
+
+<p>– needed as stub for groups</p>
+
+<h3 id="label-Groups">Groups</h3>
+
+<p>– partials only</p>
+
+<p>– tags for your friends, basically</p>
+
+<p>– removed when friends removed</p>
+
+<p>– gets description so is a set</p>
+
+<h3 id="label-Relationships">Relationships</h3>
+
+<p>– partials only</p>
+
+<p>– thru table for groups &amp; friends</p>
+
+<p>– removed when friends removed</p>
+
+<p>– no data of its own</p>
+
+<h3 id="label-Venues">Venues</h3>
+
+<p>– partials only</p>
+
+<p>– basic name, address, with a number of maps pointing up</p>
+
+<h4 id="label-Edit+partial">Edit partial</h4>
+
+<h4 id="label-Map+partial"><a href="Map.html">Map</a> partial</h4>
+
+<p>– see Maps</p>
+
+<h4 id="label-TBD">TBD</h4>
+
+<p>alternate universes</p>
+
+<h3 id="label-Calendars">Calendars</h3>
+
+<p>– partials only</p>
+
+<p>– uses jquery library</p>
+
+<h4 id="label-Edit">Edit</h4>
+
+<p>only layout, and a partial at that</p>
+
+<p>takes a date &amp; time</p>
+
+<p>has a scale control</p>
+
+<p>has a show X control</p>
+
+<pre>-- other members
+-- tweets (see trending)</pre>
+
+<h4 id="label-Data">Data</h4>
+
+<p>– one per talk</p>
+
+<p>– saves pointer to talk</p>
+
+<pre>-- gets date &amp; time from talk
+-- has scale, zoom setting, show X setting from previous time</pre>
+
+<h4 id="label-TBD">TBD</h4>
+
+<p>alternate universes</p>
+
+<h3 id="label-Ads">Ads</h3>
+
+<p>– partials only</p>
+
+<h4 id="label-Fields+%28guesswork%29">Fields (guesswork)</h4>
+<ol><li>
+<p>strategy</p>
+</li><li>
+<p>stats</p>
+</li><li>
+<p>display</p>
+</li><li>
+<p>click thru</p>
+</li></ol>
+
+<h4 id="label-Blends">Blends</h4>
+<ol><li>
+<p>talks</p>
+</li><li>
+<p>messages</p>
+</li></ol>
+
+<h3 id="label-RSpec+tests">RSpec tests</h3>
+
+<p>TBD:  clear the pending</p>
+
+<p>TBD:  figure out how to use the helpers or get rid of</p>
+
+<h3 id="label-Feature+Tests">Feature Tests</h3>
+
+<p>The features directory is supposed to work better with capybara tests</p>
+<ul><li>
+<p>seems to make no difference however.</p>
+</li></ul>
+
+<p>Stories_pages_spec.rb is a kind of road map of the applications, as it is
+expected to be used.</p>
+
+<p>The per model files here are for testing at a semantic level; in terms of
+higher level interactions. – We aren&#39;t sure how well this works in
+practice; we&#39;ll see.</p>
+
+<p>per assertions in <a
+href="https://github.com/rspec/rspec-rails/blob/master/Capybara.md">github.com/rspec/rspec-rails/blob/master/Capybara.md</a>,
+have moved this file to spec/features – does this make any difference? 
+visit &amp; page were already working &amp; are for most other request
+files</p>
+
+<p>– &#39;it&#39; has to be a leaf node?</p>
+
+<p>– if we convert a leaf describe to an &#39;it&#39;, it is suddenly a
+(passing) test</p>
+
+<p>it appears that &#39;save_and_open_page&#39; has to be inside an
+&#39;it&#39; – because launchy is being called via capybara, not directly?
+– launchy definitely uses capybara, see the capybara embedded in the tmp
+url! – putting in a &#39;require launchy&#39; doesn&#39;t help</p>
+
+<p>Tools:</p>
+<ol><li>
+<p>let(:person) { FactoryGirl.create(:person) } # try admin as well</p>
+</li><li>
+<p>sign_in person</p>
+</li><li>
+<p>visit page, i.e. visit start_path</p>
+</li><li>
+<p>should have_title(title)</p>
+</li><li>
+<p>should have_selector(&#39;h1&#39;, text:stuff)</p>
+</li></ol>
+
+<h3 id="label-Model+Tests">Model Tests</h3>
+
+<p>test the internal functions for the models here</p>
+
+<p>good intermediate point, while building up functionality on the forms, to
+make sure we got everything underneath working</p>
+
+<h2 id="label-Public+Pages">Public Pages</h2>
+
+<p>Fix up 404 &amp; related pages (422? 500) to match talkinvite site
+generally</p>
+
+<h3 id="label-Admin">Admin</h3>
+
+<p>start point is meta_admin, a menu style page</p>
+<ol><li>
+<p>basically direct, low level access to tables</p>
+</li><li>
+<p>good for development of intermediary pages as well</p>
+</li><li>
+<p>all start points are of tables via index</p>
+</li></ol>
+
+<h4 id="label-Behind+the+Talk">Behind the <a href="Talk.html">Talk</a></h4>
+
+<p>– static pages</p>
+
+<p>about</p>
+
+<p>contact</p>
+
+<p>privacy</p>
+
+<p>– tables</p>
+
+<p>faqs</p>
+
+<p>helps</p>
+
+<p>credits</p>
+
+<h4 id="label-Admin+Forms">Admin Forms</h4>
+
+<p>basically would like admin access to various tables;  standard resource
+list (with admin privileges) should be fine.</p>
+<ol><li>
+<p>people</p>
+</li><li>
+<p>talks</p>
+</li><li>
+<p>tags</p>
+</li><li>
+<p>members</p>
+</li><li>
+<p>credits</p>
+</li><li>
+<p>helps</p>
+</li><li>
+<p>faqs</p>
+</li></ol>
+
+<p>don&#39;t really need admin access to maps, sessions, schema_migrations
+&amp; any other support tables that happen to will themselves into
+existence</p>
+
+<h2 id="label-Monetization">Monetization</h2>
+<ol><li>
+<p>proof of skill</p>
+</li><li>
+<p>starting point for client apps</p>
+</li><li>
+<p>ads – blended into talks &amp; posts</p>
+</li><li>
+<p>subscribers – privacy &amp; no ads</p>
+</li></ol>
+
+<h2 id="label-Specifications">Specifications</h2>
+
+<h3 id="label-Feature+Tests">Feature Tests</h3>
+
+<p>The features directory is supposed to work better with capybara tests</p>
+<ul><li>
+<p>seems to make no difference however.</p>
+</li></ul>
+
+<p>Stories_pages_spec.rb is a kind of road map of the applications, as it is
+expected to be used.</p>
+
+<p>The per model files here are for testing at a semantic level; in terms of
+higher level interactions. – We aren&#39;t sure how well this works in
+practice; we&#39;ll see.</p>
+
+<p>per assertions in <a
+href="https://github.com/rspec/rspec-rails/blob/master/Capybara.md">github.com/rspec/rspec-rails/blob/master/Capybara.md</a>,
+have moved this file to spec/features – does this make any difference? 
+visit &amp; page were already working &amp; are for most other request
+files</p>
+
+<p>– &#39;it&#39; has to be a leaf node?</p>
+
+<p>– if we convert a leaf describe to an &#39;it&#39;, it is suddenly a
+(passing) test</p>
+
+<p>it appears that &#39;save_and_open_page&#39; has to be inside an
+&#39;it&#39; – because launchy is being called via capybara, not directly?
+– launchy definitely uses capybara, see the capybara embedded in the tmp
+url! – putting in a &#39;require launchy&#39; doesn&#39;t help</p>
+
+<p>Tools:</p>
+<ol><li>
+<p>let(:person) { FactoryGirl.create(:person) } # try admin as well</p>
+</li><li>
+<p>sign_in person</p>
+</li><li>
+<p>visit page, i.e. visit start_path</p>
+</li><li>
+<p>should have_title(title)</p>
+</li><li>
+<p>should have_selector(&#39;h1&#39;, text:stuff)</p>
+</li></ol>
+
+<h3 id="label-Requests">Requests</h3>
+
+<p>Request specs are one per model.   Specify tests of each models stories.</p>
+
+<p>Data specs are basically field level tests of data types; meant to help DRY
+tests on specific fields.</p>
+
+<h2 id="label-Development">Development</h2>
+
+<h3 id="label-Overall+Strategy">Overall Strategy</h3>
+<ul><li>
+<p>Starting with tutorial &amp; branching out</p>
+</li><li>
+<p>Build up horizontally rather than vertically</p>
+</li><li>
+<p>Build up database/models; routes/controllers; views/css; js – to extent
+possible</p>
+</li><li>
+<p>Avoid premature instantiation, don&#39;t put stuff in till about to use
+(&amp; test) – put it in comments instead</p>
+</li><li>
+<p>Use bootstrap &amp; liquid design, top to bottom, left to right – but start
+with mobile</p>
+</li><li>
+<p>Use images to mark, keep actual site design really dull, keep focus on
+content</p>
+</li><li>
+<p>Make maximum use of existing examples</p>
+</li><li>
+<p>Make best use of having an overall plan, keep loose but focused &amp;
+energetic</p>
+</li></ul>
+
+<h3 id="label-Stages">Stages</h3>
+<ol><li>
+<p>tables – have 16, with models &amp; controls &amp; basic set of views</p>
+</li><li>
+<p>routes – have 185, all have tests</p>
+</li><li>
+<p>views &amp; partials</p>
+</li><li>
+<p>external testing, i.e. watir</p>
+</li></ol>
+
+<h3 id="label-Libraries">Libraries</h3>
+<ol><li>
+<p>Leaflet</p>
+</li><li>
+<p>Bootstrap</p>
+</li><li>
+<p>JQuery calendar tool of some kind</p>
+</li></ol>
+
+<h3 id="label-Quality+checks">Quality checks</h3>
+<ol><li>
+<p>Check for clarity of code, using codeclimate for this</p>
+</li><li>
+<p>Check for coverage by tests, area by area</p>
+</li><li>
+<p>Check against best practices</p>
+</li><li>
+<p>Fix <a href="app/controllers/README_rdoc.html">README</a> to conform to
+standards in Beautiful Ruby</p>
+</li><li>
+<p>Check against references</p>
+</li><li>
+<p>Use database checks</p>
+</li></ol>
+
+<h3 id="label-Buzzword+compliance">Buzzword compliance</h3>
+<ol><li>
+<p>DRY – do not repeat yourself</p>
+</li><li>
+<p>BDD/TDD  – behavior driven development/test driven development</p>
+</li><li>
+<p>YAGNI – you ain&#39;t gonna need it</p>
+</li><li>
+<p>SOC – separation of concerns</p>
+</li></ol>
+
+<h3 id="label-Cleanup">Cleanup</h3>
+<ol><li>
+<p>remove talkvite3, talk_vite, talkvite, &amp; role talkvite – after running
+checks</p>
+</li></ol>
+
+<h3 id="label-Bibliography">Bibliography</h3>
+<ul><li>
+<p>Agile Web Development with Rails 3.2</p>
+</li><li>
+<p>Beautiful Ruby</p>
+</li><li>
+<p>Eloquent Ruby</p>
+</li><li>
+<p>Practical <a href="Object.html">Object</a> Oriented Ruby</p>
+</li><li>
+<p>Pro ActiveRecord</p>
+</li><li>
+<p>Programming Ruby</p>
+</li><li>
+<p>Rails 4 in Action</p>
+</li><li>
+<p>Rails Anti-Patterns</p>
+</li><li>
+<p>Rails Recipes</p>
+</li><li>
+<p>Rspec Book</p>
+</li><li>
+<p>Ruby Best Practices</p>
+</li><li>
+<p>Ruby Guides – <a
+href="http://guides.rubyonrails.org">guides.rubyonrails.org</a></p>
+</li><li>
+<p>Ruby Koans</p>
+</li><li>
+<p>Rails Tutorial – <a
+href="http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0">ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0</a></p>
+</li><li>
+<p>Ruby on Rails 4</p>
+</li><li>
+<p>The Rails 3 Way</p>
+</li><li>
+<p>The Ruby Way</p>
+</li></ul>
+
+<h3 id="label-History">History</h3>
+
+<p>The system is a mashup of the Ruby on Rails tutorial by Michael Hardl  (<a
+href="http://ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0">ruby.railstutorial.org/ruby-on-rails-tutorial-book?version=4.0</a>),
+Twitter (which was originally written in Ruby on Rails), Leaflet (Google
+maps, Open Street <a href="Map.html">Map</a>), jQuery Calendar stuff, SVG
+for advanced layouts, some PostgreSQL specific stuff, and a bit of glue.</p>
+
+<h3 id="label-Requisites+%26+Deployment+Instructions">Requisites &amp; Deployment Instructions</h3>
+<ul><li>
+<p>Ruby version: 2.0.0</p>
+</li><li>
+<p>Rails version: 4.0.0</p>
+</li><li>
+<p>System dependencies: Ruby, Rails, Postgres, divers libraries</p>
+</li><li>
+<p>Configuration</p>
+</li><li>
+<p>Database:  Postgres</p>
+</li><li>
+<p>Database initialization:</p>
+<ol><li>
+<p>Create role talkinvite; databases talkinvite_development &amp;
+talkinvite_test</p>
+</li><li>
+<p>Use structure.sql to rebuild, since schema.rb does not know about the
+foreign keys.</p>
+</li><li>
+<p>To reset, use: rake db:reset</p>
+</li></ol>
+</li><li>
+<p>To run the test suite <code>rspec spec</code></p>
+</li><li>
+<p>Services* (job queues, cache servers, search engines, etc.)</p>
+</li><li>
+<p>Deployment instructions:</p>
+<ol><li>
+<p>gic – git commit</p>
+</li><li>
+<p>xt-all – run migrations, rebuild bundles, then test</p>
+</li><li>
+<p>yt – test actual web pages</p>
+</li><li>
+<p>gm branch – merge branch back to master</p>
+</li><li>
+<p>zt – upload to heroku</p>
+</li></ol>
+</li></ul>
+
+<p>Note that a fair amount of setup is done in ~/.talkinvite, setting CBPATH,
+PATH, PostgreSQL stuff, and so on.</p>
+
+<h3 id="label-Tools">Tools</h3>
+
+<p>attachments</p>
+
+<p>searches</p>
+<ol><li>
+<p>web searches</p>
+</li><li>
+<p>site searches</p>
+</li><li>
+<p>personal searches</p>
+</li><li>
+<p>twitter &amp; other social media searches</p>
+</li><li>
+<p>canned searches</p>
+</li><li>
+<p>&#39;my&#39; talks, people, locations, and so on</p>
+</li><li>
+<p>by 1st, 2nd, 3rd, …</p>
+</li></ol>
+
+<p>privacy tools – permissions, notifications, … – for subscribers only –
+included in upgrades</p>
+
+<p>add to ApplicationController:</p>
+<ul><li>
+<p>search</p>
+</li><li>
+<p>control – with reference to a specific record</p>
+</li><li>
+<p>command – may have a specific record, but need not</p>
+</li></ul>
+
+<h3 id="label-Dev+Notes">Dev Notes</h3>
+<ol><li>
+<p>admins are always subscribers!</p>
+</li><li>
+<p>talkinvite is the default, anonymous identity</p>
+</li><li>
+<p>other identities are help, contact</p>
+</li><li>
+<p>when changing data types, make sure all the test code knows about the new
+types</p>
+</li><li>
+<p>when adding/changing/deleting fields:  check all the spec code:  requests,
+models, controllers, views, &amp; factories</p>
+</li><li>
+<p>stories spec corresponds to stories rdoc, perhaps other rdocs should have
+other specs (TDD)</p>
+</li><li>
+<p>codeclimate is a bit fussy on duplication – see notes in specific files,
+with that said, a 4.0 grade does give the warm fuzzies.</p>
+</li><li>
+<p>you can get at the functions defined in app/helpers directly from the views
+(i.e. current_layout) but have to specific a &#39;view_context&#39; object
+from inside a controller (i.e. view_context.current_layout).  Note the
+current_layout is the top level layout, i.e. credits not index)</p>
+</li></ol>
+
+<h3 id="label-Troubleshooting">Troubleshooting</h3>
+<ul><li>
+<p>sign_in not working in people_controllers_spec.rb, see notes there</p>
+</li><li>
+<p>deal with by getting better understanding of control flow (esp
+authentication)</p>
+</li></ul>
+
+<p>then look at again</p>
+<ul><li>
+<p>unable to move home from views/static_pages to views/people, not clear why</p>
+</li><li>
+<p>start with default bootstrap buttons, but make sure every page has its
+table class (i.e. people, talks) and its personal id</p>
+</li></ul>
+
+<h3 id="label-Cleanup+at+end">Cleanup at end</h3>
+
+<p>verify all pages linked &amp; documented</p>
+
+<p>to verify documentation coverage (<a
+href="https://github.com/rdoc/rdoc">github.com/rdoc/rdoc</a>): rdoc -C lib</p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

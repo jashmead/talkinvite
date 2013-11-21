@@ -1,0 +1,21 @@
+=== Attachments
+
+-- partials only
+
+-- polymorphic, very very polymorphic, per talks, venues, lots of other places
+
+-- for development, allow *only* talks however
+
+==== Fields
+
+1. person_id -- of creator
+1. attachable_type -- table name, default talk
+1. attachable_id, default talk_id
+1. filename, original
+1. filename, local
+1. type of file?
+1. size?
+1. comments?
+
+-- no grouping, no immediate need
+

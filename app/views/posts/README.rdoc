@@ -2,22 +2,20 @@
 
 -- comments that change the state of the talk (usually)
 
-==== Index Partial
+-- partials only!
 
--- not usually in evidence directly
+==== Data
 
-==== New
+description, type
 
--- generally implicit
+==== Side-effects
 
-==== Broadcast
+usually changes state of parent talk
 
--- button on form?
-  -- state of form?
+==== Actions
 
--- turned into a message?
-  -- per member
-  -- best
+1. announce
+1. change -- as time, location
+1. cancel
+1. mark done (generally automatic)
 
--- tagged as new information on the form?
-  -- new to whom?

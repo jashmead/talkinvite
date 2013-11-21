@@ -1,5 +1,11 @@
 === Maps
 
+-- partials only
+
+-- uses leaflet, per example
+
+-- uses open street map and/or google maps and/or yahoo maps
+
 ==== Edit
 
 only layout, and a partial at that
@@ -15,10 +21,18 @@ has a show X control
   -- other members
   -- tweets (see trending)
 
-==== TBD
+==== Data
 
-previous entries:
-  -- may save to local storage
-  -- and pop back with previous entries
+-- one per talk
+
+-- may get polymorphic when venues added, 
+  -- in this case, many per venue
+
+-- saves pointer to talk
+  -- gets address, location from talk
+  -- later may have on its own
+  -- has scale, zoom setting, show X setting from previous time
+
+==== TBD
 
 alternate universes

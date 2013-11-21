@@ -1,0 +1,15 @@
+=== Ads
+
+-- partials only
+
+==== Fields (guesswork)
+
+1. strategy
+1. stats
+1. display
+1. click thru 
+
+==== Blends
+
+1. talks
+1. messages

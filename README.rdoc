@@ -46,6 +46,26 @@ Master & demo skill set, get an app up.
 
 :include:app/views/static_pages/README.rdoc
 
+:include:app/views/members/README.rdoc
+
+:include:app/views/maps/README.rdoc
+
+:include:app/views/attachments/README.rdoc
+
+:include:app/views/tags/README.rdoc
+
+:include:app/views/friends/README.rdoc
+
+:include:app/views/groups/README.rdoc
+
+:include:app/views/relationships/README.rdoc
+
+:include:app/views/venues/README.rdoc
+
+:include:app/views/calendars/README.rdoc
+
+:include:app/views/ads/README.rdoc
+
 :include:spec/README.rdoc
 
 :include:spec/features/README.rdoc

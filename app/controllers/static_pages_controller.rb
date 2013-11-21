@@ -22,8 +22,10 @@ class StaticPagesController < ApplicationController
   def privacy
   end
 
-  # Sitemap is basic entry point for development & testing; all pages are accessible from here or in one or two hops
-  # may make a reasonable start page as well
+  # Sitemap is basic entry point for development & testing; 
+  #   -- pages here are the 'key' pages
+  #   -- all pages are accessible from here or in one or two hops
+  #   -- may make a reasonable start page as well
   def sitemap
     store_location
     
@@ -32,6 +34,7 @@ class StaticPagesController < ApplicationController
     # note: icons could be included, but do not seem to add much
     # note: tried showing unavailable pages as 'sans link', results not particularly attractive
     # fourth field is a flag saying when to show; if not present, show
+    # TBD:  Friends, Groups, Venues, Calendars
     @routes = [
       [ home_path, 'Home', 'people', signed_in? ],
       [ settings_path, 'Settings', 'people', signed_in? ],

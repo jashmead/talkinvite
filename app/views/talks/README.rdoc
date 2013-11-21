@@ -1,9 +1,6 @@
 === Talks forms
 
-==== Index Partial
-  -- in Home
-
-==== Index/search/found
+==== Search
 
 -- build up from search, index, new button (only if logged in)
   -- use partials, same as for people
@@ -30,16 +27,16 @@ new stays separate
 
 has a 'post' button
 
-==== Show
-
-same as Edit, but talk is off limits for some reason
-  -- cancelled, not yours, out of date
-
-==== Edit
-
--- just the talk fields themselves, an intermediate step at this point
-
 ==== Control
+
+-- similar to new, but richer set of controls
+
+-- switches depending on whether you have talk/admin role
+
+-- shows rsvp button, with assumption that creator is going
+
+-- posts are: cancel (we're on again), change (location/time)
+  -- automatic messaging in these cases
 
 edit has summary at top
   -- plus a button to change
@@ -62,38 +59,67 @@ if just started, has a 'post' button
   -- once we are past the 'end' date, no changes can be made to the talk itself
     -- allow followon comments
 
-==== Address button
+===== Address button
   -- uses key words
   -- stores longitude, latitude internally
 
-==== Map button
+===== Map button
   -- a partial, opens up Map partial
   -- save map to server?
 
-==== RSVP button
+===== RSVP button
   -- depends on your current state
 
-==== Members list
+===== Members list
 
 get current members list
   -- see members/index
 
 members list can drop down into 1) user profile 2) your own settings
 
-==== Comment button
+===== Comment button
   -- opens up within the form
   -- born for ajax
 
-==== Comments list
+===== Comments list
 
 from comments button
 
-==== Announcements (posts)
+===== Announcements (posts)
 
-==== TBD: Attachments
+===== Attachments
 
-==== TBD: Related forms
+===== Tags
 
-stats
+===== Index Partial
+  -- in Home
+
+==== Stats
   -- # of members
   -- # of accesses
+
+==== Fields
+
+private/invitation only/by group only
+
+==== Ads
+
+blended with ads
+
+==== Show
+
+-- construction view
+
+same as Edit, but talk is off limits for some reason
+  -- cancelled, not yours, out of date
+
+-- intermediate to control
+
+==== Edit
+
+-- construction view
+
+-- just the talk fields themselves, an intermediate step at this point
+
+-- work done in control
+

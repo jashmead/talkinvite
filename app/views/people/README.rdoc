@@ -21,7 +21,7 @@
 
 -- New Talk, Search Talks, & Messages are in bottom
 
-==== New account
+==== Signup
 
 name, email, description, picture, url
   -- TBD: add in url
@@ -60,7 +60,15 @@ what other people see
     always, never, per talk, ask each time
   -- do in json, as part of settings fields (which create)
 
-==== Index/search/found
+==== Change Password
+
+-- rough cut up
+
+==== Messages
+
+-- messages not seen except with respect to a specific person or talk
+
+==== Index/search/found -- not a key page!
 
 -- TBD: definitely old style at this point
 
@@ -77,10 +85,6 @@ what other people see
   -- disable or simply do not show prev if already at zero
   -- same philosophy as for talks/search
   
-==== TBD: change_password
-
--- rough cut up
-
 ==== TBD: oauth
 
 ==== TBD: upgrades

@@ -12,6 +12,8 @@
 
 -- TBD: attachments?
 
+-- TBD: help type, page, partial, howto, other
+
 ==== Index
 
 list of associated helps, with a search box at the top

@@ -40,3 +40,7 @@ TBD: other dm services available on the phone
 TBD: twitter type stuff
   -- contact twitter about their rules?
   -- similar issues for the others
+
+==== Ads
+
+blends with ads

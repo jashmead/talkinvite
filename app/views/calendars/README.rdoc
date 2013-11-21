@@ -1,0 +1,29 @@
+=== Calendars
+
+-- partials only
+
+-- uses jquery library
+
+==== Edit
+
+only layout, and a partial at that
+
+takes a date & time
+
+has a scale control
+
+has a show X control
+  -- other members
+  -- tweets (see trending)
+
+==== Data
+
+-- one per talk
+
+-- saves pointer to talk
+  -- gets date & time from talk
+  -- has scale, zoom setting, show X setting from previous time
+
+==== TBD
+
+alternate universes

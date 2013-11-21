@@ -1,0 +1,16 @@
+=== Venues
+
+-- partials only
+
+-- basic name, address, with a number of maps pointing up
+
+==== Edit partial
+
+==== Map partial
+
+-- see Maps
+
+==== TBD
+
+alternate universes
+

@@ -133,3 +133,9 @@ then look at again
 * unable to move home from views/static_pages to views/people, not clear why
 * start with default bootstrap buttons, but make sure every page has its table class (i.e. people, talks) and its personal id
 
+=== Cleanup at end
+
+verify all pages linked & documented
+
+to verify documentation coverage (https://github.com/rdoc/rdoc):
+rdoc -C lib 

@@ -1,0 +1,9 @@
+=== Groups
+
+-- partials only
+
+-- tags for your friends, basically
+
+-- removed when friends removed
+
+-- gets description so is a set
