@@ -10,7 +10,12 @@
 # TBD: how are we going to use name, description fields?
 class Map < ActiveRecord::Base
 
-  belongs_to :talk, inverse_of: 'maps'
+  belongs_to :person, inverse_of: :maps
+  belongs_to :talk, inverse_of: :maps
+
+  validates :name, presence: true
+
+  validates :talk_id, presence: true
 
   validates :geometry, presence: true
   validates :settings, presence: true

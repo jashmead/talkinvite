@@ -50,10 +50,12 @@ class MapsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_map
       @map = Map.find(params[:id])
+      @talk = @map.talk
+      @person = @map.person
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def map_params
-      params.require(:map).permit(:name, :description, :geometry, :settings, :history)
+      params.require(:map).permit(:person_id, :talk_id, :name, :description, :geometry, :settings, :history)
     end
 end

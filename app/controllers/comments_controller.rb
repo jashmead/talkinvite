@@ -55,6 +55,7 @@ class CommentsController < ApplicationController
     def set_comment
       @comment = Comment.find(params[:id])
       @talk = @comment.talk
+      @person = @comment.person
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

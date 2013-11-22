@@ -23,6 +23,8 @@
 # 
 Talkinvite::Application.routes.draw do
 
+  resources :calendars
+
   match '/my_messages', to: 'messages#my_messages', via: 'get'
 
   resources :messages do
@@ -31,7 +33,7 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  resources :posts, :members, :comments, :maps
+  resources :posts, :members, :comments, :maps, :calendars
 
   # talks:
 

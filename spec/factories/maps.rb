@@ -2,8 +2,12 @@
 
 FactoryGirl.define do
   factory :map do
+    person
+
+    talk
     name "MyMap"
-    description "MyLegend"
+    sequence(:description) { |n| "map description #{n}"}
+
     geometry "{}"
     settings "{}"
     history "{}"

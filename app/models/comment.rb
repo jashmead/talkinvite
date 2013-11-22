@@ -22,8 +22,6 @@ class Comment < ActiveRecord::Base
 
   validates :comment_text, presence: true
 
-  validates_uniqueness_of :person_id, :talk_id
-
   ## searches:  given person & talk, get all comments in reverse updated_at order
 
 end

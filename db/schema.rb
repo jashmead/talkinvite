@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122001348) do
+ActiveRecord::Schema.define(version: 20131122022650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calendars", force: true do |t|
+    t.integer  "talk_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "scale",       default: "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "person_id"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "person_id"
@@ -62,6 +72,7 @@ ActiveRecord::Schema.define(version: 20131122001348) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "talk_id"
+    t.integer  "person_id"
   end
 
   create_table "members", force: true do |t|

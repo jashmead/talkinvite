@@ -9,6 +9,7 @@
 -- points up at talks using a talk_id field
   -- may change later, good enough for now
 
+-- fields:  talk_id, name, description, geometry, settings, history
 ==== Edit
 
 only layout, and a partial at that

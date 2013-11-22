@@ -42,6 +42,9 @@ class Person < ActiveRecord::Base
 
   has_many :services, inverse_of: :person, dependent: :destroy
 
+  has_many :maps, inverse_of: :person, dependent: :destroy
+  has_many :calendars, inverse_of: :person, dependent: :destroy
+
   before_save do
     # TBD:  make the name lowercase & space-free? -- would rather not, tho would let us route to /people/anonymous/talks...
     self.email = email.downcase

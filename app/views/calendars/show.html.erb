@@ -1,0 +1,21 @@
+<% provide(:title, 'Calendar') %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @calendar.person_id %>
+</p>
+
+<p>
+  <strong>Talk:</strong>
+  <%= @calendar.talk_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @calendar.name %>
+</p>
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>

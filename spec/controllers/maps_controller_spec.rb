@@ -23,8 +23,9 @@ describe MapsController do
   # This should return the minimal set of attributes required to create a valid
   # Map. As you add validations to Map, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyName", "description" => "MyDescription", 
-    "geometry" => "{}", "settings" => "{}", "history" => "{}" } }
+  let(:person) { FactoryGirl.create(:person) }
+  let(:talk) { FactoryGirl.create(:talk) }
+  let(:valid_attributes) { { "talk_id" => talk.id, "person_id" => person.id, "name" => "MapName", "description" => "blitheration & nonsense" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -77,7 +78,7 @@ describe MapsController do
       end
 
       it "redirects to the created map" do
-        post :create, {:map => valid_attributes}, { :return_to => maps_path }
+        post :create, {:map => valid_attributes}, { return_to: maps_path }
         response.should redirect_to(maps_path)
       end
     end
@@ -86,14 +87,14 @@ describe MapsController do
       it "assigns a newly created but unsaved map as @map" do
         # Trigger the behavior that occurs when invalid params are submitted
         Map.any_instance.stub(:save).and_return(false)
-        post :create, {:map => { "name" => "invalid value" }}, valid_session
+        post :create, {:map => { "person_id" => "invalid value" }}, valid_session
         assigns(:map).should be_a_new(Map)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Map.any_instance.stub(:save).and_return(false)
-        post :create, {:map => { "name" => "invalid value" }}, valid_session
+        post :create, {:map => { "person_id" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -107,8 +108,8 @@ describe MapsController do
         # specifies that the Map created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Map.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => map.to_param, :map => { "name" => "MyString" }}, valid_session
+        Map.any_instance.should_receive(:update).with({ "person_id" => "1" })
+        put :update, {:id => map.to_param, :map => { "person_id" => "1" }}, valid_session
       end
 
       it "assigns the requested map as @map" do
@@ -129,7 +130,7 @@ describe MapsController do
         map = Map.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Map.any_instance.stub(:save).and_return(false)
-        put :update, {:id => map.to_param, :map => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => map.to_param, :map => { "person_id" => "invalid value" }}, valid_session
         assigns(:map).should eq(map)
       end
 
@@ -137,7 +138,7 @@ describe MapsController do
         map = Map.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Map.any_instance.stub(:save).and_return(false)
-        put :update, {:id => map.to_param, :map => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => map.to_param, :map => { "person_id" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end
@@ -159,3 +160,4 @@ describe MapsController do
   end
 
 end
+

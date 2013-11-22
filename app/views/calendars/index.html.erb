@@ -1,0 +1,16 @@
+<% provide(:title, 'Calendars') %>
+<% if @calendars %>
+	<ul data-role="listview">
+	    <% @calendars.each do |calendar| %>
+        <li>
+          <%= link_to calendar.description, edit_calendar_path(calendar) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>No calendar!</p>
+<% end %>
+<hr>
+<%= button_inline 'New calendar', new_calendar_path %>
+
+
