@@ -29,6 +29,41 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: calendars; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE calendars (
+    id integer NOT NULL,
+    talk_id integer,
+    name character varying(255),
+    description text,
+    scale character varying(255) DEFAULT 'day'::character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    person_id integer
+);
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE calendars_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE calendars_id_seq OWNED BY calendars.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -170,7 +205,8 @@ CREATE TABLE maps (
     history text DEFAULT '{}'::text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    talk_id integer
+    talk_id integer,
+    person_id integer
 );
 
 
@@ -422,6 +458,13 @@ ALTER SEQUENCE talks_id_seq OWNED BY talks.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY calendars ALTER COLUMN id SET DEFAULT nextval('calendars_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -493,6 +536,14 @@ ALTER TABLE ONLY services ALTER COLUMN id SET DEFAULT nextval('services_id_seq':
 --
 
 ALTER TABLE ONLY talks ALTER COLUMN id SET DEFAULT nextval('talks_id_seq'::regclass);
+
+
+--
+-- Name: calendars_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY calendars
+    ADD CONSTRAINT calendars_pkey PRIMARY KEY (id);
 
 
 --
@@ -654,6 +705,22 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: calendar2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY calendars
+    ADD CONSTRAINT calendar2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: calendar2talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY calendars
+    ADD CONSTRAINT calendar2talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
 -- Name: comment2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -667,6 +734,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comment2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: map2person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY maps
+    ADD CONSTRAINT map2person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -940,3 +1015,13 @@ INSERT INTO schema_migrations (version) VALUES ('20131115170724');
 INSERT INTO schema_migrations (version) VALUES ('20131122001014');
 
 INSERT INTO schema_migrations (version) VALUES ('20131122001348');
+
+INSERT INTO schema_migrations (version) VALUES ('20131122004017');
+
+INSERT INTO schema_migrations (version) VALUES ('20131122005343');
+
+INSERT INTO schema_migrations (version) VALUES ('20131122013253');
+
+INSERT INTO schema_migrations (version) VALUES ('20131122014753');
+
+INSERT INTO schema_migrations (version) VALUES ('20131122022650');
