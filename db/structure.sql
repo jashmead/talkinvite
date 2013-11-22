@@ -169,7 +169,8 @@ CREATE TABLE maps (
     settings text DEFAULT '{}'::text,
     history text DEFAULT '{}'::text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    talk_id integer
 );
 
 
@@ -669,6 +670,14 @@ ALTER TABLE ONLY comments
 
 
 --
+-- Name: map2talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY maps
+    ADD CONSTRAINT map2talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
 -- Name: member2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -927,3 +936,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131115165112');
 INSERT INTO schema_migrations (version) VALUES ('20131115165825');
 
 INSERT INTO schema_migrations (version) VALUES ('20131115170724');
+
+INSERT INTO schema_migrations (version) VALUES ('20131122001014');
+
+INSERT INTO schema_migrations (version) VALUES ('20131122001348');
