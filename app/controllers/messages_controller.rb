@@ -1,5 +1,7 @@
 # Messages Controller
 #
+# TBD:  replace my_messages with a method on the message model & a general search routine
+
 # usually from a specific source point
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]

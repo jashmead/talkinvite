@@ -28,14 +28,14 @@ Probably there is some way to change.
 1. Signup
 1. Change Password
 1. Messages
-1. TBD: Oauth
-1. TBD: Upgrade
+1. TBD: Oauth -- use the oauth chapter to set up
+1. TBD: Upgrade -- may not go this route, 'ads' has a better feel
 1. Friends, Groups -- two views of same information
 
 ==== Session pages
 
 1. Signin
-1. Reset Password 
+1. Reset Password -- use email chapter to set up
 
 ==== Help & Internal pages
 
@@ -67,29 +67,36 @@ Probably there is some way to change.
 
 === Partials Only
 
-==== Posts
+1. Posts -- next on list
+1. Members
+1. Comments
+1. Maps -- do when doing the map
+1. Friends -- do friends, groups, & relationships as a set
+1. Groups
+1. Relationships
+1. Calendars -- do in rails first, then jquery
+1. Attachments -- use the assets chapter to manage
+1. Venues
+1. Ads -- check out ad sense first
 
-==== Comments
+=== Phases
 
-==== Members
-
-==== Maps
-
-==== Tags
-
-==== Attachments
-
-==== Friends
-
-==== Groups
-
-==== Relationships
-
-==== Calendars
-
-==== Venues
-
-==== Ads
+1. people -- except for authentication
+1. talks
+1. posts, members, comments
+1. messages
+1. maps
+1. authentication -- email, better authentication
+1. friends, groups, relationships
+1. calendars
+1. attachments
+1. move talkinvite to web
+1. move to phone gap
+1. oauth for twitter, github
+1. venues
+1. tweets
+1. facebook posts
+1. ads
 
 === Start/Home page
 

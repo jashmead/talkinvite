@@ -46,7 +46,7 @@ class StaticPagesController < ApplicationController
       [ signin_path, 'Sign In', 'sessions', ! signed_in? ],
       [ signup_path, 'New Account', 'people', ! signed_in? ],
       [ reset_password_path, 'Reset Password', 'sessions', ! signed_in? ],
-      [ search_people_path, 'Search for People', 'people' ],
+      # [ search_people_path, 'Search for People', 'people' ],
       [ search_path, 'Search for Talks', 'talks' ],
       [ helps_path, 'List of Help Pages' , 'helps' ],
       [ new_help_path, 'New Help' , 'helps', admin? ],
