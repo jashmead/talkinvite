@@ -34,7 +34,7 @@ describe "footers" do
   let(:people_page_list) { [ 
     "Create Talk",
     "My Messages",
-    "Search for People",
+    # "Search for People",
     "Search for Talks",
     "Settings"
   ] }
