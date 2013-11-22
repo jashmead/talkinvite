@@ -18,7 +18,7 @@ In order of creation:
 1. Helps
 1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field). virtual table, like sessions.
 
-Planned but not yet implemented tables:
+Pending
 
 1. Attachments -- for file uploads, generalize from profile image uploads
   * polymorphic
@@ -35,6 +35,7 @@ Planned but not yet implemented tables:
   * like attachments, attach to everything
   * and like attachments has an originator
   * needs tools, to get tagclouds  
+  * merge with Topics?
 1. Ads -- to generate revenue; in parallel with talks, comments, to blend in with them
   * unclear, will need content, stats, strategy, contact/source
 1. Calendars -- in parallel with Maps
@@ -43,26 +44,13 @@ Planned but not yet implemented tables:
 1. Sessions -- for security & quality & flexibility, see session hijacking in guide on security
   * presumably is really two tables, parent & fields
   * use examples, if we decide to go this way at all
-
-Currently tabled tables
-
-1. Connections -- talk2talk, connections, creator, from_talk, to_talk, an advanced feature, may not need, can use for clone previous, repeating, & so on. May help with searches (big in our design).  At this point, we don't know how we want to use:  clone-father, repeating, and so on.  Could implement with a self-join, side-table, settings field, lots of ways.  Fairly complex, even more complex than relationships. Wait on need. YAGNI.
-1. Circles? Relationships? 
-1. SVGs? -- not yet, not sure needed
-1. Groups? -- goes to relationships + a field in people (to indicate really a group)
-  * can be useful for searches for talkees
-1. Recurring talks? -- like meetups? -- goes to talk2talk plus a field in talks to indicate ongoing
-  * recurring field + schedule, like calendar on mac
-1. Ratings? -- fold in to tags
-  * or is a simple like this better
-1. Requests -- previously used, a bit much however
-  * think not`
-1. Errors -- previously used, a bit much however
-  * expect we will stick with logs for immediate future
-1. Pages -- a bit too meta
-  * too too meta
-1. Qxs -- great name, but errors on side of inscrutable
-  * is this a table or an alien civilization?
+1. Friends
+* reciprocally authorized
+* point from source to target
+1. Groups
+* point to source only, used to help break out friends into (possibly overlapping) sets
+1. Relationships
+* point to both Friends & Groups
 
 === Data types
 
@@ -113,5 +101,3 @@ URLs
 
 1. make sure the model_params function has the new fields, if appropriate
 1. make sure the search_fields function has the new fields, if appropriate
-
-

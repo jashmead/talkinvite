@@ -1,0 +1,5 @@
+=== Controllers
+
+Makes sense in terms of MVC, but don't seem to offer a lot of value in our context.
+
+Hard to get to work with nested routes.

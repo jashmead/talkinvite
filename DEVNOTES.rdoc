@@ -1,24 +1,49 @@
-== Development
-
 === Overall Strategy
+
 * Starting with tutorial & branching out
 * Build up horizontally rather than vertically
 * Build up database/models; routes/controllers; views/css; js -- to extent possible
 * Avoid premature instantiation, don't put stuff in till about to use (& test) -- put it in comments instead
-* Use bootstrap & liquid design, top to bottom, left to right -- but start with mobile
-* Use images to mark, keep actual site design really dull, keep focus on content
+* start with mobile, look at responsive design later
 * Make maximum use of existing examples
 * Make best use of having an overall plan, keep loose but focused & energetic
+* Simple design, images from the talks, not from site
 
-=== Stages
+=== Levels
+
 1. tables -- have 16, with models & controls & basic set of views
 1. routes -- have 185, all have tests
 1. views & partials
 1. external testing, i.e. watir
 
+=== Phases
+
+1. people -- except for authentication
+1. talks -- start talk, talk central, search for talks
+1. posts, members -- implicit, not shown explicitly
+1. comments -- like posts, but done by anyone & don't change the state
+1. messages
+1. maps -- leaflet
+1. authentication -- email, better authentication, make password stuff separate
+1. friends, groups, relationships
+1. calendars
+1. attachments
+1. move talkinvite to web; put up website
+1. move to phone gap -- on simulator
+1. phone gap on phone
+1. oauth for twitter, github
+1. venues
+1. tweets
+1. facebook posts
+1. ask friends to test
+1. post to apple store
+1. ads -- definitely phase two
+1. messages supercharges:  time to live, attachments (like SnapChat)
+
 === Libraries
+
+1. Ruby Gems
 1. Leaflet
-1. Bootstrap
 1. JQuery calendar tool of some kind
 
 === Quality checks
@@ -92,50 +117,30 @@ and a bit of glue.
 
 Note that a fair amount of setup is done in ~/.talkinvite, setting CBPATH, PATH, PostgreSQL stuff, and so on.
 
-=== Tools
-attachments
+=== Searches
 
-searches
 1. web searches
 1. site searches
 1. personal searches
 1. twitter & other social media searches
-1. canned searches
-  1. 'my' talks, people, locations, and so on
-  1. by 1st, 2nd, 3rd, ...
-
-privacy tools -- permissions, notifications, ...
--- for subscribers only
--- included in upgrades
-
-add to ApplicationController:
-* search 
-* control -- with reference to a specific record
-* command -- may have a specific record, but need not
+1. location searches
+1. time searches
+1. other canned searches?
 
 === Dev Notes
 
 1. admins are always subscribers!
 1. talkinvite is the default, anonymous identity
-1. other identities are help, contact
 1. when changing data types, make sure all the test code knows about the new types
 1. when adding/changing/deleting fields:  check all the spec code:  requests, models, controllers, views, & factories
-1. stories spec corresponds to stories rdoc, perhaps other rdocs should have other specs (TDD)
 1. codeclimate is a bit fussy on duplication -- see notes in specific files, with that said, a 4.0 grade does give the warm fuzzies.
-
 1. you can get at the functions defined in app/helpers directly from the views (i.e. current_layout) but have to specific a 'view_context' object from inside a controller (i.e. view_context.current_layout).  Note the current_layout is the top level layout, i.e. credits not index)
+* No user-supplied URLs; too risky
 
-=== Troubleshooting
-
-* sign_in not working in people_controllers_spec.rb, see notes there
-* deal with by getting better understanding of control flow (esp authentication)
-then look at again
-* unable to move home from views/static_pages to views/people, not clear why
-* start with default bootstrap buttons, but make sure every page has its table class (i.e. people, talks) and its personal id
-
-=== Cleanup at end
+=== Final Cleanup
 
 verify all pages linked & documented
 
 to verify documentation coverage (https://github.com/rdoc/rdoc):
-rdoc -C lib 
+rdoc -C app
+

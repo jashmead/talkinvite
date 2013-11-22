@@ -2,12 +2,10 @@
 
 organized by life cycle 
 1. life cycle is implicit "story of a talk"
-1. include a few squirrelly bits at the end, 
-bits which don't really fit into the lifecycle framework
+1. include a few squirrelly bits at the end, bits which don't really fit into the lifecycle framework
 
 === Got Talk?
 
-Start points:
 1. home -- for person, shows their talks
 1. talks/new -- start a talk
 1. talks/search -- look for them, with lots of canned searches
@@ -15,9 +13,7 @@ Start points:
 1. topics/trending -- recently interesting topics -- TBD
 1. sitemap
 
-==== Let's Talk about X
-
-See searches for talks -- and, once they are up, for topics
+==== X Marks the Talk
 
 1. key phrases -- type key phrase, search web
 1. recent event -- type key phrase, search web
@@ -30,36 +26,24 @@ See searches for talks -- and, once they are up, for topics
 1. cool url for image, document, video on web -- cut & paste
 1. personal event -- type key phrase
 
-response, search for talk, pick talk(s), add if not present
-
-==== Search for Talks
-1. by all the categories above, many canned searches
-1. mark a set interesting, or add talk, or give up
-1. pick a talk functionality!*
-
 === Join Talk
-perhaps even several
-1. if not signed in, sign in
-1. if no account, create & sign in
 
-==== Add Talk
-1. if not signed in, sign in
-1. if no account, create & sign in
-1. start the talk:  see talks/new
-  1. what -- summary
-  1. when -- calendar
-  1. where -- maps, locations
-  1. why -- detailed description
-  1. who -- any restrictions (i.e. private, group)
+-- must be signed in
 
-==== Check out topics
-1. topics/command
-1. sub set of tags
+==== Start a Talk
 
-==== Send out posts
-first, select set of related, search for people by patterns or rules
+-- must be signed in
 
-second, post using:
+1. what -- summary
+1. when -- calendar
+1. where -- maps, locations
+1. why -- detailed description
+1. who -- any restrictions (i.e. private, group)
+
+-- does not have to be complete to post
+
+==== Post
+
 *  messaging (internal)
 *  email
 *  twitter
@@ -67,84 +51,70 @@ second, post using:
 *  other social media
 
 ==== Schedule talk
+
 1. calendars/command
 1. set defines
 1. calendar controls shared by other time specific tables in set mode, or as individual?
 
 ==== Check out locations
-physical/virtual
+
+-- physical/virtual
+
 1. locations/command
 1. map
 1. map controls shared by other location specific tables in set mode, or as individual
 
-=== Talk On!
-start point is currently sitemap
+==== TalkCycle
 
-==== Let's Pivot
-talk has been proposed, but hasn't happened yet
 1. announce the talk -- posts
 1. change location (can be virtual) -- locations
 1. change time -- calendars
 1. talk about the talk: negotiate if a problem or change desired
 1. post comments, clarifications, & so on
 
-==== Talk is happening
-post status updates
-
 ==== Join/leave
+
 change membership status
 
 ==== Send/Receive Comments
+
 can be change of status, time, location, subject, membership
 
 ==== Send/Receive Messages
+
 1. one on one
 1. side-by-side message screens, two lists, staggered
 
-==== My fellow talkers
-1. invite someone to join, see above for initial posts
-1. to screen, with message
+==== Invites
 
-==== Time to move on
-new physical or virtual venue
+==== Change location, subject, time
 
 === Apres Talk
-start point is talks/edit
 
-==== timeline*
+==== TalkLine
+
 timeline of a talk
 
-==== talk has happened
-1.  comments
-1.  rate
-1.  save stream of information about the talk
-
 ==== You can never talk just once
+
 1.  fugue into an ongoing conversation
 1.  connect one talk to another
 
 === Not just talk!*
 
-start point is talks/meta
+meta talk
 
-talks/stats*
+stats
 
-talks/rankings*
+ranking
 
-talks/sharing
-1. to web -- permalinks
-1. to facebook, twitter, & other social -- notifications
+permalinks
 
-static_pages/wiki**
+reportage
+
+wiki
 
 === Let's Talk about Me!
-
--- except for signin & signup, only shown if you are signed in; 
-signin & signup only shown if you are not signed in
-
-edit -- where you go after signin, shows combo of settings & profile
--- leads to your talks & related
--- was static_pages/home, keep that as reference till ready to trash
 
 settings
 
@@ -158,9 +128,7 @@ signin -- shown if not signed in
 
 signout -- a button
 
-reset password*
-1. shown to those signing in (from signin screen)
-1. option on settings
+reset password
 
 upgrades* -- applies to a specific account
 
@@ -169,8 +137,6 @@ close account* -- uses destroy method, may reduce to merely make inactive
 === Possibilities
 
 * per person maps
-* my stats
-* expanding circles
 * star trek communicator type css effects
 * links to google hang outs & the like
 * maps & data type functionality

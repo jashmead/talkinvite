@@ -1,11 +1,5 @@
 == Views
 
-=== Philosophy
-
--- simple color scheme, only frame, let the people, talks, locations, tags, files, provide the visuals
-
--- no responsive design, purely mobile
-
 === Key Pages
 
 ==== Talk pages
@@ -79,25 +73,6 @@ Probably there is some way to change.
 1. Venues
 1. Ads -- check out ad sense first
 
-=== Phases
-
-1. people -- except for authentication
-1. talks
-1. posts, members, comments
-1. messages
-1. maps
-1. authentication -- email, better authentication
-1. friends, groups, relationships
-1. calendars
-1. attachments
-1. move talkinvite to web
-1. move to phone gap
-1. oauth for twitter, github
-1. venues
-1. tweets
-1. facebook posts
-1. ads
-
 === Start/Home page
 
 -- currently using start, which forks into people/home, talks/recent
@@ -120,7 +95,7 @@ Form has:
 1. content
 1. details
 
-=== Tables
+=== Views are by Tables
 
 -- see also list in app/models/README.rdoc
 
@@ -186,18 +161,18 @@ nested lists don't seem to work correctly in rdoc, so keep at one level for now
 
 use popups or similar for all lists, as types of posts
 
-back button on all pages
+back button on all pages -- done
 
 placeholders + hidden labels
 -- implementation in form_for_jqm
 -- hidden fields do not need label!
 
-required for all required fields
+use required for all required fields
 
-readonly for all readonly fields
+use readonly for all readonly fields
   -- TBD: use for 'show' pages?
 
-lots of icons
+lots of icons -- first cut done
 
 standardized transitions
 -- one pair for popups
@@ -213,11 +188,3 @@ one help page per page
 group buttons on edit forms & related:  using data-role = controlgroup, data-type=horizontal -- do in detail
 
 all buttons are data-inline = true
-
-==== Security
-
-URLs not allowed in descriptions or the like
--- explain in help
--- Cross Site Injection
-
-
