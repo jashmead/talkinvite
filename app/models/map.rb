@@ -9,10 +9,11 @@
 # TBD: figure what geometry, settings, & history mean
 # TBD: how are we going to use name, description fields?
 class Map < ActiveRecord::Base
+
+  belongs_to :talk, inverse_of: 'maps'
+
   validates :geometry, presence: true
   validates :settings, presence: true
   validates :history, presence: true
-
-  belongs_to :talk, inverse_of: 'maps'
 
 end
