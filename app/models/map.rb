@@ -12,4 +12,7 @@ class Map < ActiveRecord::Base
   validates :geometry, presence: true
   validates :settings, presence: true
   validates :history, presence: true
+
+  belongs_to :talk, inverse_of: maps
+
 end

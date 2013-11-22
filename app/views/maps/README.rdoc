@@ -6,6 +6,9 @@
 
 -- uses open street map and/or google maps and/or yahoo maps
 
+-- points up at talks using a talk_id field
+  -- may change later, good enough for now
+
 ==== Edit
 
 only layout, and a partial at that
