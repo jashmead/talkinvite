@@ -33,7 +33,7 @@ describe "People pages" do
       after(:all) { Person.delete_all }
 
       it "should list each person" do
-        Person.paginate(page: 1).each do |person|
+        Person.all.each do |person|
           expect(page).to have_selector('a', text: person.name)
         end
       end

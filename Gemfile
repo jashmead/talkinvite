@@ -70,7 +70,7 @@ end
 gem 'bcrypt-ruby', '3.0.1'
 
 gem 'faker'
-gem 'will_paginate'
+# gem 'will_paginate'
 # gem 'bootstrap-will_paginate' ## no longer using bootstrap
 
 gem 'font-awesome-sass' # from the website: http://fortawesome.github.io/Font-Awesome/get-started/
