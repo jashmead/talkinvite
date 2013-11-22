@@ -13,6 +13,6 @@ class Map < ActiveRecord::Base
   validates :settings, presence: true
   validates :history, presence: true
 
-  belongs_to :talk, inverse_of: maps
+  belongs_to :talk, inverse_of: 'maps'
 
 end

@@ -28,8 +28,8 @@ describe "sitemap" do
   let(:signedin_list) { [ 
     # "Home", 
     "My Messages",
-    "Create Talk",
-    "Search for People"
+    "Create Talk"
+    # "Search for People"
   ] }
 
   # let(:signedin_list) { [ "My Messages" ] }
