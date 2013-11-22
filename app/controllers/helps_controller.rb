@@ -28,11 +28,12 @@ class HelpsController < ApplicationController
     feet_for_help_pages
   end
 
+  # TBD:  reduce complexity of this method; 11/22/13 complexity = 27
   def help
     @helps = Help.where('name = ?', params[:name])
     if ! @helps || @helps.size == 0
       if admin?
-        # give the admin a change to create the help
+        # then give the admin a change to create the help
         @help = Help.new( name: params[:name], description: "Help for page " + params[:name] )
         render 'new' and return
       end
