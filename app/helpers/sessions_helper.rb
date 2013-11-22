@@ -88,79 +88,81 @@ module SessionsHelper
   end
 
   # http://fortawesome.github.io/Font-Awesome/cheatsheet/
-  # iconify spotted as complex by codeclimate 10/29/13, complexity 29 -- replace with hash? -- started with minor cleanup
-  def iconify (action_name) 
+  # iconify spotted as complex by codeclimate 10/29/13, complexity 29, 11/22/13 - complexity 30
+  def iconify (icon_name)   # currently action_name (preferred as more specific) or controller_name 
 
-    action_s = action_name.to_s
+    icon_name_s = icon_name.to_s
 
-    klasses = case action_s
-      # all those icons that map directly to a font-awesome name
-      when 'ban', 'beer', 'calendar', 'camera', 'check', 'coffee', 'facebook', 'film', 'glass', 'home', 'info', 'instagram',
-        'pencil', 'pinterest', 'print', 'random', 'reply', 'search', 'share', 'sitemap', 'skype', 'sort', 
-        'tag', 'tags', 'trash', 'twitter'
-        'fa-' + action_s
-      # rest in alphabetic order of action_name
-      when 'about'
-        'fa-dot-circle-o'
-      when 'cancel'
-        'fa-ban'
-      # using outline'd comments for talk, filled in comments for comments
-      when 'comment'
-        'fa-comment-o'
-      when 'comments'
-        'fa-comments-o'
-      when 'contact'
-        'fa-envelope-o'
-      when 'credit', 'credits'
-        'fa-heart'
-      when 'data', 'table'
-        'fa-table'
-      when 'delete', 'destroy'
-        'fa-minus-cirle'
-      when 'edit'
-        'fa-pencil'
-      when 'google_plus'
-        'fa-google-plus'
-      when 'help', 'helps'
-        'fa-question'
-      when 'location', 'venue'  # venue can show up here even without being a table!
-        'fa-location-arrow'
-      when 'message'
-        'fa-bolt'
-      when 'new'
-        'fa-plus-circle'
-      when 'person'
-        'fa-user'
-      when 'privacy'
-        'fa-eye'
-      when 'settings'
-        'fa-cog'
-      when 'signin'
-        'fa-sign-in'
-      when 'signout', 'sayonara'
-        'fa-sign-in fa-flip-vertical'
-      when 'signup'
-        'fa-sign-in fa-rotate-270'
-      when 'start'
-        'fa-home'
-      # TBD:  use rocket for talk? or use a comment indicator? or use a single 'T'?
-      when 'talk'
-        'fa-rocket'
-      # TBD: use two rockets for talks?
-      #   -- or use two people & comments?
-      when 'talks'
-        return '<span class="fa-stack fa-lg">'
-          + '<i class="fa fa-rocket fa-stack-1x fa-flip-vertical"></i>' 
-          + '<i class="fa fa-rocket fa-stack-1x text-danger"></i>'
-      when 'wine'
-        'fa-glass'
-      when /^my_/
-        'fa-user'
-      else
-        return ''
+    # all those icons that map directly to a font-awesome name
+    icon_array = [ 
+        'ban', 'beer', 'calendar', 'camera', 'check', 'coffee', 
+        'comment', 'comments', 'facebook', 'film', 'glass', 
+        'home', 'info', 'instagram', 'pencil', 'pinterest', 
+        'print', 'random', 'reply', 'search', 'share', 
+        'sitemap', 'skype', 'sort', 'tag', 'tags', 
+        'trash', 'twitter'
+    ]
+
+    if icon_array.index icon_name_s 
+      klasses = 'fa-' + icon_name_s
+    else
+      # could replace the 'case' with a hash; however case seems a bit clearer for case when mapping multiple actions into a single icon
+      klasses = case icon_name_s
+	      # in alphabetic order of action_name
+	      when 'about'
+	        'fa-dot-circle-o'
+	      when 'cancel'
+	        'fa-ban'
+	      when 'contact'
+	        'fa-envelope-o'
+	      when 'credit', 'credits'
+	        'fa-heart'
+	      when 'data', 'table'
+	        'fa-table'
+	      when 'delete', 'destroy'
+	        'fa-minus-cirle'
+	      when 'edit'
+	        'fa-pencil'
+	      when 'google_plus'
+	        'fa-google-plus'
+	      when 'help', 'helps'
+	        'fa-question'
+	      when 'location', 'venue'  # venue can show up here even without being a table!
+	        'fa-location-arrow'
+	      when 'message'
+	        'fa-bolt'
+	      when 'new'
+	        'fa-plus-circle'
+	      when 'person'
+	        'fa-user'
+	      when 'privacy'
+	        'fa-eye'
+	      when 'settings'
+	        'fa-cog'
+	      when 'signin'
+	        'fa-sign-in'
+	      when 'signout', 'sayonara'
+	        'fa-sign-in fa-flip-vertical'
+	      when 'signup'
+	        'fa-sign-in fa-rotate-270'
+	      when 'start'
+	        'fa-home'
+	      when 'talk'
+	        'fa-comment-o'
+	      when 'talks'
+          'fa-comments-o'
+	      when 'wine'
+	        'fa-glass'
+	      when /^my_/
+	        'fa-user'
+	      else
+          # leave function entirely...
+	        return ''
+	    end
     end
 
     return "<i class=\"fa #{klasses}\" ></i>"
+
   end
 
   def signout
