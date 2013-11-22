@@ -136,6 +136,9 @@ Note that a fair amount of setup is done in ~/.talkinvite, setting CBPATH, PATH,
 1. codeclimate is a bit fussy on duplication -- see notes in specific files, with that said, a 4.0 grade does give the warm fuzzies.
 1. you can get at the functions defined in app/helpers directly from the views (i.e. current_layout) but have to specific a 'view_context' object from inside a controller (i.e. view_context.current_layout).  Note the current_layout is the top level layout, i.e. credits not index)
 * No user-supplied URLs; too risky
+1. don't use name 'search' for a button; it confuses RoR or someone
+1. nested lists don't seem to work correctly in rdoc, so keep at one level for now
+1. nested includes don't seem to work in rdoc, so pull in everything from base README.rdoc
 
 === Final Cleanup
 

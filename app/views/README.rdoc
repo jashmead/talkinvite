@@ -81,76 +81,40 @@ Probably there is some way to change.
 
 === Static elements
 1. logo -- not really needed in mobile, replace with start except on start page, where it is blank?
-1. title -- talk summary, person name, whatever
-1. account menu -- settings/new account on top right
-1. header -- specific to model
-1. footer -- specific to model
-
-=== Adding a field
-fields in the new & other forms must match those in the corresponding specs; obvious but easily overlooked point
-
-Form has:
-1. to (with cc)
-1. modality
-1. content
-1. details
+1. title -- talk summary, person name, whatever, done by combo of view + controller + layout
+1. account menu -- settings/new account on top right -- done
+1. header -- specific to model, but not yet
+1. footer -- specific to model, but not yet
 
 === Views are by Tables
 
 -- see also list in app/models/README.rdoc
 
-==== Root tables (models)
+==== Root tables (full forms)
 
 1. Sessions (virtual table)
 1. People
 1. Talks -- entry point for newbies
+1. Tags/Topics
 1. Credits
 1. Faqs
 1. Helps
 
-==== Link tables
+==== Link tables (partials only or mostly)
 
-1. Comments -- zero to many for each person/talk pair, may have polymorphism in its future
 1. Services
 1. Posts
+1. Comments -- zero to many for each person/talk pair, may have polymorphism in its future
 1. Members -- one for each person/talk pair
 1. Messages -- many for each person to person
 1. Maps -- will need data, settings, controls
+1. Attachments
 
 ==== System
 
 1. Schema_migrations -- no controllers or views for these
 
-==== Upcoming/virtual
-
-1. Calendars -- like maps
-1. Topics -- or interests, used for searches
-1. Tags -- about nouns, used for searches
-1. Attachments
-1. Trending -- twitter, google, facebooks, whatnot
-
-=== Styles
-
-1. Colors
-* blue for talks, green for persons, cyan for messages & so on, include faqs in cyan?
-* rich brown for places, nearly black
-* yellow for marketing (& credits?), red only for messages
--- see the function swatch()
-
-1. Icons
-* preferred icon for people is a homunculous
-* circle for people, square? for talks, uppointing triangle for locations
-* lightning for messages?
--- see the function iconify()
-
-=== Warnings
-
-1. don't use name 'search' for a button; it confuses RoR or someone
-
 === Testing
---
-nested lists don't seem to work correctly in rdoc, so keep at one level for now
-++
 
 * specified elements present
 * specified links go to correct pages

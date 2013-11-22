@@ -12,8 +12,6 @@ Master & demo skill set, get an app up.
 
 :include:app/models/README.rdoc
 
-:include:db/README.rdoc
-
 :include:app/controllers/README.rdoc
 
 :include:app/views/README.rdoc

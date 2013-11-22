@@ -1,10 +1,8 @@
 == Schema
 
-=== List of Tables
+=== Core Tables
 
 Note we can't use 'file' as a table name, conflicts with Ruby
-
-In order of creation:
 
 1. Schema_Migrations -- no views or controllers for these
 1. People -- will be adding locations to this
@@ -17,40 +15,70 @@ In order of creation:
 1. Credits -- links to creator, name, details, url, tags point to this as well!
 1. Helps
 1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field). virtual table, like sessions.
+1. Calendars -- like maps
 
-Pending
+=== Phase II & III tables
 
-1. Attachments -- for file uploads, generalize from profile image uploads
-  * polymorphic
-  * point up to talks, people, credits, faqs, helps, pretty much everything
-  * standard, work from examples
-  * needs maintenance reports
-  * have a creator (for people has to be the person him or her self)
-1. Topics -- for twitter searches & the like
-  * from hashtags, google news
-  * and hand submitted
-  * used for subjects (summary -> subject)
-  * count as tag
-1. Tags -- for interests for people
-  * like attachments, attach to everything
-  * and like attachments has an originator
-  * needs tools, to get tagclouds  
-  * merge with Topics?
-1. Ads -- to generate revenue; in parallel with talks, comments, to blend in with them
-  * unclear, will need content, stats, strategy, contact/source
-1. Calendars -- in parallel with Maps
-  * virtual table, like maps
-  * used to help coordinate people converging on a talk, again like maps
-1. Sessions -- for security & quality & flexibility, see session hijacking in guide on security
-  * presumably is really two tables, parent & fields
-  * use examples, if we decide to go this way at all
-1. Friends
-* reciprocally authorized
-* point from source to target
-1. Groups
-* point to source only, used to help break out friends into (possibly overlapping) sets
-1. Relationships
-* point to both Friends & Groups
+1. Tags, HashTags, Interests
+1. Friends, Groups, Relationships
+1. Attachments
+1. Ads
+1. Sessions
+
+==== Tags, HashTags, Interests
+
+* grow out of talk searches
+* therefore not needed in phase I
+* aka topics
+* used to find talks in talkinvite
+* used for twitter & other searches on web 
+* kind of mini-comments
+* have examples, as in Rails 4 in Action:  searcher gem, attr accessors, a few other things
+* analogous to hashtags in Twitter
+* can be mass-produced by splitting up the summary
+* can ask for hashtag
+* allow addition of tags by originator & probably by users
+* see usage in meetup.com
+* tags apply to multiple talks
+* can use user's interests to search for talks they might be interested in
+* how to structure? tag->talk; user<-tag->talk, tag<-join_table->talk, ...
+
+==== Friends, Groups, Relationships
+
+* Grow out of members
+  * start with member related searches
+  * therefore not needed in Phase I 
+* Friends
+  * reciprocally authorized
+  * point from source to target
+*Groups
+  * point to source only, used to help break out friends into (possibly overlapping) sets
+* Relationships
+  * point to both Friends & Groups
+
+==== Attachments
+
+* like name, description in users, talks at start
+* therefore not needed for phase I
+* polymorphic
+* point up to talks, people, credits, faqs, helps, pretty much everything
+* standard, work from examples, as Rails in Action
+* needs maintenance reports
+* have a creator (for people has to be the person him or her self)
+
+==== Ads
+
+* not sure we are goint to use
+* therefore, not needed for Phase I or II
+* to generate revenue; in parallel with talks, comments, to blend in with them
+* unclear, will need content, stats, strategy, contact/source
+
+==== Sessions
+
+* not sure we are going to use
+* therefore, not needed for Phase I or II
+* for security & quality & flexibility, see session hijacking in guide on security
+* presumably is really two tables, parent & fields
 
 === Data types
 
@@ -101,3 +129,14 @@ URLs
 
 1. make sure the model_params function has the new fields, if appropriate
 1. make sure the search_fields function has the new fields, if appropriate
+1. check that the associated forms are ok, usually they will need changes
+1. and when views are fixed, specs must be as well
+
+=== Rebuilds of complete database
+
+Can't reset database due to dependencies among tables, but can rebuild using structure.sql
+1.  make sure that database & all tables owned by talkinvite 
+1.  use "kill -15" to terminate dead but blocking procs
+1.  to get plsql language back in will need to run top of structure.sql as postgres
+1.  use rake db:seed to reseed
+1.  good way to reorder columns -- note this can count as "dinking"!
