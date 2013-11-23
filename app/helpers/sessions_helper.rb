@@ -183,7 +183,7 @@ module SessionsHelper
   end
 
   def store_location
-    logger.debug("SessionsHelper: store_location: #{request.url.inspect}, request.get?: #{request.get?}")
+    # logger.debug("SessionsHelper: store_location: #{request.url.inspect}, request.get?: #{request.get?}")
     session[:return_to] = request.url if request.get?
   end
 
@@ -200,14 +200,14 @@ module SessionsHelper
   # useful links in alphabetical order:
 
   def root_link
-    link_to( "<i class=\"fa fa-comments-o fa-lg\"></i>&nbsp;&nbsp;Home".html_safe, root_path )
+    link_to( "<i class=\"fa fa-comments-o fa-lg\"></i>&nbsp;Home".html_safe, root_path )
   end
 
   # settings_link not really needed at this point:  leave code in till sure of this, however
   def settings_link
     # TBD:  test to see if we are signed in first
     link_to( 
-      "#{iconify(:settings)}&nbsp;&nbsp;Settings".html_safe,
+      "#{iconify(:settings)}&nbsp;Settings".html_safe,
       settings_path, 
       method: :get,
       'class' => 'ui-btn-right' # force button to the right side of the header, leaving space for the back button
@@ -219,7 +219,7 @@ module SessionsHelper
     # TBD:  test to see if we are signed in first
     # icon is the vertical flip of the sign-in icon
     link_to( 
-      "Sign Out&nbsp;&nbsp;#{iconify(:signout)}".html_safe, 
+      "Sign Out&nbsp;#{iconify(:signout)}".html_safe, 
       signout_path, 
       method: :delete,
       'class' => 'ui-btn-right' # force button to the right side of the header, leaving space for the back button
@@ -227,14 +227,14 @@ module SessionsHelper
   end
 
   def signin_link
-    # TBD:  test to see if we are signed in first
-    link_to( "#{iconify(:signin)}&nbsp;&nbsp;Sign In".html_safe, signin_path, 'data-rel' => 'dialog')
+    # TBD:  test to see if we are signed in first?
+    link_to( "#{iconify(:signin)}&nbsp;Sign In".html_safe, signin_path, 'data-rel' => 'dialog')
   end
 
   def signup_link
-    # TBD:  test to see if we are signed in first
+    # TBD:  test to see if we are signed in first?
     ## logger.debug("SessionsHelper.signup_link: iconify(signup): #{iconify(:signup)}")
-    link_to( "#{iconify(:signup)}</i>&nbsp;&nbsp;New Account".html_safe, signup_path, 'data-rel' => 'dialog')
+    link_to( "#{iconify(:signup)}</i>&nbsp;New Account".html_safe, signup_path, 'data-rel' => 'dialog')
   end
 
 end

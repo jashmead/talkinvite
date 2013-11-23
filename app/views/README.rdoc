@@ -1,35 +1,35 @@
 == Views
 
-=== Key Pages
+=== Key Pages Phase I
 
 ==== Talk pages
 
---
-No good way to produce nested lists in rdoc, apparently.
-They produce white on black text by default.
-Probably there is some way to change.
-++
-
-1. New Talk: * Topics/Tags * Posts * Map/Venue * Calendar * Members (for invites) * Attachments
+1. New Talk: * Posts * Map/Venue * Calendar 
 1. Talk Control: same partials as for New Talk, some more buttons for RSVP, significant differences for creator/admin versus usual
 1. Search for Talks: simple, location, time, members, attachments?
 
 ==== People pages
 
-1. Home * Talks * Messages * TBD: Friends, Groups -- two views of the same information
-1. Settings * Button to Change Password * Friends/Groups
-1. Profile * Send Message Button * Friend/Unfriend * Group/Ungroup
+1. Home * Talks * Messages 
+1. Settings
+1. Profile * Send Message Button
+1. Change Password -- already works, tho not really needed given Settings
 1. Signup
-1. Change Password
-1. Messages
-1. TBD: Oauth -- use the oauth chapter to set up
-1. TBD: Upgrade -- may not go this route, 'ads' has a better feel
-1. Friends, Groups -- two views of same information
+1. Search -- for people to invite to the talk
+1. Messages -- only from & to yourself
 
 ==== Session pages
 
 1. Signin
 1. Reset Password -- use email chapter to set up
+
+==== Partials Only
+
+1. Posts -- next on list
+1. Members
+1. Comments
+1. Maps -- do when doing the map
+1. Calendars -- do in rails first, then jquery
 
 ==== Help & Internal pages
 
@@ -41,78 +41,37 @@ Probably there is some way to change.
 1. Show Help
 1. Site Map
 
-==== Tags/Topics/Trending
-
--- under Tags
-
--- look for tags in google, duckduckgo, others
-
--- look for tags in twitter
-
--- use location if possible
-
-1. trending
-1. search
-
 ==== Admin Pages
 
-1. New, Edit Credit, Faq, Help (6 pages)
-1. Search for People (maybe)
+New & Edit for Credit, Faq, & Help (6 pages)
 
-=== Partials Only
+==== Start/Home page
 
-1. Posts -- next on list
-1. Members
-1. Comments
-1. Maps -- do when doing the map
-1. Friends -- do friends, groups, & relationships as a set
-1. Groups
-1. Relationships
-1. Calendars -- do in rails first, then jquery
-1. Attachments -- use the assets chapter to manage
-1. Venues
-1. Ads -- check out ad sense first
+-- defined by talks/start
+  -- your last page -- if known
+  -- your home -- if you are signed in
+  -- new talk
 
-=== Start/Home page
-
--- currently using start, which forks into people/home, talks/recent
-
--- could use sitemap or about
-
-=== Static elements
+==== Static elements
 1. logo -- not really needed in mobile, replace with start except on start page, where it is blank?
 1. title -- talk summary, person name, whatever, done by combo of view + controller + layout
 1. account menu -- settings/new account on top right -- done
 1. header -- specific to model, but not yet
 1. footer -- specific to model, but not yet
 
-=== Views are by Tables
+==== Deployment
 
--- see also list in app/models/README.rdoc
+Up to Heroku
 
-==== Root tables (full forms)
+Website instantiation
 
-1. Sessions (virtual table)
-1. People
-1. Talks -- entry point for newbies
-1. Tags/Topics
-1. Credits
-1. Faqs
-1. Helps
+Phone Gap Simulator
 
-==== Link tables (partials only or mostly)
+Phone Gap Real
 
-1. Services
-1. Posts
-1. Comments -- zero to many for each person/talk pair, may have polymorphism in its future
-1. Members -- one for each person/talk pair
-1. Messages -- many for each person to person
-1. Maps -- will need data, settings, controls
-1. Attachments
+Invite to Friends
 
-==== System
-
-1. Schema_migrations -- no controllers or views for these
+Push to App Store
 
 === Testing
 
@@ -152,3 +111,72 @@ one help page per page
 group buttons on edit forms & related:  using data-role = controlgroup, data-type=horizontal -- do in detail
 
 all buttons are data-inline = true
+
+=== Key Pages Phase II
+
+==== Authentication
+
+Settings -- no password
+
+Change Password -- created
+
+==== Tags
+
+Tags for Talks
+
+Search Talks by Tags
+
+Search Twitter by Talks & Tags
+
+==== Tweets
+
+Oauth -- to Twitter
+
+Post to Twitter
+
+==== Friends, Groups, & Relationships
+
+Add Friends & Groups
+  -- using Relationships behind the scenes
+
+Message Friends & Groups
+
+Edit/Change Friends & Groups
+
+==== Venues
+
+spun off locations information in talks & off maps
+  -- they are a kind of permanent map
+  -- or repeating location
+
+-- development path
+  -- first get locations to repeat
+
+==== Attachments
+
+Profile * Post picture
+
+Talk * Post picture, pdf, and so on
+
+==== Sessions
+
+Session table
+  -- track flow better
+
+=== Key Pages Phase III
+
+==== Ads
+
+-- merge into talks & messages
+
+-- internal setup for these
+
+==== Other Social Media
+
+-- facebook
+
+-- reddit
+
+-- pinterest
+
+-- github?

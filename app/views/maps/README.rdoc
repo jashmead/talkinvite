@@ -1,15 +1,18 @@
 === Maps
 
--- partials only
+-- partials only, currently
+  -- TBD: may want to put a current map/list of current maps up on sitemap however
 
 -- uses leaflet, per example
 
 -- uses open street map and/or google maps and/or yahoo maps
 
 -- points up at talks using a talk_id field
-  -- may change later, good enough for now
+  -- TBD: may change later, good enough for now
 
 -- fields:  talk_id, name, description, geometry, settings, history
+  -- TBD:  how to use geometry, settings, history
+
 ==== Edit
 
 only layout, and a partial at that
@@ -36,6 +39,16 @@ has a show X control
   -- gets address, location from talk
   -- later may have on its own
   -- has scale, zoom setting, show X setting from previous time
+
+==== Development
+
+-- start with key words
+
+-- then addresses + parsing
+
+-- then leaflet
+
+-- once this is working, kill all views & partials not needed
 
 ==== TBD
 

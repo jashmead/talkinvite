@@ -34,7 +34,8 @@ class StaticPagesController < ApplicationController
     # note: icons could be included, but do not seem to add much
     # note: tried showing unavailable pages as 'sans link', results not particularly attractive
     # fourth field is a flag saying when to show; if not present, show
-    # TBD:  Friends, Groups, Venues, Calendars
+    # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
+    
     @routes = [
       [ home_path, 'Home', 'people', signed_in? ],
       [ settings_path, 'Settings', 'people', signed_in? ],
@@ -46,7 +47,7 @@ class StaticPagesController < ApplicationController
       [ signin_path, 'Sign In', 'sessions', ! signed_in? ],
       [ signup_path, 'New Account', 'people', ! signed_in? ],
       [ reset_password_path, 'Reset Password', 'sessions', ! signed_in? ],
-      # [ search_people_path, 'Search for People', 'people' ],
+      [ search_people_path, 'Search for People', 'people', signed_in? ],
       [ search_path, 'Search for Talks', 'talks' ],
       [ helps_path, 'List of Help Pages' , 'helps' ],
       [ new_help_path, 'New Help' , 'helps', admin? ],

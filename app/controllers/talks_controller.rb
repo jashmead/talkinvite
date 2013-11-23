@@ -91,6 +91,7 @@ class TalksController < ApplicationController
 
   # start is root_path for system
   def start
+    # TBD:  use store location here, if available?
     if signed_in?
       redirect_to home_people(@person)
     else 

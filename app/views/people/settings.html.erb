@@ -6,7 +6,11 @@
 
   <%= render partial: 'form_core', object: f %>
 
-  <% # TBD:  once a safe way is found do to this, leave passwords out of the settings %>
+  <% 
+    # TBD:  once a safe way is found do to this, leave passwords out of the settings
+    #   -- could include a token with the settings form (or use the cross-site injection token) 
+    #     and allow no password if it is present
+  %>
   <%= render partial: 'password', object: f %>
 
   <%= render partial: 'person_save', object: f %>

@@ -24,6 +24,14 @@ has a show X control
   -- gets date & time from talk
   -- has scale, zoom setting, show X setting from previous time
 
+==== Development
+
+-- first do in ruby-on-rails
+
+-- then cut over to jquery, keeping the RoR as a backup
+
+-- once this is working, kill all views & partials not needed
+
 ==== TBD
 
-alternate universes
+alternate calendars & time systems :)

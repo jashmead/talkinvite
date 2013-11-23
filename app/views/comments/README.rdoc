@@ -11,6 +11,7 @@
   -- may not even reference a talk
 
 -- partials only
+  -- TBD: but may want to put a current calendar up on sitemap
 
 ==== Index
 
