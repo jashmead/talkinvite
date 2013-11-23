@@ -1,6 +1,4 @@
 <!-- TBD: add in post option if the talk hasn't been posted yet (i.e. talk_status is 'start') -->
-<!-- TBD: add in latitude, longitude, map options -->
-<!-- TBD: add in better date, perhaps even a calendar option -->
 <!-- TBD: how to integrate in signin/new account? -->
 <%= form_for_jqm @talk do |f| %>
 
@@ -12,11 +10,9 @@
 
   <%= f.text_area :description, placeholder: 'details?' %>
 
-  <%= f.text_field :when_desc, placeholder: 'when?' %>
+  <%= render partial: 'talk_when', object: f %>
 
-  <%= f.text_field :where_desc, placeholder: 'where?' %>
-
-  <%= f.hidden_field :talk_status %>
+  <%= render partial: 'talk_where', object: f %>
 
   <%= render partial: 'talks/submit_button', :object => f %>
 

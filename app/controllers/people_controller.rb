@@ -220,11 +220,6 @@ class PeopleController < ApplicationController
       redirect_to(root_url) unless current_person.sub? || current_person.admin?
     end
 
-    def talk_admin?
-      # TBD:  add in membership status == 'admin'
-      current_talk && current_talk.person_id = current_person.id
-    end
-
     # TBD:  add in 'invite'? is this best place for invite?
 
 end

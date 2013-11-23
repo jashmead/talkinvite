@@ -1,4 +1,8 @@
 # Talks -- Key table
+=begin
+  TBD: fix up field names when_desc, where_desc; change to talk_when, talk_where
+  TBD: validate start_dt < end_dt; or switch to a duration
+=end
 # 
 # == Fields
 # 1. person_id -- hope to allow anonymous at some point, but not clear how to do this
@@ -39,7 +43,6 @@
 # 1. Nearby -- once locations are up
 # 1. Liked by X, with X as a member
 #
-# TBD: validate start_dt < end_dt
 
 =begin
 for associations
@@ -109,7 +112,6 @@ class Talk < ActiveRecord::Base
   validates_inclusion_of :talk_status, in: [ 'start', 'posted', 'cancelled', 'done' ] 
 
   def self.posted
-    # TBD:  use scopes to help collect 'posted'?
     self.where('talk_status = ?', 'posted')
   end
 
@@ -120,7 +122,6 @@ class Talk < ActiveRecord::Base
       return none 
     end
     # TBD: does find_by_person_id throw exception on no rows found?
-    # TBD: replace this with a union on all members but only active
     self.where('person_id = ?', person.id)
   end
 

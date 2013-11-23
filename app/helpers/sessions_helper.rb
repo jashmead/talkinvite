@@ -48,6 +48,7 @@ module SessionsHelper
 
   # why is this squib needed?
   def current_talk=(talk)
+    logger.debug("SessionHelper.current_talk=: talk: #{talk.inspect}")
     @current_talk = session[:current_talk] = talk
   end
 
@@ -182,9 +183,10 @@ module SessionsHelper
     session.delete(:return_to)
   end
 
-  def store_location
-    # logger.debug("SessionsHelper: store_location: #{request.url.inspect}, request.get?: #{request.get?}")
-    session[:return_to] = request.url if request.get?
+  def store_location (url = nil)
+    url ||= request.url
+    logger.debug("SessionsHelper: store_location: #{url.inspect}, request.get?: #{request.get?}")
+    session[:return_to] = url if request.get?
   end
 
   ## placeholders for admin & sub booleans; seem to work fine

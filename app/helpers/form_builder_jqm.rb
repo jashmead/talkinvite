@@ -116,7 +116,7 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
   private
     def pre_field(attribute)
-      '<div class="fieldcontain field ui-hide-label">' + label(attribute)
+      '<div class="fieldcontain field ui-hide-label">' + label(attribute, attribute.to_s.titleize)
     end
 
     def post_field

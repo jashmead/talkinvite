@@ -18,7 +18,7 @@ class TalksController < ApplicationController
   #   -- owner can do anything, 
   #   -- anyone can join, 
   #   -- members can leave, post, comment, message, & map
-  before_action :correct_person, only: [:edit, :destroy]
+  # before_action :correct_person, only: [:edit, :destroy]
 
   # currently talks & people share the list of nav buttons, but that is likely to change
   def feet_center
@@ -52,13 +52,17 @@ class TalksController < ApplicationController
   # GET /talks/1/edit
   # TBD:  allow easy flipping between edit & control?  or treat edit as scaffolding while en route to control?
   def edit
+    # logger.debug("TalksController.edit: talk_admin? #{talk_admin?}, @talk: #{@talk.inspect}, current_person: #{current_person.inspect}")
+    store_location
+    render 'show' and return if ! talk_admin?
   end
 
   # GET /talks/1/control
   # TBD:  saving from control is done via ajax
   # TBD:  add control into routes
   def control
-    logger.debug("TalksController.control: #{@talk.inspect}")
+    store_location
+    logger.debug("TalksController.control: @talk: #{@talk.inspect}, current_person: #{current_person.inspect}")
   end
 
   def search_fields
@@ -69,14 +73,37 @@ class TalksController < ApplicationController
   # POST /talks.json
   def create
     # TBD:  we would like to return to the 'control' screen from create, not to the default
-    current_talk = @talk = @person.talks.create(talk_params)
-    create_q(@talk)
+    @talk = Talk.new(talk_params)
+    respond_to do |format|
+      if @talk.save
+        format.html { 
+          redirect_back_or control_talk_url(@talk)
+          flash.now[:success] = 'A talk was born!'
+        }
+        # TBD: on format.json, do we want action: 'show' or do we want 'index'?  what does 'location: model' mean?
+        format.json { render action: 'control', status: :created, location: @talk }
+      else
+        fail_q(@talk, format, 'new')
+      end
+    end
   end
 
   # PATCH/PUT /talks/1
   # PATCH/PUT /talks/1.json
   # TBD:  verify update is working correctly
   def update
+    logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
+    case talk_params['commit']
+      when /Post/i
+        if ! @talk.posted
+          @talk.posted = DateTime.now
+          @talk.talk_status = 'posted'
+        end
+      when /cancel/i
+        @talk.talk_status = 'cancelled'
+      when /done/i
+        @talk.talk_status = 'done'
+    end
     update_q(@talk, talk_params)
   end
 
@@ -84,8 +111,8 @@ class TalksController < ApplicationController
   # DELETE /talks/1.json
   # TBD: TalksController.destroy will need to be customized to requirements of talks
   def destroy
+    render 'show' and return if ! talk_admin?
     destroy_q(@talk, home_path)
-    # nil out the current talk
     unset_talk
   end
 
@@ -133,12 +160,9 @@ class TalksController < ApplicationController
       @person = Person.find_by_id(params[:person_id]) ||
         current_person ||
         anonymous
-      logger.debug("TalksController.set_person: @person: #{@person}")
     end
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_talk
-      # current_person refers to person currently logged in, often *not* the same as talk.person_id
       current_talk = @talk = Talk.find(params[:id])
     end
 
@@ -153,15 +177,17 @@ class TalksController < ApplicationController
       #   -- "#require" makes sure that the parameters include a 'talk' hash
       #   -- "#permit" allows only the white-listed fields thru
       #   -- returns the params object itself
-      params.require(:talk).permit(:summary, :description, :person_id, 
+      params.require(:talk).permit(:id, :summary, :description, :person_id, 
         :start_dt, :end_dt, :longitude, :latitude, :who_desc, :talk_status, :where_desc, :when_desc)
     end
 
-    # note:  correct_person (in talks controller) means currently logged in person is the owner of the talk
-    def correct_person
-      # find the talk through the person, if not found, this person doesn't own the talk
-      @talk = current_person.talks.find_by(id: params[:id])
-      redirect_to root_url if @talk.nil?
+    def talk_admin?(talk = nil)
+      # TBD:  why is this elaborate setting of defaults needed? current_talk should have been set in set_talk
+      talk ||= @talk || current_talk
+      # TBD: include designated admins, members with member_type == 'admin'
+      # logger.debug("TalksController.talk_admin?: @talk: #{@talk.inspect}, session: #{session.inspect}")
+      # logger.debug("TalksController.talk_admin?: current_person: #{current_person.inspect}, current_talk: #{current_talk.inspect}")
+      current_person && talk && current_person.id == talk.person_id
     end
 
 end

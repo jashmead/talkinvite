@@ -25,4 +25,3 @@ describe "talks/control" do
   end
 
 end
-

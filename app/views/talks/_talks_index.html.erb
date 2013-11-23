@@ -3,21 +3,18 @@
   # TBD:  add pagination
   #   -- 1) integrate jquery_mobile_paginate_link_renderer.rb, then bracket the loop with 'will_paginate'
   #   -- 2) homebrew
+  # TBD: use different color for talks you are admin of, are member of, are just listing
+  # TBD: break out the fields using jqm listview
 %>
   <ul data-role="listview" data-inset="true" >
       <% @talks.each do |talk| %>
         <li>
-        <% 
-          # TBD: setup @talks to include person names, avoid per row sql
-          # TBD: set up grid in jquery mobile to keep person names lined up
-          # TBD: include a time in days, using DateHelper & distance_of_time_in_words_to_now, once start_dt is set
-        %>
         <%= 
-          link_to talk.summary + ' (' + talk.person.name + ')', edit_talk_path(talk.id) 
+          link_to talk.summary + ' / ' + talk.person.name + ' / ' + talk.when_desc.to_s, control_talk_path(talk.id) 
         %>
         </li>
       <% end %>
   </ul>
 <% else %>
-  <p>No talks found.</p>
+  <p>No matching talks found</p>
 <% end %>

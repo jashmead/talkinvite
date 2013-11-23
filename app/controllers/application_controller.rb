@@ -240,11 +240,11 @@ class ApplicationController < ActionController::Base
       if model.save
         format.html { 
           # we should have stored the previous location in session
-          # TBD:  why does root take us to 'sitemap' rather than 'home'?
+          # TBD: build a default edit path or force controller & action?
           redirect_back_or root_url
           flash.now[:success] = model.class.to_s.downcase + ' was successfully created.'
         }
-        # TBD: on format.json, do we want action: 'show' or do we want 'index'?  what does 'location: model' mean?
+        # TBD: on format.json, do we want action 'show' or 'edit' or 'index'?  what does 'location: model' mean?
         format.json { render action: 'show', status: :created, location: model }
       else
         fail_q(model, format, 'new')

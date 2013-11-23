@@ -6,7 +6,7 @@
 # 1. rsvp_status -- accepted, declined, maybe
 # 1. member_type -- member, admin
 #
-# TBD:  add a member.member_text field?
+# TBD:  add comment field
 
 class Member < ActiveRecord::Base
 

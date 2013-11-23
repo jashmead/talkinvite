@@ -2,12 +2,16 @@
   # hand-built talk submit button
   # TBD:  replace create with 'post', 'save as draft'
   # TBD:  replace update with 'post', 'undo changes', 'cancel talk'
+  # note: default name of button is commit, value of button will be returned with this
+  #   -- to pass thru, we can either switch on the value, or set the name of the button to something appropriate, i.e. 'post'
+  #   -- in the latter case, we will need to include that name in the whitelist used by strong parameters
   talk = submit_button.object
   if talk.new_record?
 %>
   <%= submit_button.submit 'Create Talk' %>
 <% else %>
   <%= submit_button.submit 'Update Talk' %>
+  <%= submit_button.submit 'Post Talk' %>
   <%=
     link_to 'Delete', talk_url(talk.id), method: :delete, 
       data: { confirm: "Are you sure you want to delete this talk?" },
