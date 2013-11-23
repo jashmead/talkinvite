@@ -26,6 +26,7 @@ class StaticPagesController < ApplicationController
   #   -- pages here are the 'key' pages
   #   -- all pages are accessible from here or in one or two hops
   #   -- may make a reasonable start page as well
+  # Codeclimate thinks the array with flags approach has complexity 47!
   def sitemap
     store_location
     
@@ -37,25 +38,41 @@ class StaticPagesController < ApplicationController
     # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
     # TBD:  add a current_message element in?
     
-    @routes = [
-      [ home_path, 'Home', 'people', signed_in? ],
-      [ settings_path, 'Settings', 'people', signed_in? ],
-      [ profile_path, 'Profile', 'people', signed_in? ],
-      [ change_password_path, 'Change Password', 'people', signed_in? ],
-      [ control_talk_path(current_talk), "Current Talk", 'talks', signed_in? && current_talk ],
-      [ new_talk_path, 'Create Talk', 'talks', signed_in? ],
-      [ my_messages_path, 'My Messages', 'messages', signed_in? ],
-      [ signin_path, 'Sign In', 'sessions', ! signed_in? ],
-      [ signup_path, 'New Account', 'people', ! signed_in? ],
-      [ reset_password_path, 'Reset Password', 'sessions', ! signed_in? ],
-      [ search_people_path, 'Search for People', 'people', signed_in? ],
+    @routes = []
+
+    if signed_in?
+      @routes += [
+        [ home_path, 'Home', 'people' ],
+        [ settings_path, 'Settings', 'people' ],
+        [ profile_path, 'Profile', 'people' ],
+        [ change_password_path, 'Change Password', 'people' ],
+        [ new_talk_path, 'Create Talk', 'talks' ],
+        [ my_messages_path, 'My Messages', 'messages' ],
+        [ signin_path, 'Sign In', 'sessions', ! signed_in? ],
+        [ signup_path, 'New Account', 'people', ! signed_in? ],
+        [ search_people_path, 'Search for People', 'people' ]
+      ]
+    else 
+      @routes.push([ reset_password_path, 'Reset Password', 'sessions' ])
+    end
+
+    if current_talk
+      @routes.push([ control_talk_path(current_talk), "Current Talk", 'talks' ])
+    end
+    
+    if admin?
+      @routes += [
+        [ new_help_path, 'New Help' , 'helps' ],
+        [ new_faq_path, 'New FAQ' , 'faqs' ],
+        [ new_credit_path, 'New Credit' , 'credits' ]
+      ]
+    end
+
+    @routes += [
       [ search_path, 'Search for Talks', 'talks' ],
       [ helps_path, 'List of Help Pages' , 'helps' ],
-      [ new_help_path, 'New Help' , 'helps', admin? ],
       [ faqs_path, 'FAQs' , 'faqs' ],
-      [ new_faq_path, 'New FAQ' , 'faqs', admin? ],
       [ credits_path, 'Credits' , 'credits' ],
-      [ new_credit_path, 'New Credit' , 'credits', admin? ],
       [ static_pages_about_path, 'About' , 'static_pages' ],
       [ static_pages_contact_path, 'Contact' , 'static_pages' ],
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
