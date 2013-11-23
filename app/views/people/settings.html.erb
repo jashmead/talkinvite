@@ -1,12 +1,11 @@
 <% provide(:title, "Settings") %>
-<% logger.debug("views/people/settings: @title: #{@title}, @person: #{@person.inspect}") %>
+<% # TBD:  shift to 'Devise', then remove the password fields %>
 <%= form_for_jqm(@person) do |f| %>
 
   <%= render partial: 'shared/error_messages', object: f.object %>
 
   <%= render partial: 'form_core', object: f %>
 
-  <% # TBD:  shift to 'Devise', then remove the password fields %>
   <%= render partial: 'password', object: f %>
 
   <%= render partial: 'person_save', object: f %>

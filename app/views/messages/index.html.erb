@@ -1,7 +1,7 @@
 <% provide(:title, 'Messages') %>
 <% # TBD:  messages always restricted to your sent & received %>
 <% if @messages %>
-	<ul 'data-role'="listview">
+	<ul data-role="listview">
 	    <% @messages.each do |message| %>
         <li>
         <%= link_to message.message_text, edit_message_path(message) %>

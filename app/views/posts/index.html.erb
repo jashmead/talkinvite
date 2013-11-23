@@ -1,6 +1,6 @@
 <% provide(:title, 'Posts') %>
 <% if @posts %>
-	<ul 'data-role'="listview">
+	<ul data-role="listview">
 	    <% @posts.each do |post| %>
         <li>
         <%= link_to post.post_text, edit_post_path(post) %>

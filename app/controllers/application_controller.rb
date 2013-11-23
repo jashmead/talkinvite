@@ -73,8 +73,13 @@ class ApplicationController < ActionController::Base
     [ helps_path, credits_path, faqs_path ]
   end
 
+  # TBD:  shift to a model where the new talk page will let you signin/create a new account on the fly...
   def feet_for_people_pages
-    [ talks_new_page, talks_search_page, signout_page ]
+    if signed_in?
+      [ talks_new_page, talks_search_page, signout_page ]
+    else
+      [ signin_path, talks_search_page, about_path ]
+    end
   end
 
   def feet_for_static_pages
