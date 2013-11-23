@@ -431,7 +431,8 @@ CREATE TABLE talks (
     who_desc character varying(255),
     talk_status character varying(255) DEFAULT 'start'::character varying NOT NULL,
     where_desc character varying(255),
-    when_desc character varying(255)
+    when_desc character varying(255),
+    posted timestamp without time zone
 );
 
 
@@ -1025,3 +1026,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131122013253');
 INSERT INTO schema_migrations (version) VALUES ('20131122014753');
 
 INSERT INTO schema_migrations (version) VALUES ('20131122022650');
+
+INSERT INTO schema_migrations (version) VALUES ('20131123210454');
