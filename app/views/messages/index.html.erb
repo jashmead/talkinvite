@@ -1,4 +1,5 @@
 <% provide(:title, 'Messages') %>
+<% # TBD:  messages always restricted to your sent & received %>
 <% if @messages %>
 	<ul 'data-role'="listview">
 	    <% @messages.each do |message| %>

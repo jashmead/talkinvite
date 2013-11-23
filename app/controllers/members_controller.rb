@@ -1,13 +1,13 @@
 # Members Controller
 # 
-##  add accept/decline/maybe operations here, calling on the model functions with the same names
-##  add admin/unadmin operations here, calling on the model functions with the same names
-##  expect these will be using ajax in final design
+##  TBD: add accept/decline/maybe operations here, calling on the model functions with the same names
+##  TBD: add admin/unadmin operations here, calling on the model functions with the same names
+##    -- expect these will be using ajax in final design
 
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
-  # at some point, may return member_type? a comment?
+  # TBD:  add in searches on membership type, status, name of person, ...
   def search_fields
     []
   end

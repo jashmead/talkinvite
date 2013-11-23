@@ -6,6 +6,8 @@
 #
 # TBD:  add url field -- note that this can be included in the description
 #
+# currently keying off the 'id' for the page, this should work for partials as well...
+
 class Help < ActiveRecord::Base
   validates :name, presence: true
   validates_uniqueness_of :name

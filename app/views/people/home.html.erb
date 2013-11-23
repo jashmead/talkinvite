@@ -1,5 +1,9 @@
 <% provide(:title, "Home") %>
 <% logger.debug("views/people/home: @person: #{@person.inspect}, @talks: #{@talks.inspect}") %>
+<% 
+  # content:  talk box, messages, perhaps my activity
+  # footer: new talk, search talks, search messages
+%>
 <% if @talks %>
   <ul data-role="listview" data-inset="true">
   <% @talks.each do |talk| %>

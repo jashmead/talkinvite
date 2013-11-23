@@ -98,6 +98,10 @@ from comments button
   -- # of members
   -- # of accesses
 
+==== Timeline
+
+-- posts, comments, & so on
+
 ==== Fields
 
 private/invitation only/by group only

@@ -22,10 +22,9 @@
 # 1. Maps
 
 # Planned fields
-# 1. repeating talk?
-# 1. private talk?
-# 1. open -- anyone can edit?
-# 1. post talk comments
+# 1. repeating talk
+# 1. public/private -- all can see/only members can see
+# 1. notes
 
 # == Searches
 #

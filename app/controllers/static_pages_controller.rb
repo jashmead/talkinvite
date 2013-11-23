@@ -35,6 +35,7 @@ class StaticPagesController < ApplicationController
     # note: tried showing unavailable pages as 'sans link', results not particularly attractive
     # fourth field is a flag saying when to show; if not present, show
     # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
+    # TBD:  add a current_message element in?
     
     @routes = [
       [ home_path, 'Home', 'people', signed_in? ],

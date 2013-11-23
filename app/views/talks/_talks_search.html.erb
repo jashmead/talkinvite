@@ -1,4 +1,6 @@
 <%= form_tag(found_talks_path, method: "get") do %>
+<% # TBD:  add in advanced search either as a dialog or as an accordian %>
+<% #  -- advanced search:  my talks, open/all, by summary, by tags, by date range, by location %>
   <div class="fieldcontain field ui-hide-label">
     <%= label_tag(:search_q, "Search") %>
     <%= search_field(:search, :q) %>
