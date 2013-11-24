@@ -11,8 +11,9 @@ class TalksController < ApplicationController
 
   # should always have a person for a talk
   before_action :set_person
+
   # these actions all need a talk; set current_talk as a side-effect
-  before_action :set_talk, only: [:show, :edit, :update, :destroy, :control, :map]
+  before_action :set_talk, only: [:show, :edit, :update, :destroy, :control, :map, :calendar]
 
   # TBD:  allow the 'new' action without a person, require before a create however
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy ]
@@ -181,7 +182,6 @@ class TalksController < ApplicationController
       #   -- alternatively, we could store only the talk.id in the session...
       #   -- or, store the current_talk as a class variable in the Talk class, i.e. Talk::current_talk = 
       TalksController.current_talk = @talk = Talk.find(params[:id])
-      logger.debug("TalksController.set_talk: current_talk: #{TalksController.current_talk.inspect}")
     end
 
     def unset_talk

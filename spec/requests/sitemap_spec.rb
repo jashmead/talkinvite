@@ -5,6 +5,7 @@
 # note: 'it' has to be 'leaf' node; describe can be anywhere
 #  -- ruby code seems to work (generally) inside 'it', but not inside 'describe'
 #  -- therefore correct hierarchy is describe, describe, it { ruby code }
+# TBD:  add in tests for current_talk & current_message paths
 
 require 'spec_helper'
 

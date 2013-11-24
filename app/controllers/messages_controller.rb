@@ -1,11 +1,14 @@
 # Messages Controller
 #
-# TBD:  replace my_messages with a method on the message model & a general search routine
+# TBD:  add in send, receive, review methods
+#   -- probably depend on type
 
 # usually from a specific source point
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_messages]
+
+  cattr_accessor :current_message, instance_accessor: false
 
   def search_fields
     [ 'message_text' ]
@@ -65,7 +68,7 @@ class MessagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
-      @message = Message.find(params[:id])
+      MessagesController.current_message = @message = Message.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -70,6 +70,7 @@ class StaticPagesController < ApplicationController
       [ my_messages_path, 'My Messages', 'messages' ],
       [ search_people_path, 'Search for People', 'people' ]
     ]
+    current_message_routes = [ [ message_path(MessagesController.current_message), "Current Message", 'messages' ] ]
     not_signed_in_routes = [
       [ signin_path, 'Sign In', 'sessions' ],
       [ signup_path, 'New Account', 'people' ],
