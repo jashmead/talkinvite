@@ -5,6 +5,7 @@
 # those helps associated with pages can be edited on the fly by any admin, helps to keep them up to date
 #
 # TBD:  add url field -- note that this can be included in the description
+# TBD:  add html_id field? or just keep using name for this?
 #
 # currently keying off the 'id' for the page, this should work for partials as well...
 

@@ -16,7 +16,7 @@ class Post < ActiveRecord::Base
   validates :post_type, presence: true
 
   # TBD: figure out how to get the service list from shared code, say in the module Talkinvite
-  validates_inclusion_of :service_type, :in => [ 'talkinvite', 'email', 'twitter', 'facebook', 'dm' ]
+  validates_inclusion_of :service_type, :in => Service::SERVICE_TYPES
 
   validates_inclusion_of :post_type, :in => [ 'announce', 'cancel', 'done' ]
 

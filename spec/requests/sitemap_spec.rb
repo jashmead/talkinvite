@@ -89,7 +89,11 @@ describe "sitemap" do
       click_link 'Profile'
 
       # save_and_open_page
+
+      # TBD:  why doesn't person.name work here?
+      # expect(page).to have_title(person.name)
       expect(page).to have_title('J. Random User')
+
       expect(page).to have_selector('h1', 'J. Random User')
       expect(page).to have_text(/Worry/)
       expect(page).not_to have_text(/jru@talkinvite.com/)

@@ -6,6 +6,9 @@
 
 class TalksController < ApplicationController
 
+  # current_talk set by set_talk, unset_talk
+  cattr_accessor :current_talk, instance_accessor: false
+
   # should always have a person for a talk
   before_action :set_person
   # these actions all need a talk; set current_talk as a side-effect
@@ -53,6 +56,7 @@ class TalksController < ApplicationController
   # TBD:  allow easy flipping between edit & control?  or treat edit as scaffolding while en route to control?
   def edit
     # logger.debug("TalksController.edit: talk_admin? #{talk_admin?}, @talk: #{@talk.inspect}, current_person: #{current_person.inspect}")
+    logger.debug("TalksController.edit: @talk.methods: #{@talk.methods.inspect}")
     store_location
     render 'show' and return if ! talk_admin?
   end
@@ -149,11 +153,18 @@ class TalksController < ApplicationController
   def search
   end
 
+  def calendar
+    calendar_q(@talk, params)
+  end
+
   def map
     map_q(@talk, params)
   end
 
   # TBD:  specialized searches
+  def current_talk?(talk)
+    TalksController.current_talk == talk
+  end
 
   private
     def set_person
@@ -162,12 +173,19 @@ class TalksController < ApplicationController
         anonymous
     end
 
+    # set @talk & current_talk from params
     def set_talk
-      current_talk = @talk = Talk.find(params[:id])
+      # TBD:  using self.current_talk here raises error:   ActionDispatch::Cookies::CookieOverflow:
+      #   -- may have to instantiate sessions in the database to fix
+      #     -- could be we hit the 4K size limit for cookie-based sessions
+      #   -- alternatively, we could store only the talk.id in the session...
+      #   -- or, store the current_talk as a class variable in the Talk class, i.e. Talk::current_talk = 
+      TalksController.current_talk = @talk = Talk.find(params[:id])
+      logger.debug("TalksController.set_talk: current_talk: #{TalksController.current_talk.inspect}")
     end
 
     def unset_talk
-      current_talk = nil
+      TalksController.current_talk = nil
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,6 +1,5 @@
 # Static Pages
 #
-# TBD:  add in topics pages/routes -- i.e. stuff to talk about
 
 class StaticPagesController < ApplicationController
 
@@ -16,6 +15,7 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  # TBD: make contact a form, setting up email calls
   def contact
   end
 
@@ -27,10 +27,10 @@ class StaticPagesController < ApplicationController
   #   -- all pages are accessible from here or in one or two hops
   #   -- may make a reasonable start page as well
   # Codeclimate thinks the array with flags approach has complexity 47!
+
   def sitemap
     store_location
     
-    # logger.debug("StaticPagesController.sitemap:  current_talk: #{current_talk.inspect}")
 
     # note: icons could be included, but do not seem to add much
     # note: tried showing unavailable pages as 'sans link', results not particularly attractive
@@ -56,8 +56,9 @@ class StaticPagesController < ApplicationController
       @routes.push([ reset_password_path, 'Reset Password', 'sessions' ])
     end
 
-    if current_talk
-      @routes.push([ control_talk_path(current_talk), "Current Talk", 'talks' ])
+    logger.debug("StaticPagesController.sitemap:  current_talk: #{TalksController.current_talk.inspect}")
+    if TalksController.current_talk
+      @routes.push([ control_talk_path(TalksController.current_talk), "Current Talk", 'talks' ])
     end
     
     if admin?

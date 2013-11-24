@@ -101,6 +101,7 @@ class Person < ActiveRecord::Base
   end
 
   # TBD:  add in create of default service?
+  # TBD:  replace force with find_or_create?
   def self.force!(name, email, password, options = {})
     Person.find_by_name( name ) or
       Person.create!(

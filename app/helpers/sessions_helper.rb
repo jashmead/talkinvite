@@ -9,20 +9,26 @@ module SessionsHelper
   ##  instead use:
 
   # current_person is really 'logged_in_person', who are you signed in as?
+  #   -- lazy evalutation of @current_person
+  #   -- this returns the "current_person" according to your remember_token 
+  #   -- & sets '@current_person' in the current object
   def current_person
     encrypted_remember_token = Person.encrypt(cookies[:remember_token])
 
-    # the following syntax fails with a PostgreSQL error
-    # @current_person ||= Person.find_by( :remember_token, remember_token )
-    ## PG::InvalidTextRepresentation: ERROR:  invalid input syntax for type boolean: "remember_token"
-    ## LINE 1: SELECT  "people".* FROM "people"  WHERE ('remember_token') L...
-    ## : SELECT  "people".* FROM "people"  WHERE ('remember_token') LIMIT 1
+=begin
+  failing syntax:
+    @current_person ||= Person.find_by( :remember_token, remember_token )
+  PostgreSQL error:
+    PG::InvalidTextRepresentation: ERROR:  invalid input syntax for type boolean: "remember_token"
+    LINE 1: SELECT  "people".* FROM "people"  WHERE ('remember_token') L...
+    : SELECT  "people".* FROM "people"  WHERE ('remember_token') LIMIT 1
+=end
 
     # have to spell out the find_by_remember_token
     @current_person ||= Person.find_by_remember_token( encrypted_remember_token )
   end
 
-  # why is this squib needed?
+  # setter for @current_person; side effect is to set current person on the session
   def current_person=(person)
     # stores variable for later use
     # any reason for @current_person versus self.current_person?
@@ -39,21 +45,6 @@ module SessionsHelper
   def anonymous
     # logger.debug("SessionsHelper.anonymous")
     @anonymous = Person.find_by_name('anonymous')
-  end
-
-  # current_talk is really 'logged_in_talk', who are you signed in as?
-  def current_talk
-    @current_talk ||= session[:current_talk]
-  end
-
-  # why is this squib needed?
-  def current_talk=(talk)
-    logger.debug("SessionHelper.current_talk=: talk: #{talk.inspect}")
-    @current_talk = session[:current_talk] = talk
-  end
-
-  def current_talk?(talk)
-    talk == current_talk  # comparison is to what is returned from the function 'current_talk'
   end
 
   def sign_in(person)

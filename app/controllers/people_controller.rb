@@ -55,15 +55,19 @@ class PeopleController < ApplicationController
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end
-    logger.debug("PeopleController.show: @person: #{@person.inspect}")
+    # logger.debug("PeopleController.show: @person: #{@person.inspect}")
     @title = @person.name.titlecase
     @data_role = 'dialog' if @person != current_person
+    if @person == current_person 
+      flash[:notice] = "This is what others see when they click on your name"
+    end
     render 'show' # have to spell it out in case we were called from 'profile'
   end
 
   # TBD: merge profile back into 'show'
   def profile
     @person = current_person
+    # @title = "How Others See Me"
     @title = @person.name.titlecase
     show
   end
@@ -76,6 +80,7 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   # TBD:  if not admin or correct_person, switch to 'show'
+  # TBD:  merge into 'settings'
   def edit
     logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     # don't need to look for person here; done in 'before_action' callback by set_person
@@ -94,8 +99,9 @@ class PeopleController < ApplicationController
     @action_name = 'settings'
   end
 
+  # TBD:  waiting on install of 'Devise' to instantiate -- may have no work to do
   def change_password
-    logger.debug("PeopleController.change_password: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
+    # logger.debug("PeopleController.change_password: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
     @person = current_person
     @title = ("password 4 " + @person.name).titlecase
   end
@@ -162,17 +168,21 @@ class PeopleController < ApplicationController
     logger.debug("PeopleController.search")
   end
 
+  # 'found' called on successful search
+  # TBD:  fold found, search, index in together?
   def found
     logger.debug("PeopleController.found")
     # TBD:  add in a title of the form N people found?
     @people = search_q(Person)
   end
 
+  # oauth is placeholder for work on twitter authorization
   def oauth
     teapot_q
   end
 
   # people can have a location associated with them so get a map as well
+  # 'map' is placeholder for map work
   def map
     @person = Person.find(params[:id])
     map_q(@person, params)

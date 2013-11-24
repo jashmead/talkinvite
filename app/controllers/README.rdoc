@@ -1,20 +1,60 @@
 == Controllers
 
-=== Procedures
+-- function comments should be in the rdoc doc
 
-When fields in a table are changed, the list of required/allowed parameters (params.require) in the controller has to be adjusted according.  
+=== People
 
-Example:  the params.require in people_controller.rb: params.require(:person).permit( :name, :email, :about_me, :screen_name, :settings, :password, :password_confirmation, :admin, :sub) 
+=== Talks
 
-=== Namespaces
+=== Posts
 
-1.  admins
-1.  subs
+-- post fixes posted & sends out messages to members
 
-=== New controller functions
+-- needs a generic post button
 
-1. map
-1. calendar
-1. circle
-1. control -- varies by model
-1. side-by-side & other multi-frame constructs, since they need input from controller for each frame; may have been obsolesced by transition to jQuery Mobile
+=== Members
+
+join/maybe/leave -- three position switch, if jqm has it
+
+=== Messages
+
+-- create is really send
+
+-- update is really receive/review
+
+=== Comments
+
+nothing special at this point
+
+=== Static Pages
+
+about, privacy are simple text
+
+contact is simple text, but wants to be a form
+
+sitemap is key to development & may be useful in deployment
+-- is currently the simplest practicable list of pages than can function as start points
+-- TBD: may want to arrange differently in deployment
+-- gets flagged by codeclimate for complexity a lot
+
+=== Helps
+
+help is called from the help tab, keyed by page's id, does show/edit on the associated help
+
+=== Credits & Faqs
+
+nothing special
+
+=== Calendars
+
+-- start with ruby on rails
+
+-- then, graduate to jquery
+
+=== Maps
+
+-- have to work with leaflet from the start
+
+=== Services
+
+-- nothing beyond what is delivered by the assocation functions or obvious form partials

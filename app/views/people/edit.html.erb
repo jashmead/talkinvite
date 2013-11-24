@@ -1,5 +1,6 @@
 <% provide(:title, "Edit Person") %>
 <% # TBD:  merge 'settings' back into 'edit' %>
+<% # TBD:  use local storage to save versions; switch from Save to Revert button %>
 <% # content:  basic info, any privacy or use setting we come up with %>
 <% logger.debug("views/people/edit: @title: #{@title}, @person: #{@person.inspect}") %>
 <%= form_for_jqm(@person) do |f| %>
