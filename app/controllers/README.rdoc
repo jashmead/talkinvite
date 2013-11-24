@@ -10,7 +10,7 @@
 
 -- post fixes posted & sends out messages to members
 
--- needs a generic post button
+-- needs post, cancel, change, done buttons
 
 === Members
 

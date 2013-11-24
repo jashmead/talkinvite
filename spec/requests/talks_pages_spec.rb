@@ -189,5 +189,4 @@ describe "Talk pages" do
 
 =end
 
-
 end

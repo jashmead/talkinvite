@@ -26,50 +26,29 @@ class StaticPagesController < ApplicationController
   #   -- pages here are the 'key' pages
   #   -- all pages are accessible from here or in one or two hops
   #   -- may make a reasonable start page as well
-  # Codeclimate thinks the array with flags approach has complexity 47!
+  # Codeclimate thinks the array with flags approach has complexity 47! 
+  # note:  currently trying to bring the complexity down; 
+  #   -- may let it go back up once once we understand the complexity metric
+  #     -- especially if we are seeing performance problems with this function
+  #       -- *and* see it is being called often enough that we care
 
   def sitemap
     store_location
-    
 
     # note: icons could be included, but do not seem to add much
     # note: tried showing unavailable pages as 'sans link', results not particularly attractive
     # fourth field is a flag saying when to show; if not present, show
+    # TBD:  My Talks, My Messsages, Current Messages
     # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
     # TBD:  add a current_message element in?
     
-    @routes = []
-
-    if signed_in?
-      @routes += [
-        [ home_path, 'Home', 'people' ],
-        [ settings_path, 'Settings', 'people' ],
-        [ profile_path, 'Profile', 'people' ],
-        [ change_password_path, 'Change Password', 'people' ],
-        [ new_talk_path, 'Create Talk', 'talks' ],
-        [ my_messages_path, 'My Messages', 'messages' ],
-        [ signin_path, 'Sign In', 'sessions', ! signed_in? ],
-        [ signup_path, 'New Account', 'people', ! signed_in? ],
-        [ search_people_path, 'Search for People', 'people' ]
-      ]
-    else 
-      @routes.push([ reset_password_path, 'Reset Password', 'sessions' ])
-    end
-
-    logger.debug("StaticPagesController.sitemap:  current_talk: #{TalksController.current_talk.inspect}")
-    if TalksController.current_talk
-      @routes.push([ control_talk_path(TalksController.current_talk), "Current Talk", 'talks' ])
-    end
-    
-    if admin?
-      @routes += [
-        [ new_help_path, 'New Help' , 'helps' ],
-        [ new_faq_path, 'New FAQ' , 'faqs' ],
-        [ new_credit_path, 'New Credit' , 'credits' ]
-      ]
-    end
-
-    @routes += [
+    # note:  routes have to be defined 'on-the-fly'; in any case, not able to set up as class instance variables
+    admin_routes = [
+      [ new_help_path, 'New Help' , 'helps' ],
+      [ new_faq_path, 'New FAQ' , 'faqs' ],
+      [ new_credit_path, 'New Credit' , 'credits' ]
+    ]
+    base_routes = [
       [ search_path, 'Search for Talks', 'talks' ],
       [ helps_path, 'List of Help Pages' , 'helps' ],
       [ faqs_path, 'FAQs' , 'faqs' ],
@@ -79,6 +58,29 @@ class StaticPagesController < ApplicationController
       [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
       [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
     ]
+    current_talk_routes = [ [ control_talk_path(TalksController.current_talk), "Current Talk", 'talks' ] ]
+    signed_in_routes = [
+      [ home_path, 'Home', 'people' ],
+      [ settings_path, 'Settings', 'people' ],
+      [ profile_path, 'Profile', 'people' ],
+      [ change_password_path, 'Change Password', 'people' ],
+      [ new_talk_path, 'Create Talk', 'talks' ],
+      [ my_messages_path, 'My Messages', 'messages' ],
+      [ search_people_path, 'Search for People', 'people' ]
+    ]
+    not_signed_in_routes = [
+      [ signin_path, 'Sign In', 'sessions' ],
+      [ signup_path, 'New Account', 'people' ],
+      [ reset_password_path, 'Reset Password', 'sessions' ]
+    ]
+
+    @routes = signed_in? ? signed_in_routes : not_signed_in_routes
+
+    @routes += current_talk_routes if TalksController.current_talk
+    
+    @routes += admin_routes if admin?
+
+    @routes += base_routes
 
   end
 
