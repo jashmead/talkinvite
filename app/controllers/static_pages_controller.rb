@@ -31,6 +31,8 @@ class StaticPagesController < ApplicationController
   #   -- may let it go back up once once we understand the complexity metric
   #     -- especially if we are seeing performance problems with this function
   #       -- *and* see it is being called often enough that we care
+  #   -- break out into arrays of arrays + a few +='s brought the complexity down to 32,
+  #     -- getting our A rating back
 
   def sitemap
     store_location
@@ -42,7 +44,7 @@ class StaticPagesController < ApplicationController
     # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
     # TBD:  add a current_message element in?
     
-    # note:  routes have to be defined 'on-the-fly'; in any case, not able to set up as class instance variables
+    # note: the paths have to be local to the sitemap method; making the routes variables class variables failed.
     admin_routes = [
       [ new_help_path, 'New Help' , 'helps' ],
       [ new_faq_path, 'New FAQ' , 'faqs' ],
