@@ -275,7 +275,10 @@ CREATE TABLE messages (
     message_text text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    talk_id integer
+    talk_id integer,
+    service_type character varying(255) DEFAULT 'talkinvite'::character varying,
+    received_at timestamp without time zone,
+    previous_message_id integer
 );
 
 
@@ -671,6 +674,13 @@ CREATE UNIQUE INDEX index_members_on_person_id_and_talk_id ON members USING btre
 
 
 --
+-- Name: index_messages_on_previous_message_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_messages_on_previous_message_id ON messages USING btree (previous_message_id);
+
+
+--
 -- Name: index_messages_on_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1028,3 +1038,9 @@ INSERT INTO schema_migrations (version) VALUES ('20131122014753');
 INSERT INTO schema_migrations (version) VALUES ('20131122022650');
 
 INSERT INTO schema_migrations (version) VALUES ('20131123210454');
+
+INSERT INTO schema_migrations (version) VALUES ('20131124235118');
+
+INSERT INTO schema_migrations (version) VALUES ('20131124235339');
+
+INSERT INTO schema_migrations (version) VALUES ('20131125001516');
