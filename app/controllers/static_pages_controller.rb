@@ -26,33 +26,27 @@ class StaticPagesController < ApplicationController
   #   -- pages here are the 'key' pages
   #   -- all pages are accessible from here or in one or two hops
   #   -- may make a reasonable start page as well
-  # Codeclimate thinks the array with flags approach has complexity 47! 
-  # note:  currently trying to bring the complexity down; 
-  #   -- may let it go back up once once we understand the complexity metric
-  #     -- especially if we are seeing performance problems with this function
-  #       -- *and* see it is being called often enough that we care
-  #   -- break out into arrays of arrays + a few +='s brought the complexity down to 32,
-  #     -- getting our A rating back
+  # split of sets of paths into the private methods met with codeclimate's approval,
+  #   -- as they put it, 'woot!'
+  #   -- and, perhaps more importantly, it seems to make the code more maintainable, 'woot!woot!'
 
   def sitemap
     store_location
 
     # note: icons could be included, but do not seem to add much
     # note: tried showing unavailable pages as 'sans link', results not particularly attractive
-    # fourth field is a flag saying when to show; if not present, show
+
     # TBD:  My Talks, My Messsages, Current Messages
     # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
     # TBD:  add a current_message element in?
     
-    # note: the paths have to be local to the sitemap method; making the routes variables class variables failed.
-    # this means they have to be computed; to keep this proc simple, have pushed the computes into private methods, see below
-
     @routes = talk_routes + user_routes + message_routes + common_routes + boring_routes + admin_routes 
 
   end
 
   private
 
+    # note: the paths have to be computed, so can't use static arrays defined in the StaticPagesController class
     def admin_routes
       if admin?
         [

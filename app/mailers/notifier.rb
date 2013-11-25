@@ -47,7 +47,6 @@ options to mail:
     logger.debug("PeopleController.create: person: #{@person.inspect}, notice_type: #{notice_type}, post: #{post.inspect}")
 
     # set up variables for view, all attributes here are passed along automatically
-    # @recipient = person.name
     @person = person
     @notice_type = notice_type
     @post = post

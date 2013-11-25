@@ -126,6 +126,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       if @person.save 
+        # TBD:  setup specs for this:  or we will be adding to our 'technical debt'!
         Notifier.notice(@person, 'new account').deliver
         format.html do
           sign_in @person
