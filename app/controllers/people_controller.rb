@@ -119,16 +119,24 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    ## logger.debug("PeopleController.create: #{params.inspect}")
+    logger.debug("PeopleController.create: person_params: #{person_params.inspect}")
 
     @person = Person.new(person_params)
+    logger.debug("PeopleController.create: @person: #{@person.inspect}")
 
-    if @person.save 
-      sign_in @person
-      flash[:success] = "Welcome to Talk Invite!"
-      redirect_to @person
-    else
-      render :new
+    respond_to do |format|
+      if @person.save 
+        Notifier.notice(@person, 'new account').deliver
+        format.html do
+          sign_in @person
+          flash[:success] = "Welcome to Talk Invite!"
+          redirect_to @person
+        end
+        format.json { render json: @person, status: :created, location: @person }
+      else
+        format.html { render :new }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
     end
 
   end
