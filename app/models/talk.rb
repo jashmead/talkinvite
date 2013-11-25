@@ -87,6 +87,8 @@ going from parent to child (talk to posts, members, & comments) we have:
 
 class Talk < ActiveRecord::Base
 
+  TALK_STATUS = [ 'start', 'posted', 'cancelled', 'done' ]
+
   include ActiveModel::Validations
   validates_with TalkValidator
 
@@ -109,7 +111,7 @@ class Talk < ActiveRecord::Base
 
   validates :summary, presence: true, length: { minimum: 1, maximum: 255 }
   validates :person_id, presence: true
-  validates_inclusion_of :talk_status, in: [ 'start', 'posted', 'cancelled', 'done' ] 
+  validates_inclusion_of :talk_status, in: TALK_STATUS
 
   def self.posted
     self.where('talk_status = ?', 'posted')

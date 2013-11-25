@@ -26,7 +26,7 @@ describe MembersController do
 
   let(:person) { FactoryGirl.create(:person) }
   let(:talk) { FactoryGirl.create(:talk) }
-  let(:valid_attributes) { { "talk_id" => talk.id, "person_id" => person.id, "member_type" => "member", "rsvp_status" => "accepted" } }
+  let(:valid_attributes) { { "talk_id" => talk.id, "person_id" => person.id, "member_type" => "member", "rsvp_status" => "yes" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

@@ -10,6 +10,9 @@
 
 class Member < ActiveRecord::Base
 
+  RSVP_STATUS = [ 'yes', 'no', 'maybe' ]
+  MEMBER_TYPE = [ 'member', 'admin' ]
+
   belongs_to :person, inverse_of: :members
   belongs_to :talk, inverse_of: :members
 
@@ -21,10 +24,10 @@ class Member < ActiveRecord::Base
   validates :talk_id, presence: true
 
   validates :rsvp_status, presence: true
-  validates_inclusion_of :rsvp_status, :in => [ 'accepted', 'declined', 'maybe' ]
-
   validates :member_type, presence: true
-  validates_inclusion_of :member_type, :in => [ 'member', 'admin' ]  # may have others, ultimately
+
+  validates_inclusion_of :rsvp_status, :in => RSVP_STATUS
+  validates_inclusion_of :member_type, :in => MEMBER_TYPE  # may have others, ultimately
 
   validates_uniqueness_of :person_id, :talk_id
 
@@ -38,11 +41,11 @@ class Member < ActiveRecord::Base
   end
 
   def self.accept(person_id, talk_id)
-    self.rsvp_status_create_or_change(person_id, talk_id, 'accepted')
+    self.rsvp_status_create_or_change(person_id, talk_id, 'yes')
   end
 
   def self.decline(person_id, talk_id)
-    self.rsvp_status_create_or_change(person_id, talk_id, 'declined')
+    self.rsvp_status_create_or_change(person_id, talk_id, 'no')
   end
 
   def self.maybe(person_id, talk_id)

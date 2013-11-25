@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123210454) do
+ActiveRecord::Schema.define(version: 20131125001516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,13 +89,17 @@ ActiveRecord::Schema.define(version: 20131123210454) do
   create_table "messages", force: true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.string   "message_type", default: "talkinvite", null: false
+    t.string   "message_type",        default: "talkinvite", null: false
     t.text     "message_text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "talk_id"
+    t.string   "service_type",        default: "talkinvite"
+    t.datetime "received_at"
+    t.integer  "previous_message_id"
   end
 
+  add_index "messages", ["previous_message_id"], name: "index_messages_on_previous_message_id", using: :btree
   add_index "messages", ["talk_id"], name: "index_messages_on_talk_id", using: :btree
 
   create_table "people", force: true do |t|

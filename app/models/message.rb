@@ -12,6 +12,8 @@ class Message < ActiveRecord::Base
 
   ## belongs_to :person
   ## belongs_to :talk
+  # talkinvite is the default, post is for posts, there will be others
+  MESSAGE_TYPES = [ 'talkinvite', 'post' ]
 
   belongs_to :sender, inverse_of: :messages, class_name: "Person"
   belongs_to :receiver, inverse_of: :messages, class_name: "Person"
@@ -24,7 +26,8 @@ class Message < ActiveRecord::Base
   validates :message_type, presence: true
   validates :message_text, presence: true
 
-  validates_inclusion_of :message_type, :in => [ 'talkinvite', 'dm', 'email' ]  # may have others, ultimately
+  validates_inclusion_of :message_type, :in => MESSAGE_TYPES            # may have others, ultimately
+  validates_inclusion_of :service_type, :in => Service::SERVICE_TYPES
 
   ## default_scope is not working in the newer/older test
   default_scope -> { order('messages.created_at desc') }

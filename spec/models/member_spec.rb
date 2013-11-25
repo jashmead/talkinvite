@@ -9,7 +9,7 @@ describe Member do
   let(:talk) { FactoryGirl.create(:talk) }
 
   ## going 'left' to 'right', person to talk
-  let(:member) { person.members.build(talk_id: talk.id) }
+  let(:member) { person.members.build(talk_id: talk.id, rsvp_status: 'yes') }
 
   subject { member }
 

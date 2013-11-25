@@ -10,12 +10,14 @@
 # TBD: how are we going to use name, description fields?
 class Calendar < ActiveRecord::Base
 
+  CALENDAR_SCALES = [ 'day', 'week', 'month', 'year' ]
+
   belongs_to :person, inverse_of: :calendars
   belongs_to :talk, inverse_of: :calendars
 
   validates :person_id, presence: true
   validates :talk_id, presence: true
   validates :name, presence: true
-  validates_inclusion_of :scale, in: [ 'day', 'week', 'month', 'year' ] 
+  validates_inclusion_of :scale, in: CALENDAR_SCALES
 
 end

@@ -27,7 +27,7 @@ describe MessagesController do
   let(:person) { FactoryGirl.create(:person) }
   let(:other_person) { FactoryGirl.create(:person) }
   let(:valid_attributes) { { "sender_id" => person.id, "receiver_id" => other_person.id, 
-    "message_type" => "email", "message_text" => "contents of message" } }
+    "message_type" => "post", "message_text" => "contents of message" } }
 
   before { sign_in person, no_capybara: true }
 

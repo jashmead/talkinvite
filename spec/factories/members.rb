@@ -5,7 +5,7 @@ FactoryGirl.define do
     talk
     person
 
-    rsvp_status "accepted"
-    member_type ""
+    rsvp_status "yes"
+    member_type "member"
   end
 end

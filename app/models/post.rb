@@ -5,6 +5,8 @@
 #
 class Post < ActiveRecord::Base
 
+  POST_TYPES = [ 'start', 'post', 'cancel', 'change', 'done', 'announce' ]
+
   belongs_to :person, inverse_of: :posts
   belongs_to :talk, inverse_of: :posts
 
@@ -12,12 +14,10 @@ class Post < ActiveRecord::Base
 
   validates :person_id, presence: true  # note person_id points to author of post, *NOT* author of talk
   validates :talk_id, presence: true
-  validates :service_type, presence: true # how the post is being shipped out
   validates :post_type, presence: true
+  validates :service_type, presence: true # how the post is being shipped out
 
-  # TBD: figure out how to get the service list from shared code, say in the module Talkinvite
   validates_inclusion_of :service_type, :in => Service::SERVICE_TYPES
-
-  validates_inclusion_of :post_type, :in => [ 'announce', 'cancel', 'done' ]
+  validates_inclusion_of :post_type, :in => POST_TYPES
 
 end
