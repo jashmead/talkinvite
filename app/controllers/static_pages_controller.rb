@@ -47,7 +47,7 @@ class StaticPagesController < ApplicationController
     # note: the paths have to be local to the sitemap method; making the routes variables class variables failed.
     # this means they have to be computed; to keep this proc simple, have pushed the computes into private methods, see below
 
-    @routes = user_routes + talk_routes + message_routes + admin_routes + common_routes
+    @routes = talk_routes + user_routes + message_routes + common_routes + boring_routes + admin_routes 
 
   end
 
@@ -65,9 +65,8 @@ class StaticPagesController < ApplicationController
       end
     end
 
-    def common_routes
+    def boring_routes
       [
-        [ search_path, 'Search for Talks', 'talks' ],
         [ helps_path, 'List of Help Pages' , 'helps' ],
         [ faqs_path, 'FAQs' , 'faqs' ],
         [ credits_path, 'Credits' , 'credits' ],
@@ -75,6 +74,12 @@ class StaticPagesController < ApplicationController
         [ static_pages_contact_path, 'Contact' , 'static_pages' ],
         [ static_pages_privacy_path, 'Privacy' , 'static_pages' ],
         [ static_pages_sitemap_path, 'Site Map', 'static_pages' ]
+      ]
+    end
+
+    def common_routes
+      [
+        [ search_path, 'Search for Talks', 'talks' ]
       ]
     end
   
