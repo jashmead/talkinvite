@@ -9,14 +9,14 @@ class PeopleController < ApplicationController
   # profile, settings, & home are only available to the 'correct_person': logged in as the person being profiled, set, or home'd
   # edit & update only available to the 'correct_person'
 
-  before_action :set_person, only: [:show, :edit, :update, :destroy, :settings, :home, :change_password]
+  # the 'set_person' commands are expecting an 'id' in the params
+  before_action :set_person, only: [:show, :edit, :update, :destroy ] 
+  before_action :authenticate_person!, only: [:edit, :update, :destroy, :settings, :home, :change_password]
 
   ## removed index (& therefore search) from list of routes that require you to be signed in; 
   ##    -- no, this caused additional failures
   ##    -- need deeper understanding before we can continue
   ##    -- put :index back in for now
-
-  before_action :signed_in_person, only: [ :index, :edit, :update, :destroy, :settings, :home, :profile, :change_password ]
 
   # do not need correct_person for settings, profile, & home because they reroute *to* the correct_person
   before_action :correct_person, only: [:edit, :update]
@@ -31,7 +31,7 @@ class PeopleController < ApplicationController
 
   # TBD: we can change the footer for profile, settings, & home.  Do we wish to?
   def feet_center
-    if signed_in?
+    if person_signed_in?
       feet_for_people_pages
     else
       feet_for_static_pages
@@ -67,7 +67,6 @@ class PeopleController < ApplicationController
   # TBD: merge profile back into 'show'
   def profile
     @person = current_person
-    # @title = "How Others See Me"
     @title = @person.name.titlecase
     show
   end
@@ -109,7 +108,7 @@ class PeopleController < ApplicationController
   # 'home' is a control panel type thing
   # TBD:  add talks box, eliminate update fields
   def home
-    # TBD: how to manage return navigation 
+    logger.debug("PeopleController.home: current_person: #{current_person.inspect}")
     store_location  # so if we click on something we'll come back here:  it is home, after all!
     @person = current_person
     @talks = Talk.talks_by_person(@person)
@@ -200,13 +199,9 @@ class PeopleController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
-      ## ActiveRecord will raise an exception if the record is not found
+      ## with 'find', ActiveRecord will raise an exception if the record is not found
       begin
         @person = Person.find(params[:id])
-      rescue
-        # TBD: is defaulting this a good idea?
-        logger.debug("PeopleController.set_person: params: #{params.inspect}")
-        @person = Person.new
       end
     end
 
@@ -215,6 +210,7 @@ class PeopleController < ApplicationController
     # We also do *not* allow admin or sub flags to be set from here
     def person_params
       # params whitelist does *not* include admin, sub, remember_token
+      # TBD:  share this whitelist with the list used by configuration_permitted_parameters
       params.require(:person).permit(
         :name, 
         :email, 

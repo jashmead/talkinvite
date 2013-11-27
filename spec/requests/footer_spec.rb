@@ -29,7 +29,7 @@ describe "footers" do
   let(:help_footer_list) { [ 'Home', 'Helps', 'Credits', 'Faqs' ] }
 
   let(:home_page_list) { [ "Home" ] }
-  let(:home_footer_list) { [ 'Site Map', 'New Talk', 'Talks', 'Signout' ] }
+  let(:home_footer_list) { [ 'Site Map', 'New Talk', 'Talks', 'Sign Out' ] }
 
   let(:people_page_list) { [ 
     "Create Talk",
@@ -38,7 +38,7 @@ describe "footers" do
     "Search for Talks",
     "Settings"
   ] }
-  let(:people_footer_list) { [ 'Home', 'New Talk', 'Talks', 'Signout' ] }
+  let(:people_footer_list) { [ 'Home', 'New Talk', 'Talks', 'Sign Out' ] }
   # let(:people_footer_list) { [ 'New Talk' ] }
 
   let(:static_page_list) { [ 
@@ -61,8 +61,8 @@ describe "footers" do
 
   @footer_list = {
     'help' => [ 'Home', 'Helps', 'Credits', 'Faqs' ],
-    'home' => [ 'Site Map', 'New Talk', 'Talks', 'Signout' ],
-    'people' => [ 'Home', 'New Talk', 'Talks', 'Signout' ],
+    'home' => [ 'Site Map', 'New Talk', 'Talks', 'Sign Out' ],
+    'people' => [ 'Home', 'New Talk', 'Talks', 'Sign Out' ],
     'static' => [ 'Home', 'About', 'Contact', 'Privacy' ]
   }
 

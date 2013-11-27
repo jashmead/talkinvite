@@ -57,7 +57,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # this is how we get signed_in? and its friends:
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  # this is how we get person_signed_in? and its friends:
   # include only applies to modules; looks at app/helpers for files (& other places?)
   include SessionsHelper
 
@@ -73,12 +75,12 @@ class ApplicationController < ActionController::Base
     [ helps_path, credits_path, faqs_path ]
   end
 
-  # TBD:  shift to a model where the new talk page will let you signin/create a new account on the fly...
+  # TBD:  shift to a model where the new talk page will let you sign_in/create a new account on the fly...
   def feet_for_people_pages
-    if signed_in?
-      [ talks_new_page, talks_search_page, signout_page ]
+    if person_signed_in?
+      [ talks_new_page, talks_search_page, sign_out_page ]
     else
-      [ signin_path, talks_search_page, about_path ]
+      [ sign_in_path, talks_search_page, about_path ]
     end
   end
 
@@ -105,12 +107,16 @@ class ApplicationController < ActionController::Base
   end
 
   def home_page
-    { 'action_name' => 'home', 'controller_name' => 'people', 'label' => 'Home', 'url' => home_path }
+    { 'action_name' => 'home', 'controller_name' => 'people', 'label' => 'Home', 'href' => home_url }
   end
 
-  # note: 'sayonara' provides a 'get' interface to 'sessions#destroy'
-  def signout_page
-    { 'action_name' => 'sayonara', 'controller_name' => 'sessions', 'label' => 'Signout', 'url' => sayonara_path } 
+  def sign_out_page
+    logger.debug("ApplicationController.sign_out_page: href: " + destroy_person_session_url)
+    { 'action_name' => 'sign_out', 
+      'controller_name' => 'sessions', 
+      'label' => 'Sign Out', 
+      'href' => destroy_person_session_url, 
+      'method' => 'delete' } 
   end
 
   def sitemap_page
@@ -134,7 +140,7 @@ class ApplicationController < ActionController::Base
     { 'action_name' => 'search',
       'controller_name' => 'talks',
       'label' => 'Talks',  # since icon will carry the action
-      'url' => search_talks_path
+      'href' => search_talks_url
     } 
   end
 
@@ -144,7 +150,7 @@ class ApplicationController < ActionController::Base
     # currently have three tabs specific to controller, plus wings specific to login status
     
     # put home (or sitemap) or active talks on the left
-    feet = [ signed_in? ? ( self.action_name === 'home' ? sitemap_page : home_page ) : start_page ]
+    feet = [ person_signed_in? ? ( self.action_name === 'home' ? sitemap_page : home_page ) : start_page ]
 
     # core of the tabs:
     feet += feet_center
@@ -282,18 +288,26 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-    ## only controllers can call a teapot
-    ## teapot_q is internal:  is the 'under-construction' error
+    # only controllers can call a teapot
+    #   -- teapot_q is internal:  is the 'under-construction' error
+    #   -- 518 is the HTTP teapot error, as in "I'm steamed because I'm a teapot"
     def teapot_q
 
-      # 518 is the HTTP teapot error, as in "I'm steamed because I'm a teapot"
-
-      # 'layout: false': if we don't turn off the layout, the page looks really weird
-      #   which may help with understanding how the layouts work...
-    
-      # TBD: with the shift to jQueryMobile, we can revisit the layout question
-
+      # TBD: 'layout: false': if we don't turn off the layout, the page looks really weird, why?
       render 'static_pages/518', layout: false
     end
 
+    # devise version of strong parameters
+    # note: only three (devise) actions require parameters from the scary internet
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) do |u| 
+        u.permit :name, :email, :password, :password_confirmation
+      end
+      devise_parameter_sanitizer.for(:sign_in) do |u| 
+        u.permit :email, :password, :password_confirmation
+      end
+      devise_parameter_sanitizer.for(:account_update) do |u| 
+        u.permit :name, :email, :description, :password, :password_confirmation
+      end
+    end
 end

@@ -2,15 +2,15 @@
 
 -- all of the forms here should be dialogs
 
-==== Signin
+==== Sign In
 
--- should allow both name & email signin
+-- should allow both name & email sign_in
 
 -- includes reset password button
 
 -- includes new account button
 
-==== Signout
+==== Sign Out
 
 ==== TBD: Reset Password
 
@@ -18,6 +18,6 @@ needs to be a form so they can specify the name and/or the email to send the new
 -- put the supporting fields in the session object?
 -- see the examples before moving further on this
 
-==== Signout Button
+==== Sign Out Button
 
 very prominent, a security plus

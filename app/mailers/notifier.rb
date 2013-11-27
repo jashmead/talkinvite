@@ -50,7 +50,7 @@ options to mail:
     @person = person
     @notice_type = notice_type
     @post = post
-    @url = signin_url(host: 'localhost', controller: 'people', action: 'signin')
+    @url = sign_in_url(host: 'localhost', controller: 'people', action: 'sign_in')
 
     mail(
       to: 'taqm', # I should see these in taqm's mail queue

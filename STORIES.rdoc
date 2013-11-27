@@ -124,9 +124,9 @@ profile -- public face, not settings,
 
 signup -- shown if not signed in
 
-signin -- shown if not signed in
+sign_in -- shown if not signed in
 
-signout -- a button
+sign_out -- a button
 
 reset password
 

@@ -104,3 +104,5 @@ gem 'rdoc'
 ##         Include 'rails_12factor' gem to enable all platform features
 ##         See https://devcenter.heroku.com/articles/rails-integration-gems for more information.
 ## ignore this suggestion; it is a disaster
+
+gem 'devise'

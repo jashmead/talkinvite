@@ -1,6 +1,6 @@
 include ApplicationHelper
 
-def valid_signin(person)
+def valid_sign_in(person)
   fill_in "session_email",    with: person.email
   fill_in "session_password", with: person.password
   click_button "Sign In"
@@ -20,8 +20,8 @@ def sign_in(person, options={})
     cookies[:remember_token] = remember_token
     person.update_attribute(:remember_token, Person.encrypt(remember_token))
   else
-    # visit signin_path is not working:  no signin_path, no visit; hunh?
-    visit signin_path
+    # visit sign_in_path is not working:  no sign_in_path, no visit; hunh?
+    visit sign_in_path
     fill_in "session_email",    with: person.email
     fill_in "session_password", with: person.password
     click_button "Sign In"

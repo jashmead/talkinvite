@@ -4,16 +4,16 @@ describe "Authentication" do
 
   subject { page }
 
-  describe "signin page" do
-    before { visit signin_path }
+  describe "sign_in page" do
+    before { visit sign_in_path }
 
     it { should have_content('Sign In') }
     it { should have_title('Sign In') }
 
   end
 
-  describe "signin" do
-    before { visit signin_path }
+  describe "sign_in" do
+    before { visit sign_in_path }
 
     # test with no information:
     describe "with invalid information" do
@@ -35,10 +35,10 @@ describe "Authentication" do
       it { should have_link('People',     href: people_path) }
       it { should have_link('Profile',     href: person_path(person)) }
       it { should have_link('Settings',     href: edit_person_path(person)) }
-      it { should have_link('Sign Out',    href: signout_path) }
-      it { should_not have_link('Sign In', href: signin_path) }
+      it { should have_link('Sign Out',    href: sign_out_path) }
+      it { should_not have_link('Sign In', href: sign_in_path) }
 
-      describe "followed by signout" do
+      describe "followed by sign_out" do
         before { click_link 'Sign Out' }
         it { should have_link 'Sign In' }
       end
@@ -64,18 +64,18 @@ describe "Authentication" do
         ## expect something similar to this for posts as well
         describe "submitting to the create action" do
           before { post talks_path }
-          specify { expect(response).to redirect_to(signin_path) }
+          specify { expect(response).to redirect_to(sign_in_path) }
         end
 
         # adding in check on edits
         describe "submitting to the update action" do
           before { patch talk_path(FactoryGirl.create(:talk)) }
-          specify { expect(response).to redirect_to(signin_path) }
+          specify { expect(response).to redirect_to(sign_in_path) }
         end
 
         describe "submitting to the destroy action" do
           before { delete talk_path(FactoryGirl.create(:talk)) }
-          specify { expect(response).to redirect_to(signin_path) }
+          specify { expect(response).to redirect_to(sign_in_path) }
         end
 
       end
@@ -91,17 +91,17 @@ describe "Authentication" do
 
 ## TBD: have to fix store location at the same time
 =begin
-        describe "after signing in" do
+        describe "after sign_ing in" do
 
           it "should render the desired protected page" do
             expect(page).to have_title('Edit profile')
           end
 
-          describe "when signing in again" do
+          describe "when sign_ing in again" do
 
             before do
-              delete signout_path   ## why? -- this kills the session
-              visit signin_path
+              delete sign_out_path   ## why? -- this kills the session
+              visit sign_in_path
               fill_in "session_email",    with: person.email
               fill_in "session_password", with: person.password
               click_button "Sign In"
@@ -127,7 +127,7 @@ describe "Authentication" do
           # use patch to test the underlying (no template) 'update' action
           before { patch person_path(person) }
           # patch gives (somehow:  more r-o-r magic) direct access to the 'response' object, which we check:
-          specify { expect(response).to redirect_to(signin_path) }
+          specify { expect(response).to redirect_to(sign_in_path) }
         end
 
         describe "visiting the people index" do

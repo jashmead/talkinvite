@@ -1,6 +1,6 @@
 <!-- TBD: invert or otherwise changes swatches for dialogs? -- see how it looks in practice first -->
 <div class="header" data-role="header" <%=data_theme%> >
-  <% if signed_in? %>
+  <% if person_signed_in? %>
     <% if @data_role == 'page' %>
       <h1><%=@title%></h1>
       <%= settings_link %>
@@ -9,9 +9,9 @@
     <% end %>
   <% else %>
     <% if @data_role == 'page' %>
-      <%= signin_link %>
+      <%= sign_in_link %>
       <h1><%=@title%></h1>
-      <%= signup_link %>
+      <%= sign_up_link %>
     <% else %>
       <h1><%=@title%></h1>
     <% end %>

@@ -15,8 +15,8 @@ class TalksController < ApplicationController
   # these actions all need a talk; set current_talk as a side-effect
   before_action :set_talk, only: [:show, :edit, :update, :destroy, :control, :map, :calendar]
 
-  # TBD:  allow the 'new' action without a person, require before a create however
-  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy ]
+  # you have to be logged in to edit/update/destroy a talk
+  before_action :authenticate_person!, only: [:new, :create, :edit, :update, :destroy ]
 
   # note: for control:  
   #   -- owner can do anything, 
@@ -124,8 +124,9 @@ class TalksController < ApplicationController
   # start is root_path for system
   def start
     # TBD:  use store location here, if available?
-    if signed_in?
-      redirect_to home_people(@person)
+    # TBD:  use url not path?
+    if person_signed_in?
+      redirect_to '/people/home'
     else 
       redirect_to '/talks/search'
     end

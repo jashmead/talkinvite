@@ -3,11 +3,10 @@
 # == Fields
 # 1.  name -- string, doesn't have to be unique (so long as email is!), but is mandatory
 # 1.  email -- mandatory, validated 
+# 1.  description -- text, optional
 # 1.  admin -- boolean, administrator, includes talkinvite
 # 1.  sub -- boolean, subscriber, does not include anonymous, not clear if we need this...
-# 1.  remember_token -- sent to user as part of a cookie, then used to find him/her
-# 1.  password, password_confirmation, password_digest
-# 1.  description -- text, optional
+# 1.  password, password_confirmation, encrypted_password -- per devise
 #
 # TBD: instantiate admin flag
 # TBD: instantiate sub flag -- tho not really needed till Phase III, could just get rid of
@@ -31,6 +30,10 @@
 # 1. preferred start page (currently defaulting to sitemap), can store in session as last page
 
 class Person < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   ## this line *creates* the attribute/method of Person called 'talks'
   has_many :talks, inverse_of: :person, dependent: :destroy
@@ -52,7 +55,7 @@ class Person < ActiveRecord::Base
   has_many :maps, inverse_of: :person, dependent: :destroy
   has_many :calendars, inverse_of: :person, dependent: :destroy
 
-  before_create :create_remember_token
+  # before_create :create_remember_token
 
   before_save do
     # TBD:  make the name lowercase & space-free? -- would rather not, tho would let us route to /people/anonymous/talks...
@@ -72,9 +75,14 @@ class Person < ActiveRecord::Base
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: true
 
+  # attr_accessible has been replaced by strong parameters
+  # attr_accessible :name, :email, :password, :password_confirmation, :description
+
   # TBD: we want to validate password on new account & change password but not on settings, how?
   #   -- conditional validation possible, but may open up security holes
   #   -- also, unclear what the trigger for such should be
+
+=begin
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
@@ -92,6 +100,7 @@ class Person < ActiveRecord::Base
   def Person.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)  # 'to_s' is to make sure we can handle nil tokens
   end
+=end
 
   # TBD: why can't anonymous be defined in the helpers?
   def self.anonymous 
@@ -116,10 +125,12 @@ class Person < ActiveRecord::Base
 
   private
 
+=begin
     def create_remember_token
       # have to use 'self', otherwise we would get a *local* variable called remember_token
       self.remember_token = Person.encrypt(Person.new_remember_token)
     end
+=end
 
     # make sure that every person has at least the 'talkinvite' service
     def create_talkinvite_service

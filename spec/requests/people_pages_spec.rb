@@ -1,5 +1,5 @@
 ## pages covered:
-##  usual resources, signup
+##  usual resources, sign_up
 
 require 'spec_helper'
 
@@ -109,9 +109,9 @@ describe "People pages" do
 
   end # end of profile page
 
-  describe "signup page" do
+  describe "sign_up page" do
 
-    before { visit signup_path }
+    before { visit sign_up_path }
 
     let(:submit) { "Create Person" }
 
@@ -128,8 +128,8 @@ describe "People pages" do
       before do
         fill_in "person_name",         with: "Mr. X"
         fill_in "person_email",        with: "mr-x@talkinvite.com"
-        fill_in "person_password",     with: "foobar"
-        fill_in "person_password_confirmation",      with: "foobar"
+        fill_in "person_password",     with: "Chattynuga"
+        fill_in "person_password_confirmation",      with: "Chattynuga"
       end
 
       it "should create a person" do

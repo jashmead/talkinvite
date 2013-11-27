@@ -5,7 +5,7 @@ describe SessionsController do
 
     it "routes to #new" do
       get("/sessions/new").should route_to("sessions#new")
-      get("/signin").should route_to("sessions#new")
+      get("/sign_in").should route_to("devise/sessions#new")
     end
 
     it "routes to #reset_password" do
@@ -18,10 +18,9 @@ describe SessionsController do
     end
 
     it "routes to #destroy" do
+      # TBD:  why do we need 'sessions' for first line, but 'devise/sessions' for 2nd?
       delete("/sessions/1").should route_to("sessions#destroy", :id => "1")
-      delete("/signout").should route_to("sessions#destroy")
-      get("/sayonara").should route_to("sessions#sayonara")
-      get("/sessions/sayonara").should route_to("sessions#sayonara")
+      delete("/sign_out").should route_to("devise/sessions#destroy")
     end
 
   end

@@ -16,6 +16,7 @@
 		      #   perhaps we can use some elegant Ruby unRouting method with which we may work nav button magic
 	
 	        # logger.debug("_footer: url: #{url.inspect}, #{url.class}")
+          # TBD:  allow for a method of 'delete' here
 	
 	        if url.class.to_s == 'String' 
 		        url_bits = url.split('/')
@@ -29,7 +30,7 @@
               label = action_name.to_s.titleize
             end
             href = url
-	        else
+	        else  # we have a hash on our hands
             # note: if you use a symbol to define a hash element, apparently you have to use one to dereference as well.
             # note:  therefore, if possible, use symbols both to define & to dereference hashes
             # logger.debug("_footer: url: #{url.inspect}")
@@ -37,6 +38,10 @@
             controller_name = url['controller_name']
 	          label = url['label']
             href = url['href'] || "/#{controller_name}/#{action_name}"
+            if url['method']
+              # by rails convention, data-method is 'get', 'put', 'delete', 'patch', 'post'
+              data_method = " data-method=\"#{url['method']}\" "
+            end
 	        end
 
 	        if action_name === controller.action_name && controller_name === controller.controller_name
@@ -50,10 +55,11 @@
 	        end
 	
 	        iconstr = iconify( action_name || controller_name )
-          # logger.debug(__FILE__ + ": iconstr: #{iconstr.inspect}, url: #{url.inspect}")
+          logger.debug("layouts/_footer: iconstr: #{iconstr.inspect}, url: #{url.inspect}")
 
+          # replace the url builder with a link_to, which should work just as well, but will allow a method operator
 		    %>
-	      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{href}\" #{data_theme(controller_name)} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
+	      <%= raw "<li><a #{klasses} #{data_method} data-role=\"button\" href=\"#{href}\" #{data_theme(controller_name)} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
 	    <% end %>
 	    </ul>
 	  </div>

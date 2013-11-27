@@ -20,7 +20,7 @@
 
 ==== Session pages
 
-1. Signin
+1. Sign In
 1. Reset Password -- use email chapter to set up
 
 ==== Partials Only

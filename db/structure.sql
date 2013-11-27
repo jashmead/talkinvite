@@ -315,7 +315,16 @@ CREATE TABLE people (
     remember_token character varying(255),
     admin boolean DEFAULT false NOT NULL,
     sub boolean DEFAULT false NOT NULL,
-    description text
+    description text,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255)
 );
 
 
@@ -702,6 +711,13 @@ CREATE INDEX index_people_on_remember_token ON people USING btree (remember_toke
 
 
 --
+-- Name: index_people_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_people_on_reset_password_token ON people USING btree (reset_password_token);
+
+
+--
 -- Name: index_talks_on_person_id_and_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1044,3 +1060,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131124235118');
 INSERT INTO schema_migrations (version) VALUES ('20131124235339');
 
 INSERT INTO schema_migrations (version) VALUES ('20131125001516');
+
+INSERT INTO schema_migrations (version) VALUES ('20131125213523');

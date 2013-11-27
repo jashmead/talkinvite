@@ -4,7 +4,7 @@ describe Person do
 
   before do
     @person = Person.new( name: "Example person", email: "examplar@talkinvite.com",
-      password: 'foobar', password_confirmation: 'foobar')
+      password: 'Chattynuga', password_confirmation: 'Chattynuga')
   end
 
   subject { @person }
@@ -13,13 +13,23 @@ describe Person do
   it { should respond_to(:email) }
   it { should respond_to(:description) }
 
-  it { should respond_to(:password_digest) }
+  # it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
+  # it { should respond_to(:remember_token) }
+  # it { should respond_to(:authenticate) }
 
-  it { should respond_to(:authenticate) }
+  # devise fields
+  it { should respond_to(:encrypted_password) }
+  it { should respond_to(:reset_password_token) }
+  it { should respond_to(:reset_password_sent_at) }
+  it { should respond_to(:remember_created_at) }
+  it { should respond_to(:sign_in_count) }
+  it { should respond_to(:current_sign_in_at) }
+  it { should respond_to(:last_sign_in_at) }
+  it { should respond_to(:current_sign_in_ip) }
+  it { should respond_to(:last_sign_in_ip) }
+
   it { should respond_to(:admin) }
   it { should respond_to(:sub) }
   it { should respond_to(:talks) }
@@ -122,6 +132,7 @@ describe Person do
     it { should_not be_valid }
   end
 
+=begin
   describe "return value of authenticate method" do
     before { @person.save }
     let(:found_person) { Person.find_by(email: @person.email) }
@@ -147,6 +158,7 @@ describe Person do
     before { @person.save }
     its(:remember_token) { should_not be_blank }
   end
+=end
 
   describe "talk associations" do
     before { @person.save }

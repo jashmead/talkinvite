@@ -33,8 +33,8 @@ describe PeopleController do
     { 
       "name" => "MyName", 
       "email" => "myemail@talkinvite.com",
-      "password" => "foobar", 
-      "password_confirmation" => "foobar"
+      "password" => "Chattynuga", 
+      "password_confirmation" => "Chattynuga"
     }
   }
 
@@ -48,7 +48,7 @@ describe PeopleController do
 
 # TBD:  get sign_in function to work with specs
   ## this test is failing because the 'sign_in' function isn't 'sticky' enuf
-  ## no longer requiring a signin for index, not appropriate in our case
+  ## no longer requiring a sign_in for index, not appropriate in our case
 =begin
   describe "GET index" do
     it "assigns all people as @people" do

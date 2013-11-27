@@ -20,7 +20,7 @@ describe PeopleController do
     end
 
     it "routes to #create" do
-      post("/people").should route_to("people#create")
+      post("/people").should route_to("devise/registrations#create")
     end
 
     it "routes to #update" do
@@ -46,7 +46,7 @@ describe PeopleController do
       get("/profile").should route_to("people#profile")
       get("/people/profile").should route_to("people#profile")
       get("/settings").should route_to("people#settings")
-      get("/signup").should route_to("people#new")
+      # get("/sign_up").should route_to("people#new")
       get("/home").should route_to("people#home")
       get("/people/change_password").should route_to("people#change_password")
       get("/change_password").should route_to("people#change_password")

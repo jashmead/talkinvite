@@ -6,7 +6,7 @@
 # usually from a specific source point
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_person, only: [:new, :create, :edit, :update, :destroy, :my_messages]
+  before_action :authenticate_person!, only: [:new, :create, :edit, :update, :destroy, :my_messages]
 
   cattr_accessor :current_message, instance_accessor: false
 

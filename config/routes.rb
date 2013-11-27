@@ -5,11 +5,12 @@
 #   -- 11/18/13 -- reverted to completely unnested routes:
 #     -- controller tests not working
 #     -- form & form spec paths trickier
+#   -- 12/26/13 -- added in devise
 #
 # main entry points are:
 # 1. talk pages:  new, edit, my talks, search 
 # 1. account pages:  profile, edit settings
-# 1. session pages:  signin, signout
+# 1. session pages:  sign_in, sign_out
 # 1. maps:  add map, change, save
 # 1. member pages:  join (& regrets)
 # 1. posts: announce (also change, cancel, mark done)
@@ -23,10 +24,17 @@
 # 
 Talkinvite::Application.routes.draw do
 
-  resources :calendars
+  # devise_for added by devise install process
+  devise_for :people
+
+  # TBD:  similar for update_account, change_password, reset_password?
+  devise_scope :person do
+    get 'sign_up', :to => 'devise/registrations#new'
+    get 'sign_in', :to => 'devise/sessions#new'
+    delete 'sign_out', :to => 'devise/sessions#destroy'
+  end
 
   match '/my_messages', to: 'messages#my_messages', via: 'get'
-
   resources :messages do
     collection do
       get :my_messages
@@ -40,7 +48,7 @@ Talkinvite::Application.routes.draw do
   resources :talks do
 
     member do
-      get :control, :map
+      get :control, :map, :calendar
     end
 
     # these are for talks in general
@@ -79,26 +87,21 @@ Talkinvite::Application.routes.draw do
   resources :services
 
   # sessions:
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  # match '/sign_in',  to: 'devise/sessions#new',         via: 'get'
+  # match '/sign_out', to: 'devise/sessions#destroy',     via: 'delete'
 
-  # note: sayonara method provides a 'get' interface to 'sessions#destroy'
-  match '/sayonara', to: 'sessions#sayonara',   via: 'get'
+  # TBD:  do we need devise/sessions rather than sessions?:
+  # match '/sessions/reset_password', to: 'sessions#reset_password', via: 'get'
+  # match '/reset_password', to: 'sessions#reset_password', via: 'get'
 
-  # note: if the /sayonara is to work, the /sessions/sayonara must be included
-  match '/sessions/sayonara', to: 'sessions#sayonara', via: 'get'
-
-  match '/sessions/reset_password', to: 'sessions#reset_password', via: 'get'
-  match '/reset_password', to: 'sessions#reset_password', via: 'get'
-
-  resources :sessions, only: [:new, :create, :destroy, :reset_password]  
+  # resources :sessions, only: [:new, :create, :destroy, :reset_password]  
 
   # people pages: 
   # TBD: merge edit & settings
   # TBD: merge show & profile
   match '/profile', to: 'people#profile', via: 'get'
   match '/settings', to: 'people#settings', via: 'get'
-  match '/signup', to: 'people#new', via: 'get'
+  # match '/sign_up', to: 'devise/registrations#new', via: 'get' # comment out in favor of devise
   match '/home', to: 'people#home', via: 'get'
   match '/change_password', to: 'people#change_password', via: 'get'
   match '/people/change_password', to: 'people#change_password', via: 'get'
@@ -198,6 +201,8 @@ Talkinvite::Application.routes.draw do
   #     resources :products
   #   end
 
-  root to: "static_pages#sitemap"
+  # root to: "static_pages#sitemap"
+  # person_root to: "people#home"
+  root to: "talks#start"
 
 end

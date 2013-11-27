@@ -94,7 +94,7 @@ class StaticPagesController < ApplicationController
     end
 
     def user_routes
-      if signed_in? 
+      if person_signed_in? 
         [
           [ home_path, 'Home', 'people' ],
           [ settings_path, 'Settings', 'people' ],
@@ -106,8 +106,8 @@ class StaticPagesController < ApplicationController
         ]
       else
         [
-          [ signin_path, 'Sign In', 'sessions' ],
-          [ signup_path, 'New Account', 'people' ],
+          [ sign_in_path, 'Sign In', 'sessions' ],
+          [ sign_up_path, 'New Account', 'people' ],
           [ reset_password_path, 'Reset Password', 'sessions' ]
         ]
       end
