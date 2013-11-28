@@ -31,4 +31,9 @@ Talkinvite::Application.configure do
   #   server restart required
   #   may slow things down, however
   config.assets.debug = false
+
+  # per upgrade from Rails 3.1 to 3.2:  https://github.com/rails/docrails/blob/master/guides/source/upgrading_ruby_on_rails.md
+  # config.active_record.mass_assignment_sanitizer = :strict  # not needed with strong parameters
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5  # eliminated in Rails 4.0
+
 end

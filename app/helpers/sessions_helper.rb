@@ -8,82 +8,11 @@ module SessionsHelper
   ##    end
   ##  instead use:
 
-=begin
-  # current_person is really 'logged_in_person', who are you signed in as?
-  #   -- lazy evalutation of @current_person
-  #   -- this returns the "current_person" according to your remember_token 
-  #   -- & sets '@current_person' in the current object
-  def current_person
-    encrypted_remember_token = Person.encrypt(cookies[:remember_token])
-
-##  failing syntax:
-##    @current_person ||= Person.find_by( :remember_token, remember_token )
-##  PostgreSQL error:
-##    PG::InvalidTextRepresentation: ERROR:  invalid input syntax for type boolean: "remember_token"
-##    LINE 1: SELECT  "people".* FROM "people"  WHERE ('remember_token') L...
-##    : SELECT  "people".* FROM "people"  WHERE ('remember_token') LIMIT 1
-
-    # have to spell out the find_by_remember_token
-    @current_person ||= Person.find_by_remember_token( encrypted_remember_token )
-  end
-
-  # setter for @current_person; side effect is to set current person on the session
-  def current_person=(person)
-    # stores variable for later use
-    # any reason for @current_person versus self.current_person?
-    # logger.debug("SessionsHelper.current_person=: current_person: #{@current_person.inspect}") #DDT
-    @current_person = person
-  end
-
-  def current_person?(person)
-    # logger.debug("SessionsHelper.current_person?: current_person: #{@current_person.inspect}") #DDT
-    person == current_person  # comparison is to what is returned from the function 'current_person'
-  end
-=end
-
   # guesswork as to how to best handle anonymous
   def anonymous
     # logger.debug("SessionsHelper.anonymous")
     @anonymous = Person.find_by_name('anonymous')
   end
-
-=begin
-  def sign_in(person)
-    remember_token = Person.new_remember_token
-
-    # normal format of cookies is cookies[:key] = { value: value, expires: expire_date }
-    #   but, if assigning to cookies.permanent, get expires in 20 years
-    #   put unencrypted form of remember_token in the person's cookie:
-    cookies.permanent[:remember_token] = remember_token  
-
-    #   save ENCRYPTED form to the database record:
-    person.update_attribute(:remember_token, Person.encrypt(remember_token))
-
-    # add a current person attribute to the current object (a controller)
-    # this is really an invocation of the 'current_person=' attribute writer
-    self.current_person = person
-  end
-=end
-
-=begin
-  ## current_person is a method, @current_person is an attribute -- admittedly a fuzzy distinction in Ruby
-  ## see if we are signed in currently
-  def signed_in?
-    ## logger.debug("SessionsHelper.signed_in?: current_person: #{current_person.inspect}")
-    !current_person.nil?
-  end
-=end
-
-  ## force person to be signed in, whether they are not currently
-=begin
-  def signed_in_person
-    unless person_signed_in?
-      ## store location defined in sessions_helper.rb
-      store_location
-      redirect_to sign_in_url, notice:  'Please sign in.' 
-    end
-  end
-=end
 
   # http://fortawesome.github.io/Font-Awesome/cheatsheet/
   # iconify spotted as complex by codeclimate 10/29/13, complexity 29, 11/22/13 - complexity 30
@@ -163,14 +92,6 @@ module SessionsHelper
 
   end
 
-=begin
-  # TBD: want to use 'delete' not 'get' for this? there is probably a better way
-  def sign_out
-    session.delete(:return_to)
-    redirect_to sign_out_url
-  end
-=end
-
   # the supplied default is 'person', so will turn into 'redirect_to person', which is what we had before
   def redirect_back_or(default)
     logger.debug("SessionsHelper: redirect_or_back: default: #{default.inspect}, session[:return_to]: #{session[:return_to].inspect}")
@@ -212,10 +133,17 @@ module SessionsHelper
     )
   end
 
+  # note:  fixed sign_in, sign_out, sign_up to work with devise
+  def sign_in_link
+    # note:  could test to see if we aren't already signed in, but seems no point
+    # TBD:  make sure that all references to sign_in have it as a dialog
+    link_to( "#{iconify(:sign_in)}&nbsp;Sign In".html_safe, new_person_session_path, 'data-rel' => 'dialog')
+  end
+
   # sign_out link only available on settings & related pages
   def sign_out_link
-    # note:  could test to see if we aren't already signed in, but seems no point
-    # icon is the vertical flip of the sign-in icon
+    # note: could test to see if we aren't already signed in, but seems no point
+    # note: icon is the vertical flip of the sign-in icon
     link_to( 
       "Sign Out&nbsp;#{iconify(:sign_out)}".html_safe, 
       destroy_person_session_path, 
@@ -224,15 +152,10 @@ module SessionsHelper
     )
   end
 
-  def sign_in_link
-    # note:  could test to see if we aren't already signed in, but seems no point
-    link_to( "#{iconify(:sign_in)}&nbsp;Sign In".html_safe, sign_in_path, 'data-rel' => 'dialog')
-  end
-
   def sign_up_link
     # note:  could test to see if we aren't already signed in, but seems no point
     # logger.debug("SessionsHelper.sign_up_link: iconify(sign_up): #{iconify(:sign_up)}")
-    link_to( "#{iconify(:sign_up)}</i>&nbsp;New Account".html_safe, sign_up_path, 'data-rel' => 'dialog')
+    link_to( "#{iconify(:sign_up)}</i>&nbsp;New Account".html_safe, new_person_registration_path)
   end
 
 end

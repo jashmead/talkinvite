@@ -80,7 +80,7 @@ class ApplicationController < ActionController::Base
     if person_signed_in?
       [ talks_new_page, talks_search_page, sign_out_page ]
     else
-      [ sign_in_path, talks_search_page, about_path ]
+      [ sign_in_page, talks_search_page, about_path ]
     end
   end
 
@@ -110,13 +110,28 @@ class ApplicationController < ActionController::Base
     { 'action_name' => 'home', 'controller_name' => 'people', 'label' => 'Home', 'href' => home_url }
   end
 
+  def sign_in_page
+    logger.debug("ApplicationController.sign_in_page: href: " + new_person_session_url)
+    { 'action_name' => 'sign_in', 
+      'controller_name' => 'devise/sessions', 
+      'label' => 'Sign In', 
+      'href' => new_person_session_url } 
+  end
+
   def sign_out_page
     logger.debug("ApplicationController.sign_out_page: href: " + destroy_person_session_url)
     { 'action_name' => 'sign_out', 
-      'controller_name' => 'sessions', 
+      'controller_name' => 'devise/sessions', 
       'label' => 'Sign Out', 
-      'href' => destroy_person_session_url, 
-      'method' => 'delete' } 
+      'href' => destroy_person_session_url }
+  end
+
+  def sign_up_page
+    logger.debug("ApplicationController.sign_up_page: href: " + new_person_registration_url)
+    { 'action_name' => 'sign_up', 
+      'controller_name' => 'devise/registrations', 
+      'label' => 'Sign Up', 
+      'href' => new_person_registration_url }
   end
 
   def sitemap_page

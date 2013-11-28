@@ -1,10 +1,10 @@
 <%= form_for_jqm(@member) do |f| %>
   <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <!-- TBD: replace person & talk with the corresponding names -->
+  <% # TBD: replace person & talk with the corresponding names %>
     <%= f.number_field :talk_id, placeholder: :talk_id %>
     <%= f.number_field :person_id, placeholder: :person_id %>
-  <!-- TBD: replace status, member_type with select --> 
+  <% # TBD: replace status, member_type with select %> 
     <%= f.text_field :rsvp_status, placeholder: :rsvp_status %>
     <%= f.text_field :member_type, placeholder: :member_type %>
 

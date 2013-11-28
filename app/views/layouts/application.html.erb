@@ -24,17 +24,17 @@
     %>
     <div data-role="<%=@data_role%>" id="<%=tagged_id()%>" <%=data_theme%> >
 	    <%=render 'layouts/header'%>
-      <!-- TBD:  get the flash to popup a transient alert box instead? -->
+      <% # TBD:  get the flash to popup a transient alert box instead? %>
 	    <div data-role="content" class="<%=controller.controller_name%>" id="<%=tagged_id('content')%>">
 	      <% flash.each do |key, value| %>
 	        <div class="alert alert-<%= key %>"><%= value %></div>
 	      <% end %>
 	      <%=yield%>
 	    </div>
-	    <!-- page showing scrollbar on right, tho plenty of space, why? -->
+	    <% # page showing scrollbar on right, tho plenty of space, why? %>
 	    <%= render 'layouts/footer' %>
 	    <%= debug(params) if Rails.env.development? %>
-	    <!-- debug(session) if Rails.env.development? -->
+	    <% # debug(session) if Rails.env.development? %>
     </div>
   </body>
 </html>

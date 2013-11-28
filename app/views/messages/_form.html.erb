@@ -1,7 +1,7 @@
 <%= form_for_jqm(@message) do |f| %>
   <%= render partial: 'shared/error_messages', object: f.object %>
 
-  <!-- TBD: replace sender#, receiver#, message_type with appropriate human comprehensible names -->
+  <% # TBD: replace sender#, receiver#, message_type with appropriate human comprehensible names %>
     <%= f.number_field :sender_id, placeholder: :sender_id %>
     <%= f.number_field :receiver_id, placeholder: :receiver_id %>
     <%= f.text_field :message_type, placeholder: :message_type %>

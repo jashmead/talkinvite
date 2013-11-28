@@ -1,9 +1,9 @@
-<!-- do not use 'footer' element here, it confused jQuery Mobile -->
+<% # do not use 'footer' element here, it confused jQuery Mobile %>
 <% if ! controller.footer_fields.empty? %>
-<!-- TBD:  see if we like ui-bar -->
-<!-- TBD:  use different id's for different footers, then set ui-state-persist="true" p74 of Mastering  -->
-<!-- NOTE: data-theme has to be applied to the footer, not the navbar, to take effect -->
-<!-- NOTE: don't bother with navbar in dialogs:  it is distracting in that context -->
+<% # TBD:  see if we like ui-bar %>
+<% # TBD:  use different id's for different footers, then set ui-state-persist="true" p74 of Mastering  %>
+<% # note: data-theme has to be applied to the footer, not the navbar, to take effect %>
+<% # note: don't bother with navbar in dialogs:  it is distracting in that context %>
 <% if @data_role == 'page' %>
 	<div class="footer" data-role="footer" data-position="fixed" data-id="<%=tagged_id('footer')%>" <%=data_theme%> >
 	  <div class="navbar" data-role="navbar">
@@ -11,13 +11,6 @@
 	    <% # active_button_set = false
          controller.footer_fields.each do |url| %>
 		    <%
-		      # we are assuming that the url has the form: /controller/action, 
-		      #   if it gets more complex than this, 
-		      #   perhaps we can use some elegant Ruby unRouting method with which we may work nav button magic
-	
-	        # logger.debug("_footer: url: #{url.inspect}, #{url.class}")
-          # TBD:  allow for a method of 'delete' here
-	
 	        if url.class.to_s == 'String' 
 		        url_bits = url.split('/')
 	          # logger.debug("_footer: url_bits: #{url_bits.inspect}")
@@ -38,10 +31,6 @@
             controller_name = url['controller_name']
 	          label = url['label']
             href = url['href'] || "/#{controller_name}/#{action_name}"
-            if url['method']
-              # by rails convention, data-method is 'get', 'put', 'delete', 'patch', 'post'
-              data_method = " data-method=\"#{url['method']}\" "
-            end
 	        end
 
 	        if action_name === controller.action_name && controller_name === controller.controller_name
@@ -57,9 +46,8 @@
 	        iconstr = iconify( action_name || controller_name )
           logger.debug("layouts/_footer: iconstr: #{iconstr.inspect}, url: #{url.inspect}")
 
-          # replace the url builder with a link_to, which should work just as well, but will allow a method operator
 		    %>
-	      <%= raw "<li><a #{klasses} #{data_method} data-role=\"button\" href=\"#{href}\" #{data_theme(controller_name)} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
+	      <%= raw "<li><a #{klasses} data-role=\"button\" href=\"#{href}\" #{data_theme(controller_name)} >#{iconstr}&nbsp;&nbsp;#{label}</a></li>" %>
 	    <% end %>
 	    </ul>
 	  </div>

@@ -1,8 +1,8 @@
 <% provide(:title, "Sign In") %>
 <% provide(:data_role, "dialog") %>
 
-<!-- url is passed to form, as the 'action' -->
-<!-- why no '@session'? -->
+<% # url is passed to form, as the 'action' %>
+<% # why no '@session'? %>
 <%= form_for_jqm(:session, url: sessions_path) do |f| %>
 
   <!-- unable to get :placeholder to work with these or to null them out, 

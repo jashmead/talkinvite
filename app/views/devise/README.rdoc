@@ -1,0 +1,49 @@
+= Devise
+
+All devise functions are dialogs & should be so noted
+
+Configuration:
+
+Have six templates to fix
+
+1. confirmations  -- not using
+1. mailer         -- using only reset
+1. passwords      -- using both new & edit
+1. registrations  -- using both new & edit
+1. sessions       -- using new, only file
+1. shared         -- only template is links, not using
+1. unlocks        -- not using
+
+Sort out:
+1. can we go back to the default routes but add in the format 'person' to 'html'?
+
+Changes:
+
+1. title:  pass to provide (if that works, it should)
+1. data-role (set to dialog)
+1. form_for -> form_for_jqm
+1. fields cleaned up (mostly remove stuff)
+1. extra validations (i.e. duplicated email check), possibly by just removing from person.rb (there is no session.rb)
+1. changed config.sign_out_via = :delete to =:get, simplifies links
+
+Maintenance:
+
+1. can fix the messages in config/initializers/devise.rb
+1. can replace devise.rb module validatable (by taking out of the person.rb file?)
+1. can change :path_names option to devise_for, e.g.: :path_names => { :sign_up => "register" }
+1. can add fields to config.authentication_keys = [ :email, :name ]
+
+Improvements:
+
+1. add in oauth
+1. add in username/email choice on lookups, login
+
+Fixes: 
+1. fix sign_up, sign_in, sign_out links to work with the above
+1. make sure that the parameters for sign_up, sign_in, account_update are set, in application_controller, in configure_permitted_parameters 
+
+Once these are working, retire the corresponding people & sessions forms:
+
+1. people:  new, edit, settings, change_password, reset_password
+1. sessions: new, reset_password
+1. remove the password_digest & remember_token fields from people

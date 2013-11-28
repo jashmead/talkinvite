@@ -40,7 +40,7 @@ class StaticPagesController < ApplicationController
     # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
     # TBD:  add a current_message element in?
     
-    @routes = talk_routes + user_routes + message_routes + common_routes + boring_routes + admin_routes 
+    @routes = talk_routes + user_routes + message_routes + common_routes + admin_routes 
 
   end
 
@@ -59,8 +59,10 @@ class StaticPagesController < ApplicationController
       end
     end
 
-    def boring_routes
+    # now codeclimate is whining about duplication between common_routes & user_routes!
+    def common_routes
       [
+        [ search_path, 'Search for Talks', 'talks' ],
         [ helps_path, 'List of Help Pages' , 'helps' ],
         [ faqs_path, 'FAQs' , 'faqs' ],
         [ credits_path, 'Credits' , 'credits' ],
@@ -71,12 +73,6 @@ class StaticPagesController < ApplicationController
       ]
     end
 
-    def common_routes
-      [
-        [ search_path, 'Search for Talks', 'talks' ]
-      ]
-    end
-  
     def message_routes 
       if MessagesController.current_message
         [ [ message_path(MessagesController.current_message), "Current Message", 'messages' ] ]
