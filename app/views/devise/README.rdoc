@@ -10,9 +10,17 @@ Have six templates to fix
 1. mailer         -- using only reset
 1. passwords      -- using both new & edit
 1. registrations  -- using both new & edit
-1. sessions       -- using new, only file
+1. sessions       -- using new, only file present
 1. shared         -- only template is links, not using
 1. unlocks        -- not using
+
+Templates are:
+1. sessions/new -- sign_in -- ok, but shrink width of remember_me
+1. registrations/new -- new account -- ok
+1. registrations/edit -- update account
+1. passwords/new
+1. passwords/edit
+1. mailer/reset
 
 Sort out:
 1. can we go back to the default routes but add in the format 'person' to 'html'?

@@ -5,7 +5,7 @@
 # note: 'it' has to be 'leaf' node; describe can be anywhere
 #  -- ruby code seems to work (generally) inside 'it', but not inside 'describe'
 #  -- therefore correct hierarchy is describe, describe, it { ruby code }
-# TBD:  add in tests for current_talk & current_message paths
+# TBD:  add in tests for current_talk, current_message, reset_password, & change_password paths
 
 require 'spec_helper'
 
@@ -82,7 +82,6 @@ describe "sitemap" do
     before do
       sign_in FactoryGirl.create(:person, :name => 'J. Random User', :email => 'jru@talkinvite.com', :description => "What? Me Worry?")
     end
-
     
     it "check profile page" do
 

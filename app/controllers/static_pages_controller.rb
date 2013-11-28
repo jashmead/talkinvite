@@ -103,8 +103,8 @@ class StaticPagesController < ApplicationController
       else
         [
           [ sign_in_path, 'Sign In', 'sessions' ],
-          [ sign_up_path, 'New Account', 'people' ],
-          [ reset_password_path, 'Reset Password', 'sessions' ]
+          [ sign_up_path, 'New Account', 'people' ]
+          # [ reset_password_path, 'Reset Password', 'sessions' ]
         ]
       end
     end

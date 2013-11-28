@@ -1,8 +1,8 @@
 include ApplicationHelper
 
 def valid_sign_in(person)
-  fill_in "session_email",    with: person.email
-  fill_in "session_password", with: person.password
+  fill_in "person_email",    with: person.email
+  fill_in "person_password", with: person.password
   click_button "Sign In"
 end
 
@@ -22,8 +22,8 @@ def sign_in(person, options={})
   else
     # visit sign_in_path is not working:  no sign_in_path, no visit; hunh?
     visit sign_in_path
-    fill_in "session_email",    with: person.email
-    fill_in "session_password", with: person.password
+    fill_in "person_email",    with: person.email
+    fill_in "person_password", with: person.password
     click_button "Sign In"
   end
 end

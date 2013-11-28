@@ -139,6 +139,7 @@ Note that a fair amount of setup is done in ~/.talkinvite, setting CBPATH, PATH,
 1. don't use name 'search' for a button; it confuses RoR or someone
 1. nested lists don't seem to work correctly in rdoc, so keep at one level for now
 1. nested includes don't seem to work in rdoc, so pull in everything from base README.rdoc
+1. what is difference between '<% %>' and '<% -%>'?
 
 === Final Cleanup
 
