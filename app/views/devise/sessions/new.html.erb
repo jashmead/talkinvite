@@ -1,6 +1,8 @@
 <h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<% logger.debug("devise/sessions/new: resource: #{resource.inspect}") %>
+<% logger.debug("devise/sessions/new: url: #{person_session_path(resource_name).inspect}") %>
+<%= form_for(resource, :as => resource_name, :url => '/people/sign_in') do |f| %>
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 

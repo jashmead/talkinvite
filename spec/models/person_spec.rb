@@ -4,7 +4,7 @@ describe Person do
 
   before do
     @person = Person.new( name: "Example person", email: "examplar@talkinvite.com",
-      password: 'Chattynuga', password_confirmation: 'Chattynuga')
+      password: 'user1234', password_confirmation: 'user1234')
   end
 
   subject { @person }

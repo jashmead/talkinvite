@@ -33,8 +33,8 @@ describe PeopleController do
     { 
       "name" => "MyName", 
       "email" => "myemail@talkinvite.com",
-      "password" => "Chattynuga", 
-      "password_confirmation" => "Chattynuga"
+      "password" => "user1234", 
+      "password_confirmation" => "user1234"
     }
   }
 

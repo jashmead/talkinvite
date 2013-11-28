@@ -128,8 +128,8 @@ describe "People pages" do
       before do
         fill_in "person_name",         with: "Mr. X"
         fill_in "person_email",        with: "mr-x@talkinvite.com"
-        fill_in "person_password",     with: "Chattynuga"
-        fill_in "person_password_confirmation",      with: "Chattynuga"
+        fill_in "person_password",     with: "user1234"
+        fill_in "person_password_confirmation",      with: "user1234"
       end
 
       it "should create a person" do

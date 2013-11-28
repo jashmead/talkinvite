@@ -9,8 +9,8 @@ FactoryGirl.define do
     sequence(:name)  { |n| "Person #{n}" }
     sequence(:email) { |n| "person_#{n}@talkinvite.com"}
 
-    password "Chattynuga"
-    password_confirmation "Chattynuga"
+    password "user1234"
+    password_confirmation "user1234"
 
     # FactoryGirl recommends that the base instance have least possible # of fields
     # about_me, screen_name, settings are not mandatory, so are left out
