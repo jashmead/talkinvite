@@ -93,9 +93,9 @@ class StaticPagesController < ApplicationController
       if person_signed_in? 
         [
           [ home_path, 'Home', 'people' ],
-          [ settings_path, 'Settings', 'people' ],
-          [ profile_path, 'Profile', 'people' ],
-          [ change_password_path, 'Change Password', 'people' ],
+          [ edit_person_registration_path, 'Settings', 'people' ],
+          [ person_path(current_person), 'Profile', 'people' ],
+          [ edit_person_password_path, 'Change Password', 'people' ],
           [ new_talk_path, 'Create Talk', 'talks' ],
           [ my_messages_path, 'My Messages', 'messages' ],
           [ search_people_path, 'Search for People', 'people' ]

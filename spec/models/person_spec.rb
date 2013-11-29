@@ -16,8 +16,8 @@ describe Person do
   # it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  # TBD: do we want to check for remember_token?  there are references to this in the 'devise' wiki
   # it { should respond_to(:remember_token) }
-  # it { should respond_to(:authenticate) }
 
   # devise fields
   it { should respond_to(:encrypted_password) }
@@ -29,6 +29,8 @@ describe Person do
   it { should respond_to(:last_sign_in_at) }
   it { should respond_to(:current_sign_in_ip) }
   it { should respond_to(:last_sign_in_ip) }
+
+  # it { should respond_to(:authenticate_person) }
 
   it { should respond_to(:admin) }
   it { should respond_to(:sub) }

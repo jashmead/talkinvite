@@ -113,10 +113,10 @@ describe "People pages" do
 
     before { visit sign_up_path }
 
-    let(:submit) { "Create Person" }
+    let(:submit) { "Sign Up" }
 
-    it { should have_content('New Account') }
-    it { should have_title('New Account') }
+    it { should have_content('Sign Up') }
+    it { should have_title('Sign Up') }
 
     describe "with invalid information" do
       it "should not create a person" do
@@ -186,7 +186,7 @@ describe "People pages" do
       it { should have_title(new_name) }
       it { should have_selector('div.alert.alert-success') }
 
-      it { should have_link('Settings', href: settings_path) }
+      it { should have_link('Settings', href: edit_person_registration_path) }
 
       # direct tests of database saves:
       # specify versus 'it'?

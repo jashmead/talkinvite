@@ -34,7 +34,7 @@ describe "Authentication" do
       it { should have_title(person.name) }
       it { should have_link('People',     href: people_path) }
       it { should have_link('Profile',     href: person_path(person)) }
-      it { should have_link('Settings',     href: edit_person_path(person)) }
+      it { should have_link('Settings',     href: edit_person_registration_path }
       it { should have_link('Sign Out',    href: sign_out_path) }
       it { should_not have_link('Sign In', href: sign_in_path) }
 

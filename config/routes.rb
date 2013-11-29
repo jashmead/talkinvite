@@ -9,7 +9,7 @@
 #
 # main entry points are:
 # 1. talk pages:  new, edit, my talks, search 
-# 1. account pages:  profile, edit settings
+# 1. account pages:  show, edit, home
 # 1. session pages:  sign_in, sign_out
 # 1. maps:  add map, change, save
 # 1. member pages:  join (& regrets)
@@ -48,7 +48,7 @@ Talkinvite::Application.routes.draw do
   resources :talks do
 
     member do
-      get :control, :map, :calendar
+      get :control, :map
     end
 
     # these are for talks in general
@@ -67,7 +67,6 @@ Talkinvite::Application.routes.draw do
   match '/talks/search', to: 'talks#search', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
 
-  # start currently maps into search
   match '/talks/start', to: 'talks#start', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
@@ -86,42 +85,16 @@ Talkinvite::Application.routes.draw do
   
   resources :services
 
-  # sessions:
-  # match '/sign_in',  to: 'devise/sessions#new',         via: 'get'
-  # match '/sign_out', to: 'devise/sessions#destroy',     via: 'delete'
-
-  # TBD:  do we need devise/sessions rather than sessions?:
-  # match '/sessions/reset_password', to: 'sessions#reset_password', via: 'get'
-  # match '/reset_password', to: 'sessions#reset_password', via: 'get'
-
+  # note: have removed the sessions controller, not needed when using devise, it seems
   # resources :sessions, only: [:new, :create, :destroy, :reset_password]  
 
   # people pages: 
-  # TBD: merge edit & settings
-  # TBD: merge show & profile
-  match '/profile', to: 'people#profile', via: 'get'
-  match '/settings', to: 'people#settings', via: 'get'
-  # match '/sign_up', to: 'devise/registrations#new', via: 'get' # comment out in favor of devise
-  match '/home', to: 'people#home', via: 'get'
-  match '/change_password', to: 'people#change_password', via: 'get'
-  match '/people/change_password', to: 'people#change_password', via: 'get'
   
-  # TBD:  kill the 'show' & 'edit' routes here? reroute 'delete' to 'inactivate'
+  match '/home', to: 'people#home', via: 'get'
   resources :people do
-
-    # TBD: implement 'oauth'
-    # TBD: see if we need 'map'
-    member do
-      get :map, :oauth
-    end
-
-    # TBD: eliminate search & found
-    # TBD: merge profile & edit
-    # note:  'home' is the only valid option here
     collection do
-      get :home, :search, :found, :profile, :change_password
+      get :home, :found, :search, :start
     end
-
   end
 
   # faqs & related
@@ -202,7 +175,6 @@ Talkinvite::Application.routes.draw do
   #   end
 
   # root to: "static_pages#sitemap"
-  # person_root to: "people#home"
   root to: "talks#start"
 
 end

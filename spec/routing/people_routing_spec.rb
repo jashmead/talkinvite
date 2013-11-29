@@ -37,23 +37,10 @@ describe PeopleController do
         get("/people/search").should route_to("people#search")
         get("/people/home").should route_to("people#home")
       end
-      it "routes to personalized #search" do
-        get("/people/1/oauth").should route_to("people#oauth", :id => "1")
-      end
     end
 
     it "routes to account management tool" do
-      get("/profile").should route_to("people#profile")
-      get("/people/profile").should route_to("people#profile")
-      get("/settings").should route_to("people#settings")
-      # get("/sign_up").should route_to("people#new")
       get("/home").should route_to("people#home")
-      get("/people/change_password").should route_to("people#change_password")
-      get("/change_password").should route_to("people#change_password")
-    end
-
-    it "routes to #map" do
-      get("/people/1/map").should route_to("people#map", :id => "1")
     end
 
   end

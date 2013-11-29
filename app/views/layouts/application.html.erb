@@ -13,6 +13,7 @@
   </head>
   <body>
     <%  
+        logger.debug("layouts/application: @title: '#{@title}'")
         # test_flow("application")
         # set data_role for overall page:
         if ! @data_role || @data_role == ''

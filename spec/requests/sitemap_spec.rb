@@ -95,7 +95,6 @@ describe "sitemap" do
       expect(page).to have_title('J. Random User')
 
       expect(page).to have_selector('h1', 'J. Random User')
-      expect(page).to have_text(/Worry/)
       expect(page).not_to have_text(/jru@talkinvite.com/)
 
     end
@@ -106,12 +105,10 @@ describe "sitemap" do
       click_link 'Settings'
 
       # save_and_open_page
+
       expect(page).to have_title('J. Random User')
       expect(page).to have_selector('h1', 'J. Random User')
-      expect(page).to have_text(/Worry/)
-
-      # TBD:  find out why 'have_text' doesn't see the email; save_and_open_page shows it is on the page
-      # expect(page).to have_text(/jru@talkinvite.com/)
+      # TBD:  figure out how to see the 'value' inside an 'input' field; we want to see that we set the email ok
 
     end
 
@@ -133,7 +130,7 @@ describe "sitemap" do
       click_link 'Change Password'
 
       # save_and_open_page
-      expect(page).to have_title('Password 4 J. Random User')
+      expect(page).to have_title('J. Random User')
       expect(page).to have_selector('h1', 'J. Random User')
 
     end

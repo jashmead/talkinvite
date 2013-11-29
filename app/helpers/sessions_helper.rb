@@ -127,7 +127,7 @@ module SessionsHelper
     # TBD:  test to see if we are signed in first
     link_to( 
       "#{iconify(:settings)}&nbsp;Settings".html_safe,
-      settings_path, 
+      edit_person_registration_path, 
       method: :get,
       'class' => 'ui-btn-right' # force button to the right side of the header, leaving space for the back button
     )

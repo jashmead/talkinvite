@@ -69,11 +69,9 @@ class Person < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 80 }
 
+  # since uniqueness of email being checked by device, do not check here
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, 
-    presence: true, 
-    format: { with: VALID_EMAIL_REGEX },
-    uniqueness: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX } #, #uniqueness: true
 
   # attr_accessible has been replaced by strong parameters
   # attr_accessible :name, :email, :password, :password_confirmation, :description

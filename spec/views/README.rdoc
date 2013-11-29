@@ -1,5 +1,9 @@
 === Views
 
-Make sense in MVC context, but static character makes them a poor fit to talkinvite.
+View specs sense in MVC context, but static character makes them a poor fit to talkinvite.
 
 Basically hacking over to keep a minimal level of control.
+
+==== People
+
+Leaving views in on devise pages (i.e. new, edit) to provide some quick checks

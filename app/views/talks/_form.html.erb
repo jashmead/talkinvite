@@ -1,19 +1,26 @@
 <% # TBD: add in post option if the talk hasn't been posted yet (i.e. talk_status is 'start') %>
-<% # TBD: how to integrate in sign_in/new account? %>
+<%  
+  # TBD: use of disabled for 'show' is technically correct but seriously annoying, try something else,
+  #   -- try a listview next
+%>
 <%= form_for_jqm @talk do |f| %>
 
   <%= render partial: 'shared/error_messages', object: f.object %>
-  
   <%= f.hidden_field :person_id %>
 
-  <%= f.text_field :summary, placeholder: 'about?', required: true %>
-
-  <%= f.text_area :description, placeholder: 'details?' %>
-
-  <%= render partial: 'talk_when', object: f %>
-
-  <%= render partial: 'talk_where', object: f %>
-
-  <%= render partial: 'talks/submit_button', :object => f %>
+  <% if person_signed_in? %>
+    <%= f.text_field :summary, placeholder: 'about?', required: true %>
+    <%= f.text_area :description, placeholder: 'details?' %>
+    <%= render partial: 'talk_when', object: f %>
+    <%= render partial: 'talk_where', object: f %>
+    <%= render partial: 'talks/submit_button', :object => f %>
+  <% else %>
+    <ul data-role="listview" data-inset="true">
+    <li><%=@talk.summary-%></li>
+    <li><%=@talk.description-%></li>
+    <li><%=@talk.when_desc-%></li>
+    <li><%=@talk.where_desc-%></li>
+    </ul>
+  <% end %>
 
 <% end %>

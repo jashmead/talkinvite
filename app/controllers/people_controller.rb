@@ -4,21 +4,22 @@
 #
 # TBD:  add in separate change password form
 
+# note:  inheriting from Devise::RegistrationController opened up can-of-worms
+# class PeopleController < Devise::RegistrationsController
 class PeopleController < ApplicationController
 
-  # profile, settings, & home are only available to the 'correct_person': logged in as the person being profiled, set, or home'd
-  # edit & update only available to the 'correct_person'
+  # edit, update & home are only available to the 'correct_person': logged in as the person being profiled, set, or home'd
 
   # the 'set_person' commands are expecting an 'id' in the params
   before_action :set_person, only: [:show, :edit, :update, :destroy ] 
-  before_action :authenticate_person!, only: [:edit, :update, :destroy, :settings, :home, :change_password]
+  before_action :authenticate_person!, only: [:edit, :update, :destroy, :home, :change_password]
 
   ## removed index (& therefore search) from list of routes that require you to be signed in; 
   ##    -- no, this caused additional failures
   ##    -- need deeper understanding before we can continue
   ##    -- put :index back in for now
 
-  # do not need correct_person for settings, profile, & home because they reroute *to* the correct_person
+  # do not need correct_person for home because it reroutes *to* the correct_person
   before_action :correct_person, only: [:edit, :update]
 
   # most a regular person can do is inactivate
@@ -29,7 +30,6 @@ class PeopleController < ApplicationController
     [ 'name', 'email', 'description' ]
   end
 
-  # TBD: we can change the footer for profile, settings, & home.  Do we wish to?
   def feet_center
     if person_signed_in?
       feet_for_people_pages
@@ -61,14 +61,6 @@ class PeopleController < ApplicationController
     if @person == current_person 
       flash[:notice] = "This is what others see when they click on your name"
     end
-    render 'show' # have to spell it out in case we were called from 'profile'
-  end
-
-  # TBD: merge profile back into 'show'
-  def profile
-    @person = current_person
-    @title = @person.name.titlecase
-    show
   end
 
   # GET /people/new
@@ -78,31 +70,12 @@ class PeopleController < ApplicationController
   end
 
   # GET /people/1/edit
-  # TBD:  if not admin or correct_person, switch to 'show'
-  # TBD:  merge into 'settings'
   def edit
     logger.debug("PeopleController.edit: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
-    # don't need to look for person here; done in 'before_action' callback by set_person
+    # note: don't need to look for person here; done in 'before_action' callback by set_person
     if @person != current_person
       render 'show' and return
     end
-    @title = @person.name.titlecase
-  end
-
-  # settings are the same as edit, except we force the person to be the current_person
-  # TBD:  put password stuff in a button
-  def settings
-    logger.debug("PeopleController.settings: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
-    @person = current_person
-    @title = @person.name.titlecase
-    @action_name = 'settings'
-  end
-
-  # TBD:  waiting on install of 'Devise' to instantiate -- may have no work to do
-  def change_password
-    # logger.debug("PeopleController.change_password: params: #{params.inspect}, @current_person: #{@current_person.inspect}")
-    @person = current_person
-    @title = ("password 4 " + @person.name).titlecase
   end
 
   # 'home' is a control panel type thing
@@ -143,7 +116,7 @@ class PeopleController < ApplicationController
 
   # PATCH/PUT /people/1
   # PATCH/PUT /people/1.json
-  # update should be called by edit, settings
+  # update should be called by edit
   def update
     ## correct_person finds the appropriate person
     ## @person = Person.find(params[:id])
@@ -224,7 +197,7 @@ class PeopleController < ApplicationController
     # similar 'home' page forces change to current person
     def correct_person
       @person = Person.find(params[:id])
-      redirect_to(root_url) unless current_person?(@person)
+      redirect_to(root_url) unless current_person == @person
     end
 
     def admin_person
