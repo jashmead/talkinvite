@@ -35,6 +35,7 @@ class Member < ActiveRecord::Base
 
   ## make the status changing guys class methods because the member record may not exist
   def self.rsvp_status_create_or_change(person_id, talk_id, new_rsvp_status)
+    # TBD:  forbid change of status on talks that aren't in an 'active' state?
   end
 
   def self.member_type_create_or_change(person_id, talk_id, new_member_type)

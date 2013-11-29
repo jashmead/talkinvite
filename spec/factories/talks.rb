@@ -7,6 +7,6 @@ FactoryGirl.define do
     sequence(:summary)  { |n| "About #{n}" }
     sequence(:description) { |n| "description_#{n}"}
 
-    talk_status "start"
+    talk_status "active"
   end
 end

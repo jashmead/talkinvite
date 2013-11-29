@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125213523) do
+ActiveRecord::Schema.define(version: 20131129215544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 20131125213523) do
     t.decimal  "longitude"
     t.decimal  "latitude"
     t.string   "who_desc"
-    t.string   "talk_status", default: "start", null: false
+    t.string   "talk_status", default: "draft", null: false
     t.string   "where_desc"
     t.string   "when_desc"
     t.datetime "posted"
