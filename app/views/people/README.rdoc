@@ -21,52 +21,13 @@
 
 -- New Talk, Search Talks, & Messages are in bottom
 
-==== Signup
+==== Signup, Profile, Reset_Password, Oauth
 
-name, email, description, picture, url
-  -- TBD: add in url
-  -- TBD: add in profile picture (using file upload)
-
-==== Profile
-
-what other people see
-
--- includes name, description, url, profile picture
-  
--- includes a 'message' button
-
--- TBD: rename 'show' as 'profile'?
-
-==== Settings
-
--- new account + 
-
--- really an edit
-  -- needs checks against being seen even from 'get'
-  -- TBD: replace edit with settings
-
--- user name at top
-
--- has fields: name, description, url, email, profile picture phone (?), 
-
--- TBD: add url field
-
--- TBD: allow inactivation
-
--- TBD: includes services list, which see
-
--- TBD: includes permissions list
-  -- allow use of location
-    always, never, per talk, ask each time
-  -- do in json, as part of settings fields (which create)
-
-==== Change Password
-
--- rough cut up
+-- all done via 'devise', which see
 
 ==== Messages
 
--- messages not seen except with respect to a specific person or talk
+-- see under messages
 
 ==== Index/search/found -- not a key page!
 
@@ -85,8 +46,6 @@ what other people see
   -- disable or simply do not show prev if already at zero
   -- same philosophy as for talks/search
   
-==== TBD: oauth
-
 ==== TBD: upgrades
 
 -- probably a rev 2

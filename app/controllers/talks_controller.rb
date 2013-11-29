@@ -9,9 +9,6 @@ class TalksController < ApplicationController
   # current_talk set by set_talk, unset_talk
   cattr_accessor :current_talk, instance_accessor: false
 
-  # should always have a person for a talk
-  before_action :set_person
-
   # these actions all need a talk; set current_talk as a side-effect
   before_action :set_talk, only: [:show, :edit, :update, :destroy, :control, :map, :calendar]
 
@@ -49,6 +46,7 @@ class TalksController < ApplicationController
   #   -- at some point, verify their email, thus avoiding annoying spam
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
   def new
+    @person = current_person
     @talk = @person.talks.build
     logger.debug("TalksController.new: @talk: #{@talk.inspect}")
   end
@@ -66,8 +64,8 @@ class TalksController < ApplicationController
   # TBD:  saving from control is done via ajax
   # TBD:  add control into routes
   def control
-    store_location
     logger.debug("TalksController.control: @talk: #{@talk.inspect}, current_person: #{current_person.inspect}")
+    store_location
   end
 
   def search_fields
@@ -79,6 +77,7 @@ class TalksController < ApplicationController
   def create
     # TBD:  we would like to return to the 'control' screen from create, not to the default
     @talk = Talk.new(talk_params)
+    @talk.person_id = current_person.id # TBD: use one of the association functions for this?
     respond_to do |format|
       if @talk.save
         format.html { 
@@ -99,7 +98,7 @@ class TalksController < ApplicationController
   def update
     logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
     case talk_params['commit']
-      when /Post/i
+      when /post/i
         if ! @talk.posted
           @talk.posted = DateTime.now
           @talk.talk_status = 'posted'
@@ -126,9 +125,11 @@ class TalksController < ApplicationController
     # TBD:  use store location here, if available?
     # TBD:  use url not path?
     if person_signed_in?
-      redirect_to '/people/home'
+      # redirect_to '/people/home'
+      redirect_to home_people_path
     else 
-      redirect_to '/talks/search'
+      # redirect_to '/talks/search'
+      redirect_to search_talks_path
     end
   end
 
@@ -168,12 +169,19 @@ class TalksController < ApplicationController
     TalksController.current_talk == talk
   end
 
+  # return relation of associated talks
+  # implies 'my_messages', 'my_memberships', 'my_comments' & so on
+  def talks_by_person(person_id) 
+    Talk.find_by_sql("select * from talks where person_id = ? or talk.id in (select talk_id from members where person_id = ?)",
+      person_id, person_id)
+  end
+
+  def my_talks
+    @title = "My Talks"
+    @talks = talks_by_person(current_person.id)
+  end
+
   private
-    def set_person
-      @person = Person.find_by_id(params[:person_id]) ||
-        current_person ||
-        anonymous
-    end
 
     # set @talk & current_talk from params
     def set_talk

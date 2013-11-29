@@ -10,6 +10,9 @@
 #
 # TBD: instantiate admin flag
 # TBD: instantiate sub flag -- tho not really needed till Phase III, could just get rid of
+# TBD: remove non-devise authentication keys:  password_digest & (I think) remember_token
+#   -- check code in /Users/taqm/.rvm/gems/ruby-2.0.0-p247/gems/devise-3.2.2/lib/devise/models
+#   -- and nearby first
 # 
 # == Children
 

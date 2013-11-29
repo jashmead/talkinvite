@@ -1,3 +1,4 @@
+# TBD: eliminate all references to remember_token?
 include ApplicationHelper
 
 def valid_sign_in(person)
@@ -20,10 +21,10 @@ def sign_in(person, options={})
     cookies[:remember_token] = remember_token
     person.update_attribute(:remember_token, Person.encrypt(remember_token))
   else
-    # visit sign_in_path is not working:  no sign_in_path, no visit; hunh?
+    # TBD: visit sign_in_path is not working:  no sign_in_path, no visit; hunh?
     visit sign_in_path
-    fill_in "person_email",    with: person.email
-    fill_in "person_password", with: person.password
+    fill_in 'person_email',    with: person.email
+    fill_in 'person_password', with: person.password
     click_button "Sign In"
   end
 end

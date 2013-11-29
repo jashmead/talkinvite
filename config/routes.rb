@@ -27,13 +27,12 @@ Talkinvite::Application.routes.draw do
   # devise_for added by devise install process
   devise_for :people
 
-  # TBD:  similar for update_account, change_password, reset_password?
   devise_scope :person do
     get 'sign_up', :to => 'devise/registrations#new'
     get 'sign_in', :to => 'devise/sessions#new'
     delete 'sign_out', :to => 'devise/sessions#destroy'
     get 'reset_password', :to => 'devise/passwords#new'
-    get 'change_password', :to => 'devise/passwords#edit'
+    # get 'change_password', :to => 'devise/passwords#edit' # change_passwords is an interior form, not useful without a token
     get 'settings', :to => 'devise/registrations#edit'
   end
 
@@ -70,6 +69,7 @@ Talkinvite::Application.routes.draw do
   match '/talks/search', to: 'talks#search', via: 'get'
   match '/search', to: 'talks#search', via: 'get'
 
+  # talkinvite starts with talks
   match '/talks/start', to: 'talks#start', via: 'get'
   match '/start', to: 'talks#start', via: 'get'
 
@@ -93,6 +93,7 @@ Talkinvite::Application.routes.draw do
 
   # people pages: 
   
+  # note:  a number of the routes one normally associates with people are run by devise instead, see above
   match '/home', to: 'people#home', via: 'get'
   resources :people do
     collection do

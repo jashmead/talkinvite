@@ -38,15 +38,14 @@ class StaticPagesController < ApplicationController
 
     # TBD:  My Talks, My Messsages, Current Messages
     # TBD:  Maps, Calendars, Tags & Topics, Friends & Groups, Attachments, Venues
-    # TBD:  add a current_message element in?
-    
     @routes = talk_routes + user_routes + message_routes + common_routes + admin_routes 
 
   end
 
   private
 
-    # note: the paths have to be computed, so can't use static arrays defined in the StaticPagesController class
+    # note: the paths are functions, they have to be computed, 
+    #   -- so can't use static arrays defined in the StaticPagesController class
     def admin_routes
       if admin?
         [
@@ -95,7 +94,6 @@ class StaticPagesController < ApplicationController
           [ home_path, 'Home', 'people' ],
           [ edit_person_registration_path, 'Settings', 'people' ],
           [ person_path(current_person), 'Profile', 'people' ],
-          [ edit_person_password_path, 'Change Password', 'people' ],
           [ new_talk_path, 'Create Talk', 'talks' ],
           [ my_messages_path, 'My Messages', 'messages' ],
           [ search_people_path, 'Search for People', 'people' ]
@@ -103,8 +101,8 @@ class StaticPagesController < ApplicationController
       else
         [
           [ sign_in_path, 'Sign In', 'sessions' ],
-          [ sign_up_path, 'New Account', 'people' ]
-          # [ reset_password_path, 'Reset Password', 'sessions' ]
+          [ sign_up_path, 'New Account', 'people' ],
+          [ reset_password_path, 'Reset Password', 'sessions' ]
         ]
       end
     end

@@ -124,17 +124,6 @@ describe "sitemap" do
 
     end
 
-    it "check change password page" do
-
-      visit sitemap_path
-      click_link 'Change Password'
-
-      # save_and_open_page
-      expect(page).to have_title('J. Random User')
-      expect(page).to have_selector('h1', 'J. Random User')
-
-    end
-
     it "when signed in, should also see pages that are only for those signed in" do
 
       signedin_list.each do |title|
