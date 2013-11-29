@@ -15,7 +15,7 @@
     <%= render partial: 'talk_where', object: f %>
     <%= render partial: 'talks/submit_button', :object => f %>
   <% else %>
-    <ul data-role="listview" data-inset="true">
+    <ul data-role="listview" data-inset="true" data-theme="<%=swatch('')-%>" >
     <li><%=@talk.summary-%></li>
     <li><%=@talk.description-%></li>
     <li><%=@talk.when_desc-%></li>
