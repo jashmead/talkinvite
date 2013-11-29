@@ -1,23 +1,26 @@
 <% provide(:title, resource.name.to_s.titlecase) %>
 <% provide(:data_role, "dialog") %>
-<% logger.debug("devise/registrations/edit: resource_name: #{resource_name.inspect}, resource: #{resource.inspect}") %>
 
 <%= form_for_jqm(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <%= f.email_field :email, :autofocus => true %>
+  <%= f.text_field :name, placeholder: 'your name', title: 'You can change your name, if you wish' %>
+
+  <%= f.email_field :email, placeholder: 'your email' %>
+
+  <%= f.text_area :description, placeholder: 'description', :autofocus => true, title: 'Something about you' %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <%= f.password_field :password, :autocomplete => "off" %>
   <i>(leave password blank if you don't want to change it)</i>
+  <%= f.password_field :password, :autocomplete => "off" %>
 
   <%= f.password_field :password_confirmation %>
 
-  <%= f.password_field :current_password %>
-  <i>(we need your current password to confirm your changes)</i>
+  <i>(in any case, we need your current password to make sure u r u.)</i>
+  <%= f.password_field :current_password, required: true %>
 
   <%= f.submit "Update" %>
 <% end %>

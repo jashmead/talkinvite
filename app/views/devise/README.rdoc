@@ -17,10 +17,10 @@ Have six templates to fix
 Templates are:
 1. sessions/new -- sign_in -- ok, but shrink width of remember_me
 1. registrations/new -- new account -- ok
-1. registrations/edit -- update account
-1. passwords/new
-1. passwords/edit
-1. mailer/reset
+1. registrations/edit -- update account -- had to add current_password to list of ok parameters, now ok
+1. passwords/new -- reset password -- even sends correct email
+1. passwords/edit -- change password -- works
+1. mailer/reset -- used by reset process, a template for the email
 
 Sort out:
 1. can we go back to the default routes but add in the format 'person' to 'html'?

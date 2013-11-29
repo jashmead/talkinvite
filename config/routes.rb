@@ -32,6 +32,9 @@ Talkinvite::Application.routes.draw do
     get 'sign_up', :to => 'devise/registrations#new'
     get 'sign_in', :to => 'devise/sessions#new'
     delete 'sign_out', :to => 'devise/sessions#destroy'
+    get 'reset_password', :to => 'devise/passwords#new'
+    get 'change_password', :to => 'devise/passwords#edit'
+    get 'settings', :to => 'devise/registrations#edit'
   end
 
   match '/my_messages', to: 'messages#my_messages', via: 'get'

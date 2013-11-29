@@ -74,31 +74,6 @@ class Person < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX } #, #uniqueness: true
 
   # attr_accessible has been replaced by strong parameters
-  # attr_accessible :name, :email, :password, :password_confirmation, :description
-
-  # TBD: we want to validate password on new account & change password but not on settings, how?
-  #   -- conditional validation possible, but may open up security holes
-  #   -- also, unclear what the trigger for such should be
-
-=begin
-  has_secure_password
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
-
-  # TBD: there is a problem with find_by(:remember_token, remember_token): suspect presence of '_' inside field name
-  def find_by_remember_token( encrypted_remember_token ) 
-    person = Person.where(remember_token: encrypted_remember_token)
-  end
-
-  # class method, hence the 'Person.'
-  def Person.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def Person.encrypt(token)
-    Digest::SHA1.hexdigest(token.to_s)  # 'to_s' is to make sure we can handle nil tokens
-  end
-=end
 
   # TBD: why can't anonymous be defined in the helpers?
   def self.anonymous 
@@ -122,13 +97,6 @@ class Person < ActiveRecord::Base
   end
 
   private
-
-=begin
-    def create_remember_token
-      # have to use 'self', otherwise we would get a *local* variable called remember_token
-      self.remember_token = Person.encrypt(Person.new_remember_token)
-    end
-=end
 
     # make sure that every person has at least the 'talkinvite' service
     def create_talkinvite_service

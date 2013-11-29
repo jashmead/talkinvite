@@ -1,18 +1,19 @@
 <% provide(:title, "Sign In") %>
 <% provide(:data_role, "dialog") %>
-<% # TBD:  shrink width of "remember_me" %>
+<% # TBD:  shrink width of "remember_me"; data-inline didn't work %>
 
 <% logger.debug("devise/sessions/new: resource: #{resource.inspect}") %>
 <% logger.debug("devise/sessions/new: url: #{person_session_path(resource_name).inspect}") %>
 <%= form_for_jqm(resource, :as => resource_name, :url => '/people/sign_in') do |f| %>
-  <%= f.email_field :email, placeholder: 'your email',  :autofocus => true %>
+  <%= f.email_field :email, placeholder: 'your email', :auto_complete => 'off', :autofocus => true %>
 
-  <%= f.password_field :password, placeholder: 'your password' %>
+  <%= f.password_field :password, placeholder: 'your password', :auto_complete => 'off' %>
 
   <% if devise_mapping.rememberable? -%>
-    <%= f.check_box :remember_me, 'data-inline' => true %>
+    <%= f.check_box :remember_me, 'data-inline' => true, 'title' => 'Check remember_me box so you can sign in automatically next time' %>
   <% end -%>
 
   <%= f.submit "Sign In" %>
-  <%= button_inline "Create Account", sign_up_path %>
+  <%= button_inline "Create Account", sign_up_path, title: 'Create a new account for you on talkinvite' %>
+  <%= button_inline "Reset Password", reset_password_path, title: 'Send a reset password link to your email' %>
 <% end %>

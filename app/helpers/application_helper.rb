@@ -37,11 +37,13 @@ module ApplicationHelper
   end
 
   # TBD:  various front ends to button_inline possible, as for 'new', 'update', and so on...
-  def button_inline (tag, link_path) 
-    link_to tag, link_path, 'data-role' => 'button', 'data-inline' => true
+  def button_inline (tag, link_path, options = {}) 
+    options['data-role'] ||= options['data-role'] || 'button'
+    options['data-inline'] ||= options['data-inline'] || true
+    link_to tag, link_path, options
   end
 
-  # returns a correct data-theme="l" where l can be from a to f, depending on the context
+  # returns correct data-theme (based on controller) as a single letter where the letter can be from a to f, depending on the context
   # a = black & white, b = blue, c = red, d = green, e = cyan, f = orange
   def swatch ( controller_name = nil ) 
     if ! controller_name 
@@ -67,6 +69,7 @@ module ApplicationHelper
     end
   end
 
+  # data_theme is wrapper for letter chosen by swatch
   def data_theme( controller_name = nil ) 
     return " data-theme=\"#{swatch( controller_name )}\" ".html_safe
   end

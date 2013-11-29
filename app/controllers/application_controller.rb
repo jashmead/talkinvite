@@ -258,6 +258,7 @@ class ApplicationController < ActionController::Base
 
   def create_q(model)
     respond_to do |format|
+      # TBD: rescue needed here?
       if model.save
         format.html { 
           # we should have stored the previous location in session
@@ -275,9 +276,10 @@ class ApplicationController < ActionController::Base
 
   def update_q(model, params)
     respond_to do |format|
+      # TBD: rescue needed here?
       if model.update(params)
         format.html { 
-          # TBD:  is root_path right as the default?
+          # TBD:  is root_path right as the default?, if not, pass along a url, a la destroy_q
           redirect_back_or root_url
           flash.now[:success] = model.class.to_s.downcase + ' was successfully updated.' }
         format.json { head :no_content }
@@ -289,7 +291,14 @@ class ApplicationController < ActionController::Base
 
   # note:  ':back' not a good choice for url since usually the source page will have been rendered irrelevant by the destroy
   def destroy_q(model, url)
-    model.destroy
+    store_location
+    begin
+      model.destroy
+    rescue
+      flash.now[:error] = "We were unable to delete the " + model.class.to_s.downcase + ", sorry about that!"
+      # TBD:  add in a json response, if necessary
+      redirect_back_or url
+    end
     respond_to do |format|
       format.html { redirect_to url }
       format.json { head :no_content }
@@ -322,7 +331,7 @@ class ApplicationController < ActionController::Base
         u.permit :email, :password, :password_confirmation
       end
       devise_parameter_sanitizer.for(:account_update) do |u| 
-        u.permit :name, :email, :description, :password, :password_confirmation
+        u.permit :name, :email, :description, :password, :password_confirmation, :current_password
       end
     end
 end
