@@ -21,7 +21,8 @@ class PostsController < ApplicationController
   def new
     # TBD: '@talk'?
     @post = Post.new
-    @person = current_person
+    logger.debug("PostsController.new: current_person: #{current_person}")
+    @originator_person = current_person
   end
 
   # GET /posts/1/edit
@@ -56,7 +57,7 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
       @talk = @post.talk
-      @person = @post.person
+      @originator_person = @post.person
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

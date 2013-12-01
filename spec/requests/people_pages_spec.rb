@@ -192,7 +192,7 @@ describe "People pages" do
 # TBD:  why is checking on 'Settings' failing?
 =begin
       it do
-        save_and_open_page
+        # save_and_open_page
         should have_link('Settings', href: edit_person_registration_path)
       end
 =end

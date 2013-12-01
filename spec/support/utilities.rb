@@ -15,19 +15,12 @@ end
 
 # sign_in is not working, inspite of being cloned from tutorial
 def sign_in(person, options={})
-  if options[:no_capybara]
-    # Sign in when not using Capybara.
-    remember_token = Person.new_remember_token
-    cookies[:remember_token] = remember_token
-    person.update_attribute(:remember_token, Person.encrypt(remember_token))
-  else
-    # TBD: visit sign_in_path is not working:  no sign_in_path, no visit; hunh?
-    visit sign_in_path
-    # save_and_open_page
-    fill_in 'person_email',    with: person.email
-    fill_in 'person_password', with: person.password
-    click_button "Sign In"
-  end
+  # TBD: visit sign_in_path is not working:  no sign_in_path, no visit; hunh?
+  visit sign_in_path
+  # save_and_open_page
+  fill_in 'person_email',    with: person.email
+  fill_in 'person_password', with: person.password
+  click_button "Sign In"
 end
 
 =begin
