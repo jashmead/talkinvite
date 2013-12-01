@@ -8,7 +8,7 @@
   talk = submit_button.object
   if talk.new_record?
 %>
-  <%= submit_button.submit 'Create Talk' %>
+  <%= submit_button.submit 'Start Talk' %>
 <% else %>
   <div data-role="controlgroup">
   <%= submit_button.submit 'Update Talk' %>
@@ -16,7 +16,7 @@
     link_to 'Delete', talk_url(talk.id), method: :delete, 
       'title' => 'Delete This Talk',
       data: { confirm: "Are you sure you want to delete this talk?" },
-      'data-inline' => true, 'data-role' => 'button'
+      'data-inline' => true, 'data-role' => 'button', 'data-icon' => 'delete'
   %>
   </div>
 <% end %>

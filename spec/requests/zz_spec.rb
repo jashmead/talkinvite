@@ -25,11 +25,11 @@ describe "Talk pages" do
 
     describe "with invalid information" do
       it "should not create a talk" do
-        expect { click_button "Create Talk" }.not_to change(Talk, :count)
+        expect { click_button "Start Talk" }.not_to change(Talk, :count)
       end
 
       describe "should show error messages" do
-        before { click_button "Create Talk" }
+        before { click_button "Start Talk" }
         it { 
           # save_and_open_page
           should have_content('error')

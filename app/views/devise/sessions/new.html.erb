@@ -1,13 +1,14 @@
 <% provide(:title, "Sign In") %>
 <% provide(:data_role, "dialog") %>
 <% # TBD:  shrink width of "remember_me"; data-inline didn't work %>
+<% # note:  if the password field's value is left blank, then the browser or at least FireFox will fill in with the previous password %>
 
 <% logger.debug("devise/sessions/new: resource: #{resource.inspect}") %>
 <% logger.debug("devise/sessions/new: url: #{person_session_path(resource_name).inspect}") %>
 <%= form_for_jqm(resource, :as => resource_name, :url => '/people/sign_in') do |f| %>
-  <%= f.email_field :email, placeholder: 'your email', :auto_complete => 'off', :autofocus => true %>
+  <%= f.email_field :email, placeholder: 'your email', :auto_complete => 'off', :autofocus => true, value: nil %>
 
-  <%= f.password_field :password, placeholder: 'your password', :auto_complete => 'off' %>
+  <%= f.password_field :password, placeholder: 'your password', :auto_complete => 'off', value: nil %>
 
   <% if devise_mapping.rememberable? -%>
     <%= f.check_box :remember_me, 'data-inline' => true, 'title' => 'Check remember_me box so you can sign in automatically next time' %>

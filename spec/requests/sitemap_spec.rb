@@ -29,7 +29,7 @@ describe "sitemap" do
   let(:signedin_list) { [ 
     # "Home", 
     "My Messages",
-    "Create Talk",
+    "Start Talk",
     "Search for People"
   ] }
 

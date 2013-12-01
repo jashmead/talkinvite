@@ -33,7 +33,12 @@ module ApplicationHelper
   # TBD:  add a warning color to the delete button, here or better via css
   def button_delete (model) 
     link_to 'Delete', model, method: :delete, data: { confirm: "Are you sure you want to delete this #{model.class.to_s.downcase}?" }, 
-      'data-inline' => true, 'data-role' => 'button' 
+      'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'delete'
+  end
+
+  def button_create (model)
+    link_to 'New', model, method: :get, 
+      'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'plus'
   end
 
   # TBD:  various front ends to button_inline possible, as for 'new', 'update', and so on...
@@ -53,7 +58,7 @@ module ApplicationHelper
     theme_letter = case controller_name
       when 'talks', 'services'
         'b' # blue  -- likely to be graphite's water
-      when 'people', 'members', 'sessions'
+      when 'people', 'members'
         'c' # red   -- likely to be graphite's royal
       when 'messages', 'comments', 'posts'
         'e' # cyan  -- likely to be graphite's mint
@@ -63,6 +68,8 @@ module ApplicationHelper
         'd' # green, in anticipation of the revival of venues, locations?
       # using black & white for the non-working parts of the system
       when 'static_pages', 'credits'
+        'a' # dull stuff so black & white
+      when 'sessions'   # sign in & sign out seem to look better in black/white rather than red
         'a' # dull stuff so black & white
       else
         'a' # black and white

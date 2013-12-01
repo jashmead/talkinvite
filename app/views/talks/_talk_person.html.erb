@@ -1,0 +1,4 @@
+<% # TBD:  not yet tested (need to be looking at a talk you didn't generate yourself) %>
+<% if @talk.person.id != current_person.id %>
+<%= talk_person.text_field :name, :disabled => true, value: @talk.person.name, 'data-theme' => swatch('people') %> 
+<% end %>

@@ -35,7 +35,7 @@ describe "footers" do
 
   # TBD:  get people_page_list in sync with feet_for_people
   let(:people_page_list) { [ 
-    "Create Talk",
+    "Start Talk",
     # "My Messages",
     # "Search for People",
     "Search for Talks",
@@ -60,8 +60,8 @@ describe "footers" do
     'help' => [ "Credits", "Frequently Asked Questions", "Help", "New Credit", "New FAQ", "New Help" ],
     'home' => [ "Home" ],
     # TBD:  why isn't "My Messages" working?
-    # 'people' => [ "Create Talk", "My Messages", "Search for People", "Search for Talks", "Settings" ],
-    'people' => [ "Create Talk", "Search for People", "Search for Talks", "Settings" ],
+    # 'people' => [ "Start Talk", "My Messages", "Search for People", "Search for Talks", "Settings" ],
+    'people' => [ "Start Talk", "Search for People", "Search for Talks", "Settings" ],
     'static' => [ "About", "Contact", "Site Map" ]
   }
 

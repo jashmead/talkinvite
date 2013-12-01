@@ -95,7 +95,7 @@ class StaticPagesController < ApplicationController
           [ home_path, 'Home', 'people' ],
           [ edit_person_registration_path, 'Settings', 'people' ],
           [ person_path(current_person), 'Profile', 'people' ],
-          [ new_talk_path, 'Create Talk', 'talks' ],
+          [ new_talk_path, 'Start Talk', 'talks' ],
           [ my_messages_path, 'My Messages', 'messages' ],
           [ search_people_path, 'Search for People', 'people' ]
         ]

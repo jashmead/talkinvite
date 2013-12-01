@@ -160,6 +160,7 @@ class ApplicationController < ActionController::Base
   end
 
   # actual interpretation of each foot is done in views/layouts/_footer.html.erb
+  # TBD:  let footer_fields pass an id thru to _footer, to allow for persistent footers
   def footer_fields
 
     # currently have three tabs specific to controller, plus wings specific to login status

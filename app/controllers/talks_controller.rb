@@ -134,9 +134,9 @@ class TalksController < ApplicationController
     end
   end
 
-  # found = search + index; also, has a 'Create Talk' button
+  # found = search + index; also, has a 'Start Talk' button
   def found
-    if params['button'] == 'Create Talk'
+    if params['button'] == 'Start Talk'
       @talk = Talk.new( { summary: check_q, person_id: @person.id } )
       render 'new' and return
     else

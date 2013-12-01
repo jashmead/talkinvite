@@ -44,13 +44,13 @@ feature "Creating Talks" do
 	scenario "Creating a talk" do
     fill_in "Summary", with: "Non-standards compliance"
     fill_in "Description", with: "My pages are ugly!"
-    click_button "Create Talk"
+    click_button "Start Talk"
 
     expect(page).to have_content("Talk has been created.")
 	end
 
 	scenario "Creating a talk without valid attributes fails" do
-    click_button "Create Talk"
+    click_button "Start Talk"
     
     expect(page).to have_content("Talk has not been created.")
     expect(page).to have_content("Summary can't be blank")
