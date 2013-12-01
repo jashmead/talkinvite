@@ -110,7 +110,7 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
   # TBD: switch to jqm style buttons; if editing, automagically put in delete button unless told not to
   def submit(value = '', options = {})
-    options['data-inline'] = true
+    options['data-inline'] ||= true
     super value, options
   end
 

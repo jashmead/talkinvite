@@ -13,7 +13,11 @@
     <%= f.check_box :remember_me, 'data-inline' => true, 'title' => 'Check remember_me box so you can sign in automatically next time' %>
   <% end -%>
 
+  <div data-role="controlgroup">
+  <% # warning:  if the buttons don't each get their own template block, only the last one will show! %>
   <%= f.submit "Sign In" %>
   <%= button_inline "Create Account", sign_up_path, title: 'Create a new account for you on talkinvite' %>
   <%= button_inline "Reset Password", reset_password_path, title: 'Send a reset password link to your email' %>
+  </div>
+
 <% end %>

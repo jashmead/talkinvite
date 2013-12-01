@@ -23,6 +23,7 @@ def sign_in(person, options={})
   else
     # TBD: visit sign_in_path is not working:  no sign_in_path, no visit; hunh?
     visit sign_in_path
+    # save_and_open_page
     fill_in 'person_email',    with: person.email
     fill_in 'person_password', with: person.password
     click_button "Sign In"

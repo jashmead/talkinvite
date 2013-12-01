@@ -13,6 +13,7 @@
     <%= f.text_area :description, placeholder: 'details?' %>
     <%= render partial: 'talk_when', object: f %>
     <%= render partial: 'talk_where', object: f %>
+    <%= render partial: 'talk_status', object: f %>
     <%= render partial: 'talks/submit_button', :object => f %>
   <% else %>
     <ul data-role="listview" data-inset="true" data-theme="<%=swatch('')-%>" >
@@ -20,6 +21,7 @@
     <li><%=@talk.description-%></li>
     <li><%=@talk.when_desc-%></li>
     <li><%=@talk.where_desc-%></li>
+    <li><%=@talk.talk_status-%></li>
     </ul>
   <% end %>
 

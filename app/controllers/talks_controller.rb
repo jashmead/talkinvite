@@ -66,6 +66,7 @@ class TalksController < ApplicationController
   def control
     logger.debug("TalksController.control: @talk: #{@talk.inspect}, current_person: #{current_person.inspect}")
     store_location
+    @title = @talk.summary
   end
 
   def search_fields

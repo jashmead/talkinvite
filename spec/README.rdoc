@@ -1,5 +1,7 @@
 === RSpec tests
 
+TBD:  convert all TBD to pending (or else get rid of)
+
 TBD:  clear the pending
 
 TBD:  figure out how to use the helpers or get rid of

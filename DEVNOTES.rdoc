@@ -9,6 +9,13 @@
 * Make best use of having an overall plan, keep loose but focused & energetic
 * Simple design, images from the talks, not from site
 
+=== Tactics
+
+* build a step at a time
+* direct manipulation first, as an intermediate
+* use rspec & related to lock in progress, not to define it
+* lateral everything that works
+
 === Levels
 
 1. tables -- have 16, with models & controls & basic set of views

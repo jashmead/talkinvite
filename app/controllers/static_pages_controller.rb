@@ -58,7 +58,8 @@ class StaticPagesController < ApplicationController
       end
     end
 
-    # now codeclimate is whining about duplication between common_routes & user_routes!
+    # codeclimate has stopped whining about duplication between common_routes & user_routes
+    #   -- changes minor but it would appear sufficient
     def common_routes
       [
         [ search_path, 'Search for Talks', 'talks' ],
