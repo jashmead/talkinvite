@@ -31,20 +31,22 @@ module ApplicationHelper
   end
 
   # TBD:  add a warning color to the delete button, here or better via css
+  # TBD: DRY the buttons out a bit, lots of common options
   def button_delete (model) 
     link_to 'Delete', model, method: :delete, data: { confirm: "Are you sure you want to delete this #{model.class.to_s.downcase}?" }, 
-      'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'delete'
+      'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'delete', 'data-mini' => true
   end
 
   def button_create (model)
     link_to 'New', model, method: :get, 
-      'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'plus'
+      'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'plus', 'data-mini' => true
   end
 
   # TBD:  various front ends to button_inline possible, as for 'new', 'update', and so on...
   def button_inline (tag, link_path, options = {}) 
-    options['data-role'] ||= options['data-role'] || 'button'
-    options['data-inline'] ||= options['data-inline'] || true
+    options['data-role'] ||= 'button'
+    options['data-inline'] ||= true
+    options['data-mini'] ||= true
     link_to tag, link_path, options
   end
 

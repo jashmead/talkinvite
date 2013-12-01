@@ -11,7 +11,8 @@
   <%= f.password_field :password, placeholder: 'your password', :auto_complete => 'off', value: nil %>
 
   <% if devise_mapping.rememberable? -%>
-    <%= f.check_box :remember_me, 'data-inline' => true, 'title' => 'Check remember_me box so you can sign in automatically next time' %>
+    <%= f.check_box :remember_me, 'data-inline' => true, 'title' => 'Check remember_me box so you can sign in automatically next time',
+      'data-mini' => true %>
   <% end -%>
 
   <div data-role="controlgroup">
