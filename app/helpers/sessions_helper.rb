@@ -2,11 +2,67 @@
 ## SessionsHelper is pulled in via an explicit "include SessionsHelper" in application_controller.rb
 module SessionsHelper
 
-  ##  this won't work! apparently doesn't carry thru to next page
-  ##    def current_person
-  ##      @current_person
-  ##    end
-  ##  instead use:
+  # all those icons that map directly to a font-awesome name
+  Icon_array = [ 
+    'ban', 
+    'beer', 
+    'calendar', 
+    'camera', 
+    'check', 
+    'coffee', 
+    'comment', 
+    'comments', 
+    'facebook', 
+    'film', 
+    'glass', 
+    'home', 
+    'info', 
+    'instagram', 
+    'pencil', 
+    'pinterest', 
+    'print', 
+    'random', 
+    'reply', 
+    'search', 
+    'share', 
+    'sitemap', 
+    'skype', 
+    'sort', 
+    'tag', 
+    'tags', 
+    'trash', 
+    'twitter'
+  ]
+
+  Icon_hash = {
+    'about' => 'fa-dot-circle-o',
+    'cancel' => 'fa-ban',
+    'contact' => 'fa-envelope-o',
+    'credit' => 'fa-heart',
+    'credits' => 'fa-heart',
+    'data' => 'fa-table',
+    'table' => 'fa-table',
+    'delete' => 'fa-minus-circle',
+    'destroy' => 'fa-minus-circle',
+    'edit' => 'fa-pencil',
+    'google_plus' => 'fa-google-plus',
+    'help' => 'fa_question',
+    'helps' => 'fa-question',
+    'location' => 'fa-location-arrow',
+    'venue' => 'fa-location-arrow',
+    'message' => 'fa-bolt',
+    'new' => 'fa-plus-circle',
+    'person' => 'fa-user',
+    'privacy' => 'fa-eye',
+    'settings' => 'fa-cog',
+    'sign_in' => 'fa-sign-in',
+    'sign_out' => 'fa-sign-in fa-flip-vertical',
+    'sign_up' => 'fa-sign-in fa-rotate-270',
+    'start' => 'fa-home',
+    'talk' => 'fa-comment-o',
+    'talks' => 'fa-comments-o',
+    'wine' => 'fa-glass'
+  }
 
   # guesswork as to how to best handle anonymous
   def anonymous
@@ -18,57 +74,19 @@ module SessionsHelper
   # iconify spotted as complex by codeclimate 10/29/13, complexity 29, 11/22/13 - complexity 30
   # iconify again spotted as complex by codeclimate 12/1/13, complexity 30
   def iconify (icon_name)   # currently action_name (preferred as more specific) or controller_name 
-
     icon_name_s = icon_name.to_s
 
-    # all those icons that map directly to a font-awesome name
-    icon_array = [ 
-        'ban', 'beer', 'calendar', 'camera', 'check', 'coffee', 
-        'comment', 'comments', 'facebook', 'film', 'glass', 
-        'home', 'info', 'instagram', 'pencil', 'pinterest', 
-        'print', 'random', 'reply', 'search', 'share', 
-        'sitemap', 'skype', 'sort', 'tag', 'tags', 
-        'trash', 'twitter'
-    ]
+    # logger.debug("SessionsHelper: Icon_array: #{Icon_array.inspect}, Icon_hash: #{Icon_hash.inspect}")
 
-    icon_hash = {
-      'about' => 'fa-dot-circle-o',
-      'cancel' => 'fa-ban',
-      'contact' => 'fa-envelope-o',
-      'credit' => 'fa-heart',
-      'credits' => 'fa-heart',
-      'data' => 'fa-table',
-      'table' => 'fa-table',
-      'delete' => 'fa-minus-circle',
-      'destroy' => 'fa-minus-circle',
-      'edit' => 'fa-pencil',
-      'google_plus' => 'fa-google-plus',
-      'help' => 'fa_question',
-      'helps' => 'fa-question',
-      'location' => 'fa-location-arrow',
-      'venue' => 'fa-location-arrow',
-      'message' => 'fa-bolt',
-      'new' => 'fa-plus-circle',
-      'person' => 'fa-user',
-      'privacy' => 'fa-eye',
-      'settings' => 'fa-cog',
-      'sign_in' => 'fa-sign-in',
-      'sign_out' => 'fa-sign-in fa-flip-vertical',
-      'sign_up' => 'fa-sign-in fa-rotate-270',
-      'start' => 'fa-home',
-      'talk' => 'fa-comment-o',
-      'talks' => 'fa-comments-o',
-      'wine' => 'fa-glass'
-    }
-
-    if icon_array.index icon_name_s 
-      klasses = 'fa-' + icon_name_s
-    elsif icon_hash.key? icon_name_s
-      klasses = icon_hash[ icon_name_s ]
-    elsif icon_name_s =~ /^my_/
-      klasses = 'fa-user'
-    else
-      return ''
+    case 
+      when Icon_array.index(icon_name_s) then
+        klasses = 'fa-' + icon_name_s
+      when Icon_hash.key?(icon_name_s) then
+        klasses = Icon_hash[ icon_name_s ]
+      when ( icon_name_s =~ /^my_/ ) then
+        klasses = 'fa-user'
+      else
+        return ''
     end
 
     return "<i class=\"fa #{klasses}\" ></i>"
