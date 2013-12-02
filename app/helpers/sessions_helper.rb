@@ -106,35 +106,43 @@ module SessionsHelper
     session[:return_to] = url if request.get?
   end
 
-  # stub out admin? when in test environment due a problem with 'devise'
+  # TBD:  why does person_signed_in not work in test environment?
   def admin?
-    # TBD:  why is current_person failing
-    # logger.debug("SessionsHelper.admin?: #{person_signed_in?.inspect}, #{current_person.inspect}")
-    if ENV["RAILS_ENV"] != "test"
-      person_signed_in? && current_person.admin?
-    else
-      true
+    begin
+      logger.debug("SessionsHelper.admin?: person_signed_in?: #{person_signed_in?.inspect}")
+      logger.debug("SessionsHelper.admin?: current_person: #{current_person.inspect}")
+      person_signed_in? && current_person && current_person.admin?
+    rescue
+      logger.debug("SessionsHelper.admin?: unable to figure out if person is admin")
+      false
     end
   end
 
-  # stub out sub? when in test environment due a problem with 'devise'
+  # TBD:  why does person_signed_in not work in test environment?
   def sub?
-    if ENV["RAILS_ENV"] != "test"
-      signed_in? && current_person.sub?
-    else
-      true
+    begin
+      logger.debug("SessionsHelper.sub?: person_signed_in?: #{person_signed_in?.inspect}")
+      logger.debug("SessionsHelper.sub?: current_person: #{current_person.inspect}")
+      person_signed_in? && current_person && current_person.sub?
+    rescue
+      logger.debug("SessionsHelper.sub?: unable to figure out if person is sub")
+      false
     end
   end
 
-  # TBD:  how to get person_sign_in? (devise function) to work when in test environment
+  # TBD:  why does person_signed_in not work in test environment?
+=begin
   def signed_in?
-    if ENV["RAILS_ENV"] != "test"
-      person_signed_in? 
-    else
-      true
+    begin
+      logger.debug("SessionsHelper.admin?: person_signed_in?: #{person_signed_in?.inspect}")
+      logger.debug("SessionsHelper.admin?: current_person: #{current_person.inspect}")
+      person_signed_in? && current_person
+    rescue
+      logger.debug("SessionsHelper.admin?: unable to figure out if person is signed_in")
+      false
     end
   end
-    
+=end
 
   # useful links in alphabetical order:
 

@@ -4,11 +4,11 @@ describe "credits/index" do
   before(:each) do
     assign(:credits, [
       stub_model(Credit,
-        :question => "MyName1",
+        :name => "MyName1",
         :description => "MyDescription1"
       ),
       stub_model(Credit,
-        :question => "MyName2",
+        :name => "MyName2",
         :description => "MyDescription2"
       )
     ])
@@ -19,7 +19,6 @@ describe "credits/index" do
     assert_select "a", :content => /Name1/    # it's content for 'a', not 'text'
     assert_select "a", :content => /Name2/
     # TBD:  New Name should only appear if we are admin
-    assert_select "a", :content => /New Name/
+    assert_select "a", :content => /New Credit/
   end
 end
-

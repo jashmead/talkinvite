@@ -5,7 +5,7 @@
 	<ul data-role="listview">
 	    <% @faqs.each do |faq| %>
         <li>
-        <% link_to faq.question, admin? ? edit_faq_path(faq) : faq_path(faq) %>
+        <%= link_to faq.question, admin? ? edit_faq_path(faq) : faq_path(faq) %>
         </li>
 	    <% end %>
 	</ul>

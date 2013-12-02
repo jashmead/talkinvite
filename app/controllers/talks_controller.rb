@@ -48,6 +48,7 @@ class TalksController < ApplicationController
   def new
     @person = current_person
     @talk = @person.talks.build
+    @member = @talk.members.build( person_id: current_person.id )
     logger.debug("TalksController.new: @talk: #{@talk.inspect}")
   end
 
@@ -55,7 +56,6 @@ class TalksController < ApplicationController
   # TBD:  allow easy flipping between edit & control?  or treat edit as scaffolding while en route to control?
   def edit
     # logger.debug("TalksController.edit: talk_admin? #{talk_admin?}, @talk: #{@talk.inspect}, current_person: #{current_person.inspect}")
-    logger.debug("TalksController.edit: @talk.methods: #{@talk.methods.inspect}")
     store_location
     render 'show' and return if ! talk_admin?
   end
@@ -80,10 +80,12 @@ class TalksController < ApplicationController
     @talk = Talk.new(talk_params)
     @talk.person_id = current_person.id # TBD: use one of the association functions for this?
     respond_to do |format|
-      if @talk.save
+      # TBD:  does this work or do we have to explicitly set the talk_id in the member record?
+      if @talk.save 
+        @member && @member.save
         format.html { 
           redirect_back_or control_talk_url(@talk)
-          flash.now[:success] = 'A talk was born!'
+          flash.now[:success] = 'A talk is born!'
         }
         # TBD: on format.json, do we want action: 'show' or do we want 'index'?  what does 'location: model' mean?
         format.json { render action: 'control', status: :created, location: @talk }
@@ -98,6 +100,7 @@ class TalksController < ApplicationController
   # TBD:  verify update is working correctly
   def update
     logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
+=begin
     case talk_params['commit']
       when /post/i
         if ! @talk.posted
@@ -109,7 +112,10 @@ class TalksController < ApplicationController
       when /done/i
         @talk.talk_status = 'done'
     end
+=end
+    # TBD:  save membership status & talk at the same time, rather than in two separate calls
     update_q(@talk, talk_params)
+    @member && update_q(@member, talk_params)
   end
 
   # DELETE /talks/1
@@ -191,7 +197,9 @@ class TalksController < ApplicationController
       #     -- could be we hit the 4K size limit for cookie-based sessions
       #   -- alternatively, we could store only the talk.id in the session...
       #   -- or, store the current_talk as a class variable in the Talk class, i.e. Talk::current_talk = 
-      TalksController.current_talk = @talk = Talk.find(params[:id])
+      @talk = TalksController.current_talk = Talk.find(params[:id])
+      @member = membership
+      logger.debug("TalksController.set_talk: @talk: #{@talk.inspect}, @member: #{@member.inspect}")
     end
 
     def unset_talk
@@ -216,6 +224,16 @@ class TalksController < ApplicationController
       # logger.debug("TalksController.talk_admin?: @talk: #{@talk.inspect}, session: #{session.inspect}")
       # logger.debug("TalksController.talk_admin?: current_person: #{current_person.inspect}, current_talk: #{current_talk.inspect}")
       current_person && talk && current_person.id == talk.person_id
+    end
+
+    def membership
+      # member_relation is the relation which is either none or else has just the member in it
+      # TBD:  what does 'where' return on no rows found?
+      if person_signed_in? 
+        @member = Member.where("talk_id = ? and person_id = ?", @talk.id, current_person.id).first
+      else
+        @member = nil
+      end
     end
 
 end

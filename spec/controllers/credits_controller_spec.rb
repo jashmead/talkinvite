@@ -105,7 +105,7 @@ describe CreditsController do
   describe "PUT update" do
     describe "with valid params" do
       let(:person) { FactoryGirl.create(:person) }
-      before { sign_in person, no_capybara: true }
+      before { sign_in person }
 
       it "updates the requested credit" do
         credit = Credit.create! valid_attributes

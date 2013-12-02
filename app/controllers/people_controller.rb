@@ -51,7 +51,7 @@ class PeopleController < ApplicationController
   def show
     # don't need to look for person here; done in 'before_action' callback by set_person
     if ! @person 
-      # logger.debug("CC: PeopleController.show: no person found for id# #{params[:id]}")
+      # logger.debug("PeopleController.show: no person found for id# #{params[:id]}")
       flash.now[:alert] = "There isn't any person# " + :id.to_s
       render :search and return
     end

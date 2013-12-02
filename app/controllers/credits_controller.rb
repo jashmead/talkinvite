@@ -16,6 +16,7 @@ class CreditsController < ApplicationController
   def index
     super
     @credits = Credit.all
+    logger.debug("CreditsController.index: @credits: #{@credits.inspect}")
   end
 
   # GET /credits/1

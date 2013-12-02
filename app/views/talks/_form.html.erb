@@ -8,7 +8,10 @@
   <%= render partial: 'shared/error_messages', object: f.object %>
   <%= f.hidden_field :person_id %>
 
+
   <% if person_signed_in? %>
+    <%= render partial: 'rsvp_status', object: f %>
+    <%= render partial: 'member_type', object: f %>
     <%= f.text_field :summary, placeholder: 'about?', required: true %>
     <%= f.text_area :description, placeholder: 'details?' %>
     <%= render partial: 'talk_when', object: f %>

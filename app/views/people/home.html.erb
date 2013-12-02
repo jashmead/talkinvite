@@ -14,7 +14,8 @@
   </ul>
 <% end %>
 
-<% if signed_in? %>
+<% # TBD:  why does person_signed_in? not work in test environment? %>
+<% if @person %>
   <%= link_to 'Start Talk', new_talk_path, 
     'data-role' => 'button', 'data-inline' => true, 
     'data-theme' => swatch('talks') %>

@@ -70,18 +70,16 @@ describe TalksController do
   end
 
 # TBD: fix new spec for talks
-=begin
   ## this code works for the very troubled people_controllers_spec.rb, why not for talks?
   ## could the RI be part of the problem?
+=begin
   describe "GET new" do
     it "assigns a new talk as @talk" do
       get :new, {:person_id => person.id}
       assigns(:talk).should be_a_new(Talk)
     end
   end
-=end
 
-=begin
   describe "GET edit" do
     it "assigns the requested talk as @talk" do
       talk = Talk.create! valid_attributes
@@ -89,10 +87,8 @@ describe TalksController do
       assigns(:talk).should eq(talk)
     end
   end
-=end
 
 # TBD: fix post create spec for talks
-=begin
   describe "POST create" do
     describe "with valid params" do
       it "creates a new Talk" do
