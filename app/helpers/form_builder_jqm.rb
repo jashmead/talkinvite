@@ -16,11 +16,12 @@
 #   -- (shared?) partials appear to have access to all functions available to forms
 #     -- therefore put code needing the application helpers, the controller object, & so on 
 #     -- in 'app/views/shared'
+#
+# NOTE:  check ActionView::Helpers::FormBuilder for correct documentation
  
 class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
-# TBD:  is there a problem with the wrapping for button? 
-#   -- possibly because jqm does a lot of button magic itself
+# note:  naive wrapping of ror buttons doesn't work well with jqm; suspect jqm's button magic
 =begin
   def button(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
@@ -29,6 +30,12 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
   def check_box(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  # note:  collection_radio_buttons currently producing weird stuff
+  #   -- hard to figure out what the name is going to be
+  def collection_radio_buttons(method, collection, value_method, text_method, options = {}, html_options = {})
+    ('<div data-role="fieldcontain"><fieldset data-role="controlgroup" data-type="horizontal">' + super + '</fieldset></div>').html_safe
   end
 
   def color_local_field(attribute, options = {} )
@@ -74,16 +81,30 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
-  def radio_button(attribute, options = {} )
-    (pre_field(attribute) + super + post_field).html_safe
+  # note:  basic radio button has signature:  radio_button(object_name (of actual object), method_name, tag_value, options)
+  #   -- but no way to specify the contents of the input
+  #   -- collection_radio_buttons gives you a way to specify the content, 
+  #     -- but has weird value for name,
+  #     -- and doesn't let you put in labels,
+=begin
+  def radio_button(object_name, method_name, tag_value = nil, options = {})
+    (pre_field(method_name) + super + post_field).html_safe
   end
+=end
 
   def range_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
   end
 
-  def esarch_field(attribute, options = {} )
+  def search_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
+  end
+
+  def submit(value = '', options = {})
+    options['data-role'] = 'button'
+    options['data-inline'] = 'true'
+    options['data-mini'] = 'true'
+    super value, options
   end
 
   def telephone_field(attribute, options = {} )
@@ -110,14 +131,6 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
-  # TBD: switch to jqm style buttons; if editing, automagically put in delete button unless told not to
-  # TBD:  why do options set here not work? sometimes they do, sometimes they don't
-  def submit(value = '', options = {})
-    options['data-role'] = 'button'
-    options['data-inline'] = 'true'
-    options['data-mini'] = 'true'
-    super value, options
-  end
 
   private
     def pre_field(attribute)

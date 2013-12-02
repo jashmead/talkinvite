@@ -1,1 +1,3 @@
-<%= talk_status.text_field :talk_status %>
+<%= 
+  talk_status.collection_radio_buttons :talk_status, Talk::TALK_STATUS, :to_s, :to_s
+%>
