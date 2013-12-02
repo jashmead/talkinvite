@@ -31,62 +31,44 @@ module SessionsHelper
         'trash', 'twitter'
     ]
 
+    icon_hash = {
+      'about' => 'fa-dot-circle-o',
+      'cancel' => 'fa-ban',
+      'contact' => 'fa-envelope-o',
+      'credit' => 'fa-heart',
+      'credits' => 'fa-heart',
+      'data' => 'fa-table',
+      'table' => 'fa-table',
+      'delete' => 'fa-minus-circle',
+      'destroy' => 'fa-minus-circle',
+      'edit' => 'fa-pencil',
+      'google_plus' => 'fa-google-plus',
+      'help' => 'fa_question',
+      'helps' => 'fa-question',
+      'location' => 'fa-location-arrow',
+      'venue' => 'fa-location-arrow',
+      'message' => 'fa-bolt',
+      'new' => 'fa-plus-circle',
+      'person' => 'fa-user',
+      'privacy' => 'fa-eye',
+      'settings' => 'fa-cog',
+      'sign_in' => 'fa-sign-in',
+      'sign_out' => 'fa-sign-in fa-flip-vertical',
+      'sign_up' => 'fa-sign-in fa-rotate-270',
+      'start' => 'fa-home',
+      'talk' => 'fa-comment-o',
+      'talks' => 'fa-comments-o',
+      'wine' => 'fa-glass'
+    }
+
     if icon_array.index icon_name_s 
       klasses = 'fa-' + icon_name_s
+    elsif icon_hash.key? icon_name_s
+      klasses = icon_hash[ icon_name_s ]
+    elsif icon_name_s =~ /^my_/
+      klasses = 'fa-user'
     else
-      # could replace the 'case' with a hash; however case seems a bit clearer for case when mapping multiple actions into a single icon
-      klasses = case icon_name_s
-	      # in alphabetic order of action_name
-	      when 'about'
-	        'fa-dot-circle-o'
-	      when 'cancel'
-	        'fa-ban'
-	      when 'contact'
-	        'fa-envelope-o'
-	      when 'credit', 'credits'
-	        'fa-heart'
-	      when 'data', 'table'
-	        'fa-table'
-	      when 'delete', 'destroy'
-	        'fa-minus-cirle'
-	      when 'edit'
-	        'fa-pencil'
-	      when 'google_plus'
-	        'fa-google-plus'
-	      when 'help', 'helps'
-	        'fa-question'
-	      when 'location', 'venue'  # venue can show up here even without being a table!
-	        'fa-location-arrow'
-	      when 'message'
-	        'fa-bolt'
-	      when 'new'
-	        'fa-plus-circle'
-	      when 'person'
-	        'fa-user'
-	      when 'privacy'
-	        'fa-eye'
-	      when 'settings'
-	        'fa-cog'
-	      when 'sign_in'
-	        'fa-sign-in'
-	      when 'sign_out'
-	        'fa-sign-in fa-flip-vertical'
-	      when 'sign_up'
-	        'fa-sign-in fa-rotate-270'
-	      when 'start'
-	        'fa-home'
-	      when 'talk'
-	        'fa-comment-o'
-	      when 'talks'
-          'fa-comments-o'
-	      when 'wine'
-	        'fa-glass'
-	      when /^my_/
-	        'fa-user'
-	      else
-          # leave function entirely...
-	        return ''
-	    end
+      return ''
     end
 
     return "<i class=\"fa #{klasses}\" ></i>"

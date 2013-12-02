@@ -25,21 +25,27 @@ module ApplicationHelper
     end
   end
 
-  # TBD:  does 'button_back' actually work?
+=begin
+  # TBD:  does 'button_back' actually work? needed? (given we are using stuff in the header)
   def button_back (tag) 
-    link_to tag, :back, 'data-inline' => true, 'data-role' => 'button'
+    link_to tag, :back, 'data-inline' => true, 'data-role' => 'button', 'data-mini' => true
   end
+=end
 
   # TBD:  add a warning color to the delete button, here or better via css
   # TBD: DRY the buttons out a bit, lots of common options
   def button_delete (model) 
-    link_to 'Delete', model, method: :delete, data: { confirm: "Are you sure you want to delete this #{model.class.to_s.downcase}?" }, 
+    tag = model.class.to_s.downcase
+    link_to 'Delete', model, method: :delete, title: "Delete this #{tag}",
+      data: { confirm: "Are you sure you want to delete this #{tag}" },
       'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'delete', 'data-mini' => true
   end
 
-  def button_create (model)
-    link_to 'New', model, method: :get, 
-      'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'plus', 'data-mini' => true
+  # can probably get path from model (perhaps even tag), but no create need
+  def button_create (tag, path, options = {})
+    defaults = { :method => :get, 'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'plus', 'data-mini' => true } 
+    options.merge! defaults
+    link_to tag, path, options
   end
 
   # TBD:  various front ends to button_inline possible, as for 'new', 'update', and so on...

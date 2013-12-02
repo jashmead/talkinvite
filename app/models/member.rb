@@ -30,24 +30,24 @@ class Member < ActiveRecord::Base
   validates :member_type, presence: true
   validates_inclusion_of :member_type, :in => MEMBER_TYPES  # may have others, ultimately
 
-  ## make the status changing guys class methods because the member record may not exist
-  # rsvp_status & member_type flagged as duplicates by codeclimate
-  def self.rsvp_status_create_or_change(person_id, talk_id, new_rsvp_status)
-    member = Member.where("person_id = ? and talk_id = ?", person_id, talk_id)
-    if ! member
-      member = Member.new( person_id: person_id, talk_id: talk_id)
+  # if no attributes supplied, return existing member record or nil if there is none
+  def self.membership(person_id, talk_id, attributes = nil)
+    member = Member.where("person_id = ? and talk_id = ?", person_id, talk_id).first
+    if ! attributes
+      return member # expect nil if no member found
     end
-    member.rsvp_status = new_rsvp_status
-    member.save # should work for both new & edit
+    if ! member
+      member = Member.new(person_id: person_id, talk_id: talk_id)
+    end
+    member.update_attributes( attributes )
+  end
+
+  def self.rsvp_status_create_or_change(person_id, talk_id, new_rsvp_status)
+    Member.membership(person_id, talk_id, 'rsvp_status' => new_rsvp_status)
   end
 
   def self.member_type_create_or_change(person_id, talk_id, new_member_type)
-    member = Member.where("person_id = ? and talk_id = ?", person_id, talk_id)
-    if ! member
-      member = Member.new( person_id: person_id, talk_id: talk_id)
-    end
-    member.member_type = new_member_type
-    member.save # should work for both new & edit
+    Member.membership(person_id, talk_id, 'member_type' => new_member_type)
   end
 
   def self.accept(person_id, talk_id)
@@ -72,19 +72,15 @@ class Member < ActiveRecord::Base
     self.member_type_create_or_change(person_id, talk_id, 'member')
   end
 
-  def self.member_ship(person_id, talk_id)
-    return Member.where("person_id = ? and talk_id = ?", person_id, talk_id).first
-  end
-
   # return nil if no membership
   def self.member_type(person_id, talk_id) 
-    member = self.member_ship(person_id, talk_id)
+    member = self.membership(person_id, talk_id)
     return member && member.member_type
   end
 
   # return nil if no membership
   def self.rsvp_status(person_id, talk_id) 
-    member = self.member_ship(person_id, talk_id)
+    member = self.membership(person_id, talk_id)
     return member && member.rsvp_status
   end
 
