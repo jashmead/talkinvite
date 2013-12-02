@@ -7,9 +7,8 @@
 # 1.  admin -- boolean, administrator, includes talkinvite
 # 1.  password, password_confirmation, encrypted_password -- per devise
 #
-# TBD: remove non-devise authentication keys:  password_digest & (I think) remember_token
-#   -- check code in /Users/taqm/.rvm/gems/ruby-2.0.0-p247/gems/devise-3.2.2/lib/devise/models
-#   -- and nearby first
+# NOTE:  password_digest & remember_token both in use in 'devise'; do not remove
+#   -- see code in /Users/taqm/.rvm/gems/ruby-2.0.0-p247/gems/devise-3.2.2/lib/devise/models
 # 
 # == Children
 
@@ -58,7 +57,7 @@ class Person < ActiveRecord::Base
   # before_create :create_remember_token
 
   before_save do
-    # TBD:  make the name lowercase & space-free? -- would rather not, tho would let us route to /people/anonymous/talks...
+    # note:  name can be arbitrary case & have spaces
     self.email = email.downcase
   end
 
