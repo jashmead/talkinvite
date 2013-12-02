@@ -204,10 +204,4 @@ class PeopleController < ApplicationController
       redirect_to(root_url) unless current_person.admin?
     end
 
-    def subscriber
-      redirect_to(root_url) unless current_person.sub? || current_person.admin?
-    end
-
-    # TBD:  add in 'invite'? is this best place for invite?
-
 end

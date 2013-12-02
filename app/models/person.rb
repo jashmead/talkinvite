@@ -5,11 +5,8 @@
 # 1.  email -- mandatory, validated 
 # 1.  description -- text, optional
 # 1.  admin -- boolean, administrator, includes talkinvite
-# 1.  sub -- boolean, subscriber, does not include anonymous, not clear if we need this...
 # 1.  password, password_confirmation, encrypted_password -- per devise
 #
-# TBD: instantiate admin flag
-# TBD: instantiate sub flag -- tho not really needed till Phase III, could just get rid of
 # TBD: remove non-devise authentication keys:  password_digest & (I think) remember_token
 #   -- check code in /Users/taqm/.rvm/gems/ruby-2.0.0-p247/gems/devise-3.2.2/lib/devise/models
 #   -- and nearby first

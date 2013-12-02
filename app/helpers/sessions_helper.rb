@@ -41,7 +41,6 @@ module SessionsHelper
     'credit' => 'fa-heart',
     'credits' => 'fa-heart',
     'data' => 'fa-table',
-    'table' => 'fa-table',
     'delete' => 'fa-minus-circle',
     'destroy' => 'fa-minus-circle',
     'edit' => 'fa-pencil',
@@ -49,7 +48,6 @@ module SessionsHelper
     'help' => 'fa_question',
     'helps' => 'fa-question',
     'location' => 'fa-location-arrow',
-    'venue' => 'fa-location-arrow',
     'message' => 'fa-bolt',
     'new' => 'fa-plus-circle',
     'person' => 'fa-user',
@@ -59,8 +57,10 @@ module SessionsHelper
     'sign_out' => 'fa-sign-in fa-flip-vertical',
     'sign_up' => 'fa-sign-in fa-rotate-270',
     'start' => 'fa-home',
+    'table' => 'fa-table',
     'talk' => 'fa-comment-o',
     'talks' => 'fa-comments-o',
+    'venue' => 'fa-location-arrow',
     'wine' => 'fa-glass'
   }
 
@@ -110,40 +110,12 @@ module SessionsHelper
   # TBD:  why does person_signed_in not work in test environment?
   def admin?
     begin
-      logger.debug("SessionsHelper.admin?: person_signed_in?: #{person_signed_in?.inspect}")
-      logger.debug("SessionsHelper.admin?: current_person: #{current_person.inspect}")
       person_signed_in? && current_person && current_person.admin?
     rescue
-      logger.debug("SessionsHelper.admin?: unable to figure out if person is admin")
+      # TBD:  figure out why view specs don't see 'person_signed_in?'; once we understand, decide how to handle (rescue may be good enough)
       false
     end
   end
-
-  # TBD:  why does person_signed_in not work in test environment?
-  def sub?
-    begin
-      logger.debug("SessionsHelper.sub?: person_signed_in?: #{person_signed_in?.inspect}")
-      logger.debug("SessionsHelper.sub?: current_person: #{current_person.inspect}")
-      person_signed_in? && current_person && current_person.sub?
-    rescue
-      logger.debug("SessionsHelper.sub?: unable to figure out if person is sub")
-      false
-    end
-  end
-
-  # TBD:  why does person_signed_in not work in test environment?
-=begin
-  def signed_in?
-    begin
-      logger.debug("SessionsHelper.admin?: person_signed_in?: #{person_signed_in?.inspect}")
-      logger.debug("SessionsHelper.admin?: current_person: #{current_person.inspect}")
-      person_signed_in? && current_person
-    rescue
-      logger.debug("SessionsHelper.admin?: unable to figure out if person is signed_in")
-      false
-    end
-  end
-=end
 
   # useful links in alphabetical order:
 

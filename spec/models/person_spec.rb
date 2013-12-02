@@ -33,7 +33,6 @@ describe Person do
   # it { should respond_to(:authenticate_person) }
 
   it { should respond_to(:admin) }
-  it { should respond_to(:sub) }
   it { should respond_to(:talks) }
   # it { should respond_to(:to_people) }
 
@@ -49,7 +48,6 @@ describe Person do
   it { should be_valid }
 
   it { should_not be_admin }
-  it { should_not be_sub }
 
   describe "with admin attribute set to 'true'" do
     before do
@@ -57,14 +55,6 @@ describe Person do
       @person.toggle!(:admin)
     end
     it { should be_admin }
-  end
-
-  describe "with sub attribute set to 'true'" do
-    before do
-      @person.save!
-      @person.toggle!(:sub)
-    end
-    it { should be_sub }
   end
 
   describe "when name is not present" do
