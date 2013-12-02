@@ -10,15 +10,17 @@
 #   -- logger
 #   -- functions defined in application_helpers.rb (ApplicationHelpers)
 #   -- link_to
+#   -- you can't just go <%=...%>, you have to surround in ''
 
-# WORKAROUND:  partials appear to have access to all functions available to forms
-#   -- therefore put code needing the application helpers, the controller object, & so on 
-#   -- in 'app/views/shared'
+# WORKAROUND:  
+#   -- (shared?) partials appear to have access to all functions available to forms
+#     -- therefore put code needing the application helpers, the controller object, & so on 
+#     -- in 'app/views/shared'
  
 class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
-
-# TBD:  is there a problem with the wrapping for button?
+# TBD:  is there a problem with the wrapping for button? 
+#   -- possibly because jqm does a lot of button magic itself
 =begin
   def button(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe
@@ -109,9 +111,11 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
   end
 
   # TBD: switch to jqm style buttons; if editing, automagically put in delete button unless told not to
+  # TBD:  why do options set here not work? sometimes they do, sometimes they don't
   def submit(value = '', options = {})
-    options['data-inline'] ||= true
-    options['data-mini'] ||= true
+    options['data-role'] = 'button'
+    options['data-inline'] = 'true'
+    options['data-mini'] = 'true'
     super value, options
   end
 

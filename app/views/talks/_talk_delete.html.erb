@@ -1,0 +1,6 @@
+<%=
+  talk = talk_delete.object
+  link_to 'Delete', talk_url(talk.id), method: :delete, 'title' => 'Delete This Talk',
+    data: { confirm: "Are you sure you want to delete this talk?" },
+    'data-icon' => 'delete', 'data-role' => 'button', 'data-inline' => true, 'data-mini' => true
+%>

@@ -16,6 +16,7 @@ module SessionsHelper
 
   # http://fortawesome.github.io/Font-Awesome/cheatsheet/
   # iconify spotted as complex by codeclimate 10/29/13, complexity 29, 11/22/13 - complexity 30
+  # iconify again spotted as complex by codeclimate 12/1/13, complexity 30
   def iconify (icon_name)   # currently action_name (preferred as more specific) or controller_name 
 
     icon_name_s = icon_name.to_s

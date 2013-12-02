@@ -18,7 +18,7 @@
     <%= render partial: 'talk_where', object: f %>
     <%= render partial: 'talk_status', object: f %>
     <%= render partial: 'talk_person', object: f %>
-    <%= render partial: 'talks/submit_button', :object => f %>
+    <%= render partial: 'talk_submit', :object => f %>
   <% else %>
     <ul data-role="listview" data-inset="true" data-theme="<%=swatch('')-%>" >
     <li><%=@talk.summary-%></li>

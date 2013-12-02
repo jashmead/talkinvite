@@ -31,6 +31,7 @@ class Member < ActiveRecord::Base
   validates_inclusion_of :member_type, :in => MEMBER_TYPES  # may have others, ultimately
 
   ## make the status changing guys class methods because the member record may not exist
+  # rsvp_status & member_type flagged as duplicates by codeclimate
   def self.rsvp_status_create_or_change(person_id, talk_id, new_rsvp_status)
     member = Member.where("person_id = ? and talk_id = ?", person_id, talk_id)
     if ! member

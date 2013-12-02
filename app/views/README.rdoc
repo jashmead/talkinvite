@@ -103,8 +103,7 @@ standardized transitions
 
 try a variety of themes
 
-add tooltips on everything
--- TBD: does title work for this?
+add tooltips on everything, 'title' element works for this
 
 one help page per page
 
@@ -112,13 +111,17 @@ group buttons on edit forms & related:  using data-role = controlgroup, data-typ
 
 all buttons are data-inline = true
 
+pass along the form object, 'f'; a specific partial can then pick off the model as f.object
+
+call partials _model_action -- easier to see what is going on
+
 === Key Pages Phase II
 
 ==== Authentication
 
-Settings -- no password
+Settings -- using (basically) devise; works well
 
-Change Password -- created
+Reset/Change Password -- using (basically) devise; works well
 
 ==== Tags
 
