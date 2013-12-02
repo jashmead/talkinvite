@@ -314,7 +314,6 @@ CREATE TABLE people (
     updated_at timestamp without time zone,
     remember_token character varying(255),
     admin boolean DEFAULT false NOT NULL,
-    sub boolean DEFAULT false NOT NULL,
     description text,
     encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying(255),
@@ -1064,3 +1063,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131125001516');
 INSERT INTO schema_migrations (version) VALUES ('20131125213523');
 
 INSERT INTO schema_migrations (version) VALUES ('20131129215544');
+
+INSERT INTO schema_migrations (version) VALUES ('20131202211752');
