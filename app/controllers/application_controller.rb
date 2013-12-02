@@ -53,6 +53,8 @@ going from parent to child (talk to posts, members, & comments) we have:
 
 class ApplicationController < ActionController::Base
 
+  MAX_ITEMS_PER_PAGE = 10
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception

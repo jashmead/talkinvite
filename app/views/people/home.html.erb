@@ -1,20 +1,18 @@
 <% provide(:title, "Home") %>
-<% logger.debug("views/people/home: @person: #{@person.inspect}, @talks: #{@talks.inspect}") %>
-<% 
-  # content:  talk box, messages, perhaps my activity
-  # footer: new talk, search talks, search messages
-  # TBD:  build helpers to help format the talk line, then push the talk line into a partial
-%>
 <% if @talks %>
-  <ul data-role="listview" data-inset="true">
+  <% if @talks.size > TalksController::MAX_TALKS_PER_AGE %>
+    <ul data-role="listview" data-filter="true" data-filter-placeholder="Narrow the search…" data-mini="true">
+  <% else %>
+    <ul data-role="listview" data-mini="true">
+  <% end %>
   <% @talks.each do |talk| %>
-    <% # TBD: replace 'li' with better formatting, links to talk control, link to person, call of calendar on click of when, & when_desc formatted in days! %>
-    <li <%=data_theme('talks')%>><%= link_to talk.summary + '/' + talk.person.name,  control_talk_path(talk) %></li> 
+    <% 
+      # TBD: include date & distance when those are ready, click on date->calendar, click on distance->map
+      #   -- can we get three links in there?
+      #   -- use split button or asides to add in additional linkso
+      # TBD: add pagnination
+    %>
+    <li data-mini="true" <%=data_theme('talks')%>><%= link_to talk.summary,  control_talk_path(talk) %></li> 
   <% end %>
   </ul>
-<% end %>
-
-<% # TBD:  why does person_signed_in? not work in test environment? %>
-<% if @person %>
-  <%= render partial: 'talk_start' %>
 <% end %>

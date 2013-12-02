@@ -35,7 +35,7 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
   # note:  collection_radio_buttons currently producing weird stuff
   #   -- hard to figure out what the name is going to be
   def collection_radio_buttons(method, collection, value_method, text_method, options = {}, html_options = {})
-    ('<div data-role="fieldcontain"><fieldset data-role="controlgroup" data-type="horizontal">' + super + '</fieldset></div>').html_safe
+    ('<div data-role="fieldcontain"><fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">' + super + '</fieldset></div>').html_safe
   end
 
   def color_local_field(attribute, options = {} )
@@ -134,7 +134,7 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
 
   private
     def pre_field(attribute)
-      '<div class="fieldcontain field ui-hide-label">' + label(attribute, attribute.to_s.titleize)
+      '<div class="fieldcontain field ui-hide-label" data-mini="true" >' + label(attribute, attribute.to_s.titleize)
     end
 
     def post_field

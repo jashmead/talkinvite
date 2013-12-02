@@ -5,6 +5,8 @@
 # there are no longer routes to nearby, recent, & roulette because search now includes location stuff & is limited to posted
 
 class TalksController < ApplicationController
+  
+  MAX_TALKS_PER_AGE = ApplicationController::MAX_ITEMS_PER_PAGE
 
   # current_talk set by set_talk, unset_talk
   cattr_accessor :current_talk, instance_accessor: false
