@@ -84,7 +84,7 @@ going from parent to child (talk to posts, members, & comments) we have:
 
 class Talk < ActiveRecord::Base
 
-  TALK_STATUS = [ 'draft', 'active', 'cancelled', 'done' ]
+  TALK_STATUS = [ 'draft', 'open', 'cancelled', 'done' ]
 
   include ActiveModel::Validations
   validates_with TalkValidator

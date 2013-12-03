@@ -4,7 +4,7 @@ describe Talk do
 
   # better to build up fresh person than to rely on the standard people (anonymous, talkinvite, ...)
   let(:person) { FactoryGirl.create(:person) }
-  before { @talk = person.talks.build(summary: "Lorem ipsum", description: "Let's talk!", talk_status: "active") }
+  before { @talk = person.talks.build(summary: "Lorem ipsum", description: "Let's talk!", talk_status: "open") }
 
   subject { @talk }
 
