@@ -1,20 +1,17 @@
 # Talks -- Key table
-=begin
-  TBD: fix up field names when_desc, where_desc; change to talk_when, talk_where
-  TBD: validate start_dt < end_dt; or switch to a duration
-=end
 # 
 # == Fields
 # 1. person_id -- hope to allow anonymous at some point, but not clear how to do this
 # 1. summary -- string, mandatory, counts as 'what'
 # 1. description -- text, optional, counts as 'why'
-# 1. start_dt -- when it is supposed to start, defaults to 15 minutes from now, rounded up
-# 1. end_dt -- could have used duration, but end_dt is more intuitive, with start_dt, heart of 'when', replace with duration?
 # 1. talk_status -- posted talks are those that have been posted & not cancelled or finished
-# 1. where_desc -- key word or address; rename as address
+# 1. talk_date
+# 1. talk_time
+# 1. talk_duration
+# 1. address -- key word or address; rename as address
 # 1. longitude -- x coordinate, not visible to users
 # 1. latitude -- y coordinate, not visible to users
-# 1. who_type -- as any, members_only, ...
+# 1. privacy  -- as any, members_only, ...
 
 # -- get posted datetime from posts
 

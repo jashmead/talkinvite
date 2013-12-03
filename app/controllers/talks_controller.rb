@@ -72,7 +72,7 @@ class TalksController < ApplicationController
   end
 
   def search_fields
-    [ 'summary', 'description', 'who_desc', 'where_desc', 'when_desc' ]
+    [ 'summary', 'description', 'address' ]
   end
 
   # POST /talks
@@ -216,7 +216,7 @@ class TalksController < ApplicationController
       #   -- "#permit" allows only the white-listed fields thru
       #   -- returns the params object itself
       params.require(:talk).permit(:id, :summary, :description, :person_id, 
-        :start_dt, :end_dt, :longitude, :latitude, :who_desc, :talk_status, :where_desc, :when_desc)
+        :longitude, :latitude, :privacy, :talk_status, :address, :talk_date, :talk_time, :talk_duration )
     end
 
     def talk_admin?(talk = nil)

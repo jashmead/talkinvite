@@ -11,7 +11,8 @@
       <% @talks.each do |talk| %>
         <li>
         <%= 
-          link_to talk.summary + ' / ' + talk.person.name + ' / ' + talk.when_desc.to_s, control_talk_path(talk.id) 
+          # TBD:  does putting the talk_date here help?
+          link_to talk.summary + ' / ' + talk.talk_date.to_s, control_talk_path(talk.id) 
         %>
         </li>
       <% end %>

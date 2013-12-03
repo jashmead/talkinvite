@@ -19,8 +19,10 @@
     <ul data-role="listview" data-inset="true" data-theme="<%=swatch('')-%>" >
     <li><%=@talk.summary-%></li>
     <li><%=@talk.description-%></li>
-    <li><%=@talk.when_desc-%></li>
-    <li><%=@talk.where_desc-%></li>
+    <li><%=@talk.talk_date-%></li>
+    <li><%=@talk.talk_time-%></li>
+    <li><%=@talk.talk_duration-%></li>
+    <li><%=@talk.address-%></li>
     <li><%=@talk.talk_status-%></li>
     <% if ! person_signed_in? or current_person.id != @talk.person_id %>
       <li><%=@talk.person.name-%></li>

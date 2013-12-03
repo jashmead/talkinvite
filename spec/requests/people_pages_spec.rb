@@ -85,9 +85,8 @@ describe "People pages" do
   describe "home page" do
 
     let!(:person) { FactoryGirl.create(:person) }
-    # get rid of when_desc & where_desc once page is fixed up
-    let!(:t1) { FactoryGirl.create(:talk, person: person, summary: "FooBar", when_desc: "nowish", where_desc: "hereish") }
-    let!(:t2) { FactoryGirl.create(:talk, person: person, summary: "BarFoo", when_desc: "nowish", where_desc: "hereish") }
+    let!(:t1) { FactoryGirl.create(:talk, person: person, summary: "FooBar", talk_date: Date.today(), address: "123 North Drive, Nowhere, ZIL") }
+    let!(:t2) { FactoryGirl.create(:talk, person: person, summary: "BarFoo", talk_date: Date.today(), address: "123 North Drive, Nowhere, ZIL") }
 
     before { 
       sign_in person
