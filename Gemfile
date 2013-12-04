@@ -45,7 +45,10 @@ end
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+# by putting in the group 'assets', may keep heroku from using:  good or bad?
+# group :assets do
+gem 'coffee-rails'
+# end
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

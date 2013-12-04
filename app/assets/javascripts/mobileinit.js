@@ -17,7 +17,7 @@
   not currently working:  how to position between jquery & jquerymobile when using the asset pipeline?
 */
 (function ($) {
-  console.log("mobileinit.js")
+  // console.log("mobileinit.js")
 
 	$(document).on("mobileinit", function () {
 		$.mobile.page.prototype.options.domCache = true;		// cache all pages
@@ -60,7 +60,7 @@
 
 		// talkinvite setup here, if necessary
 		// e.g.: $(document).on("pageload", pageload);  // where pageload is a function defined in talkinvite.js somewhere
+    // $(document).on("pageinit", "#talks-control", talks_control_init)
 
 	});
 }(jQuery));
-
