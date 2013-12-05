@@ -42,8 +42,10 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
-  def date_local_field(attribute, options = {} )
-    (pre_field(attribute) + super + post_field).html_safe
+  def date_field(attribute, options = {} )
+    # (pre_field(attribute) + super + post_field).html_safe
+    # ( '<div id="zz">' + super + '</div>').html_safe
+    ( '<div id="zz">' + pre_field(attribute) + super + post_field + '</div>').html_safe
   end
 
   def datetime_field(attribute, options = {} )

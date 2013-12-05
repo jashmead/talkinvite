@@ -7,8 +7,11 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
+ * Tried putting the datepicker files in app/assets/stylesheets
+ *  -- but inspite of much stuff about the asset path, they were not found
  * 
  *= require_self
  *= require_tree .
  *= require jquery.mobile
+ *= require jquery.ui.datepicker.mobile
  */

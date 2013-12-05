@@ -12,12 +12,12 @@
 	-- sets default page traps, including the at one point important pageinit trap which (at that point) kicked off each page
 
 	DEV:
-		comment pageremove out & turn off domCache to help reduce caching, if cache-related bug suspected
-
-  not currently working:  how to position between jquery & jquerymobile when using the asset pipeline?
+		-- comment pageremove out & turn off domCache to help reduce caching, if cache-related bug suspected
+    -- nesting here may be one level more than is needed, given that the ruby-on-rails asset pipeline
+      wraps all functions in an anonymous self-executing function anyway
 */
 (function ($) {
-  // console.log("mobileinit.js")
+  console.log("mobileinit.js")
 
 	$(document).on("mobileinit", function () {
 		$.mobile.page.prototype.options.domCache = true;		// cache all pages
@@ -60,7 +60,28 @@
 
 		// talkinvite setup here, if necessary
 		// e.g.: $(document).on("pageload", pageload);  // where pageload is a function defined in talkinvite.js somewhere
-    // $(document).on("pageinit", "#talks-control", talks_control_init)
+
+    $.mobile.ignoreContentEnabled = true; // so we can ignore some elements
+    $(document).on("pageinit", "#talks-control", function(event0, data0){
+      console.info("hi hi hi");
+      console.dir(event0);
+      try {
+        // console.log( "zz = " + $( "input[type='date']", '#talks-control' ).html());
+        // console.log( "zz = " + $( "input[type='date'], '#talks-control' ).html());
+        console.log( "zz = " + $( '#zz', '#talks-control' ).html());
+        console.log( "talk_talk_date = " + $( '#talk_talk_date', '#talks-control' ).html());
+        console.log($('#talk_talk_date', '#talks-control').width());
+        $('#talk_talk_date', '#talks-control').after('<div>appended stuff</div>');
+        $('#talk_talk_date', '#talks-control').datepicker();
+      } catch(except1){ 
+        console.log("error thrown on datepicker");
+        console.dir(except1);
+      }
+      console.info("trap on talks_control_init set (or not)")
+    })
+    // to keep the date inputs out of the hands of competing datepickers
+    // see http://jquerymobile.com/demos/1.0a4.1/experiments/ui-datepicker/
+    $.mobile.page.prototype.options.degradeInputs.date = true;  
 
 	});
 }(jQuery));

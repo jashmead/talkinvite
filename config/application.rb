@@ -27,5 +27,7 @@ module Talkinvite
 
     # see http://stackoverflow.com/questions/20361428/rails-4-0-2-i18n-validation-deprecation-warning
     I18n.enforce_available_locales = true
+
+    # can add paths with config.assets.paths << Rails.root.join("lib", "videoplayer", "flash")
   end
 end
