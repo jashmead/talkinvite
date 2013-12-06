@@ -703,6 +703,13 @@ CREATE UNIQUE INDEX index_people_on_email ON people USING btree (email);
 
 
 --
+-- Name: index_people_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_people_on_name ON people USING btree (name);
+
+
+--
 -- Name: index_people_on_remember_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1069,3 +1076,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131202211752');
 INSERT INTO schema_migrations (version) VALUES ('20131203165935');
 
 INSERT INTO schema_migrations (version) VALUES ('20131203202516');
+
+INSERT INTO schema_migrations (version) VALUES ('20131206190903');
