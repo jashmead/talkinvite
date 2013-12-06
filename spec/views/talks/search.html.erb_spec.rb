@@ -11,8 +11,8 @@ describe "talks/search" do
 
   subject { page }        ## what, exactly, does this do? sets 'it', I think
 
-  let(:page_title) { 'Search for Talks' }
-  let(:heading) { 'Search for Talks' } # can't use :heading here?
+  let(:page_title) { 'Search Talks' }
+  let(:heading) { 'Search Talks' } # can't use :heading here?
   let(:person) { FactoryGirl.create(:person) }
   let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
 

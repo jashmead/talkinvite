@@ -1,4 +1,5 @@
 <% provide(:title, "Home") %>
+<% # TBD:  save @talks to local storage, then recover from it %>
 <% if @talks %>
   <% if @talks.size > TalksController::MAX_TALKS_PER_AGE %>
     <ul data-role="listview" data-filter="true" data-filter-placeholder="Narrow the search…" data-mini="true">

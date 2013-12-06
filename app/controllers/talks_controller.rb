@@ -71,6 +71,8 @@ class TalksController < ApplicationController
     @title = @talk.summary
   end
 
+  # TBD:  search/index/found:  add in location search, add in calendar search, add in advanced search
+  # TBD:  kill New Talk button?  perhaps nice to have
   def search_fields
     [ 'summary', 'description', 'address' ]
   end

@@ -6,6 +6,7 @@
 #
 # TBD:  add url field -- note that this can be included in the description
 # TBD:  add html_id field? or just keep using name for this?
+# TBD:  add in help_type:  page, faq, topic, ...
 #
 # currently keying off the 'id' for the page, this should work for partials as well...
 

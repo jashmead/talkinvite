@@ -66,7 +66,7 @@ class Person < ActiveRecord::Base
   ## the '->' denotes a proc or lambda, scheduled for lazy evaluation
   default_scope -> { order('people.name asc') }
 
-  validates :name, presence: true, length: { maximum: 80 }
+  validates :name, presence: true, length: { maximum: 80 }, uniqueness: true
 
   # since uniqueness of email being checked by device, do not check here
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

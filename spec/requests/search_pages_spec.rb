@@ -32,7 +32,7 @@ describe "search" do
           ## would like a more accurate response, specifically that it was an error message we looked at
           # save_and_open_page # courtesy of launchy; opens current page; sans formatting, however
           expect(page).to have_content("No matching people found for 'ZZTop'")
-          expect(page).to have_title("Search for People")
+          expect(page).to have_title("Search People")
         end
 
       end
@@ -50,7 +50,7 @@ describe "search" do
             ## save_and_open_page
             expect(page).to have_content('Found one matching person')
             expect(page).to have_title("People")
-            expect(page).to_not have_title("Search for People")
+            expect(page).to_not have_title("Search People")
           end
 
         end
@@ -71,7 +71,7 @@ describe "search" do
           it "should render the found page" do
             expect(page).to have_content('Found 2 matching people')
             expect(page).to have_title("People")
-            expect(page).to_not have_title("Search for People")
+            expect(page).to_not have_title("Search People")
           end
 
         end
@@ -111,7 +111,7 @@ describe "search" do
         it "should return to the search page with a message" do
           ## would like a more accurate response, specifically that it was an error message we looked at
           expect(page).to have_content("No matching talks found for 'ZZTop'")
-          expect(page).to have_title("Search for Talks")
+          expect(page).to have_title("Search Talks")
         end
 
       end
@@ -128,7 +128,7 @@ describe "search" do
           it "should render the found page" do
             expect(page).to have_content('Found one matching talk')
             expect(page).to have_title("Talk")
-            expect(page).to_not have_title("Search for Talks")
+            expect(page).to_not have_title("Search Talks")
           end
 
         end
@@ -151,7 +151,7 @@ describe "search" do
 
             expect(page).to have_content('Found 2 matching talks')
             expect(page).to have_title("Talks")
-            expect(page).to_not have_title("Search for Talks")
+            expect(page).to_not have_title("Search Talks")
           end
 
         end

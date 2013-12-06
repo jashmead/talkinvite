@@ -22,7 +22,7 @@ describe "sitemap" do
     "Credits", 
     "FAQs", 
     "List of Help",
-    "Search for Talks"
+    "Search Talks"
   ] }
 
   # profile, settings, home not tested here because the title is supposed to be person.name, need to work up more code to check
@@ -30,7 +30,7 @@ describe "sitemap" do
     # "Home", 
     "My Messages",
     "Start Talk",
-    "Search for People"
+    "Search People"
   ] }
 
   let(:not_signedin_list) { [

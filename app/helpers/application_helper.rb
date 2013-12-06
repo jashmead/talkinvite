@@ -59,6 +59,8 @@ module ApplicationHelper
   # returns correct data-theme (based on controller) as a single letter where the letter can be from a to f, depending on the context
   # a = black & white, b = blue, c = red, d = green, e = cyan, f = orange
   def swatch ( controller_name = nil ) 
+    # TBD:  go back to colors or get a better theme
+    return 'a'  # debugging aid, 'a' is easiest to read, black on white
     if ! controller_name 
       controller_name = controller.controller_name
     end

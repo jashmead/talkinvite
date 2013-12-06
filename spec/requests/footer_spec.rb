@@ -37,8 +37,8 @@ describe "footers" do
   let(:people_page_list) { [ 
     "Start Talk",
     # "My Messages",
-    # "Search for People",
-    "Search for Talks",
+    # "Search People",
+    "Search Talks",
     "Settings"
   ] }
   # TBD:  fix people_footer to work for home page as well (no 'home' on home page)
@@ -60,8 +60,8 @@ describe "footers" do
     'help' => [ "Credits", "Frequently Asked Questions", "Help", "New Credit", "New FAQ", "New Help" ],
     'home' => [ "Home" ],
     # TBD:  why isn't "My Messages" working?
-    # 'people' => [ "Start Talk", "My Messages", "Search for People", "Search for Talks", "Settings" ],
-    'people' => [ "Start Talk", "Search for People", "Search for Talks", "Settings" ],
+    # 'people' => [ "Start Talk", "My Messages", "Search People", "Search Talks", "Settings" ],
+    'people' => [ "Start Talk", "Search People", "Search Talks", "Settings" ],
     'static' => [ "About", "Contact", "Site Map" ]
   }
 
@@ -112,7 +112,7 @@ describe "footers" do
       within('.footer') do
           should have_selector('a', :text => 'Start')
           click_link 'Start'
-          should have_title("Search for Talks")
+          should have_title("Search Talks")
       end
     end
 

@@ -62,8 +62,8 @@ class StaticPagesController < ApplicationController
     #   -- changes minor but it would appear sufficient
     def common_routes
       [
-        [ search_path, 'Search for Talks', 'talks' ],
-        [ helps_path, 'List of Help Pages' , 'helps' ],
+        [ search_path, 'Search Talks', 'talks' ],
+        [ helps_path, 'List of Help Pages' , 'helps' ], # TBD:  replace with help search
         [ faqs_path, 'FAQs' , 'faqs' ],
         [ credits_path, 'Credits' , 'credits' ],
         [ static_pages_about_path, 'About' , 'static_pages' ],
@@ -97,7 +97,7 @@ class StaticPagesController < ApplicationController
           [ person_path(current_person), 'Profile', 'people' ],
           [ new_talk_path, 'Start Talk', 'talks' ],
           [ my_messages_path, 'My Messages', 'messages' ],
-          [ search_people_path, 'Search for People', 'people' ]
+          [ search_people_path, 'Search People', 'people' ]
         ]
       else
         [

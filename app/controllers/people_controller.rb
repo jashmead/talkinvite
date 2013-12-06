@@ -81,6 +81,7 @@ class PeopleController < ApplicationController
   # 'home' is a control panel type thing
   # TBD:  add talks box, eliminate update fields
   def home
+    # TBD:  replace sitemap with my messages, once we are there
     logger.debug("PeopleController.home: current_person: #{current_person.inspect}")
     store_location  # so if we click on something we'll come back here:  it is home, after all!
     @person = current_person
