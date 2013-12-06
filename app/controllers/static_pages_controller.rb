@@ -50,7 +50,6 @@ class StaticPagesController < ApplicationController
       if admin?
         [
           [ new_help_path, 'New Help' , 'helps' ],
-          [ new_faq_path, 'New FAQ' , 'faqs' ],
           [ new_credit_path, 'New Credit' , 'credits' ]
         ]
       else
@@ -64,7 +63,6 @@ class StaticPagesController < ApplicationController
       [
         [ search_path, 'Search Talks', 'talks' ],
         [ helps_path, 'List of Help Pages' , 'helps' ], # TBD:  replace with help search
-        [ faqs_path, 'FAQs' , 'faqs' ],
         [ credits_path, 'Credits' , 'credits' ],
         [ static_pages_about_path, 'About' , 'static_pages' ],
         [ static_pages_contact_path, 'Contact' , 'static_pages' ],

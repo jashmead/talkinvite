@@ -18,7 +18,6 @@
 # 1. comments: add comments to talk
 # 1. messages:  talk to other talkers
 # 1. static pages:  about, contact, privacy
-# 1. faqs
 # 1. credits
 # 1. helps
 # 
@@ -101,7 +100,7 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  # faqs & related
+  # helps & credits
 
   get '/helps/new', to: 'helps#new' # otherwise new is treated as the name of a help text
 
@@ -110,7 +109,7 @@ Talkinvite::Application.routes.draw do
   get '/help/:name', to: 'helps#help', constraints: { name: /[A-Za-z][A-Za-z0-9_]*/ }
   get '/helps/:name', to: 'helps#help', constraints: { name: /[A-Za-z][A-Za-z0-9_]*/ }
 
-  resources :helps, :faqs, :credits
+  resources :helps, :credits
 
   ## Static pages:
 

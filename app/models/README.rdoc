@@ -11,7 +11,6 @@ Note we can't use 'file' as a table name, conflicts with Ruby
 1. Members -- links to talk & to people, includes 'admin' status (with reference to talk), payload is rsvp_status, member_type
 1. Comments -- links to talk & to people, payload is text
 1. Messages -- person to person, various modalities, sender, receiver, talk
-1. Faqs -- doubles as help text, no links, question, answer, tags point to this as well!
 1. Credits -- links to creator, name, details, url, tags point to this as well!
 1. Helps
 1. Maps -- links to creator, has datasets, center, scale, maybe type on it, has link to talk, may need settings as well (json field). virtual table, like sessions.
@@ -61,7 +60,7 @@ Note we can't use 'file' as a table name, conflicts with Ruby
 * like name, description in users, talks at start
 * therefore not needed for phase I
 * polymorphic
-* point up to talks, people, credits, faqs, helps, pretty much everything
+* point up to talks, people, credits, helps, pretty much everything
 * standard, work from examples, as Rails in Action
 * needs maintenance reports
 * have a creator (for people has to be the person him or her self)

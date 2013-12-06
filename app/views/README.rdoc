@@ -35,15 +35,13 @@
 
 1. Credits
 1. Show Credit
-1. Faqs
-1. Show Faq
 1. Helps
 1. Show Help
 1. Site Map
 
 ==== Admin Pages
 
-New & Edit for Credit, Faq, & Help (6 pages)
+New & Edit for Credit & Help (6 pages)
 
 ==== Start/Home page
 

@@ -71,10 +71,10 @@ class ApplicationController < ActionController::Base
   end
 
   # footer_fields often changed by controllers
-  # only some controllers need footer_fields:  people, talks, faqs, credits, helps
+  # only some controllers need footer_fields:  people, talks, credits, helps
 
   def feet_for_help_pages 
-    [ helps_path, credits_path, faqs_path ]
+    [ helps_path, credits_path, about_path ]
   end
 
   # TBD:  shift to a model where the new talk page will let you sign_in/create a new account on the fly...

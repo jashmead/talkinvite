@@ -22,13 +22,11 @@ describe "footers" do
   # TBD:  figure out how to multi-dimensional hashes/arrays here; then can DRY
   let(:help_page_list) { [
     "Credits",
-    "FAQs", 
     "List of Help",
     "New Credit",
-    "New FAQ",
     "New Help"
   ] }
-  let(:help_footer_list) { [ 'Home', 'Helps', 'Credits', 'Faqs' ] }
+  let(:help_footer_list) { [ 'Home', 'Helps', 'Credits' ] }
 
   let(:home_page_list) { [ "Home" ] }
   let(:home_footer_list) { [ 'Site Map', 'New Talk', 'Talks', 'Sign Out' ] }
@@ -57,7 +55,7 @@ describe "footers" do
 #   -- none worked, in general they left the variabiles as nil
 
   @page_list = {
-    'help' => [ "Credits", "Frequently Asked Questions", "Help", "New Credit", "New FAQ", "New Help" ],
+    'help' => [ "Credits", "Frequently Asked Questions", "Help", "New Credit", Help" ],
     'home' => [ "Home" ],
     # TBD:  why isn't "My Messages" working?
     # 'people' => [ "Start Talk", "My Messages", "Search People", "Search Talks", "Settings" ],
@@ -66,7 +64,7 @@ describe "footers" do
   }
 
   @footer_list = {
-    'help' => [ 'Home', 'Helps', 'Credits', 'Faqs' ],
+    'help' => [ 'Home', 'Helps', 'Credits' ],
     'home' => [ 'Site Map', 'New Talk', 'Talks', 'Sign Out' ],
     'people' => [ 'Home', 'New Talk', 'Talks', 'Sign Out' ],
     'static' => [ 'Home', 'About', 'Contact', 'Privacy' ]

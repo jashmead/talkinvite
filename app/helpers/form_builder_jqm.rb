@@ -1,5 +1,5 @@
 # FormBuilderJqm automagically picked if we specify the "builder" option to form_for:
-#   <%= form_for(@faq, builder: FormBuilderJqm) do |f| %> 
+#   <%= form_for(@model, builder: FormBuilderJqm) do |f| %> 
 #   -- apparently the search path includes app/helpers & maps back & forth automatically between form_builder_jqm & FormBuilderJqm
 
 # To automate the calling of form_for, 

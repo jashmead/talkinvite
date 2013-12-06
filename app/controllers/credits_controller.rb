@@ -2,7 +2,7 @@
 #
 # only admins can add credits?
 #
-# massively parallel to faqs & credis
+# massively parallel to credis
 
 class CreditsController < ApplicationController
   before_action :set_credit, only: [:show, :edit, :update, :destroy]

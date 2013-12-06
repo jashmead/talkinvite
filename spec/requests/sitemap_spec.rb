@@ -20,7 +20,6 @@ describe "sitemap" do
     "About", 
     "Contact", 
     "Credits", 
-    "FAQs", 
     "List of Help",
     "Search Talks"
   ] }
@@ -39,7 +38,7 @@ describe "sitemap" do
     "Reset Password"
   ] }
 
-  let(:admin_list) { [ "New Credit", "New FAQ", "New Help" ] }
+  let(:admin_list) { [ "New Credit", "New Help" ] }
 
   before { visit sitemap_path }
 

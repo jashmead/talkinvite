@@ -41,7 +41,7 @@ sitemap is key to development & may be useful in deployment
 
 help is called from the help tab, keyed by page's id, does show/edit on the associated help
 
-=== Credits & Faqs
+=== Credits 
 
 nothing special
 
