@@ -160,7 +160,7 @@ describe "People pages" do
     let(:person) { FactoryGirl.create(:person) }
     before do
       sign_in person
-      visit edit_person_path(person)
+      visit edit_person_registration_path(person)
     end
 
     describe "page" do
@@ -178,15 +178,16 @@ describe "People pages" do
       before do
         fill_in "person_name",             with: new_name
         fill_in "person_email",            with: new_email
-        fill_in "person_password",         with: person.password
-        fill_in "person_password_confirmation", with: person.password
-        click_button "Update Person"
+        # fill_in "person_password",         with: person.password
+        # fill_in "person_password_confirmation", with: person.password
+        fill_in "person_current_password",        with: person.password
+        click_button "Update"
       end
 
       # it { save_and_open_page } # have to surround the save_and_open_page in an it{}
 
       it { should have_title(new_name) }
-      it { should have_selector('div.alert.alert-success') }
+      it { should have_selector('div.alert.alert-notice') }
 
 # TBD:  why is checking on 'Settings' failing?
 =begin

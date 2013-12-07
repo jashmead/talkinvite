@@ -1,40 +1,51 @@
-# talks_pages_spec -- tests for talks
-#   searches broken out into talk_searches
-#   -- tried using test code from Rails 4 in Action, but that just fails, 
-#     -- with many errors, see "creating_talks_spec.rb" for fails
+## pages covered:
+##  usual resources, sign_up
 
 require 'spec_helper'
 
-describe "Talk pages" do
+describe "People pages" do
 
   subject { page }
 
-  let(:person) { FactoryGirl.create(:person) }
-  let(:talk) { FactoryGirl.create(:talk, :person_id => person.id.to_s) }
+  describe "edit" do
 
-  before { sign_in person }
-
-  ##  TBD: recheck talk creation when we have a new talk path working, 
-  ##    -- these tests are geared to tutorial's microposts & home page
-
-  # new & create tests:
-  describe "talk creation" do
+    let(:person) { FactoryGirl.create(:person) }
     before do
-        visit new_talk_path
+      sign_in person
+      visit edit_person_registration_path(person)
     end
 
-    describe "with invalid information" do
-      it "should not create a talk" do
-        expect { click_button "Start Talk" }.not_to change(Talk, :count)
+    describe "page" do
+      # it { save_and_open_page }
+      # TBD:  why is person.name not showing?
+      # it { should have_title(person.name) }
+    end
+
+    describe "with valid information" do
+
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+
+      # TBD:  add in tests of descriptions & other new fields
+      before do
+        fill_in "person_name",             with: new_name
+        fill_in "person_email",            with: new_email
+        # fill_in "person_password",         with: person.password
+        # fill_in "person_password_confirmation", with: person.password
+        fill_in "person_current_password",        with: person.password
+        click_button "Update"
       end
 
-      describe "should show error messages" do
-        before { click_button "Start Talk" }
-        it { 
-          # save_and_open_page
-          should have_content('error')
-        }
-      end
+      it { save_and_open_page } # have to surround the save_and_open_page in an it{}
+
+      it { should have_title(new_name) }
+      it { should have_selector('div.alert.alert-notice') }
+
+      # direct tests of database saves:
+      # specify versus 'it'?
+      specify { expect(person.reload.name).to  eq new_name }
+      specify { expect(person.reload.email).to eq new_email }
+
     end
 
   end
