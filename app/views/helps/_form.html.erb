@@ -4,7 +4,11 @@
 
   <%= f.text_field :name, placeholder: :name, required: true %>
 
+  <%= f.text_field :title, placeholder: :title, required: true %>
+
   <%= f.text_area :description, placeholder: :description, required: true %>
+
+  <%= f.select :help_type, Help::HELP_TYPES %>
 
   <%= render partial: 'shared/submit_button', :object => f %>
 

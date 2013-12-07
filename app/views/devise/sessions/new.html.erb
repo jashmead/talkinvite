@@ -1,6 +1,7 @@
 <% provide(:title, "Sign In") %>
 <% provide(:data_role, "dialog") %>
 <% # TBD:  shrink width of "remember_me"; data-inline didn't work %>
+<% # TBD:  check that error on invalid email/password combination is reasonable %>
 <% # note:  if the password field's value is left blank, then the browser or at least FireFox will fill in with the previous password %>
 
 <% logger.debug("devise/sessions/new: resource: #{resource.inspect}") %>

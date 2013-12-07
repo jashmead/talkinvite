@@ -34,7 +34,7 @@ class HelpsController < ApplicationController
     if ! @helps || @helps.size == 0
       if admin?
         # then give the admin a change to create the help
-        @help = Help.new( name: params[:name], description: "Help for page " + params[:name] )
+        @help = Help.new( name: params[:name], title: params[:name], description: "Help for page " + params[:name], help_type: "page" )
         render 'new' and return
       end
       render 'index' and return
@@ -79,6 +79,6 @@ class HelpsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def help_params
       logger.debug("HelpsController.help_params: params: #{params.inspect}")
-      params.require(:help).permit(:name, :description)
+      params.require(:help).permit(:name, :title, :description, :help_type)
     end
 end

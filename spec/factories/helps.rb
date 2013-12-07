@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :help do
-    name "MyString"
-    description "MyString"
+    name "HelpName"
+    title "Help Title"
+    description "Help Text"
+    help_type "page"
   end
 end

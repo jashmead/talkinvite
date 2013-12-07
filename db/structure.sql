@@ -169,7 +169,9 @@ CREATE TABLE helps (
     name character varying(255),
     description character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    title character varying(255),
+    help_type character varying(255) DEFAULT 'page'::character varying
 );
 
 
@@ -1078,3 +1080,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131203165935');
 INSERT INTO schema_migrations (version) VALUES ('20131203202516');
 
 INSERT INTO schema_migrations (version) VALUES ('20131206190903');
+
+INSERT INTO schema_migrations (version) VALUES ('20131206213411');
