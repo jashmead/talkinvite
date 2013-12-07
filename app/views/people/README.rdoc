@@ -21,9 +21,19 @@
 
 -- New Talk, Search Talks, & Messages are in bottom
 
-==== Signup, Profile, Reset_Password, Oauth
+==== Signup, Settings, Reset_Password, Oauth
 
 -- all done via 'devise', which see
+
+1. Sign_up -> registrations/new
+1. Settings -> registrations/edit
+1. Sign_in -> sessions/new
+1. Sign_out -> sessions/destroy (controller option)
+1. Reset_password -> passwords/new, passwords/edit, mails/reset
+
+==== Profile
+
+done via show; pretty ugly right now
 
 ==== Messages
 
@@ -49,3 +59,5 @@
 ==== TBD: upgrades
 
 -- probably a rev 2
+
+-- possibly done via devise?
