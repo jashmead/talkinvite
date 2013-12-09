@@ -20,7 +20,7 @@ describe "sitemap" do
     "About", 
     "Contact", 
     "Credits", 
-    "List of Help",
+    "Help",
     "Search Talks"
   ] }
 

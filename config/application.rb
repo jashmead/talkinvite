@@ -17,7 +17,7 @@ module Talkinvite
     # config.time_zone = 'Central Time (US & Canada)'
 
     # uncomment to check 'lib' for autoload files
-    # config.autoload_paths += %W(#{Rails.root}/lib)
+    config.autoload_paths += %W(#{Rails.root}/lib)
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

@@ -1,11 +1,11 @@
 <% # entry point for testing root/partials system %>
 <% # may want to add in a search field and/or a pagination system %>
-<% provide(:title, 'List of Help') %>
+<% provide(:title, 'List of Help Topics') %>
 <% if @helps %>
 	<ul data-role="listview">
 	    <% @helps.each do |help| %>
         <li>
-        <%= link_to help.name, admin? ? edit_help_path(help) : help_path(help) %>
+        <%= link_to help.title, admin? ? edit_help_path(help) : help_path(help) %>
         </li>
 	    <% end %>
 	</ul>
@@ -17,4 +17,3 @@
   <hr>
   <%= button_inline 'New Help', new_help_path %>
 <% end %>
-

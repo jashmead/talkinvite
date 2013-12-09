@@ -319,7 +319,6 @@ class ApplicationController < ActionController::Base
     #   -- teapot_q is internal:  is the 'under-construction' error
     #   -- 518 is the HTTP teapot error, as in "I'm steamed because I'm a teapot"
     def teapot_q
-
       # TBD: 'layout: false': if we don't turn off the layout, the page looks really weird, why?
       render 'static_pages/518', layout: false
     end

@@ -60,7 +60,7 @@ module ApplicationHelper
   # a = black & white, b = blue, c = red, d = green, e = cyan, f = orange
   def swatch ( controller_name = nil ) 
     # TBD:  go back to colors or get a better theme
-    return 'a'  # debugging aid, 'a' is easiest to read, black on white
+    # return 'a'  # debugging aid, 'a' is easiest to read, black on white
     if ! controller_name 
       controller_name = controller.controller_name
     end

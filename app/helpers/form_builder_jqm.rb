@@ -102,6 +102,10 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
+  def select_field(attribute, options = {} )
+    (pre_field(attribute) + super + post_field).html_safe
+  end
+
   def submit(value = '', options = {})
     options['data-role'] = 'button'
     options['data-inline'] = 'true'
