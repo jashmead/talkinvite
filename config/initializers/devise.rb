@@ -35,6 +35,7 @@ Devise.setup do |config|
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,
+
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
@@ -63,7 +64,10 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If http headers should be returned for AJAX requests. True by default.
-  # config.http_authenticatable_on_xhr = true
+  # see http://stackoverflow.com/questions/13596927/devise-with-jquery-mobile-how-handle-error-messages
+  #   -- was supposed to fix jquery.mobile problem on sign_in, but didn't
+  #   -- leaving in anyway, for now
+  config.http_authenticatable_on_xhr = true
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
@@ -206,6 +210,7 @@ Devise.setup do |config|
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
+  # NOTE:  changed from user to person, for no particular reason, save consistency
   config.default_scope = :person
 
   # Set this configuration to false if you want /users/sign_out to sign out
@@ -240,10 +245,15 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+  # NOTE:  we are trying to avoid the sign_in failures
+  #   -- is this reconfiguration of warden a good idea or a poor one?
+  #   -- see http://www.codebeerstartups.com/2013/01/custom-redirect-after-login-fail-in-devise/
+=begin
   config.warden do |manager|
-    manager.intercept_401 = true
+    manager.intercept_401 = true  # meaning of this?
     manager.failure_app = CustomFailure
   end
+=end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine

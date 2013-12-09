@@ -3,7 +3,9 @@
 
 <% # TBD:  error on invalid email/password page is not showing: we are getting an error loading page instead %>
 
-<%= form_for_jqm(resource, :as => resource_name, :url => '/people/sign_in') do |f| %>
+<%  # NOTE:  html is to keep jqm from hijacking the session as ajax
+    # -- see http://stackoverflow.com/questions/12329406/jquery-mobile-rails-devise-error-loading-page-when-logging-in-with-incorrect-c/14595607#14595607 %>
+<%= form_for_jqm(resource, :as => resource_name, :url => '/people/sign_in', :html => { :data => { :ajax => 'false' } } ) do |f| %>
   <%= f.email_field :email, placeholder: 'your email', :auto_complete => 'off', :autofocus => true, value: nil %>
 
   <% # NOTE:  if the password field's value is left blank, then the browser or at least FireFox will fill in with the previous password %>

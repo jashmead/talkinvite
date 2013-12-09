@@ -1,4 +1,4 @@
-class CustomFailure < Devise::FailureApp
+class UnauthorizedController < Devise::FailureApp
   # see: http://www.codebeerstartups.com/2013/01/custom-redirect-after-login-fail-in-devise/
   def redirect_url
     new_person_session_url

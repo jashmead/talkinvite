@@ -29,5 +29,24 @@ module Talkinvite
     I18n.enforce_available_locales = true
 
     # can add paths with config.assets.paths << Rails.root.join("lib", "videoplayer", "flash")
+
+=begin
+    # see http://pothibo.com/2013/07/authentication-with-warden-devise-less/
+    Warden::Manager.serialize_into_session do |user|
+      user.id
+    end
+
+    Warden::Manager.serialize_from_session do |id|
+      Person.find_by_id(id)
+    end
+
+    config.middleware.insert_after ActionDispatch::Flash, Warden::Manager do |manager|
+      manager.failure_app = UnauthorizedController
+    end
+
+    config.middleware.insert_after ActionDispatch::Flash, Warden::Manager do |manager|
+    end
+=end
+
   end
 end
