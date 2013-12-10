@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# TBD: check out add/edit/destroy of credits; include check of url
 describe "Credits" do
   describe "GET /credits" do
     it "works! (now write some real specs)" do

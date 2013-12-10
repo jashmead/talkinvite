@@ -6,7 +6,7 @@
 
   <%= f.text_area :description, placeholder: :description, required: true %>
 
-  <% logger.debug("credits/_form: f.object: #{f.object.inspect}") %>
+  <%= f.url_field :url, placeholder: 'www.heroic-software.com' %>
 
   <%= render partial: 'shared/submit_button', :object => f %>
 

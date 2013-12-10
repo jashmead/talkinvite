@@ -1,8 +1,13 @@
 <% provide(:title, 'Credit') %>
-
+<% logger.debug("app/views/credits/show: @credit: #{@credit.inspect}") %>
 <h2>
   <%= @credit.name %>
 </h2>
 <p>
   <%= @credit.description %>
+</p>
+<p>
+  <% if @credit.url %>
+  <a href="<%= @credit.url %>">For more information</a>
+  <% end %>
 </p>

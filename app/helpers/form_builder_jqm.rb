@@ -137,7 +137,6 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
-
   private
     def pre_field(attribute)
       '<div class="fieldcontain field ui-hide-label" data-mini="true" >' + label(attribute, attribute.to_s.titleize)
