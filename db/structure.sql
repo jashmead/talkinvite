@@ -135,7 +135,7 @@ ALTER SEQUENCE credits_id_seq OWNED BY credits.id;
 CREATE TABLE helps (
     id integer NOT NULL,
     name character varying(255),
-    description character varying(255),
+    description text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     title character varying(255),
@@ -1030,3 +1030,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131206190903');
 INSERT INTO schema_migrations (version) VALUES ('20131206213411');
 
 INSERT INTO schema_migrations (version) VALUES ('20131208195217');
+
+INSERT INTO schema_migrations (version) VALUES ('20131209235705');
