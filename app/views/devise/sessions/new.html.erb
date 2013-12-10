@@ -5,7 +5,7 @@
     # -- see http://stackoverflow.com/questions/12329406/jquery-mobile-rails-devise-error-loading-page-when-logging-in-with-incorrect-c/14595607#14595607 %>
     # NOTE:  feed blank values to email & password to avoid erroreous autocomplete (inspite of autocomplete = off)
     # TBD:  add in search by name as well as email from same search box:  see 'devise' wiki
-    #   -- see https://github.com/plataformatec/devise/wiki/_pages
+    #   -- https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
 <%= form_for_jqm(resource, :as => resource_name, :url => '/people/sign_in', :html => { :data => { :ajax => 'false' } } ) do |f| %>
   <%= f.email_field :email, placeholder: 'your email', :auto_complete => 'off', :autofocus => true, value: '' %>
 
