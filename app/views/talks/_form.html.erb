@@ -4,28 +4,20 @@
 %>
 <%= form_for_jqm @talk do |f| %>
   <%= render partial: 'shared/error_messages', object: f.object %>
+  <%= render partial: 'shared/talk_status' %>
   <%= f.hidden_field :person_id %>
 
   <% if person_signed_in? %>
+    <%= render partial: 'talk_person', object: f %>
     <%= render partial: 'talk_what', object: f %>
     <%= render partial: 'talk_when', object: f %>
     <%= render partial: 'talk_where', object: f %>
-    <%= render partial: 'talk_status', object: f %>
-    <%= render partial: 'talk_person', object: f %>
+    <%= render partial: 'talk_who', object: f %>
     <%= render partial: 'talk_submit', object: f %>
   <% else %>
-    <% # TBD:  list is ugly looking; find alternative %>
-    <ul data-role="listview" data-inset="true" data-theme="<%=swatch('')-%>" >
-    <li><%=@talk.summary-%></li>
-    <li><%=@talk.description-%></li>
-    <li><%=@talk.talk_date-%></li>
-    <li><%=@talk.talk_time-%></li>
-    <li><%=@talk.talk_duration-%></li>
-    <li><%=@talk.address-%></li>
-    <li><%=@talk.talk_status-%></li>
-    <% if ! person_signed_in? or current_person.id != @talk.person_id %>
-      <li><%=@talk.person.name-%></li>
-    <% end %>
-    </ul>
+    <p><%=@talk.summary-%></p>
+    <p><%=@talk.description-%></p>
+    <p><%=@talk.talk_date-%><%=@talk.talk_time-%><%=@talk.talk_duration-%></p>
+    <p><%=@talk.address-%></p>
   <% end %>
 <% end %>

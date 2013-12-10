@@ -1,17 +1,20 @@
 <% 
-  # hand-built talk submit button
-  # TBD:  replace create with 'post', 'save as draft'
-  # TBD:  replace update with 'post', 'undo changes', 'cancel talk'
-  # note: default name of button is commit, value of button will be returned with this
-  #   -- to pass thru, we can either switch on the value, or set the name of the button to something appropriate, i.e. 'post'
-  #   -- in the latter case, we will need to include that name in the whitelist used by strong parameters
+  # NOTE: default name of button is commit, value of button will be returned with key 'commit'
   talk = talk_submit.object
-  if talk.new_record?
 %>
-  <%= talk_submit.submit 'Start Talk' %>
-<% else %>
-  <div data-role="controlgroup">
-  <%= talk_submit.submit 'Update Talk' %>
-  <%= render partial: 'talk_delete', object: talk_submit %> 
-  </div>
-<% end %>
+<div data-role="controlgroup">
+  <% if talk.new_record? || talk.talk_status == 'draft' %>
+    <%= talk_submit.submit 'Save as Draft', title: "Save but don't announce" %>
+    <%= talk_submit.submit 'Post', title: "Save and announce the talk to the world" %>
+  <% else %>
+    <% if talk.talk_status == 'active' %>
+        <%= talk_submit.submit 'Save', title: "Save without announcement"  %>
+        <%= talk_submit.submit 'Post', title: "Tell everyone about the changes" %>
+        <%= talk_submit.submit 'Cancel', title: "Cancel talk.  With announcement" %>
+        <%= talk_submit.submit 'Done', title: "Mark talk done.  No announcement" %>
+    <% else %>
+        <%= talk_submit.submit 'Reopen', title: "Reopen the talk for future talking" %>
+    <% end %>
+    <%= render partial: 'talk_delete', object: talk_submit %> 
+  <% end %>
+</div>

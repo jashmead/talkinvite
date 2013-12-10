@@ -104,22 +104,24 @@ class TalksController < ApplicationController
   # TBD:  verify update is working correctly
   def update
     logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
-=begin
-    case talk_params['commit']
-      when /post/i
-        if ! @talk.posted
-          @talk.posted = DateTime.now
-          @talk.talk_status = 'posted'
+    logger.debug("TalksController: commit: #{params['commit'].inspect}")
+    case params['commit']
+      when /Save|Post/i
+        logger.debug("TalksController:  action: #{talk_params['commit'].inspect}")
+        if @talk.talk_status == 'draft'
+          @talk.talk_status = 'active'
         end
-      when /cancel/i
+      when /Cancel/i
         @talk.talk_status = 'cancelled'
-      when /done/i
+      when /Done/i
         @talk.talk_status = 'done'
+      when /Reopen/i
+        @talk.talk_status = 'active'
     end
-=end
     # TBD:  save membership status & talk at the same time, rather than in two separate calls
     update_q(@talk, talk_params)
     @member && update_q(@member, talk_params)
+    @talk.reload
   end
 
   # DELETE /talks/1
@@ -217,8 +219,9 @@ class TalksController < ApplicationController
       #   -- "#require" makes sure that the parameters include a 'talk' hash
       #   -- "#permit" allows only the white-listed fields thru
       #   -- returns the params object itself
-      params.require(:talk).permit(:id, :summary, :description, :person_id, 
-        :longitude, :latitude, :privacy, :talk_status, :address, :talk_date, :talk_time, :talk_duration )
+      params.require(:talk).permit(:id, :person_id, :summary, :description,
+        :address, :longitude, :latitude, :talk_date, :talk_time, :talk_duration, :talk_who,
+        :commit )
     end
 
     def talk_admin?(talk = nil)

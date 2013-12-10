@@ -281,6 +281,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       # TBD: rescue needed here?
       if model.update(params)
+        logger.debug("ApplicationController.update_q: model: #{model.inspect}")
         format.html { 
           # TBD:  is root_path right as the default?, if not, pass along a url, a la destroy_q
           redirect_back_or root_url

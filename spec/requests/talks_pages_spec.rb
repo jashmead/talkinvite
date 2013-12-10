@@ -54,9 +54,9 @@ describe "Talk pages" do
   describe "talk index" do
     before do
       sign_in FactoryGirl.create(:person)
-      FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'posted', :person_id => person.id)
-      FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'posted', :person_id => person.id)
-      FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'start', :person_id => person.id)
+      FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'active', :person_id => person.id)
+      FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'active', :person_id => person.id)
+      FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'draft', :person_id => person.id)
       visit talks_path
     end
 
@@ -79,9 +79,9 @@ describe "Talk pages" do
 
       before do
         sign_in FactoryGirl.create(:person)
-        FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'posted', :person_id => person.id)
-        FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'posted', :person_id => person.id)
-        FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'start', :person_id => person.id)
+        FactoryGirl.create(:talk, :summary => 'Big Talk', :talk_status => 'active', :person_id => person.id)
+        FactoryGirl.create(:talk, :summary => 'No Talk', :talk_status => 'active', :person_id => person.id)
+        FactoryGirl.create(:talk, :summary => 'Third Talk', :talk_status => 'draft', :person_id => person.id)
         visit search_talks_path
       end
 

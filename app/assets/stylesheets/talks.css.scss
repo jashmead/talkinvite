@@ -50,3 +50,11 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+// handles color for talk_status marker in talks/_form
+.talk_status {
+  color: forestgreen;
+  font-style: italic;
+  font-size: small;
+  text-align: right;
+}

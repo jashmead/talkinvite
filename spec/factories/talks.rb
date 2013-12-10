@@ -8,6 +8,9 @@ FactoryGirl.define do
     sequence(:description) { |n| "description_#{n}"}
 
     talk_date Date.today()
+    address 'here'
+
+    talk_status 'active'
 
   end
 end

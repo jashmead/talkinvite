@@ -4,14 +4,13 @@
 # 1. person_id -- hope to allow anonymous at some point, but not clear how to do this
 # 1. summary -- string, mandatory, counts as 'what'
 # 1. description -- text, optional, counts as 'why'
-# 1. talk_status -- posted talks are those that have been posted & not cancelled or finished
 # 1. talk_date
 # 1. talk_time
 # 1. talk_duration
 # 1. address -- key word or address; rename as address
 # 1. longitude -- x coordinate, not visible to users
 # 1. latitude -- y coordinate, not visible to users
-# 1. privacy  -- as any, members_only, ...
+# 1. talk_status -- draft, active, cancelled, done
 
 # -- get posted datetime from posts
 
@@ -21,6 +20,7 @@
 # 1. Comments
 # 1. Posts
 # 1. Maps
+# 1. Calendars
 
 # Planned fields
 # 1. repeating talk
@@ -84,7 +84,7 @@ going from parent to child (talk to posts, members, & comments) we have:
 
 class Talk < ActiveRecord::Base
 
-  TALK_STATUS = [ 'draft', 'open', 'cancelled', 'done' ]
+  TALK_STATUS = [ 'draft', 'active', 'cancelled', 'done' ]
 
   include ActiveModel::Validations
   validates_with TalkValidator
@@ -110,8 +110,8 @@ class Talk < ActiveRecord::Base
   validates :person_id, presence: true
   validates_inclusion_of :talk_status, in: TALK_STATUS
 
-  def self.posted
-    self.where('talk_status = ?', 'posted')
+  def self.active
+    self.where('talk_status = ?', 'active')
   end
 
   # TBD:  upgrade talks_by_person to include memberships

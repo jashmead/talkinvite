@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210004515) do
+ActiveRecord::Schema.define(version: 20131210195137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,13 +148,12 @@ ActiveRecord::Schema.define(version: 20131210004515) do
     t.integer  "person_id",                       null: false
     t.decimal  "longitude"
     t.decimal  "latitude"
-    t.string   "privacy"
     t.string   "talk_status",   default: "draft", null: false
     t.string   "address"
-    t.datetime "posted"
     t.date     "talk_date"
     t.time     "talk_time"
     t.integer  "talk_duration"
+    t.text     "talk_who"
   end
 
   add_index "talks", ["person_id", "created_at"], name: "index_talks_on_person_id_and_created_at", using: :btree
