@@ -1,4 +1,6 @@
-<%= form_for_jqm(@help) do |f| %>
+<%= form_for_jqm(@help, :html => { :data => { :ajax => 'false' } } ) do |f| %>
+
+  <% logger.debug("views/helps/_form: @help: #{@help}") %>
 
   <%= render partial: 'shared/error_messages', object: f.object %>
 
@@ -8,9 +10,8 @@
 
   <%= f.text_area :description, placeholder: :description, required: true %>
 
-  <%= f.select :help_type, Help::HELP_TYPES %>
+  <%= f.select :help_type, Help::HELP_TYPES, {}, { 'data-mini' => true, 'data-inline' => true } %>
 
   <%= render partial: 'shared/submit_button', :object => f %>
 
 <% end %>
-

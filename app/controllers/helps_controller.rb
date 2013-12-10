@@ -28,8 +28,10 @@ class HelpsController < ApplicationController
     feet_for_help_pages
   end
 
-  # TBD:  reduce complexity of this method; 11/22/13 complexity = 27
+  # NOTE:  don't use 'help_params' or similar on 'get', as no ':help' param will be defined!
   def help
+    logger.debug("HelpsController.help: params: #{params.inspect}")
+    logger.debug("HelpsController.help: admin? #{admin?.inspect}")
     @helps = Help.where('name = ?', params[:name])
     if ! @helps || @helps.size == 0
       if admin?

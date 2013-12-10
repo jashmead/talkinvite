@@ -14,23 +14,19 @@
 
 module ApplicationHelper
 
-  ## see http://stackoverflow.com/questions/3326579/rails3-get-current-layout-name-inside-view
-  def current_layout
-    # call interior function controller._layout
-    layout = controller.send(:_layout)
-    if layout.instance_of? String
-      layout
-    else
-      File.basename(layout.identifier).split('.').first 
-    end
-  end
-
 =begin
   # TBD:  does 'button_back' actually work? needed? (given we are using stuff in the header)
   def button_back (tag) 
     link_to tag, :back, 'data-inline' => true, 'data-role' => 'button', 'data-mini' => true
   end
 =end
+
+  # can probably get path from model (perhaps even tag), but no create need
+  def button_create (tag, path, options = {})
+    defaults = { :method => :get, 'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'plus', 'data-mini' => true } 
+    options.merge! defaults
+    link_to tag, path, options
+  end
 
   # TBD:  add a warning color to the delete button, here or better via css
   # TBD: DRY the buttons out a bit, lots of common options
@@ -41,19 +37,23 @@ module ApplicationHelper
       'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'delete', 'data-mini' => true
   end
 
-  # can probably get path from model (perhaps even tag), but no create need
-  def button_create (tag, path, options = {})
-    defaults = { :method => :get, 'data-inline' => true, 'data-role' => 'button' , 'data-icon' => 'plus', 'data-mini' => true } 
-    options.merge! defaults
-    link_to tag, path, options
-  end
-
   # TBD:  various front ends to button_inline possible, as for 'new', 'update', and so on...
   def button_inline (tag, link_path, options = {}) 
     options['data-role'] ||= 'button'
     options['data-inline'] ||= true
     options['data-mini'] ||= true
     link_to tag, link_path, options
+  end
+
+  ## see http://stackoverflow.com/questions/3326579/rails3-get-current-layout-name-inside-view
+  def current_layout
+    # call interior function controller._layout
+    layout = controller.send(:_layout)
+    if layout.instance_of? String
+      layout
+    else
+      File.basename(layout.identifier).split('.').first 
+    end
   end
 
   # returns correct data-theme (based on controller) as a single letter where the letter can be from a to f, depending on the context
@@ -114,6 +114,7 @@ module ApplicationHelper
   #   -- from http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#method-i-pluralize
   #   -- function needed inside controllers, so copied here
   #   -- can we use the setting that gives access to view stuff to apps?
+  #   -- how to tell if a method already exists?
 =begin
   def pluralize(count, singular, plural = nil)
     word = if (count == 1 || count =~ /^1(\.0+)?$/)

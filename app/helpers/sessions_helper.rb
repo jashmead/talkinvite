@@ -109,6 +109,8 @@ module SessionsHelper
 
   # TBD:  why does person_signed_in not work in test environment?
   def admin?
+    logger.debug("SessionsHelper.admin? person_signed_in?: #{person_signed_in?.inspect}")
+    logger.debug("SessionsHelper.admin? current_person #{current_person.inspect}")
     begin
       person_signed_in? && current_person && current_person.admin?
     rescue
