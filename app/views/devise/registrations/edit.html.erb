@@ -8,9 +8,12 @@
 <%= form_for_jqm(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <%= render partial: 'shared/administrator' %>
+
   <%= f.text_field :name, placeholder: 'your name', title: 'You can change your name, if you wish' %>
 
-  <%= f.email_field :email, placeholder: 'your email' %>
+  <%= f.email_field :email, placeholder: 'your email', 
+    title: 'Your email:  something like insanely_great_conversationalist@talkinvite.com'  %>
 
   <%= f.text_area :description, placeholder: 'description', :autofocus => true, title: 'Something about you' %>
 
@@ -23,6 +26,7 @@
 
   <%= f.password_field :password_confirmation %>
 
+  <% # TBD:  allow change of settings without supplying a password, which is annoying %>
   <i>(in any case, we need your current password to make sure u r u.)</i>
   <%= f.password_field :current_password, required: true %>
 

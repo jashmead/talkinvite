@@ -19,3 +19,10 @@
   }
 }
 
+// handles color for administrator marker in devise/registrations/edit
+.administrator {
+  color: firebrick;
+  font-style: italic;
+  font-size: small;
+  text-align: right;
+}

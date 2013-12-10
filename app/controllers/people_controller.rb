@@ -185,12 +185,14 @@ class PeopleController < ApplicationController
     def person_params
       # params whitelist does *not* include admin, sub, remember_token
       # TBD:  share this whitelist with the list used by configuration_permitted_parameters
+      # TBD:  should current_password be on this list? -- for now, leaving off, since it seems to work without
+      # NOTE:  do not include 'admin' in this list!
       params.require(:person).permit(
         :name, 
         :email, 
+        :description,
         :password, 
-        :password_confirmation,
-        :description
+        :password_confirmation
       )
     end
 
