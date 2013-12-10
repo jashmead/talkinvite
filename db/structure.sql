@@ -408,13 +408,12 @@ CREATE TABLE talks (
     person_id integer NOT NULL,
     longitude numeric,
     latitude numeric,
-    privacy character varying(255),
     talk_status character varying(255) DEFAULT 'draft'::character varying NOT NULL,
     address character varying(255),
-    posted timestamp without time zone,
     talk_date date,
     talk_time time without time zone,
-    talk_duration integer
+    talk_duration integer,
+    talk_who text
 );
 
 
@@ -1035,3 +1034,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131208195217');
 INSERT INTO schema_migrations (version) VALUES ('20131209235705');
 
 INSERT INTO schema_migrations (version) VALUES ('20131210004515');
+
+INSERT INTO schema_migrations (version) VALUES ('20131210192109');
+
+INSERT INTO schema_migrations (version) VALUES ('20131210195137');

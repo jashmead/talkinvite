@@ -25,11 +25,11 @@ describe "Talk pages" do
 
     describe "with invalid information" do
       it "should not create a talk" do
-        expect { click_button "Start Talk" }.not_to change(Talk, :count)
+        expect { click_button "Save as Draft" }.not_to change(Talk, :count)
       end
 
       describe "should show error messages" do
-        before { click_button "Start Talk" }
+        before { click_button "Save as Draft" }
         it { 
           # save_and_open_page
           should have_content('error')
@@ -42,7 +42,7 @@ describe "Talk pages" do
         fill_in 'Summary', with: 'Loren ipsum'
       end
       it "should create a talk" do
-        expect { click_button "Start Talk" }.to change(Talk, :count).by(1)
+        expect { click_button "Save as Draft" }.to change(Talk, :count).by(1)
       end
     end
 
@@ -114,7 +114,7 @@ describe "Talk pages" do
       before do 
         visit edit_talk_path(talk)
         fill_in "Summary", with: new_summary
-        click_button "Update Talk"
+        click_button "Post"
       end
 
       it "summary should have been changed" do

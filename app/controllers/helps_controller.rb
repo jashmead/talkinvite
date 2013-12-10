@@ -30,10 +30,10 @@ class HelpsController < ApplicationController
 
   # NOTE:  don't use 'help_params' or similar on 'get', as no ':help' param will be defined!
   def help
-    logger.debug("HelpsController.help: params: #{params.inspect}")
-    logger.debug("HelpsController.help: admin? #{admin?.inspect}")
-    @helps = Help.where('name = ?', params[:name])
-    if ! @helps || @helps.size == 0
+    # logger.debug("HelpsController.help: params: #{params.inspect}")
+    # logger.debug("HelpsController.help: admin? #{admin?.inspect}")
+    @help = Help.where('name = ?', params[:name]).first
+    if ! @help 
       if admin?
         # then give the admin a change to create the help
         @help = Help.new( name: params[:name], title: params[:name], description: "Help for page " + params[:name], help_type: "page" )
@@ -41,7 +41,6 @@ class HelpsController < ApplicationController
       end
       render 'index' and return
     end
-    @help = @helps[0]
     if admin?
       render 'edit' and return
     end
