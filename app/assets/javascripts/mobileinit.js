@@ -63,21 +63,12 @@
 
     $.mobile.ignoreContentEnabled = true; // so we can ignore some elements
     $(document).on("pageinit", "#talks-control", function(event0, data0){
-      console.info("hi hi hi");
-      console.dir(event0);
       try {
-        // console.log( "zz = " + $( "input[type='date']", '#talks-control' ).html());
-        // console.log( "zz = " + $( "input[type='date'], '#talks-control' ).html());
-        console.log( "zz = " + $( '#zz', '#talks-control' ).html());
-        console.log( "talk_talk_date = " + $( '#talk_talk_date', '#talks-control' ).html());
-        console.log($('#talk_talk_date', '#talks-control').width());
-        $('#talk_talk_date', '#talks-control').after('<div>appended stuff</div>');
-        $('#talk_talk_date', '#talks-control').datepicker();
+        $('input[type=date]').datepicker();
       } catch(except1){ 
-        console.log("error thrown on datepicker");
+        console.error("error thrown on datepicker");
         console.dir(except1);
       }
-      console.info("trap on talks_control_init set (or not)")
     })
     // to keep the date inputs out of the hands of competing datepickers
     // see http://jquerymobile.com/demos/1.0a4.1/experiments/ui-datepicker/

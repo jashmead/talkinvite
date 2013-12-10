@@ -1,15 +1,16 @@
 <% provide(:title, "Sign In") %>
 <% provide(:data_role, "dialog") %>
 
-<% # TBD:  error on invalid email/password page is not showing: we are getting an error loading page instead %>
-
 <%  # NOTE:  html is to keep jqm from hijacking the session as ajax
     # -- see http://stackoverflow.com/questions/12329406/jquery-mobile-rails-devise-error-loading-page-when-logging-in-with-incorrect-c/14595607#14595607 %>
+    # NOTE:  feed blank values to email & password to avoid erroreous autocomplete (inspite of autocomplete = off)
+    # TBD:  add in search by name as well as email from same search box:  see 'devise' wiki
+    #   -- see https://github.com/plataformatec/devise/wiki/_pages
 <%= form_for_jqm(resource, :as => resource_name, :url => '/people/sign_in', :html => { :data => { :ajax => 'false' } } ) do |f| %>
-  <%= f.email_field :email, placeholder: 'your email', :auto_complete => 'off', :autofocus => true, value: nil %>
+  <%= f.email_field :email, placeholder: 'your email', :auto_complete => 'off', :autofocus => true, value: '' %>
 
   <% # NOTE:  if the password field's value is left blank, then the browser or at least FireFox will fill in with the previous password %>
-  <%= f.password_field :password, placeholder: 'your password', :auto_complete => 'off', value: nil %>
+  <%= f.password_field :password, placeholder: 'your password', :auto_complete => 'off', value: '' %>
 
   <% # NOTE:  unable to get the remember_me field to shrink in size, in spite of setting data-inline & data-mini %>
   <% if devise_mapping.rememberable? -%>

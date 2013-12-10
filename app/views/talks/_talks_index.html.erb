@@ -12,6 +12,7 @@
         <li>
         <%= 
           # TBD:  does putting the talk_date here help?
+          #   -- date should go to calendar view, simple click on talk should go to talk itself
           link_to talk.summary + ' / ' + talk.talk_date.to_s, control_talk_path(talk.id) 
         %>
         </li>
