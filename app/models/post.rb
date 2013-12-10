@@ -5,7 +5,8 @@
 #
 class Post < ActiveRecord::Base
 
-  POST_TYPES = [ 'start', 'post', 'cancel', 'change', 'done', 'announce' ]
+  # start is the default, announce is when you tell everyone, rest self-explanatory
+  POST_TYPES = [ 'start', 'announce', 'cancel', 'change', 'done', 'reopen' ]
 
   belongs_to :person, inverse_of: :posts
   belongs_to :talk, inverse_of: :posts

@@ -21,8 +21,8 @@ Note we can't use 'file' as a table name, conflicts with Ruby
 1. Tags, HashTags, Interests
 1. Friends, Groups, Relationships
 1. Attachments
-1. Ads
 1. Sessions
+1. Ads
 
 ==== Tags, HashTags, Interests
 
