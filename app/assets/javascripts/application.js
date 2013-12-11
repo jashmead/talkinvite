@@ -24,9 +24,9 @@
 //  -- pulled the latest datepicker down from http://blog.jqueryui.com/2013/05/jquery-ui-1-10-3/
 //  -- it worked!
 //  -- don't bother with minified version, let asset pipeline take care of that
-//= require jQuery.ui.datepicker
-//  this is patched version of datepicker.mobile, with live => on
-//= require jquery.ui.datepicker.mobile
+//  -- require jQuery.ui.datepicker
+//    -- this is patched version of datepicker.mobile, with live => on
+//  -- require jquery.ui.datepicker.mobile
 
 // mobileinit.js should be called after jquery but before jquery.mobile
 //= require mobileinit.js

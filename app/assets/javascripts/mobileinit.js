@@ -61,6 +61,7 @@
 		// talkinvite setup here, if necessary
 		// e.g.: $(document).on("pageload", pageload);  // where pageload is a function defined in talkinvite.js somewhere
 
+    /*
     $.mobile.ignoreContentEnabled = true; // so we can ignore some elements
     $(document).on("pageinit", "#talks-control", function(event0, data0){
       try {
@@ -70,6 +71,7 @@
         console.dir(except1);
       }
     })
+    */
     // to keep the date inputs out of the hands of competing datepickers
     // see http://jquerymobile.com/demos/1.0a4.1/experiments/ui-datepicker/
     $.mobile.page.prototype.options.degradeInputs.date = true;  
