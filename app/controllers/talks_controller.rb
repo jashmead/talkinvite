@@ -45,8 +45,10 @@ class TalksController < ApplicationController
   # TBD:  allow people who aren't signed in to start a talk, but don't allow save until they have an id
   #   -- and explain why in the help page
   #   -- when they start the new talk, put up a flash that says they'll need to log in/create new account before they can save/post
-  #   -- at some point, verify their email, thus avoiding annoying spam
+  #   -- at some point, verify their email, thus avoiding annoying spam, see confirmations in devise
   #   -- meanwhile, making sure you are signed in before starting a talk is OK
+  # TBD: printing out 3 copies of datepicker + 1 calendar, hunh?
+  #   -- and show previous data!
   def new
     @person = current_person
     @talk = @person.talks.build
@@ -83,6 +85,7 @@ class TalksController < ApplicationController
     # TBD:  we would like to return to the 'control' screen from create, not to the default
     @talk = Talk.new(talk_params)
     @talk.person_id = current_person.id # TBD: use one of the association functions for this?
+    status_set params['commit']
     respond_to do |format|
       # TBD:  does this work or do we have to explicitly set the talk_id in the member record?
       if @talk.save 
@@ -103,25 +106,12 @@ class TalksController < ApplicationController
   # PATCH/PUT /talks/1.json
   # TBD:  verify update is working correctly
   def update
-    logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
-    logger.debug("TalksController: commit: #{params['commit'].inspect}")
-    case params['commit']
-      when /Save|Post/i
-        logger.debug("TalksController:  action: #{talk_params['commit'].inspect}")
-        if @talk.talk_status == 'draft'
-          @talk.talk_status = 'active'
-        end
-      when /Cancel/i
-        @talk.talk_status = 'cancelled'
-      when /Done/i
-        @talk.talk_status = 'done'
-      when /Reopen/i
-        @talk.talk_status = 'active'
-    end
-    # TBD:  save membership status & talk at the same time, rather than in two separate calls
+    # logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
+    # logger.debug("TalksController: commit: #{params['commit'].inspect}")
+    status_set params['commit']
     update_q(@talk, talk_params)
     @member && update_q(@member, talk_params)
-    @talk.reload
+    @talk.reload  # TBD: necessary?
   end
 
   # DELETE /talks/1
@@ -241,6 +231,24 @@ class TalksController < ApplicationController
       else
         @member = nil
       end
+    end
+
+    def status_set button_label
+	    case button_label
+        when /Draft/i
+          @talk.talk_status = 'draft'
+	      when /Save|Post/i
+	        # logger.debug("TalksController:  action: #{talk_params['commit'].inspect}")
+	        if @talk.talk_status == 'draft'
+	          @talk.talk_status = 'active'
+	        end
+	      when /Cancel/i
+	        @talk.talk_status = 'cancelled'
+	      when /Done/i
+	        @talk.talk_status = 'done'
+	      when /Reopen/i
+	        @talk.talk_status = 'active'
+	    end
     end
 
 end

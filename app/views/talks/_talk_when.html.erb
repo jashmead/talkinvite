@@ -1,4 +1,4 @@
 <% # TBD: use datepicker, timepicker, & a range picker for the date, time, & duration bits %>
 <%= talk_when.date_field :talk_date, placeholder: 'mm/dd/yy' %>
 <%= talk_when.time_field :talk_time, placeholder: 'hh:mm:ss' %>
-<%= talk_when.range_field :talk_duration, placeholder: 'minutes', min: 0, max: 1440, step: 5 %>
+<%= talk_when.range_field :talk_duration, placeholder: 'minutes', min: 0, max: 60, step: 5 %>

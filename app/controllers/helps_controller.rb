@@ -29,22 +29,29 @@ class HelpsController < ApplicationController
   end
 
   # NOTE:  don't use 'help_params' or similar on 'get', as no ':help' param will be defined!
+  #   -- codeclimate finds this method too complex; see if this 2 by 2 setup feels simple enough to them!
   def help
     # logger.debug("HelpsController.help: params: #{params.inspect}")
     # logger.debug("HelpsController.help: admin? #{admin?.inspect}")
+
     @help = Help.where('name = ?', params[:name]).first
-    if ! @help 
+    if @help 
       if admin?
-        # then give the admin a change to create the help
+        render 'edit' and return
+      else
+        render 'show' and return
+      end
+    else
+      if admin?
+        # give the admin a change to create the help
         @help = Help.new( name: params[:name], title: params[:name], description: "Help for page " + params[:name], help_type: "page" )
         render 'new' and return
+      else
+        # perhaps should show a generic help screen instead
+        render 'index' and return
       end
-      render 'index' and return
     end
-    if admin?
-      render 'edit' and return
-    end
-    render 'show' and return
+
   end
 
   # GET /helps/1/edit

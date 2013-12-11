@@ -23,14 +23,14 @@
 
 # == Fields contemplated
 # 1. active_flag -- use to deactivate when the user has killed, in case there is other data we need to keep associated with this
-# 1. current_talk_id -- store that id in the database
-# 1. url -- bad for security reasons
+# 1. current_talk_id -- store that id in the database -- or in sessions?
+# 1. url -- bad for security reasons, since would be user supplied
 # 1. photo -- see attachments
 # 1. preferred start page (currently defaulting to sitemap), can store in session as last page
 
 class Person < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # Include default devise modules. Others available are: :confirmable, :lockable, :timeoutable and :omniauthable
+  #   -- we may want to include confirmable at some point
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

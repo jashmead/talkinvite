@@ -11,6 +11,7 @@
 # 1. longitude -- x coordinate, not visible to users
 # 1. latitude -- y coordinate, not visible to users
 # 1. talk_status -- draft, active, cancelled, done
+# 1. who_desc -- tag as to whom to include or an explicit list of those to invite
 
 # -- get posted datetime from posts
 
@@ -71,8 +72,8 @@ going from parent to child (talk to posts, members, & comments) we have:
   children.find(...)
   children.where(...)
   children.exists?(...)
-  children.build(attributes = {}, ...)
-  children.create(attributes = {})
+  children.build(attributes = {}, ...)  -- in memory
+  children.create(attributes = {})      -- save to database
 
   @talk.posts, @talk.posts<<(post, ...), @talk.posts.delete(post,...), @talk.posts.destroy(post,...),
     @talk.posts = posts, @talk.post_ids, @talk.post_ids = ids, @talk.posts.clear, @talk.posts.empty?,
