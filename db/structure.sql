@@ -208,7 +208,7 @@ CREATE TABLE partners (
     id integer NOT NULL,
     talk_id integer,
     person_id integer,
-    rsvp_status character varying(255) DEFAULT 'accepted'::character varying NOT NULL,
+    rsvp_status character varying(255) DEFAULT 'yes'::character varying NOT NULL,
     partner_type character varying(255) DEFAULT 'partner'::character varying NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -1046,3 +1046,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131212142041');
 INSERT INTO schema_migrations (version) VALUES ('20131212143720');
 
 INSERT INTO schema_migrations (version) VALUES ('20131212144326');
+
+INSERT INTO schema_migrations (version) VALUES ('20131212222821');
