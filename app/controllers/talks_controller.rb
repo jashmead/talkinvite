@@ -86,6 +86,9 @@ class TalksController < ApplicationController
     @talk = Talk.new(talk_params)
     @talk.person_id = current_person.id # TBD: use one of the association functions for this?
     status_set params['commit']
+    if @talk.talk_status == 'active'
+      announce
+    end
     respond_to do |format|
       # TBD:  does this work or do we have to explicitly set the talk_id in the member record?
       if @talk.save 
@@ -108,7 +111,10 @@ class TalksController < ApplicationController
   def update
     # logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
     # logger.debug("TalksController: commit: #{params['commit'].inspect}")
+
+    prev_status = @talk.talk_status
     status_set params['commit']
+    
     update_q(@talk, talk_params)
     @member && update_q(@member, talk_params)
     @talk.reload  # TBD: necessary?
@@ -233,7 +239,24 @@ class TalksController < ApplicationController
       end
     end
 
-    def status_set button_label
+    # TBD: should post go with talk or with post? with controller or model? using dialog, button, or implicit rules?
+    #   -- use default postings, then refactor to add functionality
+    def announce ( action = 'announce', options = {} ) 
+      logger.debug("TalksController.announce: action: #{action.inspect}, options: #{options.inspect}")
+      # create post
+      @post = @talk.posts.create( post_type: action ) 
+      # then call post, telling it to send messages
+      # the post object will execute its own send messages option
+      # each message will then build itself
+      # as each user comes in, they will see the messages for them
+      # once they can add comments, the core functions will be up!
+      # *then* fill in the rest of the picture:  maps*, tweets*, calendars, popups, ...
+      #   -- maps & tweets needed to have a product
+      #   -- calendars, popups (for posts & so on), all nice
+      #   -- together with a full set of tests
+    end
+
+    def status_set( button_label )
 	    case button_label
         when /Draft/i
           @talk.talk_status = 'draft'

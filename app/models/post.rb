@@ -7,6 +7,9 @@ class Post < ActiveRecord::Base
 
   # start is the default, announce is when you tell everyone, rest self-explanatory
   # these corresond to the buttons on the talk
+  # NOTE:  
+  #   -- can't logically announce a delete, since there is in this case no talk to post about (was just killed):)
+  #   -- by same logic, no draft announcement, as no talk yet
   POST_TYPES = [ 'announce', 'cancel', 'change', 'done', 'reopen' ]
 
   belongs_to :person, inverse_of: :posts

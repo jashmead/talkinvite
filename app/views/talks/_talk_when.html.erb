@@ -1,4 +1,5 @@
 <% # TBD: use datepicker, timepicker, & a range picker for the date, time, & duration bits %>
-<%= talk_when.date_field :talk_date, placeholder: 'mm/dd/yy' %>
+<%= talk_when.date_field :talk_date, placeholder: 'yyyy-mm-dd' %>
 <%= talk_when.time_field :talk_time, placeholder: 'hh:mm:ss' %>
+<% # TBD: use a select list for this:  0, 1, 5, 15, 1/2 hour, hour, two hours, three hours, half-day, whole day %>
 <%= talk_when.range_field :talk_duration, placeholder: 'minutes', min: 0, max: 60, step: 5 %>

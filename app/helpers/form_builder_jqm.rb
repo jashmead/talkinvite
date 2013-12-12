@@ -42,8 +42,14 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
     (pre_field(attribute) + super + post_field).html_safe
   end
 
+  # NOTE:  can also use alias to rename date_field, then call from here
+  # NOTE:  it looks as if the jqm field wrapping stuff doesn't work with date fields, hide label class fails for instance
+  #   -- shifting to datetime, may fixup the entire talks table to make this happen
+  #   -- switch to http://dev.jtsage.com/jQM-DateBox, has much better integration with jqm (than jquery's datepicker)
   def date_field(attribute, options = {} )
-    (pre_field(attribute) + super + post_field).html_safe
+    options['data-inline'] = true
+    options['data-mini'] = true
+    ('<div class="fieldcontain field" data-mini="true" >' + super(attribute, options) + post_field).html_safe
   end
 
   def datetime_field(attribute, options = {} )
@@ -63,11 +69,9 @@ class FormBuilderJqm < ActionView::Helpers::FormBuilder
   end
 
 # if we wrap the hidden field, the label will show, so let hidden fields pass thru to form_for
-=begin
   def hidden_field(attribute, options = {} )
-    (pre_field(attribute) + super + post_field).html_safe
+    super
   end
-=end
 
   def number_field(attribute, options = {} )
     (pre_field(attribute) + super + post_field).html_safe

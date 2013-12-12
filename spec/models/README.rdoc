@@ -3,3 +3,5 @@
 test the internal functions for the models here
 
 good intermediate point, while building up functionality on the forms, to make sure we got everything underneath working
+
+review the current fields & make sure we are testing for all of them
