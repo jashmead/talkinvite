@@ -15,7 +15,6 @@
 # 1. member pages:  join (& regrets)
 # 1. posts: announce (also change, cancel, mark done)
 # 1. services: setup services for use in posts
-# 1. comments: add comments to talk
 # 1. messages:  talk to other talkers
 # 1. static pages:  about, contact, privacy
 # 1. credits
@@ -42,7 +41,7 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  resources :posts, :members, :comments, :maps, :calendars
+  resources :posts, :members, :maps, :calendars
 
   # talks:
 

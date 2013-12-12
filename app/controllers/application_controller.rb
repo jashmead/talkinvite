@@ -22,7 +22,7 @@ going from child to parent (talk to person) we have:
 
   example:  @talk.person, @talk.person=, @talk.build_person, @talk.create_person
 
-going from parent to child (talk to posts, members, & comments) we have:
+going from parent to child (talk to posts, members) we have:
 
   children(force_reload = false)
   children<<(object, ...)

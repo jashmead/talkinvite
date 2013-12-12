@@ -37,7 +37,6 @@ describe Person do
   # it { should respond_to(:to_people) }
 
   it { should respond_to(:members) }
-  it { should respond_to(:comments) }
   it { should respond_to(:posts) }
 
   it { should respond_to(:sent_messages) } 

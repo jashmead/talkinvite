@@ -18,8 +18,7 @@
 # == Children
 
 # 1. Members
-# 1. Comments
-# 1. Posts
+# 1. Posts -- includes comments
 # 1. Maps
 # 1. Calendars
 
@@ -57,7 +56,7 @@ going from child to parent (talk to person) we have:
 
   example:  @talk.person, @talk.person=, @talk.build_person, @talk.create_person
 
-going from parent to child (talk to posts, members, & comments) we have:
+going from parent to child (talk to posts, members) we have:
 
   children(force_reload = false)
   children<<(object, ...)
@@ -95,7 +94,6 @@ class Talk < ActiveRecord::Base
   has_many :members, inverse_of: :talk, dependent: :destroy
   has_many :guests, inverse_of: :person, through: :members, source: :talks
 
-  has_many :comments, inverse_of: :talk, dependent: :destroy
   has_many :posts, inverse_of: :talk, dependent: :destroy
 
   has_many :maps, inverse_of: :talk, dependent: :destroy

@@ -25,6 +25,7 @@ class Post < ActiveRecord::Base
   # routing is combination of service types to use, default 'message'
   #   -- format with '+', i.e. 'message+email'
   # TBD:  add a validation block to make sure that all parts are legit service types
+  # if the routing includes 'comment', post is also a comment
   validates :routing, presence: true 
 
   validates_inclusion_of :post_type, :in => POST_TYPES

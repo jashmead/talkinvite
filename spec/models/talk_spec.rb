@@ -15,7 +15,6 @@ describe Talk do
 
   it { should respond_to(:posts) }
   it { should respond_to(:members) }
-  it { should respond_to(:comments) }
 
   its(:person) { should eq person }
 

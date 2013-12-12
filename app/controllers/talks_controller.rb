@@ -65,8 +65,7 @@ class TalksController < ApplicationController
   end
 
   # GET /talks/1/control
-  # TBD: saving from control is done via ajax
-  # TBD: on change of status, we should go back to the location from whence we came, update should be automatic on such a change
+  # TBD: saving from control to be done via ajax, on blur or exit of window
   def control
     logger.debug("TalksController.control: @talk: #{@talk.inspect}, current_person: #{current_person.inspect}")
     store_location

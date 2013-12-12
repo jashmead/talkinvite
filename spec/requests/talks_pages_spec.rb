@@ -175,10 +175,6 @@ describe "Talk pages" do
   describe "messages" do
   end
 
-  # TBD: get talk comments working
-  describe "talk comments" do
-  end
-
   # TBD: get talk map, tag cloud, calendar views working
   describe "talk views" do
 
