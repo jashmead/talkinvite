@@ -1,8 +1,8 @@
-=== Members
+=== Partners
 
 -- partials only
 
--- details are given in a link to the members profile page
+-- details are given in a link to the partners profile page
 
 ==== Index
 

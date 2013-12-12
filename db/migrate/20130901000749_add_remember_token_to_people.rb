@@ -1,4 +1,4 @@
-class AddRememberTokenToPeople < ActiveRecord::Migration
+class AddRepartnerTokenToPeople < ActiveRecord::Migration
   def change
     add_column :people, :remember_token, :string
     add_index :people, :remember_token

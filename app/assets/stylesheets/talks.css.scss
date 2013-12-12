@@ -51,10 +51,28 @@ aside {
   }
 }
 
+.talk_admin {
+  @extend .admin;
+  color: $grayDark;
+}
+
 // handles color for talk_status marker in talks/_form
 .talk_status {
+  @extend .status;
   color: forestgreen;
-  font-style: italic;
-  font-size: small;
-  text-align: right;
+}
+
+.talk_active {
+  @extend .talk_status;
+  color: forestgreen;
+}
+
+.talk_draft {
+  @extend .talk_status;
+  color: $gray;
+}
+
+.talk_cancelled, .talk_done {
+  @extend .talk_status;
+  color: $grayDark;
 }

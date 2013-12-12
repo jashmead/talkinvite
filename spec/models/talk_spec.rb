@@ -14,7 +14,7 @@ describe Talk do
   it { should respond_to(:person) }
 
   it { should respond_to(:posts) }
-  it { should respond_to(:members) }
+  it { should respond_to(:partners) }
 
   its(:person) { should eq person }
 

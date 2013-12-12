@@ -1,12 +1,12 @@
-class MemberTypeDefault < ActiveRecord::Migration
+class PartnerTypeDefault < ActiveRecord::Migration
   def self.up
-    change_table :members do |t|
-      t.change :member_type, :string, { :default => "member", :null => false }
+    change_table :partners do |t|
+      t.change :partner_type, :string, { :default => "partner", :null => false }
     end
   end
   def self.down
-    change_table :members do |t|
-      t.change :member_type, :string
+    change_table :partners do |t|
+      t.change :partner_type, :string
     end
   end
 end

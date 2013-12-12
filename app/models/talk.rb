@@ -17,14 +17,14 @@
 
 # == Children
 
-# 1. Members
+# 1. Partners
 # 1. Posts -- includes comments
 # 1. Maps
 # 1. Calendars
 
 # Planned fields
 # 1. repeating talk
-# 1. public/private -- all can see/only members can see
+# 1. public/private -- all can see/only partners can see
 # 1. notes
 
 # == Searches
@@ -38,7 +38,7 @@
 # 1. Like my other talks
 # 1. Associated with a group -- once groups are in
 # 1. Nearby -- once locations are up
-# 1. Liked by X, with X as a member
+# 1. Liked by X, with X as a partner
 #
 
 =begin
@@ -56,7 +56,7 @@ going from child to parent (talk to person) we have:
 
   example:  @talk.person, @talk.person=, @talk.build_person, @talk.create_person
 
-going from parent to child (talk to posts, members) we have:
+going from parent to child (talk to posts, partners) we have:
 
   children(force_reload = false)
   children<<(object, ...)
@@ -91,8 +91,8 @@ class Talk < ActiveRecord::Base
 
   belongs_to :person, inverse_of: :talks
 
-  has_many :members, inverse_of: :talk, dependent: :destroy
-  has_many :guests, inverse_of: :person, through: :members, source: :talks
+  has_many :partners, inverse_of: :talk, dependent: :destroy
+  has_many :guests, inverse_of: :person, through: :partners, source: :talks
 
   has_many :posts, inverse_of: :talk, dependent: :destroy
 
@@ -113,7 +113,7 @@ class Talk < ActiveRecord::Base
     self.where('talk_status = ?', 'active')
   end
 
-  # TBD:  upgrade talks_by_person to include memberships
+  # TBD:  upgrade talks_by_person to include partnerships
   def self.talks_by_person( person ) 
     if ! person
       # TBD:  is 'none' the right way to return an empty set of relations?

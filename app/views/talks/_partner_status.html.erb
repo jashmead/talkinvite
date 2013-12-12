@@ -1,0 +1,5 @@
+<% if person_signed_in? && @partner %>
+  <% if @partner.rsvp_status %>
+    <div class="<%- @partner.rsvp_status %>"><%=@partner.rsvp_status.titleize%></div>
+  <% end %>
+<% end %>

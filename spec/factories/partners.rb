@@ -1,11 +1,11 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :member do
+  factory :partner do
     talk
     person
 
     rsvp_status "yes"
-    member_type "member"
+    partner_type "partner"
   end
 end

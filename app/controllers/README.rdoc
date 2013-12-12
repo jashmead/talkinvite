@@ -8,11 +8,11 @@
 
 === Posts
 
--- post fixes posted & sends out messages to members
+-- post fixes posted & sends out messages to partners
 
 -- needs post, cancel, change, done buttons
 
-=== Members
+=== Partners
 
 join/maybe/leave -- three position switch, if jqm has it
 

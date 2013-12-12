@@ -1,0 +1,26 @@
+// Place all the styles related to the partners controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "common";
+
+/* partners */
+.partners {
+
+}
+
+// handles color for partner_status marker in partners/_form
+.partner_status {
+  @extend status;
+  color: $dustyTrail; // faint yellow suitable for ambiguous states
+}
+
+.partner_no {
+  @extend .partner_status;
+  color: firebrick;
+}
+
+.partner_yes {
+  @extend .partner_status;
+  color: forestgreen;
+}

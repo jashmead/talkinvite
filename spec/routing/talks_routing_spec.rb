@@ -33,7 +33,7 @@ describe TalksController do
 
     ## to test 'start', we would have to setup a signed_in & a not signed_in case..., since 'start' forks on this condition
 
-    it "member routes" do
+    it "partner routes" do
       get("/talks/1/map").should route_to("talks#map", :id => "1")
       get("/talks/1/control").should route_to("talks#control", :id => "1")
     end

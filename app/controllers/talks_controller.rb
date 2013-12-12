@@ -20,7 +20,7 @@ class TalksController < ApplicationController
   # note: for control:  
   #   -- owner can do anything, 
   #   -- anyone can join, 
-  #   -- members can leave, post, comment, message, & map
+  #   -- partners can leave, post, comment, message, & map
   # before_action :correct_person, only: [:edit, :destroy]
 
   # currently talks & people share the list of nav buttons, but that is likely to change
@@ -52,7 +52,7 @@ class TalksController < ApplicationController
   def new
     @person = current_person
     @talk = @person.talks.build
-    @member = @talk.members.build( person_id: current_person.id )
+    # NOTE:  create current person as a partner only on save, in 'create'
     logger.debug("TalksController.new: @talk: #{@talk.inspect}")
   end
 
@@ -86,12 +86,15 @@ class TalksController < ApplicationController
     @talk.person_id = current_person.id # TBD: use one of the association functions for this?
     status_set params['commit']
     respond_to do |format|
-      # TBD:  does this work or do we have to explicitly set the talk_id in the member record?
+      # TBD:  does this work or do we have to explicitly set the talk_id in the partner record?
       if @talk.save 
         post_status_change
-        @talk.members.create( person_id: current_person.id, member_type: 'admin', rsvp_status: 'yes' )
+        # TBD:  this is a bit fragile:  create a partnership function to do this instead
+        partner_admin_force
         format.html { 
+          # after create we generally want to go to the control page for the talk, hence:
           redirect_back_or control_talk_url(@talk)
+          # are we seeing the flash?
           flash.now[:success] = 'A talk is born!'
         }
         # TBD: on format.json, do we want action: 'show' or do we want 'index'?  what does 'location: model' mean?
@@ -115,6 +118,7 @@ class TalksController < ApplicationController
     respond_to do |format|
       # TBD: rescue needed here?
       if @talk.update(talk_params)
+        partner_admin_force
         post_status_change prev_talk
         format.html { 
           # TBD:  is root_path right as the default?, if not, pass along a url, a la destroy_q
@@ -186,9 +190,9 @@ class TalksController < ApplicationController
   end
 
   # return relation of associated talks
-  # implies 'my_messages', 'my_memberships', 'my_comments' & so on
+  # implies 'my_messages', 'my_partnerships', 'my_comments' & so on
   def talks_by_person(person_id) 
-    Talk.find_by_sql("select * from talks where person_id = ? or talk.id in (select talk_id from members where person_id = ?)",
+    Talk.find_by_sql("select * from talks where person_id = ? or talk.id in (select talk_id from partners where person_id = ?)",
       person_id, person_id)
   end
 
@@ -207,8 +211,8 @@ class TalksController < ApplicationController
       #   -- alternatively, we could store only the talk.id in the session...
       #   -- or, store the current_talk as a class variable in the Talk class, i.e. Talk::current_talk = 
       @talk = TalksController.current_talk = Talk.find(params[:id])
-      @member = membership
-      logger.debug("TalksController.set_talk: @talk: #{@talk.inspect}, @member: #{@member.inspect}")
+      @partner = partnership
+      logger.debug("TalksController.set_talk: @talk: #{@talk.inspect}, @partner: #{@partner.inspect}")
     end
 
     def unset_talk
@@ -230,19 +234,19 @@ class TalksController < ApplicationController
     def talk_admin?(talk = nil)
       # TBD:  why is this elaborate setting of defaults needed? current_talk should have been set in set_talk
       talk ||= @talk || current_talk
-      # TBD: include designated admins, members with member_type == 'admin'
+      # TBD: include designated admins, partners with partner_type == 'admin'
       # logger.debug("TalksController.talk_admin?: @talk: #{@talk.inspect}, session: #{session.inspect}")
       # logger.debug("TalksController.talk_admin?: current_person: #{current_person.inspect}, current_talk: #{current_talk.inspect}")
       current_person && talk && current_person.id == talk.person_id
     end
 
-    def membership
-      # member_relation is the relation which is either none or else has just the member in it
+    def partnership
+      # partner_relation is the relation which is either none or else has just the partner in it
       # TBD:  what does 'where' return on no rows found?
       if person_signed_in? 
-        @member = Member.where("talk_id = ? and person_id = ?", @talk.id, current_person.id).first
+        @partner = Partner.where("talk_id = ? and person_id = ?", @talk.id, current_person.id).first
       else
-        @member = nil
+        @partner = nil
       end
     end
 
@@ -304,5 +308,16 @@ class TalksController < ApplicationController
         ) 
       end
     end
+
+  # force an admin into existence
+  def partner_admin_force
+    partner = Partner.where("person_id = ? and talk_id = ?", @talk.person_id, @talk.id).first
+    logger.debug("TalksController.partner_admin_force: partner: #{partner.inspect}")
+    if ! partner
+      logger.debug("TalksController.partner_admin_force: @talk: #{@talk.inspect}")
+      partner = Partner.create( talk_id: @talk.id, person_id: @talk.person_id, rsvp_status: 'yes', partner_type: 'admin' )
+      logger.debug("TalksController.partner_admin_force: just created partner: #{partner.inspect}")
+    end
+  end
 
 end

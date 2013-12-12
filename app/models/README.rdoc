@@ -8,7 +8,7 @@ Note we can't use 'file' as a table name, conflicts with Ruby
 1. People -- will be adding locations to this
 1. Sessions
 1. Talks -- links up to people, will be adding venues to this
-1. Members -- links to talk & to people, includes 'admin' status (with reference to talk), payload is rsvp_status, member_type
+1. Partners -- links to talk & to people, includes 'admin' status (with reference to talk), payload is rsvp_status, partner_type
 1. Comments -- links to talk & to people, payload is text
 1. Messages -- person to person, various modalities, sender, receiver, talk
 1. Credits -- links to creator, name, details, url, tags point to this as well!
@@ -44,8 +44,8 @@ Note we can't use 'file' as a table name, conflicts with Ruby
 
 ==== Friends, Groups, Relationships
 
-* Grow out of members
-  * start with member related searches
+* Grow out of partners
+  * start with partner related searches
   * therefore not needed in Phase I 
 * Friends
   * reciprocally authorized

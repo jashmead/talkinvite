@@ -42,7 +42,7 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1
   # DELETE /services/1.json
-  # since services, like members, never really seen on their own, this may not be correct
+  # since services, like partners, never really seen on their own, this may not be correct
   def destroy
     # TBD: should not let a person destroy the 'talkinvite' service
     # destroy_q(@service, services_url) if @service.service_type != 'talkinvite'

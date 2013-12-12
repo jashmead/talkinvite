@@ -61,4 +61,14 @@ $navbarLinkColor:  $grayLight;
 $navbarLinkColorHover: $white;
 $linkColorHover: darken($linkColor, 15%);
 
+$dustyTrail: #fef1e1; // http://www.somacon.com/p142.php
+
 $grayMediumLight: #eaeaea;
+
+// fonts & colors used for status messages, get extended a lot
+.status {
+  font-style: italic;
+  font-size: small;
+  text-align: right;
+  color: firebrick; // generally overridden
+}

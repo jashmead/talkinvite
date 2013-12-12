@@ -13,7 +13,7 @@ takes a date & time
 has a scale control
 
 has a show X control
-  -- other members
+  -- other partners
   -- tweets (see trending)
 
 ==== Data

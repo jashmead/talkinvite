@@ -1,0 +1,15 @@
+<% # replace person_id & talk_id with name & name, then redo this %>
+<% provide(:title, 'Materialized partners') %>
+<% if @partners %>
+	<ul data-role="listview">
+	    <% @partners.each do |partner| %>
+        <li>
+          <%= link_to partner.rsvp_status, edit_partner_path(partner) %>
+        </li>
+	    <% end %>
+	</ul>
+<% else %>
+<p>None of our talks have partners! Boring, boring talks!</p>
+<% end %>
+<hr>
+<%= button_inline 'New partner', new_partner_path %>

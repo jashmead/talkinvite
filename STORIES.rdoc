@@ -74,11 +74,11 @@ organized by life cycle
 
 ==== Join/leave
 
-change membership status
+change partnership status
 
 ==== Send/Receive Comments
 
-can be change of status, time, location, subject, membership
+can be change of status, time, location, subject, partnership
 
 ==== Send/Receive Messages
 

@@ -28,7 +28,7 @@ Master & demo skill set, get an app up.
 
 :include:app/views/posts/README.rdoc
 
-:include:app/views/members/README.rdoc
+:include:app/views/partners/README.rdoc
 
 :include:app/views/maps/README.rdoc
 
@@ -40,7 +40,7 @@ Master & demo skill set, get an app up.
 
 :include:app/views/static_pages/README.rdoc
 
-:include:app/views/members/README.rdoc
+:include:app/views/partners/README.rdoc
 
 :include:app/views/maps/README.rdoc
 

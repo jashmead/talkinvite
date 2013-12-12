@@ -1,5 +1,5 @@
 # see http://pothibo.com/2013/07/authentication-with-warden-devise-less/
-class UnauthorizedController <; ActionController::Metal
+class UnauthorizedController < ActionController::Metal
   include ActionController::UrlFor
   include ActionController::Redirecting
   include Rails.application.routes.url_helpers

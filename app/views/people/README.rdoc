@@ -49,7 +49,7 @@ done via show; pretty ugly right now
 
 -- made up of search partial, index partial, new talk partial
 
--- invoked from talks/edit to find members, from sitemap for no doubt excellent reason
+-- invoked from talks/edit to find partners, from sitemap for no doubt excellent reason
 
 -- TBD:  add in first/prev/next/last buttons
   -- use session[:search_people][:search_q], [:offset], [:total_found] to track

@@ -15,7 +15,7 @@
 # 1. Talks
 # 1. Services
 # 1. Posts -- includes comments
-# 1. Members
+# 1. Partners
 # 1. Messages -- from sender & from receiver
 # 1. Calendars
 # 1. Maps
@@ -40,8 +40,8 @@ class Person < ActiveRecord::Base
 
   has_many :posts, inverse_of: :person, dependent: :destroy
 
-  has_many :members, inverse_of: :person, dependent: :destroy
-  has_many :memberships, inverse_of: :person, through: :members, source: :talks
+  has_many :partners, inverse_of: :person, dependent: :destroy
+  has_many :partnerships, inverse_of: :person, through: :partners, source: :talks
 
   has_many :sent_messages, inverse_of: :person, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
   has_many :receivers, inverse_of: :person, through: :sent_messages, source: :receivers, dependent: :destroy

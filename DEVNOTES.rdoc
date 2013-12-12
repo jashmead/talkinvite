@@ -27,7 +27,7 @@
 
 1. people -- except for authentication
 1. talks -- start talk, talk central, search for talks
-1. posts, members -- implicit, not shown explicitly
+1. posts, partners -- implicit, not shown explicitly
 1. comments -- like posts, but done by anyone & don't change the state
 1. messages
 1. maps -- leaflet

@@ -12,7 +12,7 @@
 # 1. account pages:  show, edit, home
 # 1. session pages:  sign_in, sign_out
 # 1. maps:  add map, change, save
-# 1. member pages:  join (& regrets)
+# 1. partner pages:  join (& regrets)
 # 1. posts: announce (also change, cancel, mark done)
 # 1. services: setup services for use in posts
 # 1. messages:  talk to other talkers
@@ -29,6 +29,7 @@ Talkinvite::Application.routes.draw do
     get 'sign_up', :to => 'devise/registrations#new'
     get 'sign_in', :to => 'devise/sessions#new'
     delete 'sign_out', :to => 'devise/sessions#destroy'
+    get 'sign_out', :to => 'devise/sessions#destroy'
     get 'reset_password', :to => 'devise/passwords#new'
     # get 'change_password', :to => 'devise/passwords#edit' # change_passwords is an interior form, not useful without a token
     get 'settings', :to => 'devise/registrations#edit'
@@ -41,7 +42,7 @@ Talkinvite::Application.routes.draw do
     end
   end
 
-  resources :posts, :members, :maps, :calendars
+  resources :posts, :partners, :maps, :calendars
 
   # talks:
 

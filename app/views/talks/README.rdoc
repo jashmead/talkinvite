@@ -70,12 +70,12 @@ if just started, has a 'post' button
 ===== RSVP button
   -- depends on your current state
 
-===== Members list
+===== Partners list
 
-get current members list
-  -- see members/index
+get current partners list
+  -- see partners/index
 
-members list can drop down into 1) user profile 2) your own settings
+partners list can drop down into 1) user profile 2) your own settings
 
 ===== Comment button
   -- opens up within the form
@@ -95,7 +95,7 @@ from comments button
   -- in Home
 
 ==== Stats
-  -- # of members
+  -- # of partners
   -- # of accesses
 
 ==== Timeline

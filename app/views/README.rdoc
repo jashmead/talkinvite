@@ -6,7 +6,7 @@
 
 1. New Talk: * Posts * Map/Venue * Calendar 
 1. Talk Control: same partials as for New Talk, some more buttons for RSVP, significant differences for creator/admin versus usual
-1. Search for Talks: simple, location, time, members, attachments?
+1. Search for Talks: simple, location, time, partners, attachments?
 
 ==== People pages
 
@@ -26,7 +26,7 @@
 ==== Partials Only
 
 1. Posts -- next on list
-1. Members
+1. Partners
 1. Comments
 1. Maps -- do when doing the map
 1. Calendars -- do in rails first, then jquery

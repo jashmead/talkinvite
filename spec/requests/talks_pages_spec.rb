@@ -160,8 +160,8 @@ describe "Talk pages" do
     end
   end
 
-  # TBD: get talk member functions working
-  describe "talk members" do
+  # TBD: get talk partner functions working
+  describe "talk partners" do
 
     describe "talk join" do
     end

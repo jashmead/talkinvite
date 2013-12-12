@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe "members/show" do
+describe "partners/show" do
   before(:each) do
-    @member = assign(:member, stub_model(Member,
+    @partner = assign(:partner, stub_model(Partner,
       :talk_id => 1,
       :person_id => 2,
       :rsvp_status => "Rsvp Status",
-      :member_type => "Member Type"
+      :partner_type => "Partner Type"
     ))
   end
 
@@ -16,6 +16,6 @@ describe "members/show" do
     rendered.should match(/1/)
     rendered.should match(/2/)
     rendered.should match(/Rsvp Status/)
-    rendered.should match(/Member Type/)
+    rendered.should match(/Partner Type/)
   end
 end

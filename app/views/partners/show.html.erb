@@ -1,0 +1,25 @@
+<% provide(:title, 'Partner') %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Talk:</strong>
+  <%= @partner.talk_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @partner.person_id %>
+</p>
+
+<p>
+  <strong>Rsvp status:</strong>
+  <%= @partner.rsvp_status %>
+</p>
+
+<p>
+  <strong>Partner type:</strong>
+  <%= @partner.partner_type %>
+</p>
+
+<%= link_to 'Edit', edit_partner_path(@partner) %> |
+<%= link_to 'Back', partners_path %>

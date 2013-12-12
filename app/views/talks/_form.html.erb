@@ -3,8 +3,10 @@
   # TBD: using disabled for show was ugly; using listview for show is ugly; still looking for ideal...
 %>
 <%= form_for_jqm @talk do |f| %>
+
   <%= render partial: 'shared/error_messages', object: f.object %>
-  <%= render partial: 'shared/talk_status' %>
+  <%= render partial: 'talk_status' %>
+  <%= render partial: 'partner_status' %>
   <%= f.hidden_field :person_id %>
 
   <% if person_signed_in? %>

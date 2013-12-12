@@ -1,3 +1,11 @@
-<%= 
-  talk_status.collection_radio_buttons :talk_status, Talk::TALK_STATUS, :to_s, :titleize
+<%
+  talk_status_class = 'talk_' + @talk.talk_status
+  partner_count = pluralize(@talk.partners.size, 'partner')
+  logger.debug("app/views/talks/_form: talk_status_class: #{talk_status_class.inspect}, partner_count = #{partner_count.inspect}")
 %>
+<div class="<%=talk_status_class.html_safe%>" >
+  <%=@talk.talk_status.titleize%>
+  <% if @talk.partners.size > 0 %>
+    <%= partner_count.html_safe %>
+  <% end %>
+</div>

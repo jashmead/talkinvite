@@ -2,7 +2,7 @@
 #
 # change talk status & post messages
 
-# TBD:  is a Posts controller even needed? can do much of the work in the model
+# TBD:  add comments (routing includes 'comment')
 
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]

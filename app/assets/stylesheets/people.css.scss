@@ -21,8 +21,6 @@
 
 // handles color for administrator marker in devise/registrations/edit
 .administrator {
+  @extend .status;
   color: firebrick;
-  font-style: italic;
-  font-size: small;
-  text-align: right;
 }

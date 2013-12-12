@@ -9,7 +9,7 @@ class AddDeviseToPeople < ActiveRecord::Migration
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
-      ## Rememberable -- remembers password within a session?
+      ## Repartnerable -- remembers password within a session?
       t.datetime :remember_created_at
 
       ## Trackable -- track logins -- do we need? -- keep since it is a default for devise
