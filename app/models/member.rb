@@ -3,15 +3,14 @@
 # Fields
 # 1. person_id
 # 1. talk_id
-# 1. rsvp_status -- accepted, declined, maybe
+# 1. rsvp_status -- yes, no
 # 1. member_type -- member, admin
 #
-# TBD:  add comment field
 # note:  should be able to get at current member_type & rsvp_status from the association functions
 
 class Member < ActiveRecord::Base
 
-  RSVP_STATUSES = [ 'yes', 'no', 'maybe' ]
+  RSVP_STATUSES = [ 'yes', 'no' ]
   MEMBER_TYPES = [ 'member', 'admin' ]
 
   belongs_to :person, inverse_of: :members
@@ -56,10 +55,6 @@ class Member < ActiveRecord::Base
 
   def self.decline(person_id, talk_id)
     self.rsvp_status_create_or_change(person_id, talk_id, 'no')
-  end
-
-  def self.maybe(person_id, talk_id)
-    self.rsvp_status_create_or_change(person_id, talk_id, 'maybe')
   end
 
   def self.admin(person_id, talk_id)
