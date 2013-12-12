@@ -11,7 +11,7 @@
 
 // handles color for partner_status marker in partners/_form
 .partner_status {
-  @extend status;
+  @extend .status;
   color: $dustyTrail; // faint yellow suitable for ambiguous states
 }
 

@@ -123,4 +123,9 @@ class Talk < ActiveRecord::Base
     self.where('person_id = ?', person.id)
   end
 
+  def partners_other_than_originator
+    Partner.find_by_sql ["select * from partners where person_id != ? and talk_id = ? and rsvp_status = ?",
+      self.person_id, self.id, 'yes']
+  end
+
 end
