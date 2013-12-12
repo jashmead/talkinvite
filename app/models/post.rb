@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   # NOTE:  
   #   -- can't logically announce a delete, since there is in this case no talk to post about (was just killed):)
   #   -- by same logic, no draft announcement, as no talk yet
-  POST_TYPES = [ 'announce', 'cancel', 'change', 'done', 'reopen' ]
+  POST_TYPES = [ 'new talk', 'new date', 'new location', 'cancelled', 'marked done', 'reopened' ]
 
   belongs_to :person, inverse_of: :posts
   belongs_to :talk, inverse_of: :posts

@@ -5,7 +5,7 @@ FactoryGirl.define do
     person 
     talk
     routing "message"
-    post_type "announce"
+    post_type "new talk"
     post_message "let's talk"
   end
 end

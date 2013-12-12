@@ -27,7 +27,7 @@ describe PostsController do
   let(:person) { FactoryGirl.create(:person) }
   let(:person2) { FactoryGirl.create(:person) }
   let(:talk) { FactoryGirl.create(:talk, :person_id => person.id) }
-  let(:valid_attributes) { { "talk_id" => talk.id, "person_id" => person2.id, "post_type" => "announce", "routing" => "message",
+  let(:valid_attributes) { { "talk_id" => talk.id, "person_id" => person2.id, "post_type" => "new talk", "routing" => "message",
     "post_message" => "hello" } }
 
   # This should return the minimal set of values that should be in the session

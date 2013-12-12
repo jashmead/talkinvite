@@ -7,7 +7,7 @@ describe Post do
 
   let(:talk) { FactoryGirl.create(:talk, person_id: person.id) }
 
-  before { @post = talk.posts.build(person_id: person2.id, routing: 'message', post_type: 'announce', post_title: 'we begin' ) }
+  before { @post = talk.posts.build(person_id: person2.id, routing: 'message', post_type: 'new talk', post_title: 'we begin' ) }
 
   subject { @post }
 

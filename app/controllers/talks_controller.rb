@@ -85,13 +85,11 @@ class TalksController < ApplicationController
     @talk = Talk.new(talk_params)
     @talk.person_id = current_person.id # TBD: use one of the association functions for this?
     status_set params['commit']
-    if @talk.talk_status == 'active'
-      announce
-    end
     respond_to do |format|
       # TBD:  does this work or do we have to explicitly set the talk_id in the member record?
       if @talk.save 
-        @member && @member.save
+        post_status_change
+        @talk.members.create( person_id: current_person.id, member_type: 'admin', rsvp_status: 'yes' )
         format.html { 
           redirect_back_or control_talk_url(@talk)
           flash.now[:success] = 'A talk is born!'
@@ -111,12 +109,22 @@ class TalksController < ApplicationController
     # logger.debug("TalksController.update: talk_params: #{talk_params.inspect}")
     # logger.debug("TalksController: commit: #{params['commit'].inspect}")
 
-    prev_status = @talk.talk_status
+    prev_talk = @talk
     status_set params['commit']
     
-    update_q(@talk, talk_params)
-    @member && update_q(@member, talk_params)
-    @talk.reload  # TBD: necessary?
+    respond_to do |format|
+      # TBD: rescue needed here?
+      if @talk.update(talk_params)
+        post_status_change prev_talk
+        format.html { 
+          # TBD:  is root_path right as the default?, if not, pass along a url, a la destroy_q
+          redirect_back_or root_url
+          flash.now[:success] = 'Talk updated' }
+        format.json { head :no_content }
+      else
+        fail_q(model, format, 'edit')
+      end
+    end
   end
 
   # DELETE /talks/1
@@ -238,23 +246,6 @@ class TalksController < ApplicationController
       end
     end
 
-    # TBD: should post go with talk or with post? with controller or model? using dialog, button, or implicit rules?
-    #   -- use default postings, then refactor to add functionality
-    def announce ( action = 'announce', options = {} ) 
-      logger.debug("TalksController.announce: action: #{action.inspect}, options: #{options.inspect}")
-      # create post
-      @post = @talk.posts.create( post_type: action ) 
-      # then call post, telling it to send messages
-      # the post object will execute its own send messages option
-      # each message will then build itself
-      # as each user comes in, they will see the messages for them
-      # once they can add comments, the core functions will be up!
-      # *then* fill in the rest of the picture:  maps*, tweets*, calendars, popups, ...
-      #   -- maps & tweets needed to have a product
-      #   -- calendars, popups (for posts & so on), all nice
-      #   -- together with a full set of tests
-    end
-
     def status_set( button_label )
 	    case button_label
         when /Draft/i
@@ -271,6 +262,47 @@ class TalksController < ApplicationController
 	      when /Reopen/i
 	        @talk.talk_status = 'active'
 	    end
+    end
+
+    # TBD: add in new talk as well
+    def post_status_change( prev_talk = nil ) 
+      post_type = nil
+      if prev_talk.nil? 
+        if @talk.talk_status == 'active'
+          post_type = 'new talk'
+        end
+      else
+        if @talk.talk_status == 'active' 
+          if prev_talk.talk_status != 'active'
+            if prev_talk.talk_status == 'draft'
+                post_type = 'new talk'
+            else
+                post_type = 'reopened'
+            end
+          elsif prev_talk.talk_date != @talk.talk_date
+            post_type = 'new date'
+          elsif prev_talk.address != @talk.address
+            post_type = 'new location'
+          end
+        elsif prev_talk.talk_status == 'active'
+          # we already know that the new talk_status is NOT active
+          if @talk.talk_status == 'draft'
+              post_type = 'postponed'
+          else
+              post_type = @talk.talk_status
+          end
+        end
+        # if neither old nor new versions are active, do not send a post!
+      end 
+      if post_type
+        @talk.posts.create( 
+          person_id: current_person.id, 
+          post_title: post_type.titleize + ': ' + @talk.summary.titleize,
+          post_message: @talk.description, 
+          post_type: post_type, 
+          routing: 'message'
+        ) 
+      end
     end
 
 end

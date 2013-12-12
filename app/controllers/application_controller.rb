@@ -285,7 +285,7 @@ class ApplicationController < ActionController::Base
         format.html { 
           # TBD:  is root_path right as the default?, if not, pass along a url, a la destroy_q
           redirect_back_or root_url
-          flash.now[:success] = model.class.to_s.downcase + ' was successfully updated.' }
+          flash.now[:success] = model.class.to_s.downcase + ' updated' }
         format.json { head :no_content }
       else
         fail_q(model, format, 'edit')
