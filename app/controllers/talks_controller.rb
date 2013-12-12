@@ -90,6 +90,7 @@ class TalksController < ApplicationController
       if @talk.save 
         post_status_change
         # TBD:  this is a bit fragile:  create a partnership function to do this instead
+        @talk.reload
         partner_admin_force
         format.html { 
           # after create we generally want to go to the control page for the talk, hence:
@@ -118,6 +119,7 @@ class TalksController < ApplicationController
     respond_to do |format|
       # TBD: rescue needed here?
       if @talk.update(talk_params)
+        @talk.reload
         partner_admin_force
         post_status_change prev_talk
         format.html { 
@@ -312,11 +314,21 @@ class TalksController < ApplicationController
   # force an admin into existence
   def partner_admin_force
     partner = Partner.where("person_id = ? and talk_id = ?", @talk.person_id, @talk.id).first
-    logger.debug("TalksController.partner_admin_force: partner: #{partner.inspect}")
     if ! partner
       logger.debug("TalksController.partner_admin_force: @talk: #{@talk.inspect}")
+=begin
       partner = Partner.create( talk_id: @talk.id, person_id: @talk.person_id, rsvp_status: 'yes', partner_type: 'admin' )
       logger.debug("TalksController.partner_admin_force: just created partner: #{partner.inspect}")
+=end
+      # insert works, but Partner.create does not???
+      # insert is safe, since none of the values supplied by the user
+      sql = "insert into partners (talk_id, person_id, rsvp_status, partner_type ) " +
+        "values ( #{@talk.id.to_s}, #{@talk.person_id}, 'yes', 'admin' )" 
+      logger.debug("TalksController.partner_admin_force: sql: #{sql}")
+      ActiveRecord::Base.connection.execute(sql)
+      logger.debug("TalksController.partner_admin_force: partner: #{partner.inspect}")
+      partner = Partner.where("person_id = ? and talk_id = ?", @talk.person_id, @talk.id).first
+      logger.debug("TalksController.partner_admin_force: partner: #{partner.inspect}")
     end
   end
 

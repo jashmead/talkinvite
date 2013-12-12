@@ -40,8 +40,9 @@ class Person < ActiveRecord::Base
 
   has_many :posts, inverse_of: :person, dependent: :destroy
 
-  has_many :partners, inverse_of: :person, dependent: :destroy
-  has_many :partnerships, inverse_of: :person, through: :partners, source: :talks
+  # TBD:  connecting 2x into the same table (person->talk->partner and person->partner) seems to confuse ActiveRecord
+  # has_many :partners, inverse_of: :person, dependent: :destroy
+  # has_many :partnerships, inverse_of: :person, through: :partners, source: :talks
 
   has_many :sent_messages, inverse_of: :person, foreign_key: "sender_id", class_name: "Message", dependent: :destroy
   has_many :receivers, inverse_of: :person, through: :sent_messages, source: :receivers, dependent: :destroy

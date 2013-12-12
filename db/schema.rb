@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212144326) do
+ActiveRecord::Schema.define(version: 20131212222821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,17 +69,6 @@ ActiveRecord::Schema.define(version: 20131212144326) do
     t.integer  "person_id"
   end
 
-  create_table "members", force: true do |t|
-    t.integer  "talk_id"
-    t.integer  "person_id"
-    t.string   "rsvp_status", default: "accepted", null: false
-    t.string   "member_type", default: "member",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "members", ["person_id", "talk_id"], name: "index_members_on_person_id_and_talk_id", unique: true, using: :btree
-
   create_table "messages", force: true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
@@ -95,6 +84,17 @@ ActiveRecord::Schema.define(version: 20131212144326) do
 
   add_index "messages", ["previous_message_id"], name: "index_messages_on_previous_message_id", using: :btree
   add_index "messages", ["talk_id"], name: "index_messages_on_talk_id", using: :btree
+
+  create_table "partners", force: true do |t|
+    t.integer  "talk_id"
+    t.integer  "person_id"
+    t.string   "rsvp_status",  default: "yes",     null: false
+    t.string   "partner_type", default: "partner", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "partners", ["person_id", "talk_id"], name: "index_members_on_person_id_and_talk_id", unique: true, using: :btree
 
   create_table "people", force: true do |t|
     t.string   "name",                                   null: false
