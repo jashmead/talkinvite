@@ -201,15 +201,15 @@ ALTER SEQUENCE maps_id_seq OWNED BY maps.id;
 
 
 --
--- Name: members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: partners; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE members (
+CREATE TABLE partners (
     id integer NOT NULL,
     talk_id integer,
     person_id integer,
     rsvp_status character varying(255) DEFAULT 'accepted'::character varying NOT NULL,
-    member_type character varying(255) DEFAULT 'member'::character varying NOT NULL,
+    partner_type character varying(255) DEFAULT 'partner'::character varying NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -231,7 +231,7 @@ CREATE SEQUENCE members_id_seq
 -- Name: members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE members_id_seq OWNED BY members.id;
+ALTER SEQUENCE members_id_seq OWNED BY partners.id;
 
 
 --
@@ -475,14 +475,14 @@ ALTER TABLE ONLY maps ALTER COLUMN id SET DEFAULT nextval('maps_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY members ALTER COLUMN id SET DEFAULT nextval('members_id_seq'::regclass);
+ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
 
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+ALTER TABLE ONLY partners ALTER COLUMN id SET DEFAULT nextval('members_id_seq'::regclass);
 
 
 --
@@ -557,7 +557,7 @@ ALTER TABLE ONLY maps
 -- Name: members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY members
+ALTER TABLE ONLY partners
     ADD CONSTRAINT members_pkey PRIMARY KEY (id);
 
 
@@ -626,7 +626,7 @@ CREATE UNIQUE INDEX index_helps_on_name ON helps USING btree (name);
 -- Name: index_members_on_person_id_and_talk_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_members_on_person_id_and_talk_id ON members USING btree (person_id, talk_id);
+CREATE UNIQUE INDEX index_members_on_person_id_and_talk_id ON partners USING btree (person_id, talk_id);
 
 
 --
@@ -737,7 +737,7 @@ ALTER TABLE ONLY maps
 -- Name: member2to_person_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY members
+ALTER TABLE ONLY partners
     ADD CONSTRAINT member2to_person_fk FOREIGN KEY (person_id) REFERENCES people(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
@@ -745,7 +745,7 @@ ALTER TABLE ONLY members
 -- Name: member2to_talk_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY members
+ALTER TABLE ONLY partners
     ADD CONSTRAINT member2to_talk_fk FOREIGN KEY (talk_id) REFERENCES talks(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
