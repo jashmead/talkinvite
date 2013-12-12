@@ -4,8 +4,7 @@ FactoryGirl.define do
   factory :post do
     person 
     talk
-    service_type "talkinvite"
-    service_notes "{}"
+    routing "message"
     post_type "announce"
     post_message "let's talk"
   end

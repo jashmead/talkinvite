@@ -7,8 +7,7 @@ describe "posts/edit" do
     @post = assign(:post, stub_model(Post,
       :person_id => 1,
       :talk_id => 1,
-      :service_type => "MyString",
-      :service_notes => "MyText",
+      :routing => "MyString",
       :post_type => "MyString",
       :post_message => "MyText"
     ))
@@ -21,8 +20,7 @@ describe "posts/edit" do
     assert_select "form[action=?][method=?]", post_path(@post), "post" do
       assert_select "input#post_person_id[name=?]", "post[person_id]"
       assert_select "input#post_talk_id[name=?]", "post[talk_id]"
-      assert_select "input#post_service_type[name=?]", "post[service_type]"
-      assert_select "textarea#post_service_notes[name=?]", "post[service_notes]"
+      assert_select "input#post_routing[name=?]", "post[routing]"
       assert_select "input#post_post_type[name=?]", "post[post_type]"
       assert_select "textarea#post_post_message[name=?]", "post[post_message]"
     end

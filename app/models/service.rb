@@ -9,7 +9,7 @@ class Service < ActiveRecord::Base
 
   # talkvite is base, mediated via messages in database
   # dm is local messaging, mediated via javascript
-  SERVICE_TYPES = [ 'talkinvite', 'dm', 'twitter', 'facebook', 'google+' ]
+  SERVICE_TYPES = [ 'talkinvite', 'email', 'dm', 'twitter', 'facebook', 'google+' ]
 
   belongs_to :person, inverse_of: :services
 

@@ -7,8 +7,7 @@ describe "people/1/talks/2/posts/show" do
     @post = assign(:post, stub_model(Post,
       :person_id => 1,
       :talk_id => 2,
-      :service_type => "Service Type",
-      :service_notes => "MyText",
+      :routing => "message",
       :post_type => "Post Type",
       :post_message => "MyText"
     ))
@@ -19,8 +18,7 @@ describe "people/1/talks/2/posts/show" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/1/)
     rendered.should match(/2/)
-    rendered.should match(/Service Type/)
-    rendered.should match(/MyText/)
+    rendered.should match(/message/)
     rendered.should match(/Post Type/)
     rendered.should match(/MyText/)
   end

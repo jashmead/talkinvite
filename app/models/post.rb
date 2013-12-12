@@ -20,10 +20,13 @@ class Post < ActiveRecord::Base
   validates :person_id, presence: true  # note person_id points to author of post, *NOT* author of talk
   validates :talk_id, presence: true
   validates :post_type, presence: true
-  validates :service_type, presence: true # how the post is being shipped out:  can be one or more service types, separated by commas, start with just one type (talkinvite)
+  validates :post_title, presence: true
 
-  # TBD: switch to comma separated list of service types in service_type, then validate with block of some kind:w
-  validates_inclusion_of :service_type, :in => Service::SERVICE_TYPES
+  # routing is combination of service types to use, default 'message'
+  #   -- format with '+', i.e. 'message+email'
+  # TBD:  add a validation block to make sure that all parts are legit service types
+  validates :routing, presence: true 
+
   validates_inclusion_of :post_type, :in => POST_TYPES
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210195137) do
+ActiveRecord::Schema.define(version: 20131212144326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,14 +122,14 @@ ActiveRecord::Schema.define(version: 20131210195137) do
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "person_id",                            null: false
-    t.integer  "talk_id",                              null: false
-    t.string   "service_type",  default: "talkinvite", null: false
-    t.text     "service_notes"
-    t.string   "post_type",     default: "announce",   null: false
+    t.integer  "person_id",                                        null: false
+    t.integer  "talk_id",                                          null: false
+    t.string   "routing",      default: "message",                 null: false
+    t.string   "post_type",    default: "announce",                null: false
     t.text     "post_message"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "post_title",   default: "Hi There! Want to talk?"
   end
 
   create_table "services", force: true do |t|
