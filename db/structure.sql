@@ -325,12 +325,12 @@ CREATE TABLE posts (
     id integer NOT NULL,
     person_id integer NOT NULL,
     talk_id integer NOT NULL,
-    service_type character varying(255) DEFAULT 'talkinvite'::character varying NOT NULL,
-    service_notes text,
+    routing character varying(255) DEFAULT 'message'::character varying NOT NULL,
     post_type character varying(255) DEFAULT 'announce'::character varying NOT NULL,
     post_message text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    post_title character varying(255) DEFAULT 'Hi There! Want to talk?'::character varying
 );
 
 
@@ -1038,3 +1038,11 @@ INSERT INTO schema_migrations (version) VALUES ('20131210004515');
 INSERT INTO schema_migrations (version) VALUES ('20131210192109');
 
 INSERT INTO schema_migrations (version) VALUES ('20131210195137');
+
+INSERT INTO schema_migrations (version) VALUES ('20131212141759');
+
+INSERT INTO schema_migrations (version) VALUES ('20131212142041');
+
+INSERT INTO schema_migrations (version) VALUES ('20131212143720');
+
+INSERT INTO schema_migrations (version) VALUES ('20131212144326');
