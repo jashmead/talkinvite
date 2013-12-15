@@ -4,9 +4,9 @@
 # 1. person_id
 # 1. talk_id
 # 1. rsvp_status -- yes, no
-# 1. partner_type -- partner, admin
+# 1. partner_type -- partner, admin -- could use admin_flag well
 #
-# note:  should be able to get at current partner_type & rsvp_status from the association functions
+# TBD:  should be able to get at current partner_type & rsvp_status from the association functions
 
 class Partner < ActiveRecord::Base
 
@@ -21,7 +21,6 @@ class Partner < ActiveRecord::Base
 
   validates :person_id, presence: true
   validates :talk_id, presence: true
-  validates_uniqueness_of :person_id, :talk_id
 
   validates :rsvp_status, presence: true
   validates_inclusion_of :rsvp_status, :in => RSVP_STATUSES
@@ -30,54 +29,94 @@ class Partner < ActiveRecord::Base
   validates_inclusion_of :partner_type, :in => MEMBER_TYPES  # may have others, ultimately
 
   # if no attributes supplied, return existing partner record or nil if there is none
-  # NOTE:  person# is first, talk# second
-  def self.partnership(person_id, talk_id, attributes = nil)
-    partner = Partner.where("person_id = ? and talk_id = ?", person_id, talk_id).first
-    if ! attributes
-      return partner # expect nil if no partner found
-    end
+  def self.find_by_person_and_talk(person_id, talk_id)
+    Partner.where("person_id = ? and talk_id = ?", person_id, talk_id).first
+  end
+
+  def self.create_or_update(person_id, talk_id, attributes = nil)
+    partner = Partner.find_by_person_and_talk(person_id, talk_id)
     if ! partner
       partner = Partner.new(person_id: person_id, talk_id: talk_id)
     end
     partner.update_attributes( attributes )
   end
 
-  def self.rsvp_status_create_or_change(person_id, talk_id, new_rsvp_status)
-    Partner.partnership(person_id, talk_id, 'rsvp_status' => new_rsvp_status)
+  def self.no(person_id, talk_id)
+    Partner.create_or_update(person_id, talk_id, rsvp_status: 'no')
   end
 
-  def self.partner_type_create_or_change(person_id, talk_id, new_partner_type)
-    Partner.partnership(person_id, talk_id, 'partner_type' => new_partner_type)
-  end
-
-  def self.accept(person_id, talk_id)
-    self.rsvp_status_create_or_change(person_id, talk_id, 'yes')
-  end
-
-  def self.decline(person_id, talk_id)
-    self.rsvp_status_create_or_change(person_id, talk_id, 'no')
+  def self.yes(person_id, talk_id)
+    Partner.create_or_update(person_id, talk_id, rsvp_status: 'yes')
   end
 
   def self.admin(person_id, talk_id)
     # verify the person doing this is creator of talk or else an admin
-    self.partner_type_create_or_change(person_id, talk_id, 'admin')
+    if ! person_signed_in? 
+      return nil
+    end
+
+    talk = Talk.find(talk_id)
+    if talk.person_id = person_id || talk.person_id == current_person.id
+      return Partner.create_or_update(person_id, talk_id, partner_type: 'admin')
+    end
+      
+    current_partner = Partner.find_by_person_and_talk(current_person.id, talk_id)
+    if ! current_partner || current_partner.partner_type != 'admin'
+      return nil
+    end
+
+    Partner.create_or_update(person_id, talk_id, partner_type: 'admin')
   end
 
   def self.unadmin(person_id, talk_id)
-    # verify the person doing this is self & further is not the last admin!
-    self.partner_type_create_or_change(person_id, talk_id, 'partner')
+    if ! person_signed_in? || current_person.id == person_id
+      return nil
+    end
+
+    talk = Talk.find(talk_id)
+    if talk.person_id = person_id
+      return nil
+    end
+
+    current_partner = Partner.find_by_person_and_talk(current_person.id, talk_id)
+    if ! current_partner || current_partner.partner_type != 'admin' 
+      return nil
+    end
+
+    Partner.create_or_update(person_id, talk_id, partner_type: 'partner')
   end
 
-  # return nil if no partnership
+  # return nil partner not found
   def self.partner_type(person_id, talk_id) 
-    partner = self.partnership(person_id, talk_id)
+    partner = Partner.find_by_person_and_talk(person_id, talk_id)
     return partner && partner.partner_type
   end
 
-  # return nil if no partnership
+  # return nil if partner not found
   def self.rsvp_status(person_id, talk_id) 
-    partner = self.partnership(person_id, talk_id)
+    partner = Partner.find_by_person_and_talk(person_id, talk_id)
     return partner && partner.rsvp_status
   end
+
+  def self.admin? (person_id, talk_id) 
+    if ! person_signed_in?
+      return nil
+    end
+
+    talk = Talk.find(talk_id)
+    if talk.person_id == person_id
+      return true
+    end
+
+    partner = Partner.find_by_person_and_talk(person_id, talk_id)
+    return partner & partner.partner_type == 'admin'
+  end
+
+  def self.is_coming? (person_id, talk_id) 
+    partner = Partner.find_by_person_and_talk(person_id, talk_id)
+    return partner && partner.rsvp_status == 'yes'
+  end
+
+  # TBD:  are_coming?
 
 end
